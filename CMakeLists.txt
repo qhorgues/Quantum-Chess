@@ -20,8 +20,15 @@ set (HEADERS
 #if (BUILD_TESTING)
 #    add_subdirectory(${CMAKE_SOURCE_DIR}/test)
 #endif()
+include(FetchContent)
 
-add_subdirectory(${CMAKE_SOURCE_DIR}/include/Matrix)
+FetchContent_Declare(Matrix
+  GIT_REPOSITORY "https://github.com/qhorgues/Matrix.git"
+  GIT_TAG "origin/master"
+  SOURCE_DIR "Matrix"
+)
+
+FetchContent_MakeAvailable(Matrix)
 
 include_directories(${CMAKE_SOURCE_DIR}/include)
 
