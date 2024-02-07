@@ -15,6 +15,12 @@ set (SRCS
 )
 
 set (HEADERS
+    include/Qubit/Qubit.hpp
+    include/Qubit/Qubit.tpp
+    include/Unitary/Unitary.hpp
+
+
+
 )
 
 #if (BUILD_TESTING)
