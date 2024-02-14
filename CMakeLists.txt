@@ -11,9 +11,14 @@ include(${CMAKE_SOURCE_DIR}/cmake/CompilerWarnings.cmake)
 set_choice (CMAKE_BUILD_TYPE "Debug;Release;MinSizeRel;RelWithDebInfo" "Debug" "Choose type of build")
 
 set (SRCS
+    src/main.cpp
+    src/GameBoard/GameBoard.tpp
+    src/GameBoard/GameBoard.hpp
+    src/GameBoard/Piece.hpp
 )
 
 set (HEADERS
+
 )
 
 #if (BUILD_TESTING)
@@ -22,8 +27,25 @@ set (HEADERS
 
 include_directories(${CMAKE_SOURCE_DIR}/include)
 
-set (CMAKE_CXX_STANDARD 17)
+MACRO(HEADER_DIRECTORIES return_list)
+    FILE(GLOB_RECURSE new_list *.hpp)
+    SET(dir_list "")
+    FOREACH(file_path ${new_list})
+        GET_FILENAME_COMPONENT(dir_path ${file_path} PATH)
+        SET(dir_list ${dir_list} ${dir_path})
+    ENDFOREACH()
+    LIST(REMOVE_DUPLICATES dir_list)
+    SET(${return_list} ${dir_list})
+ENDMACRO()
+
+HEADER_DIRECTORIES(header_list)
+
+include_directories(${header_list})
+
+set (CMAKE_CXX_STANDARD 20)
 set (CMAKE_CXX_STANDARD_REQUIRED ON)
+
+set_sanitizer()
 
 if (MINGW)
     set (CMAKE_EXE_LINKER_FLAGS "-static-libgcc -static-libstdc++ -static")
@@ -33,7 +55,7 @@ if (MINGW)
     endif()
 endif (MINGW)
 
-add_library (${PROJECT_NAME} STATIC ${SRCS} ${HEADERS})
+add_executable (${PROJECT_NAME} ${SRCS} ${HEADERS})
 #set_target_properties(${PROJECT_NAME} PROPERTIES PUBLIC_HEADER ${HEADERS})
 set_target_warnings(${PROJECT_NAME})
 
