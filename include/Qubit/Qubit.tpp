@@ -1,6 +1,7 @@
 #include "Qubit.hpp"
 #include <Matrix.hpp>
 #include <algorithm>
+#include <numeric>
 
 template <std::size_t N>
 Qubit<N>::Qubit(std::array<std::complex<double>, _2POW(N)> &&init_list) : m_data(std::move(init_list))
@@ -10,10 +11,18 @@ Qubit<N>::Qubit(std::array<std::complex<double>, _2POW(N)> &&init_list) : m_data
 template <std::size_t N>
 Qubit<N>::Qubit(std::array<bool, N> const& data) : m_data()
 {
-    for (std::size_t i { 0 }; i < _2POW(N); i++)
-    {
-        
-    }
+   
+   auto sum {[](std::array<bool, N> const& tab) -> int
+   {
+        int acc {0};
+        for (std::size_t i {0}; i < std::size(tab); i++)
+        {
+            acc += _2POW(i) * tab[std::size(tab) - i - 1];
+        }
+        return _2POW(std::size(tab)) - acc;
+   }};
+    m_data [sum (data)-1] = 1;
+
 }
 
 template <std::size_t N>
