@@ -8,6 +8,15 @@ Qubit<N>::Qubit(std::array<std::complex<double>, _2POW(N)> &&init_list) : m_data
 }
 
 template <std::size_t N>
+Qubit<N>::Qubit(std::array<bool, N> const& data) : m_data()
+{
+    for (std::size_t i { 0 }; i < _2POW(N); i++)
+    {
+        
+    }
+}
+
+template <std::size_t N>
 Qubit<N> operator*(Matrix<std::complex<double>, _2POW(N)> const &lhs, Qubit<N> const &rhs)
 {
     std::array<std::complex<double>, _2POW(N)> tab{};

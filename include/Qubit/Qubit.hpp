@@ -14,6 +14,7 @@ class Qubit final
 public:
     // Constructeur
     Qubit() = default;
+    Qubit(std::array<bool, N> const & data);
     Qubit(std::array<std::complex<double>, _2POW(N)> && init_list);
 
     // Copie
