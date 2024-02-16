@@ -44,7 +44,7 @@ constexpr CMatrix<8> MATRIX_SLIDE {
     }
 };
 
-constexpr CMatrix<8> MATRIX_SLIT_ISWAP {
+constexpr CMatrix<8> MATRIX_ISWAP_8 {
     {
         {1, 0, 0, 0, 0, 0, 0, 0},
         {0, 0, 0, 0, 1i, 0, 0, 0 },
@@ -57,7 +57,7 @@ constexpr CMatrix<8> MATRIX_SLIT_ISWAP {
     }
 };
 
-constexpr CMatrix<8> MATRIX_SLIT_SQRT_ISWAP {
+constexpr CMatrix<8> MATRIX_SQRT_ISWAP_8 {
     {
         {1,        0,        0, 0,  0,        0,        0, 0},
         {0, 1./sqrt2, 1i/sqrt2, 0, 1i,        0,        0, 0},
@@ -95,43 +95,28 @@ constexpr CMatrix<8> MATRIX_MERGE {
     }
 };
 
-constexpr CMatrix<8> MATRIX_ISWAP_S_T1 {
-    {
-        {1, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 1i, 0, 0, 0},
-        {0, 0, 1., 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 1i, 0},
-        {0, 1i, 0, 0, 1, 0, 0, 0},
-        {0, 0, 0, 0, 0, 1, 0, 0},
-        {0, 0, 0, 1i, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 1}
-    }
-};
-
-
-constexpr CMatrix<8> MATRIX_ISWAP_S_T2 {
-    {
-        {1, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 1i, 0, 0, 0 },
-        {0, 0, 1., 0, 0, 0, 0, 0},
-        {0, 0, 0, 1, 0, 0, 1i, 0},
-        {0, 1i, 0, 0, 1, 0, 0, 0 },
-        {0, 0, 0, 0, 0, 1, 0, 0},
-        {0, 0, 0, 1i, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 1}
-    }
-};
-
 constexpr CMatrix<32> MATRIX_SPLIT_SLIDE {
     CMatrix<16>{
         MATRIX_SPLIT, CMatrix<8>{},
-        CMatrix<8>{}, MATRIX_ISWAP_S_T2
-    },                                      CMatrix<16>{},
+        CMatrix<8>{}, MATRIX_ISWAP_8
+    },                                  CMatrix<16>{},
+    
+    CMatrix<16>{},                      CMatrix<16>{
+                                            MATRIX_ISWAP_8, CMatrix<8>{},
+                                            CMatrix<8>{}, CMatrix<8>::identity()
+                                        }
+};
 
-    CMatrix<16>{},                          CMatrix<16>{
-                                                MATRIX_ISWAP_S_T1, CMatrix<8>{},
-                                                CMatrix<8>{}, CMatrix<8>::identity()
-                                            }
+constexpr CMatrix<32> MATRIX_MERGE_SLIDE {
+    CMatrix<16>{
+        MATRIX_MERGE, CMatrix<8>{},
+        CMatrix<8>{}, MATRIX_ISWAP_8.transposed()
+    },                                                  CMatrix<16>{},
+
+    CMatrix<16>{},                                      CMatrix<16>{
+                                                            MATRIX_ISWAP_8.transposed(), CMatrix<8>{},
+                                                            CMatrix<8>{},              CMatrix<8>::identity()
+                                                        }
 };
 
 
