@@ -67,7 +67,7 @@ if (MINGW)
 endif (MINGW)
 
 add_executable (${PROJECT_NAME} ${SRCS} ${HEADERS})
-target_link_libraries(${PROJECT_NAME} Matrix)
+target_link_libraries(${PROJECT_NAME} Matrix m)
 #set_target_properties(${PROJECT_NAME} PROPERTIES PUBLIC_HEADER ${HEADERS})
 set_target_warnings(${PROJECT_NAME})
 
