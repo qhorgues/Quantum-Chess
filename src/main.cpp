@@ -7,7 +7,7 @@
 
 int main()
 {
-    using namespace std::complex_literals;
+   /* using namespace std::complex_literals;
 
     Matrix<std::complex<double>, 4> A {
         {
@@ -21,5 +21,8 @@ int main()
     Qubit<2> q {std::array<std::complex<double>, 4>({0, 1, 2, 3})};
     auto q2 = A*q;
     std::cout << q2 << std::endl;
+    std::cout << MATRIX_SPLIT_SLIDE << std::endl;*/
     std::cout << MATRIX_MERGE_SLIDE << std::endl;
+    
+    std::cout << Qubit<3>(std::array{true, false, true}) <<std::endl;
 }
