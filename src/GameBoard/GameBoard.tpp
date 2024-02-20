@@ -3,8 +3,10 @@
 #include <algorithm>
 #include <cassert>
 #include <utility>
-#include "GameBoard.hpp"
 #include <CMatrix.hpp>
+#include <Qubit.hpp>
+
+#include "GameBoard.hpp"
 
 template <std::size_t N, std::size_t M>
 constexpr Board<N, M>::Board(std::initializer_list<std::initializer_list<Piece>> const &board)
@@ -70,55 +72,69 @@ Board<N, M>::initializer_list_to_2_array(std::initializer_list<std::initializer_
     }
     return p;
 }
-/* fonction auxiliaire qui permet de modifier un plateau à l'aide d'un array 
-de la forme du type de retour de la fonction qubitToArray, 
-le deuxième éléments du tableau à une probalité non nulle lors d'un mouv split*/
-template <std::size_t N, std::size_t M1, std::size_t M2>
-void Board<M1, M2>::modify(std::array<std::pair<std::array<bool, N>, std::complex<double>>, 2> arrayQubit,
-                           std::size_t position_board, std::array<std::size_t, N> tab_positions)
+
+/**
+ * @brief fonction auxiliaire qui permet de modifier un plateau à l'aide d'un array
+ * de la forme du type de retour de la fonction qubitToArray,
+ * le deuxième éléments du tableau à une probalité non nulle lors d'un mouv split
+ *
+ * @tparam Q La taille du qubit
+ * @tparam N Le nombre de ligne du plateau
+ * @tparam M Le nombre de collone du plateau
+ * @param arrayQubit Type de retour de la fonction quibitToArray, représente la facon dont va être modifier m_board
+ * @param position_board  L'indice du plateau dans le tableau de toutes les instances du plateau
+ * @param tab_positions Tableau des indices des cases modifiées,
+  on utilise N*M+1 pour signifier que le qubit en question est un qubit auxiliaire qui ne modifie pas le board
+ */
+template <std::size_t N, std::size_t M>
+template <std::size_t Q>
+constexpr void Board<N, M>::modify(std::array<std::pair<std::array<bool, Q>, std::complex<double>>, 2> const &arrayQubit,
+                                   std::size_t position_board, std::array<std::size_t, Q> const &tab_positions)
 
 {
-    if (arrayQubit[1].first != 0i)
+    if (arrayQubit[1].second != 0i)
     {
-        std::pair<std::array<bool, M1 * M2>, std::complex<double>> new_b{};
+        std::pair<std::array<bool, N * M>, std::complex<double>> new_b{};
         std::copy(std::begin(m_board[position_board].first),
                   std::end(m_board[position_board].first),
                   std::begin(new_b.first));
         new_b.second = m_board[position_board].second;
-        for (std::size_t i{0}; i < N; i++)
+        for (std::size_t i{0}; i < Q; i++)
         {
-            if (tab_positions[i] < M1 * M2 + 1)
+            if (tab_positions[i] < N * M + 1)
             { /*Ca nous permet de mettre des variables dans les qubits
                 qui ne sont pas prises en compte lors de la modif du plateau */
                 new_b.first[tab_positions[i]] = arrayQubit[1].first[i];
             }
         }
         new_b.second *= arrayQubit[1].second;
-        m_board.push_back(new_b)
+        m_board.push_back(new_b);
     }
-    for (std::size_t i{0}; i < N; i++)
+    for (std::size_t i{0}; i < Q; i++)
     {
         m_board[position_board].first[tab_positions[i]] = arrayQubit[0].first[i];
     }
     m_board[position_board].second *= arrayQubit[0].second;
 }
 
-template <std::size_t N, std::size_t M1, std::size_t M2>
-void Board<M1, M2>::mouvement1board(std::array<bool, N> case_modif,
-                     std::size_t position, Matrix<_2POW(N)> matrix, std::array<std::size_t, N> tab_positions)
+template <std::size_t N, std::size_t M>
+template <std::size_t Q>
+void Board<N, M>::move_1_instance(std::array<bool, Q> const &case_modif,
+                                  std::size_t position, CMatrix<_2POW(N)> const &matrix,
+                                  std::array<std::size_t, N> const &tab_positions)
 {
-    Qubit<N> q{case_modif};
-    modify_board(board, qubitToArray(matrix * q), position, tab_positions);
-    return;
+    Qubit<N> q{ case_modif };
+    auto x { qubitToArray(matrix * q) };
+    modify(std::move(x), position, tab_positions);
 }
 
-
+/**
 template <std::size_t N, std::size_t M>
-bool Board<N, M>::check_path_straight(Coord const& dpt, Coord const& arv)
+bool Board<N, M>::check_path_straight(Coord const &dpt, Coord const &arv)
 {
     if (dpt.n == arv.n)
     {
-        for (std::size_t i {std::min(dpt.m) +1}; i < std::max(dpt.m); i++)
+        for (std::size_t i{std::min(dpt.m) + 1}; i < std::max(dpt.m); i++)
         {
             if (m_piece_board[offset(dpt.n, i)] != Piece::EMPTY)
             {
@@ -128,7 +144,7 @@ bool Board<N, M>::check_path_straight(Coord const& dpt, Coord const& arv)
     }
     else if (dpt.m == dpt.m)
     {
-        for (std::size_t i {std::min(dpt.n) +1}; i < std::max(dpt.n); i++)
+        for (std::size_t i{std::min(dpt.n) + 1}; i < std::max(dpt.n); i++)
         {
             if (m_piece_board[offset(i, dpt.m)] != Piece::EMPTY)
             {
@@ -136,22 +152,20 @@ bool Board<N, M>::check_path_straight(Coord const& dpt, Coord const& arv)
             }
         }
     }
-    else 
+    else
         return false;
     return true;
 }
 
 template <std::size_t N, std::size_t M>
-bool Board<N, M>::check_path_diagonal(Coord const& dpt, Coord const& arv)
+bool Board<N, M>::check_path_diagonal(Coord const &dpt, Coord const &arv)
 {
-    auto size_t_abs = []()
-    if (std::abs(dpt.n) == arv.n)
+    auto size_t_abs = []() if (std::abs(dpt.n) == arv.n)
     {
-        
     }
     else if (dpt.m == dpt.m)
     {
-        for (std::size_t i {std::min(dpt.n) +1}; i < std::max(dpt.n); i++)
+        for (std::size_t i{std::min(dpt.n) + 1}; i < std::max(dpt.n); i++)
         {
             if (m_piece_board[offset(i, dpt.m)] != Piece::EMPTY)
             {
@@ -159,7 +173,7 @@ bool Board<N, M>::check_path_diagonal(Coord const& dpt, Coord const& arv)
             }
         }
     }
-    else 
-        return false;
+    else return false;
     return true;
 }
+*/
