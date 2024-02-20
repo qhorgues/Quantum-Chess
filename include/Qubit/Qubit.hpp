@@ -39,7 +39,7 @@ public:
     friend std::ostream &operator<<(std::ostream &out, Qubit<M> const &qubit);
 
     template <std::size_t M>
-    friend std::array<std::pair<std::complex<double>,std::array<bool , M>>, 2> qubitToArray (Qubit<M> const & qubit); 
+    friend std::array<std::pair<std::array<bool , M>, std::complex<double>>, 2> qubitToArray (Qubit<M> const & qubit); 
 
 private:
     std::array<std::complex<double>, _2POW(N)> m_data;
