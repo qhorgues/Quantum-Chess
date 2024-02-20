@@ -49,3 +49,38 @@ std::ostream &operator<<(std::ostream &out, Qubit<N> const &qubit)
     }
     return out;
 }
+
+template <std::size_t N>
+std::array<std::pair<std::array<bool, N>, std::complex<double>>, 2> qubitToArray(Qubit<N> const &qubit)
+{
+    std::array<std::pair<std::array<bool, N>, std::complex<double>>, 2> tab{};
+    std::size_t c{0};
+    std::size_t compteur{0};
+    for (std::size_t i{0}; i < _2POW(N); i++)
+    {
+        if (qubit.m_data[i] == 0i)
+        {
+            while (tab[c].first[compteur])
+            {
+                tab[c].first[compteur] = false;
+                compteur++;
+            }
+            tab[c].first[compteur] = true;
+            compteur = 0;
+        }
+        else
+        {
+            tab[c].second = qubit.m_data[i];
+            if (c == 1)
+            {
+                return tab;
+            }
+            else
+            {
+                c = 1;
+                compteur = 0;
+            }
+        }
+    }
+    return tab;
+}
