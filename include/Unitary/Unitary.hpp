@@ -1,14 +1,11 @@
 #ifndef UNITARY_HPP
 #define UNITARY_HPP
-#include <Matrix.hpp>
+#include <CMatrix.hpp>
 #include <numbers>
 #include <complex>
 
 using namespace std::complex_literals;
 using namespace std::numbers;
-
-template <std::size_t N>
-using CMatrix = Matrix<std::complex<double>, N>;
 
 constexpr CMatrix<4> MATRIX_ISWAP {
     {
