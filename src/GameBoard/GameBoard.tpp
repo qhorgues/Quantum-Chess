@@ -69,7 +69,9 @@ Board<N, M>::initializer_list_to_2_array(std::initializer_list<std::initializer_
     }
     return p;
 }
-
+/* fonction auxiliaire qui permet de modifier un plateau à l'aide d'un array 
+de la forme du type de retour de la fonction qubitToArray, 
+le deuxième éléments du tableau à une probalité non nulle lors d'un mouv split*/
 template <std::size_t N, std::size_t M1, std::size_t M2>
 void Board<M1, M2>::modify(std::array<std::pair<std::array<bool, N>, std::complex<double>>, 2> arrayQubit,
                            std::size_t position_board, std::array<std::size_t, N> tab_positions)
