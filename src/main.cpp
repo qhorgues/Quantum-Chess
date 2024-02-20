@@ -8,6 +8,19 @@
 int main()
 {
    /* using namespace std::complex_literals;
+#include "GameBoard/GameBoard.hpp"
+
+int main()
+{
+    using enum Piece;
+    std::cout << static_cast<int>(EMPTY) << std::endl;
+    Board<2> B {
+        {
+            {EMPTY, B_KING},
+            {W_KING, W_QUEEN}
+        }
+    };
+    /* using namespace std::complex_literals;
 
     Matrix<std::complex<double>, 4> A {
         {
@@ -25,4 +38,5 @@ int main()
     std::cout << MATRIX_MERGE_SLIDE << std::endl;
     
     std::cout << Qubit<3>(std::array{true, false, true}) <<std::endl;
+
 }

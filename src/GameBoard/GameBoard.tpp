@@ -73,23 +73,20 @@ Board<N, M>::initializer_list_to_2_array(std::initializer_list<std::initializer_
 
 template <std::size_t N, std::size_t M1, std::size_t M2>
 void Board<M1, M2>::modify(std::array<std::pair<std::array<bool, N>, std::complex<double>>, 2> arrayQubit,
-                           std::size_t position_board, 
-                           std::array<std::size_t, N> tab_positions)
+                           std::size_t position_board, std::array<std::size_t, N> tab_positions)
 
 {
-    if (arrayQubit[1].second != 0i)
+    if (arrayQubit[1].first != 0i)
     {
-        std::pair<std::array<bool, M1 * M2>, std::complex<double>> new_b {};
-        std::copy(std::begin(m_board[position_board].first), 
-                  std::end(m_board[position_board].first), 
+        std::pair<std::array<bool, M1 * M2>, std::complex<double>> new_b{};
+        std::copy(std::begin(m_board[position_board].first),
+                  std::end(m_board[position_board].first),
                   std::begin(new_b.first));
         new_b.second = m_board[position_board].second;
-
         for (std::size_t i{0}; i < N; i++)
         {
             if (tab_positions[i] < M1 * M2 + 1)
-            { 
-                /* Ca nous permet de mettre des variables dans les qubits
+            { /*Ca nous permet de mettre des variables dans les qubits
                 qui ne sont pas prises en compte lors de la modif du plateau */
                 new_b.first[tab_positions[i]] = arrayQubit[1].first[i];
             }
@@ -104,12 +101,12 @@ void Board<M1, M2>::modify(std::array<std::pair<std::array<bool, N>, std::comple
     m_board[position_board].second *= arrayQubit[0].second;
 }
 
-template<std::size_t N, std::size_t M1, std::size_t M2>
-void Board<M1, M2>::mouvement_board (std::array<bool, N> case_modif,
-std::size_t position, CMatrix<_2POW(N)> matrix, std::array<std::size_t, N> tab_positions)
+template <std::size_t N, std::size_t M1, std::size_t M2>
+void Board<M1, M2>::mouvement1board(std::array<bool, N> case_modif,
+                     std::size_t position, Matrix<_2POW(N)> matrix, std::array<std::size_t, N> tab_positions)
 {
-    Qubit<N> q {case_modif};
-    modify(matrix*q, position, tab_positions );
+    Qubit<N> q{case_modif};
+    modify_board(board, qubitToArray(matrix * q), position, tab_positions);
     return;
 }
 
