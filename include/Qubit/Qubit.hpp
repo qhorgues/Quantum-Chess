@@ -4,12 +4,7 @@
 #include <cstddef>
 #include <complex>
 #include <array>
-#include <Matrix.hpp>
-
-/**
- * @brief Réalise l'opération 2^n
- */
-#define _2POW(n) (1 << (n))
+#include <CMatrix.hpp>
 
 template <std::size_t N>
 class Qubit final
@@ -38,7 +33,7 @@ public:
     ~Qubit() = default;
 
     template <std::size_t M>
-    friend Qubit<M> operator*(Matrix<std::complex<double>, _2POW(M)> const& lhs, Qubit<M> const& rhs);
+    friend Qubit<M> operator*(CMatrix<_2POW(M)> const& lhs, Qubit<M> const& rhs);
 
     template <std::size_t M>
     friend std::ostream &operator<<(std::ostream &out, Qubit<M> const &qubit);

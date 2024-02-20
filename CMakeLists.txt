@@ -24,9 +24,8 @@ set (HEADERS
     include/Qubit/Qubit.hpp
     include/Qubit/Qubit.tpp
     include/Unitary/Unitary.hpp
-
-
-
+    include/CMatrix.hpp
+    include/Complex_printer.hpp
 )
 
 #if (BUILD_TESTING)

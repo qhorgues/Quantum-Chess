@@ -4,6 +4,10 @@
 #include <Matrix.hpp>
 #include <Unitary.hpp>
 #include <Qubit.hpp>
+
+int main()
+{
+   /* using namespace std::complex_literals;
 #include "GameBoard/GameBoard.hpp"
 
 int main()
@@ -34,6 +38,5 @@ int main()
     std::cout << MATRIX_MERGE_SLIDE << std::endl;
     
     std::cout << Qubit<3>(std::array{true, false, true}) <<std::endl;
-    
 
 }
