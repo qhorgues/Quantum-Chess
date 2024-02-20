@@ -18,12 +18,29 @@ set (SRCS
 )
 
 set (HEADERS
+)
+
+set (HEADERS
+    include/Qubit/Qubit.hpp
+    include/Qubit/Qubit.tpp
+    include/Unitary/Unitary.hpp
+
+
 
 )
 
 #if (BUILD_TESTING)
 #    add_subdirectory(${CMAKE_SOURCE_DIR}/test)
 #endif()
+include(FetchContent)
+
+FetchContent_Declare(Matrix
+  GIT_REPOSITORY "https://github.com/qhorgues/Matrix"
+  GIT_TAG "origin/master"
+  SOURCE_DIR "Matrix"
+)
+
+FetchContent_MakeAvailable(Matrix)
 
 include_directories(${CMAKE_SOURCE_DIR}/include)
 
@@ -56,6 +73,7 @@ if (MINGW)
 endif (MINGW)
 
 add_executable (${PROJECT_NAME} ${SRCS} ${HEADERS})
+target_link_libraries(${PROJECT_NAME} Matrix m)
 #set_target_properties(${PROJECT_NAME} PROPERTIES PUBLIC_HEADER ${HEADERS})
 set_target_warnings(${PROJECT_NAME})
 
