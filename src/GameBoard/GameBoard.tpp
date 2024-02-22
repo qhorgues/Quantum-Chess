@@ -5,7 +5,7 @@
 #include <utility>
 #include <CMatrix.hpp>
 #include <Qubit.hpp>
-
+#include <random>
 #include "GameBoard.hpp"
 
 template <std::size_t N, std::size_t M>
@@ -72,6 +72,28 @@ Board<N, M>::initializer_list_to_2_array(std::initializer_list<std::initializer_
     }
     return p;
 }
+template <std::size_t N, std::size_t M>
+void Board<N, M>::mesure(std::size_t position)
+{
+    std::random_device rd;
+    std::uniform_real_distribution<> gen(0., 1.);
+    double x = gen(rd);
+    std::size_t indice_mes = 0;
+    std::size_t n = sizeof(m_board);
+    while(x-_2POW(std::abs(m_board[indice_mes].second)) > 0)
+    {
+        x -= _2POW(std::abs(m_board[indice_mes].second))
+        indice_suppr ++;
+    }
+    bool mes = m_board[indice_mes].first[position];
+    double proba_delete = 0;
+    for(std::size_t i {0}; i<n; i++)
+    {
+
+        // m_board.erase(std::begin(m_board) + i);
+
+    }
+}
 
 /**
  * @brief fonction auxiliaire qui permet de modifier un plateau à l'aide d'un array
@@ -127,7 +149,7 @@ void Board<N, M>::move_1_instance(std::array<bool, Q> const &case_modif,
     auto x{qubitToArray(matrix * q)};
     modify(std::move(x), position, tab_positions);
 }
-template <std::size_t N, std::size_t M>
+/*template <std::size_t N, std::size_t M>
 void Board<N, M>::move_classic_jump(std::size_t source, std::size_t target)
 {
     if (m_piece_board[target] == Piece::EMPTY)
@@ -139,11 +161,19 @@ void Board<N, M>::move_classic_jump(std::size_t source, std::size_t target)
         }
         m_piece_board[target] = m_piece_board[source];
         m_piece_board[source] = Piece::EMPTY;
-    } else {
-        // a faire
+    } else { //a faire
+        if (same_color(m_piece_board[source], m_piece_board[target]))
+        {
+            
+        }
+        else
+        {
+            /* code */
+        }
+        
     }
     
-}
+}*/
 
 /**
 template <std::size_t N, std::size_t M>
