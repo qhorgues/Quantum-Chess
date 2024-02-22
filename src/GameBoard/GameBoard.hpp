@@ -42,11 +42,11 @@ public:
 
     // a basculer en private
     template <std::size_t Q>
-    void move_1_instance(std::array<bool, Q> const &case_modif,
-                         std::size_t position, CMatrix<_2POW(N)> const &matrix, 
-                         std::array<std::size_t, N> const &tab_positions);
+    constexpr void move_1_instance(std::array<bool, Q> const &case_modif,
+                                   std::size_t position, CMatrix<_2POW(N)> const &matrix, 
+                                   std::array<std::size_t, N> const &tab_positions);
     // a basculer en private
-    void move_classic_jump(std::size_t source, std::size_t target);
+    constexpr void move_classic_jump(std::size_t source, std::size_t target);
     void mesure(std::size_t position);
 private:
     constexpr std::size_t offset(std::size_t ligne, std::size_t colonne);
@@ -57,8 +57,7 @@ private:
     constexpr void modify(std::array<std::pair<std::array<bool, Q>, std::complex<double>>, 2> const &arrayQubit,
                           std::size_t position_board, std::array<std::size_t, Q> const &tab_positions);
 
-    bool check_path_straight(Coord const& dpt, Coord const& arv);
-
+    constexpr bool check_path_straight(Coord const& dpt, Coord const& arv);
 
     std::vector<std::pair<std::array<bool, N * M>, std::complex<double>>> m_board;
     std::array<Piece, N * M> m_piece_board;
