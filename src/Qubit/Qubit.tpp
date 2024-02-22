@@ -55,18 +55,18 @@ std::array<std::pair<std::array<bool, N>, std::complex<double>>, 2> qubitToArray
 {
     std::array<std::pair<std::array<bool, N>, std::complex<double>>, 2> tab{};
     std::size_t c{0};
-    std::size_t compteur{0};
-    for (std::size_t i{0}; i < _2POW(N); i++)
+    std::size_t compteur{N-1};
+    for (std::size_t i{0}; i <_2POW(N); i++)
     {
         if (qubit.m_data[i] == 0i)
         {
             while (tab[c].first[compteur])
             {
                 tab[c].first[compteur] = false;
-                compteur++;
+                compteur--;
             }
             tab[c].first[compteur] = true;
-            compteur = 0;
+            compteur = N-1;
         }
         else
         {
@@ -78,7 +78,7 @@ std::array<std::pair<std::array<bool, N>, std::complex<double>>, 2> qubitToArray
             else
             {
                 c = 1;
-                compteur = 0;
+                compteur = N-1;
             }
         }
     }
