@@ -19,10 +19,10 @@ enum class Piece
     EMPTY
 };
 
-bool is_white (Piece const &p);
+bool is_white (Piece p);
 
-bool is_black (Piece const &p);
+bool is_black (Piece p);
 
-bool same_color (Piece const &p1, Piece const &p2); // Renvoie un résultat indéterminé si une des deux pièces vaut EMPTY
+bool same_color (Piece p1, Piece p2); // Renvoie un résultat indéterminé si une des deux pièces vaut EMPTY
 
 #endif
