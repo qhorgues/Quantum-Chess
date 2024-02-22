@@ -16,15 +16,12 @@ set (SRCS
     src/GameBoard/GameBoard.hpp
     src/Piece/Piece.hpp
     src/Piece/Piece.cpp
+    src/Qubit/Qubit.hpp
+    src/Qubit/Qubit.tpp
 )
 
 set (HEADERS
-)
-
-set (HEADERS
-    include/Qubit/Qubit.hpp
-    include/Qubit/Qubit.tpp
-    include/Unitary/Unitary.hpp
+    include/Unitary.hpp
     include/CMatrix.hpp
     include/Complex_printer.hpp
 )
