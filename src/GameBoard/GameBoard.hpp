@@ -45,7 +45,9 @@ public:
     void move_1_instance(std::array<bool, Q> const &case_modif,
                          std::size_t position, CMatrix<_2POW(N)> const &matrix, 
                          std::array<std::size_t, N> const &tab_positions);
-
+    // a basculer en private
+    void move_classic_jump(std::size_t source, std::size_t target);
+    
 private:
     constexpr std::size_t offset(std::size_t ligne, std::size_t colonne);
     constexpr static std::pair<std::array<bool, N * M>, std::array<Piece, N * M>>

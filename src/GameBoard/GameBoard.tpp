@@ -123,9 +123,26 @@ void Board<N, M>::move_1_instance(std::array<bool, Q> const &case_modif,
                                   std::size_t position, CMatrix<_2POW(N)> const &matrix,
                                   std::array<std::size_t, N> const &tab_positions)
 {
-    Qubit<N> q{ case_modif };
-    auto x { qubitToArray(matrix * q) };
+    Qubit<N> q{case_modif};
+    auto x{qubitToArray(matrix * q)};
     modify(std::move(x), position, tab_positions);
+}
+template <std::size_t N, std::size_t M>
+void Board<N, M>::move_classic_jump(std::size_t source, std::size_t target)
+{
+    if (m_piece_board[target] == Piece::EMPTY)
+    {
+        for (std::size_t i{0}; i < sizeof(m_board); i++)
+        {
+            move_1_instance(std::array<bool, 2>{m_board[i].first[source], false}, i,
+                            MATRIX_ISWAP, std::array<std::size_t, 2>{source, target});
+        }
+        m_piece_board[target] = m_piece_board[source];
+        m_piece_board[source] = Piece::EMPTY;
+    } else {
+        // a faire
+    }
+    
 }
 
 /**
