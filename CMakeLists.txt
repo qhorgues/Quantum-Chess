@@ -14,7 +14,8 @@ set (SRCS
     src/main.cpp
     src/GameBoard/GameBoard.tpp
     src/GameBoard/GameBoard.hpp
-    src/GameBoard/Piece.hpp
+    src/Piece/Piece.hpp
+    src/Piece/Piece.cpp
 )
 
 set (HEADERS

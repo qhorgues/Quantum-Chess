@@ -9,7 +9,7 @@
 #include <cstddef> 
 #include <initializer_list>
 #include <CMatrix.hpp>
-#include "Piece.hpp"
+#include <Piece.hpp>
 
 struct Coord
 {
