@@ -17,7 +17,8 @@ int main()
     };
     Qubit<2> q {std::array<bool, 2> {false, true}};
     auto x {qubitToArray (q)};
+    (void)x;
+    
     B.move_1_instance(std::array<bool, 2>{true, false}, 0, MATRIX_ISWAP, std::array<std::size_t, 2>{0,2});
-
     return 0;
 }

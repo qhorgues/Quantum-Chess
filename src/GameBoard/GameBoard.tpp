@@ -119,7 +119,7 @@ constexpr void Board<N, M>::modify(std::array<std::pair<std::array<bool, Q>, std
 
 template <std::size_t N, std::size_t M>
 template <std::size_t Q>
-void Board<N, M>::move_1_instance(std::array<bool, Q> const &case_modif,
+constexpr void Board<N, M>::move_1_instance(std::array<bool, Q> const &case_modif,
                                   std::size_t position, CMatrix<_2POW(N)> const &matrix,
                                   std::array<std::size_t, N> const &tab_positions)
 {
@@ -127,8 +127,9 @@ void Board<N, M>::move_1_instance(std::array<bool, Q> const &case_modif,
     auto x{qubitToArray(matrix * q)};
     modify(std::move(x), position, tab_positions);
 }
+
 template <std::size_t N, std::size_t M>
-void Board<N, M>::move_classic_jump(std::size_t source, std::size_t target)
+constexpr void Board<N, M>::move_classic_jump(std::size_t source, std::size_t target)
 {
     if (m_piece_board[target] == Piece::EMPTY)
     {
@@ -145,13 +146,12 @@ void Board<N, M>::move_classic_jump(std::size_t source, std::size_t target)
     
 }
 
-/**
 template <std::size_t N, std::size_t M>
-bool Board<N, M>::check_path_straight(Coord const &dpt, Coord const &arv)
+constexpr bool Board<N, M>::check_path_straight(Coord const &dpt, Coord const &arv)
 {
     if (dpt.n == arv.n)
     {
-        for (std::size_t i{std::min(dpt.m) + 1}; i < std::max(dpt.m); i++)
+        for (std::size_t i{std::min(dpt.m, arv.m) + 1}; i < std::max(dpt.m, arv.m); i++)
         {
             if (m_piece_board[offset(dpt.n, i)] != Piece::EMPTY)
             {
@@ -161,7 +161,7 @@ bool Board<N, M>::check_path_straight(Coord const &dpt, Coord const &arv)
     }
     else if (dpt.m == dpt.m)
     {
-        for (std::size_t i{std::min(dpt.n) + 1}; i < std::max(dpt.n); i++)
+        for (std::size_t i{std::min(dpt.n, arv.n) + 1}; i < std::max(dpt.n, arv.n); i++)
         {
             if (m_piece_board[offset(i, dpt.m)] != Piece::EMPTY)
             {
@@ -174,6 +174,7 @@ bool Board<N, M>::check_path_straight(Coord const &dpt, Coord const &arv)
     return true;
 }
 
+/**
 template <std::size_t N, std::size_t M>
 bool Board<N, M>::check_path_diagonal(Coord const &dpt, Coord const &arv)
 {

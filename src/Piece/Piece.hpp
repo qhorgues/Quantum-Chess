@@ -3,6 +3,8 @@
 
 enum class Piece
 {
+    EMPTY = 0,
+
     W_KING,
     W_BISHOP,
     W_QUEEN,
@@ -15,8 +17,7 @@ enum class Piece
     B_QUEEN,
     B_ROOK,
     B_KNIGHT,
-    B_PAWN,
-    EMPTY
+    B_PAWN
 };
 
 bool is_white (Piece p);
