@@ -72,27 +72,36 @@ Board<N, M>::initializer_list_to_2_array(std::initializer_list<std::initializer_
     }
     return p;
 }
+
 template <std::size_t N, std::size_t M>
-void Board<N, M>::mesure(std::size_t position)
+bool Board<N, M>::mesure(std::size_t position)
 {
     std::random_device rd;
     std::uniform_real_distribution<> gen(0., 1.);
     double x = gen(rd);
     std::size_t indice_mes = 0;
     std::size_t n = sizeof(m_board);
-    while(x-_2POW(std::abs(m_board[indice_mes].second)) > 0)
+    while (x - _2POW(std::abs(m_board[indice_mes].second)) > 0)
     {
         x -= _2POW(std::abs(m_board[indice_mes].second))
-        indice_suppr ++;
+            indice_suppr++;
     }
     bool mes = m_board[indice_mes].first[position];
     double proba_delete = 0;
-    for(std::size_t i {0}; i<n; i++)
+    std::size_t nbr_elt_suppr{0};
+    for (auto c{std::begin(m_board)}; c != std::end(m_board); c++)
     {
-
-        // m_board.erase(std::begin(m_board) + i);
-
+        if (c->first[position] == mes)
+        {
+            proba_delete += _2POW(std::abs(c->second));
+            m_board.erase(c);
+        }
     }
+    for (auto const &e : m_board)
+    {
+        e.second /= proba_delete;
+    }
+    return mes;
 }
 
 /**
@@ -142,8 +151,8 @@ constexpr void Board<N, M>::modify(std::array<std::pair<std::array<bool, Q>, std
 template <std::size_t N, std::size_t M>
 template <std::size_t Q>
 constexpr void Board<N, M>::move_1_instance(std::array<bool, Q> const &case_modif,
-                                  std::size_t position, CMatrix<_2POW(N)> const &matrix,
-                                  std::array<std::size_t, N> const &tab_positions)
+                                            std::size_t position, CMatrix<_2POW(N)> const &matrix,
+                                            std::array<std::size_t, N> const &tab_positions)
 {
     Qubit<N> q{case_modif};
     auto x{qubitToArray(matrix * q)};
@@ -155,29 +164,49 @@ constexpr void Board<N, M>::move_classic_jump(std::size_t source, std::size_t ta
 {
     if (m_piece_board[target] == Piece::EMPTY)
     {
-        for (std::size_t i{0}; i < sizeof(m_board); i++)
+        std::size_t const size_board{std::size(m_board)};
+        for (std::size_t i{0}; i < std::size(m_board); i++)
         {
             move_1_instance(std::array<bool, 2>{m_board[i].first[source], false}, i,
                             MATRIX_ISWAP, std::array<std::size_t, 2>{source, target});
         }
         m_piece_board[target] = m_piece_board[source];
         m_piece_board[source] = Piece::EMPTY;
-    } else { //a faire
+    }
+    else
+    {
         if (same_color(m_piece_board[source], m_piece_board[target]))
         {
-            
+            if (!mesure(target))
+            {
+                for (std::size_t i{0}; i < std::size(m_board); i++)
+                {
+                    move_1_instance(std::array<bool, 2>{m_board[i].first[source], false}, i,
+                                    MATRIX_ISWAP, std::array<std::size_t, 2>{source, target});
+                }
+                m_piece_board[target] = m_piece_board[source];
+                m_piece_board[source] = Piece::EMPTY;
+            }
         }
         else
         {
-            /* code */
+            if (mesure(source))
+            {
+                for (auto const& e : m_board)
+                {
+                    move_1_instance(std::array<bool, 3>{true, e.first[target] e.first[source], false}, i,
+                                    /*Matrice a determiner*/, std::array<std::size_t, 2>{source, target, N*M+1});
+                }
+                m_piece_board[target] = m_piece_board[source];
+                m_piece_board[source] = Piece::EMPTY;
+            }
         }
-        
     }
-    
-}*/
+}
+* /
 
-template <std::size_t N, std::size_t M>
-constexpr bool Board<N, M>::check_path_straight(Coord const &dpt, Coord const &arv)
+    template <std::size_t N, std::size_t M>
+    constexpr bool Board<N, M>::check_path_straight(Coord const &dpt, Coord const &arv)
 {
     if (dpt.n == arv.n)
     {
@@ -204,24 +233,8 @@ constexpr bool Board<N, M>::check_path_straight(Coord const &dpt, Coord const &a
     return true;
 }
 
-/**
-template <std::size_t N, std::size_t M>
+/*template <std::size_t N, std::size_t M>
 bool Board<N, M>::check_path_diagonal(Coord const &dpt, Coord const &arv)
 {
-    auto size_t_abs = []() if (std::abs(dpt.n) == arv.n)
-    {
-    }
-    else if (dpt.m == dpt.m)
-    {
-        for (std::size_t i{std::min(dpt.n) + 1}; i < std::max(dpt.n); i++)
-        {
-            if (m_piece_board[offset(i, dpt.m)] != Piece::EMPTY)
-            {
-                return false;
-            }
-        }
-    }
-    else return false;
-    return true;
-}
-*/
+    
+}*/

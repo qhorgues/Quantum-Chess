@@ -47,7 +47,7 @@ public:
                                    std::array<std::size_t, N> const &tab_positions);
     // a basculer en private
     constexpr void move_classic_jump(std::size_t source, std::size_t target);
-    void mesure(std::size_t position);
+    bool mesure(std::size_t position);
 private:
     constexpr std::size_t offset(std::size_t ligne, std::size_t colonne);
     constexpr static std::pair<std::array<bool, N * M>, std::array<Piece, N * M>>
