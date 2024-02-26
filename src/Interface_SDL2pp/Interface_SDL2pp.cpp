@@ -8,7 +8,7 @@ Interface_SDL2pp::Interface_SDL2pp() :
     m_window("Quantum Chess", 
                 SDL_WINDOWPOS_CENTERED, 
                 SDL_WINDOWPOS_CENTERED, 800, 800, SDL_WINDOW_SHOWN),
-    m_renderer(m_window, -1, SDL_RENDERER_SOFTWARE),
+    m_renderer(m_window, -1, SDL_RENDERER_ACCELERATED),
     m_board(m_renderer, "./assets/ChessBoard.png"),
     m_piece(m_renderer, "./assets/Piece.png")
 {
