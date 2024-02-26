@@ -13,10 +13,35 @@ enum class Game_Statue
     END_MENU
 };
 
+enum class Type_Move
+{
+    NONE,
+    NORMAL_MOVE,
+    SPLIT_MOVE,
+    REUNION_MOVE
+};
+
 struct Event
 {
     Game_Statue statue;
-    std::pair<Coord, std::optional<Coord>> coord;
+    Type_Move type_move;
+    union Coord_Move
+    {
+        struct Coord_Normal_Move {
+            Coord dpt;
+            Coord arv;
+        } normal;
+        struct Coord_Split_Move {
+            Coord dpt;
+            Coord arv1;
+            Coord arv2;
+        } split;
+        struct Coord_Reunion_Move {
+            Coord dpt1;
+            Coord dpt2;
+            Coord arv;
+        } reunion;
+    }; 
 };
 
 class Interface
