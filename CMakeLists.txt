@@ -24,6 +24,8 @@ set (HEADERS
     include/Unitary.hpp
     include/CMatrix.hpp
     include/Complex_printer.hpp
+    include/Interface.hpp
+    include/observer_ptr.hpp
 )
 
 #if (BUILD_TESTING)
