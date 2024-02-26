@@ -31,20 +31,11 @@ set (HEADERS
 #endif()
 include(FetchContent)
 
-if (WIN32)
-    FetchContent_Declare(Matrix
-        GIT_REPOSITORY "https://github.com/qhorgues/Matrix.git"
-        GIT_TAG "origin/master"
-        SOURCE_DIR "Matrix"
-    )
-else ()
-    FetchContent_Declare(Matrix
-        GIT_REPOSITORY "https://github.com/qhorgues/Matrix"
-        GIT_TAG "origin/master"
-        SOURCE_DIR "Matrix"
-    )
-endif()
-
+FetchContent_Declare(Matrix
+    GIT_REPOSITORY "https://github.com/qhorgues/Matrix.git"
+    GIT_TAG "origin/master"
+    SOURCE_DIR "Matrix"
+)
 
 FetchContent_MakeAvailable(Matrix)
 
