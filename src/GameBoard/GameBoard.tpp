@@ -7,6 +7,7 @@
 #include <Qubit.hpp>
 #include <random>
 #include <Piece.hpp>
+#include <Unitary.hpp>
 #include "GameBoard.hpp"
 
 template <std::size_t N, std::size_t M>
@@ -208,6 +209,20 @@ constexpr void Board<N, M>::move_classic_jump(std::size_t source, std::size_t ta
 }
 
 template <std::size_t N, std::size_t M>
+constexpr void Board<N, M>::move_split_jump(std::size_t source, std::size_t target1, std::size_t target2)
+{
+    std::size_t const size_board{std::size(m_board)};
+    for (std::size_t i {0}; i < size_board; i++)
+    {
+        move_1_instance(std::array<bool, 3>{m_board[i].first[target1], m_board[i].first[source], m_board[i].first[target2]}, i,
+                        MATRIX_SPLIT, std::array<std::size_t, 3>{target1, source, target2});
+    }
+    m_piece_board[target1] = m_piece_board[source];
+    m_piece_board[target2] = m_piece_board[source];
+    m_piece_board[source] = Piece::EMPTY;
+}
+
+template <std::size_t N, std::size_t M>
 constexpr bool Board<N, M>::check_path_straight(Coord const &dpt, Coord const &arv)
 {
     if (dpt.n == arv.n)
@@ -219,16 +234,19 @@ constexpr bool Board<N, M>::check_path_straight(Coord const &dpt, Coord const &a
                 return false;
             }
         }
+        return true;
     }
     else if (dpt.m == dpt.m)
     {
         for (std::size_t i{std::min(dpt.n, arv.n) + 1}; i < std::max(dpt.n, arv.n); i++)
         {
+            std::cout << i << " / " << dpt.m << " -> " << static_cast<int>(m_piece_board[offset(i, dpt.m)]) << std::endl;
             if (m_piece_board[offset(i, dpt.m)] != Piece::EMPTY)
             {
                 return false;
             }
         }
+        return true;
     }
     return false;
 }

@@ -23,7 +23,7 @@ class Board final
 public:
     // Constructeur
     constexpr Board() = default;
-    constexpr Board(std::initializer_list<std::initializer_list<Piece>> explicit const &board);
+    constexpr Board(std::initializer_list<std::initializer_list<Piece>> const &board);
 
     // Copie
     constexpr Board(Board const &) = delete;
@@ -44,6 +44,10 @@ public:
     constexpr void move_1_instance(std::array<bool, Q> const &case_modif,
                                    std::size_t position, CMatrix<_2POW(N)> const &matrix,
                                    std::array<std::size_t, N> const &tab_positions);
+
+    constexpr void move_split_jump(std::size_t source, std::size_t target1, std::size_t target2);
+    
+
     // a basculer en private
     constexpr void move_classic_jump(std::size_t source, std::size_t target);
     bool mesure(std::size_t position);

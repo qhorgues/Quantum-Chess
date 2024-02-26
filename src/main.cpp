@@ -1,7 +1,7 @@
 #include <iostream>
 #include <complex>
 #include <Complex_printer.hpp>
-#include <Matrix.hpp>
+#include <CMatrix.hpp>
 #include <Unitary.hpp>
 #include <Qubit.hpp>
 #include <GameBoard.hpp>
@@ -21,14 +21,16 @@ int main()
     
     B.move_1_instance(std::array<bool, 2>{true, false}, 0, MATRIX_ISWAP, std::array<std::size_t, 2>{0,2});
 
-    Board<4, 1> B2 {
+    Board<4> B2 {
         {
-            {W_QUEEN},
-            {EMPTY},
-            {EMPTY},
-            {B_BISHOP}
+            {W_QUEEN, EMPTY, EMPTY, B_QUEEN},
+            {EMPTY, EMPTY, B_PAWN, W_KING},
+            {W_PAWN, EMPTY, EMPTY, W_BISHOP},
+            {B_BISHOP, W_ROOK, EMPTY, B_KING}
         }
     };
     std::cout << std::boolalpha << B2.check_path_straight(Coord(0, 0), Coord(0, 3)) << std::endl;
+    std::cout << std::boolalpha << B2.check_path_diagonal(Coord(0, 0), Coord(3, 3)) << std::endl;
+
     return 0;
 }
