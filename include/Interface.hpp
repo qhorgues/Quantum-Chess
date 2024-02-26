@@ -10,7 +10,8 @@ enum class Game_Statue
 {
     IN_GAME,
     MAIN_MENU,
-    END_MENU
+    END_MENU,
+    QUIT
 };
 
 enum class Type_Move
@@ -46,23 +47,31 @@ struct Event
 
 class Interface
 {
+public:
     Interface() = default;
     Interface(Interface const&) = delete;
     Interface& operator=(Interface const&) = delete;
     Interface(Interface &&) = default;
     Interface& operator=(Interface &&) = default;
+    virtual ~Interface() = default;
 
-    virtual Event getEvent(observer_ptr<Board<8> const> board) const = 0;
+    virtual Event getEvent(observer_ptr<Board<8> const> board) = 0;
 
     virtual void update(Board<8> const&) = 0;
 
     Game_Statue getStatut() const noexcept
     {
-        return statue;
+        return m_statue;
     }
 
 protected:
-    Game_Statue statue;
+    void setStatut(Game_Statue statue) noexcept
+    {
+        m_statue = statue;
+    }
+
+private:
+    Game_Statue m_statue;
 };
 
 

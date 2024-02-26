@@ -6,6 +6,8 @@
 #include <Qubit.hpp>
 #include <GameBoard.hpp>
 
+#include <Interface_SDL2pp.hpp>
+
 int main()
 {
     using enum Piece;
@@ -35,5 +37,21 @@ int main()
     std::cout << std::boolalpha << B2.check_path_straight(Coord(0, 0), Coord(3, 0)) << std::endl;
     std::cout << std::boolalpha << B2.check_path_diagonal(Coord(0, 0), Coord(3, 3)) << std::endl;
 
+    Board<8> INIT_BOARD {
+        {
+            { Piece::B_ROOK, Piece::B_KNIGHT, Piece::B_BISHOP, Piece::B_QUEEN, Piece::B_KING, Piece::B_BISHOP, Piece::B_KNIGHT, Piece::B_ROOK },
+            { Piece::B_PAWN,   Piece::B_PAWN,   Piece::B_PAWN,  Piece::B_PAWN, Piece::B_PAWN,   Piece::B_PAWN,   Piece::B_PAWN, Piece::B_PAWN },
+            {  Piece::EMPTY,    Piece::EMPTY,    Piece::EMPTY,   Piece::EMPTY,  Piece::EMPTY,    Piece::EMPTY,    Piece::EMPTY,  Piece::EMPTY },
+            {  Piece::EMPTY,    Piece::EMPTY,    Piece::EMPTY,   Piece::EMPTY,  Piece::EMPTY,    Piece::EMPTY,    Piece::EMPTY,  Piece::EMPTY },
+            {  Piece::EMPTY,    Piece::EMPTY,    Piece::EMPTY,   Piece::EMPTY,  Piece::EMPTY,    Piece::EMPTY,    Piece::EMPTY,  Piece::EMPTY },
+            {  Piece::EMPTY,    Piece::EMPTY,    Piece::EMPTY,   Piece::EMPTY,  Piece::EMPTY,    Piece::EMPTY,    Piece::EMPTY,  Piece::EMPTY },
+            { Piece::W_PAWN,   Piece::W_PAWN,   Piece::W_PAWN,  Piece::W_PAWN, Piece::W_PAWN,   Piece::W_PAWN,   Piece::W_PAWN, Piece::W_PAWN },
+            { Piece::W_ROOK, Piece::W_KNIGHT, Piece::W_BISHOP, Piece::W_QUEEN, Piece::W_KING, Piece::W_BISHOP, Piece::W_KNIGHT, Piece::W_ROOK }
+        }
+    };
+
+    Interface_SDL2pp interface {};
+    interface.update(INIT_BOARD);
+    SDL_Delay(10000);
     return 0;
 }

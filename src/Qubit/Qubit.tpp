@@ -1,5 +1,5 @@
 #include "Qubit.hpp"
-#include <Matrix.hpp>
+#include <CMatrix.hpp>
 #include <algorithm>
 #include <numeric>
 
@@ -58,6 +58,7 @@ std::array<std::pair<std::array<bool, N>, std::complex<double>>, 2> qubitToArray
     std::size_t compteur{N-1};
     for (std::size_t i{0}; i <_2POW(N); i++)
     {
+        using namespace std::complex_literals;
         if (qubit.m_data[i] == 0i)
         {
             while (tab[c].first[compteur])
