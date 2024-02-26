@@ -6,6 +6,7 @@
 #include <CMatrix.hpp>
 #include <Qubit.hpp>
 #include <random>
+#include <Piece.hpp>
 #include "GameBoard.hpp"
 
 template <std::size_t N, std::size_t M>
@@ -83,8 +84,8 @@ bool Board<N, M>::mesure(std::size_t position)
     std::size_t n = sizeof(m_board);
     while (x - _2POW(std::abs(m_board[indice_mes].second)) > 0)
     {
-        x -= _2POW(std::abs(m_board[indice_mes].second))
-            indice_suppr++;
+        x -= _2POW(std::abs(m_board[indice_mes].second));
+        // indice_suppr++;
     }
     bool mes = m_board[indice_mes].first[position];
     double proba_delete = 0;
@@ -192,10 +193,12 @@ constexpr void Board<N, M>::move_classic_jump(std::size_t source, std::size_t ta
         {
             if (mesure(source))
             {
-                for (auto const& e : m_board)
+                for (auto const &e : m_board)
                 {
+                    /*
                     move_1_instance(std::array<bool, 3>{true, e.first[target] e.first[source], false}, i,
-                                    /*Matrice a determiner*/, std::array<std::size_t, 2>{source, target, N*M+1});
+                                    Matrice a determiner , std::array<std::size_t, 2>{source, target, N * M + 1});
+                    */
                 }
                 m_piece_board[target] = m_piece_board[source];
                 m_piece_board[source] = Piece::EMPTY;
@@ -203,10 +206,9 @@ constexpr void Board<N, M>::move_classic_jump(std::size_t source, std::size_t ta
         }
     }
 }
-* /
 
-    template <std::size_t N, std::size_t M>
-    constexpr bool Board<N, M>::check_path_straight(Coord const &dpt, Coord const &arv)
+template <std::size_t N, std::size_t M>
+constexpr bool Board<N, M>::check_path_straight(Coord const &dpt, Coord const &arv)
 {
     if (dpt.n == arv.n)
     {
@@ -228,13 +230,29 @@ constexpr void Board<N, M>::move_classic_jump(std::size_t source, std::size_t ta
             }
         }
     }
-    else
-        return false;
-    return true;
+    return false;
 }
 
-/*template <std::size_t N, std::size_t M>
-bool Board<N, M>::check_path_diagonal(Coord const &dpt, Coord const &arv)
+template <std::size_t N, std::size_t M>
+constexpr bool Board<N, M>::check_path_diagonal(Coord const &dpt, Coord const &arv)
 {
-    
-}*/
+    std::size_t const max_lines{std::max(dpt.n, arv.n)};
+    std::size_t const min_lines{std::min(dpt.n, arv.n)};
+    std::size_t const max_columns{std::max(dpt.m, arv.m)};
+    std::size_t const min_columns{std::min(dpt.m, arv.m)};
+
+    std::size_t const dist{max_lines - min_lines};
+
+    if (dist == max_columns - min_columns)
+    {
+        for (std::size_t i{1}; i < dist; i++)
+        {
+            if (m_piece_board[offset(min_lines + i, min_columns + i)] != Piece::EMPTY)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+    return false;
+}
