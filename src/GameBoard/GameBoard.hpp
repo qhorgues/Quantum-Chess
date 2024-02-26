@@ -59,6 +59,8 @@ public:
 private:
     constexpr static std::pair<std::array<bool, N * M>, std::array<Piece, N * M>>
     initializer_list_to_2_array(std::initializer_list<std::initializer_list<Piece>> const &board) noexcept;
+    
+    static double get_random_number_0_1();
 
     template <std::size_t Q>
     constexpr void modify(std::array<std::pair<std::array<bool, Q>, std::complex<double>>, 2> const &arrayQubit,

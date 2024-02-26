@@ -76,11 +76,18 @@ Board<N, M>::initializer_list_to_2_array(std::initializer_list<std::initializer_
 }
 
 template <std::size_t N, std::size_t M>
-bool Board<N, M>::mesure(std::size_t position)
+double Board<N, M>::get_random_number_0_1()
 {
     std::random_device rd;
     std::uniform_real_distribution<> gen(0., 1.);
-    double x = gen(rd);
+    return gen(rd);
+}
+
+template <std::size_t N, std::size_t M>
+bool Board<N, M>::mesure(std::size_t position)
+{
+    Piece p_actuelle = m_piece_board[position];
+    double x = get_random_number_0_1();
     std::size_t indice_mes = 0;
     while (x - std::pow(std::abs(m_board[indice_mes].second), 2) > 0)
     {
@@ -88,23 +95,34 @@ bool Board<N, M>::mesure(std::size_t position)
         // indice_suppr++,
     }
     bool mes = m_board[indice_mes].first[position];
-    if(!mes)
-    {
-        m_piece_board[position] = Piece::EMPTY;
-    }
     double proba_delete = 0;
     //std::size_t nbr_elt_suppr{0};
-    for (auto c{std::begin(m_board)}; c != std::end(m_board); c++)
+    for (std::size_t i {std::size(m_board)}; i > 0; i--)
     {
-        if (c->first[position] == mes)
+        if (m_board[i-1].first[position] != mes) //?
         {
-            proba_delete += std::pow(std::abs(c->second), 2);
-            m_board.erase(c);
+            proba_delete += std::pow(std::abs(m_board[i-1].second), 2);
+            m_board.erase(std::begin(m_board) +std::size(m_board)- i -1 );
         }
+
     }
     for (auto &e : m_board)
     {
-        e.second /= 1-proba_delete;
+        e.second /= std::sqrt(1.-proba_delete);
+    }
+    for (std::size_t i {0}; i<N*M; i++)
+    {
+        if(m_piece_board[i] == p_actuelle )
+        {
+            for(auto &e : m_board)
+            {
+                if(e.first[i])
+                {
+                    break;
+                }
+                m_piece_board[i] = Piece::EMPTY;
+            }
+        }
     }
     return mes;
 }
@@ -164,13 +182,15 @@ constexpr void Board<N, M>::move_1_instance(std::array<bool, Q> const &case_modi
     modify(std::move(x), position, tab_positions);
 }
 
+#include <iostream>
+
 template <std::size_t N, std::size_t M>
 constexpr void Board<N, M>::move_classic_jump(std::size_t source, std::size_t target)
 {
     if (m_piece_board[target] == Piece::EMPTY)
     {
         std::size_t const size_board{std::size(m_board)};
-        for (std::size_t i{0}; i < std::size(m_board); i++)
+        for (std::size_t i{0}; i < size_board; i++)
         {
             move_1_instance(std::array<bool, 2>{m_board[i].first[source], false}, i,
                             MATRIX_ISWAP, std::array<std::size_t, 2>{source, target});
@@ -199,9 +219,10 @@ constexpr void Board<N, M>::move_classic_jump(std::size_t source, std::size_t ta
             {
                 for (std::size_t i {0}; i < std::size(m_board); i++)
                 {
-                    
-                    /*move_1_instance(std::array<bool, 3>{true, m_board[i].first[target] m_board[i].first[source], false}, i,
-                                    Matrice a determiner , std::array<std::size_t, 2>{source, target, N * M + 1});*/
+                    auto const A { MATRIX_JUMP.tensoriel_product(CMatrix<2>::identity()) * CMatrix<2>::identity().tensoriel_product(MATRIX_JUMP) };
+                    std::cout << A << std::endl;
+                    move_1_instance(std::array<bool, 3>{ m_board[i].first[source], m_board[i].first[target], false}, i,
+                                    A , std::array<std::size_t, 3>{source, target, N * M + 1});
                     
                 }
                 m_piece_board[target] = m_piece_board[source];
