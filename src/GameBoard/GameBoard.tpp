@@ -82,26 +82,29 @@ bool Board<N, M>::mesure(std::size_t position)
     std::uniform_real_distribution<> gen(0., 1.);
     double x = gen(rd);
     std::size_t indice_mes = 0;
-    std::size_t n = sizeof(m_board);
-    while (x - _2POW(std::abs(m_board[indice_mes].second)) > 0)
+    while (x - std::pow(std::abs(m_board[indice_mes].second), 2) > 0)
     {
-        x -= _2POW(std::abs(m_board[indice_mes].second));
-        // indice_suppr++;
+        x -= std::pow(std::abs(m_board[indice_mes].second), 2);
+        // indice_suppr++,
     }
     bool mes = m_board[indice_mes].first[position];
+    if(!mes)
+    {
+        m_piece_board[position] = Piece::EMPTY
+    }
     double proba_delete = 0;
-    std::size_t nbr_elt_suppr{0};
+    //std::size_t nbr_elt_suppr{0};
     for (auto c{std::begin(m_board)}; c != std::end(m_board); c++)
     {
         if (c->first[position] == mes)
         {
-            proba_delete += _2POW(std::abs(c->second));
+            proba_delete += std::pow(std::abs(c->second), 2);
             m_board.erase(c);
         }
     }
-    for (auto const &e : m_board)
+    for (auto &e : m_board)
     {
-        e.second /= proba_delete;
+        e.second /= 1-proba_delete;
     }
     return mes;
 }
@@ -153,10 +156,10 @@ constexpr void Board<N, M>::modify(std::array<std::pair<std::array<bool, Q>, std
 template <std::size_t N, std::size_t M>
 template <std::size_t Q>
 constexpr void Board<N, M>::move_1_instance(std::array<bool, Q> const &case_modif,
-                                            std::size_t position, CMatrix<_2POW(N)> const &matrix,
-                                            std::array<std::size_t, N> const &tab_positions)
+                                            std::size_t position, CMatrix<_2POW(Q)> const &matrix,
+                                            std::array<std::size_t, Q> const &tab_positions)
 {
-    Qubit<N> q{case_modif};
+    Qubit<Q> q{case_modif};
     auto x{qubitToArray(matrix * q)};
     modify(std::move(x), position, tab_positions);
 }
@@ -194,12 +197,12 @@ constexpr void Board<N, M>::move_classic_jump(std::size_t source, std::size_t ta
         {
             if (mesure(source))
             {
-                for (auto const &e : m_board)
+                for (std::size_t i {0}; i < std::size(m_board); i++)
                 {
-                    /*
-                    move_1_instance(std::array<bool, 3>{true, e.first[target] e.first[source], false}, i,
-                                    Matrice a determiner , std::array<std::size_t, 2>{source, target, N * M + 1});
-                    */
+                    
+                    /*move_1_instance(std::array<bool, 3>{true, m_board[i].first[target] m_board[i].first[source], false}, i,
+                                    Matrice a determiner , std::array<std::size_t, 2>{source, target, N * M + 1});*/
+                    
                 }
                 m_piece_board[target] = m_piece_board[source];
                 m_piece_board[source] = Piece::EMPTY;
@@ -214,8 +217,8 @@ constexpr void Board<N, M>::move_split_jump(std::size_t source, std::size_t targ
     std::size_t const size_board{std::size(m_board)};
     for (std::size_t i {0}; i < size_board; i++)
     {
-        move_1_instance(std::array<bool, 3>{m_board[i].first[target1], m_board[i].first[source], m_board[i].first[target2]}, i,
-                        MATRIX_SPLIT, std::array<std::size_t, 3>{target1, source, target2});
+        move_1_instance(std::array<bool, 3>{ m_board[i].first[target2], m_board[i].first[target1], m_board[i].first[source]}, i,
+                        MATRIX_SPLIT, std::array<std::size_t, 3>{target2, target1, source });
     }
     m_piece_board[target1] = m_piece_board[source];
     m_piece_board[target2] = m_piece_board[source];
@@ -240,7 +243,6 @@ constexpr bool Board<N, M>::check_path_straight(Coord const &dpt, Coord const &a
     {
         for (std::size_t i{std::min(dpt.n, arv.n) + 1}; i < std::max(dpt.n, arv.n); i++)
         {
-            std::cout << i << " / " << dpt.m << " -> " << static_cast<int>(m_piece_board[offset(i, dpt.m)]) << std::endl;
             if (m_piece_board[offset(i, dpt.m)] != Piece::EMPTY)
             {
                 return false;

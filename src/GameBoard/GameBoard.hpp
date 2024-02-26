@@ -42,8 +42,8 @@ public:
     // a basculer en private
     template <std::size_t Q>
     constexpr void move_1_instance(std::array<bool, Q> const &case_modif,
-                                   std::size_t position, CMatrix<_2POW(N)> const &matrix,
-                                   std::array<std::size_t, N> const &tab_positions);
+                                   std::size_t position, CMatrix<_2POW(Q)> const &matrix,
+                                   std::array<std::size_t, Q> const &tab_positions);
 
     constexpr void move_split_jump(std::size_t source, std::size_t target1, std::size_t target2);
     
@@ -55,8 +55,8 @@ public:
     constexpr bool check_path_diagonal(Coord const &dpt, Coord const &arv);
     constexpr bool check_path_straight(Coord const &dpt, Coord const &arv);
 
-private:
     constexpr std::size_t offset(std::size_t ligne, std::size_t colonne);
+private:
     constexpr static std::pair<std::array<bool, N * M>, std::array<Piece, N * M>>
     initializer_list_to_2_array(std::initializer_list<std::initializer_list<Piece>> const &board) noexcept;
 

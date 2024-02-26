@@ -29,7 +29,9 @@ int main()
             {B_BISHOP, W_ROOK, EMPTY, B_KING}
         }
     };
-    std::cout << std::boolalpha << B2.check_path_straight(Coord(0, 0), Coord(0, 3)) << std::endl;
+    B2.move_split_jump(B2.offset(0, 0), B2.offset(0,1), B2.offset(2,3));
+    std::cout << std::boolalpha << B2.mesure(B2.offset(2,3)) << std::endl;
+    std::cout << std::boolalpha << B2.check_path_straight(Coord(0, 0), Coord(3, 0)) << std::endl;
     std::cout << std::boolalpha << B2.check_path_diagonal(Coord(0, 0), Coord(3, 3)) << std::endl;
 
     return 0;
