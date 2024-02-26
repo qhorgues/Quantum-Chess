@@ -90,7 +90,7 @@ bool Board<N, M>::mesure(std::size_t position)
     bool mes = m_board[indice_mes].first[position];
     if(!mes)
     {
-        m_piece_board[position] = Piece::EMPTY
+        m_piece_board[position] = Piece::EMPTY;
     }
     double proba_delete = 0;
     //std::size_t nbr_elt_suppr{0};
