@@ -50,13 +50,13 @@ public:
 
     // a basculer en private
     constexpr void move_classic_jump(std::size_t source, std::size_t target);
+private:
     bool mesure(std::size_t position);
 
     constexpr bool check_path_diagonal(Coord const &dpt, Coord const &arv);
     constexpr bool check_path_straight(Coord const &dpt, Coord const &arv);
 
     constexpr std::size_t offset(std::size_t ligne, std::size_t colonne);
-private:
     constexpr static std::pair<std::array<bool, N * M>, std::array<Piece, N * M>>
     initializer_list_to_2_array(std::initializer_list<std::initializer_list<Piece>> const &board) noexcept;
     
