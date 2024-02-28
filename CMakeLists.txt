@@ -12,18 +12,22 @@ set_choice (CMAKE_BUILD_TYPE "Debug;Release;MinSizeRel;RelWithDebInfo" "Debug" "
 
 set (SRCS
     src/main.cpp
-    src/GameBoard/GameBoard.tpp
-    src/GameBoard/GameBoard.hpp
-    src/Piece/Piece.hpp
-    src/Piece/Piece.cpp
-    src/Qubit/Qubit.hpp
+    src/Board/Board.tpp
+    src/Piece/Piece.tpp
     src/Qubit/Qubit.tpp
+    src/check_path/check_path.tpp
 )
 
 set (HEADERS
     include/Unitary.hpp
     include/CMatrix.hpp
     include/Complex_printer.hpp
+    include/Move.hpp
+    src/Piece/TypePiece.hpp
+    src/Piece/Piece.hpp
+    src/Board/Board.hpp
+    src/Qubit/Qubit.hpp
+    src/check_path/check_path.hpp
 )
 
 #if (BUILD_TESTING)
