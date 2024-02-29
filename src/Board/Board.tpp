@@ -7,6 +7,7 @@
 #include <Qubit.hpp>
 #include <random>
 #include <functional>
+#include <cmath>
 #include <optional>
 #include <Piece.hpp>
 #include <Unitary.hpp>
@@ -71,7 +72,7 @@ template <std::size_t N, std::size_t M>
 constexpr std::pair<std::array<bool, N * M>, std::array<observer_ptr<Piece const>, N * M>>
 Board<N, M>::initializer_list_to_2_array(std::initializer_list<std::initializer_list<observer_ptr<Piece const>>> const &board) noexcept
 {
-    std::pair<std::array<bool, N * M>, std::array<observer_ptr<Piece const>, N * M>> p {};
+    std::pair<std::array<bool, N * M>, std::array<observer_ptr<Piece const>, N * M>> p{};
     auto it_tab{std::begin(p.first)};
     auto it_piece_dst{std::begin(p.second)};
     assert(std::size(board) <= N && "Value entry out of Board");
@@ -99,22 +100,22 @@ Board<N, M>::initializer_list_to_2_array(std::initializer_list<std::initializer_
 }
 
 template <std::size_t N, std::size_t M>
-constexpr void Board<N, M>::init_mailbox(std::array<int, N * M> &S_mailbox, std::array<int, (N+4) * (M+2)> &L_mailbox) noexcept
+constexpr void Board<N, M>::init_mailbox(std::array<int, N * M> &S_mailbox, std::array<int, (N + 4) * (M + 2)> &L_mailbox) noexcept
 {
-    std::fill(std::begin(L_mailbox), std::begin(L_mailbox) + (2*(M+2)+1), -1);
-    std::fill(std::end(L_mailbox) - (2*(M+2)+1), std::end(L_mailbox), -1);
-    auto offset_L_mailboard { [](std::size_t n, std::size_t m) -> std::size_t
+    std::fill(std::begin(L_mailbox), std::begin(L_mailbox) + (2 * (M + 2) + 1), -1);
+    std::fill(std::end(L_mailbox) - (2 * (M + 2) + 1), std::end(L_mailbox), -1);
+    auto offset_L_mailboard{[](std::size_t n, std::size_t m) -> std::size_t
+                            {
+                                return n * (M + 2) + m;
+                            }};
+    for (std::size_t i{0}; i < N; i++)
     {
-        return n * (M+2) + m;
-    }}; 
-    for (std::size_t i {0}; i < N; i++)
-    {
-        L_mailbox[offset_L_mailboard(i+2, 0)] = -1;
-        L_mailbox[offset_L_mailboard(i+2, M+1)] = -1;
-        for (std::size_t j {0}; j < M; j++)
+        L_mailbox[offset_L_mailboard(i + 2, 0)] = -1;
+        L_mailbox[offset_L_mailboard(i + 2, M + 1)] = -1;
+        for (std::size_t j{0}; j < M; j++)
         {
-            L_mailbox[offset_L_mailboard(i+2, j+1)] = static_cast<int>(Board<N, M>::offset(i, j));
-            S_mailbox[Board<N, M>::offset(i, j)] = static_cast<int>(offset_L_mailboard(i+2, j+1));
+            L_mailbox[offset_L_mailboard(i + 2, j + 1)] = static_cast<int>(Board<N, M>::offset(i, j));
+            S_mailbox[Board<N, M>::offset(i, j)] = static_cast<int>(offset_L_mailboard(i + 2, j + 1));
         }
     }
 }
@@ -149,52 +150,54 @@ double Board<N, M>::get_random_number_0_1()
  * @return false Sinon
  */
 template <std::size_t N, std::size_t M>
-constexpr bool Board<N, M>::mesure(Coord const& p)
+constexpr bool Board<N, M>::mesure(Coord const &p)
 {
-    
+
     std::optional<TypePiece> p_actuelle = (*this)(p.n, p.m);
-    if(p_actuelle == std::nullopt)
+    if (p_actuelle == std::nullopt)
     {
         return false;
-    } else{
-    double x = get_random_number_0_1();
-    std::size_t indice_mes = 0;
-    while (x - std::pow(std::abs(m_board[indice_mes].second), 2) > 0)
-    {
-        x -= std::pow(std::abs(m_board[indice_mes].second), 2);
-        // indice_suppr++,
     }
-    bool mes = m_board[indice_mes].first[offset(p.n, p.m)];
-    double proba_delete = 0;
-    // std::size_t nbr_elt_suppr{0};
-    for (std::size_t i{std::size(m_board)}; i > 0; i--)
+    else
     {
-        if (m_board[i - 1].first[offset(p.n, p.m)] != mes) //?
+        double x = get_random_number_0_1();
+        std::size_t indice_mes = 0;
+        while (x - std::pow(std::abs(m_board[indice_mes].second), 2) > 0)
         {
-            proba_delete += std::pow(std::abs(m_board[i - 1].second), 2);
-            m_board.erase(std::begin(m_board) + std::size(m_board) - i - 1);
+            x -= std::pow(std::abs(m_board[indice_mes].second), 2);
+            // indice_suppr++,
         }
-    }
-    for (auto &e : m_board)
-    {
-        e.second /= std::sqrt(1. - proba_delete);
-    }
-    for (std::size_t i{0}; i < N * M; i++)
-    {
-        if (m_piece_board[i] != nullptr && *p_actuelle == m_piece_board[i]->get_type())
+        bool mes = m_board[indice_mes].first[offset(p.n, p.m)];
+        double proba_delete = 0;
+        // std::size_t nbr_elt_suppr{0};
+        for (std::size_t i{std::size(m_board)}; i > 0; i--)
         {
-            for (auto &e : m_board)
+            if (m_board[i - 1].first[offset(p.n, p.m)] != mes) //?
             {
-                if (e.first[i])
-                {
-                    break;
-                }
-                m_piece_board[i] = nullptr;
+                proba_delete += std::pow(std::abs(m_board[i - 1].second), 2);
+                m_board.erase(std::begin(m_board) + std::size(m_board) - i - 1);
             }
         }
+        for (auto &e : m_board)
+        {
+            e.second /= std::sqrt(1. - proba_delete);
+        }
+        for (std::size_t i{0}; i < N * M; i++)
+        {
+            if (m_piece_board[i] != nullptr && *p_actuelle == m_piece_board[i]->get_type())
+            {
+                for (auto &e : m_board)
+                {
+                    if (e.first[i])
+                    {
+                        break;
+                    }
+                    m_piece_board[i] = nullptr;
+                }
+            }
+        }
+        return mes;
     }
-    return mes;
-}
 }
 /**
  * @brief Fonction qui permet de faire une mesure dans le cas d'un mouvement "capture slide"
@@ -209,52 +212,54 @@ constexpr bool Board<N, M>::mesure(Coord const& p)
  */
 template <std::size_t N, std::size_t M>
 bool Board<N, M>::mesure_capture_slide(Coord const &s, Coord const &t,
-                                       std::function<bool(Board<N, M> const&, Coord const &, Coord const &, std::size_t)> check_path)
+                                       std::function<bool(Board<N, M> const &, Coord const &, Coord const &, std::size_t)> check_path)
 {
-    std::size_t position = offset(s.n, s.m); 
+    std::size_t position = offset(s.n, s.m);
     std::optional<TypePiece> p_actuelle = (*this)(s.n, s.m);
-      if(p_actuelle == std::nullopt)
+    if (p_actuelle == std::nullopt)
     {
         return false;
-    } else{
-    double x = get_random_number_0_1();
-    std::size_t indice_mes = 0;
-    while (x - std::pow(std::abs(m_board[indice_mes].second), 2) > 0)
-    {
-        x -= std::pow(std::abs(m_board[indice_mes].second), 2);
-        // indice_suppr++,
     }
-    bool mes = m_board[indice_mes].first[position] && check_path(*this, s, t, indice_mes);
-    double proba_delete = 0;
-    // std::size_t nbr_elt_suppr{0};
-    for (std::size_t i{std::size(m_board)}; i > 0; i--)
+    else
     {
-        if ((m_board[i - 1].first[position] && check_path(*this, s, t, i)) != mes)
+        double x = get_random_number_0_1();
+        std::size_t indice_mes = 0;
+        while (x - std::pow(std::abs(m_board[indice_mes].second), 2) > 0)
         {
-            proba_delete += std::pow(std::abs(m_board[i - 1].second), 2);
-            m_board.erase(std::begin(m_board) + std::size(m_board) - i - 1);
+            x -= std::pow(std::abs(m_board[indice_mes].second), 2);
+            // indice_suppr++,
         }
-    }
-    for (auto &e : m_board)
-    {
-        e.second /= std::sqrt(1. - proba_delete);
-    }
-    for (std::size_t i{0}; i < N * M; i++)
-    {
-        if (m_piece_board[i] != nullptr && *p_actuelle == m_piece_board[i]->get_type())
+        bool mes = m_board[indice_mes].first[position] && check_path(*this, s, t, indice_mes);
+        double proba_delete = 0;
+        // std::size_t nbr_elt_suppr{0};
+        for (std::size_t i{std::size(m_board)}; i > 0; i--)
         {
-            for (auto &e : m_board)
+            if ((m_board[i - 1].first[position] && check_path(*this, s, t, i)) != mes)
             {
-                if (e.first[i])
-                {
-                    break;
-                }
-                m_piece_board[i] = nullptr;
+                proba_delete += std::pow(std::abs(m_board[i - 1].second), 2);
+                m_board.erase(std::begin(m_board) + std::size(m_board) - i - 1);
             }
         }
+        for (auto &e : m_board)
+        {
+            e.second /= std::sqrt(1. - proba_delete);
+        }
+        for (std::size_t i{0}; i < N * M; i++)
+        {
+            if (m_piece_board[i] != nullptr && *p_actuelle == m_piece_board[i]->get_type())
+            {
+                for (auto &e : m_board)
+                {
+                    if (e.first[i])
+                    {
+                        break;
+                    }
+                    m_piece_board[i] = nullptr;
+                }
+            }
+        }
+        return mes;
     }
-    return mes;
-}
 }
 
 /**
@@ -443,7 +448,7 @@ constexpr void Board<N, M>::move_merge_jump(Coord const &s1, Coord const &s2, Co
  */
 template <std::size_t N, std::size_t M>
 constexpr void Board<N, M>::move_classic_slide(Coord const &s, Coord const &t,
-                                               std::function<bool(Board<N, M> const&, Coord const &, Coord const &, std::size_t)> check_path)
+                                               std::function<bool(Board<N, M> const &, Coord const &, Coord const &, std::size_t)> check_path)
 {
     std::size_t source = offset(s.n, s.m);
     std::size_t target = offset(t.n, t.m);
@@ -490,6 +495,7 @@ constexpr void Board<N, M>::move_classic_slide(Coord const &s, Coord const &t,
         }
     }
 }
+
 /**
  * @brief Mouvement "split slide"
  * @warning Aucun tests sur la validité du mouvement (cible vide, ect)
@@ -502,7 +508,7 @@ constexpr void Board<N, M>::move_classic_slide(Coord const &s, Coord const &t,
  */
 template <std::size_t N, std::size_t M>
 constexpr void Board<N, M>::move_split_slide(Coord const &s, Coord const &t1, Coord const &t2,
-                                             std::function<bool(Board<N, M> const&, Coord const &, Coord const &, std::size_t)> check_path)
+                                             std::function<bool(Board<N, M> const &, Coord const &, Coord const &, std::size_t)> check_path)
 {
     std::size_t source = offset(s.n, s.m);
     std::size_t target1 = offset(t1.n, t1.m);
@@ -530,11 +536,11 @@ constexpr void Board<N, M>::move_split_slide(Coord const &s, Coord const &t1, Co
  */
 template <std::size_t N, std::size_t M>
 constexpr void Board<N, M>::move_merge_jump(Coord const &s1, Coord const &s2, Coord const &t,
-                                            std::function<bool(Board<N, M> const&, Coord const &, Coord const &, std::size_t)> check_path)
+                                            std::function<bool(Board<N, M> const &, Coord const &, Coord const &, std::size_t)> check_path)
 {
-    std::size_t source1 = offset(s1.n, s1.m);
-    std::size_t source2 = offset(s2.n, s2.m);
-    std::size_t target = offset(t.n, t.m);
+    std::size_t const source1 = offset(s1.n, s1.m);
+    std::size_t const source2 = offset(s2.n, s2.m);
+    std::size_t const target = offset(t.n, t.m);
     std::size_t const size_board{std::size(m_board)};
     for (std::size_t i{0}; i < size_board; i++)
     {
@@ -549,19 +555,20 @@ constexpr void Board<N, M>::move_merge_jump(Coord const &s1, Coord const &s2, Co
 template <std::size_t N, std::size_t M>
 constexpr std::optional<TypePiece> Board<N, M>::operator()(std::size_t n, std::size_t m) const noexcept
 {
-    std::cout << n << " / " << m << std::endl; 
+    std::cout << n << " / " << m << std::endl;
     if (m_piece_board[offset(n, m)])
     {
         return m_piece_board[offset(n, m)]->get_type();
     }
     return std::nullopt;
 }
-/*template <std::size_t N, std::size_t M>
-bool operator==(std::array<bool, N*M> t1, std::array<bool, N*M> t2) noexcept
+
+template <std::size_t N>
+bool operator==(std::array<bool, N> t1, std::array<bool, N> t2) noexcept
 {
-    for(std::size_t i {0}; i<N*M; i++)
+    for (std::size_t i{0}; i < N; i++)
     {
-        if(t1[i]!= t2[i])
+        if (t1[i] != t2[i])
         {
             return false;
         }
@@ -569,4 +576,39 @@ bool operator==(std::array<bool, N*M> t1, std::array<bool, N*M> t2) noexcept
     return true;
 }
 
-*/
+#define EPSILON 0.00001
+
+bool double_equal(double x, double y)
+{
+    return std::abs(x - y) <= EPSILON;
+}
+
+bool complex_equal(std::complex<double> const &z1, std::complex<double> const &z2)
+{
+    return double_equal(z1.real(), z2.real()) && double_equal(z1.imag(), z2.imag());
+}
+
+template <std::size_t N, std::size_t M>
+void Board<N, M>::update_after_merge() noexcept
+{
+    std::size_t size_board = std::size(m_board);
+    for (std::size_t i{size_board}; i > 0; i--)
+    {
+        using namespace std::complex_literals;
+        if (complex_equal(m_board[i - 1].second, 0i))
+        {
+            m_board.erase(std::begin(m_board) + i - 1);
+        }
+        else
+        {
+            for (std::size_t j{i - 1}; j > 0; j--)
+            {
+                if (m_board[i - 1].first == m_board[j - 1].first)
+                {
+                    m_board[j - 1].second += m_board[i - 1].second;
+                    m_board.erase(std::begin(m_board) + i - 1);
+                }
+            }
+        }
+    }
+}

@@ -43,8 +43,7 @@ public:
     constexpr std::optional<TypePiece> operator()(std::size_t n, std::size_t m) const noexcept;
 
     constexpr double get_proba(Coord const &pos) const noexcept;
-
-    // bool operator==(std::array<bool, N*M> t1, std::array<bool, N*M> t2) noexcept;
+    void update_after_merge() noexcept;
 
     // a basculer en private
     template <std::size_t Q>
@@ -102,6 +101,9 @@ private:
     bool m_b_q_castle;         // Vrai si les noirs peuvent faire le grand roque
     std::optional<Coord> m_ep; // Contient la case sur laquelle il est possible de faire une prise en passant
 };
+
+template <std::size_t N>
+bool operator==(std::array<bool, N> t1, std::array<bool, N> t2) noexcept;
 
 #include "Board.tpp"
 #endif
