@@ -54,32 +54,54 @@ template <std::size_t N>
 std::array<std::pair<std::array<bool, N>, std::complex<double>>, 2> qubitToArray(Qubit<N> const &qubit)
 {
     std::array<std::pair<std::array<bool, N>, std::complex<double>>, 2> tab{};
-    std::size_t c{0};
-    std::size_t compteur{N-1};
-    for (std::size_t i{0}; i <_2POW(N); i++)
+    bool b{true};
+    std::size_t compteur{N - 1};
+    for (std::size_t i{0}; i < _2POW(N); i++)
     {
         using namespace std::complex_literals;
         if (qubit.m_data[i] == 0i)
         {
-            while (tab[c].first[compteur])
+            if (b)
             {
-                tab[c].first[compteur] = false;
-                compteur--;
-            }
-            tab[c].first[compteur] = true;
-            compteur = N-1;
-        }
-        else
-        {
-            tab[c].second = qubit.m_data[i];
-            if (c == 1)
-            {
-                return tab;
+                while (tab[1].first[compteur])
+                {
+                    tab[0].first[compteur] = false;
+                    tab[1].first[compteur] = false;
+                    compteur--;
+                }
+                tab[0].first[compteur] = true;
+                tab[1].first[compteur] = true;
+                compteur = N - 1;
             }
             else
             {
-                c = 1;
-                compteur = N-1;
+                while (tab[1].first[compteur])
+                {
+                    tab[1].first[compteur] = false;
+                    compteur--;
+                }
+                tab[1].first[compteur] = true;
+                compteur = N - 1;
+            }
+        }
+        else
+        {
+            if (b)
+            {
+                tab[0].second = qubit.m_data[i];
+                b = false;
+                while (tab[1].first[compteur])
+                {
+                    tab[1].first[compteur] = false;
+                    compteur--;
+                }
+                tab[1].first[compteur] = true;
+                compteur = N - 1;
+            }
+            else
+            {
+                tab[1].second = qubit.m_data[i];
+                return tab;
             }
         }
     }
