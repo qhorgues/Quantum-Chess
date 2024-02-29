@@ -51,7 +51,7 @@ constexpr double Piece::norm(Coord const& x, Coord const& y) noexcept
 }
 
 
-template <std::size_t N, std::size_t M>
+/* template <std::size_t N, std::size_t M>
 constexpr bool Coord_in_Board(Board<N, M> const& board, Coord const& pos) noexcept
 {
     if (pos.n >= board.numberLines() || pos.m >= board.numberColumns())
@@ -59,7 +59,7 @@ constexpr bool Coord_in_Board(Board<N, M> const& board, Coord const& pos) noexce
         return false;
     }
     return true;
-}
+} */
 
 
 template <std::size_t N, std::size_t M>
@@ -84,28 +84,28 @@ constexpr bool Piece::check_path_pawn(Board<N, M> const& board, Coord const &dpt
 template <std::size_t N, std::size_t M>
 constexpr bool Piece::check_path_knight(Board<N, M> const& board, Coord const &dpt, Coord const &arv) noexcept
 {
-    return Coord_in_Board(board, dpt) && Coord_in_Board(board, arv);
+    return true;
 }
 
 template <std::size_t N, std::size_t M>
 constexpr bool Piece::check_path_bishop(Board<N, M> const& board, Coord const &dpt, Coord const &arv) noexcept
 {
     
-    return Coord_in_Board(board, dpt) && Coord_in_Board(board, arv) && check_path_diagonal(board, dpt, arv);
+    return check_path_diagonal(board, dpt, arv);
 }
 
 template <std::size_t N, std::size_t M>
 constexpr bool Piece::check_path_rook(Board<N, M> const& board, Coord const &dpt, Coord const &arv) noexcept
 {
     
-    return Coord_in_Board(board, dpt) && Coord_in_Board(board, arv) && check_path_straight(board, dpt, arv);
+    return check_path_straight(board, dpt, arv);
 }
 
 template <std::size_t N, std::size_t M>
 constexpr bool Piece::check_path_queen(Board<N, M> const& board, Coord const &dpt, Coord const &arv) noexcept
 {
     
-    return Coord_in_Board(board, dpt) && Coord_in_Board(board, arv) && (check_path_straight(board, dpt, arv) || check_path_diagonal(board, dpt, arv));
+    return check_path_straight(board, dpt, arv) || check_path_diagonal(board, dpt, arv);
 }
 
 template <std::size_t N, std::size_t M>
@@ -116,5 +116,11 @@ constexpr bool Piece::check_path_king(Board<N, M> const& board, Coord const &dpt
     {
         path = check_path_straight(board, dpt, arv);
     }
-    return path && Coord_in_Board(board, dpt) && Coord_in_Board(board, arv);
+    return path;
+}
+
+template <std::size_t N, std::size_t M>
+constexpr bool Piece::is_legal(Board<N, M> const& board, Coord const& dpt, Coord const& arv) const
+{
+    return true; // A faire
 }
