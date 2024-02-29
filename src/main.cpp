@@ -11,6 +11,7 @@
 
 int main()
 {
+    Board<> B3 {};
     Board<2> B {
         {
             { make_observer(&W_QUEEN),  make_observer(&B_KING)},

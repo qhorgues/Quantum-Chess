@@ -14,9 +14,28 @@
 #include "Board.hpp"
 
 template <std::size_t N, std::size_t M>
+constexpr Board<N, M>::Board()
+    : m_board(),
+      m_piece_board(),
+      m_S_mailbox(),
+      m_L_mailbox(),
+      m_couleur(Color::WHITE),
+      m_w_k_castle(true),
+      m_w_q_castle(true),
+      m_b_k_castle(true),
+      m_b_q_castle(true),
+      m_ep()
+{
+    m_board.push_back(std::pair<std::array<bool, 64>, std::complex<double>>{{}, 0});
+    init_mailbox(m_S_mailbox, m_L_mailbox);
+};
+
+template <std::size_t N, std::size_t M>
 constexpr Board<N, M>::Board(std::initializer_list<std::initializer_list<observer_ptr<Piece const>>> const &board)
     : m_board(),
       m_piece_board(),
+      m_S_mailbox(),
+      m_L_mailbox(),
       m_couleur(Color::WHITE),
       m_w_k_castle(true),
       m_w_q_castle(true),
@@ -27,10 +46,11 @@ constexpr Board<N, M>::Board(std::initializer_list<std::initializer_list<observe
     std::pair p{initializer_list_to_2_array(board)};
     std::move(std::begin(p.second), std::end(p.second), std::begin(m_piece_board));
     m_board.push_back(std::move(std::pair{std::move(p.first), 1.}));
+    init_mailbox(m_S_mailbox, m_L_mailbox);
 };
 
 template <std::size_t N, std::size_t M>
-constexpr std::size_t Board<N, M>::offset(std::size_t ligne, std::size_t colonne) const noexcept
+constexpr std::size_t Board<N, M>::offset(std::size_t ligne, std::size_t colonne) noexcept
 {
     return ligne * M + colonne;
 };
@@ -79,6 +99,27 @@ Board<N, M>::initializer_list_to_2_array(std::initializer_list<std::initializer_
 }
 
 template <std::size_t N, std::size_t M>
+constexpr void Board<N, M>::init_mailbox(std::array<int, N * M> &S_mailbox, std::array<int, (N+4) * (M+2)> &L_mailbox) noexcept
+{
+    std::fill(std::begin(L_mailbox), std::begin(L_mailbox) + (2*(M+2)+1), -1);
+    std::fill(std::end(L_mailbox) - (2*(M+2)+1), std::end(L_mailbox), -1);
+    auto offset_L_mailboard { [](std::size_t n, std::size_t m) -> std::size_t
+    {
+        return n * (M+2) + m;
+    }}; 
+    for (std::size_t i {0}; i < N; i++)
+    {
+        L_mailbox[offset_L_mailboard(i+2, 0)] = -1;
+        L_mailbox[offset_L_mailboard(i+2, M+1)] = -1;
+        for (std::size_t j {0}; j < M; j++)
+        {
+            L_mailbox[offset_L_mailboard(i+2, j+1)] = static_cast<int>(Board<N, M>::offset(i, j));
+            S_mailbox[Board<N, M>::offset(i, j)] = static_cast<int>(offset_L_mailboard(i+2, j+1));
+        }
+    }
+}
+
+template <std::size_t N, std::size_t M>
 constexpr double Board<N, M>::get_proba(Coord const &pos) const noexcept
 {
     std::size_t size_array{std::size(m_board)};
@@ -108,7 +149,7 @@ double Board<N, M>::get_random_number_0_1()
  * @return false Sinon
  */
 template <std::size_t N, std::size_t M>
-bool Board<N, M>::mesure(Coord const& p)
+constexpr bool Board<N, M>::mesure(Coord const& p)
 {
     
     std::optional<TypePiece> p_actuelle = (*this)(p.n, p.m);
@@ -351,9 +392,9 @@ constexpr void Board<N, M>::move_classic_jump(Coord const &s, Coord const &t)
 template <std::size_t N, std::size_t M>
 constexpr void Board<N, M>::move_split_jump(Coord const &s, Coord const &t1, Coord const &t2)
 {
-    std::size_t source = offset(s.n, s.m);
-    std::size_t target1 = offset(t1.n, t1.m);
-    std::size_t target2 = offset(t2.n, t2.m);
+    std::size_t const source = offset(s.n, s.m);
+    std::size_t const target1 = offset(t1.n, t1.m);
+    std::size_t const target2 = offset(t2.n, t2.m);
     std::size_t const size_board{std::size(m_board)};
     for (std::size_t i{0}; i < size_board; i++)
     {
@@ -515,3 +556,17 @@ constexpr std::optional<TypePiece> Board<N, M>::operator()(std::size_t n, std::s
     }
     return std::nullopt;
 }
+/*template <std::size_t N, std::size_t M>
+bool operator==(std::array<bool, N*M> t1, std::array<bool, N*M> t2) noexcept
+{
+    for(std::size_t i {0}; i<N*M; i++)
+    {
+        if(t1[i]!= t2[i])
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
+*/

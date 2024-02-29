@@ -23,7 +23,7 @@ class Board final
 {
 public:
     // Constructeur
-    constexpr Board() = default;
+    constexpr Board();
     constexpr Board(std::initializer_list<std::initializer_list<observer_ptr<Piece const>>> const &board);
 
     // Copie
@@ -43,6 +43,8 @@ public:
     constexpr std::optional<TypePiece> operator()(std::size_t n, std::size_t m) const noexcept;
 
     constexpr double get_proba(Coord const &pos) const noexcept;
+
+    // bool operator==(std::array<bool, N*M> t1, std::array<bool, N*M> t2) noexcept;
 
     // a basculer en private
     template <std::size_t Q>
@@ -65,7 +67,7 @@ public:
 
     // a basculer en private
     constexpr void move_classic_jump(Coord const &s, Coord const &t);
-    bool mesure(Coord const& p);
+    constexpr bool mesure(Coord const& p);
 
     template <std::size_t _N, std::size_t _M>
     friend constexpr bool check_path_straight_1_instance(Board<_N, _M> const& board, Coord const &dpt, Coord const &arv, std::size_t position);
@@ -73,11 +75,13 @@ public:
     template <std::size_t _N, std::size_t _M>
     friend constexpr bool check_path_diagonal_1_instance(Board<_N, _M> const& board, Coord const &dpt, Coord const &arv, std::size_t position);
 
-    constexpr std::size_t offset(std::size_t ligne, std::size_t colonne) const noexcept;
 
 private:
+    constexpr static std::size_t offset(std::size_t ligne, std::size_t colonne) noexcept;
     constexpr static std::pair<std::array<bool, N * M>, std::array<observer_ptr<Piece const>, N * M>>
     initializer_list_to_2_array(std::initializer_list<std::initializer_list<observer_ptr<Piece const>>> const &board) noexcept;
+    constexpr static void init_mailbox(std::array<int, N * M> &S_mailbox, std::array<int, (N+4) * (M+2)> &L_mailbox) noexcept;
+    
 
     static double get_random_number_0_1();
 
@@ -87,6 +91,9 @@ private:
 
     std::vector<std::pair<std::array<bool, N * M>, std::complex<double>>> m_board;
     std::array<observer_ptr<Piece const>, N * M> m_piece_board;
+
+    std::array<int, N * M> m_S_mailbox;
+    std::array<int, (N+4) * (M+2)> m_L_mailbox;
 
     Color m_couleur;           // Vrai si c'est aux blanc de jouer
     bool m_w_k_castle;         // Vrai si les blancs peuvent faire le petit roque
