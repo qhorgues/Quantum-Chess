@@ -56,33 +56,41 @@ std::array<std::pair<std::array<bool, N>, std::complex<double>>, 2> qubitToArray
 {
     std::array<std::pair<std::array<bool, N>, std::complex<double>>, 2> tab{};
     bool b{true};
-    std::size_t compteur{N };
-    for (std::size_t i{0}; i < _2POW(N); i++)
+    std::size_t compteur{N};
+    std::size_t pow = _2POW(N);
+    for (std::size_t i{0}; i < pow; i++)
     {
         using namespace std::complex_literals;
-        if (complex_equal(qubit.m_data[i] , 0i))
+        if (complex_equal(qubit.m_data[i], 0i))
         {
-            if (b)
+            if (i == pow - 1)
             {
-                while (tab[1].first[compteur-1])
-                {
-                    tab[0].first[compteur-1] = false;
-                    tab[1].first[compteur-1] = false;
-                    compteur--;
-                }
-                tab[0].first[compteur-1] = true;
-                tab[1].first[compteur-1] = true;
-                compteur = N ;
+                return tab;
             }
             else
             {
-                while (tab[1].first[compteur-1])
+                if (b)
                 {
-                    tab[1].first[compteur-1] = false;
-                    compteur--;
+                    while (tab[1].first[compteur - 1])
+                    {
+                        tab[0].first[compteur - 1] = false;
+                        tab[1].first[compteur - 1] = false;
+                        compteur--;
+                    }
+                    tab[0].first[compteur - 1] = true;
+                    tab[1].first[compteur - 1] = true;
+                    compteur = N;
                 }
-                tab[1].first[compteur-1] = true;
-                compteur = N ;
+                else
+                {
+                    while (tab[1].first[compteur - 1])
+                    {
+                        tab[1].first[compteur - 1] = false;
+                        compteur--;
+                    }
+                    tab[1].first[compteur - 1] = true;
+                    compteur = N;
+                }
             }
         }
         else
@@ -91,13 +99,13 @@ std::array<std::pair<std::array<bool, N>, std::complex<double>>, 2> qubitToArray
             {
                 tab[0].second = qubit.m_data[i];
                 b = false;
-                while (tab[1].first[compteur-1])
+                while (tab[1].first[compteur - 1])
                 {
-                    tab[1].first[compteur-1] = false;
+                    tab[1].first[compteur - 1] = false;
                     compteur--;
                 }
-                tab[1].first[compteur-1] = true;
-                compteur = N ;
+                tab[1].first[compteur - 1] = true;
+                compteur = N;
             }
             else
             {
