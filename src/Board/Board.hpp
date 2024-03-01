@@ -14,6 +14,7 @@
 #include <TypePiece.hpp>
 #include <Color.hpp>
 #include <Coord.hpp>
+#include <forward_list>
 #include <observer_ptr.hpp>
 
 class Piece;
@@ -40,7 +41,9 @@ public:
     constexpr static std::size_t numberLines() noexcept;
     constexpr static std::size_t numberColumns() noexcept;
 
-    constexpr std::optional<TypePiece> operator()(std::size_t n, std::size_t m) const noexcept;
+    constexpr observer_ptr<Piece const> operator()(std::size_t n, std::size_t m) const noexcept;
+
+    std::forward_list<Coord> get_list_move(Coord const& pos) const;
 
     constexpr double get_proba(Coord const &pos) const noexcept;
     void update_after_merge() noexcept;
@@ -58,8 +61,13 @@ public:
                                       std::function<bool(Board<N, M> const&, Coord const &, Coord const &, std::size_t)> check_path);
     constexpr void move_split_slide(Coord const &s, Coord const &t1, Coord const &t2,
                                     std::function<bool(Board<N, M> const&, Coord const &, Coord const &, std::size_t)> check_path);
-    constexpr void move_merge_jump(Coord const &s1, Coord const &s2, Coord const &t,
-                                   std::function<bool(Board<N, M> const&, Coord const &, Coord const &, std::size_t)> check_path);
+    constexpr void move_merge_slide(Coord const &s1, Coord const &s2, Coord const &t,
+                                    std::function<bool(Board<N, M> const &, Coord const &, Coord const &, std::size_t)> check_path);
+                                  
+    constexpr void move_pawn_one_step(Coord const &s, Coord const &t);
+    constexpr void move_pawn_two_step(Coord const &s, Coord const &t);
+    constexpr void capture_pawn(Coord const &s, Coord const &t);
+    constexpr void move_enpassant(Coord const &s, Coord const &t, Coord const &ep);
 
     bool mesure_capture_slide(Coord const &s, Coord const &t,
                               std::function<bool(Board<N, M> const&, Coord const &, Coord const &, std::size_t)> check_path);
@@ -74,6 +82,7 @@ public:
     template <std::size_t _N, std::size_t _M>
     friend constexpr bool check_path_diagonal_1_instance(Board<_N, _M> const& board, Coord const &dpt, Coord const &arv, std::size_t position);
 
+    friend class Piece;
 
 private:
     constexpr static std::size_t offset(std::size_t ligne, std::size_t colonne) noexcept;
@@ -91,14 +100,12 @@ private:
     std::vector<std::pair<std::array<bool, N * M>, std::complex<double>>> m_board;
     std::array<observer_ptr<Piece const>, N * M> m_piece_board;
 
-    std::array<int, N * M> m_S_mailbox;
-    std::array<int, (N+4) * (M+2)> m_L_mailbox;
+    std::array<int, N * M> m_S_mailbox; // La petite mailbox
+    std::array<int, (N+4) * (M+2)> m_L_mailbox; // La grande mailbox
 
     Color m_couleur;           // Vrai si c'est aux blanc de jouer
-    bool m_w_k_castle;         // Vrai si les blancs peuvent faire le petit roque
-    bool m_w_q_castle;         // Vrai si les blancs peuvent faire le grand roque
-    bool m_b_k_castle;         // Vrai si les noirs peuvent faire le petit roque
-    bool m_b_q_castle;         // Vrai si les noirs peuvent faire le grand roque
+    std::array<bool, 2> m_k_castle;  // Vrai si les noirs[0] / blancs[1] peuvent faire le petit roque
+    std::array<bool, 2> m_q_castle;  // Vrai si les noirs[0] / blancs[1] peuvent faire le grand roque
     std::optional<Coord> m_ep; // Contient la case sur laquelle il est possible de faire une prise en passant
 };
 

@@ -12,6 +12,7 @@
 #include <Piece.hpp>
 #include <Unitary.hpp>
 #include <Piece.hpp>
+#include <math_utility.hpp>
 #include "Board.hpp"
 
 template <std::size_t N, std::size_t M>
@@ -21,10 +22,8 @@ constexpr Board<N, M>::Board()
       m_S_mailbox(),
       m_L_mailbox(),
       m_couleur(Color::WHITE),
-      m_w_k_castle(true),
-      m_w_q_castle(true),
-      m_b_k_castle(true),
-      m_b_q_castle(true),
+      m_k_castle({true, true}),
+      m_q_castle({true, true}),
       m_ep()
 {
     m_board.push_back(std::pair<std::array<bool, 64>, std::complex<double>>{{}, 0});
@@ -38,10 +37,8 @@ constexpr Board<N, M>::Board(std::initializer_list<std::initializer_list<observe
       m_S_mailbox(),
       m_L_mailbox(),
       m_couleur(Color::WHITE),
-      m_w_k_castle(true),
-      m_w_q_castle(true),
-      m_b_k_castle(true),
-      m_b_q_castle(true),
+      m_k_castle({true, true}),
+      m_q_castle({true, true}),
       m_ep()
 {
     std::pair p{initializer_list_to_2_array(board)};
@@ -124,12 +121,22 @@ template <std::size_t N, std::size_t M>
 constexpr double Board<N, M>::get_proba(Coord const &pos) const noexcept
 {
     std::size_t size_array{std::size(m_board)};
-    std::size_t acc{0};
+    double acc{0.};
     for (auto const &e : m_board)
     {
-        acc += static_cast<std::size_t>(e.first[offset(pos.n, pos.m)]);
+        acc += pow(abs(e.second), 2.) * e.first[offset(pos.n, pos.m)];
     }
     return acc / static_cast<double>(size_array);
+}
+
+template <std::size_t N, std::size_t M>
+std::forward_list<Coord> Board<N, M>::get_list_move(Coord const& pos) const
+{
+    if ((*this)(pos.n, pos.m) != nullptr)
+    {
+        return (*this)(pos.n, pos.m)->get_list_move(*this, pos);
+    }
+    return std::forward_list<Coord>{};
 }
 
 template <std::size_t N, std::size_t M>
@@ -153,8 +160,8 @@ template <std::size_t N, std::size_t M>
 constexpr bool Board<N, M>::mesure(Coord const &p)
 {
 
-    std::optional<TypePiece> p_actuelle = (*this)(p.n, p.m);
-    if (p_actuelle == std::nullopt)
+    observer_ptr<Piece const> p_actuelle = (*this)(p.n, p.m);
+    if (p_actuelle == nullptr)
     {
         return false;
     }
@@ -162,10 +169,12 @@ constexpr bool Board<N, M>::mesure(Coord const &p)
     {
         double x = get_random_number_0_1();
         std::size_t indice_mes = 0;
-        while (x - std::pow(std::abs(m_board[indice_mes].second), 2) > 0)
+        double pow_coef { std::pow(std::abs(m_board[indice_mes].second), 2)};
+        while (x - pow_coef > 0)
         {
-            x -= std::pow(std::abs(m_board[indice_mes].second), 2);
-            // indice_suppr++,
+            x -= pow_coef;
+            indice_mes++;
+            pow_coef = std::pow(std::abs(m_board[indice_mes].second), 2);
         }
         bool mes = m_board[indice_mes].first[offset(p.n, p.m)];
         double proba_delete = 0;
@@ -178,13 +187,12 @@ constexpr bool Board<N, M>::mesure(Coord const &p)
                 m_board.erase(std::begin(m_board) + std::size(m_board) - i - 1);
             }
         }
-        for (auto &e : m_board)
-        {
+        for (auto &e : m_board)        {
             e.second /= std::sqrt(1. - proba_delete);
         }
         for (std::size_t i{0}; i < N * M; i++)
         {
-            if (m_piece_board[i] != nullptr && *p_actuelle == m_piece_board[i]->get_type())
+            if (m_piece_board[i] != nullptr && p_actuelle->get_type() == m_piece_board[i]->get_type())
             {
                 for (auto &e : m_board)
                 {
@@ -215,8 +223,8 @@ bool Board<N, M>::mesure_capture_slide(Coord const &s, Coord const &t,
                                        std::function<bool(Board<N, M> const &, Coord const &, Coord const &, std::size_t)> check_path)
 {
     std::size_t position = offset(s.n, s.m);
-    std::optional<TypePiece> p_actuelle = (*this)(s.n, s.m);
-    if (p_actuelle == std::nullopt)
+    observer_ptr<Piece const> p_actuelle = (*this)(s.n, s.m);
+    if (p_actuelle == nullptr)
     {
         return false;
     }
@@ -246,7 +254,7 @@ bool Board<N, M>::mesure_capture_slide(Coord const &s, Coord const &t,
         }
         for (std::size_t i{0}; i < N * M; i++)
         {
-            if (m_piece_board[i] != nullptr && *p_actuelle == m_piece_board[i]->get_type())
+            if (m_piece_board[i] != nullptr && p_actuelle->get_type() == m_piece_board[i]->get_type())
             {
                 for (auto &e : m_board)
                 {
@@ -281,7 +289,7 @@ constexpr void Board<N, M>::modify(std::array<std::pair<std::array<bool, Q>, std
                                    std::size_t position_board, std::array<std::size_t, Q> const &tab_positions)
 
 {
-    if (arrayQubit[1].second != 0i)
+    if (!complex_equal(arrayQubit[1].second , 0i))
     {
         std::pair<std::array<bool, N * M>, std::complex<double>> new_b{};
         std::copy(std::begin(m_board[position_board].first),
@@ -355,7 +363,7 @@ constexpr void Board<N, M>::move_classic_jump(Coord const &s, Coord const &t)
     }
     else
     {
-        if (same_color(m_piece_board[source], m_piece_board[target]))
+        if (m_piece_board[source]->same_color(*m_piece_board[target]))
         {
             if (!mesure(t))
             {
@@ -380,6 +388,182 @@ constexpr void Board<N, M>::move_classic_jump(Coord const &s, Coord const &t)
                 }
                 m_piece_board[target] = m_piece_board[source];
                 m_piece_board[source] = nullptr;
+            }
+        }
+    }
+}
+/**
+ * @brief Le mouvement de piond'une case fonctionne comme un mouvement de jump classique, à la différence qu'un pion ne peut pas capturer une pièce en avançant,
+ on mesure de la même façon qu'un jump classique en considérant toutes les pièces comme des pièces alliées
+ *
+ * @tparam N Le nombre de lignes du plateau
+ * @tparam M Le nombre de colonnes du plateau
+ * @param s Coordonnées de la source
+ * @param t Coordonnées de la cible
+ */
+template <std::size_t N, std::size_t M>
+constexpr void Board<N, M>::move_pawn_one_step(Coord const &s, Coord const &t)
+{
+    std::size_t source = offset(s.n, s.m);
+    std::size_t target = offset(t.n, t.m);
+
+    if (m_piece_board[target] == nullptr)
+    {
+        std::size_t const size_board{std::size(m_board)};
+        for (std::size_t i{0}; i < size_board; i++)
+        {
+            move_1_instance(std::array<bool, 2>{m_board[i].first[source], false}, i,
+                            MATRIX_ISWAP, std::array<std::size_t, 2>{source, target});
+        }
+        m_piece_board[target] = std::move(m_piece_board[source]);
+        m_piece_board[source] = nullptr;
+    }
+    else
+    {
+        if (!mesure(t))
+        {
+            for (std::size_t i{0}; i < std::size(m_board); i++)
+            {
+                move_1_instance(std::array<bool, 2>{m_board[i].first[source], false}, i,
+                                MATRIX_ISWAP, std::array<std::size_t, 2>{source, target});
+            }
+            m_piece_board[target] = m_piece_board[source];
+            m_piece_board[source] = nullptr;
+        }
+    }
+}
+/**
+ * @brief Le mouvement de piond'une case fonctionne comme un mouvement de slide classique, à la différence qu'un pion ne peut pas capturer une pièce en avançant,
+ on mesure de la même façon qu'un slide classique en considérant toutes les pièces comme des pièces alliées
+ * @warning Aucun test sur la possibilité de faire un mouvement de deux cases du pion, pas de mise a jour du board sur la prise en passant
+ * @tparam N Le nombre de lignes du plateau
+ * @tparam M Le nombre de colonnes du plateau
+ * @param s Coordonnées de la source
+ * @param t Coordonnées de la cible
+ */
+template <std::size_t N, std::size_t M>
+constexpr void Board<N, M>::move_pawn_two_step(Coord const &s, Coord const &t)
+
+{
+    std::size_t source = offset(s.n, s.m);
+    std::size_t target = offset(t.n, t.m);
+    if (m_piece_board[target] == nullptr)
+    {
+        std::size_t const size_board{std::size(m_board)};
+        for (std::size_t i{0}; i < size_board; i++)
+        {
+            move_1_instance(std::array<bool, 3>{m_board[i].first[source], false, check_path_straight_1_instance(*this, s, t, i)}, i,
+                            MATRIX_SLIDE, std::array<std::size_t, 3>{source, target, N * M + 1});
+        }
+        m_piece_board[target] = m_piece_board[source];
+        m_piece_board[source] = nullptr;
+    }
+    else
+    {
+        if (!mesure(t))
+        {
+            for (std::size_t i{0}; i < std::size(m_board); i++)
+            {
+                move_1_instance(std::array<bool, 3>{m_board[i].first[source], false, check_path_straight_1_instance(*this, s, t, i)}, i,
+                                MATRIX_SLIDE, std::array<std::size_t, 3>{source, target, N * M + 1});
+            }
+            m_piece_board[target] = m_piece_board[source];
+            m_piece_board[source] = nullptr;
+        }
+    }
+}
+
+template <std::size_t N, std::size_t M>
+constexpr void Board<N, M>::capture_pawn(Coord const &s, Coord const &t)
+{
+    std::size_t source = offset(s.n, s.m);
+    std::size_t target = offset(t.n, t.m);
+    if (mesure(s))
+    {
+        for (std::size_t i{0}; i < std::size(m_board); i++)
+        {
+            if (m_board[i].first[target])
+            {
+                auto const A {MATRIX_JUMP.tensoriel_product(CMatrix<2>::identity()) * CMatrix<2>::identity().tensoriel_product(MATRIX_JUMP)};
+                move_1_instance(std::array<bool, 3>{m_board[i].first[source], m_board[i].first[target], false}, i,
+                                A, std::array<std::size_t, 3>{source, target, N * M + 1});
+            }
+        }
+    }
+}
+/**
+ * @brief Permet d'effectuer un mouvement de prise en passant
+ * @warning Aucun test sur la validité de la cible et de la cible en passant, ni sur le type de la pièce
+ * @tparam N Le nombre de lignes du plateau
+ * @tparam M Le nombre de colonnnes du plateau
+ * @param s Les coordonnées de la source
+ * @param t Les coordonnées de la cible (l'endroit où arrive le pion)
+ * @param ep Les coordonnées du pion capturer "en passant"
+ */
+template <std::size_t N, std::size_t M>
+constexpr void Board<N, M>::move_enpassant(Coord const &s, Coord const &t, Coord const &ep)
+{
+    std::size_t source = offset(s.n, s.m);
+    std::size_t target = offset(t.n, t.m);
+    std::size_t enpassant = offset(ep.n, ep.m);
+
+    if (m_piece_board[target] == nullptr)
+    {
+        
+            std::size_t const size_board{std::size(m_board)};
+            for (std::size_t i{0}; i < size_board; i++)
+            {
+                if(m_board[i].first[enpassant]) {
+                move_1_instance(std::array<bool, 2>{m_board[i].first[enpassant], false}, i,
+                                MATRIX_ISWAP, std::array<std::size_t, 2>{enpassant, N*M+1}); //permet d'enlever le pion pris en passant
+                move_1_instance(std::array<bool, 2>{m_board[i].first[source], false}, i,
+                                MATRIX_ISWAP, std::array<std::size_t, 2>{source, target});
+                }
+            }
+            m_piece_board[target] = std::move(m_piece_board[source]);
+            m_piece_board[source] = nullptr;
+            m_piece_board[enpassant] = nullptr;
+        
+    }
+    else
+    {
+        if (m_piece_board[source]->same_color(*m_piece_board[target]))
+        {
+            if(!mesure(t))
+            {
+            
+                for (std::size_t i{0}; i < std::size(m_board); i++)
+                {
+                    if(m_board[i].first[enpassant])
+                    {
+                    move_1_instance(std::array<bool, 2>{m_board[i].first[enpassant], false}, i,
+                                MATRIX_ISWAP, std::array<std::size_t, 2>{enpassant, N*M+1}); //permet d'enlever le pion pris en passant
+                move_1_instance(std::array<bool, 2>{m_board[i].first[source], false}, i,
+                                MATRIX_ISWAP, std::array<std::size_t, 2>{source, target});
+                    }
+                }
+                m_piece_board[target] = std::move(m_piece_board[source]);
+                m_piece_board[source] = nullptr;
+            }
+            
+        }
+        else
+        {
+            if (mesure(s))
+            {
+                for (std::size_t i{0}; i < std::size(m_board); i++)
+                {
+                    if(m_board[i].first[enpassant] || m_board[i].first[target])
+                    move_1_instance(std::array<bool, 2>{m_board[i].first[enpassant], false}, i,
+                                MATRIX_ISWAP, std::array<std::size_t, 2>{enpassant, N*M+1}); //permet d'enlever le pion pris en passant
+                       move_1_instance(std::array<bool, 2>{m_board[i].first[target], false}, i,
+                                MATRIX_ISWAP, std::array<std::size_t, 2>{target, N*M+1});   //ces deux instructions représentent un mouvement de capture jump        
+                move_1_instance(std::array<bool, 2>{m_board[i].first[source], false}, i,
+                                MATRIX_ISWAP, std::array<std::size_t, 2>{source, target});
+                }
+                m_piece_board[target] = m_piece_board[source];
+                m_piece_board[source] = nullptr;
+                m_piece_board[enpassant] = nullptr;
             }
         }
     }
@@ -535,8 +719,8 @@ constexpr void Board<N, M>::move_split_slide(Coord const &s, Coord const &t1, Co
  * @param check_path Fonction qui permet de vérifier la présence d'une pièce entre la source et la cible sur une instance du plateau
  */
 template <std::size_t N, std::size_t M>
-constexpr void Board<N, M>::move_merge_jump(Coord const &s1, Coord const &s2, Coord const &t,
-                                            std::function<bool(Board<N, M> const &, Coord const &, Coord const &, std::size_t)> check_path)
+constexpr void Board<N, M>::move_merge_slide(Coord const &s1, Coord const &s2, Coord const &t,
+                                             std::function<bool(Board<N, M> const &, Coord const &, Coord const &, std::size_t)> check_path)
 {
     std::size_t const source1 = offset(s1.n, s1.m);
     std::size_t const source2 = offset(s2.n, s2.m);
@@ -553,14 +737,9 @@ constexpr void Board<N, M>::move_merge_jump(Coord const &s1, Coord const &s2, Co
 }
 
 template <std::size_t N, std::size_t M>
-constexpr std::optional<TypePiece> Board<N, M>::operator()(std::size_t n, std::size_t m) const noexcept
+constexpr observer_ptr<Piece const> Board<N, M>::operator()(std::size_t n, std::size_t m) const noexcept
 {
-    std::cout << n << " / " << m << std::endl;
-    if (m_piece_board[offset(n, m)])
-    {
-        return m_piece_board[offset(n, m)]->get_type();
-    }
-    return std::nullopt;
+    return m_piece_board[offset(n, m)];
 }
 
 template <std::size_t N>
@@ -574,18 +753,6 @@ bool operator==(std::array<bool, N> t1, std::array<bool, N> t2) noexcept
         }
     }
     return true;
-}
-
-#define EPSILON 0.00001
-
-bool double_equal(double x, double y)
-{
-    return std::abs(x - y) <= EPSILON;
-}
-
-bool complex_equal(std::complex<double> const &z1, std::complex<double> const &z2)
-{
-    return double_equal(z1.real(), z2.real()) && double_equal(z1.imag(), z2.imag());
 }
 
 template <std::size_t N, std::size_t M>

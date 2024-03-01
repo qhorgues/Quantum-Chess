@@ -11,6 +11,7 @@
 
 int main()
 {
+
     Board<> B3 {};
     Board<2> B {
         {
@@ -26,12 +27,20 @@ int main()
 
     Board<4> B2 {
         {
-            {  make_observer(&W_QUEEN),                nullptr,                nullptr,   make_observer(&B_QUEEN) },
-            {                  nullptr,                nullptr, make_observer(&B_PAWN),    make_observer(&W_KING) },
-            {  make_observer (&W_PAWN),                nullptr,                nullptr, make_observer (&W_BISHOP) },
-            { make_observer(&B_BISHOP), make_observer(&W_ROOK),                nullptr,    make_observer(&B_KING) }
+            {  make_observer(&W_QUEEN),                  nullptr,                nullptr,   make_observer(&B_QUEEN) },
+            {                  nullptr, make_observer(&B_BISHOP), make_observer(&B_PAWN),    make_observer(&W_KING) },
+            {  make_observer (&W_PAWN),                  nullptr,                nullptr, make_observer (&W_BISHOP) },
+            {                  nullptr,   make_observer(&W_ROOK),                nullptr,    make_observer(&B_KING) }
         }
     };
+    std::forward_list<Coord> list = B2.get_list_move(Coord(2, 0));
+    for (Coord const& e : list)
+    {
+        std::cout << e.n << " / " << e.m << std::endl;
+    }
+    B2.capture_pawn(Coord(2, 0), Coord(1,1));
+    B2.move_pawn_one_step(Coord(1,1), Coord(0,1));
+
     B2.move_split_jump(Coord(0, 0), Coord(0,1), Coord(2,2));
     std::cout << std::boolalpha << check_path_straight(B2, Coord(0, 0), Coord(3, 0)) << std::endl;
     B2.move_merge_jump(Coord(0,1), Coord(2, 2), Coord(0, 0));
