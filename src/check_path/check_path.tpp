@@ -10,7 +10,7 @@ constexpr bool check_path_straight(Board<N, M> const& board, Coord const &dpt, C
     {
         for (std::size_t i{std::min(dpt.m, arv.m) + 1}; i < std::max(dpt.m, arv.m); i++)
         {
-            if (board(dpt.n, i) != std::nullopt)
+            if (board(dpt.n, i) != nullptr)
             {
                 return false;
             }
@@ -21,7 +21,7 @@ constexpr bool check_path_straight(Board<N, M> const& board, Coord const &dpt, C
     {
         for (std::size_t i{std::min(dpt.n, arv.n) + 1}; i < std::max(dpt.n, arv.n); i++)
         {
-            if (board(dpt.n, i) != std::nullopt)
+            if (board(dpt.n, i) != nullptr)
             {
                 return false;
             }
@@ -45,7 +45,7 @@ constexpr bool check_path_diagonal(Board<N, M> const& board, Coord const &dpt, C
     {
         for (std::size_t i{1}; i < dist; i++)
         {
-            if (board(min_lines + i, min_columns + i) != std::nullopt)
+            if (board(min_lines + i, min_columns + i) != nullptr)
             {
                 return false;
             }
