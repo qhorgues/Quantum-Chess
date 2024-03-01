@@ -20,7 +20,7 @@ public:
     constexpr Piece &operator=(Piece const &) = delete;
     constexpr Piece(Piece &&) = default;
     constexpr Piece &operator=(Piece &&) = default;
-    constexpr virtual ~Piece() = default;
+    constexpr ~Piece() = default;
 
     constexpr TypePiece get_type() const noexcept;
     constexpr Color get_color() const noexcept;
