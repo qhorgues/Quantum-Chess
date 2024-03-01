@@ -2,6 +2,7 @@
 #include <Matrix.hpp>
 #include <algorithm>
 #include <numeric>
+#include <math_utility.hpp>
 
 template <std::size_t N>
 Qubit<N>::Qubit(std::array<std::complex<double>, _2POW(N)> &&init_list)
@@ -55,33 +56,33 @@ std::array<std::pair<std::array<bool, N>, std::complex<double>>, 2> qubitToArray
 {
     std::array<std::pair<std::array<bool, N>, std::complex<double>>, 2> tab{};
     bool b{true};
-    std::size_t compteur{N - 1};
+    std::size_t compteur{N };
     for (std::size_t i{0}; i < _2POW(N); i++)
     {
         using namespace std::complex_literals;
-        if (qubit.m_data[i] == 0i)
+        if (complex_equal(qubit.m_data[i] , 0i))
         {
             if (b)
             {
-                while (tab[1].first[compteur])
+                while (tab[1].first[compteur-1])
                 {
-                    tab[0].first[compteur] = false;
-                    tab[1].first[compteur] = false;
+                    tab[0].first[compteur-1] = false;
+                    tab[1].first[compteur-1] = false;
                     compteur--;
                 }
-                tab[0].first[compteur] = true;
-                tab[1].first[compteur] = true;
-                compteur = N - 1;
+                tab[0].first[compteur-1] = true;
+                tab[1].first[compteur-1] = true;
+                compteur = N ;
             }
             else
             {
-                while (tab[1].first[compteur])
+                while (tab[1].first[compteur-1])
                 {
-                    tab[1].first[compteur] = false;
+                    tab[1].first[compteur-1] = false;
                     compteur--;
                 }
-                tab[1].first[compteur] = true;
-                compteur = N - 1;
+                tab[1].first[compteur-1] = true;
+                compteur = N ;
             }
         }
         else
@@ -90,13 +91,13 @@ std::array<std::pair<std::array<bool, N>, std::complex<double>>, 2> qubitToArray
             {
                 tab[0].second = qubit.m_data[i];
                 b = false;
-                while (tab[1].first[compteur])
+                while (tab[1].first[compteur-1])
                 {
-                    tab[1].first[compteur] = false;
+                    tab[1].first[compteur-1] = false;
                     compteur--;
                 }
-                tab[1].first[compteur] = true;
-                compteur = N - 1;
+                tab[1].first[compteur-1] = true;
+                compteur = N ;
             }
             else
             {
