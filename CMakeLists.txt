@@ -12,6 +12,7 @@ set_choice (CMAKE_BUILD_TYPE "Debug;Release;MinSizeRel;RelWithDebInfo" "Debug" "
 
 set (SRCS
     src/main.cpp
+    src/math_utility/math_utility.cpp
     src/Board/Board.tpp
     src/Piece/Piece.tpp
     src/Qubit/Qubit.tpp
@@ -28,11 +29,9 @@ set (HEADERS
     src/Board/Board.hpp
     src/Qubit/Qubit.hpp
     src/check_path/check_path.hpp
+    src/math_utility/math_utility.hpp
 )
 
-#if (BUILD_TESTING)
-#    add_subdirectory(${CMAKE_SOURCE_DIR}/test)
-#endif()
 include(FetchContent)
 
 FetchContent_Declare(Matrix
