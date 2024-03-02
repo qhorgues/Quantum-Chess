@@ -1,6 +1,8 @@
+include (${CMAKE_SOURCE_DIR}/cmake/option.cmake)
+
 function (set_sanitizer)
 	if (NOT MINGW)
-		option(ENEABLE_SANITIZER "Use sanitizer in Debug and RelWithDebInfo build type" TRUE)
+		set_option(ENEABLE_SANITIZER TRUE BOOL "Use sanitizer in Debug and RelWithDebInfo build type")
 		set(BUILD_DEBUG (${CMAKE_BUILD_TYPE} MATCHES "Debug") OR (${CMAKE_BUILD_TYPE} MATCHES "RelWithDebInfo" ) ) 
 
 		if (BUILD_DEBUG)
@@ -39,7 +41,11 @@ function(set_target_warnings target)
 	if (NOT MINGW)
 		set (FORTIFY -D_FORTIFY_SOURCE=2 -fstack-protector-strong -fstack-clash-protection -fPIE)
 		if (NOT MSVC)
-			set (CMAKE_CXX_FLAGS_DEBUG "-g -O2" CACHE INTERNAL "debug flags")
+			if (ENEABLE_SANITIZER)
+				set (CMAKE_CXX_FLAGS_DEBUG "-g -O2" CACHE INTERNAL "debug flags")
+			else ()
+				set (CMAKE_CXX_FLAGS_DEBUG "-g" CACHE INTERNAL "debug flags")
+			endif (ENEABLE_SANITIZER)
 		endif (NOT MSVC)
 	endif (NOT MINGW)
 
