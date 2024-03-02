@@ -6,11 +6,17 @@
 #include <Qubit.hpp>
 #include <Board.hpp>
 #include <Piece.hpp>
+#include <Move.hpp>
 #include <observer_ptr.hpp>
 #include <check_path.hpp>
+#include <constexpr.hpp>
 
 int main()
 {
+    Move m1;
+    m1.type = TypeMove::NORMAL;
+    m1.normal.src = Coord(0, 1);
+    m1.normal.arv = Coord(3, 2);
 
     Board<> B3 {};
     Board<2> B {
@@ -33,7 +39,7 @@ int main()
             {                  nullptr,   make_observer(&W_ROOK),                nullptr,    make_observer(&B_KING) }
         }
     };
-    std::forward_list<Coord> list = B2.get_list_move(Coord(2, 0));
+    std::forward_list<Coord> list = B2.get_list_normal_move(Coord(2, 0));
     for (Coord const& e : list)
     {
         std::cout << e.n << " / " << e.m << std::endl;

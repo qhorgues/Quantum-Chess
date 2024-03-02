@@ -9,41 +9,29 @@ enum class TypeMove
     SPLIT,
     MERGE
 };
-
-class Move
-{   
-public:
-    Move() = delete;
-    Move(TypeMove move) : m_tmove(move) {};
-    Move(Move const&) = default;
-    Move& operator=(Move const&) = default;
-    Move(Move&&) = default;
-    Move& operator=(Move&&) = default;
-
-
-private:
-    TypeMove m_tmove;
-    union Move_u
+struct Move 
+{
+    TypeMove type;
+    union
     {
-        struct Normal
+        struct
         {
             Coord src;
             Coord arv;
         } normal;
-        struct Split
+        struct
         {
             Coord src;
             Coord arv1;
             Coord arv2;
         } split;
-        struct Merge
+        struct
         {
             Coord src1;
             Coord src2;
             Coord arv;
         } merge;
     };
-    
 };
 
 #endif
