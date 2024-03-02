@@ -7,38 +7,38 @@
 
 #define POW2(x) ((x) * (x))
 
-constexpr Piece::Piece(TypePiece piece, Color color) noexcept
+CONSTEXPR Piece::Piece(TypePiece piece, Color color) noexcept
     : m_color(color),
       m_type(piece)
 {
 }
 
-constexpr bool Piece::is_white() const noexcept
+CONSTEXPR bool Piece::is_white() const noexcept
 {
     return m_color == Color::WHITE;
 }
 
-constexpr bool Piece::is_black() const noexcept
+CONSTEXPR bool Piece::is_black() const noexcept
 {
     return m_color == Color::BLACK;
 }
 
-constexpr bool Piece::same_color(Piece const &other) const noexcept
+CONSTEXPR bool Piece::same_color(Piece const &other) const noexcept
 {
     return m_color == other.m_color;
 }
 
-constexpr TypePiece Piece::get_type() const noexcept
+CONSTEXPR TypePiece Piece::get_type() const noexcept
 {
     return m_type;
 }
 
-constexpr Color Piece::get_color() const noexcept
+CONSTEXPR Color Piece::get_color() const noexcept
 {
     return m_color;
 }
 
-constexpr std::size_t Piece::abs_substracte(std::size_t x, std::size_t y) noexcept
+CONSTEXPR std::size_t Piece::abs_substracte(std::size_t x, std::size_t y) noexcept
 {
     if (x >= y)
     {
@@ -47,13 +47,13 @@ constexpr std::size_t Piece::abs_substracte(std::size_t x, std::size_t y) noexce
     return y - x;
 }
 
-constexpr double Piece::norm(Coord const &x, Coord const &y) noexcept
+CONSTEXPR double Piece::norm(Coord const &x, Coord const &y) noexcept
 {
     return sqrt(static_cast<double>(POW2(abs_substracte(x.n, y.n)) + POW2(abs_substracte(x.m, y.m))));
 }
 
 /* template <std::size_t N, std::size_t M>
-constexpr bool Coord_in_Board(Board<N, M> const& board, Coord const& pos) noexcept
+CONSTEXPR bool Coord_in_Board(Board<N, M> const& board, Coord const& pos) noexcept
 {
     if (pos.n >= board.numberLines() || pos.m >= board.numberColumns())
     {
@@ -63,7 +63,7 @@ constexpr bool Coord_in_Board(Board<N, M> const& board, Coord const& pos) noexce
 } */
 
 /* template <std::size_t N, std::size_t M>
-constexpr bool Piece::check_path_pawn(Board<N, M> const &board, Coord const &dpt, Coord const &arv) noexcept
+CONSTEXPR bool Piece::check_path_pawn(Board<N, M> const &board, Coord const &dpt, Coord const &arv) noexcept
 {
     if (arv.m - dpt.m == 2)
     {
@@ -81,37 +81,37 @@ constexpr bool Piece::check_path_pawn(Board<N, M> const &board, Coord const &dpt
 }
 
 template <std::size_t N, std::size_t M>
-constexpr bool Piece::check_path_knight(Board<N, M> const &board, Coord const &dpt, Coord const &arv) noexcept
+CONSTEXPR bool Piece::check_path_knight(Board<N, M> const &board, Coord const &dpt, Coord const &arv) noexcept
 {
     return true;
 }
 
 template <std::size_t N, std::size_t M>
-constexpr bool Piece::check_path_bishop(Board<N, M> const &board, Coord const &dpt, Coord const &arv) noexcept
+CONSTEXPR bool Piece::check_path_bishop(Board<N, M> const &board, Coord const &dpt, Coord const &arv) noexcept
 {
 
     return check_path_diagonal(board, dpt, arv);
 }
 
 template <std::size_t N, std::size_t M>
-constexpr bool Piece::check_path_rook(Board<N, M> const &board, Coord const &dpt, Coord const &arv) noexcept
+CONSTEXPR bool Piece::check_path_rook(Board<N, M> const &board, Coord const &dpt, Coord const &arv) noexcept
 {
 
     return check_path_straight(board, dpt, arv);
 }
 
 template <std::size_t N, std::size_t M>
-constexpr bool Piece::check_path_queen(Board<N, M> const &board, Coord const &dpt, Coord const &arv) noexcept
+CONSTEXPR bool Piece::check_path_queen(Board<N, M> const &board, Coord const &dpt, Coord const &arv) noexcept
 {
 
     return check_path_straight(board, dpt, arv) || check_path_diagonal(board, dpt, arv);
 }
 
 template <std::size_t N, std::size_t M>
-constexpr bool Piece::check_path_king(Board<N, M> const &board, Coord const &dpt, Coord const &arv) noexcept
+CONSTEXPR bool Piece::check_path_king(Board<N, M> const &board, Coord const &dpt, Coord const &arv) noexcept
 {
     bool path{true};
-    if constexpr (N = 8 &&M = 8)
+    if CONSTEXPR (N = 8 &&M = 8)
     {
         path = check_path_straight(board, dpt, arv);
     }
@@ -119,9 +119,9 @@ constexpr bool Piece::check_path_king(Board<N, M> const &board, Coord const &dpt
 } */
 
 template <std::size_t N, std::size_t M>
-constexpr std::forward_list<Coord> Piece::get_list_move_king(Board<N, M> const &board, Coord const &pos) const
+CONSTEXPR std::forward_list<Coord> Piece::get_list_move_king(Board<N, M> const &board, Coord const &pos) const
 {
-    constexpr int P {M+2};
+    CONSTEXPR int P {M+2};
     std::array<int, 8> const move_king{ {-P - 1, -P, -P + 1, -1, 1, P -1, P, P +1} };
     std::size_t current_pos{board.offset(pos.n, pos.m)};
     int posBox{board.m_S_mailbox[current_pos]};
@@ -139,7 +139,7 @@ constexpr std::forward_list<Coord> Piece::get_list_move_king(Board<N, M> const &
             }
         }
     }
-    if constexpr (N == 8 && M == 8)
+    if CONSTEXPR (N == 8 && M == 8)
     {
         if (board.m_q_castle[static_cast<int>(get_color())] && check_path_straight(board, pos, Coord(pos.n, pos.m - 4)))
         {
@@ -154,9 +154,9 @@ constexpr std::forward_list<Coord> Piece::get_list_move_king(Board<N, M> const &
 }
 
 template <std::size_t N, std::size_t M>
-constexpr std::forward_list<Coord> Piece::get_list_move_knight(Board<N, M> const &board, Coord const &pos) const
+CONSTEXPR std::forward_list<Coord> Piece::get_list_move_knight(Board<N, M> const &board, Coord const &pos) const
 {
-    constexpr int P {M+2};
+    CONSTEXPR int P {M+2};
     std::array<int, 8> const move_knight{ {-2*P-1, -P-2, -2*P+1, -P+2, P-2, 2*P-1, 2*P+1, P+2} };
     std::size_t current_pos{board.offset(pos.n, pos.m)};
     int posBox{board.m_S_mailbox[current_pos]};
@@ -178,7 +178,7 @@ constexpr std::forward_list<Coord> Piece::get_list_move_knight(Board<N, M> const
 }
 
 template <std::size_t N, std::size_t M, std::size_t SIZE>
-constexpr std::forward_list<Coord> Piece::get_list_move_rec(Board<N, M> const &board, Coord const &pos, std::array<int, SIZE> const& list_move) const
+CONSTEXPR std::forward_list<Coord> Piece::get_list_move_rec(Board<N, M> const &board, Coord const &pos, std::array<int, SIZE> const& list_move) const
 {
     std::size_t current_pos{board.offset(pos.n, pos.m)};
     int const posBox{board.m_S_mailbox[current_pos]};
@@ -212,33 +212,33 @@ constexpr std::forward_list<Coord> Piece::get_list_move_rec(Board<N, M> const &b
 }
 
 template <std::size_t N, std::size_t M>
-constexpr std::forward_list<Coord> Piece::get_list_move_bishop(Board<N, M> const &board, Coord const &pos) const
+CONSTEXPR std::forward_list<Coord> Piece::get_list_move_bishop(Board<N, M> const &board, Coord const &pos) const
 {
-    constexpr int P {M+2};
+    CONSTEXPR int P {M+2};
     std::array<int, 4> const move_bishop{ {-P -1, -P +1, P -1, P +1} };
     return get_list_move_rec(board, pos, move_bishop);
 }
 
 template <std::size_t N, std::size_t M>
-constexpr std::forward_list<Coord> Piece::get_list_move_rook(Board<N, M> const &board, Coord const &pos) const
+CONSTEXPR std::forward_list<Coord> Piece::get_list_move_rook(Board<N, M> const &board, Coord const &pos) const
 {
-    constexpr int P {M+2};
+    CONSTEXPR int P {M+2};
     std::array<int, 4> const move_rook{ {-P , 1, P , -1} };
     return get_list_move_rec(board, pos, move_rook);
 }
 
 template <std::size_t N, std::size_t M>
-constexpr std::forward_list<Coord> Piece::get_list_move_queen(Board<N, M> const &board, Coord const &pos) const
+CONSTEXPR std::forward_list<Coord> Piece::get_list_move_queen(Board<N, M> const &board, Coord const &pos) const
 {
-    constexpr int P {M+2};
+    CONSTEXPR int P {M+2};
     std::array<int, 8> const move_queen{ {-P - 1, -P, -P + 1, -1, 1, P -1, P, P +1} };
     return get_list_move_rec(board, pos, move_queen);
 }
 
 template <std::size_t N, std::size_t M>
-constexpr std::forward_list<Coord> Piece::get_list_move_pawn(Board<N, M> const &board, Coord const &pos) const
+CONSTEXPR std::forward_list<Coord> Piece::get_list_move_pawn(Board<N, M> const &board, Coord const &pos) const
 {
-    constexpr int P {M+2};
+    CONSTEXPR int P {M+2};
     auto sign_color {
         [](Color color)
         {
@@ -282,7 +282,7 @@ constexpr std::forward_list<Coord> Piece::get_list_move_pawn(Board<N, M> const &
 
 
 template <std::size_t N, std::size_t M>
-constexpr std::forward_list<Coord> Piece::get_list_move(Board<N, M> const &board, Coord const &pos) const
+CONSTEXPR std::forward_list<Coord> Piece::get_list_move(Board<N, M> const &board, Coord const &pos) const
 {
     switch (get_type())
     {
@@ -304,7 +304,7 @@ constexpr std::forward_list<Coord> Piece::get_list_move(Board<N, M> const &board
 }
 
 template <std::size_t N, std::size_t M>
-constexpr bool Piece::is_legal(Board<N, M> const &board, Coord const &dpt, Coord const &arv) const
+CONSTEXPR bool Piece::is_legal(Board<N, M> const &board, Coord const &dpt, Coord const &arv) const
 {
     return true; // A faire
 }

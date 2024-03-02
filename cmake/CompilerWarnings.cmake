@@ -39,7 +39,7 @@ function(set_target_warnings target)
 	if (NOT MINGW)
 		set (FORTIFY -D_FORTIFY_SOURCE=2 -fstack-protector-strong -fstack-clash-protection -fPIE)
 		if (NOT MSVC)
-			set (CMAKE_CXX_FLAGS_DEBUG "-g -O2" CACHE INTERNAL "debug flags")
+			set (CMAKE_CXX_FLAGS_DEBUG "-g" CACHE INTERNAL "debug flags")
 		endif (NOT MSVC)
 	endif (NOT MINGW)
 
