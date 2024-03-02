@@ -4,7 +4,7 @@
 #include "check_path.hpp"
 
 template <std::size_t N, std::size_t M>
-constexpr bool check_path_straight(Board<N, M> const& board, Coord const &dpt, Coord const &arv) noexcept
+CONSTEXPR bool check_path_straight(Board<N, M> const& board, Coord const &dpt, Coord const &arv) noexcept
 {
     if (dpt.n == arv.n)
     {
@@ -17,11 +17,11 @@ constexpr bool check_path_straight(Board<N, M> const& board, Coord const &dpt, C
         }
         return true;
     }
-    else if (dpt.m == dpt.m)
+    else if (dpt.m == arv.m)
     {
         for (std::size_t i{std::min(dpt.n, arv.n) + 1}; i < std::max(dpt.n, arv.n); i++)
         {
-            if (board(dpt.n, i) != nullptr)
+            if (board(i, dpt.m) != nullptr)
             {
                 return false;
             }
@@ -32,7 +32,7 @@ constexpr bool check_path_straight(Board<N, M> const& board, Coord const &dpt, C
 }
 
 template <std::size_t N, std::size_t M>
-constexpr bool check_path_diagonal(Board<N, M> const& board, Coord const &dpt, Coord const &arv) noexcept
+CONSTEXPR bool check_path_diagonal(Board<N, M> const& board, Coord const &dpt, Coord const &arv) noexcept
 {
     std::size_t const max_lines{std::max(dpt.n, arv.n)};
     std::size_t const min_lines{std::min(dpt.n, arv.n)};
@@ -56,24 +56,24 @@ constexpr bool check_path_diagonal(Board<N, M> const& board, Coord const &dpt, C
 }
 
 template <std::size_t N, std::size_t M>
-constexpr bool check_path_straight_1_instance(Board<N, M> const &board, Coord const &dpt, Coord const &arv, std::size_t position)
+CONSTEXPR bool check_path_straight_1_instance(Board<N, M> const &board, Coord const &dpt, Coord const &arv, std::size_t position)
 {
     if (dpt.n == arv.n)
     {
         for (std::size_t i{std::min(dpt.m, arv.m) + 1}; i < std::max(dpt.m, arv.m); i++)
         {
-            if (!board.m_board[position].first[board.offset(dpt.n, i)])
+            if (board.m_board[position].first[board.offset(dpt.n, i)])
             {
                 return false;
             }
         }
         return true;
     }
-    else if (dpt.m == dpt.m)
+    else if (dpt.m == arv.m)
     {
         for (std::size_t i{std::min(dpt.n, arv.n) + 1}; i < std::max(dpt.n, arv.n); i++)
         {
-            if (!board.m_board[position].first[board.offset(i, dpt.m)])
+            if (board.m_board[position].first[board.offset(i, dpt.m)])
             {
                 return false;
             }
@@ -84,7 +84,7 @@ constexpr bool check_path_straight_1_instance(Board<N, M> const &board, Coord co
 }
 
 template <std::size_t N, std::size_t M>
-constexpr bool check_path_diagonal_1_instance(Board<N, M> const &board, Coord const &dpt, Coord const &arv, std::size_t position)
+CONSTEXPR bool check_path_diagonal_1_instance(Board<N, M> const &board, Coord const &dpt, Coord const &arv, std::size_t position)
 {
     std::size_t const max_lines{std::max(dpt.n, arv.n)};
     std::size_t const min_lines{std::min(dpt.n, arv.n)};
