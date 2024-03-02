@@ -5,48 +5,50 @@
 #include <complex>
 #include <array>
 #include <CMatrix.hpp>
+#include <constexpr.hpp>
+
 
 template <std::size_t N>
 class Qubit final
 {
 public:
     // Constructeur
-    Qubit() = default;
+    CONSTEXPR Qubit() = default;
 
     /**
      * @brief Construit un nouveau qubit à l'aide d'un tableau de booléen
      * 
      * @param data le tableau de n booléen utilisé pour construire un n-qubit ex : |10> 
      */
-    Qubit(std::array<bool, N> const & data);
-    Qubit(std::array<std::complex<double>, _2POW(N)> && init_list);
+    CONSTEXPR Qubit(std::array<bool, N> const & data);
+    CONSTEXPR Qubit(std::array<std::complex<double>, _2POW(N)> && init_list);
 
     // Copie
-    Qubit(Qubit const &) = delete;
-    Qubit& operator=(Qubit const &) = delete;
+    CONSTEXPR Qubit(Qubit const &) = delete;
+    CONSTEXPR Qubit& operator=(Qubit const &) = delete;
 
     // Mouvement
-    Qubit(Qubit &&) = delete;
-    Qubit& operator=(Qubit &&) = delete;
+    CONSTEXPR Qubit(Qubit &&) = delete;
+    CONSTEXPR Qubit& operator=(Qubit &&) = delete;
 
     // Destructeur
-    ~Qubit() = default;
+    CONSTEXPR ~Qubit() = default;
 
     template <std::size_t M>
-    friend Qubit<M> operator*(CMatrix<_2POW(M)> const& lhs, Qubit<M> const& rhs);
+    friend CONSTEXPR Qubit<M> operator*(CMatrix<_2POW(M)> const& lhs, Qubit<M> const& rhs);
 
     template <std::size_t M>
     friend std::ostream &operator<<(std::ostream &out, Qubit<M> const &qubit);
 
     template <std::size_t M>
-    friend std::array<std::pair<std::array<bool , M>, std::complex<double>>, 2> qubitToArray (Qubit<M> const & qubit); 
+    friend CONSTEXPR std::array<std::pair<std::array<bool , M>, std::complex<double>>, 2> qubitToArray (Qubit<M> const & qubit); 
 
 private:
     std::array<std::complex<double>, _2POW(N)> m_data;
 };
 
 template <std::size_t N>
-std::array<std::pair<std::array<bool , N>, std::complex<double>>, 2> qubitToArray (Qubit<N> const & qubit); 
+CONSTEXPR std::array<std::pair<std::array<bool , N>, std::complex<double>>, 2> qubitToArray (Qubit<N> const & qubit); 
 
 /**
  * @brief Opérateur du produit entre un qubit et une matrice
@@ -57,7 +59,7 @@ std::array<std::pair<std::array<bool , N>, std::complex<double>>, 2> qubitToArra
  * @return Qubit<M> renvoie le qubit resultant du produit
  */
 template <std::size_t N>
-Qubit<N> operator*(Matrix<std::complex<double>, _2POW(N)> const &lhs, Qubit<N> const &rhs);
+CONSTEXPR Qubit<N> operator*(Matrix<std::complex<double>, _2POW(N)> const &lhs, Qubit<N> const &rhs);
 
 /**
  * @brief Fonction d'affichage des qubit sous forme de liste de nombre complexe

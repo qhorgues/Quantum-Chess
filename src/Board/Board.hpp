@@ -16,6 +16,7 @@
 #include <Coord.hpp>
 #include <forward_list>
 #include <observer_ptr.hpp>
+#include <constexpr.hpp>
 
 class Piece;
 
@@ -24,77 +25,80 @@ class Board final
 {
 public:
     // Constructeur
-    constexpr Board();
-    constexpr Board(std::initializer_list<std::initializer_list<observer_ptr<Piece const>>> const &board);
+    CONSTEXPR Board();
+    CONSTEXPR Board(std::initializer_list<std::initializer_list<observer_ptr<Piece const>>> const &board);
 
     // Copie
-    constexpr Board(Board const &) = delete;
-    constexpr Board &operator=(Board const &) = delete;
+    CONSTEXPR Board(Board const &) = delete;
+    CONSTEXPR Board &operator=(Board const &) = delete;
 
     // Mouvement
-    constexpr Board(Board &&) = default;
-    constexpr Board &operator=(Board &&) = default;
+    CONSTEXPR Board(Board &&) = default;
+    CONSTEXPR Board &operator=(Board &&) = default;
 
     // Destructeur
-    constexpr ~Board() = default;
+    CONSTEXPR ~Board() = default;
 
-    constexpr static std::size_t numberLines() noexcept;
-    constexpr static std::size_t numberColumns() noexcept;
+    CONSTEXPR static std::size_t numberLines() noexcept;
+    CONSTEXPR static std::size_t numberColumns() noexcept;
 
-    constexpr observer_ptr<Piece const> operator()(std::size_t n, std::size_t m) const noexcept;
+    CONSTEXPR observer_ptr<Piece const> operator()(std::size_t n, std::size_t m) const noexcept;
 
-    std::forward_list<Coord> get_list_move(Coord const& pos) const;
+    CONSTEXPR std::forward_list<Coord> get_list_normal_move(Coord const& pos) const;
+    CONSTEXPR std::forward_list<Coord> get_list_split_move(Coord const& pos) const;
+    CONSTEXPR bool move_is_legal(Move const &move) const;
 
-    constexpr double get_proba(Coord const &pos) const noexcept;
+
+    CONSTEXPR double get_proba(Coord const &pos) const noexcept;
     void update_after_merge() noexcept;
 
     // a basculer en private
     template <std::size_t Q>
-    constexpr void move_1_instance(std::array<bool, Q> const &case_modif,
+    CONSTEXPR void move_1_instance(std::array<bool, Q> const &case_modif,
                                    std::size_t position, CMatrix<_2POW(Q)> const &matrix,
                                    std::array<std::size_t, Q> const &tab_positions);
 
-    constexpr void move_split_jump(Coord const &s, Coord const &t1, Coord const &t2);
+    CONSTEXPR void move_split_jump(Coord const &s, Coord const &t1, Coord const &t2);
 
-    constexpr void move_merge_jump(Coord const &s, Coord const &t1, Coord const &t2);
-    constexpr void move_classic_slide(Coord const &s, Coord const &t,
+    CONSTEXPR void move_merge_jump(Coord const &s, Coord const &t1, Coord const &t2);
+    CONSTEXPR void move_classic_slide(Coord const &s, Coord const &t,
                                       std::function<bool(Board<N, M> const&, Coord const &, Coord const &, std::size_t)> check_path);
-    constexpr void move_split_slide(Coord const &s, Coord const &t1, Coord const &t2,
+    CONSTEXPR void move_split_slide(Coord const &s, Coord const &t1, Coord const &t2,
                                     std::function<bool(Board<N, M> const&, Coord const &, Coord const &, std::size_t)> check_path);
-    constexpr void move_merge_slide(Coord const &s1, Coord const &s2, Coord const &t,
+    CONSTEXPR void move_merge_slide(Coord const &s1, Coord const &s2, Coord const &t,
                                     std::function<bool(Board<N, M> const &, Coord const &, Coord const &, std::size_t)> check_path);
                                   
-    constexpr void move_pawn_one_step(Coord const &s, Coord const &t);
-    constexpr void move_pawn_two_step(Coord const &s, Coord const &t);
-    constexpr void capture_pawn(Coord const &s, Coord const &t);
-    constexpr void move_enpassant(Coord const &s, Coord const &t, Coord const &ep);
+    CONSTEXPR void move_pawn_one_step(Coord const &s, Coord const &t);
+    CONSTEXPR void move_pawn_two_step(Coord const &s, Coord const &t);
+    CONSTEXPR void capture_pawn(Coord const &s, Coord const &t);
+    CONSTEXPR void move_enpassant(Coord const &s, Coord const &t, Coord const &ep);
 
-    bool mesure_capture_slide(Coord const &s, Coord const &t,
-                              std::function<bool(Board<N, M> const&, Coord const &, Coord const &, std::size_t)> check_path);
+    CONSTEXPR bool mesure_capture_slide(Coord const &s, Coord const &t,
+                                        std::function<bool(Board<N, M> const&, Coord const &, Coord const &, std::size_t)> check_path);
 
     // a basculer en private
-    constexpr void move_classic_jump(Coord const &s, Coord const &t);
-    constexpr bool mesure(Coord const& p);
+    CONSTEXPR void move_classic_jump(Coord const &s, Coord const &t);
+    CONSTEXPR bool mesure(Coord const& p);
 
     template <std::size_t _N, std::size_t _M>
-    friend constexpr bool check_path_straight_1_instance(Board<_N, _M> const& board, Coord const &dpt, Coord const &arv, std::size_t position);
+    friend CONSTEXPR bool check_path_straight_1_instance(Board<_N, _M> const& board, Coord const &dpt, Coord const &arv, std::size_t position);
     
     template <std::size_t _N, std::size_t _M>
-    friend constexpr bool check_path_diagonal_1_instance(Board<_N, _M> const& board, Coord const &dpt, Coord const &arv, std::size_t position);
+    friend CONSTEXPR bool check_path_diagonal_1_instance(Board<_N, _M> const& board, Coord const &dpt, Coord const &arv, std::size_t position);
 
     friend class Piece;
 
 private:
-    constexpr static std::size_t offset(std::size_t ligne, std::size_t colonne) noexcept;
-    constexpr static std::pair<std::array<bool, N * M>, std::array<observer_ptr<Piece const>, N * M>>
+    CONSTEXPR static std::size_t offset(std::size_t ligne, std::size_t colonne) noexcept;
+    CONSTEXPR static std::pair<std::array<bool, N * M>, std::array<observer_ptr<Piece const>, N * M>>
     initializer_list_to_2_array(std::initializer_list<std::initializer_list<observer_ptr<Piece const>>> const &board) noexcept;
-    constexpr static void init_mailbox(std::array<int, N * M> &S_mailbox, std::array<int, (N+4) * (M+2)> &L_mailbox) noexcept;
+    CONSTEXPR static void init_mailbox(std::array<int, N * M> &S_mailbox, std::array<int, (N+4) * (M+2)> &L_mailbox) noexcept;
     
 
     static double get_random_number_0_1();
 
     template <std::size_t Q>
-    constexpr void modify(std::array<std::pair<std::array<bool, Q>, std::complex<double>>, 2> const &arrayQubit,
+    CONSTEXPR void modify(std::array<std::pair<std::array<bool, Q>, std::complex<double>>, 2> const &arrayQubit,
                           std::size_t position_board, std::array<std::size_t, Q> const &tab_positions);
 
     std::vector<std::pair<std::array<bool, N * M>, std::complex<double>>> m_board;
@@ -110,7 +114,7 @@ private:
 };
 
 template <std::size_t N>
-bool operator==(std::array<bool, N> t1, std::array<bool, N> t2) noexcept;
+CONSTEXPR bool operator==(std::array<bool, N> t1, std::array<bool, N> t2) noexcept;
 
 #include "Board.tpp"
 #endif

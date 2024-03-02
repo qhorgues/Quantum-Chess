@@ -3,11 +3,12 @@
 #include <CMatrix.hpp>
 #include <numbers>
 #include <complex>
+#include <constexpr.hpp>
 
 using namespace std::complex_literals;
 using namespace std::numbers;
 
-constexpr CMatrix<4> MATRIX_ISWAP {
+CONSTEXPR CMatrix<4> MATRIX_ISWAP {
     {
         {1,  0,  0, 0},
         {0,  0, 1i, 0},
@@ -17,7 +18,7 @@ constexpr CMatrix<4> MATRIX_ISWAP {
 };
 
 
-constexpr CMatrix<4> MATRIX_SQRT_ISWAP {
+CONSTEXPR CMatrix<4> MATRIX_SQRT_ISWAP {
     {
         {1,        0,         0, 0},
         {0, 1./sqrt2,  1i/sqrt2, 0},
@@ -26,9 +27,9 @@ constexpr CMatrix<4> MATRIX_SQRT_ISWAP {
     }
 };
 
-constexpr CMatrix<4> MATRIX_JUMP { MATRIX_ISWAP };
+CONSTEXPR CMatrix<4> MATRIX_JUMP { MATRIX_ISWAP };
 
-constexpr CMatrix<8> MATRIX_SLIDE {
+CONSTEXPR CMatrix<8> MATRIX_SLIDE {
     {
         {1, 0, 0, 0, 0, 0, 0, 0},
         {0, 0, 1i, 0, 0, 0, 0, 0 },
@@ -41,7 +42,7 @@ constexpr CMatrix<8> MATRIX_SLIDE {
     }
 };
 
-constexpr CMatrix<8> MATRIX_ISWAP_8 {
+CONSTEXPR CMatrix<8> MATRIX_ISWAP_8 {
     {
         {1, 0, 0, 0, 0, 0, 0, 0},
         {0, 0, 0, 0, 1i, 0, 0, 0 },
@@ -54,7 +55,7 @@ constexpr CMatrix<8> MATRIX_ISWAP_8 {
     }
 };
 
-constexpr CMatrix<8> MATRIX_SQRT_ISWAP_8 {
+CONSTEXPR CMatrix<8> MATRIX_SQRT_ISWAP_8 {
     {
         {1,        0,        0, 0,  0,        0,        0, 0},
         {0, 1./sqrt2, 1i/sqrt2, 0, 1i,        0,        0, 0},
@@ -67,7 +68,7 @@ constexpr CMatrix<8> MATRIX_SQRT_ISWAP_8 {
     }
 };
 
-constexpr CMatrix<8> MATRIX_SPLIT {
+CONSTEXPR CMatrix<8> MATRIX_SPLIT {
     {
         {1,        0,         0,   0,  0,         0,         0, 0},
         {0,        0,         0,   0, 1i,         0,         0, 0},
@@ -79,7 +80,7 @@ constexpr CMatrix<8> MATRIX_SPLIT {
         {0,        0,         0,   0,  0,         0,         0, 1}
     }
 };
-constexpr CMatrix<8> MATRIX_MERGE {
+CONSTEXPR CMatrix<8> MATRIX_MERGE {
     {
         {1,   0,         0,         0,         0,         0,   0,  0},
         {0,   0, -1i/sqrt2,         0, -1i/sqrt2,         0,   0,  0},
@@ -92,7 +93,7 @@ constexpr CMatrix<8> MATRIX_MERGE {
     }
 };
 
-constexpr CMatrix<32> MATRIX_SPLIT_SLIDE {
+CONSTEXPR CMatrix<32> MATRIX_SPLIT_SLIDE {
     CMatrix<16>{
         MATRIX_SPLIT, CMatrix<8>{},
         CMatrix<8>{}, MATRIX_ISWAP_8
@@ -104,7 +105,7 @@ constexpr CMatrix<32> MATRIX_SPLIT_SLIDE {
                                         }
 };
 
-constexpr CMatrix<32> MATRIX_MERGE_SLIDE {
+CONSTEXPR CMatrix<32> MATRIX_MERGE_SLIDE {
     CMatrix<16>{
         MATRIX_MERGE, CMatrix<8>{},
         CMatrix<8>{}, MATRIX_ISWAP_8.transposed()

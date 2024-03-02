@@ -24,6 +24,7 @@ set (HEADERS
     include/CMatrix.hpp
     include/Complex_printer.hpp
     include/Move.hpp
+    include/constexpr.hpp
     src/Piece/TypePiece.hpp
     src/Piece/Piece.hpp
     src/Board/Board.hpp

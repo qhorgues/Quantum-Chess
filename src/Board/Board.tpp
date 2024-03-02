@@ -1,22 +1,31 @@
+// Lib standard
 #include <array>
 #include <initializer_list>
 #include <algorithm>
 #include <cassert>
 #include <utility>
-#include <CMatrix.hpp>
-#include <Qubit.hpp>
 #include <random>
 #include <functional>
 #include <cmath>
 #include <optional>
+
+// Inclusion projet
+#include <Qubit.hpp>
 #include <Piece.hpp>
+#include <CMatrix.hpp>
 #include <Unitary.hpp>
 #include <Piece.hpp>
 #include <math_utility.hpp>
+#include <constexpr.hpp>
 #include "Board.hpp"
 
+bool operator==(Coord const& lhs, Coord const& rhs)
+{
+    return lhs.n == rhs.n && lhs.m == rhs.m;
+}
+
 template <std::size_t N, std::size_t M>
-constexpr Board<N, M>::Board()
+CONSTEXPR Board<N, M>::Board()
     : m_board(),
       m_piece_board(),
       m_S_mailbox(),
@@ -31,7 +40,7 @@ constexpr Board<N, M>::Board()
 };
 
 template <std::size_t N, std::size_t M>
-constexpr Board<N, M>::Board(std::initializer_list<std::initializer_list<observer_ptr<Piece const>>> const &board)
+CONSTEXPR Board<N, M>::Board(std::initializer_list<std::initializer_list<observer_ptr<Piece const>>> const &board)
     : m_board(),
       m_piece_board(),
       m_S_mailbox(),
@@ -48,25 +57,25 @@ constexpr Board<N, M>::Board(std::initializer_list<std::initializer_list<observe
 };
 
 template <std::size_t N, std::size_t M>
-constexpr std::size_t Board<N, M>::offset(std::size_t ligne, std::size_t colonne) noexcept
+CONSTEXPR std::size_t Board<N, M>::offset(std::size_t ligne, std::size_t colonne) noexcept
 {
     return ligne * M + colonne;
 };
 
 template <std::size_t N, std::size_t M>
-constexpr std::size_t Board<N, M>::numberLines() noexcept
+CONSTEXPR std::size_t Board<N, M>::numberLines() noexcept
 {
     return N;
 };
 
 template <std::size_t N, std::size_t M>
-constexpr std::size_t Board<N, M>::numberColumns() noexcept
+CONSTEXPR std::size_t Board<N, M>::numberColumns() noexcept
 {
     return M;
 };
 
 template <std::size_t N, std::size_t M>
-constexpr std::pair<std::array<bool, N * M>, std::array<observer_ptr<Piece const>, N * M>>
+CONSTEXPR std::pair<std::array<bool, N * M>, std::array<observer_ptr<Piece const>, N * M>>
 Board<N, M>::initializer_list_to_2_array(std::initializer_list<std::initializer_list<observer_ptr<Piece const>>> const &board) noexcept
 {
     std::pair<std::array<bool, N * M>, std::array<observer_ptr<Piece const>, N * M>> p{};
@@ -97,7 +106,7 @@ Board<N, M>::initializer_list_to_2_array(std::initializer_list<std::initializer_
 }
 
 template <std::size_t N, std::size_t M>
-constexpr void Board<N, M>::init_mailbox(std::array<int, N * M> &S_mailbox, std::array<int, (N + 4) * (M + 2)> &L_mailbox) noexcept
+CONSTEXPR void Board<N, M>::init_mailbox(std::array<int, N * M> &S_mailbox, std::array<int, (N + 4) * (M + 2)> &L_mailbox) noexcept
 {
     std::fill(std::begin(L_mailbox), std::begin(L_mailbox) + (2 * (M + 2) + 1), -1);
     std::fill(std::end(L_mailbox) - (2 * (M + 2) + 1), std::end(L_mailbox), -1);
@@ -118,7 +127,7 @@ constexpr void Board<N, M>::init_mailbox(std::array<int, N * M> &S_mailbox, std:
 }
 
 template <std::size_t N, std::size_t M>
-constexpr double Board<N, M>::get_proba(Coord const &pos) const noexcept
+CONSTEXPR double Board<N, M>::get_proba(Coord const &pos) const noexcept
 {
     std::size_t size_array{std::size(m_board)};
     double acc{0.};
@@ -130,11 +139,21 @@ constexpr double Board<N, M>::get_proba(Coord const &pos) const noexcept
 }
 
 template <std::size_t N, std::size_t M>
-std::forward_list<Coord> Board<N, M>::get_list_move(Coord const& pos) const
+CONSTEXPR std::forward_list<Coord> Board<N, M>::get_list_normal_move(Coord const& pos) const
 {
     if ((*this)(pos.n, pos.m) != nullptr)
     {
-        return (*this)(pos.n, pos.m)->get_list_move(*this, pos);
+        return (*this)(pos.n, pos.m)->get_list_normal_move(*this, pos);
+    }
+    return std::forward_list<Coord>{};
+}
+
+template <std::size_t N, std::size_t M>
+CONSTEXPR std::forward_list<Coord> Board<N, M>::get_list_split_move(Coord const& pos) const
+{
+    if ((*this)(pos.n, pos.m) != nullptr)
+    {
+        return (*this)(pos.n, pos.m)->get_list_split_move(*this, pos);
     }
     return std::forward_list<Coord>{};
 }
@@ -157,7 +176,7 @@ double Board<N, M>::get_random_number_0_1()
  * @return false Sinon
  */
 template <std::size_t N, std::size_t M>
-constexpr bool Board<N, M>::mesure(Coord const &p)
+CONSTEXPR bool Board<N, M>::mesure(Coord const &p)
 {
 
     observer_ptr<Piece const> p_actuelle = (*this)(p.n, p.m);
@@ -219,7 +238,7 @@ constexpr bool Board<N, M>::mesure(Coord const &p)
  * @return false Sinon
  */
 template <std::size_t N, std::size_t M>
-bool Board<N, M>::mesure_capture_slide(Coord const &s, Coord const &t,
+CONSTEXPR bool Board<N, M>::mesure_capture_slide(Coord const &s, Coord const &t,
                                        std::function<bool(Board<N, M> const &, Coord const &, Coord const &, std::size_t)> check_path)
 {
     std::size_t position = offset(s.n, s.m);
@@ -285,7 +304,7 @@ bool Board<N, M>::mesure_capture_slide(Coord const &s, Coord const &t,
  */
 template <std::size_t N, std::size_t M>
 template <std::size_t Q>
-constexpr void Board<N, M>::modify(std::array<std::pair<std::array<bool, Q>, std::complex<double>>, 2> const &arrayQubit,
+CONSTEXPR void Board<N, M>::modify(std::array<std::pair<std::array<bool, Q>, std::complex<double>>, 2> const &arrayQubit,
                                    std::size_t position_board, std::array<std::size_t, Q> const &tab_positions)
 
 {
@@ -327,7 +346,7 @@ constexpr void Board<N, M>::modify(std::array<std::pair<std::array<bool, Q>, std
  */
 template <std::size_t N, std::size_t M>
 template <std::size_t Q>
-constexpr void Board<N, M>::move_1_instance(std::array<bool, Q> const &case_modif,
+CONSTEXPR void Board<N, M>::move_1_instance(std::array<bool, Q> const &case_modif,
                                             std::size_t position, CMatrix<_2POW(Q)> const &matrix,
                                             std::array<std::size_t, Q> const &tab_positions)
 {
@@ -345,7 +364,7 @@ constexpr void Board<N, M>::move_1_instance(std::array<bool, Q> const &case_modi
  * @param t Coordonnées de la cible du mouvement
  */
 template <std::size_t N, std::size_t M>
-constexpr void Board<N, M>::move_classic_jump(Coord const &s, Coord const &t)
+CONSTEXPR void Board<N, M>::move_classic_jump(Coord const &s, Coord const &t)
 {
     std::size_t source = offset(s.n, s.m);
     std::size_t target = offset(t.n, t.m);
@@ -402,7 +421,7 @@ constexpr void Board<N, M>::move_classic_jump(Coord const &s, Coord const &t)
  * @param t Coordonnées de la cible
  */
 template <std::size_t N, std::size_t M>
-constexpr void Board<N, M>::move_pawn_one_step(Coord const &s, Coord const &t)
+CONSTEXPR void Board<N, M>::move_pawn_one_step(Coord const &s, Coord const &t)
 {
     std::size_t source = offset(s.n, s.m);
     std::size_t target = offset(t.n, t.m);
@@ -442,7 +461,7 @@ constexpr void Board<N, M>::move_pawn_one_step(Coord const &s, Coord const &t)
  * @param t Coordonnées de la cible
  */
 template <std::size_t N, std::size_t M>
-constexpr void Board<N, M>::move_pawn_two_step(Coord const &s, Coord const &t)
+CONSTEXPR void Board<N, M>::move_pawn_two_step(Coord const &s, Coord const &t)
 
 {
     std::size_t source = offset(s.n, s.m);
@@ -474,7 +493,7 @@ constexpr void Board<N, M>::move_pawn_two_step(Coord const &s, Coord const &t)
 }
 
 template <std::size_t N, std::size_t M>
-constexpr void Board<N, M>::capture_pawn(Coord const &s, Coord const &t)
+CONSTEXPR void Board<N, M>::capture_pawn(Coord const &s, Coord const &t)
 {
     std::size_t source = offset(s.n, s.m);
     std::size_t target = offset(t.n, t.m);
@@ -501,7 +520,7 @@ constexpr void Board<N, M>::capture_pawn(Coord const &s, Coord const &t)
  * @param ep Les coordonnées du pion capturer "en passant"
  */
 template <std::size_t N, std::size_t M>
-constexpr void Board<N, M>::move_enpassant(Coord const &s, Coord const &t, Coord const &ep)
+CONSTEXPR void Board<N, M>::move_enpassant(Coord const &s, Coord const &t, Coord const &ep)
 {
     std::size_t source = offset(s.n, s.m);
     std::size_t target = offset(t.n, t.m);
@@ -579,7 +598,7 @@ constexpr void Board<N, M>::move_enpassant(Coord const &s, Coord const &t, Coord
  * @param t2 Coordonnées de la cible 2 (qui doit être vide)
  */
 template <std::size_t N, std::size_t M>
-constexpr void Board<N, M>::move_split_jump(Coord const &s, Coord const &t1, Coord const &t2)
+CONSTEXPR void Board<N, M>::move_split_jump(Coord const &s, Coord const &t1, Coord const &t2)
 {
     std::size_t const source = offset(s.n, s.m);
     std::size_t const target1 = offset(t1.n, t1.m);
@@ -605,7 +624,7 @@ constexpr void Board<N, M>::move_split_jump(Coord const &s, Coord const &t1, Coo
  * @param t Coordonnées de la cible
  */
 template <std::size_t N, std::size_t M>
-constexpr void Board<N, M>::move_merge_jump(Coord const &s1, Coord const &s2, Coord const &t)
+CONSTEXPR void Board<N, M>::move_merge_jump(Coord const &s1, Coord const &s2, Coord const &t)
 {
     std::size_t source1 = offset(s1.n, s1.m);
     std::size_t source2 = offset(s2.n, s2.m);
@@ -631,7 +650,7 @@ constexpr void Board<N, M>::move_merge_jump(Coord const &s1, Coord const &s2, Co
  * @param check_path  Fonction qui permet de vérifier la présence d'une pièce entre la source et la cible sur une instance du plateau
  */
 template <std::size_t N, std::size_t M>
-constexpr void Board<N, M>::move_classic_slide(Coord const &s, Coord const &t,
+CONSTEXPR void Board<N, M>::move_classic_slide(Coord const &s, Coord const &t,
                                                std::function<bool(Board<N, M> const &, Coord const &, Coord const &, std::size_t)> check_path)
 {
     std::size_t source = offset(s.n, s.m);
@@ -691,7 +710,7 @@ constexpr void Board<N, M>::move_classic_slide(Coord const &s, Coord const &t,
  * @param check_path Fonction qui permet de vérifier la présence d'une pièce entre la source et la cible sur une instance du plateau
  */
 template <std::size_t N, std::size_t M>
-constexpr void Board<N, M>::move_split_slide(Coord const &s, Coord const &t1, Coord const &t2,
+CONSTEXPR void Board<N, M>::move_split_slide(Coord const &s, Coord const &t1, Coord const &t2,
                                              std::function<bool(Board<N, M> const &, Coord const &, Coord const &, std::size_t)> check_path)
 {
     std::size_t source = offset(s.n, s.m);
@@ -719,7 +738,7 @@ constexpr void Board<N, M>::move_split_slide(Coord const &s, Coord const &t1, Co
  * @param check_path Fonction qui permet de vérifier la présence d'une pièce entre la source et la cible sur une instance du plateau
  */
 template <std::size_t N, std::size_t M>
-constexpr void Board<N, M>::move_merge_slide(Coord const &s1, Coord const &s2, Coord const &t,
+CONSTEXPR void Board<N, M>::move_merge_slide(Coord const &s1, Coord const &s2, Coord const &t,
                                              std::function<bool(Board<N, M> const &, Coord const &, Coord const &, std::size_t)> check_path)
 {
     std::size_t const source1 = offset(s1.n, s1.m);
@@ -737,13 +756,13 @@ constexpr void Board<N, M>::move_merge_slide(Coord const &s1, Coord const &s2, C
 }
 
 template <std::size_t N, std::size_t M>
-constexpr observer_ptr<Piece const> Board<N, M>::operator()(std::size_t n, std::size_t m) const noexcept
+CONSTEXPR observer_ptr<Piece const> Board<N, M>::operator()(std::size_t n, std::size_t m) const noexcept
 {
     return m_piece_board[offset(n, m)];
 }
 
 template <std::size_t N>
-bool operator==(std::array<bool, N> t1, std::array<bool, N> t2) noexcept
+CONSTEXPR bool operator==(std::array<bool, N> t1, std::array<bool, N> t2) noexcept
 {
     for (std::size_t i{0}; i < N; i++)
     {
@@ -778,4 +797,41 @@ void Board<N, M>::update_after_merge() noexcept
             }
         }
     }
+}
+
+template <std::size_t N, std::size_t M>
+CONSTEXPR bool Board<N, M>::move_is_legal(Move const &move) const
+{
+    if (move.type == TypeMove::NORMAL)
+    {
+        auto list { get_list_normal_move(move.normal.src) };
+        return std::find(std::begin(list), std::end(list), move.normal.arv) != std::end(list);
+    }
+    else if (move.type == TypeMove::SPLIT)
+    {
+        std::forward_list<Coord> list { get_list_split_move(move.split.src) };
+        std::array<bool, 2> found {};
+        std::array<Coord, 2> arv { {move.split.arv1, move.split.arv2} };
+        for (Coord const& e : list)
+        {
+            for (std::size_t i {0}; i < std::size(arv); i++)
+            {
+                if (e == arv[i])
+                {
+                    found[i] = true;
+                }
+            }
+            if (std::all_of(std::begin(found), std::end(found), [](bool v) -> bool { return v; }))
+            {
+                break;
+            }
+        }
+    }
+    else if (move.type == TypeMove::MERGE)
+    {
+        std::forward_list<Coord> list1 { get_list_split_move(move.merge.src1) };
+        std::forward_list<Coord> list2 { get_list_split_move(move.merge.src2) };
+
+    }
+
 }
