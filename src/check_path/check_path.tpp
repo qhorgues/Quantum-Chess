@@ -1,7 +1,7 @@
 #include <algorithm>
 #include <Board.hpp>
 #include <Coord.hpp>
-#include <constexpr.hpp>
+#include <Constexpr.hpp>
 #include "check_path.hpp"
 
 template <std::size_t N, std::size_t M>
@@ -63,18 +63,18 @@ CONSTEXPR bool check_path_straight_1_instance(Board<N, M> const &board, Coord co
     {
         for (std::size_t i{std::min(dpt.m, arv.m) + 1}; i < std::max(dpt.m, arv.m); i++)
         {
-            if (!board.m_board[position].first[board.offset(dpt.n, i)])
+            if (board.m_board[position].first[board.offset(dpt.n, i)])
             {
                 return false;
             }
         }
         return true;
     }
-    else if (dpt.m == dpt.m)
+    else if (dpt.m == arv.m)
     {
         for (std::size_t i{std::min(dpt.n, arv.n) + 1}; i < std::max(dpt.n, arv.n); i++)
         {
-            if (!board.m_board[position].first[board.offset(i, dpt.m)])
+            if (board.m_board[position].first[board.offset(i, dpt.m)])
             {
                 return false;
             }

@@ -328,7 +328,10 @@ CONSTEXPR void Board<N, M>::modify(std::array<std::pair<std::array<bool, Q>, std
     }
     for (std::size_t i{0}; i < Q; i++)
     {
+        if (tab_positions[i] < N*M+1)
+        {
         m_board[position_board].first[tab_positions[i]] = arrayQubit[0].first[i];
+        }
     }
     m_board[position_board].second *= arrayQubit[0].second;
 }
@@ -719,8 +722,9 @@ CONSTEXPR void Board<N, M>::move_split_slide(Coord const &s, Coord const &t1, Co
     std::size_t const size_board{std::size(m_board)};
     for (std::size_t i{0}; i < size_board; i++)
     {
-        move_1_instance(std::array<bool, 5>{check_path(*this, s, t2, i), check_path(*this, s, t1, i), m_board[i].first[target2], m_board[i].first[target1], m_board[i].first[source]}, i,
-                        MATRIX_SPLIT_SLIDE, std::array<std::size_t, 3>{N * M + 1, N * M + 1, target2, target1, source});
+        move_1_instance(std::array<bool, 5>{!check_path(*this, s, t2, i), !check_path(*this, s, t1, i), m_board[i].first[target2], m_board[i].first[target1], m_board[i].first[source]}, i,
+                        MATRIX_SPLIT_SLIDE, std::array<std::size_t, 5>{N * M + 1, N * M + 1, target2, target1, source});
+                        //La matrice split slide est créée pour pour être utlisé sans appliquer de porte cnot au chemin, nos fonctions check_path renvoie un résultat où l'on a appliquer la porte cnot
     }
     m_piece_board[target1] = m_piece_board[source];
     m_piece_board[target2] = m_piece_board[source];
@@ -747,8 +751,9 @@ CONSTEXPR void Board<N, M>::move_merge_slide(Coord const &s1, Coord const &s2, C
     std::size_t const size_board{std::size(m_board)};
     for (std::size_t i{0}; i < size_board; i++)
     {
-        move_1_instance(std::array<bool, 5>{check_path(*this, s2, t, i), check_path(*this, s1, t, i), m_board[i].first[source1], m_board[i].first[source2], m_board[i].first[target]}, i,
+        move_1_instance(std::array<bool, 5>{!check_path(*this, s2, t, i), !check_path(*this, s1, t, i), m_board[i].first[source1], m_board[i].first[source2], m_board[i].first[target]}, i,
                         MATRIX_MERGE_SLIDE, std::array<std::size_t, 5>{N * M + 1, N * M + 1, source1, source2, target});
+                        //La matrice merge slide est créée pour pour être utlisé sans appliquer de porte cnot au chemin, nos fonctions check_path renvoie un résultat où l'on a appliquer la porte cnot
     }
     m_piece_board[target] = m_piece_board[source1];
     m_piece_board[source2] = nullptr;

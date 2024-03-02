@@ -16,7 +16,7 @@
 #include <Coord.hpp>
 #include <forward_list>
 #include <observer_ptr.hpp>
-#include <constexpr.hpp>
+#include <Constexpr.hpp>
 
 class Piece;
 
@@ -47,7 +47,6 @@ public:
     CONSTEXPR std::forward_list<Coord> get_list_normal_move(Coord const& pos) const;
     CONSTEXPR std::forward_list<Coord> get_list_split_move(Coord const& pos) const;
     CONSTEXPR bool move_is_legal(Move const &move) const;
-
 
     CONSTEXPR double get_proba(Coord const &pos) const noexcept;
     void update_after_merge() noexcept;

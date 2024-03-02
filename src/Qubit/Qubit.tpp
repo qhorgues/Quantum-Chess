@@ -100,7 +100,9 @@ CONSTEXPR std::array<std::pair<std::array<bool, N>, std::complex<double>>, 2> qu
             if (b)
             {
                 tab[0].second = qubit.m_data[i];
-                b = false;
+                 b = false;
+                if(i != pow -1)
+                {
                 while (tab[1].first[compteur - 1])
                 {
                     tab[1].first[compteur - 1] = false;
@@ -108,6 +110,7 @@ CONSTEXPR std::array<std::pair<std::array<bool, N>, std::complex<double>>, 2> qu
                 }
                 tab[1].first[compteur - 1] = true;
                 compteur = N;
+                }
             }
             else
             {

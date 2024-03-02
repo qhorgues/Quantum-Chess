@@ -3,7 +3,7 @@
 #include <CMatrix.hpp>
 #include <numbers>
 #include <complex>
-#include <constexpr.hpp>
+#include <Constexpr.hpp>
 
 using namespace std::complex_literals;
 using namespace std::numbers;

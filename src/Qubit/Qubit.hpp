@@ -5,8 +5,7 @@
 #include <complex>
 #include <array>
 #include <CMatrix.hpp>
-#include <constexpr.hpp>
-
+#include <Constexpr.hpp>
 
 template <std::size_t N>
 class Qubit final

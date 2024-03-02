@@ -24,7 +24,7 @@ set (HEADERS
     include/CMatrix.hpp
     include/Complex_printer.hpp
     include/Move.hpp
-    include/constexpr.hpp
+    include/Constexpr.hpp
     src/Piece/TypePiece.hpp
     src/Piece/Piece.hpp
     src/Board/Board.hpp
@@ -63,7 +63,7 @@ include_directories(${header_list})
 set (CMAKE_CXX_STANDARD 20)
 set (CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set_sanitizer()
+#set_sanitizer()
 
 if (MINGW)
     set (CMAKE_EXE_LINKER_FLAGS "-static-libgcc -static-libstdc++ -static")

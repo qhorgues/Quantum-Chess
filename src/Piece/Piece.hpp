@@ -8,6 +8,7 @@
 #include <forward_list>
 #include <constexpr.hpp>
 #include "TypePiece.hpp"
+#include <Constexpr.hpp>
 
 enum class Move_Mode {
     NORMAL,

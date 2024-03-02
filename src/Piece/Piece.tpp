@@ -4,7 +4,7 @@
 #include <cmath>
 #include <forward_list>
 #include <observer_ptr.hpp>
-#include <constexpr.hpp>
+#include <Constexpr.hpp>
 #include <Move.hpp>
 
 #define POW2(x) ((x) * (x))
