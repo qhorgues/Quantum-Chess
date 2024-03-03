@@ -166,15 +166,6 @@ double Board<N, M>::get_random_number_0_1()
     return gen(rd);
 }
 
-/**
- * @brief Mesure la présence d'une pièce
- *
- * @tparam N Le nombre de lignes du plateau
- * @tparam M Le nombre de colonnes du plateau
- * @param position La position de la pièce mesurée
- * @return true Si la pièce est présente sur la case position
- * @return false Sinon
- */
 template <std::size_t N, std::size_t M>
 CONSTEXPR bool Board<N, M>::mesure(Coord const &p)
 {
@@ -226,17 +217,7 @@ CONSTEXPR bool Board<N, M>::mesure(Coord const &p)
         return mes;
     }
 }
-/**
- * @brief Fonction qui permet de faire une mesure dans le cas d'un mouvement "capture slide"
- *
- * @tparam N Le nombre de lignes du plateau
- * @tparam M Le nombre de colonnes du plateau
- * @param s Coordonnées de la source du mouvement
- * @param t Coordonnées de la cible du mouvement
- * @param check_path Fonction qui permet de vérifier si il y a une pièce entre la source et la cible sur une instance du plateau
- * @return true Si la mesure indique de faire le mouvement
- * @return false Sinon
- */
+
 template <std::size_t N, std::size_t M>
 CONSTEXPR bool Board<N, M>::mesure_capture_slide(Coord const &s, Coord const &t,
                                        std::function<bool(Board<N, M> const &, Coord const &, Coord const &, std::size_t)> check_path)
@@ -289,19 +270,7 @@ CONSTEXPR bool Board<N, M>::mesure_capture_slide(Coord const &s, Coord const &t,
     }
 }
 
-/**
- * @brief fonction auxiliaire qui permet de modifier un plateau à l'aide d'un array
- * de la forme du type de retour de la fonction qubitToArray,
- * le deuxième éléments du tableau à une probalité non nulle lors d'un mouv split
- *
- * @tparam Q La taille du qubit
- * @tparam N Le nombre de ligne du plateau
- * @tparam M Le nombre de collone du plateau
- * @param arrayQubit Type de retour de la fonction quibitToArray, représente la facon dont va être modifier m_board
- * @param position_board  L'indice du plateau dans le tableau de toutes les instances du plateau
- * @param tab_positions Tableau des indices des cases modifiées,
-  on utilise N*M+1 pour signifier que le qubit en question est un qubit auxiliaire qui ne modifie pas le board
- */
+
 template <std::size_t N, std::size_t M>
 template <std::size_t Q>
 CONSTEXPR void Board<N, M>::modify(std::array<std::pair<std::array<bool, Q>, std::complex<double>>, 2> const &arrayQubit,
@@ -335,18 +304,7 @@ CONSTEXPR void Board<N, M>::modify(std::array<std::pair<std::array<bool, Q>, std
     }
     m_board[position_board].second *= arrayQubit[0].second;
 }
-/**
- * @brief Fonction qui permet d'effectuer un mouvement sur une instance du plateau
- *
- * @tparam N Le nombre de ligne du plateau
- * @tparam M Le nombre de colonnes du plateau
- * @tparam Q La taille du qubit
- * @param case_modif Permet d'initialiser le qubit
- * @param position L'instance du plateau modifiée
- * @param matrix La matrice du mouvement que l'on veut effectuer
- * @param tab_positions La position sur le plateau des variables utilisées dans le qubit,
-  que l'on met à N*M+1 si les variables ne représentent pas des pièces
- */
+
 template <std::size_t N, std::size_t M>
 template <std::size_t Q>
 CONSTEXPR void Board<N, M>::move_1_instance(std::array<bool, Q> const &case_modif,
@@ -358,14 +316,7 @@ CONSTEXPR void Board<N, M>::move_1_instance(std::array<bool, Q> const &case_modi
     modify(std::move(x), position, tab_positions);
 }
 
-/**
- * @brief Mouvement classique d'une pièce qui "saute" (cavalier, roi ou pion)
- *
- * @tparam N Le nombre de ligne du plateau
- * @tparam M Le nombre de colonnes du plateau
- * @param s Coordonnées de la source du mouvement
- * @param t Coordonnées de la cible du mouvement
- */
+
 template <std::size_t N, std::size_t M>
 CONSTEXPR void Board<N, M>::move_classic_jump(Coord const &s, Coord const &t)
 {
@@ -414,15 +365,7 @@ CONSTEXPR void Board<N, M>::move_classic_jump(Coord const &s, Coord const &t)
         }
     }
 }
-/**
- * @brief Le mouvement de piond'une case fonctionne comme un mouvement de jump classique, à la différence qu'un pion ne peut pas capturer une pièce en avançant,
- on mesure de la même façon qu'un jump classique en considérant toutes les pièces comme des pièces alliées
- *
- * @tparam N Le nombre de lignes du plateau
- * @tparam M Le nombre de colonnes du plateau
- * @param s Coordonnées de la source
- * @param t Coordonnées de la cible
- */
+
 template <std::size_t N, std::size_t M>
 CONSTEXPR void Board<N, M>::move_pawn_one_step(Coord const &s, Coord const &t)
 {
@@ -454,15 +397,7 @@ CONSTEXPR void Board<N, M>::move_pawn_one_step(Coord const &s, Coord const &t)
         }
     }
 }
-/**
- * @brief Le mouvement de piond'une case fonctionne comme un mouvement de slide classique, à la différence qu'un pion ne peut pas capturer une pièce en avançant,
- on mesure de la même façon qu'un slide classique en considérant toutes les pièces comme des pièces alliées
- * @warning Aucun test sur la possibilité de faire un mouvement de deux cases du pion, pas de mise a jour du board sur la prise en passant
- * @tparam N Le nombre de lignes du plateau
- * @tparam M Le nombre de colonnes du plateau
- * @param s Coordonnées de la source
- * @param t Coordonnées de la cible
- */
+
 template <std::size_t N, std::size_t M>
 CONSTEXPR void Board<N, M>::move_pawn_two_step(Coord const &s, Coord const &t)
 
@@ -513,15 +448,7 @@ CONSTEXPR void Board<N, M>::capture_pawn(Coord const &s, Coord const &t)
         }
     }
 }
-/**
- * @brief Permet d'effectuer un mouvement de prise en passant
- * @warning Aucun test sur la validité de la cible et de la cible en passant, ni sur le type de la pièce
- * @tparam N Le nombre de lignes du plateau
- * @tparam M Le nombre de colonnnes du plateau
- * @param s Les coordonnées de la source
- * @param t Les coordonnées de la cible (l'endroit où arrive le pion)
- * @param ep Les coordonnées du pion capturer "en passant"
- */
+
 template <std::size_t N, std::size_t M>
 CONSTEXPR void Board<N, M>::move_enpassant(Coord const &s, Coord const &t, Coord const &ep)
 {
@@ -591,15 +518,7 @@ CONSTEXPR void Board<N, M>::move_enpassant(Coord const &s, Coord const &t, Coord
     }
 }
 
-/**
- * @brief Mouvement "split jump"
- * @warning Aucun tests sur la validité du mouvement (cible vide, ect)
- * @tparam N Le nombre de lignes du plateau
- * @tparam M Le nombre de colonnes du plateau
- * @param s Coordonnées de la source du mouvement
- * @param t1 Coordonnées de la cible 1 (qui doit être vide)
- * @param t2 Coordonnées de la cible 2 (qui doit être vide)
- */
+
 template <std::size_t N, std::size_t M>
 CONSTEXPR void Board<N, M>::move_split_jump(Coord const &s, Coord const &t1, Coord const &t2)
 {
@@ -617,15 +536,7 @@ CONSTEXPR void Board<N, M>::move_split_jump(Coord const &s, Coord const &t1, Coo
     m_piece_board[source] = nullptr;
 }
 
-/**
- * @brief Mouvement de merge
- * @warning Aucun test sur la validité du mouvement (cible vide, pièce identique sur les sources, ect)
- * @tparam N Le nombre de lignes du plateau
- * @tparam M Le nombre de colonnes du plateau
- * @param s1 Coordonnées de la source 1
- * @param s2 Coordonnées de la source 2
- * @param t Coordonnées de la cible
- */
+
 template <std::size_t N, std::size_t M>
 CONSTEXPR void Board<N, M>::move_merge_jump(Coord const &s1, Coord const &s2, Coord const &t)
 {
@@ -643,15 +554,7 @@ CONSTEXPR void Board<N, M>::move_merge_jump(Coord const &s1, Coord const &s2, Co
     m_piece_board[source1] = nullptr;
 }
 
-/**
- * @brief Mouvement classique d'un pièce qui "glisse" (fou, dame, tour)
- *
- * @tparam N Le nombre de lignes
- * @tparam M Le nombre de colonnes
- * @param s Coordonnées de la source
- * @param t Coordonnées de la cible
- * @param check_path  Fonction qui permet de vérifier la présence d'une pièce entre la source et la cible sur une instance du plateau
- */
+
 template <std::size_t N, std::size_t M>
 CONSTEXPR void Board<N, M>::move_classic_slide(Coord const &s, Coord const &t,
                                                std::function<bool(Board<N, M> const &, Coord const &, Coord const &, std::size_t)> check_path)
@@ -702,16 +605,7 @@ CONSTEXPR void Board<N, M>::move_classic_slide(Coord const &s, Coord const &t,
     }
 }
 
-/**
- * @brief Mouvement "split slide"
- * @warning Aucun tests sur la validité du mouvement (cible vide, ect)
- * @tparam N Le nombre de lignes du plateau
- * @tparam M Le nombre de colonnes du plateau
- * @param s Coordonnées de la source du mouvement
- * @param t1 Coordonnées de la cible 1 (qui doit être vide)
- * @param t2 Coordonnées de la cible 2 (qui doit être vide)
- * @param check_path Fonction qui permet de vérifier la présence d'une pièce entre la source et la cible sur une instance du plateau
- */
+
 template <std::size_t N, std::size_t M>
 CONSTEXPR void Board<N, M>::move_split_slide(Coord const &s, Coord const &t1, Coord const &t2,
                                              std::function<bool(Board<N, M> const &, Coord const &, Coord const &, std::size_t)> check_path)

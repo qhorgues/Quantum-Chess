@@ -1,6 +1,6 @@
 cmake_minimum_required (VERSION 3.20)
 
-project (Quantum-Chess LANGUAGES CXX VERSION 1.0)
+project (Quantum-Chess LANGUAGES CXX VERSION 0.5)
 
 include(CTest)
 enable_testing()
@@ -33,12 +33,14 @@ set (HEADERS
     src/math_utility/math_utility.hpp
 )
 
+
+
 include(FetchContent)
 
 FetchContent_Declare(Matrix
-    GIT_REPOSITORY "https://github.com/qhorgues/Matrix.git"
-    GIT_TAG "origin/master"
-    SOURCE_DIR "Matrix"
+GIT_REPOSITORY "https://github.com/qhorgues/Matrix.git"
+GIT_TAG "origin/master"
+SOURCE_DIR "Matrix"
 )
 
 FetchContent_MakeAvailable(Matrix)
@@ -46,19 +48,23 @@ FetchContent_MakeAvailable(Matrix)
 include_directories(${CMAKE_SOURCE_DIR}/include)
 
 MACRO(HEADER_DIRECTORIES return_list)
-    FILE(GLOB_RECURSE new_list *.hpp)
-    SET(dir_list "")
-    FOREACH(file_path ${new_list})
-        GET_FILENAME_COMPONENT(dir_path ${file_path} PATH)
-        SET(dir_list ${dir_list} ${dir_path})
-    ENDFOREACH()
-    LIST(REMOVE_DUPLICATES dir_list)
-    SET(${return_list} ${dir_list})
+FILE(GLOB_RECURSE new_list *.hpp)
+SET(dir_list "")
+FOREACH(file_path ${new_list})
+GET_FILENAME_COMPONENT(dir_path ${file_path} PATH)
+SET(dir_list ${dir_list} ${dir_path})
+ENDFOREACH()
+LIST(REMOVE_DUPLICATES dir_list)
+SET(${return_list} ${dir_list})
 ENDMACRO()
 
 HEADER_DIRECTORIES(header_list)
-
 include_directories(${header_list})
+
+option(BUILD_DOC "Build documentation" ON)
+if (BUILD_DOC)
+    add_subdirectory(${CMAKE_SOURCE_DIR}/Docs)
+endif()
 
 set (CMAKE_CXX_STANDARD 20)
 set (CMAKE_CXX_STANDARD_REQUIRED ON)
