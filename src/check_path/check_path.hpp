@@ -3,7 +3,7 @@
 
 #include <Coord.hpp>
 #include <Board.hpp>
-#include <constexpr.hpp>
+#include <Constexpr.hpp>
 
 template <std::size_t N, std::size_t M>
 CONSTEXPR static bool
