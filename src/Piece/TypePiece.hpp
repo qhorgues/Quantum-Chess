@@ -2,7 +2,7 @@
 #define TYPE_PIECE_HPP
 
 /**
- * @enum Enumère toutes les sortes de pièces
+ * @brief Enumère toutes les sortes de pièces
  */
 enum class TypePiece
 {

@@ -17,7 +17,7 @@ class Board;
 
 
 /**
- * @class Class conservant le type et la couleur d'une pièce.
+ * @brief Class conservant le type et la couleur d'une pièce.
  * Elle permet aussi de recuperer ses mouvement possible 
  */
 class Piece
@@ -117,7 +117,7 @@ public:
 
 private:
     /**
-     * @enum Enumération utilisé dans le template des fonctions
+     * @brief Enumération utilisé dans le template des fonctions
      * qui récupère les listes de mouvement pour modifier leurs
      * comportement lors de la prise de pièce.
      */

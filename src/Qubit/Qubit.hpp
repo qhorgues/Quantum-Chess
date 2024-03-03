@@ -8,7 +8,7 @@
 #include <Constexpr.hpp>
 
 /**
- * @class Représente un qubit
+ * @brief Représente un qubit
  * 
  * @tparam N La taille du Qubit
  */

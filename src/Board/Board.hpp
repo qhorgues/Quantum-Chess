@@ -23,7 +23,7 @@
 class Piece;
 
 /**
- * @class La classe représentant le plateau de jeu
+ * @brief La classe représentant le plateau de jeu
  *
  * @tparam N Le nombre de ligne du plateau
  * @tparam M Le nombre de colonne du plateau
@@ -123,8 +123,9 @@ public:
      * identique, il faut donc les concaténer en ajoutant les probas, si la
      * proba vaut 0, on supprime l'instance
      *
-     * @warning Complexité en k²*N*M, avec k la taille de m_board, N et M
-     * les dimensions du plateau
+     * @warning Complexité en k² x N x M, avec k la taille de m_board
+     * c'est à dire le nombre d'instance du plateau, N et M les dimensions
+     * du plateau
      */
     void update_after_merge() noexcept;
 

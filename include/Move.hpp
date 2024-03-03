@@ -4,7 +4,7 @@
 #include <Coord.hpp>
 
 /**
- * @enum Enumération représentant tout les types de mouvements
+ * @brief Enumération représentant tout les types de mouvements
  */
 enum class TypeMove
 {
@@ -25,7 +25,7 @@ enum class TypeMove
 };
 
 /**
- * @struct Stoque tout les mouvements possibles
+ * @brief Stoque tout les mouvements possibles
  */
 struct Move 
 {
@@ -35,12 +35,12 @@ struct Move
     TypeMove type;
 
     /**
-     * @union Stoque au choix l'un des trois mouvements possible
+     * @brief Stoque au choix l'un des trois mouvements possible
      */
     union
     {
         /**
-         * @struct Stoque les coordonnées pour un mouvement classic
+         * @brief Stoque les coordonnées pour un mouvement classic
          */
         struct
         {
@@ -56,7 +56,7 @@ struct Move
         } normal;
 
         /**
-         * @struct stoque l'ensemble des coordonnées pour un
+         * @brief stoque l'ensemble des coordonnées pour un
          * mouvement splité
          */
         struct
@@ -79,7 +79,7 @@ struct Move
         } split;
 
         /**
-         * @struct  stoque l'ensemble des coordonnées pour un
+         * @brief  stoque l'ensemble des coordonnées pour un
          * mouvement de fusion
          */
         struct
