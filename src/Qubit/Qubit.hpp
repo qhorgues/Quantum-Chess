@@ -45,7 +45,16 @@ public:
 private:
     std::array<std::complex<double>, _2POW(N)> m_data;
 };
-
+/**
+ * @brief Transforme un qubit dans sa représentation sous forme de vecteur en sa représentation classique. 
+ Si le qubit contient deux cases non nuls, c'est une combinaisons linéaires de deux qubits que l'on peut écrire avec la forme classique,
+  c'est-à-dire avec des "0" et des "1".
+ * @warning Cette fonction ne permet de faire la transformation que pour au plus deux cases non nuls dans le qubits
+ * @tparam N La taille du qubit
+ * @param qubit Le qubit a transformer
+ * @return CONSTEXPR Dans chaque cases du tableau, on a le qubits sous sa représentation classique 
+ que l'on modélise par un tableau de booléen, et un complexe qui est la scalaire.
+ */
 template <std::size_t N>
 CONSTEXPR std::array<std::pair<std::array<bool , N>, std::complex<double>>, 2> qubitToArray (Qubit<N> const & qubit); 
 

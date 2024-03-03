@@ -26,6 +26,11 @@ class Board final
 public:
     // Constructeur
     CONSTEXPR Board();
+    /**
+     * @brief Initialise le plateau à partir d'une liste de pièce, les pièces ne sont pas divisées initialement.
+     *
+     * @param board
+     */
     CONSTEXPR Board(std::initializer_list<std::initializer_list<observer_ptr<Piece const>>> const &board);
 
     // Copie
@@ -43,13 +48,27 @@ public:
     CONSTEXPR static std::size_t numberColumns() noexcept;
 
     CONSTEXPR observer_ptr<Piece const> operator()(std::size_t n, std::size_t m) const noexcept;
-
+    /**
+     * @brief Renvoie la liste dans tous les mouvements classiques légaux d'une pièce
+     *
+     * @param pos Position de la pièce
+     */
     CONSTEXPR std::forward_list<Coord> get_list_normal_move(Coord const &pos) const;
+    /**
+     * @brief Renvoie la liste de toutes les cases qu'une pièces peut atteindre lors d'un mouvement split,
+     il faut choisir deux éléments de la liste pour créer un mouvement split.
+     *
+     * @param pos Position de la pièce.
+     */
     CONSTEXPR std::forward_list<Coord> get_list_split_move(Coord const &pos) const;
     CONSTEXPR bool move_is_legal(Move const &move) const;
-
+    /**
+     * @brief Renvoie la probabilité qu'il y ait une pièce à une position.
+     *
+     * @param pos La position
+     */
     CONSTEXPR double get_proba(Coord const &pos) const noexcept;
-    
+
     /**
      * @brief Fonction qui permet de mattre à jour le plateau après un merge, car ce mouvement entraine l'apparition de plusieurs instance de board identique,
       il faut donc les concaténer en ajoutant les probas, si la proba vaut 0, on supprime l'instance
@@ -145,12 +164,12 @@ public:
      */
     CONSTEXPR void move_pawn_two_step(Coord const &s, Coord const &t);
     /**
-     * @brief Mouvement de capture dun pion. A la différence d'un mouvement de "capture jump", 
+     * @brief Mouvement de capture dun pion. A la différence d'un mouvement de "capture jump",
      on mesure la présence de la cible car le pion a besoin de la cible pour se déplacer
-     * 
+     *
      * @param s Coordonnées de la source
      * @param t Coordonnées de la cible
-     * @return CONSTEXPR 
+     * @return CONSTEXPR
      */
     CONSTEXPR void capture_pawn(Coord const &s, Coord const &t);
 
@@ -178,51 +197,73 @@ public:
     CONSTEXPR bool mesure(Coord const &p);
 
     /**
-     * @brief Fonction qui permet de faire une mesure dans le cas d'un mouvement "capture slide"
+     * @brief Fonction qui permet de faire une mesure dans le cas
+     d'un mouvement "capture slide"
      *
      * @tparam N Le nombre de lignes du plateau
      * @tparam M Le nombre de colonnes du plateau
      * @param s Coordonnées de la source du mouvement
      * @param t Coordonnées de la cible du mouvement
-     * @param check_path Fonction qui permet de vérifier si il y a une pièce entre la source et la cible sur une instance du plateau
+     * @param check_path Fonction qui permet de vérifier si il y a une pièce
+     entre la source et la cible sur une instance du plateau
      * @return true Si la mesure indique de faire le mouvement
      * @return false Sinon
      */
     CONSTEXPR bool mesure_capture_slide(Coord const &s, Coord const &t,
-                                        std::function<bool(Board<N, M> const &, Coord const &, Coord const &, std::size_t)> check_path);
+                                        std::function<bool(Board<N, M> const &,
+                                                           Coord const &, Coord const &,
+                                                           std::size_t)>
+                                            check_path);
 
     template <std::size_t _N, std::size_t _M>
-    friend CONSTEXPR bool check_path_straight_1_instance(Board<_N, _M> const &board, Coord const &dpt, Coord const &arv, std::size_t position);
+    friend CONSTEXPR bool check_path_straight_1_instance(Board<_N, _M> const &board, Coord const &dpt, Coord const &arv,
+                                                         std::size_t position);
 
     template <std::size_t _N, std::size_t _M>
-    friend CONSTEXPR bool check_path_diagonal_1_instance(Board<_N, _M> const &board, Coord const &dpt, Coord const &arv, std::size_t position);
+    friend CONSTEXPR bool check_path_diagonal_1_instance(Board<_N, _M> const &board, Coord const &dpt, Coord const &arv,
+                                                         std::size_t position);
 
     friend class Piece;
 
 private:
-    CONSTEXPR static std::size_t offset(std::size_t ligne, std::size_t colonne) noexcept;
-    CONSTEXPR static std::pair<std::array<bool, N * M>, std::array<observer_ptr<Piece const>, N * M>>
-    initializer_list_to_2_array(std::initializer_list<std::initializer_list<observer_ptr<Piece const>>> const &board) noexcept;
-    CONSTEXPR static void init_mailbox(std::array<int, N * M> &S_mailbox, std::array<int, (N + 4) * (M + 2)> &L_mailbox) noexcept;
+    CONSTEXPR static std::size_t offset(std::size_t ligne,
+                                        std::size_t colonne) noexcept;
+
+    CONSTEXPR static std::pair<std::array<bool, N * M>,
+                               std::array<observer_ptr<Piece const>, N * M>>
+    initializer_list_to_2_array(
+        std::initializer_list<
+            std::initializer_list<
+                observer_ptr<Piece const>>> const &board) noexcept;
+
+    CONSTEXPR static void init_mailbox(std::array<int, N * M> &S_mailbox,
+                                       std::array<int, (N + 4) * (M + 2)> &L_mailbox) noexcept;
 
     static double get_random_number_0_1();
 
     /**
-     * @brief fonction auxiliaire qui permet de modifier un plateau à l'aide d'un array
-     * de la forme du type de retour de la fonction qubitToArray,
-     * le deuxième éléments du tableau à une probalité non nulle lors d'un mouv split
+     * @brief fonction auxiliaire qui permet de modifier un plateau
+     à l'aide d'un array de la forme du type de retour de la fonction
+     qubitToArray, le deuxième éléments du tableau à une probalité non nulle
+     lors d'un mouvement split
      *
      * @tparam Q La taille du qubit
      * @tparam N Le nombre de ligne du plateau
      * @tparam M Le nombre de collone du plateau
-     * @param arrayQubit Type de retour de la fonction quibitToArray, représente la facon dont va être modifier m_board
-     * @param position_board  L'indice du plateau dans le tableau de toutes les instances du plateau
+     * @param arrayQubit Type de retour de la fonction quibitToArray,
+      représente la facon dont va être modifier m_board
+     * @param position_board  L'indice du plateau dans le tableau de
+      toutes les instances du plateau
      * @param tab_positions Tableau des indices des cases modifiées,
-      on utilise N*M+1 pour signifier que le qubit en question est un qubit auxiliaire qui ne modifie pas le board
+      on utilise N*M+1 pour signifier que le qubit en question
+       est un qubit auxiliaire qui ne modifie pas le board
      */
     template <std::size_t Q>
-    CONSTEXPR void modify(std::array<std::pair<std::array<bool, Q>, std::complex<double>>, 2> const &arrayQubit,
-                          std::size_t position_board, std::array<std::size_t, Q> const &tab_positions);
+    CONSTEXPR void modify(std::array<std::pair<std::array<bool, Q>,
+                                               std::complex<double>>,
+                                     2> const &arrayQubit,
+                          std::size_t position_board,
+                          std::array<std::size_t, Q> const &tab_positions);
 
     /**
     * @brief Fonction qui permet d'effectuer un mouvement sur une instance du plateau
@@ -233,12 +274,14 @@ private:
     * @param case_modif Permet d'initialiser le qubit
     * @param position L'instance du plateau modifiée
     * @param matrix La matrice du mouvement que l'on veut effectuer
-    * @param tab_positions La position sur le plateau des variables utilisées dans le qubit,
-    que l'on met à N*M+1 si les variables ne représentent pas des pièces
+    * @param tab_positions La position sur le plateau des variables utilisées
+    dans le qubit, que l'on met à N*M+1 si les variables
+    ne représentent pas des pièces
     */
     template <std::size_t Q>
     CONSTEXPR void move_1_instance(std::array<bool, Q> const &case_modif,
-                                   std::size_t position, CMatrix<_2POW(Q)> const &matrix,
+                                   std::size_t position,
+                                   CMatrix<_2POW(Q)> const &matrix,
                                    std::array<std::size_t, Q> const &tab_positions);
 
     std::vector<std::pair<std::array<bool, N * M>, std::complex<double>>> m_board;
@@ -247,14 +290,27 @@ private:
     std::array<int, N * M> m_S_mailbox;             // La petite mailbox
     std::array<int, (N + 4) * (M + 2)> m_L_mailbox; // La grande mailbox
 
-    Color m_couleur;                // Vrai si c'est aux blanc de jouer
-    std::array<bool, 2> m_k_castle; // Vrai si les noirs[0] / blancs[1] peuvent faire le petit roque
-    std::array<bool, 2> m_q_castle; // Vrai si les noirs[0] / blancs[1] peuvent faire le grand roque
-    std::optional<Coord> m_ep;      // Contient la case sur laquelle il est possible de faire une prise en passant
+    Color m_couleur;               
+    // Vrai si c'est aux blanc de jouer
+    std::array<bool, 2> m_k_castle; 
+    // Vrai si les noirs[0] / blancs[1] peuvent faire le petit roque
+    std::array<bool, 2> m_q_castle; 
+    // Vrai si les noirs[0] / blancs[1] peuvent faire le grand roque
+    std::optional<Coord> m_ep;     
+     // Contient la case sur laquelle il est possible de faire une prise en passant
 };
-
+/**
+ * @brief Test d'égalité entre deux tableaux de booléen
+ *
+ * @tparam N La taille des tableaux
+ * @param t1 Le premier tableau
+ * @param t2 Le deuxième tableau
+ * @return true si les deux plateaux sont égaux
+ * @return false sinon
+ */
 template <std::size_t N>
-CONSTEXPR bool operator==(std::array<bool, N> t1, std::array<bool, N> t2) noexcept;
+CONSTEXPR bool operator==(std::array<bool, N> t1,
+                          std::array<bool, N> t2) noexcept;
 
 #include "Board.tpp"
 #endif
