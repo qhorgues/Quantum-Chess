@@ -18,6 +18,7 @@
 #include <observer_ptr.hpp>
 #include <Move.hpp>
 #include <Constexpr.hpp>
+#include <check_path.hpp>
 
 class Piece;
 
@@ -37,7 +38,7 @@ public:
      * @brief Initialise le plateau à partir d'une liste de pièce,
      * les pièces ne sont pas divisées initialement.
      *
-     * @param board Double initializer_list sur des pointeurs sur Piece
+     * @param[in] board Double initializer_list sur des pointeurs sur Piece
      */
     CONSTEXPR Board(std::initializer_list<
                     std::initializer_list<
@@ -72,8 +73,8 @@ public:
     /**
      * @brief Retourne un pointeur sur la piece à l'emplacement cible
      *
-     * @param n L'indice de la ligne
-     * @param m L'indice de la colonne
+     * @param[in] n L'indice de la ligne
+     * @param[in] m L'indice de la colonne
      * @return Un pointeur observateur sur une piece
      * ou nullptr si la case est vide
      */
@@ -98,7 +99,7 @@ public:
      * peut atteindre lors d'un mouvement split, il faut choisir
      * deux éléments de la liste pour créer un mouvement split.
      *
-     * @param pos Position de la pièce.
+     * @param[in] pos Position de la pièce.
      *
      * @return std::forward_list<Coord> La liste de coordonnées
      * des positions d'arrivées possible sachant que chaque élément
@@ -118,11 +119,12 @@ public:
 
     /**
      * @brief Fonction qui permet de mattre à jour le plateau après un merge,
-     * car ce mouvement entraine l'apparition de plusieurs instance de board identique,
-     * il faut donc les concaténer en ajoutant les probas, si la proba vaut 0,
-     * on supprime l'instance
+     * car ce mouvement entraine l'apparition de plusieurs instance de board
+     * identique, il faut donc les concaténer en ajoutant les probas, si la
+     * proba vaut 0, on supprime l'instance
      *
-     * @warning Complexité en k²*N*M, avec k la taille de m_board, N et M les dimensions du plateau
+     * @warning Complexité en k²*N*M, avec k la taille de m_board, N et M
+     * les dimensions du plateau
      */
     void update_after_merge() noexcept;
 
@@ -134,23 +136,25 @@ public:
      *
      * @tparam N Le nombre de ligne du plateau
      * @tparam M Le nombre de colonnes du plateau
-     * @param s Coordonnées de la source du mouvement
-     * @param t Coordonnées de la cible du mouvement
+     * @paramint s Coordonnées de la source du mouvement
+     * @paramint t Coordonnées de la cible du mouvement
      */
     CONSTEXPR void move_classic_jump(Coord const &s, Coord const &t);
+
     /**
      * @brief Mouvement "split jump"
      * @warning Aucun tests sur la validité du mouvement (cible vide, ect)
      * @tparam N Le nombre de lignes du plateau
      * @tparam M Le nombre de colonnes du plateau
-     * @param s Coordonnées de la source du mouvement
-     * @param t1 Coordonnées de la cible 1 (qui doit être vide)
-     * @param t2 Coordonnées de la cible 2 (qui doit être vide)
+     * @param[in] s Coordonnées de la source du mouvement
+     * @param[in] t1 Coordonnées de la cible 1 (qui doit être vide)
+     * @param[in] t2 Coordonnées de la cible 2 (qui doit être vide)
      */
     CONSTEXPR void move_split_jump(
         Coord const &s,
         Coord const &t1,
         Coord const &t2);
+
     /**
      * @brief Mouvement de merge
      *
@@ -159,9 +163,9 @@ public:
      *
      * @tparam N Le nombre de lignes du plateau
      * @tparam M Le nombre de colonnes du plateau
-     * @param s1 Coordonnées de la source 1
-     * @param s2 Coordonnées de la source 2
-     * @param t Coordonnées de la cible
+     * @param[in] s1 Coordonnées de la source 1
+     * @param[in] s2 Coordonnées de la source 2
+     * @param[in] t Coordonnées de la cible
      */
     CONSTEXPR void move_merge_jump(
         Coord const &s,
@@ -172,9 +176,9 @@ public:
      *
      * @tparam N Le nombre de lignes
      * @tparam M Le nombre de colonnes
-     * @param s Coordonnées de la source
-     * @param t Coordonnées de la cible
-     * @param check_path  Fonction qui permet de vérifier la présence
+     * @param[in] s Coordonnées de la source
+     * @param[in] t Coordonnées de la cible
+     * @param[in] check_path  Fonction qui permet de vérifier la présence
      * d'une pièce entre la source et la cible sur une instance du plateau
      */
     CONSTEXPR void move_classic_slide(Coord const &s, Coord const &t,
@@ -190,30 +194,34 @@ public:
      * @warning Aucun tests sur la validité du mouvement (cible vide, ect)
      * @tparam N Le nombre de lignes du plateau
      * @tparam M Le nombre de colonnes du plateau
-     * @param s Coordonnées de la source du mouvement
-     * @param t1 Coordonnées de la cible 1 (qui doit être vide)
-     * @param t2 Coordonnées de la cible 2 (qui doit être vide)
-     * @param check_path Fonction qui permet de vérifier la présence d'une
+     * @param[in] s Coordonnées de la source du mouvement
+     * @param[in] t1 Coordonnées de la cible 1 (qui doit être vide)
+     * @param[in] t2 Coordonnées de la cible 2 (qui doit être vide)
+     * @param[in] check_path Fonction qui permet de vérifier la présence d'une
      * pièce entre la source et la cible sur une instance du plateau
      */
-    CONSTEXPR void move_split_slide(Coord const &s, Coord const &t1, Coord const &t2,
-                                    std::function<
-                                        bool(
-                                            Board<N, M> const &,
-                                            Coord const &,
-                                            Coord const &,
-                                            std::size_t)>
-                                        check_path);
+    CONSTEXPR void move_split_slide(
+        Coord const &s,
+        Coord const &t1,
+        Coord const &t2,
+        std::function<
+            bool(
+                Board<N, M> const &,
+                Coord const &,
+                Coord const &,
+                std::size_t)>
+            check_path);
+
     /**
      * @brief Mouvement de merge
      * @warning Aucun test sur la validité du mouvement
      * (cible vide, pièce identique sur les sources, ect)
      * @tparam N Le nombre de lignes du plateau
      * @tparam M Le nombre de colonnes du plateau
-     * @param s1 Coordonnées de la source 1
-     * @param s2 Coordonnées de la source 2
-     * @param t Coordonnées de la cible
-     * @param check_path Fonction qui permet de vérifier la présence d'une
+     * @param[in] s1 Coordonnées de la source 1
+     * @param[in] s2 Coordonnées de la source 2
+     * @param[in] t Coordonnées de la cible
+     * @param[in] check_path Fonction qui permet de vérifier la présence d'une
      * pièce entre la source et la cible sur une instance du plateau
      */
     CONSTEXPR void move_merge_slide(
@@ -227,6 +235,7 @@ public:
                 Coord const &,
                 std::size_t)>
             check_path);
+
     /**
      * @brief Le mouvement de piond'une case fonctionne comme
      * un mouvementde jump classique, à la différence qu'un
@@ -236,8 +245,8 @@ public:
      *
      * @tparam N Le nombre de lignes du plateau
      * @tparam M Le nombre de colonnes du plateau
-     * @param s Coordonnées de la source
-     * @param t Coordonnées de la cible
+     * @param[in] s Coordonnées de la source
+     * @param[in] t Coordonnées de la cible
      */
     CONSTEXPR void move_pawn_one_step(Coord const &s, Coord const &t);
 
@@ -252,8 +261,8 @@ public:
      *  cases du pion, pas de mise a jour du board sur la prise en passant
      * @tparam N Le nombre de lignes du plateau
      * @tparam M Le nombre de colonnes du plateau
-     * @param s Coordonnées de la source
-     * @param t Coordonnées de la cible
+     * @param[in] s Coordonnées de la source
+     * @param[in] t Coordonnées de la cible
      */
     CONSTEXPR void move_pawn_two_step(Coord const &s, Coord const &t);
     /**
@@ -273,9 +282,9 @@ public:
      * en passant, ni sur le type de la pièce
      * @tparam N Le nombre de lignes du plateau
      * @tparam M Le nombre de colonnnes du plateau
-     * @param s Les coordonnées de la source
-     * @param t Les coordonnées de la cible (l'endroit où arrive le pion)
-     * @param ep Les coordonnées du pion capturer "en passant"
+     * @param[in] s Les coordonnées de la source
+     * @param[in] t Les coordonnées de la cible (l'endroit où arrive le pion)
+     * @param[in] ep Les coordonnées du pion capturer "en passant"
      */
     CONSTEXPR void
     move_enpassant(Coord const &s, Coord const &t, Coord const &ep);
@@ -286,7 +295,7 @@ public:
      *
      * @tparam N Le nombre de lignes du plateau
      * @tparam M Le nombre de colonnes du plateau
-     * @param position La position de la pièce mesurée
+     * @param[in] position La position de la pièce mesurée
      * @return true Si la pièce est présente sur la case position
      * @return false Sinon
      */
@@ -298,9 +307,9 @@ public:
      *
      * @tparam N Le nombre de lignes du plateau
      * @tparam M Le nombre de colonnes du plateau
-     * @param s Coordonnées de la source du mouvement
-     * @param t Coordonnées de la cible du mouvement
-     * @param check_path Fonction qui permet de vérifier si il y a une pièce
+     * @param[in] s Coordonnées de la source du mouvement
+     * @param[in] t Coordonnées de la cible du mouvement
+     * @param[in] check_path Fonction qui permet de vérifier si il y a une pièce
      * entre la source et la cible sur une instance du plateau
      * @return true Si la mesure indique de faire le mouvement
      * @return false Sinon
@@ -314,12 +323,28 @@ public:
 
     friend class Piece;
 
+    template <std::size_t _N, std::size_t _M>
+    friend CONSTEXPR bool
+    check_path_straight_1_instance(
+        Board<_N, _M> const &board,
+        Coord const &dpt,
+        Coord const &arv,
+        std::size_t position);
+
+    template <std::size_t _N, std::size_t _M>
+    friend CONSTEXPR bool
+    check_path_diagonal_1_instance(
+        Board<N, M> const &board,
+        Coord const &dpt,
+        Coord const &arv,
+        std::size_t position);
+
 private:
     /**
      * @brief Renvoie une position 1D d'une coordonnée 2D
      *
-     * @param ligne L'indice de ligne
-     * @param colonne L'indice de colonne
+     * @param[in] ligne L'indice de ligne
+     * @param[in] colonne L'indice de colonne
      * @return std::size_t La position en 1D
      */
     CONSTEXPR static std::size_t offset(std::size_t ligne,
@@ -329,32 +354,35 @@ private:
      * @brief Initialise un plateau à l'aide des listes d'initialisations
      *
      * @param[in] board La liste d'initialisation en 2D
-     * @return Une pair du tableau de booleen initiale
-     * et le tableau des pièces
+     * @param[out] first_instance Le tableau de la première
+     * instance du plateau
+     * @param[out] piece_board Le plateau contenant les pièces
      */
-    CONSTEXPR static std::pair<std::array<bool, N * M>,
-                               std::array<observer_ptr<Piece const>, N * M>>
+    CONSTEXPR static void
     initializer_list_to_2_array(
         std::initializer_list<
             std::initializer_list<
-                observer_ptr<Piece const>>> const &
-            board) noexcept;
+                observer_ptr<Piece const>>> const &board,
+        std::array<bool, N * M> &first_instance,
+        std::array<observer_ptr<Piece const>, N * M> &piece_board) noexcept;
 
     /**
      * @brief Construit les mailbox en fonction
      * des dimenssions du plateau
-     * 
+     *
      * @param[out] S_mailbox La petite mailbox de la taille du plateau
      * @param[out] L_mailbox La grande mailbox comportant 4 ligne de plus
      * et 2 colonne de plus
-     * @return CONSTEXPR 
+     * @return CONSTEXPR
      */
-    CONSTEXPR static void init_mailbox(std::array<int, N * M> &S_mailbox,
-                                       std::array<int, (N + 4) * (M + 2)> &L_mailbox) noexcept;
+    CONSTEXPR static void init_mailbox(std::array<int, N * M>
+                                           &S_mailbox,
+                                       std::array<int, (N + 4) * (M + 2)>
+                                           &L_mailbox) noexcept;
 
     /**
      * @brief Renvoie un réel pseudo aléatoirement entre [O, 1)
-     * 
+     *
      * @return double Un nombre aléatoire entre 0 et 1
      */
     static double get_random_number_0_1();
@@ -384,52 +412,83 @@ private:
                           std::array<std::size_t, Q> const &tab_positions);
 
     /**
-    * @brief Fonction qui permet d'effectuer un mouvement sur une instance du plateau
-    *
-    * @tparam N Le nombre de ligne du plateau
-    * @tparam M Le nombre de colonnes du plateau
-    * @tparam Q La taille du qubit
-    * @param[in] case_modif Permet d'initialiser le qubit
-    * @param[in] position L'instance du plateau modifiée
-    * @param[in] matrix La matrice du mouvement que l'on veut effectuer
-    * @param[in] tab_positions La position sur le plateau des variables utilisées
-    dans le qubit, que l'on met à N*M+1 si les variables
-    ne représentent pas des pièces
-    */
+     * @brief Fonction qui permet d'effectuer un mouvement
+     * sur une instance du plateau
+     *
+     * @tparam N Le nombre de ligne du plateau
+     * @tparam M Le nombre de colonnes du plateau
+     * @tparam Q La taille du qubit
+     * @param[in] case_modif Permet d'initialiser le qubit
+     * @param[in] position L'instance du plateau modifiée
+     * @param[in] matrix La matrice du mouvement que l'on veut effectuer
+     * @param[in] tab_positions La position sur le plateau des variables
+     * utilisées dans le qubit, que l'on met à N*M+1 si les variables
+     * ne représentent pas des pièces
+     */
     template <std::size_t Q>
     CONSTEXPR void move_1_instance(std::array<bool, Q> const &case_modif,
                                    std::size_t position,
                                    CMatrix<_2POW(Q)> const &matrix,
-                                   std::array<std::size_t, Q> const &tab_positions);
+                                   std::array<std::size_t, Q> const
+                                       &tab_positions);
 
-    std::vector<std::pair<std::array<bool, N * M>, std::complex<double>>> m_board;
+    /**
+     * @brief Le tableau de toutes les instances possibles
+     * du plateau
+     */
+    std::vector<std::pair<std::array<bool, N * M>,
+                          std::complex<double>>>
+        m_board;
+
+    /**
+     * @brief Le plateau indiquant le type des pièces
+     */
     std::array<observer_ptr<Piece const>, N * M> m_piece_board;
 
-    std::array<int, N * M> m_S_mailbox;             // La petite mailbox
-    std::array<int, (N + 4) * (M + 2)> m_L_mailbox; // La grande mailbox
+    /**
+     * @brief La petite mailbox
+     */
+    std::array<int, N * M> m_S_mailbox;
 
-    ///@brief Color::WHITE si c'est aux blanc de jouer aux noirs sinon
+    /**
+     * @brief La grande mailbox
+     */
+    std::array<int, (N + 4) * (M + 2)> m_L_mailbox;
+
+    /**
+     * @brief Color::WHITE si c'est aux blanc de jouer aux noirs sinon
+     */
     Color m_couleur;
-    
+
+    /**
+     * @brief Vrai si les noirs[0] / blancs[1] peuvent faire le petit roque
+     */
     std::array<bool, 2> m_k_castle;
-    // Vrai si les noirs[0] / blancs[1] peuvent faire le petit roque
+
+    /**
+     * @brief Vrai si les noirs[0] / blancs[1] peuvent faire le grand roque
+     */
     std::array<bool, 2> m_q_castle;
-    // Vrai si les noirs[0] / blancs[1] peuvent faire le grand roque
+
+    /**
+     * @brief Contient la case sur laquelle il est
+     * possible de faire une prise en passant
+     */
     std::optional<Coord> m_ep;
-    // Contient la case sur laquelle il est possible de faire une prise en passant
 };
+
 /**
  * @brief Test d'égalité entre deux tableaux de booléen
  *
  * @tparam N La taille des tableaux
- * @param t1 Le premier tableau
- * @param t2 Le deuxième tableau
+ * @param[in] t1 Le premier tableau
+ * @param[in] t2 Le deuxième tableau
  * @return true si les deux plateaux sont égaux
  * @return false sinon
  */
 template <std::size_t N>
-CONSTEXPR bool operator==(std::array<bool, N> t1,
-                          std::array<bool, N> t2) noexcept;
+CONSTEXPR bool operator==(std::array<bool, N> const &t1,
+                          std::array<bool, N> const &t2) noexcept;
 
 #include "Board.tpp"
 #endif

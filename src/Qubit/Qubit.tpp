@@ -5,9 +5,9 @@
 #include <math_utility.hpp>
 #include <constexpr.hpp>
 
-
 template <std::size_t N>
-CONSTEXPR Qubit<N>::Qubit(std::array<std::complex<double>, _2POW(N)> &&init_list)
+CONSTEXPR Qubit<N>::Qubit(
+    std::array<std::complex<double>, _2POW(N)> &&init_list)
     : m_data(std::move(init_list))
 {
 }
@@ -29,7 +29,9 @@ CONSTEXPR Qubit<N>::Qubit(std::array<bool, N> const &data) : m_data()
 }
 
 template <std::size_t N>
-CONSTEXPR Qubit<N> operator*(CMatrix<_2POW(N)> const &lhs, Qubit<N> const &rhs)
+CONSTEXPR Qubit<N> operator*(
+    CMatrix<_2POW(N)> const &lhs,
+    Qubit<N> const &rhs)
 {
     std::array<std::complex<double>, _2POW(N)> tab{};
     for (std::size_t i{0}; i < lhs.numberLines(); i++)
@@ -44,7 +46,9 @@ CONSTEXPR Qubit<N> operator*(CMatrix<_2POW(N)> const &lhs, Qubit<N> const &rhs)
 }
 
 template <std::size_t N>
-std::ostream &operator<<(std::ostream &out, Qubit<N> const &qubit)
+std::ostream &operator<<(
+    std::ostream &out,
+    Qubit<N> const &qubit)
 {
     for (std::size_t i{0}; i < _2POW(N); i++)
     {
@@ -54,9 +58,17 @@ std::ostream &operator<<(std::ostream &out, Qubit<N> const &qubit)
 }
 
 template <std::size_t N>
-CONSTEXPR std::array<std::pair<std::array<bool, N>, std::complex<double>>, 2> qubitToArray(Qubit<N> const &qubit)
+CONSTEXPR std::array<
+    std::pair<std::array<bool, N>,
+              std::complex<double>>,
+    2>
+qubitToArray(Qubit<N> const &qubit)
 {
-    std::array<std::pair<std::array<bool, N>, std::complex<double>>, 2> tab{};
+    std::array<
+        std::pair<std::array<bool, N>,
+                  std::complex<double>>,
+        2>
+        tab{};
     bool b{true};
     std::size_t compteur{N};
     std::size_t pow = _2POW(N);
@@ -100,16 +112,16 @@ CONSTEXPR std::array<std::pair<std::array<bool, N>, std::complex<double>>, 2> qu
             if (b)
             {
                 tab[0].second = qubit.m_data[i];
-                 b = false;
-                if(i != pow -1)
+                b = false;
+                if (i != pow - 1)
                 {
-                while (tab[1].first[compteur - 1])
-                {
-                    tab[1].first[compteur - 1] = false;
-                    compteur--;
-                }
-                tab[1].first[compteur - 1] = true;
-                compteur = N;
+                    while (tab[1].first[compteur - 1])
+                    {
+                        tab[1].first[compteur - 1] = false;
+                        compteur--;
+                    }
+                    tab[1].first[compteur - 1] = true;
+                    compteur = N;
                 }
             }
             else

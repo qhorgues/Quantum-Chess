@@ -57,7 +57,7 @@ CONSTEXPR double Piece::norm(Coord const &x, Coord const &y) noexcept
                             POW2(abs_substracte(x.m, y.m))));
 }
 
-template <Move_Mode MOVE, std::size_t N, std::size_t M>
+template <Piece::Move_Mode MOVE, std::size_t N, std::size_t M>
 CONSTEXPR std::forward_list<Coord>
 Piece::get_list_move_king(Board<N, M> const &board, Coord const &pos) const
 {
@@ -107,7 +107,7 @@ Piece::get_list_move_king(Board<N, M> const &board, Coord const &pos) const
     return list_move;
 }
 
-template <Move_Mode MOVE, std::size_t N, std::size_t M>
+template <Piece::Move_Mode MOVE, std::size_t N, std::size_t M>
 CONSTEXPR std::forward_list<Coord>
 Piece::get_list_move_knight(Board<N, M> const &board, Coord const &pos) const
 {
@@ -145,7 +145,7 @@ Piece::get_list_move_knight(Board<N, M> const &board, Coord const &pos) const
     return list_move;
 }
 
-template <Move_Mode MOVE, std::size_t N, std::size_t M, std::size_t SIZE>
+template <Piece::Move_Mode MOVE, std::size_t N, std::size_t M, std::size_t SIZE>
 CONSTEXPR std::forward_list<Coord>
 Piece::get_list_move_rec(Board<N, M> const &board,
                          Coord const &pos,
@@ -193,7 +193,7 @@ Piece::get_list_move_rec(Board<N, M> const &board,
     return move;
 }
 
-template <Move_Mode MOVE, std::size_t N, std::size_t M>
+template <Piece::Move_Mode MOVE, std::size_t N, std::size_t M>
 CONSTEXPR std::forward_list<Coord>
 Piece::get_list_move_bishop(Board<N, M> const &board, Coord const &pos) const
 {
@@ -202,7 +202,7 @@ Piece::get_list_move_bishop(Board<N, M> const &board, Coord const &pos) const
     return get_list_move_rec<MOVE>(board, pos, move_bishop);
 }
 
-template <Move_Mode MOVE, std::size_t N, std::size_t M>
+template <Piece::Move_Mode MOVE, std::size_t N, std::size_t M>
 CONSTEXPR std::forward_list<Coord>
 Piece::get_list_move_rook(Board<N, M> const &board, Coord const &pos) const
 {
@@ -211,7 +211,7 @@ Piece::get_list_move_rook(Board<N, M> const &board, Coord const &pos) const
     return get_list_move_rec<MOVE>(board, pos, move_rook);
 }
 
-template <Move_Mode MOVE, std::size_t N, std::size_t M>
+template <Piece::Move_Mode MOVE, std::size_t N, std::size_t M>
 CONSTEXPR std::forward_list<Coord>
 Piece::get_list_move_queen(Board<N, M> const &board, Coord const &pos) const
 {
@@ -271,7 +271,7 @@ Piece::get_list_move_pawn(Board<N, M> const &board, Coord const &pos) const
     return list_move;
 }
 
-template <Move_Mode MOVE, std::size_t N, std::size_t M>
+template <Piece::Move_Mode MOVE, std::size_t N, std::size_t M>
 CONSTEXPR std::forward_list<Coord>
 Piece::get_list_move(Board<N, M> const &board, Coord const &pos) const
 {

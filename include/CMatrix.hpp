@@ -13,6 +13,7 @@ using CMatrix = Matrix<std::complex<double>, N>;
 
 /**
  * @brief Réalise l'opération 2^n
+ * @warning Est valable uniquement sur les types entiers
  */
 #define _2POW(n) (1 << (n))
 

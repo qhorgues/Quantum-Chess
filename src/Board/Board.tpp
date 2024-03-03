@@ -53,13 +53,10 @@ CONSTEXPR Board<N, M>::Board(std::initializer_list<
       m_q_castle({true, true}),
       m_ep()
 {
-    std::pair p{initializer_list_to_2_array(board)};
-    std::move(std::begin(p.second),
-              std::end(p.second),
-              std::begin(m_piece_board));
-
-    m_board.push_back(std::move(std::pair{std::move(p.first), 1.}));
     init_mailbox(m_S_mailbox, m_L_mailbox);
+    m_board.push_back(std::pair<std::array<bool, N * M>,
+                                std::complex<double>>{{false}, 1.});
+    initializer_list_to_2_array(board, m_board[0].first, m_piece_board);
 };
 
 template <std::size_t N, std::size_t M>
@@ -82,18 +79,17 @@ CONSTEXPR std::size_t Board<N, M>::numberColumns() noexcept
 };
 
 template <std::size_t N, std::size_t M>
-CONSTEXPR std::pair<std::array<bool, N * M>,
-                    std::array<observer_ptr<Piece const>, N * M>>
+CONSTEXPR void
 Board<N, M>::initializer_list_to_2_array(
     std::initializer_list<
         std::initializer_list<
-            observer_ptr<Piece const>>> const &board) noexcept
+            observer_ptr<Piece const>>> const &board,
+    std::array<bool, N * M> &first_instance,
+    std::array <observer_ptr<Piece const>, N *M > &piece_board) noexcept
 {
-    std::pair<std::array<bool, N * M>,
-              std::array<observer_ptr<Piece const>, N * M>>
-        p{};
-    auto it_tab{std::begin(p.first)};
-    auto it_piece_dst{std::begin(p.second)};
+
+    auto it_tab{std::begin(first_instance)};
+    auto it_piece_dst{std::begin(piece_board)};
     assert(std::size(board) <= N && "Value entry out of Board");
     for (std::initializer_list<
              observer_ptr<Piece const>> const &e : board)
@@ -119,7 +115,6 @@ Board<N, M>::initializer_list_to_2_array(
         it_tab = it_tab_begin_line + M;
         it_piece_dst += M;
     }
-    return p;
 }
 
 template <std::size_t N, std::size_t M>
@@ -875,7 +870,8 @@ Board<N, M>::operator()(std::size_t n, std::size_t m) const noexcept
 
 template <std::size_t N>
 CONSTEXPR bool
-operator==(std::array<bool, N> t1, std::array<bool, N> t2) noexcept
+operator==(std::array<bool, N> const &t1,
+           std::array<bool, N> const &t2) noexcept
 {
     for (std::size_t i{0}; i < N; i++)
     {
@@ -960,7 +956,7 @@ Board<N, M>::move_is_legal(Move const &move) const
                    std::begin(list1),
                    std::end(list1),
                    move.merge.arv) !=
-                   std::end(list) &&
+                   std::end(list1) &&
                std::find(
                    std::begin(list2),
                    std::end(list2),

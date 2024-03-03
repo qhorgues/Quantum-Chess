@@ -10,15 +10,16 @@
 #include "TypePiece.hpp"
 #include <Constexpr.hpp>
 
-enum class Move_Mode
-{
-    NORMAL,
-    SPLIT
-};
+
 
 template <std::size_t N, std::size_t M>
 class Board;
 
+
+/**
+ * @class Class conservant le type et la couleur d'une pièce.
+ * Elle permet aussi de recuperer ses mouvement possible 
+ */
 class Piece
 {
 public:
@@ -27,8 +28,8 @@ public:
     /**
      * @brief Construit une piece à l'aide de son type et de sa couleur
      *
-     * @param piece Le type de la piece
-     * @param color La couleur de la piece
+     * @param[in] piece Le type de la piece
+     * @param[in] color La couleur de la piece
      */
     CONSTEXPR Piece(TypePiece piece, Color color) noexcept;
     CONSTEXPR Piece(Piece const &) = delete;
@@ -60,8 +61,8 @@ public:
      *
      * @tparam N Le nombre de ligne du plateau
      * @tparam M Le nombre de colonne du plateau
-     * @param board Le plateau
-     * @param pos la position de la piece sur le plateau
+     * @param[in] board Le plateau
+     * @param[in] pos la position de la piece sur le plateau
      * @warning Le resultat n'est pas garanti si la position ne concorde pas
      * avec la position de la piece sur le plateau
      * @return std::forward_list<Coord> La liste de coordonnées des positions
@@ -76,8 +77,8 @@ public:
      *
      * @tparam N Le nombre de ligne du plateau
      * @tparam M Le nombre de colonne du plateau
-     * @param board Le plateau
-     * @param pos la position de la piece sur le plateau
+     * @param[in] board Le plateau
+     * @param[in] pos la position de la piece sur le plateau
      * @warning Le resultat n'est pas garanti si la position ne concorde pas
      * avec la position de la piece sur le plateau
      * @warning Ne renvoie qu'une liste de coordonnées uniques car
@@ -107,6 +108,8 @@ public:
 
     /**
      * @brief Teste si l'autre piece est de la meme couleur
+     * 
+     * @param[in] other L'autre pièce à comparer
      *
      * @return bool true si la piece est de la meme couleur, false sinon
      */
@@ -114,10 +117,30 @@ public:
 
 private:
     /**
+     * @enum Enumération utilisé dans le template des fonctions
+     * qui récupère les listes de mouvement pour modifier leurs
+     * comportement lors de la prise de pièce.
+     */
+    enum class Move_Mode
+    {
+        /**
+         * @brief Dans le cas du mouvement classique on 
+         * autorise la prise de pièce.
+         */
+        NORMAL,
+
+        /**
+         * @brief Dans le cas du split on interdit la
+         * prise de pièce.
+         */
+        SPLIT
+    };
+
+    /**
      * @brief renvoie la valeur absolue d'un soustraction sur des types size_t
      *
-     * @param x Variable de type size_t
-     * @param y Variable de type size_t
+     * @param[in] x Variable de type size_t
+     * @param[in] y Variable de type size_t
      * @return std::size_t Retourne l'opération |x - y|
      */
     CONSTEXPR static std::size_t
@@ -127,8 +150,8 @@ private:
      * @brief renvoie la distance entre deux coordonnées 
      * à l'aide de la norme 2
      *
-     * @param x Première coordonnée
-     * @param y Seconde coordonnée
+     * @param[in] x Première coordonnée
+     * @param[in] y Seconde coordonnée
      * @return double le résultat de la norme 1
      */
     CONSTEXPR static double norm(Coord const &x, Coord const &y) noexcept;
@@ -143,9 +166,9 @@ private:
      * @tparam N Le nombre de ligne du plateau
      * @tparam M Le nombre de colonne du plateau
      * @tparam SIZE La taille de la liste des mouvements possible
-     * @param board Le plateau
-     * @param pos La position de la pièce
-     * @param list_move La liste de tout les mouvements possible
+     * @param[in] board Le plateau
+     * @param[in] pos La position de la pièce
+     * @param[in] list_move La liste de tout les mouvements possible
      * @return std::forward_list<Coord> La liste de coordonnées
      * des positions d'arrivées possible
      */
@@ -166,8 +189,8 @@ private:
      * et split (split ne prend pas les mouvements de capture de pièce)
      * @tparam N Le nombre de ligne du plateau
      * @tparam M Le nombre de colonne du plateau
-     * @param board Le plateau
-     * @param pos La position du roi
+     * @param[in] board Le plateau
+     * @param[in] pos La position du roi
      * @return std::forward_list<Coord> La liste de coordonnées
      * des positions d'arrivées possible pour le roi
      */
@@ -184,8 +207,8 @@ private:
      * et split (split ne prend pas les mouvements de capture de pièce)
      * @tparam N Le nombre de ligne du plateau
      * @tparam M Le nombre de colonne du plateau
-     * @param board Le plateau
-     * @param pos La position du cavalier
+     * @param[in] board Le plateau
+     * @param[in] pos La position du cavalier
      * @return std::forward_list<Coord> La liste de coordonnées
      * des positions d'arrivées possible pour le cavalier
      */
@@ -202,8 +225,8 @@ private:
      * et split (split ne prend pas les mouvements de capture de pièce)
      * @tparam N Le nombre de ligne du plateau
      * @tparam M Le nombre de colonne du plateau
-     * @param board Le plateau
-     * @param pos La position du fou
+     * @param[in] board Le plateau
+     * @param[in] pos La position du fou
      * @return std::forward_list<Coord> La liste de coordonnées
      * des positions d'arrivées possible pour le fou
      */
@@ -220,8 +243,8 @@ private:
      * et split (split ne prend pas les mouvements de capture de pièce)
      * @tparam N Le nombre de ligne du plateau
      * @tparam M Le nombre de colonne du plateau
-     * @param board Le plateau
-     * @param pos La position de la tour
+     * @param[in] board Le plateau
+     * @param[in] pos La position de la tour
      * @return std::forward_list<Coord> La liste de coordonnées
      * des positions d'arrivées possible pour la tour
      */
@@ -238,8 +261,8 @@ private:
      * et split (split ne prend pas les mouvements de capture de pièce)
      * @tparam N Le nombre de ligne du plateau
      * @tparam M Le nombre de colonne du plateau
-     * @param board Le plateau
-     * @param pos La position de la dame
+     * @param[in] board Le plateau
+     * @param[in] pos La position de la dame
      * @return std::forward_list<Coord> La liste de coordonnées
      * des positions d'arrivées possible pour la dame
      */
@@ -254,8 +277,8 @@ private:
      * 
      * @tparam N Le nombre de ligne du plateau
      * @tparam M Le nombre de colonne du plateau
-     * @param board Le plateau
-     * @param pos La position du pion
+     * @param[in] board Le plateau
+     * @param[in] pos La position du pion
      * @return std::forward_list<Coord> La liste de coordonnées
      * des positions d'arrivées possible pour le pion
      */
@@ -271,9 +294,9 @@ private:
      * et split (split ne prend pas les mouvements de capture de pièce)
      * @tparam N Le nombre de ligne du plateau
      * @tparam M Le nombre de colonne du plateau
-     * @param board Le plateau
-     * @param pos La position de la pièce
-     * @param list_move La liste de tout les mouvements possible
+     * @param[in] board Le plateau
+     * @param[in] pos La position de la pièce
+     * @param[in] list_move La liste de tout les mouvements possible
      * @return std::forward_list<Coord> La liste de coordonnées
      * des positions d'arrivées possible
      */
