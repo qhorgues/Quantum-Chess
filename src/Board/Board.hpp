@@ -49,6 +49,12 @@ public:
     CONSTEXPR bool move_is_legal(Move const &move) const;
 
     CONSTEXPR double get_proba(Coord const &pos) const noexcept;
+    
+    /**
+     * @brief Fonction qui permet de mattre à jour le plateau après un merge, car ce mouvement entraine l'apparition de plusieurs instance de board identique,
+      il faut donc les concaténer en ajoutant les probas, si la proba vaut 0, on supprime l'instance
+     * @warning Complexité en k²*N*M, avec k la taille de m_board, N et M les dimensions du plateau
+     */
     void update_after_merge() noexcept;
 
     // a basculer en private
@@ -105,6 +111,16 @@ public:
      */
     CONSTEXPR void move_split_slide(Coord const &s, Coord const &t1, Coord const &t2,
                                     std::function<bool(Board<N, M> const &, Coord const &, Coord const &, std::size_t)> check_path);
+    /**
+     * @brief Mouvement de merge
+     * @warning Aucun test sur la validité du mouvement (cible vide, pièce identique sur les sources, ect)
+     * @tparam N Le nombre de lignes du plateau
+     * @tparam M Le nombre de colonnes du plateau
+     * @param s1 Coordonnées de la source 1
+     * @param s2 Coordonnées de la source 2
+     * @param t Coordonnées de la cible
+     * @param check_path Fonction qui permet de vérifier la présence d'une pièce entre la source et la cible sur une instance du plateau
+     */
     CONSTEXPR void move_merge_slide(Coord const &s1, Coord const &s2, Coord const &t,
                                     std::function<bool(Board<N, M> const &, Coord const &, Coord const &, std::size_t)> check_path);
     /**
@@ -128,6 +144,14 @@ public:
      * @param t Coordonnées de la cible
      */
     CONSTEXPR void move_pawn_two_step(Coord const &s, Coord const &t);
+    /**
+     * @brief Mouvement de capture dun pion. A la différence d'un mouvement de "capture jump", 
+     on mesure la présence de la cible car le pion a besoin de la cible pour se déplacer
+     * 
+     * @param s Coordonnées de la source
+     * @param t Coordonnées de la cible
+     * @return CONSTEXPR 
+     */
     CONSTEXPR void capture_pawn(Coord const &s, Coord const &t);
 
     /**

@@ -625,16 +625,7 @@ CONSTEXPR void Board<N, M>::move_split_slide(Coord const &s, Coord const &t1, Co
     m_piece_board[source] = nullptr;
 }
 
-/**
- * @brief Mouvement de merge
- * @warning Aucun test sur la validité du mouvement (cible vide, pièce identique sur les sources, ect)
- * @tparam N Le nombre de lignes du plateau
- * @tparam M Le nombre de colonnes du plateau
- * @param s1 Coordonnées de la source 1
- * @param s2 Coordonnées de la source 2
- * @param t Coordonnées de la cible
- * @param check_path Fonction qui permet de vérifier la présence d'une pièce entre la source et la cible sur une instance du plateau
- */
+
 template <std::size_t N, std::size_t M>
 CONSTEXPR void Board<N, M>::move_merge_slide(Coord const &s1, Coord const &s2, Coord const &t,
                                              std::function<bool(Board<N, M> const &, Coord const &, Coord const &, std::size_t)> check_path)

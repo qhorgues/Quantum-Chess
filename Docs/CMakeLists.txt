@@ -11,7 +11,7 @@ if (DOXYGEN_FOUND)
     set(DOXYGEN_IN ${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile.in)
     set(DOXYGEN_OUT ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile)
 
-    set(INPUT_DIR ${CMAKE_SOURCE_DIR}/include)
+    set(INPUT_DIR ${CMAKE_SOURCE_DIR})
     set(OUTPUT_DIR ${CMAKE_CURRENT_BINARY_DIR})
 
     # request to configure the file
