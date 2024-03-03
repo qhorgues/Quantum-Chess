@@ -3,7 +3,7 @@
 #include <algorithm>
 #include <numeric>
 #include <math_utility.hpp>
-#include <constexpr.hpp>
+#include <Constexpr.hpp>
 
 template <std::size_t N>
 CONSTEXPR Qubit<N>::Qubit(
