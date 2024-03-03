@@ -17,6 +17,10 @@ CONSTEXPR bool check_path_straight_1_instance(Board<N, M> const &board, Coord co
 template <std::size_t N, std::size_t M>
 CONSTEXPR bool check_path_diagonal_1_instance(Board<N, M> const &board, Coord const &dpt, Coord const &arv, std::size_t position);
 
+
+template <std::size_t N, std::size_t M>
+CONSTEXPR bool check_path_queen_1_instance(Board<N, M> const &board, Coord const &dpt, Coord const &arv, std::size_t position);
+
 #include "check_path.tpp"
 
 #endif
