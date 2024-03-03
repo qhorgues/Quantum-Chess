@@ -32,7 +32,10 @@ public:
     // copying c'tors (in addition to compiler-generated copy c'tor)
     template <typename _Up,
               typename = typename std::enable_if<
-                  std::is_convertible<typename std::add_pointer<_Up>::type, __pointer>::value>::type>
+                  std::is_convertible<
+                      typename std::add_pointer<_Up>::type, __pointer>::
+                      value>::type>
+
     constexpr observer_ptr(observer_ptr<_Up> __p) noexcept
         : __t(__p.get())
     {
@@ -145,8 +148,11 @@ bool operator!=(std::nullptr_t, observer_ptr<T> __p) noexcept
 template <typename T, typename _Up>
 bool operator<(observer_ptr<T> __p1, observer_ptr<_Up> __p2)
 {
-    return std::less<typename std::common_type<typename std::add_pointer<T>::type,
-                                          typename std::add_pointer<_Up>::type>::type>{}(__p1.get(), __p2.get());
+    return std::less<
+        typename std::common_type<
+            typename std::add_pointer<T>::type,
+            typename std::add_pointer<_Up>::type>::type>{}(__p1.get(),
+                                                           __p2.get());
 }
 
 template <typename T, typename _Up>

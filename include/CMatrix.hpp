@@ -2,6 +2,12 @@
 #define CMATRIX_HPP
 #include <Matrix.hpp>
 
+/**
+ * @brief Objet représentant les matrices carrées complexe
+ * de dimension N
+ * 
+ * @tparam N La dimension de la matrice
+ */
 template <std::size_t N>
 using CMatrix = Matrix<std::complex<double>, N>;
 
