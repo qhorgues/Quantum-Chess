@@ -53,11 +53,33 @@ int main()
     B2.update_after_merge();
     std::cout << std::boolalpha << check_path_diagonal(B2, Coord(0, 0), Coord(3, 3)) << std::endl;
     B2.move_classic_slide(Coord(0,3), Coord(3, 3), &check_path_straight_1_instance<4, 4>);*/
-    bool a  {check_path_straight_1_instance(B2, Coord(0, 3), Coord(0, 1), 0)} ;
+    /*bool a  {check_path_straight_1_instance(B2, Coord(0, 3), Coord(0, 1), 0)} ;
     (void)a;
     bool b {check_path_straight_1_instance(B2, Coord(0, 3), Coord(0, 2), 0)};
     (void)b;
     B2.move_split_slide(Coord(0,3), Coord(0,1), Coord(0,2), &check_path_straight_1_instance<4, 4>);
+    Board<4> B3 {
+        {
+            {                  nullptr,                  nullptr,                nullptr,   make_observer(&W_QUEEN) },
+            {                  nullptr,                  nullptr,                nullptr,    make_observer(&W_QUEEN) },
+            {  make_observer (&W_PAWN),   make_observer(&B_PAWN),                nullptr, make_observer (&W_BISHOP) },
+            {                  nullptr,   make_observer(&W_ROOK),                nullptr,    make_observer(&B_KING) }
+        }
+    };
+    B3.move_enpassant(Coord(2,0), Coord(1,1), Coord(2,1));
+    B3.move_split_slide(Coord(0,3), Coord(1,2), Coord(0,1), &check_path_queen_1_instance<4,4>);
+    B3.move_classic_slide(Coord(1,3), Coord(1,0), &check_path_queen_1_instance<4,4>);
+    B3.move_classic_slide(Coord(2,3), Coord(1,2), &check_path_diagonal_1_instance<4,4>);*/
+    Board<4> B4 {
+        {
+            {                  nullptr,                  nullptr,                nullptr,   make_observer(&W_QUEEN) },
+            {                  nullptr,                  nullptr,                nullptr,    make_observer(&W_QUEEN) },
+            {  make_observer (&W_PAWN),   make_observer(&B_PAWN),                nullptr, make_observer (&W_BISHOP) },
+            {  make_observer(&W_ROOK),                   nullptr,                nullptr,    make_observer(&B_KING) }
+        }
+    };
+    B4.king_side_castle(Coord(3,0), Coord(3,3));
+
    /* B2.move_classic_slide(Coord(0,0), Coord(0,3), &check_path_straight_1_instance<4, 4>);*/
 
 
