@@ -14,6 +14,7 @@ var class_board =
     [ "mesure_capture_slide", "d3/dfd/class_board.html#a5a16da9924f01707ef4db36685ddb623", null ],
     [ "mesure_castle", "d3/dfd/class_board.html#a81adbc9ccf113bb4a11191161c84e94f", null ],
     [ "modify", "d3/dfd/class_board.html#a62526dd62f43780104ba8ccf85c49622", null ],
+    [ "move", "d3/dfd/class_board.html#aaebd6467aa910bc0f13e907892b2624b", null ],
     [ "move_1_instance", "d3/dfd/class_board.html#af7ca61154e87a84a05073c03751c8a11", null ],
     [ "move_classic", "d3/dfd/class_board.html#affe9e833a71b05bd8bfc97ca00c1fd3b", null ],
     [ "move_classic_jump", "d3/dfd/class_board.html#ab36e51910b8b3aab8796435c52781838", null ],

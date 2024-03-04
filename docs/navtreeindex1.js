@@ -1,5 +1,6 @@
 var NAVTREEINDEX1 =
 {
+"d9/d88/observer__ptr_8hpp.html#af953735ac064cefd9697d44bbbe88fe3":[5,0,1,6,7],
 "d9/d88/observer__ptr_8hpp_source.html":[5,0,1,6],
 "da/d03/_piece_8hpp.html":[5,0,3,3,0],
 "da/d03/_piece_8hpp.html#a03434256574b7364bb5186e46ff7b1be":[5,0,3,3,0,1],
