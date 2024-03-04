@@ -1,0 +1,248 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.10.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Quantum-Chess:  Fichier source de D:/Users/quent/Programmes/C++/Project/Quantum-Chess/build/Matrix/include/Matrix.hpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<script type="text/javascript" src="../../clipboard.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript" src="../../cookie.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Quantum-Chess<span id="projectnumber">&#160;0.5</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.10.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "../../search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('../../',true,false,'search.php','Recherche');
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(1); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('d8/d49/_matrix_8hpp_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Matrix.hpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d8/d49/_matrix_8hpp.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef MATRIX_HPP</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define MATRIX_HPP</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;array&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;initializer_list&gt;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;concepts&gt;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;type_traits&gt;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;ostream&gt;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="../../db/dbf/conceptarithmetic.html">   11</a></span><span class="keyword">concept </span><a class="code hl_concept" href="../../db/dbf/conceptarithmetic.html">arithmetic</a> = std::is_arithmetic_v&lt;T&gt;;</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="foldopen" id="foldopen00014" data-start="{" data-end="}">
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="../../df/dc7/concept_math_obj.html">   14</a></span><span class="keyword">concept </span><a class="code hl_concept" href="../../df/dc7/concept_math_obj.html">MathObj</a> = <span class="keyword">requires</span>(T lhs, T rhs) {</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    lhs + rhs == rhs + lhs;</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    lhs - rhs;</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    lhs *rhs;</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>};</div>
+</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keyword">template</span> &lt;MathObj T, std::<span class="keywordtype">size_t</span> LINES, std::<span class="keywordtype">size_t</span> COLUMNS = LINES&gt;</div>
+<div class="foldopen" id="foldopen00021" data-start="{" data-end="};">
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="../../d6/d3f/class_matrix.html">   21</a></span><span class="keyword">class </span><a class="code hl_class" href="../../d6/d3f/class_matrix.html">Matrix</a> final</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>{</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keyword">static_assert</span>(LINES &gt; 0 || COLUMNS &gt; 0,</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>                  <span class="stringliteral">&quot;The matrix cannot have a zero size&quot;</span>);</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="../../d6/d3f/class_matrix.html#a0dca33bcfc9a6958396676a696e3be5d">   27</a></span>    <a class="code hl_function" href="../../d6/d3f/class_matrix.html#a0dca33bcfc9a6958396676a696e3be5d">Matrix</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="../../d6/d3f/class_matrix.html#a2d98cbd16381203e5e95fd0df69f6ace">   28</a></span>    <span class="keyword">constexpr</span> <a class="code hl_function" href="../../d6/d3f/class_matrix.html#a2d98cbd16381203e5e95fd0df69f6ace">Matrix</a>(T <span class="keyword">const</span> initialValue);</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="../../d6/d3f/class_matrix.html#a1e1d36dc6a9d095e4b7bd1434dec2754">   29</a></span>    <span class="keyword">constexpr</span> <a class="code hl_function" href="../../d6/d3f/class_matrix.html#a1e1d36dc6a9d095e4b7bd1434dec2754">Matrix</a>(std::initializer_list&lt;std::initializer_list&lt;T&gt;&gt; <span class="keyword">const</span> &amp;matrix);</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="../../d6/d3f/class_matrix.html#a313b2c33ba71bdb0f5f2ecb01fb4ea50">   31</a></span>    <span class="keyword">using </span><a class="code hl_class" href="../../d6/d3f/class_matrix.html">SubBloc</a> = <a class="code hl_class" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt;T, LINES / 2, COLUMNS / 2&gt;;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="../../d6/d3f/class_matrix.html#a3716e9dbcafc518109bc0cdba9a48595">   32</a></span>    <span class="keyword">constexpr</span> <a class="code hl_function" href="../../d6/d3f/class_matrix.html#a3716e9dbcafc518109bc0cdba9a48595">Matrix</a>(<a class="code hl_class" href="../../d6/d3f/class_matrix.html">SubBloc</a> <span class="keyword">const</span> &amp;a, <a class="code hl_class" href="../../d6/d3f/class_matrix.html">SubBloc</a> <span class="keyword">const</span> &amp;b, <a class="code hl_class" href="../../d6/d3f/class_matrix.html">SubBloc</a> <span class="keyword">const</span> &amp;c, <a class="code hl_class" href="../../d6/d3f/class_matrix.html">SubBloc</a> <span class="keyword">const</span> &amp;d);</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="../../d6/d3f/class_matrix.html#ac2086bdd0217bc4dfc725ef59b505eee">   34</a></span>    <span class="keyword">constexpr</span> <a class="code hl_function" href="../../d6/d3f/class_matrix.html#ac2086bdd0217bc4dfc725ef59b505eee">~Matrix</a>() noexcept = default;</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="../../d6/d3f/class_matrix.html#a20788fd1cd7d62f3d48ad366964ac032">   36</a></span>    <a class="code hl_class" href="../../d6/d3f/class_matrix.html">Matrix</a>(<a class="code hl_class" href="../../d6/d3f/class_matrix.html">Matrix</a> const &amp;matrix) = default;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="../../d6/d3f/class_matrix.html#a6f0c283ff54278c76812aad714333366">   37</a></span>    <a class="code hl_class" href="../../d6/d3f/class_matrix.html">Matrix</a> &amp;operator=(<a class="code hl_class" href="../../d6/d3f/class_matrix.html">Matrix</a> const &amp;matrix) = default;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="../../d6/d3f/class_matrix.html#a960343aec469a1d1e7c24e01f19e0d3c">   39</a></span>    <a class="code hl_class" href="../../d6/d3f/class_matrix.html">Matrix</a>(<a class="code hl_class" href="../../d6/d3f/class_matrix.html">Matrix</a> &amp;&amp;matrix) noexcept = default;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="../../d6/d3f/class_matrix.html#a35997d87129c794ddbfa7e6861c45e2b">   40</a></span>    <a class="code hl_class" href="../../d6/d3f/class_matrix.html">Matrix</a> &amp;operator=(<a class="code hl_class" href="../../d6/d3f/class_matrix.html">Matrix</a> &amp;&amp;matrix) = default;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="../../d6/d3f/class_matrix.html#a1eb3727baf81e4e6a2000d2c3f177347">   42</a></span>    constexpr <a class="code hl_namespace" href="../../d8/dcc/namespacestd.html">std</a>::<span class="keywordtype">size_t</span> <a class="code hl_function" href="../../d6/d3f/class_matrix.html#a1eb3727baf81e4e6a2000d2c3f177347">numberLines</a>() const noexcept;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="../../d6/d3f/class_matrix.html#a2b6ab94a28e3000f37baa34ab656e041">   43</a></span>    constexpr <a class="code hl_namespace" href="../../d8/dcc/namespacestd.html">std</a>::<span class="keywordtype">size_t</span> <a class="code hl_function" href="../../d6/d3f/class_matrix.html#a2b6ab94a28e3000f37baa34ab656e041">numberColumns</a>() const noexcept;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="../../d6/d3f/class_matrix.html#a44c2427034f7f785f6a33f385587bae8">   45</a></span>    constexpr T const &amp;operator()(<a class="code hl_namespace" href="../../d8/dcc/namespacestd.html">std</a>::<span class="keywordtype">size_t</span> const lines,</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>                                  <a class="code hl_namespace" href="../../d8/dcc/namespacestd.html">std</a>::<span class="keywordtype">size_t</span> const columns) const noexcept;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="../../d6/d3f/class_matrix.html#ad03069077ba33f7da4f73d293f55f875">   47</a></span>    constexpr T &amp;operator()(<a class="code hl_namespace" href="../../d8/dcc/namespacestd.html">std</a>::<span class="keywordtype">size_t</span> const lines, <a class="code hl_namespace" href="../../d8/dcc/namespacestd.html">std</a>::<span class="keywordtype">size_t</span> const columns);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    constexpr <a class="code hl_class" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt;T, LINES, COLUMNS&gt;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="../../d6/d3f/class_matrix.html#a042e9a7aa4719a349966ad9aa60b6831">   50</a></span>    operator+=(<a class="code hl_class" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt;T, LINES, COLUMNS&gt; const &amp;matrix) noexcept;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    template &lt;typename U, <a class="code hl_namespace" href="../../d8/dcc/namespacestd.html">std</a>::<span class="keywordtype">size_t</span> N, <a class="code hl_namespace" href="../../d8/dcc/namespacestd.html">std</a>::<span class="keywordtype">size_t</span> M&gt;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    constexpr friend <a class="code hl_class" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt;U, N, M&gt;</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="../../d6/d3f/class_matrix.html#a570c220ba37eb26ac3b2805d7a99acf8">   54</a></span>    operator+(<a class="code hl_class" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt;U, N, M&gt; matrix_left, <a class="code hl_class" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt;U, N, M&gt; const &amp;matrix_right) noexcept;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    constexpr <a class="code hl_class" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt;T, LINES, COLUMNS&gt;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="../../d6/d3f/class_matrix.html#afae46b166c9aeee14bdb3d1cb56ba81d">   57</a></span>    operator-=(<a class="code hl_class" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt;T, LINES, COLUMNS&gt; const &amp;matrix) noexcept;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    template &lt;<a class="code hl_concept" href="../../df/dc7/concept_math_obj.html">MathObj</a> U, <a class="code hl_namespace" href="../../d8/dcc/namespacestd.html">std</a>::<span class="keywordtype">size_t</span> N, <a class="code hl_namespace" href="../../d8/dcc/namespacestd.html">std</a>::<span class="keywordtype">size_t</span> M&gt;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    constexpr friend <a class="code hl_class" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt;U, N, M&gt;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="../../d6/d3f/class_matrix.html#a97e4196b49c0938003c743ef3155f1d3">   61</a></span>    operator-(<a class="code hl_class" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt;U, N, M&gt; matrix_left, <a class="code hl_class" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt;U, N, M&gt; const &amp;matrix_right) noexcept;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="../../d6/d3f/class_matrix.html#a06b314d915882fe96f287efbce2e01ef">   63</a></span>    constexpr <a class="code hl_class" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt;T, LINES, COLUMNS&gt; &amp;operator*=(<span class="keywordtype">int</span> const multiplier) noexcept;</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    template &lt;<a class="code hl_concept" href="../../df/dc7/concept_math_obj.html">MathObj</a> U, <a class="code hl_namespace" href="../../d8/dcc/namespacestd.html">std</a>::<span class="keywordtype">size_t</span> N, <a class="code hl_namespace" href="../../d8/dcc/namespacestd.html">std</a>::<span class="keywordtype">size_t</span> M, <a class="code hl_concept" href="../../db/dbf/conceptarithmetic.html">arithmetic</a> V&gt;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="../../d6/d3f/class_matrix.html#a92b5d6ecf516c0692beb32f97b3c9384">   66</a></span>    constexpr friend <a class="code hl_class" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt;U, N, M&gt; operator*(<a class="code hl_class" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt;U, N, M&gt; matrix,</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>                                               V const multiplier) noexcept;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    template &lt;<a class="code hl_concept" href="../../df/dc7/concept_math_obj.html">MathObj</a> U, <a class="code hl_namespace" href="../../d8/dcc/namespacestd.html">std</a>::<span class="keywordtype">size_t</span> N, <a class="code hl_namespace" href="../../d8/dcc/namespacestd.html">std</a>::<span class="keywordtype">size_t</span> M, <a class="code hl_concept" href="../../db/dbf/conceptarithmetic.html">arithmetic</a> V&gt;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="../../d6/d3f/class_matrix.html#a30d300f311aea9d72f2fc36cddc0d7b7">   70</a></span>    constexpr friend <a class="code hl_class" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt;U, N, M&gt; operator*(V const multiplier,</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>                                               <a class="code hl_class" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt;U, N, M&gt; matrix) noexcept;</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    template &lt;<a class="code hl_concept" href="../../df/dc7/concept_math_obj.html">MathObj</a> U, <a class="code hl_namespace" href="../../d8/dcc/namespacestd.html">std</a>::<span class="keywordtype">size_t</span> LINES_M1, <a class="code hl_namespace" href="../../d8/dcc/namespacestd.html">std</a>::<span class="keywordtype">size_t</span> SHARED,</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>              <a class="code hl_namespace" href="../../d8/dcc/namespacestd.html">std</a>::<span class="keywordtype">size_t</span> COLUMNS_M2&gt;</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    constexpr friend <a class="code hl_class" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt;U, LINES_M1, COLUMNS_M2&gt;</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="../../d6/d3f/class_matrix.html#aa8e98c35c89c706adbf15ddb40c8cd36">   76</a></span>    operator*(<a class="code hl_class" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt;U, LINES_M1, SHARED&gt; const &amp;matrix_left,</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>              <a class="code hl_class" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt;U, SHARED, LINES_M1&gt; const &amp;matrix_right) noexcept;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    template &lt;<a class="code hl_concept" href="../../df/dc7/concept_math_obj.html">MathObj</a> U, <a class="code hl_namespace" href="../../d8/dcc/namespacestd.html">std</a>::<span class="keywordtype">size_t</span> N, <a class="code hl_namespace" href="../../d8/dcc/namespacestd.html">std</a>::<span class="keywordtype">size_t</span> M&gt;</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="../../d6/d3f/class_matrix.html#ae4c869d39ade1b0e7da36953a44769f1">   80</a></span>    friend <a class="code hl_namespace" href="../../d8/dcc/namespacestd.html">std</a>::ostream &amp;operator&lt;&lt;(<a class="code hl_namespace" href="../../d8/dcc/namespacestd.html">std</a>::ostream &amp;out,</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>                                    <a class="code hl_class" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt;U, N, M&gt; const &amp;matrix);</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="../../d6/d3f/class_matrix.html#ac921328914167e3b2fc821169fd8d10d">   83</a></span>    constexpr <a class="code hl_class" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt;T, COLUMNS, LINES&gt; <a class="code hl_function" href="../../d6/d3f/class_matrix.html#ac921328914167e3b2fc821169fd8d10d">transposed</a>() const noexcept;</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    constexpr <a class="code hl_class" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt;T, 1, COLUMNS&gt;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno"><a class="line" href="../../d6/d3f/class_matrix.html#a345b017fb84d1d458d983348fbd69350">   86</a></span>    <a class="code hl_function" href="../../d6/d3f/class_matrix.html#a345b017fb84d1d458d983348fbd69350">line</a>(<a class="code hl_namespace" href="../../d8/dcc/namespacestd.html">std</a>::<span class="keywordtype">size_t</span> const indexLine) const noexcept;</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    constexpr <a class="code hl_class" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt;T, LINES, 1&gt;</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno"><a class="line" href="../../d6/d3f/class_matrix.html#a265b24a22913158c9ea7bdd8895cae5e">   89</a></span>    <a class="code hl_function" href="../../d6/d3f/class_matrix.html#a265b24a22913158c9ea7bdd8895cae5e">column</a>(<a class="code hl_namespace" href="../../d8/dcc/namespacestd.html">std</a>::<span class="keywordtype">size_t</span> const indexColumn) const noexcept;</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno"><a class="line" href="../../d6/d3f/class_matrix.html#a0119577bb4ab164d351f2f7ef301bcaa">   91</a></span>    constexpr static <a class="code hl_class" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt;T, LINES, COLUMNS&gt; <a class="code hl_function" href="../../d6/d3f/class_matrix.html#a0119577bb4ab164d351f2f7ef301bcaa">identity</a>() noexcept;</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    template &lt;<a class="code hl_namespace" href="../../d8/dcc/namespacestd.html">std</a>::<span class="keywordtype">size_t</span> N, <a class="code hl_namespace" href="../../d8/dcc/namespacestd.html">std</a>::<span class="keywordtype">size_t</span> M&gt;</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno"><a class="line" href="../../d6/d3f/class_matrix.html#ab5ad991d8c6aab1645c116fff6df5788">   94</a></span>    constexpr <a class="code hl_class" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt;T, LINES*N, COLUMNS*M&gt; <a class="code hl_function" href="../../d6/d3f/class_matrix.html#ab5ad991d8c6aab1645c116fff6df5788">tensoriel_product</a>(<a class="code hl_class" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt;T, N, M&gt; const&amp; rhs) const noexcept;</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>private:</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno"><a class="line" href="../../d6/d3f/class_matrix.html#a949d7290f065547b2239917e068e472b">   97</a></span>    constexpr <a class="code hl_namespace" href="../../d8/dcc/namespacestd.html">std</a>::<span class="keywordtype">size_t</span> <a class="code hl_function" href="../../d6/d3f/class_matrix.html#a949d7290f065547b2239917e068e472b">offset</a>(<a class="code hl_namespace" href="../../d8/dcc/namespacestd.html">std</a>::<span class="keywordtype">size_t</span> const lines,</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>                                 <a class="code hl_namespace" href="../../d8/dcc/namespacestd.html">std</a>::<span class="keywordtype">size_t</span> const columns) const noexcept;</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno"><a class="line" href="../../d6/d3f/class_matrix.html#a32987dd34686c489957a213045360083">  100</a></span>    constexpr <a class="code hl_namespace" href="../../d8/dcc/namespacestd.html">std</a>::array&lt;<a class="code hl_namespace" href="../../d8/dcc/namespacestd.html">std</a>::<span class="keywordtype">size_t</span>, COLUMNS&gt; <a class="code hl_function" href="../../d6/d3f/class_matrix.html#a32987dd34686c489957a213045360083">strSizeMax</a>() const;</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno"><a class="line" href="../../d6/d3f/class_matrix.html#a8f03d5252935c2db468097b38e2b48d3">  101</a></span>    constexpr <a class="code hl_namespace" href="../../d8/dcc/namespacestd.html">std</a>::<span class="keywordtype">size_t</span> <a class="code hl_function" href="../../d6/d3f/class_matrix.html#a8f03d5252935c2db468097b38e2b48d3">strSize</a>(T const value) const;</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    constexpr <a class="code hl_namespace" href="../../d8/dcc/namespacestd.html">std</a>::array&lt;T, COLUMNS * LINES&gt;</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno"><a class="line" href="../../d6/d3f/class_matrix.html#ab9e2981afa2994aee60b7ac9e3e624b1">  104</a></span>    <a class="code hl_function" href="../../d6/d3f/class_matrix.html#ab9e2981afa2994aee60b7ac9e3e624b1">array_matrix_with_initializer_list</a>(<a class="code hl_namespace" href="../../d8/dcc/namespacestd.html">std</a>::initializer_list&lt;<a class="code hl_namespace" href="../../d8/dcc/namespacestd.html">std</a>::initializer_list&lt;T&gt;&gt; const &amp;matrix);</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno"><a class="line" href="../../d6/d3f/class_matrix.html#a1b70af43cb07b3efacc684221059fc3e">  106</a></span>    <a class="code hl_namespace" href="../../d8/dcc/namespacestd.html">std</a>::array&lt;T, LINES * COLUMNS&gt; <a class="code hl_variable" href="../../d6/d3f/class_matrix.html#a1b70af43cb07b3efacc684221059fc3e">m_matrix</a>{0};</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>};</div>
+</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span><span class="preprocessor">#include &quot;Matrix.tpp&quot;</span></div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span><span class="preprocessor">#endif </span><span class="comment">// MATRIX_HPP</span></div>
+<div class="ttc" id="aclass_matrix_html"><div class="ttname"><a href="../../d6/d3f/class_matrix.html">Matrix</a></div><div class="ttdef"><b>Definition</b> Matrix.hpp:22</div></div>
+<div class="ttc" id="aclass_matrix_html_a0119577bb4ab164d351f2f7ef301bcaa"><div class="ttname"><a href="../../d6/d3f/class_matrix.html#a0119577bb4ab164d351f2f7ef301bcaa">Matrix::identity</a></div><div class="ttdeci">static constexpr Matrix&lt; T, LINES, COLUMNS &gt; identity() noexcept</div></div>
+<div class="ttc" id="aclass_matrix_html_a0dca33bcfc9a6958396676a696e3be5d"><div class="ttname"><a href="../../d6/d3f/class_matrix.html#a0dca33bcfc9a6958396676a696e3be5d">Matrix::Matrix</a></div><div class="ttdeci">Matrix()=default</div></div>
+<div class="ttc" id="aclass_matrix_html_a1b70af43cb07b3efacc684221059fc3e"><div class="ttname"><a href="../../d6/d3f/class_matrix.html#a1b70af43cb07b3efacc684221059fc3e">Matrix::m_matrix</a></div><div class="ttdeci">std::array&lt; T, LINES *COLUMNS &gt; m_matrix</div><div class="ttdef"><b>Definition</b> Matrix.hpp:106</div></div>
+<div class="ttc" id="aclass_matrix_html_a1e1d36dc6a9d095e4b7bd1434dec2754"><div class="ttname"><a href="../../d6/d3f/class_matrix.html#a1e1d36dc6a9d095e4b7bd1434dec2754">Matrix::Matrix</a></div><div class="ttdeci">constexpr Matrix(std::initializer_list&lt; std::initializer_list&lt; T &gt; &gt; const &amp;matrix)</div></div>
+<div class="ttc" id="aclass_matrix_html_a1eb3727baf81e4e6a2000d2c3f177347"><div class="ttname"><a href="../../d6/d3f/class_matrix.html#a1eb3727baf81e4e6a2000d2c3f177347">Matrix::numberLines</a></div><div class="ttdeci">constexpr std::size_t numberLines() const noexcept</div></div>
+<div class="ttc" id="aclass_matrix_html_a265b24a22913158c9ea7bdd8895cae5e"><div class="ttname"><a href="../../d6/d3f/class_matrix.html#a265b24a22913158c9ea7bdd8895cae5e">Matrix::column</a></div><div class="ttdeci">constexpr Matrix&lt; T, LINES, 1 &gt; column(std::size_t const indexColumn) const noexcept</div></div>
+<div class="ttc" id="aclass_matrix_html_a2b6ab94a28e3000f37baa34ab656e041"><div class="ttname"><a href="../../d6/d3f/class_matrix.html#a2b6ab94a28e3000f37baa34ab656e041">Matrix::numberColumns</a></div><div class="ttdeci">constexpr std::size_t numberColumns() const noexcept</div></div>
+<div class="ttc" id="aclass_matrix_html_a2d98cbd16381203e5e95fd0df69f6ace"><div class="ttname"><a href="../../d6/d3f/class_matrix.html#a2d98cbd16381203e5e95fd0df69f6ace">Matrix::Matrix</a></div><div class="ttdeci">constexpr Matrix(T const initialValue)</div></div>
+<div class="ttc" id="aclass_matrix_html_a32987dd34686c489957a213045360083"><div class="ttname"><a href="../../d6/d3f/class_matrix.html#a32987dd34686c489957a213045360083">Matrix::strSizeMax</a></div><div class="ttdeci">constexpr std::array&lt; std::size_t, COLUMNS &gt; strSizeMax() const</div></div>
+<div class="ttc" id="aclass_matrix_html_a345b017fb84d1d458d983348fbd69350"><div class="ttname"><a href="../../d6/d3f/class_matrix.html#a345b017fb84d1d458d983348fbd69350">Matrix::line</a></div><div class="ttdeci">constexpr Matrix&lt; T, 1, COLUMNS &gt; line(std::size_t const indexLine) const noexcept</div></div>
+<div class="ttc" id="aclass_matrix_html_a3716e9dbcafc518109bc0cdba9a48595"><div class="ttname"><a href="../../d6/d3f/class_matrix.html#a3716e9dbcafc518109bc0cdba9a48595">Matrix::Matrix</a></div><div class="ttdeci">constexpr Matrix(SubBloc const &amp;a, SubBloc const &amp;b, SubBloc const &amp;c, SubBloc const &amp;d)</div></div>
+<div class="ttc" id="aclass_matrix_html_a8f03d5252935c2db468097b38e2b48d3"><div class="ttname"><a href="../../d6/d3f/class_matrix.html#a8f03d5252935c2db468097b38e2b48d3">Matrix::strSize</a></div><div class="ttdeci">constexpr std::size_t strSize(T const value) const</div></div>
+<div class="ttc" id="aclass_matrix_html_a949d7290f065547b2239917e068e472b"><div class="ttname"><a href="../../d6/d3f/class_matrix.html#a949d7290f065547b2239917e068e472b">Matrix::offset</a></div><div class="ttdeci">constexpr std::size_t offset(std::size_t const lines, std::size_t const columns) const noexcept</div></div>
+<div class="ttc" id="aclass_matrix_html_ab5ad991d8c6aab1645c116fff6df5788"><div class="ttname"><a href="../../d6/d3f/class_matrix.html#ab5ad991d8c6aab1645c116fff6df5788">Matrix::tensoriel_product</a></div><div class="ttdeci">constexpr Matrix&lt; T, LINES *N, COLUMNS *M &gt; tensoriel_product(Matrix&lt; T, N, M &gt; const &amp;rhs) const noexcept</div></div>
+<div class="ttc" id="aclass_matrix_html_ab9e2981afa2994aee60b7ac9e3e624b1"><div class="ttname"><a href="../../d6/d3f/class_matrix.html#ab9e2981afa2994aee60b7ac9e3e624b1">Matrix::array_matrix_with_initializer_list</a></div><div class="ttdeci">constexpr std::array&lt; T, COLUMNS *LINES &gt; array_matrix_with_initializer_list(std::initializer_list&lt; std::initializer_list&lt; T &gt; &gt; const &amp;matrix)</div></div>
+<div class="ttc" id="aclass_matrix_html_ac2086bdd0217bc4dfc725ef59b505eee"><div class="ttname"><a href="../../d6/d3f/class_matrix.html#ac2086bdd0217bc4dfc725ef59b505eee">Matrix::~Matrix</a></div><div class="ttdeci">constexpr ~Matrix() noexcept=default</div></div>
+<div class="ttc" id="aclass_matrix_html_ac921328914167e3b2fc821169fd8d10d"><div class="ttname"><a href="../../d6/d3f/class_matrix.html#ac921328914167e3b2fc821169fd8d10d">Matrix::transposed</a></div><div class="ttdeci">constexpr Matrix&lt; T, COLUMNS, LINES &gt; transposed() const noexcept</div></div>
+<div class="ttc" id="aconcept_math_obj_html"><div class="ttname"><a href="../../df/dc7/concept_math_obj.html">MathObj</a></div><div class="ttdef"><b>Definition</b> Matrix.hpp:14</div></div>
+<div class="ttc" id="aconceptarithmetic_html"><div class="ttname"><a href="../../db/dbf/conceptarithmetic.html">arithmetic</a></div><div class="ttdef"><b>Definition</b> Matrix.hpp:11</div></div>
+<div class="ttc" id="anamespacestd_html"><div class="ttname"><a href="../../d8/dcc/namespacestd.html">std</a></div><div class="ttdef"><b>Definition</b> Complex_printer.hpp:9</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_549152255f51cdaf7a73ae7c27fff3a6.html">Matrix</a></li><li class="navelem"><a class="el" href="../../dir_14fa3544e2b07b603ced12c6c1afa9ed.html">include</a></li><li class="navelem"><a class="el" href="../../d8/d49/_matrix_8hpp.html">Matrix.hpp</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0 </li>
+  </ul>
+</div>
+</body>
+</html>

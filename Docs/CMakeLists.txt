@@ -24,9 +24,15 @@ if (DOXYGEN_FOUND)
         WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
         COMMENT "Generating API documentation with Doxygen"
         VERBATIM )
+    add_custom_command(TARGET doc POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_directory
+          ${CMAKE_BINARY_DIR}/docs/html/ ${CMAKE_SOURCE_DIR}/docs)
+    # if (EXISTS ${CMAKE_BINARY_DIR}/docs/html/)
+    #   file(COPY ${CMAKE_BINARY_DIR}/docs/html/ DESTINATION ${CMAKE_SOURCE_DIR}/docs)
+    # endif ()
 else (DOXYGEN_FOUND)
   message("Doxygen need to be installed to generate the doxygen documentation")
 endif (DOXYGEN_FOUND)
 
 include (GNUInstallDirs)
-install(DIRECTORY ${CMAKE_BINARY_DIR}/Docs/html/ DESTINATION ${CMAKE_INSTALL_FULL_DOCDIR})
+install(DIRECTORY ${CMAKE_BINARY_DIR}/docs/html/ DESTINATION ${CMAKE_INSTALL_FULL_DOCDIR})

@@ -1,0 +1,1158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.10.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Quantum-Chess: Référence du modèle de la classe Matrix&lt; T, LINES, COLUMNS &gt;</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<script type="text/javascript" src="../../clipboard.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript" src="../../cookie.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Quantum-Chess<span id="projectnumber">&#160;0.5</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.10.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "../../search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('../../',true,false,'search.php','Recherche');
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('d6/d3f/class_matrix.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Types publics</a> &#124;
+<a href="#pub-methods">Fonctions membres publiques</a> &#124;
+<a href="#pub-static-methods">Fonctions membres publiques statiques</a> &#124;
+<a href="#pri-methods">Fonctions membres privées</a> &#124;
+<a href="#pri-attribs">Attributs privés</a> &#124;
+<a href="#friends">Amis</a> &#124;
+<a href="../../de/d1a/class_matrix-members.html">Liste de tous les membres</a>  </div>
+  <div class="headertitle"><div class="title">Référence du modèle de la classe Matrix&lt; T, LINES, COLUMNS &gt;<span class="mlabels"><span class="mlabel">final</span></span></div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="../../d8/d49/_matrix_8hpp_source.html">Matrix.hpp</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Types publics</h2></td></tr>
+<tr class="memitem:a313b2c33ba71bdb0f5f2ecb01fb4ea50" id="r_a313b2c33ba71bdb0f5f2ecb01fb4ea50"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d6/d4d/classobserver__ptr.html">using</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a313b2c33ba71bdb0f5f2ecb01fb4ea50">SubBloc</a> = <a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt;<a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">LINES</a> / 2, <a class="el" href="../../d6/d4d/classobserver__ptr.html">COLUMNS</a> / 2&gt;</td></tr>
+<tr class="separator:a313b2c33ba71bdb0f5f2ecb01fb4ea50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Fonctions membres publiques</h2></td></tr>
+<tr class="memitem:a0dca33bcfc9a6958396676a696e3be5d" id="r_a0dca33bcfc9a6958396676a696e3be5d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0dca33bcfc9a6958396676a696e3be5d">Matrix</a> ()=<a class="el" href="../../d6/d4d/classobserver__ptr.html">default</a></td></tr>
+<tr class="separator:a0dca33bcfc9a6958396676a696e3be5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d98cbd16381203e5e95fd0df69f6ace" id="r_a2d98cbd16381203e5e95fd0df69f6ace"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2d98cbd16381203e5e95fd0df69f6ace">Matrix</a> (<a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">initialValue</a>)</td></tr>
+<tr class="separator:a2d98cbd16381203e5e95fd0df69f6ace"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e1d36dc6a9d095e4b7bd1434dec2754" id="r_a1e1d36dc6a9d095e4b7bd1434dec2754"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1e1d36dc6a9d095e4b7bd1434dec2754">Matrix</a> (std::initializer_list&lt; std::initializer_list&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a> &gt; &gt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">matrix</a>)</td></tr>
+<tr class="separator:a1e1d36dc6a9d095e4b7bd1434dec2754"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3716e9dbcafc518109bc0cdba9a48595" id="r_a3716e9dbcafc518109bc0cdba9a48595"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3716e9dbcafc518109bc0cdba9a48595">Matrix</a> (<a class="el" href="#a313b2c33ba71bdb0f5f2ecb01fb4ea50">SubBloc</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">a</a>, <a class="el" href="#a313b2c33ba71bdb0f5f2ecb01fb4ea50">SubBloc</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">b</a>, <a class="el" href="#a313b2c33ba71bdb0f5f2ecb01fb4ea50">SubBloc</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">c</a>, <a class="el" href="#a313b2c33ba71bdb0f5f2ecb01fb4ea50">SubBloc</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">d</a>)</td></tr>
+<tr class="separator:a3716e9dbcafc518109bc0cdba9a48595"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2086bdd0217bc4dfc725ef59b505eee" id="r_ac2086bdd0217bc4dfc725ef59b505eee"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac2086bdd0217bc4dfc725ef59b505eee">~Matrix</a> () <a class="el" href="../../d6/d4d/classobserver__ptr.html">noexcept</a>=<a class="el" href="../../d6/d4d/classobserver__ptr.html">default</a></td></tr>
+<tr class="separator:ac2086bdd0217bc4dfc725ef59b505eee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20788fd1cd7d62f3d48ad366964ac032" id="r_a20788fd1cd7d62f3d48ad366964ac032"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a20788fd1cd7d62f3d48ad366964ac032">Matrix</a> (<a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">matrix</a>)=<a class="el" href="../../d6/d4d/classobserver__ptr.html">default</a></td></tr>
+<tr class="separator:a20788fd1cd7d62f3d48ad366964ac032"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f0c283ff54278c76812aad714333366" id="r_a6f0c283ff54278c76812aad714333366"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6f0c283ff54278c76812aad714333366">operator=</a> (<a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">matrix</a>)=<a class="el" href="../../d6/d4d/classobserver__ptr.html">default</a></td></tr>
+<tr class="separator:a6f0c283ff54278c76812aad714333366"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a960343aec469a1d1e7c24e01f19e0d3c" id="r_a960343aec469a1d1e7c24e01f19e0d3c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a960343aec469a1d1e7c24e01f19e0d3c">Matrix</a> (<a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a> &amp;&amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">matrix</a>) <a class="el" href="../../d6/d4d/classobserver__ptr.html">noexcept</a>=<a class="el" href="../../d6/d4d/classobserver__ptr.html">default</a></td></tr>
+<tr class="separator:a960343aec469a1d1e7c24e01f19e0d3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35997d87129c794ddbfa7e6861c45e2b" id="r_a35997d87129c794ddbfa7e6861c45e2b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a35997d87129c794ddbfa7e6861c45e2b">operator=</a> (<a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a> &amp;&amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">matrix</a>)=<a class="el" href="../../d6/d4d/classobserver__ptr.html">default</a></td></tr>
+<tr class="separator:a35997d87129c794ddbfa7e6861c45e2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1eb3727baf81e4e6a2000d2c3f177347" id="r_a1eb3727baf81e4e6a2000d2c3f177347"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a> std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1eb3727baf81e4e6a2000d2c3f177347">numberLines</a> () <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">noexcept</a></td></tr>
+<tr class="separator:a1eb3727baf81e4e6a2000d2c3f177347"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b6ab94a28e3000f37baa34ab656e041" id="r_a2b6ab94a28e3000f37baa34ab656e041"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a> std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2b6ab94a28e3000f37baa34ab656e041">numberColumns</a> () <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">noexcept</a></td></tr>
+<tr class="separator:a2b6ab94a28e3000f37baa34ab656e041"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44c2427034f7f785f6a33f385587bae8" id="r_a44c2427034f7f785f6a33f385587bae8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a44c2427034f7f785f6a33f385587bae8">operator()</a> (std::size_t <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">lines</a>, std::size_t <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">columns</a>) <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">noexcept</a></td></tr>
+<tr class="separator:a44c2427034f7f785f6a33f385587bae8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad03069077ba33f7da4f73d293f55f875" id="r_ad03069077ba33f7da4f73d293f55f875"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad03069077ba33f7da4f73d293f55f875">operator()</a> (std::size_t <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">lines</a>, std::size_t <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">columns</a>)</td></tr>
+<tr class="separator:ad03069077ba33f7da4f73d293f55f875"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a042e9a7aa4719a349966ad9aa60b6831" id="r_a042e9a7aa4719a349966ad9aa60b6831"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a> <a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">LINES</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">COLUMNS</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a042e9a7aa4719a349966ad9aa60b6831">operator+=</a> (<a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">LINES</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">COLUMNS</a> &gt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">matrix</a>) <a class="el" href="../../d6/d4d/classobserver__ptr.html">noexcept</a></td></tr>
+<tr class="separator:a042e9a7aa4719a349966ad9aa60b6831"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afae46b166c9aeee14bdb3d1cb56ba81d" id="r_afae46b166c9aeee14bdb3d1cb56ba81d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a> <a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">LINES</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">COLUMNS</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afae46b166c9aeee14bdb3d1cb56ba81d">operator-=</a> (<a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">LINES</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">COLUMNS</a> &gt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">matrix</a>) <a class="el" href="../../d6/d4d/classobserver__ptr.html">noexcept</a></td></tr>
+<tr class="separator:afae46b166c9aeee14bdb3d1cb56ba81d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06b314d915882fe96f287efbce2e01ef" id="r_a06b314d915882fe96f287efbce2e01ef"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a> <a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">LINES</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">COLUMNS</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a06b314d915882fe96f287efbce2e01ef">operator*=</a> (<a class="el" href="../../d6/d4d/classobserver__ptr.html">int</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">multiplier</a>) <a class="el" href="../../d6/d4d/classobserver__ptr.html">noexcept</a></td></tr>
+<tr class="separator:a06b314d915882fe96f287efbce2e01ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac921328914167e3b2fc821169fd8d10d" id="r_ac921328914167e3b2fc821169fd8d10d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a> <a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">COLUMNS</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">LINES</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac921328914167e3b2fc821169fd8d10d">transposed</a> () <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">noexcept</a></td></tr>
+<tr class="separator:ac921328914167e3b2fc821169fd8d10d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a345b017fb84d1d458d983348fbd69350" id="r_a345b017fb84d1d458d983348fbd69350"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a> <a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a>, 1, <a class="el" href="../../d6/d4d/classobserver__ptr.html">COLUMNS</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a345b017fb84d1d458d983348fbd69350">line</a> (std::size_t <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">indexLine</a>) <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">noexcept</a></td></tr>
+<tr class="separator:a345b017fb84d1d458d983348fbd69350"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a265b24a22913158c9ea7bdd8895cae5e" id="r_a265b24a22913158c9ea7bdd8895cae5e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a> <a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">LINES</a>, 1 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a265b24a22913158c9ea7bdd8895cae5e">column</a> (std::size_t <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">indexColumn</a>) <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">noexcept</a></td></tr>
+<tr class="separator:a265b24a22913158c9ea7bdd8895cae5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5ad991d8c6aab1645c116fff6df5788" id="r_ab5ad991d8c6aab1645c116fff6df5788"><td class="memTemplParams" colspan="2">template&lt;std::size_t N, std::size_t M&gt; </td></tr>
+<tr class="memitem:ab5ad991d8c6aab1645c116fff6df5788"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a> <a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">LINES</a> *<a class="el" href="../../d6/d4d/classobserver__ptr.html">N</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">COLUMNS</a> *<a class="el" href="../../d6/d4d/classobserver__ptr.html">M</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ab5ad991d8c6aab1645c116fff6df5788">tensoriel_product</a> (<a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">N</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">M</a> &gt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">rhs</a>) <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">noexcept</a></td></tr>
+<tr class="separator:ab5ad991d8c6aab1645c116fff6df5788"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Fonctions membres publiques statiques</h2></td></tr>
+<tr class="memitem:a0119577bb4ab164d351f2f7ef301bcaa" id="r_a0119577bb4ab164d351f2f7ef301bcaa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d6/d4d/classobserver__ptr.html">static</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a> <a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">LINES</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">COLUMNS</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0119577bb4ab164d351f2f7ef301bcaa">identity</a> () <a class="el" href="../../d6/d4d/classobserver__ptr.html">noexcept</a></td></tr>
+<tr class="separator:a0119577bb4ab164d351f2f7ef301bcaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Fonctions membres privées</h2></td></tr>
+<tr class="memitem:a949d7290f065547b2239917e068e472b" id="r_a949d7290f065547b2239917e068e472b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a> std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a949d7290f065547b2239917e068e472b">offset</a> (std::size_t <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">lines</a>, std::size_t <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">columns</a>) <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">noexcept</a></td></tr>
+<tr class="separator:a949d7290f065547b2239917e068e472b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32987dd34686c489957a213045360083" id="r_a32987dd34686c489957a213045360083"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a> std::array&lt; std::size_t, <a class="el" href="../../d6/d4d/classobserver__ptr.html">COLUMNS</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a32987dd34686c489957a213045360083">strSizeMax</a> () <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a></td></tr>
+<tr class="separator:a32987dd34686c489957a213045360083"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f03d5252935c2db468097b38e2b48d3" id="r_a8f03d5252935c2db468097b38e2b48d3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a> std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8f03d5252935c2db468097b38e2b48d3">strSize</a> (<a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">value</a>) <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a></td></tr>
+<tr class="separator:a8f03d5252935c2db468097b38e2b48d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9e2981afa2994aee60b7ac9e3e624b1" id="r_ab9e2981afa2994aee60b7ac9e3e624b1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a> std::array&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">COLUMNS</a> *<a class="el" href="../../d6/d4d/classobserver__ptr.html">LINES</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab9e2981afa2994aee60b7ac9e3e624b1">array_matrix_with_initializer_list</a> (std::initializer_list&lt; std::initializer_list&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a> &gt; &gt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">matrix</a>)</td></tr>
+<tr class="separator:ab9e2981afa2994aee60b7ac9e3e624b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Attributs privés</h2></td></tr>
+<tr class="memitem:a1b70af43cb07b3efacc684221059fc3e" id="r_a1b70af43cb07b3efacc684221059fc3e"><td class="memItemLeft" align="right" valign="top">std::array&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">LINES</a> *<a class="el" href="../../d6/d4d/classobserver__ptr.html">COLUMNS</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1b70af43cb07b3efacc684221059fc3e">m_matrix</a> {0}</td></tr>
+<tr class="separator:a1b70af43cb07b3efacc684221059fc3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
+Amis</h2></td></tr>
+<tr class="memitem:a570c220ba37eb26ac3b2805d7a99acf8" id="r_a570c220ba37eb26ac3b2805d7a99acf8"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="../../d6/d4d/classobserver__ptr.html">typename</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">U</a> , std::size_t N, std::size_t M&gt; </td></tr>
+<tr class="memitem:a570c220ba37eb26ac3b2805d7a99acf8"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">friend</a> <a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">U</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">N</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">M</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a570c220ba37eb26ac3b2805d7a99acf8">operator+</a> (<a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">U</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">N</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">M</a> &gt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">matrix_left</a>, <a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">U</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">N</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">M</a> &gt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">matrix_right</a>) <a class="el" href="../../d6/d4d/classobserver__ptr.html">noexcept</a></td></tr>
+<tr class="separator:a570c220ba37eb26ac3b2805d7a99acf8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97e4196b49c0938003c743ef3155f1d3" id="r_a97e4196b49c0938003c743ef3155f1d3"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="../../df/dc7/concept_math_obj.html">MathObj</a> U, std::size_t N, std::size_t M&gt; </td></tr>
+<tr class="memitem:a97e4196b49c0938003c743ef3155f1d3"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">friend</a> <a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">U</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">N</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">M</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a97e4196b49c0938003c743ef3155f1d3">operator-</a> (<a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">U</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">N</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">M</a> &gt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">matrix_left</a>, <a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">U</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">N</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">M</a> &gt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">matrix_right</a>) <a class="el" href="../../d6/d4d/classobserver__ptr.html">noexcept</a></td></tr>
+<tr class="separator:a97e4196b49c0938003c743ef3155f1d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92b5d6ecf516c0692beb32f97b3c9384" id="r_a92b5d6ecf516c0692beb32f97b3c9384"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="../../df/dc7/concept_math_obj.html">MathObj</a> U, std::size_t N, std::size_t M, <a class="el" href="../../db/dbf/conceptarithmetic.html">arithmetic</a> V&gt; </td></tr>
+<tr class="memitem:a92b5d6ecf516c0692beb32f97b3c9384"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">friend</a> <a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">U</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">N</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">M</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a92b5d6ecf516c0692beb32f97b3c9384">operator*</a> (<a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">U</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">N</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">M</a> &gt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">matrix</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">V</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">multiplier</a>) <a class="el" href="../../d6/d4d/classobserver__ptr.html">noexcept</a></td></tr>
+<tr class="separator:a92b5d6ecf516c0692beb32f97b3c9384"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30d300f311aea9d72f2fc36cddc0d7b7" id="r_a30d300f311aea9d72f2fc36cddc0d7b7"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="../../df/dc7/concept_math_obj.html">MathObj</a> U, std::size_t N, std::size_t M, <a class="el" href="../../db/dbf/conceptarithmetic.html">arithmetic</a> V&gt; </td></tr>
+<tr class="memitem:a30d300f311aea9d72f2fc36cddc0d7b7"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">friend</a> <a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">U</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">N</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">M</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a30d300f311aea9d72f2fc36cddc0d7b7">operator*</a> (<a class="el" href="../../d6/d4d/classobserver__ptr.html">V</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">multiplier</a>, <a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">U</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">N</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">M</a> &gt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">matrix</a>) <a class="el" href="../../d6/d4d/classobserver__ptr.html">noexcept</a></td></tr>
+<tr class="separator:a30d300f311aea9d72f2fc36cddc0d7b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8e98c35c89c706adbf15ddb40c8cd36" id="r_aa8e98c35c89c706adbf15ddb40c8cd36"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="../../df/dc7/concept_math_obj.html">MathObj</a> U, std::size_t LINES_M1, std::size_t SHARED, std::size_t COLUMNS_M2&gt; </td></tr>
+<tr class="memitem:aa8e98c35c89c706adbf15ddb40c8cd36"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">friend</a> <a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">U</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">LINES_M1</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">COLUMNS_M2</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#aa8e98c35c89c706adbf15ddb40c8cd36">operator*</a> (<a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">U</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">LINES_M1</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">SHARED</a> &gt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">matrix_left</a>, <a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">U</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">SHARED</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">LINES_M1</a> &gt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">matrix_right</a>) <a class="el" href="../../d6/d4d/classobserver__ptr.html">noexcept</a></td></tr>
+<tr class="separator:aa8e98c35c89c706adbf15ddb40c8cd36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4c869d39ade1b0e7da36953a44769f1" id="r_ae4c869d39ade1b0e7da36953a44769f1"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="../../df/dc7/concept_math_obj.html">MathObj</a> U, std::size_t N, std::size_t M&gt; </td></tr>
+<tr class="memitem:ae4c869d39ade1b0e7da36953a44769f1"><td class="memTemplItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ae4c869d39ade1b0e7da36953a44769f1">operator&lt;&lt;</a> (std::ostream &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">out</a>, <a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">U</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">N</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">M</a> &gt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">matrix</a>)</td></tr>
+<tr class="separator:ae4c869d39ade1b0e7da36953a44769f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Documentation des définitions de type membres</h2>
+<a id="a313b2c33ba71bdb0f5f2ecb01fb4ea50" name="a313b2c33ba71bdb0f5f2ecb01fb4ea50"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a313b2c33ba71bdb0f5f2ecb01fb4ea50">&#9670;&#160;</a></span>SubBloc</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="../../df/dc7/concept_math_obj.html">MathObj</a> T, std::size_t LINES, std::size_t COLUMNS = LINES&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d6/d4d/classobserver__ptr.html">using</a> <a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">LINES</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">COLUMNS</a> &gt;::SubBloc = <a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt;<a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">LINES</a> / 2, <a class="el" href="../../d6/d4d/classobserver__ptr.html">COLUMNS</a> / 2&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Documentation des constructeurs et destructeur</h2>
+<a id="a0dca33bcfc9a6958396676a696e3be5d" name="a0dca33bcfc9a6958396676a696e3be5d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0dca33bcfc9a6958396676a696e3be5d">&#9670;&#160;</a></span>Matrix() <span class="overload">[1/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="../../df/dc7/concept_math_obj.html">MathObj</a> T, std::size_t LINES, std::size_t COLUMNS = LINES&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">LINES</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">COLUMNS</a> &gt;<a class="el" href="../../d6/d3f/class_matrix.html">::Matrix</a> </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2d98cbd16381203e5e95fd0df69f6ace" name="a2d98cbd16381203e5e95fd0df69f6ace"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d98cbd16381203e5e95fd0df69f6ace">&#9670;&#160;</a></span>Matrix() <span class="overload">[2/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="../../df/dc7/concept_math_obj.html">MathObj</a> T, std::size_t LINES, std::size_t COLUMNS = LINES&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a> <a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">LINES</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">COLUMNS</a> &gt;<a class="el" href="../../d6/d3f/class_matrix.html">::Matrix</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a></td>          <td class="paramname"><span class="paramname"><em>initialValue</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1e1d36dc6a9d095e4b7bd1434dec2754" name="a1e1d36dc6a9d095e4b7bd1434dec2754"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e1d36dc6a9d095e4b7bd1434dec2754">&#9670;&#160;</a></span>Matrix() <span class="overload">[3/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="../../df/dc7/concept_math_obj.html">MathObj</a> T, std::size_t LINES, std::size_t COLUMNS = LINES&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a> <a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">LINES</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">COLUMNS</a> &gt;<a class="el" href="../../d6/d3f/class_matrix.html">::Matrix</a> </td>
+          <td>(</td>
+          <td class="paramtype">std::initializer_list&lt; std::initializer_list&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a> &gt; &gt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>matrix</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3716e9dbcafc518109bc0cdba9a48595" name="a3716e9dbcafc518109bc0cdba9a48595"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3716e9dbcafc518109bc0cdba9a48595">&#9670;&#160;</a></span>Matrix() <span class="overload">[4/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="../../df/dc7/concept_math_obj.html">MathObj</a> T, std::size_t LINES, std::size_t COLUMNS = LINES&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a> <a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">LINES</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">COLUMNS</a> &gt;<a class="el" href="../../d6/d3f/class_matrix.html">::Matrix</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a313b2c33ba71bdb0f5f2ecb01fb4ea50">SubBloc</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>a</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#a313b2c33ba71bdb0f5f2ecb01fb4ea50">SubBloc</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>b</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#a313b2c33ba71bdb0f5f2ecb01fb4ea50">SubBloc</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>c</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#a313b2c33ba71bdb0f5f2ecb01fb4ea50">SubBloc</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>d</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac2086bdd0217bc4dfc725ef59b505eee" name="ac2086bdd0217bc4dfc725ef59b505eee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2086bdd0217bc4dfc725ef59b505eee">&#9670;&#160;</a></span>~Matrix()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="../../df/dc7/concept_math_obj.html">MathObj</a> T, std::size_t LINES, std::size_t COLUMNS = LINES&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a> <a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">LINES</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">COLUMNS</a> &gt;::~<a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a> </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span><span class="mlabel">default</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a20788fd1cd7d62f3d48ad366964ac032" name="a20788fd1cd7d62f3d48ad366964ac032"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a20788fd1cd7d62f3d48ad366964ac032">&#9670;&#160;</a></span>Matrix() <span class="overload">[5/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="../../df/dc7/concept_math_obj.html">MathObj</a> T, std::size_t LINES, std::size_t COLUMNS = LINES&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">LINES</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">COLUMNS</a> &gt;<a class="el" href="../../d6/d3f/class_matrix.html">::Matrix</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">LINES</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">COLUMNS</a> &gt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>matrix</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a960343aec469a1d1e7c24e01f19e0d3c" name="a960343aec469a1d1e7c24e01f19e0d3c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a960343aec469a1d1e7c24e01f19e0d3c">&#9670;&#160;</a></span>Matrix() <span class="overload">[6/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="../../df/dc7/concept_math_obj.html">MathObj</a> T, std::size_t LINES, std::size_t COLUMNS = LINES&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">LINES</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">COLUMNS</a> &gt;<a class="el" href="../../d6/d3f/class_matrix.html">::Matrix</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">LINES</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">COLUMNS</a> &gt; &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>matrix</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">default</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Documentation des fonctions membres</h2>
+<a id="ab9e2981afa2994aee60b7ac9e3e624b1" name="ab9e2981afa2994aee60b7ac9e3e624b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9e2981afa2994aee60b7ac9e3e624b1">&#9670;&#160;</a></span>array_matrix_with_initializer_list()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="../../df/dc7/concept_math_obj.html">MathObj</a> T, std::size_t LINES, std::size_t COLUMNS = LINES&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a> std::array&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">COLUMNS</a> *<a class="el" href="../../d6/d4d/classobserver__ptr.html">LINES</a> &gt; <a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">LINES</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">COLUMNS</a> &gt;::array_matrix_with_initializer_list </td>
+          <td>(</td>
+          <td class="paramtype">std::initializer_list&lt; std::initializer_list&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a> &gt; &gt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>matrix</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a265b24a22913158c9ea7bdd8895cae5e" name="a265b24a22913158c9ea7bdd8895cae5e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a265b24a22913158c9ea7bdd8895cae5e">&#9670;&#160;</a></span>column()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="../../df/dc7/concept_math_obj.html">MathObj</a> T, std::size_t LINES, std::size_t COLUMNS = LINES&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a> <a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">LINES</a>, 1 &gt; <a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">LINES</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">COLUMNS</a> &gt;::column </td>
+          <td>(</td>
+          <td class="paramtype">std::size_t <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a></td>          <td class="paramname"><span class="paramname"><em>indexColumn</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0119577bb4ab164d351f2f7ef301bcaa" name="a0119577bb4ab164d351f2f7ef301bcaa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0119577bb4ab164d351f2f7ef301bcaa">&#9670;&#160;</a></span>identity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="../../df/dc7/concept_math_obj.html">MathObj</a> T, std::size_t LINES, std::size_t COLUMNS = LINES&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d6/d4d/classobserver__ptr.html">static</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a> <a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">LINES</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">COLUMNS</a> &gt; <a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">LINES</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">COLUMNS</a> &gt;::identity </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a345b017fb84d1d458d983348fbd69350" name="a345b017fb84d1d458d983348fbd69350"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a345b017fb84d1d458d983348fbd69350">&#9670;&#160;</a></span>line()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="../../df/dc7/concept_math_obj.html">MathObj</a> T, std::size_t LINES, std::size_t COLUMNS = LINES&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a> <a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a>, 1, <a class="el" href="../../d6/d4d/classobserver__ptr.html">COLUMNS</a> &gt; <a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">LINES</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">COLUMNS</a> &gt;::line </td>
+          <td>(</td>
+          <td class="paramtype">std::size_t <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a></td>          <td class="paramname"><span class="paramname"><em>indexLine</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2b6ab94a28e3000f37baa34ab656e041" name="a2b6ab94a28e3000f37baa34ab656e041"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b6ab94a28e3000f37baa34ab656e041">&#9670;&#160;</a></span>numberColumns()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="../../df/dc7/concept_math_obj.html">MathObj</a> T, std::size_t LINES, std::size_t COLUMNS = LINES&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a> std::size_t <a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">LINES</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">COLUMNS</a> &gt;::numberColumns </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1eb3727baf81e4e6a2000d2c3f177347" name="a1eb3727baf81e4e6a2000d2c3f177347"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1eb3727baf81e4e6a2000d2c3f177347">&#9670;&#160;</a></span>numberLines()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="../../df/dc7/concept_math_obj.html">MathObj</a> T, std::size_t LINES, std::size_t COLUMNS = LINES&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a> std::size_t <a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">LINES</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">COLUMNS</a> &gt;::numberLines </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a949d7290f065547b2239917e068e472b" name="a949d7290f065547b2239917e068e472b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a949d7290f065547b2239917e068e472b">&#9670;&#160;</a></span>offset()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="../../df/dc7/concept_math_obj.html">MathObj</a> T, std::size_t LINES, std::size_t COLUMNS = LINES&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a> std::size_t <a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">LINES</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">COLUMNS</a> &gt;::offset </td>
+          <td>(</td>
+          <td class="paramtype">std::size_t <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a></td>          <td class="paramname"><span class="paramname"><em>lines</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::size_t <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a></td>          <td class="paramname"><span class="paramname"><em>columns</em></span>&#160;) const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad03069077ba33f7da4f73d293f55f875" name="ad03069077ba33f7da4f73d293f55f875"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad03069077ba33f7da4f73d293f55f875">&#9670;&#160;</a></span>operator()() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="../../df/dc7/concept_math_obj.html">MathObj</a> T, std::size_t LINES, std::size_t COLUMNS = LINES&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a> &amp; <a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">LINES</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">COLUMNS</a> &gt;<a class="el" href="../../d6/d4d/classobserver__ptr.html">::operator</a>() </td>
+          <td>(</td>
+          <td class="paramtype">std::size_t <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a></td>          <td class="paramname"><span class="paramname"><em>lines</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::size_t <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a></td>          <td class="paramname"><span class="paramname"><em>columns</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a44c2427034f7f785f6a33f385587bae8" name="a44c2427034f7f785f6a33f385587bae8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44c2427034f7f785f6a33f385587bae8">&#9670;&#160;</a></span>operator()() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="../../df/dc7/concept_math_obj.html">MathObj</a> T, std::size_t LINES, std::size_t COLUMNS = LINES&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a>  &amp; <a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">LINES</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">COLUMNS</a> &gt;<a class="el" href="../../d6/d4d/classobserver__ptr.html">::operator</a>() </td>
+          <td>(</td>
+          <td class="paramtype">std::size_t <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a></td>          <td class="paramname"><span class="paramname"><em>lines</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::size_t <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a></td>          <td class="paramname"><span class="paramname"><em>columns</em></span>&#160;) const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a06b314d915882fe96f287efbce2e01ef" name="a06b314d915882fe96f287efbce2e01ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06b314d915882fe96f287efbce2e01ef">&#9670;&#160;</a></span>operator*=()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="../../df/dc7/concept_math_obj.html">MathObj</a> T, std::size_t LINES, std::size_t COLUMNS = LINES&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a> <a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">LINES</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">COLUMNS</a> &gt; &amp; <a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">LINES</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">COLUMNS</a> &gt;<a class="el" href="../../d6/d4d/classobserver__ptr.html">::operator</a>*= </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d6/d4d/classobserver__ptr.html">int</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a></td>          <td class="paramname"><span class="paramname"><em>multiplier</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a042e9a7aa4719a349966ad9aa60b6831" name="a042e9a7aa4719a349966ad9aa60b6831"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a042e9a7aa4719a349966ad9aa60b6831">&#9670;&#160;</a></span>operator+=()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="../../df/dc7/concept_math_obj.html">MathObj</a> T, std::size_t LINES, std::size_t COLUMNS = LINES&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a> <a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">LINES</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">COLUMNS</a> &gt; <a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">LINES</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">COLUMNS</a> &gt;<a class="el" href="../../d6/d4d/classobserver__ptr.html">::operator</a>+= </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">LINES</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">COLUMNS</a> &gt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>matrix</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afae46b166c9aeee14bdb3d1cb56ba81d" name="afae46b166c9aeee14bdb3d1cb56ba81d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afae46b166c9aeee14bdb3d1cb56ba81d">&#9670;&#160;</a></span>operator-=()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="../../df/dc7/concept_math_obj.html">MathObj</a> T, std::size_t LINES, std::size_t COLUMNS = LINES&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a> <a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">LINES</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">COLUMNS</a> &gt; <a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">LINES</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">COLUMNS</a> &gt;<a class="el" href="../../d6/d4d/classobserver__ptr.html">::operator</a>-= </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">LINES</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">COLUMNS</a> &gt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>matrix</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a35997d87129c794ddbfa7e6861c45e2b" name="a35997d87129c794ddbfa7e6861c45e2b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35997d87129c794ddbfa7e6861c45e2b">&#9670;&#160;</a></span>operator=() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="../../df/dc7/concept_math_obj.html">MathObj</a> T, std::size_t LINES, std::size_t COLUMNS = LINES&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a> &amp; <a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">LINES</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">COLUMNS</a> &gt;<a class="el" href="../../d6/d4d/classobserver__ptr.html">::operator</a>= </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">LINES</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">COLUMNS</a> &gt; &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>matrix</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6f0c283ff54278c76812aad714333366" name="a6f0c283ff54278c76812aad714333366"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f0c283ff54278c76812aad714333366">&#9670;&#160;</a></span>operator=() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="../../df/dc7/concept_math_obj.html">MathObj</a> T, std::size_t LINES, std::size_t COLUMNS = LINES&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a> &amp; <a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">LINES</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">COLUMNS</a> &gt;<a class="el" href="../../d6/d4d/classobserver__ptr.html">::operator</a>= </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">LINES</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">COLUMNS</a> &gt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>matrix</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8f03d5252935c2db468097b38e2b48d3" name="a8f03d5252935c2db468097b38e2b48d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f03d5252935c2db468097b38e2b48d3">&#9670;&#160;</a></span>strSize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="../../df/dc7/concept_math_obj.html">MathObj</a> T, std::size_t LINES, std::size_t COLUMNS = LINES&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a> std::size_t <a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">LINES</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">COLUMNS</a> &gt;::strSize </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a></td>          <td class="paramname"><span class="paramname"><em>value</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a32987dd34686c489957a213045360083" name="a32987dd34686c489957a213045360083"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a32987dd34686c489957a213045360083">&#9670;&#160;</a></span>strSizeMax()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="../../df/dc7/concept_math_obj.html">MathObj</a> T, std::size_t LINES, std::size_t COLUMNS = LINES&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a> std::array&lt; std::size_t, <a class="el" href="../../d6/d4d/classobserver__ptr.html">COLUMNS</a> &gt; <a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">LINES</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">COLUMNS</a> &gt;::strSizeMax </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab5ad991d8c6aab1645c116fff6df5788" name="ab5ad991d8c6aab1645c116fff6df5788"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5ad991d8c6aab1645c116fff6df5788">&#9670;&#160;</a></span>tensoriel_product()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="../../df/dc7/concept_math_obj.html">MathObj</a> T, std::size_t LINES, std::size_t COLUMNS = LINES&gt; </div>
+<div class="memtemplate">
+template&lt;std::size_t N, std::size_t M&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a> <a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">LINES</a> *<a class="el" href="../../d6/d4d/classobserver__ptr.html">N</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">COLUMNS</a> *<a class="el" href="../../d6/d4d/classobserver__ptr.html">M</a> &gt; <a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">LINES</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">COLUMNS</a> &gt;::tensoriel_product </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">N</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">M</a> &gt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>rhs</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac921328914167e3b2fc821169fd8d10d" name="ac921328914167e3b2fc821169fd8d10d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac921328914167e3b2fc821169fd8d10d">&#9670;&#160;</a></span>transposed()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="../../df/dc7/concept_math_obj.html">MathObj</a> T, std::size_t LINES, std::size_t COLUMNS = LINES&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a> <a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">COLUMNS</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">LINES</a> &gt; <a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">LINES</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">COLUMNS</a> &gt;::transposed </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Documentation des fonctions amies et associées</h2>
+<a id="aa8e98c35c89c706adbf15ddb40c8cd36" name="aa8e98c35c89c706adbf15ddb40c8cd36"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8e98c35c89c706adbf15ddb40c8cd36">&#9670;&#160;</a></span>operator* <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="../../df/dc7/concept_math_obj.html">MathObj</a> T, std::size_t LINES, std::size_t COLUMNS = LINES&gt; </div>
+<div class="memtemplate">
+template&lt;<a class="el" href="../../df/dc7/concept_math_obj.html">MathObj</a> U, std::size_t LINES_M1, std::size_t SHARED, std::size_t COLUMNS_M2&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">friend</a> <a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">U</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">LINES_M1</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">COLUMNS_M2</a> &gt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">operator</a>* </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">U</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">LINES_M1</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">SHARED</a> &gt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>matrix_left</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">U</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">SHARED</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">LINES_M1</a> &gt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>matrix_right</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a92b5d6ecf516c0692beb32f97b3c9384" name="a92b5d6ecf516c0692beb32f97b3c9384"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92b5d6ecf516c0692beb32f97b3c9384">&#9670;&#160;</a></span>operator* <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="../../df/dc7/concept_math_obj.html">MathObj</a> T, std::size_t LINES, std::size_t COLUMNS = LINES&gt; </div>
+<div class="memtemplate">
+template&lt;<a class="el" href="../../df/dc7/concept_math_obj.html">MathObj</a> U, std::size_t N, std::size_t M, <a class="el" href="../../db/dbf/conceptarithmetic.html">arithmetic</a> V&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">friend</a> <a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">U</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">N</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">M</a> &gt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">operator</a>* </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">U</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">N</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">M</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>matrix</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d6/d4d/classobserver__ptr.html">V</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a></td>          <td class="paramname"><span class="paramname"><em>multiplier</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a30d300f311aea9d72f2fc36cddc0d7b7" name="a30d300f311aea9d72f2fc36cddc0d7b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a30d300f311aea9d72f2fc36cddc0d7b7">&#9670;&#160;</a></span>operator* <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="../../df/dc7/concept_math_obj.html">MathObj</a> T, std::size_t LINES, std::size_t COLUMNS = LINES&gt; </div>
+<div class="memtemplate">
+template&lt;<a class="el" href="../../df/dc7/concept_math_obj.html">MathObj</a> U, std::size_t N, std::size_t M, <a class="el" href="../../db/dbf/conceptarithmetic.html">arithmetic</a> V&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">friend</a> <a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">U</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">N</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">M</a> &gt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">operator</a>* </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d6/d4d/classobserver__ptr.html">V</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a></td>          <td class="paramname"><span class="paramname"><em>multiplier</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">U</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">N</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">M</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>matrix</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a570c220ba37eb26ac3b2805d7a99acf8" name="a570c220ba37eb26ac3b2805d7a99acf8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a570c220ba37eb26ac3b2805d7a99acf8">&#9670;&#160;</a></span>operator+</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="../../df/dc7/concept_math_obj.html">MathObj</a> T, std::size_t LINES, std::size_t COLUMNS = LINES&gt; </div>
+<div class="memtemplate">
+template&lt;<a class="el" href="../../d6/d4d/classobserver__ptr.html">typename</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">U</a> , std::size_t N, std::size_t M&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">friend</a> <a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">U</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">N</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">M</a> &gt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">operator</a>+ </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">U</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">N</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">M</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>matrix_left</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">U</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">N</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">M</a> &gt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>matrix_right</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a97e4196b49c0938003c743ef3155f1d3" name="a97e4196b49c0938003c743ef3155f1d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a97e4196b49c0938003c743ef3155f1d3">&#9670;&#160;</a></span>operator-</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="../../df/dc7/concept_math_obj.html">MathObj</a> T, std::size_t LINES, std::size_t COLUMNS = LINES&gt; </div>
+<div class="memtemplate">
+template&lt;<a class="el" href="../../df/dc7/concept_math_obj.html">MathObj</a> U, std::size_t N, std::size_t M&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">friend</a> <a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">U</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">N</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">M</a> &gt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">operator</a>- </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">U</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">N</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">M</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>matrix_left</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">U</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">N</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">M</a> &gt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>matrix_right</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae4c869d39ade1b0e7da36953a44769f1" name="ae4c869d39ade1b0e7da36953a44769f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae4c869d39ade1b0e7da36953a44769f1">&#9670;&#160;</a></span>operator&lt;&lt;</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="../../df/dc7/concept_math_obj.html">MathObj</a> T, std::size_t LINES, std::size_t COLUMNS = LINES&gt; </div>
+<div class="memtemplate">
+template&lt;<a class="el" href="../../df/dc7/concept_math_obj.html">MathObj</a> U, std::size_t N, std::size_t M&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::ostream &amp; <a class="el" href="../../d6/d4d/classobserver__ptr.html">operator</a>&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;</td>          <td class="paramname"><span class="paramname"><em>out</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">U</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">N</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">M</a> &gt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>matrix</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Documentation des données membres</h2>
+<a id="a1b70af43cb07b3efacc684221059fc3e" name="a1b70af43cb07b3efacc684221059fc3e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1b70af43cb07b3efacc684221059fc3e">&#9670;&#160;</a></span>m_matrix</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="../../df/dc7/concept_math_obj.html">MathObj</a> T, std::size_t LINES, std::size_t COLUMNS = LINES&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::array&lt;<a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">LINES</a> * <a class="el" href="../../d6/d4d/classobserver__ptr.html">COLUMNS</a>&gt; <a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">T</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">LINES</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">COLUMNS</a> &gt;::m_matrix {0}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>La documentation de cette classe a été générée à partir du fichier suivant :<ul>
+<li>D:/Users/quent/Programmes/C++/Project/Quantum-Chess/build/Matrix/include/<a class="el" href="../../d8/d49/_matrix_8hpp_source.html">Matrix.hpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../d6/d3f/class_matrix.html">Matrix</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0 </li>
+  </ul>
+</div>
+</body>
+</html>
