@@ -84,5 +84,4 @@ CONSTEXPR bool check_path_queen_1_instance(
     std::size_t position);
 
 #include "check_path.tpp"
-
 #endif

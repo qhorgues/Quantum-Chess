@@ -126,7 +126,7 @@ check_path_diagonal_1_instance(
     {
         for (std::size_t i{1}; i < dist; i++)
         {
-            if (!board.m_board[i]
+            if (board.m_board[position]
                      .first[board.offset(min_lines + i, min_columns + i)])
             {
                 return false;
@@ -144,6 +144,6 @@ CONSTEXPR bool check_path_queen_1_instance(
     Coord const &arv,
     std::size_t position)
 {
-    return check_path_straight_1_instance(board, dpt, arv, position) ||
-           check_path_diagonal_1_instance(board, dpt, arv, position);
+    return check_path_straight_1_instance<N, M>(board, dpt, arv, position) ||
+           check_path_diagonal_1_instance<N, M>(board, dpt, arv, position);
 }
