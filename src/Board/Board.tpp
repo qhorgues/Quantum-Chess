@@ -1076,13 +1076,11 @@ CONSTEXPR void Board<N, M>::move_pawn(Coord const &s, Coord const &t)
 
             if (m_ep != std::nullopt && m_ep == t)
             {
-                int step
-                {
+                int step{
                     ((*this)(s.n, s.m)->get_color() ==
                      Color::WHITE)
                         ? -1
-                        : 1
-                };
+                        : 1};
                 Coord ep;
                 ep.m = m_ep->m;
                 ep.n = m_ep->m + step;
@@ -1093,6 +1091,26 @@ CONSTEXPR void Board<N, M>::move_pawn(Coord const &s, Coord const &t)
                 capture_pawn(s, t);
             }
         }
+    }
+}
+
+template <std::size_t N, std::size_t M>
+CONSTEXPR void Board<N, M>::move(Move const &movement)
+{
+    switch (movement.type)
+    {
+    case TypeMove::NORMAL:
+        move_classic(movement.normal.dpt, movement.normal.arv);
+    case TypeMove::SPLIT:
+        move_split(movement.split.dpt,
+                   movement.split.arv1,
+                   movement.split.arv2);
+    case TypeMove::MERGE:
+        move_merge(movement.merge.dpt1,
+                   movement.merge.dpt2,
+                   movement.merge.arv);
+    default:
+        return;
     }
 }
 
