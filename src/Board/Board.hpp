@@ -46,8 +46,8 @@ public:
                         board);
 
     // Copie
-    CONSTEXPR Board(Board const &) = delete;
-    CONSTEXPR Board &operator=(Board const &) = delete;
+    CONSTEXPR Board(Board const &) = default;
+    CONSTEXPR Board &operator=(Board const &) = default;
 
     // Mouvement
     CONSTEXPR Board(Board &&) = default;
@@ -105,7 +105,8 @@ public:
      * des positions d'arrivées possible sachant que chaque élément
      * représente une seule des deux cases d'arrivées d'un split move
      */
-  
+    CONSTEXPR std::forward_list<Coord>
+    get_list_split_move(Coord const &pos) const;
 
     /**
      * @brief Test si un mouvement est réalisable
@@ -118,28 +119,13 @@ public:
     /**
      * @brief Réalise un mouvement d'une pièce quelque soit le type
      * du mouvement (classic, split, merge)
-     * 
+     *
      * @warning Ne procède aucune vérification sur la validité du mouvement
-     * 
-     * @param movement 
-     * @return CONSTEXPR 
+     *
+     * @param movement
+     * @return CONSTEXPR
      */
     CONSTEXPR void move(Move const &movement);
-
-    CONSTEXPR void king_side_castle(Coord const &king, Coord const &rook);
-
-    CONSTEXPR bool mesure_castle(
-    Coord const &king,
-    Coord const &rook,
-    std::function<bool(Board<N, M> const &,
-                       Coord const &,
-                       Coord const &,
-                       std::size_t)>
-        check_path);
-    CONSTEXPR void queen_side_castle(Coord const &king,Coord const &rook);
-     CONSTEXPR void move_split(Coord const &s,
-                              Coord const &t1,
-                              Coord const &t2);
 
     friend class Piece;
 
@@ -166,7 +152,7 @@ public:
         Coord const &dpt,
         Coord const &arv,
         std::size_t position);
-
+    
 private:
     /**
      * @brief Renvoie la probabilité qu'il y ait une pièce à une position.
@@ -191,6 +177,8 @@ private:
      * @brief Mouvement classique d'une pièce qui "saute"
      * (cavalier, roi)
      *
+     * @warning Ne procède aucune vérification sur la validité du mouvement
+     *
      * @tparam N Le nombre de ligne du plateau
      * @tparam M Le nombre de colonnes du plateau
      * @param[in] s Coordonnées de la source du mouvement
@@ -200,7 +188,9 @@ private:
 
     /**
      * @brief Mouvement "split jump"
+     *
      * @warning Aucun tests sur la validité du mouvement (cible vide, ect)
+     *
      * @tparam N Le nombre de lignes du plateau
      * @tparam M Le nombre de colonnes du plateau
      * @param[in] s Coordonnées de la source du mouvement
@@ -230,6 +220,8 @@ private:
         Coord const &t2);
     /**
      * @brief Mouvement classique d'un pièce qui "glisse" (fou, dame, tour)
+     *
+     * @warning Ne procède aucune vérification sur la validité du mouvement
      *
      * @tparam N Le nombre de lignes
      * @tparam M Le nombre de colonnes
@@ -300,6 +292,8 @@ private:
      * On mesure de la même façon qu'un jump classique en considérant
      * toutes les pièces comme des pièces alliées
      *
+     * @warning Ne procède aucune vérification sur la validité du mouvement
+     *
      * @tparam N Le nombre de lignes du plateau
      * @tparam M Le nombre de colonnes du plateau
      * @param[in] s Coordonnées de la source
@@ -316,6 +310,7 @@ private:
      *
      * @warning Aucun test sur la possibilité de faire un mouvement de deux
      *  cases du pion, pas de mise a jour du board sur la prise en passant
+     *
      * @tparam N Le nombre de lignes du plateau
      * @tparam M Le nombre de colonnes du plateau
      * @param[in] s Coordonnées de la source
@@ -327,6 +322,8 @@ private:
      * d'un mouvement de "capture jump", on mesure la présence
      * de la cible car le pion a besoin de la cible pour se déplacer
      *
+     * @warning Ne procède aucune vérification sur la validité du mouvement
+     *
      * @param s Coordonnées de la source
      * @param t Coordonnées de la cible
      * @return CONSTEXPR
@@ -335,8 +332,10 @@ private:
 
     /**
      * @brief Permet d'effectuer un mouvement de prise en passant
+     *
      * @warning Aucun test sur la validité de la cible et de la cible
      * en passant, ni sur le type de la pièce
+     *
      * @tparam N Le nombre de lignes du plateau
      * @tparam M Le nombre de colonnnes du plateau
      * @param[in] s Les coordonnées de la source
@@ -379,7 +378,7 @@ private:
 
     /**
      * @brief Mouvement classique d'une pièce (pion exclu)
-     *
+     * @warning Ne procède aucune vérification sur la validité du mouvement
      * @tparam N Le nombre de ligne du plateau
      * @tparam M Le nombre de colonnes du plateau
      * @param[in] s Coordonnées de la source du mouvement
@@ -389,15 +388,16 @@ private:
 
     /**
      * @brief Mouvement split d'une pièce (pion exclu)
-     *
+     * @warning Ne procède aucune vérification sur la validité du mouvement
      * @tparam N Le nombre de ligne du plateau
      * @tparam M Le nombre de colonnes du plateau
      * @param[in] s Coordonnées de la source du mouvement
      * @param[in] t1 Coordonnées de la cible 1 (qui doit être vide)
      * @param[in] t2 Coordonnées de la cible 2 (qui doit être vide)
      */
-    CONSTEXPR std::forward_list<Coord>
-    get_list_split_move(Coord const &pos) const;
+    CONSTEXPR void move_split(Coord const &s,
+                              Coord const &t1,
+                              Coord const &t2);
 
     /**
      * @brief Mouvement de merge de pièce (pion exclu)
@@ -417,7 +417,7 @@ private:
 
     /**
      * @brief Gère tout les mouvements d'un pion
-     *
+     * @warning Ne procède aucune vérification sur la validité du mouvement
      * @tparam N Le nombre de lignes du plateau
      * @tparam M Le nombre de colonnes du plateau
      * @param[in] s Coordonnées de la source
@@ -519,6 +519,36 @@ private:
                                        &tab_positions);
 
     /**
+     * @brief Mouvement du petit roque.
+     * @warning Auncun test sur la validité du mouvement
+     * @param[in] king Coordonnées du roi
+     * @param[in] rook Coordonnées de la tour
+     */
+    CONSTEXPR void king_side_castle(Coord const &king, Coord const &rook);
+
+    /**
+     * @brief Fonction qui permet de mesurer la possibilité de faire le roque
+     *
+     * @param[in] king Coordonnées du roi
+     * @param[in] rook Coordonnées de la tour
+     * @return true si le roque est possible
+     * @return false sinon
+     */
+    CONSTEXPR bool mesure_castle(
+        Coord const &king,
+        Coord const &rook);
+
+    /**
+     * @brief Mouvement du grand roque.
+     *
+     * @warning Ne procède aucune vérification sur la validité du mouvement
+     *
+     * @param[in] king Coordonnées du roi
+     * @param[in] rook Coordonnées de la tour
+     */
+    CONSTEXPR void queen_side_castle(Coord const &king, Coord const &rook);
+
+    /**
      * @brief Le tableau de toutes les instances possibles
      * du plateau
      */
@@ -572,9 +602,9 @@ private:
  * @return true si les deux plateaux sont égaux
  * @return false sinon
  */
-template <std::size_t N>
+/* template <std::size_t N>
 CONSTEXPR bool operator==(std::array<bool, N> const &t1,
                           std::array<bool, N> const &t2) noexcept;
-
+ */
 #include "Board.tpp"
 #endif

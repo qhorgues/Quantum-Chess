@@ -250,6 +250,53 @@ CONSTEXPR bool Board<N, M>::mesure(Coord const &p)
     }
 }
 
+/* template <std::size_t N, std::size_t M>
+CONSTEXPR Board<N, M> Board<N, M>::mesure_all_case(Coord const &p)
+{
+
+    Board<N, M> b{*this};
+    for (std::size_t i{std::size(m_board)}; i > 0; i--)
+    {
+        if (m_board[i - 1].first[offset(p.n, p.m)]) //?
+        {
+            m_board.erase(
+                std::begin(m_board) +
+                std::size(m_board) - i + 1);
+        }
+        else
+        {
+            b.m_board.erase(
+                std::begin(b.m_board) +
+                std::size(b.m_board) - i + 1);
+        }
+    }
+    for (std::size_t i{0}; i < N * M; i++)
+    {
+        if (m_piece_board[i] != nullptr &&
+            p_actuelle->get_type() == m_piece_board[i]->get_type())
+        {
+            for (auto &e : m_board)
+            {
+                if (e.first[i])
+                {
+                    break;
+                }
+                m_piece_board[i] = nullptr;
+            }
+            for (auto &e : b.m_board)
+            {
+                if (e.first[i])
+                {
+                    break;
+                }
+                m_piece_board[i] = nullptr;
+            }
+        }
+    }
+
+    return b;
+} */
+
 template <std::size_t N, std::size_t M>
 CONSTEXPR bool
 Board<N, M>::mesure_capture_slide(
@@ -271,15 +318,15 @@ Board<N, M>::mesure_capture_slide(
     {
         double x = get_random_number_0_1();
         std::size_t indice_mes = 0;
-        double pow_coef {
-            std::pow(std::abs(m_board[0].second, 2))};
-        
+        double pow_coef{
+            std::pow(std::abs(m_board[0].second), 2)};
+
         while (x - pow_coef > 0)
         {
             x -= pow_coef;
             indice_mes++;
             pow_coef = std::pow(std::abs(m_board[indice_mes].second), 2);
-            
+
             // indice_suppr++,
         }
         bool mes = m_board[indice_mes].first[position] &&
@@ -289,7 +336,7 @@ Board<N, M>::mesure_capture_slide(
         for (std::size_t i{std::size(m_board)}; i > 0; i--)
         {
             if ((m_board[i - 1].first[position] &&
-                 check_path(*this, s, t, i-1)) != mes)
+                 check_path(*this, s, t, i - 1)) != mes)
             {
                 proba_delete +=
                     std::pow(std::abs(m_board[i - 1].second), 2);
@@ -325,12 +372,7 @@ template <std::size_t N, std::size_t M>
 CONSTEXPR bool
 Board<N, M>::mesure_castle(
     Coord const &king,
-    Coord const &rook,
-    std::function<bool(Board<N, M> const &,
-                       Coord const &,
-                       Coord const &,
-                       std::size_t)>
-        check_path)
+    Coord const &rook)
 {
     std::size_t position_king = offset(king.n, king.m);
     std::size_t position_rook = offset(rook.n, rook.m);
@@ -342,27 +384,27 @@ Board<N, M>::mesure_castle(
 
     double x = get_random_number_0_1();
     std::size_t indice_mes = 0;
-     double pow_coef {
-            std::pow(std::abs(m_board[0].second), 2)};
-        
+    double pow_coef{
+        std::pow(std::abs(m_board[0].second), 2)};
+
     while (x - pow_coef > 0)
     {
         x -= pow_coef;
         indice_mes++;
         pow_coef = std::pow(std::abs(m_board[indice_mes].second), 2);
-        
+
         // indice_suppr++,
     }
     bool mes = m_board[indice_mes].first[position_king] &&
                m_board[indice_mes].first[position_rook] &&
-               check_path(*this, king, rook, indice_mes);
+               check_path_straight_1_instance(*this, king, rook, indice_mes);
     double proba_delete = 0;
     // std::size_t nbr_elt_suppr{0};
     for (std::size_t i{std::size(m_board)}; i > 0; i--)
     {
         if ((m_board[i - 1].first[position_king] &&
              m_board[i - 1].first[position_rook] &&
-             check_path(*this, king, rook, i-1)) != mes)
+             check_path_straight_1_instance(*this, king, rook, i - 1)) != mes)
         {
             proba_delete +=
                 std::pow(std::abs(m_board[i - 1].second), 2);
@@ -454,10 +496,10 @@ CONSTEXPR void Board<N, M>::king_side_castle(Coord const &k,
                                              Coord const &r)
 {
     std::size_t king = offset(k.n, k.m);
-    std::size_t new_king = offset(k.n , k.m +2);
+    std::size_t new_king = offset(k.n, k.m + 2);
     std::size_t rook = offset(r.n, r.m);
-    std::size_t new_rook = offset(r.n , r.m -2);
-    if (mesure_castle(k, r, &check_path_straight_1_instance<N, M>))
+    std::size_t new_rook = offset(r.n, r.m - 2);
+    if (mesure_castle(k, r))
     {
         for (std::size_t i{0}; i < std::size(m_board); i++)
         {
@@ -481,10 +523,10 @@ CONSTEXPR void Board<N, M>::queen_side_castle(Coord const &k,
                                               Coord const &r)
 {
     std::size_t king = offset(k.n, k.m);
-    std::size_t new_king = offset(k.n , k.m -2);
+    std::size_t new_king = offset(k.n, k.m - 2);
     std::size_t rook = offset(r.n, r.m);
-    std::size_t new_rook = offset(r.n , r.m +3);
-    if (mesure_castle(k, r, &check_path_straight_1_instance<N, M>))
+    std::size_t new_rook = offset(r.n, r.m + 3);
+    if (mesure_castle(k, r))
     {
         for (std::size_t i{0}; i < std::size(m_board); i++)
         {
@@ -997,6 +1039,44 @@ Board<N, M>::move_merge_slide(
 }
 
 template <std::size_t N, std::size_t M>
+CONSTEXPR void Board<N, M>::move_pawn(Coord const &s, Coord const &t)
+{
+    auto abs_diff{[](std::size_t x, std::size_t y) -> std::size_t
+                  {
+                      return (x >= y) ? x - y : y - x;
+                  }};
+    std::size_t diff_line{abs_diff(s.n, t.n)};
+    if (diff_line == 2)
+    {
+        move_pawn_two_step(s, t);
+    }
+    else if (diff_line == 1)
+    {
+        std::size_t diff_col{abs_diff(s.m, t.m)};
+        if (diff_col == 1)
+        {
+
+            if (m_ep != std::nullopt && m_ep == t)
+            {
+                int step{
+                    ((*this)(s.n, s.m)->get_color() ==
+                     Color::WHITE)
+                        ? -1
+                        : 1};
+                Coord ep;
+                ep.m = m_ep->m;
+                ep.n = m_ep->m + step;
+                move_enpassant(s, t, ep);
+            }
+            else
+            {
+                capture_pawn(s, t);
+            }
+        }
+    }
+}
+
+template <std::size_t N, std::size_t M>
 CONSTEXPR void Board<N, M>::move_classic(Coord const &s, Coord const &t)
 {
     TypePiece piece{(*this)(s.n, s.m)->get_type()};
@@ -1006,28 +1086,31 @@ CONSTEXPR void Board<N, M>::move_classic(Coord const &s, Coord const &t)
         if constexpr (N == 8 && M == 8)
         {
             auto abs_diff{[](std::size_t x, std::size_t y) -> std::size_t
-                  {
-                      return (x >= y) ? x - y : y - x;
-                  }};
+                          {
+                              return (x >= y) ? x - y : y - x;
+                          }};
             std::size_t diff_colum{abs_diff(s.m, t.m)};
-            if(diff_colum ==2)
+            if (diff_colum == 2)
             {
-                if(s.m>t.m)
+                if (s.m > t.m)
                 {
-                    queen_side_castle(s,Coord(s.n, t.m-2));
+                    queen_side_castle(s, Coord(s.n, t.m - 2));
                 }
                 else
                 {
-                    king_side_castle(s, Coord(s.n, t.m +1));
+                    king_side_castle(s, Coord(s.n, t.m + 1));
                 }
             }
             else
             {
                 move_classic_jump(s, t);
             }
-
         }
-        
+        else
+        {
+            move_classic_jump(s, t);
+        }
+        break;
     case TypePiece::KNIGHT:
         move_classic_jump(s, t);
         break;
@@ -1039,6 +1122,9 @@ CONSTEXPR void Board<N, M>::move_classic(Coord const &s, Coord const &t)
         break;
     case TypePiece::QUEEN:
         move_classic_slide(s, t, &check_path_queen_1_instance<N, M>);
+        break;
+    case TypePiece::PAWN:
+        move_pawn(s, t);
         break;
     default:
         break;
@@ -1098,46 +1184,9 @@ CONSTEXPR void Board<N, M>::move_merge(Coord const &s1,
     case TypePiece::QUEEN:
         move_merge_slide(s1, s2, t, &check_path_queen_1_instance<N, M>);
         break;
+    case TypePiece::PAWN:
     default:
         break;
-    }
-}
-
-template <std::size_t N, std::size_t M>
-CONSTEXPR void Board<N, M>::move_pawn(Coord const &s, Coord const &t)
-{
-    auto abs_diff{[](std::size_t x, std::size_t y) -> std::size_t
-                  {
-                      return (x >= y) ? x - y : y - x;
-                  }};
-    std::size_t diff_line{abs_diff(s.n, t.n)};
-    if (diff_line == 2)
-    {
-        move_pawn_two_step(s, t);
-    }
-    else if (diff_line == 1)
-    {
-        std::size_t diff_col{abs_diff(s.m, t.m)};
-        if (diff_col == 1)
-        {
-
-            if (m_ep != std::nullopt && m_ep == t)
-            {
-                int step{
-                    ((*this)(s.n, s.m)->get_color() ==
-                     Color::WHITE)
-                        ? -1
-                        : 1};
-                Coord ep;
-                ep.m = m_ep->m;
-                ep.n = m_ep->m + step;
-                move_enpassant(s, t, ep);
-            }
-            else
-            {
-                capture_pawn(s, t);
-            }
-        }
     }
 }
 
@@ -1148,14 +1197,17 @@ CONSTEXPR void Board<N, M>::move(Move const &movement)
     {
     case TypeMove::NORMAL:
         move_classic(movement.normal.src, movement.normal.arv);
+        break;
     case TypeMove::SPLIT:
         move_split(movement.split.src,
                    movement.split.arv1,
                    movement.split.arv2);
+        break;
     case TypeMove::MERGE:
         move_merge(movement.merge.src1,
                    movement.merge.src1,
                    movement.merge.arv);
+        break;
     default:
         return;
     }
@@ -1168,7 +1220,7 @@ Board<N, M>::operator()(std::size_t n, std::size_t m) const noexcept
     return m_piece_board[offset(n, m)];
 }
 
-template <std::size_t N>
+/*template <std::size_t N>
 CONSTEXPR bool
 operator==(std::array<bool, N> const &t1,
            std::array<bool, N> const &t2) noexcept
@@ -1181,7 +1233,7 @@ operator==(std::array<bool, N> const &t1,
         }
     }
     return true;
-}
+}*/
 
 template <std::size_t N, std::size_t M>
 void Board<N, M>::update_after_merge() noexcept
