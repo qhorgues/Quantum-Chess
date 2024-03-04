@@ -64,7 +64,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"da/d03/_piece_8hpp.html#aa33ce3b76f3f2ec8930ad79a8b1bc4bb"
+"d9/d88/observer__ptr_8hpp_source.html"
 ];
 
 var SYNCONMSG = 'cliquez pour désactiver la synchronisation du panel';

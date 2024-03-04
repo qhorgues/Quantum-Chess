@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['line_0',['line',['../d6/d3f/class_matrix.html#a345b017fb84d1d458d983348fbd69350',1,'Matrix']]]
+  ['king_5fside_5fcastle_0',['king_side_castle',['../d3/dfd/class_board.html#a778c80c1a1ba0e2b66b1e63d87659965',1,'Board']]]
 ];
