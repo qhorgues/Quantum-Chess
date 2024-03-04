@@ -224,7 +224,7 @@ CONSTEXPR bool Board<N, M>::mesure(Coord const &p)
 
                 m_board.erase(
                     std::begin(m_board) +
-                    std::size(m_board) - i - 1);
+                    std::size(m_board) - i + 1);
             }
         }
         for (auto &e : m_board)
@@ -271,9 +271,15 @@ Board<N, M>::mesure_capture_slide(
     {
         double x = get_random_number_0_1();
         std::size_t indice_mes = 0;
-        while (x - std::pow(std::abs(m_board[indice_mes].second), 2) > 0)
+        double pow_coef {
+            std::pow(std::abs(m_board[0].second, 2))};
+        
+        while (x - pow_coef > 0)
         {
-            x -= std::pow(std::abs(m_board[indice_mes].second), 2);
+            x -= pow_coef;
+            indice_mes++;
+            pow_coef = std::pow(std::abs(m_board[indice_mes].second), 2);
+            
             // indice_suppr++,
         }
         bool mes = m_board[indice_mes].first[position] &&
@@ -283,14 +289,14 @@ Board<N, M>::mesure_capture_slide(
         for (std::size_t i{std::size(m_board)}; i > 0; i--)
         {
             if ((m_board[i - 1].first[position] &&
-                 check_path(*this, s, t, i)) != mes)
+                 check_path(*this, s, t, i-1)) != mes)
             {
                 proba_delete +=
                     std::pow(std::abs(m_board[i - 1].second), 2);
 
                 m_board.erase(
                     std::begin(m_board) +
-                    std::size(m_board) - i - 1);
+                    std::size(m_board) - i + 1);
             }
         }
         for (auto &e : m_board)
@@ -336,9 +342,15 @@ Board<N, M>::mesure_castle(
 
     double x = get_random_number_0_1();
     std::size_t indice_mes = 0;
-    while (x - std::pow(std::abs(m_board[indice_mes].second), 2) > 0)
+     double pow_coef {
+            std::pow(std::abs(m_board[0].second), 2)};
+        
+    while (x - pow_coef > 0)
     {
-        x -= std::pow(std::abs(m_board[indice_mes].second), 2);
+        x -= pow_coef;
+        indice_mes++;
+        pow_coef = std::pow(std::abs(m_board[indice_mes].second), 2);
+        
         // indice_suppr++,
     }
     bool mes = m_board[indice_mes].first[position_king] &&
@@ -350,14 +362,14 @@ Board<N, M>::mesure_castle(
     {
         if ((m_board[i - 1].first[position_king] &&
              m_board[i - 1].first[position_rook] &&
-             check_path(*this, king, rook, i)) != mes)
+             check_path(*this, king, rook, i-1)) != mes)
         {
             proba_delete +=
                 std::pow(std::abs(m_board[i - 1].second), 2);
 
             m_board.erase(
                 std::begin(m_board) +
-                std::size(m_board) - i - 1);
+                std::size(m_board) - i + 1);
         }
     }
     for (auto &e : m_board)
@@ -442,9 +454,9 @@ CONSTEXPR void Board<N, M>::king_side_castle(Coord const &k,
                                              Coord const &r)
 {
     std::size_t king = offset(k.n, k.m);
-    std::size_t new_king = offset(k.n + 2, k.m);
+    std::size_t new_king = offset(k.n , k.m +2);
     std::size_t rook = offset(r.n, r.m);
-    std::size_t new_rook = offset(r.n - 2, r.m);
+    std::size_t new_rook = offset(r.n , r.m -2);
     if (mesure_castle(k, r, &check_path_straight_1_instance<N, M>))
     {
         for (std::size_t i{0}; i < std::size(m_board); i++)
@@ -458,6 +470,10 @@ CONSTEXPR void Board<N, M>::king_side_castle(Coord const &k,
                 MATRIX_ISWAP,
                 std::array<std::size_t, 2>{rook, new_rook});
         }
+        m_piece_board[new_king] = std::move(m_piece_board[king]);
+        m_piece_board[new_rook] = std::move(m_piece_board[rook]);
+        m_piece_board[king] = nullptr;
+        m_piece_board[rook] = nullptr;
     }
 }
 template <std::size_t N, std::size_t M>
@@ -465,9 +481,9 @@ CONSTEXPR void Board<N, M>::queen_side_castle(Coord const &k,
                                               Coord const &r)
 {
     std::size_t king = offset(k.n, k.m);
-    std::size_t new_king = offset(k.n - 2, k.m);
+    std::size_t new_king = offset(k.n , k.m -2);
     std::size_t rook = offset(r.n, r.m);
-    std::size_t new_rook = offset(r.n + 3, r.m);
+    std::size_t new_rook = offset(r.n , r.m +3);
     if (mesure_castle(k, r, &check_path_straight_1_instance<N, M>))
     {
         for (std::size_t i{0}; i < std::size(m_board); i++)
@@ -481,6 +497,10 @@ CONSTEXPR void Board<N, M>::queen_side_castle(Coord const &k,
                 MATRIX_ISWAP,
                 std::array<std::size_t, 2>{rook, new_rook});
         }
+        m_piece_board[new_king] = std::move(m_piece_board[king]);
+        m_piece_board[new_rook] = std::move(m_piece_board[rook]);
+        m_piece_board[king] = nullptr;
+        m_piece_board[rook] = nullptr;
     }
 }
 template <std::size_t N, std::size_t M>
@@ -738,7 +758,8 @@ Board<N, M>::move_enpassant(Coord const &s, Coord const &t, Coord const &ep)
                             std::array<std::size_t, 2>{
                                 enpassant, N * M + 1});
                     }
-                    // ces deux instructions représentent un mouvement de capture jump
+                    // ces deux instructions représentent un mouvement
+                    // de capture jump
                     move_1_instance(
                         std::array<bool, 2>{
                             m_board[i].first[target], false},
@@ -982,6 +1003,31 @@ CONSTEXPR void Board<N, M>::move_classic(Coord const &s, Coord const &t)
     switch (piece)
     {
     case TypePiece::KING:
+        if constexpr (N == 8 && M == 8)
+        {
+            auto abs_diff{[](std::size_t x, std::size_t y) -> std::size_t
+                  {
+                      return (x >= y) ? x - y : y - x;
+                  }};
+            std::size_t diff_colum{abs_diff(s.m, t.m)};
+            if(diff_colum ==2)
+            {
+                if(s.m>t.m)
+                {
+                    queen_side_castle(s,Coord(s.n, t.m-2));
+                }
+                else
+                {
+                    king_side_castle(s, Coord(s.n, t.m +1));
+                }
+            }
+            else
+            {
+                move_classic_jump(s, t);
+            }
+
+        }
+        
     case TypePiece::KNIGHT:
         move_classic_jump(s, t);
         break;
@@ -1020,6 +1066,7 @@ CONSTEXPR void Board<N, M>::move_split(Coord const &s,
     case TypePiece::QUEEN:
         move_split_slide(s, t1, t2, &check_path_queen_1_instance<N, M>);
         break;
+    case TypePiece::PAWN:
     default:
         break;
     }
@@ -1094,6 +1141,12 @@ CONSTEXPR void Board<N, M>::move_pawn(Coord const &s, Coord const &t)
             }
         }
     }
+}
+
+template <std::size_t N, std::size_t M>
+CONSTEXPR void Board<N, M>::move(Move const& m)
+{
+    
 }
 
 template <std::size_t N, std::size_t M>

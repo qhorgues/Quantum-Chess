@@ -105,8 +105,7 @@ public:
      * des positions d'arrivées possible sachant que chaque élément
      * représente une seule des deux cases d'arrivées d'un split move
      */
-    CONSTEXPR std::forward_list<Coord>
-    get_list_split_move(Coord const &pos) const;
+  
 
     /**
      * @brief Test si un mouvement est réalisable
@@ -115,6 +114,8 @@ public:
      * @return true si le mouvement est légal
      */
     CONSTEXPR bool move_is_legal(Move const &move) const;
+
+    CONSTEXPR void move(Move const& m);
 
 
     CONSTEXPR void king_side_castle(Coord const &king, Coord const &rook);
@@ -128,6 +129,9 @@ public:
                        std::size_t)>
         check_path);
     CONSTEXPR void queen_side_castle(Coord const &king,Coord const &rook);
+     CONSTEXPR void move_split(Coord const &s,
+                              Coord const &t1,
+                              Coord const &t2);
 
     friend class Piece;
 
@@ -384,9 +388,8 @@ private:
      * @param[in] t1 Coordonnées de la cible 1 (qui doit être vide)
      * @param[in] t2 Coordonnées de la cible 2 (qui doit être vide)
      */
-    CONSTEXPR void move_split(Coord const &s,
-                              Coord const &t1,
-                              Coord const &t2);
+    CONSTEXPR std::forward_list<Coord>
+    get_list_split_move(Coord const &pos) const;
 
     /**
      * @brief Mouvement de merge de pièce (pion exclu)

@@ -78,6 +78,7 @@ int main()
             {  make_observer(&W_ROOK),                   nullptr,                nullptr,    make_observer(&B_KING) }
         }
     };
+    B4.move_split(Coord(2,3), Coord(3,2), Coord(1,2));
     B4.king_side_castle(Coord(3,0), Coord(3,3));
 
    /* B2.move_classic_slide(Coord(0,0), Coord(0,3), &check_path_straight_1_instance<4, 4>);*/
