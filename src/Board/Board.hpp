@@ -115,8 +115,16 @@ public:
      */
     CONSTEXPR bool move_is_legal(Move const &move) const;
 
-    CONSTEXPR void move(Move const& m);
-
+    /**
+     * @brief Réalise un mouvement d'une pièce quelque soit le type
+     * du mouvement (classic, split, merge)
+     * 
+     * @warning Ne procède aucune vérification sur la validité du mouvement
+     * 
+     * @param movement 
+     * @return CONSTEXPR 
+     */
+    CONSTEXPR void move(Move const &movement);
 
     CONSTEXPR void king_side_castle(Coord const &king, Coord const &rook);
 
