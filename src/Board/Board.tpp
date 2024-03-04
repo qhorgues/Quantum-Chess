@@ -85,7 +85,7 @@ Board<N, M>::initializer_list_to_2_array(
         std::initializer_list<
             observer_ptr<Piece const>>> const &board,
     std::array<bool, N * M> &first_instance,
-    std::array <observer_ptr<Piece const>, N *M > &piece_board) noexcept
+    std::array<observer_ptr<Piece const>, N * M> &piece_board) noexcept
 {
 
     auto it_tab{std::begin(first_instance)};
@@ -315,6 +315,73 @@ Board<N, M>::mesure_capture_slide(
         return mes;
     }
 }
+template <std::size_t N, std::size_t M>
+CONSTEXPR bool
+Board<N, M>::mesure_castle(
+    Coord const &king,
+    Coord const &rook,
+    std::function<bool(Board<N, M> const &,
+                       Coord const &,
+                       Coord const &,
+                       std::size_t)>
+        check_path)
+{
+    std::size_t position_king = offset(king.n, king.m);
+    std::size_t position_rook = offset(rook.n, rook.m);
+    /*observer_ptr<Piece const> p_actuelle = (*this)(s.n, s.m);
+    if (p_actuelle == nullptr)
+    {
+        return false;
+    }*/
+
+    double x = get_random_number_0_1();
+    std::size_t indice_mes = 0;
+    while (x - std::pow(std::abs(m_board[indice_mes].second), 2) > 0)
+    {
+        x -= std::pow(std::abs(m_board[indice_mes].second), 2);
+        // indice_suppr++,
+    }
+    bool mes = m_board[indice_mes].first[position_king] &&
+               m_board[indice_mes].first[position_rook] &&
+               check_path(*this, king, rook, indice_mes);
+    double proba_delete = 0;
+    // std::size_t nbr_elt_suppr{0};
+    for (std::size_t i{std::size(m_board)}; i > 0; i--)
+    {
+        if ((m_board[i - 1].first[position_king] &&
+             m_board[i - 1].first[position_rook] &&
+             check_path(*this, king, rook, i)) != mes)
+        {
+            proba_delete +=
+                std::pow(std::abs(m_board[i - 1].second), 2);
+
+            m_board.erase(
+                std::begin(m_board) +
+                std::size(m_board) - i - 1);
+        }
+    }
+    for (auto &e : m_board)
+    {
+        e.second /= std::sqrt(1. - proba_delete);
+    }
+    for (std::size_t i{0}; i < N * M; i++)
+    {
+        if (m_piece_board[i] != nullptr &&
+            (m_piece_board[i]->get_type() == TypePiece::ROOK ||
+             m_piece_board[i]->get_type() == TypePiece::KING))
+        {
+            for (auto &e : m_board)
+            {
+                if (e.first[i])
+                {
+                    break;
+                }
+                m_piece_board[i] = nullptr;
+            }
+        }
+    }
+    return mes;
+}
 
 template <std::size_t N, std::size_t M>
 template <std::size_t Q>
@@ -370,7 +437,52 @@ Board<N, M>::move_1_instance(std::array<bool, Q> const &case_modif,
     auto x{qubitToArray(matrix * q)};
     modify(std::move(x), position, tab_positions);
 }
-
+template <std::size_t N, std::size_t M>
+CONSTEXPR void Board<N, M>::king_side_castle(Coord const &k,
+                                             Coord const &r)
+{
+    std::size_t king = offset(k.n, k.m);
+    std::size_t new_king = offset(k.n + 2, k.m);
+    std::size_t rook = offset(r.n, r.m);
+    std::size_t new_rook = offset(r.n - 2, r.m);
+    if (mesure_castle(k, r, &check_path_straight_1_instance<N, M>))
+    {
+        for (std::size_t i{0}; i < std::size(m_board); i++)
+        {
+            move_1_instance(
+                std::array<bool, 2>{true, false}, i,
+                MATRIX_ISWAP,
+                std::array<std::size_t, 2>{king, new_king});
+            move_1_instance(
+                std::array<bool, 2>{true, false}, i,
+                MATRIX_ISWAP,
+                std::array<std::size_t, 2>{rook, new_rook});
+        }
+    }
+}
+template <std::size_t N, std::size_t M>
+CONSTEXPR void Board<N, M>::queen_side_castle(Coord const &k,
+                                              Coord const &r)
+{
+    std::size_t king = offset(k.n, k.m);
+    std::size_t new_king = offset(k.n - 2, k.m);
+    std::size_t rook = offset(r.n, r.m);
+    std::size_t new_rook = offset(r.n + 3, r.m);
+    if (mesure_castle(k, r, &check_path_straight_1_instance<N, M>))
+    {
+        for (std::size_t i{0}; i < std::size(m_board); i++)
+        {
+            move_1_instance(
+                std::array<bool, 2>{true, false}, i,
+                MATRIX_ISWAP,
+                std::array<std::size_t, 2>{king, new_king});
+            move_1_instance(
+                std::array<bool, 2>{true, false}, i,
+                MATRIX_ISWAP,
+                std::array<std::size_t, 2>{rook, new_rook});
+        }
+    }
+}
 template <std::size_t N, std::size_t M>
 CONSTEXPR void
 Board<N, M>::move_classic_jump(Coord const &s, Coord const &t)
@@ -693,6 +805,7 @@ Board<N, M>::move_merge_jump(Coord const &s1, Coord const &s2, Coord const &t)
     m_piece_board[target] = m_piece_board[source1];
     m_piece_board[source2] = nullptr;
     m_piece_board[source1] = nullptr;
+    update_after_merge();
 }
 
 template <std::size_t N, std::size_t M>
@@ -859,6 +972,128 @@ Board<N, M>::move_merge_slide(
     m_piece_board[target] = m_piece_board[source1];
     m_piece_board[source2] = nullptr;
     m_piece_board[source1] = nullptr;
+    update_after_merge();
+}
+
+template <std::size_t N, std::size_t M>
+CONSTEXPR void Board<N, M>::move_classic(Coord const &s, Coord const &t)
+{
+    TypePiece piece{(*this)(s.n, s.m)->get_type()};
+    switch (piece)
+    {
+    case TypePiece::KING:
+    case TypePiece::KNIGHT:
+        move_classic_jump(s, t);
+        break;
+    case TypePiece::BISHOP:
+        move_classic_slide(s, t, &check_path_diagonal_1_instance<N, M>);
+        break;
+    case TypePiece::ROOK:
+        move_classic_slide(s, t, &check_path_straight_1_instance<N, M>);
+        break;
+    case TypePiece::QUEEN:
+        move_classic_slide(s, t, &check_path_queen_1_instance<N, M>);
+        break;
+    default:
+        break;
+    }
+}
+
+template <std::size_t N, std::size_t M>
+CONSTEXPR void Board<N, M>::move_split(Coord const &s,
+                                       Coord const &t1,
+                                       Coord const &t2)
+{
+    TypePiece piece{(*this)(s.n, s.m)->get_type()};
+    switch (piece)
+    {
+    case TypePiece::KING:
+    case TypePiece::KNIGHT:
+        move_split_jump(s, t1, t2);
+        break;
+    case TypePiece::BISHOP:
+        move_split_slide(s, t1, t2, &check_path_diagonal_1_instance<N, M>);
+        break;
+    case TypePiece::ROOK:
+        move_split_slide(s, t1, t2, &check_path_straight_1_instance<N, M>);
+        break;
+    case TypePiece::QUEEN:
+        move_split_slide(s, t1, t2, &check_path_queen_1_instance<N, M>);
+        break;
+    default:
+        break;
+    }
+}
+
+template <std::size_t N, std::size_t M>
+CONSTEXPR void Board<N, M>::move_merge(Coord const &s1,
+                                       Coord const &s2,
+                                       Coord const &t)
+{
+    TypePiece piece1{(*this)(s1.n, s1.m)->get_type()};
+    TypePiece piece2{(*this)(s2.n, s2.m)->get_type()};
+    if (piece1 != piece2)
+    {
+        return;
+    }
+    switch (piece1)
+    {
+    case TypePiece::KING:
+    case TypePiece::KNIGHT:
+        move_merge_jump(s1, s2, t);
+        break;
+    case TypePiece::BISHOP:
+        move_merge_slide(s1, s2, t, &check_path_diagonal_1_instance<N, M>);
+        break;
+    case TypePiece::ROOK:
+        move_merge_slide(s1, s2, t, &check_path_straight_1_instance<N, M>);
+        break;
+    case TypePiece::QUEEN:
+        move_merge_slide(s1, s2, t, &check_path_queen_1_instance<N, M>);
+        break;
+    default:
+        break;
+    }
+}
+
+template <std::size_t N, std::size_t M>
+CONSTEXPR void Board<N, M>::move_pawn(Coord const &s, Coord const &t)
+{
+    auto abs_diff{[](std::size_t x, std::size_t y) -> std::size_t
+                  {
+                      return (x >= y) ? x - y : y - x;
+                  }};
+    std::size_t diff_line{abs_diff(s.n, t.n)};
+    if (diff_line == 2)
+    {
+        move_pawn_two_step(s, t);
+    }
+    else if (diff_line == 1)
+    {
+        std::size_t diff_col{abs_diff(s.m, t.m)};
+        if (diff_col == 1)
+        {
+
+            if (m_ep != std::nullopt && m_ep == t)
+            {
+                int step
+                {
+                    ((*this)(s.n, s.m)->get_color() ==
+                     Color::WHITE)
+                        ? -1
+                        : 1
+                };
+                Coord ep;
+                ep.m = m_ep->m;
+                ep.n = m_ep->m + step;
+                move_enpassant(s, t, ep);
+            }
+            else
+            {
+                capture_pawn(s, t);
+            }
+        }
+    }
 }
 
 template <std::size_t N, std::size_t M>

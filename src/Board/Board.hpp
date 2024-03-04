@@ -108,8 +108,54 @@ public:
     CONSTEXPR std::forward_list<Coord>
     get_list_split_move(Coord const &pos) const;
 
+    /**
+     * @brief Test si un mouvement est réalisable
+     *
+     * @param[in] move Le mouvement à tester
+     * @return true si le mouvement est légal
+     */
     CONSTEXPR bool move_is_legal(Move const &move) const;
 
+
+    CONSTEXPR void king_side_castle(Coord const &king, Coord const &rook);
+
+    CONSTEXPR bool mesure_castle(
+    Coord const &king,
+    Coord const &rook,
+    std::function<bool(Board<N, M> const &,
+                       Coord const &,
+                       Coord const &,
+                       std::size_t)>
+        check_path);
+    CONSTEXPR void queen_side_castle(Coord const &king,Coord const &rook);
+
+    friend class Piece;
+
+    template <std::size_t _N, std::size_t _M>
+    friend CONSTEXPR bool
+    check_path_straight_1_instance(
+        Board<_N, _M> const &board,
+        Coord const &dpt,
+        Coord const &arv,
+        std::size_t position);
+
+    template <std::size_t _N, std::size_t _M>
+    friend CONSTEXPR bool
+    check_path_diagonal_1_instance(
+        Board<_N, _M> const &board,
+        Coord const &dpt,
+        Coord const &arv,
+        std::size_t position);
+
+    template <std::size_t _N, std::size_t _M>
+    friend CONSTEXPR bool
+    check_path_queen_1_instance(
+        Board<_N, _M> const &board,
+        Coord const &dpt,
+        Coord const &arv,
+        std::size_t position);
+
+private:
     /**
      * @brief Renvoie la probabilité qu'il y ait une pièce à une position.
      *
@@ -129,16 +175,14 @@ public:
      */
     void update_after_merge() noexcept;
 
-    // a basculer en private
-
     /**
      * @brief Mouvement classique d'une pièce qui "saute"
-     * (cavalier, roi ou pion)
+     * (cavalier, roi)
      *
      * @tparam N Le nombre de ligne du plateau
      * @tparam M Le nombre de colonnes du plateau
-     * @paramint s Coordonnées de la source du mouvement
-     * @paramint t Coordonnées de la cible du mouvement
+     * @param[in] s Coordonnées de la source du mouvement
+     * @param[in] t Coordonnées de la cible du mouvement
      */
     CONSTEXPR void move_classic_jump(Coord const &s, Coord const &t);
 
@@ -290,7 +334,6 @@ public:
     CONSTEXPR void
     move_enpassant(Coord const &s, Coord const &t, Coord const &ep);
 
-    // a basculer en private
     /**
      * @brief Mesure la présence d'une pièce
      *
@@ -322,25 +365,55 @@ public:
                                             std::size_t)>
                              check_path);
 
-    friend class Piece;
+    /**
+     * @brief Mouvement classique d'une pièce (pion exclu)
+     *
+     * @tparam N Le nombre de ligne du plateau
+     * @tparam M Le nombre de colonnes du plateau
+     * @param[in] s Coordonnées de la source du mouvement
+     * @param[in] t Coordonnées de la cible du mouvement
+     */
+    CONSTEXPR void move_classic(Coord const &s, Coord const &t);
 
-    template <std::size_t _N, std::size_t _M>
-    friend CONSTEXPR bool
-    check_path_straight_1_instance(
-        Board<_N, _M> const &board,
-        Coord const &dpt,
-        Coord const &arv,
-        std::size_t position);
+    /**
+     * @brief Mouvement split d'une pièce (pion exclu)
+     *
+     * @tparam N Le nombre de ligne du plateau
+     * @tparam M Le nombre de colonnes du plateau
+     * @param[in] s Coordonnées de la source du mouvement
+     * @param[in] t1 Coordonnées de la cible 1 (qui doit être vide)
+     * @param[in] t2 Coordonnées de la cible 2 (qui doit être vide)
+     */
+    CONSTEXPR void move_split(Coord const &s,
+                              Coord const &t1,
+                              Coord const &t2);
 
-    template <std::size_t _N, std::size_t _M>
-    friend CONSTEXPR bool
-    check_path_diagonal_1_instance(
-        Board<N, M> const &board,
-        Coord const &dpt,
-        Coord const &arv,
-        std::size_t position);
+    /**
+     * @brief Mouvement de merge de pièce (pion exclu)
+     *
+     * @warning Aucun test sur la validité du mouvement
+     * (cible vide, pièce identique sur les sources, ect)
+     *
+     * @tparam N Le nombre de lignes du plateau
+     * @tparam M Le nombre de colonnes du plateau
+     * @param[in] s1 Coordonnées de la source 1
+     * @param[in] s2 Coordonnées de la source 2
+     * @param[in] t Coordonnées de la cible
+     */
+    CONSTEXPR void move_merge(Coord const &s1,
+                              Coord const &s2,
+                              Coord const &t);
 
-private:
+    /**
+     * @brief Gère tout les mouvements d'un pion
+     *
+     * @tparam N Le nombre de lignes du plateau
+     * @tparam M Le nombre de colonnes du plateau
+     * @param[in] s Coordonnées de la source
+     * @param[in] t Coordonnées de la cible
+     */
+    CONSTEXPR void move_pawn(Coord const &s, Coord const &t);
+
     /**
      * @brief Renvoie une position 1D d'une coordonnée 2D
      *
@@ -348,8 +421,9 @@ private:
      * @param[in] colonne L'indice de colonne
      * @return std::size_t La position en 1D
      */
-    CONSTEXPR static std::size_t offset(std::size_t ligne,
-                                        std::size_t colonne) noexcept;
+    CONSTEXPR static std::size_t
+    offset(std::size_t ligne,
+           std::size_t colonne) noexcept;
 
     /**
      * @brief Initialise un plateau à l'aide des listes d'initialisations
