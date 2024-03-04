@@ -27,7 +27,7 @@ enum class TypeMove
 /**
  * @brief Stoque tout les mouvements possibles
  */
-struct Move 
+struct Move
 {
     /**
      * @brief Indique qu'elle est le mouvement stoqué par l'union
@@ -73,7 +73,7 @@ struct Move
 
             /**
              * @brief Une seconde coordonnée d'arrivée
-             * 
+             *
              */
             Coord arv2;
         } split;
@@ -101,5 +101,20 @@ struct Move
         } merge;
     };
 };
+
+CONSTEXPR Move Move_classic(Coord const &src, Coord const &arv)
+{
+    return Move{.type = TypeMove::NORMAL, .normal = {.src = src, .arv = arv}};
+}
+
+CONSTEXPR Move Move_split(Coord const &src, Coord const &arv1, Coord const &arv2)
+{
+    return Move{.type = TypeMove::SPLIT, .split = {.src = src, .arv1 = arv1, .arv2 = arv2}};
+}
+
+CONSTEXPR Move Move_merge(Coord const &src1, Coord const &src2, Coord const &arv)
+{
+    return Move{.type = TypeMove::SPLIT, .merge = {.src1 = src1, .src2 = src2, .arv = arv}};
+}
 
 #endif
