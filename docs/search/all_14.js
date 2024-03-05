@@ -6,5 +6,6 @@ var searchData=
   ['w_5fpawn_3',['W_PAWN',['../da/d03/_piece_8hpp.html#ac7c64de0d7ab6217ce3f2f063306f7a8',1,'Piece.hpp']]],
   ['w_5fqueen_4',['W_QUEEN',['../da/d03/_piece_8hpp.html#ad4d8e97ebbb19c13306b5d5438d592bd',1,'Piece.hpp']]],
   ['w_5frook_5',['W_ROOK',['../da/d03/_piece_8hpp.html#acfed4544fb7e11887d404f9b48b7da07',1,'Piece.hpp']]],
-  ['white_6',['WHITE',['../d3/d06/_color_8hpp.html#a78abb31bad0fd1834c54a3ca6f8daab5ab5bf627e448384cf3a4c35121ca6008d',1,'Color.hpp']]]
+  ['white_6',['WHITE',['../d3/d06/_color_8hpp.html#a78abb31bad0fd1834c54a3ca6f8daab5ab5bf627e448384cf3a4c35121ca6008d',1,'Color.hpp']]],
+  ['winning_5fposition_7',['winning_position',['../d3/dfd/class_board.html#aaf8494df6b609884d1226b875b265c15',1,'Board']]]
 ];
