@@ -17,6 +17,7 @@ set (SRCS
     src/Piece/Piece.tpp
     src/Qubit/Qubit.tpp
     src/check_path/check_path.tpp
+    src/ComputerPlayer/ComputerPlayer.tpp
 )
 
 set (HEADERS
@@ -31,6 +32,7 @@ set (HEADERS
     src/Qubit/Qubit.hpp
     src/check_path/check_path.hpp
     src/math_utility/math_utility.hpp
+    src/ComputerPlayer/ComputerPlayer.hpp
 )
 
 
