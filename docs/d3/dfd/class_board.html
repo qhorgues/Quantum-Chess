@@ -143,6 +143,12 @@ Fonctions membres publiques</h2></td></tr>
 <tr class="memitem:aaf8494df6b609884d1226b875b265c15" id="r_aaf8494df6b609884d1226b875b265c15"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../da/d0b/_constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaf8494df6b609884d1226b875b265c15">winning_position</a> (<a class="el" href="../../d3/d06/_color_8hpp.html#a78abb31bad0fd1834c54a3ca6f8daab5">Color</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">c</a>)</td></tr>
 <tr class="memdesc:aaf8494df6b609884d1226b875b265c15"><td class="mdescLeft">&#160;</td><td class="mdescRight">Test si un plateau est gagnant pour une couleur.  <br /></td></tr>
 <tr class="separator:aaf8494df6b609884d1226b875b265c15"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac92c8b8d8071a54281e194ddf75beba4" id="r_ac92c8b8d8071a54281e194ddf75beba4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../da/d0b/_constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> <a class="el" href="../../d3/d06/_color_8hpp.html#a78abb31bad0fd1834c54a3ca6f8daab5">Color</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac92c8b8d8071a54281e194ddf75beba4">get_current_player</a> () <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">noexcept</a></td></tr>
+<tr class="memdesc:ac92c8b8d8071a54281e194ddf75beba4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recupère la couleur du joueur au tour de jouer.  <br /></td></tr>
+<tr class="separator:ac92c8b8d8071a54281e194ddf75beba4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9fcccd89ef3b7af6dc54867671fb3f3" id="r_aa9fcccd89ef3b7af6dc54867671fb3f3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../da/d0b/_constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa9fcccd89ef3b7af6dc54867671fb3f3">change_player</a> () <a class="el" href="../../d6/d4d/classobserver__ptr.html">noexcept</a></td></tr>
+<tr class="memdesc:aa9fcccd89ef3b7af6dc54867671fb3f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Change le joueur actuel et passe la main à l'autre joueur.  <br /></td></tr>
+<tr class="separator:aa9fcccd89ef3b7af6dc54867671fb3f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Fonctions membres publiques statiques</h2></td></tr>
@@ -461,6 +467,65 @@ template&lt;std::size_t N = 8, std::size_t M = N&gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>CONSTEXPR </dd></dl>
+
+</div>
+</div>
+<a id="aa9fcccd89ef3b7af6dc54867671fb3f3" name="aa9fcccd89ef3b7af6dc54867671fb3f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9fcccd89ef3b7af6dc54867671fb3f3">&#9670;&#160;</a></span>change_player()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;std::size_t N = 8, std::size_t M = N&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../da/d0b/_constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">void</a> <a class="el" href="../../d3/dfd/class_board.html">Board</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">N</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">M</a> &gt;::change_player </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Change le joueur actuel et passe la main à l'autre joueur. </p>
+
+</div>
+</div>
+<a id="ac92c8b8d8071a54281e194ddf75beba4" name="ac92c8b8d8071a54281e194ddf75beba4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac92c8b8d8071a54281e194ddf75beba4">&#9670;&#160;</a></span>get_current_player()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;std::size_t N = 8, std::size_t M = N&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../da/d0b/_constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> <a class="el" href="../../d3/d06/_color_8hpp.html#a78abb31bad0fd1834c54a3ca6f8daab5">Color</a> <a class="el" href="../../d3/dfd/class_board.html">Board</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">N</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">M</a> &gt;::get_current_player </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Recupère la couleur du joueur au tour de jouer. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>Color la couleur du joueur </dd></dl>
 
 </div>
 </div>
