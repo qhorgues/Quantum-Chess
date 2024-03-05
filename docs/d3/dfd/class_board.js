@@ -34,6 +34,8 @@ var class_board =
     [ "operator=", "d3/dfd/class_board.html#ae02aa59b2cb5f7570a86e769641e84f3", null ],
     [ "operator=", "d3/dfd/class_board.html#ac2081cea73b0212e1d3a1f1937fc24cc", null ],
     [ "queen_side_castle", "d3/dfd/class_board.html#ac07d79a31513fb11ed5e9687eef0258a", null ],
+    [ "save_case", "d3/dfd/class_board.html#afefe030f927ec245b88b6c060e160b23", null ],
+    [ "save_case", "d3/dfd/class_board.html#a45abe4bebf60c90e946780299ab88a80", null ],
     [ "update_after_merge", "d3/dfd/class_board.html#ae5c22da736ae255dc98e53450b39961c", null ],
     [ "check_path_diagonal_1_instance", "d3/dfd/class_board.html#a94acc9c514cf96412c0524ef0ddaedcc", null ],
     [ "check_path_queen_1_instance", "d3/dfd/class_board.html#a2db87d9145b79631cb81265802ca3699", null ],

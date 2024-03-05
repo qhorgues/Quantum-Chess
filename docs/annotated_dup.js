@@ -6,5 +6,6 @@ var annotated_dup =
     [ "Move", "d8/d4e/struct_move.html", "d8/d4e/struct_move" ],
     [ "observer_ptr", "d6/d4d/classobserver__ptr.html", "d6/d4d/classobserver__ptr" ],
     [ "Piece", "d7/d87/class_piece.html", "d7/d87/class_piece" ],
-    [ "Qubit", "dc/dd9/class_qubit.html", "dc/dd9/class_qubit" ]
+    [ "Qubit", "dc/dd9/class_qubit.html", "dc/dd9/class_qubit" ],
+    [ "SaveCase", "d7/da7/class_save_case.html", "d7/da7/class_save_case" ]
 ];

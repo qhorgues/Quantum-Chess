@@ -123,9 +123,17 @@ public:
      * @warning Ne procède aucune vérification sur la validité du mouvement
      *
      * @param movement
-     * @return CONSTEXPR
      */
     CONSTEXPR void move(Move const &movement);
+
+    /**
+     * @brief Test si un plateau est gagnant pour une couleur 
+     * 
+     * @param[in] c Couleur
+     * @return true si la position est gagnante pour la couleur c
+     * @return false sinon
+     */
+    CONSTEXPR bool winning_position(Color c);
 
     friend class Piece;
 
@@ -152,6 +160,7 @@ public:
         Coord const &dpt,
         Coord const &arv,
         std::size_t position);
+
     
 private:
     /**
@@ -574,7 +583,7 @@ private:
     /**
      * @brief Color::WHITE si c'est aux blanc de jouer aux noirs sinon
      */
-    Color m_couleur;
+    Color m_color_current_player;
 
     /**
      * @brief Vrai si les noirs[0] / blancs[1] peuvent faire le petit roque
@@ -593,18 +602,5 @@ private:
     std::optional<Coord> m_ep;
 };
 
-/**
- * @brief Test d'égalité entre deux tableaux de booléen
- *
- * @tparam N La taille des tableaux
- * @param[in] t1 Le premier tableau
- * @param[in] t2 Le deuxième tableau
- * @return true si les deux plateaux sont égaux
- * @return false sinon
- */
-/* template <std::size_t N>
-CONSTEXPR bool operator==(std::array<bool, N> const &t1,
-                          std::array<bool, N> const &t2) noexcept;
- */
 #include "Board.tpp"
 #endif

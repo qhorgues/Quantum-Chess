@@ -30,7 +30,7 @@ CONSTEXPR Board<N, M>::Board()
       m_piece_board(),
       m_S_mailbox(),
       m_L_mailbox(),
-      m_couleur(Color::WHITE),
+      m_color_current_player(Color::WHITE),
       m_k_castle({true, true}),
       m_q_castle({true, true}),
       m_ep()
@@ -48,7 +48,7 @@ CONSTEXPR Board<N, M>::Board(std::initializer_list<
       m_piece_board(),
       m_S_mailbox(),
       m_L_mailbox(),
-      m_couleur(Color::WHITE),
+      m_color_current_player(Color::WHITE),
       m_k_castle({true, true}),
       m_q_castle({true, true}),
       m_ep()
@@ -249,53 +249,6 @@ CONSTEXPR bool Board<N, M>::mesure(Coord const &p)
         return mes;
     }
 }
-
-/* template <std::size_t N, std::size_t M>
-CONSTEXPR Board<N, M> Board<N, M>::mesure_all_case(Coord const &p)
-{
-
-    Board<N, M> b{*this};
-    for (std::size_t i{std::size(m_board)}; i > 0; i--)
-    {
-        if (m_board[i - 1].first[offset(p.n, p.m)]) //?
-        {
-            m_board.erase(
-                std::begin(m_board) +
-                std::size(m_board) - i + 1);
-        }
-        else
-        {
-            b.m_board.erase(
-                std::begin(b.m_board) +
-                std::size(b.m_board) - i + 1);
-        }
-    }
-    for (std::size_t i{0}; i < N * M; i++)
-    {
-        if (m_piece_board[i] != nullptr &&
-            p_actuelle->get_type() == m_piece_board[i]->get_type())
-        {
-            for (auto &e : m_board)
-            {
-                if (e.first[i])
-                {
-                    break;
-                }
-                m_piece_board[i] = nullptr;
-            }
-            for (auto &e : b.m_board)
-            {
-                if (e.first[i])
-                {
-                    break;
-                }
-                m_piece_board[i] = nullptr;
-            }
-        }
-    }
-
-    return b;
-} */
 
 template <std::size_t N, std::size_t M>
 CONSTEXPR bool
@@ -1259,6 +1212,20 @@ void Board<N, M>::update_after_merge() noexcept
         }
     }
 }
+template <std::size_t N, std::size_t M>
+CONSTEXPR bool Board<N, M>::winning_position(Color c)
+{
+    for(std::size_t i{0}; i<N*M; i++)
+    {
+        if(m_piece_board[i].get_type() == TypePiece::KING 
+           && m_piece_board[i].get_color() !=c)
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
 
 template <std::size_t N, std::size_t M>
 CONSTEXPR bool
