@@ -30,7 +30,7 @@ enum class TypeMove
 struct Move
 {
     /**
-     * @brief Indique qu'elle est le mouvement stoqué par l'union
+     * @brief Indique quel est le mouvement stoqué par l'union
      */
     TypeMove type;
 
