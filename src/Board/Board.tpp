@@ -94,9 +94,8 @@ Board<N, M>::initializer_list_to_2_array(
     for (std::initializer_list<
              observer_ptr<Piece const>> const &e : board)
     {
-        std::size_t const size_sub_list{std::size(e)};
         auto const it_tab_begin_line{it_tab};
-        assert(size_sub_list <= M && "Value entry out of Board");
+        assert(std::size(e) <= M && "Value entry out of Board");
         std::for_each(std::begin(e),
                       std::end(e),
                       [it_tab](observer_ptr<Piece const> piece) mutable
@@ -180,6 +179,25 @@ Board<N, M>::get_list_split_move(Coord const &pos) const
         return (*this)(pos.n, pos.m)->get_list_split_move(*this, pos);
     }
     return std::forward_list<Coord>{};
+}
+
+template <std::size_t N, std::size_t M>
+CONSTEXPR Color Board<N, M>::get_current_player() const noexcept
+{
+    return m_color_current_player;
+}
+
+template <std::size_t N, std::size_t M>
+CONSTEXPR void Board<N, M>::change_player() noexcept
+{
+    if (get_current_player() == Color::WHITE)
+    {
+        m_color_current_player = Color::BLACK;
+    }
+    else
+    {
+        m_color_current_player = Color::WHITE;
+    }
 }
 
 template <std::size_t N, std::size_t M>

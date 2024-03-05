@@ -135,6 +135,18 @@ public:
      */
     CONSTEXPR bool winning_position(Color c);
 
+    /**
+     * @brief Recupère la couleur du joueur au tour de jouer
+     * 
+     * @return Color la couleur du joueur
+     */
+    CONSTEXPR Color get_current_player() const noexcept;
+
+    /**
+     * @brief Change le joueur actuel et passe la main à l'autre joueur
+     */
+    CONSTEXPR void change_player() noexcept;
+
     friend class Piece;
 
     template <std::size_t _N, std::size_t _M>
