@@ -31,6 +31,7 @@ set (HEADERS
     src/Qubit/Qubit.hpp
     src/check_path/check_path.hpp
     src/math_utility/math_utility.hpp
+    src/Final_solver/Final_solver.hpp
 )
 
 
