@@ -185,6 +185,10 @@ Piece::get_list_move_rec(Board<N, M> const &board,
                 {
                     move.push_front(Coord(n, m));
                 }
+                else
+                {
+                    break;
+                }
             }
             posBox_tmp = board.m_S_mailbox[arv];
             arv = board.m_L_mailbox[posBox_tmp + e];
