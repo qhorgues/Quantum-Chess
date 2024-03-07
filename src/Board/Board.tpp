@@ -883,12 +883,12 @@ Board<N, M>::move_classic_slide(
         {
             move_1_instance(
                 std::array<bool, 3>{
-                    m_board[i].first[source],
+                    !check_path(
+                        *this, s, t, i),
                     false,
-                    check_path(
-                        *this, s, t, i)},
+                    m_board[i].first[source]},
                 i, MATRIX_SLIDE,
-                std::array<std::size_t, 3>{source, target, N * M + 1});
+                std::array<std::size_t, 3>{N*M+1, target, source});
         }
         m_piece_board[target] = m_piece_board[source];
         update_case(source);
@@ -903,11 +903,11 @@ Board<N, M>::move_classic_slide(
                 {
                     move_1_instance(
                         std::array<bool, 3>{
-                            m_board[i].first[source],
+                            !check_path(*this, s, t, i),
                             false,
-                            check_path(*this, s, t, i)},
+                            m_board[i].first[source]},
                         i, MATRIX_SLIDE,
-                        std::array<std::size_t, 3>{source, target, N * M + 1});
+                        std::array<std::size_t, 3>{N*M+1, target, source});
                 }
                 m_piece_board[target] = m_piece_board[source];
                 m_piece_board[source] = nullptr;
