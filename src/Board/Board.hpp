@@ -135,6 +135,25 @@ public:
      */
     CONSTEXPR bool winning_position(Color c);
 
+    /**
+     * @brief Recupère la couleur du joueur au tour de jouer
+     * 
+     * @return Color la couleur du joueur
+     */
+    CONSTEXPR Color get_current_player() const noexcept;
+
+    /**
+     * @brief Change le joueur actuel et passe la main à l'autre joueur
+     */
+    CONSTEXPR void change_player() noexcept;
+    
+    /**
+     * @brief Renvoie la probabilité qu'il y ait une pièce à une position.
+     *
+     * @param pos La position
+     */
+    CONSTEXPR double get_proba(Coord const &pos) const noexcept;
+
     friend class Piece;
 
     template <std::size_t _N, std::size_t _M>
@@ -163,12 +182,6 @@ public:
 
     
 private:
-    /**
-     * @brief Renvoie la probabilité qu'il y ait une pièce à une position.
-     *
-     * @param pos La position
-     */
-    CONSTEXPR double get_proba(Coord const &pos) const noexcept;
 
     /**
      * @brief Fonction qui permet de mattre à jour le plateau après un merge,

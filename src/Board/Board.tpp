@@ -8,6 +8,7 @@
 #include <functional>
 #include <cmath>
 #include <optional>
+#include <stdexcept>
 
 // Inclusion projet
 #include <Qubit.hpp>
@@ -17,6 +18,7 @@
 #include <Piece.hpp>
 #include <math_utility.hpp>
 #include <Constexpr.hpp>
+#include <Move.hpp>
 #include "Board.hpp"
 
 bool operator==(Coord const &lhs, Coord const &rhs)
@@ -94,9 +96,8 @@ Board<N, M>::initializer_list_to_2_array(
     for (std::initializer_list<
              observer_ptr<Piece const>> const &e : board)
     {
-        std::size_t const size_sub_list{std::size(e)};
         auto const it_tab_begin_line{it_tab};
-        assert(size_sub_list <= M && "Value entry out of Board");
+        assert(std::size(e) <= M && "Value entry out of Board");
         std::for_each(std::begin(e),
                       std::end(e),
                       [it_tab](observer_ptr<Piece const> piece) mutable
@@ -183,6 +184,25 @@ Board<N, M>::get_list_split_move(Coord const &pos) const
 }
 
 template <std::size_t N, std::size_t M>
+CONSTEXPR Color Board<N, M>::get_current_player() const noexcept
+{
+    return m_color_current_player;
+}
+
+template <std::size_t N, std::size_t M>
+CONSTEXPR void Board<N, M>::change_player() noexcept
+{
+    if (get_current_player() == Color::WHITE)
+    {
+        m_color_current_player = Color::BLACK;
+    }
+    else
+    {
+        m_color_current_player = Color::WHITE;
+    }
+}
+
+template <std::size_t N, std::size_t M>
 double Board<N, M>::get_random_number_0_1()
 {
     std::random_device rd;
@@ -210,6 +230,10 @@ CONSTEXPR bool Board<N, M>::mesure(Coord const &p)
         {
             x -= pow_coef;
             indice_mes++;
+            if (indice_mes >= std::size(m_board))
+            {
+                throw std::runtime_error("Indice mesuré de mesure trop grand");
+            }
             pow_coef = std::pow(std::abs(m_board[indice_mes].second), 2);
         }
         bool mes = m_board[indice_mes].first[offset(p.n, p.m)];
@@ -1146,6 +1170,10 @@ CONSTEXPR void Board<N, M>::move_merge(Coord const &s1,
 template <std::size_t N, std::size_t M>
 CONSTEXPR void Board<N, M>::move(Move const &movement)
 {
+    if (std::empty(m_board))
+    {
+        throw std::runtime_error("Le plateau est vide impossible de réaliser l'opération move");
+    }
     switch (movement.type)
     {
     case TypeMove::NORMAL:
@@ -1215,17 +1243,16 @@ void Board<N, M>::update_after_merge() noexcept
 template <std::size_t N, std::size_t M>
 CONSTEXPR bool Board<N, M>::winning_position(Color c)
 {
-    for(std::size_t i{0}; i<N*M; i++)
+    for (std::size_t i{0}; i < N * M; i++)
     {
-        if(m_piece_board[i].get_type() == TypePiece::KING 
-           && m_piece_board[i].get_color() !=c)
+        if (m_piece_board[i].get_type() == TypePiece::KING &&
+            m_piece_board[i].get_color() != c)
         {
             return false;
         }
     }
     return true;
 }
-
 
 template <std::size_t N, std::size_t M>
 CONSTEXPR bool
