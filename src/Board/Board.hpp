@@ -127,8 +127,8 @@ public:
     CONSTEXPR void move(Move const &movement);
 
     /**
-     * @brief Test si un plateau est gagnant pour une couleur 
-     * 
+     * @brief Test si un plateau est gagnant pour une couleur
+     *
      * @param[in] c Couleur
      * @return true si la position est gagnante pour la couleur c
      * @return false sinon
@@ -137,7 +137,7 @@ public:
 
     /**
      * @brief Recupère la couleur du joueur au tour de jouer
-     * 
+     *
      * @return Color la couleur du joueur
      */
     CONSTEXPR Color get_current_player() const noexcept;
@@ -146,7 +146,7 @@ public:
      * @brief Change le joueur actuel et passe la main à l'autre joueur
      */
     CONSTEXPR void change_player() noexcept;
-    
+
     /**
      * @brief Renvoie la probabilité qu'il y ait une pièce à une position.
      *
@@ -180,9 +180,8 @@ public:
         Coord const &arv,
         std::size_t position);
 
-    
 private:
-
+    void update_case(std::size_t pos) noexcept;
     /**
      * @brief Fonction qui permet de mattre à jour le plateau après un merge,
      * car ce mouvement entraine l'apparition de plusieurs instance de board

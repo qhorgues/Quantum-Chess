@@ -821,7 +821,10 @@ Board<N, M>::move_split_jump(Coord const &s, Coord const &t1, Coord const &t2)
     }
     m_piece_board[target1] = m_piece_board[source];
     m_piece_board[target2] = m_piece_board[source];
-    m_piece_board[source] = nullptr;
+    update_case(source);
+    update_case(target1);
+    update_case(target2);
+
 }
 
 template <std::size_t N, std::size_t M>
@@ -843,9 +846,10 @@ Board<N, M>::move_merge_jump(Coord const &s1, Coord const &s2, Coord const &t)
             std::array<std::size_t, 3>{source1, source2, target});
     }
     m_piece_board[target] = m_piece_board[source1];
-    m_piece_board[source2] = nullptr;
-    m_piece_board[source1] = nullptr;
     update_after_merge();
+    update_case(target);
+    update_case(source1);
+    update_case(source2);
 }
 
 template <std::size_t N, std::size_t M>
@@ -878,7 +882,7 @@ Board<N, M>::move_classic_slide(
                 std::array<std::size_t, 3>{source, target, N * M + 1});
         }
         m_piece_board[target] = m_piece_board[source];
-        m_piece_board[source] = nullptr;
+        update_case(source);
     }
     else
     {
@@ -967,7 +971,9 @@ Board<N, M>::move_split_slide(
     }
     m_piece_board[target1] = m_piece_board[source];
     m_piece_board[target2] = m_piece_board[source];
-    m_piece_board[source] = nullptr;
+    update_case(source);
+    update_case(target1);
+    update_case(target2);
 }
 
 template <std::size_t N, std::size_t M>
@@ -1010,9 +1016,11 @@ Board<N, M>::move_merge_slide(
            a appliquer la porte cnot */
     }
     m_piece_board[target] = m_piece_board[source1];
-    m_piece_board[source2] = nullptr;
-    m_piece_board[source1] = nullptr;
     update_after_merge();
+    update_case(target);
+    update_case(source1);
+    update_case(source2);
+    
 }
 
 template <std::size_t N, std::size_t M>
@@ -1186,7 +1194,7 @@ CONSTEXPR void Board<N, M>::move(Move const &movement)
         break;
     case TypeMove::MERGE:
         move_merge(movement.merge.src1,
-                   movement.merge.src1,
+                   movement.merge.src2,
                    movement.merge.arv);
         break;
     default:
@@ -1309,4 +1317,18 @@ Board<N, M>::move_is_legal(Move const &move) const
                    move.merge.arv) !=
                    std::end(list2);
     }
+}
+
+template <std::size_t N, std::size_t M>
+void Board<N, M>::update_case(std::size_t pos) noexcept
+{
+    std::size_t size_board {std::size(m_board)};
+    for(std::size_t i{0}; i<size_board; i++)
+    {
+        if(m_board[i].first[pos])
+        {
+            return;
+        }
+    }
+    m_piece_board[pos] = nullptr;
 }
