@@ -21,7 +21,7 @@ int main()
             {  make_observer(&W_ROOK),                   nullptr,                nullptr,    make_observer(&B_KING) }
         }
     };
-    Move m {.type=TypeMove::NORMAL, .normal={.src=Coord(3, 0), .arv=Coord(3, 3)}};
+    Move m {Move_classic(Coord(3, 0), Coord(3, 3))};
     B4.move(m);
     Move m2 = Move_merge(Coord(0,3), Coord(1,3), Coord(1, 2));
     Board B5 = B4;

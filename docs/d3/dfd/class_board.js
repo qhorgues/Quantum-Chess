@@ -6,6 +6,8 @@ var class_board =
     [ "Board", "d3/dfd/class_board.html#abac6288166ce6aef6441fca8d06b6f81", null ],
     [ "~Board", "d3/dfd/class_board.html#a21962785efbc9128587809c4c996a142", null ],
     [ "capture_pawn", "d3/dfd/class_board.html#a005e82316f3d4a4fb68cfae852ab1fa7", null ],
+    [ "change_player", "d3/dfd/class_board.html#aa9fcccd89ef3b7af6dc54867671fb3f3", null ],
+    [ "get_current_player", "d3/dfd/class_board.html#ac92c8b8d8071a54281e194ddf75beba4", null ],
     [ "get_list_normal_move", "d3/dfd/class_board.html#a173a95dfc2561c59ef108697eb133c0b", null ],
     [ "get_list_split_move", "d3/dfd/class_board.html#a331cc732f6532a34874a2cec3c495a8f", null ],
     [ "get_proba", "d3/dfd/class_board.html#aeb602c14af620edcd7330d3a0cbf0e5d", null ],
