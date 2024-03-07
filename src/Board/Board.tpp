@@ -226,11 +226,12 @@ CONSTEXPR bool Board<N, M>::mesure(Coord const &p)
         double pow_coef{
             std::pow(
                 std::abs(m_board[indice_mes].second), 2)};
-        while (x - pow_coef > 0)
+        std::size_t size_board {std::size(m_board)};
+        while (x - pow_coef > 0 && indice_mes<size_board)
         {
             x -= pow_coef;
             indice_mes++;
-            if (indice_mes >= std::size(m_board))
+            if (indice_mes >= size_board)
             {
                 throw std::runtime_error("Indice mesuré de mesure trop grand");
             }
@@ -297,12 +298,12 @@ Board<N, M>::mesure_capture_slide(
         std::size_t indice_mes = 0;
         double pow_coef{
             std::pow(std::abs(m_board[0].second), 2)};
-
-        while (x - pow_coef > 0)
+        std::size_t size_board {std::size(m_board)};
+        while (x - pow_coef > 0 && indice_mes<size_board)
         {
             x -= pow_coef;
             indice_mes++;
-            if (indice_mes >= std::size(m_board))
+            if (indice_mes >= size_board)
             {
                 throw std::runtime_error("Indice mesuré de mesure trop grand");
             }
@@ -365,14 +366,15 @@ Board<N, M>::mesure_castle(
 
     double x = get_random_number_0_1();
     std::size_t indice_mes = 0;
+    std::size_t size_board {std::size(m_board)};
     double pow_coef{
         std::pow(std::abs(m_board[0].second), 2)};
 
-    while (x - pow_coef > 0)
+    while (x - pow_coef > 0 && indice_mes<size_board)
     {
         x -= pow_coef;
         indice_mes++;
-        if (indice_mes >= std::size(m_board))
+        if (indice_mes >= size_board)
         {
             throw std::runtime_error("Indice mesuré de mesure trop grand");
         }
