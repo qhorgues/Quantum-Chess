@@ -29,6 +29,11 @@ enum class TypeMove
  */
 struct Move
 {
+    Move() = default;
+    Move(Move const&) = default;
+    Move& operator=(Move const&) = default;
+    Move(Move &&) = default;
+    Move& operator=(Move &&) = default;
     /**
      * @brief Indique quel est le mouvement stoqué par l'union
      */
@@ -104,17 +109,30 @@ struct Move
 
 CONSTEXPR Move Move_classic(Coord const &src, Coord const &arv)
 {
-    return Move{.type = TypeMove::NORMAL, .normal = {.src = src, .arv = arv}};
+    Move move;
+    move.type = TypeMove::NORMAL;
+    move.normal.src = src;
+    move.normal.arv = arv;
+    return move;
 }
 
 CONSTEXPR Move Move_split(Coord const &src, Coord const &arv1, Coord const &arv2)
 {
-    return Move{.type = TypeMove::SPLIT, .split = {.src = src, .arv1 = arv1, .arv2 = arv2}};
+    Move move;
+    move.type = TypeMove::SPLIT;
+    move.split.src = src;
+    move.split.arv1 = arv1;
+    move.split.arv2 = arv2;
+    return move;
 }
 
 CONSTEXPR Move Move_merge(Coord const &src1, Coord const &src2, Coord const &arv)
 {
-    return Move{.type = TypeMove::SPLIT, .merge = {.src1 = src1, .src2 = src2, .arv = arv}};
+    Move move;
+    move.type = TypeMove::MERGE;
+    move.merge.src1 = src1;
+    move.merge.src2 = src2;
+    move.merge.arv = arv;
+    return move;
 }
-
 #endif
