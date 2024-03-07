@@ -146,6 +146,13 @@ public:
      * @brief Change le joueur actuel et passe la main à l'autre joueur
      */
     CONSTEXPR void change_player() noexcept;
+    
+    /**
+     * @brief Renvoie la probabilité qu'il y ait une pièce à une position.
+     *
+     * @param pos La position
+     */
+    CONSTEXPR double get_proba(Coord const &pos) const noexcept;
 
     friend class Piece;
 
@@ -175,12 +182,6 @@ public:
 
     
 private:
-    /**
-     * @brief Renvoie la probabilité qu'il y ait une pièce à une position.
-     *
-     * @param pos La position
-     */
-    CONSTEXPR double get_proba(Coord const &pos) const noexcept;
 
     /**
      * @brief Fonction qui permet de mattre à jour le plateau après un merge,

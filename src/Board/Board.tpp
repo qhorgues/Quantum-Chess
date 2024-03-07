@@ -8,6 +8,7 @@
 #include <functional>
 #include <cmath>
 #include <optional>
+#include <stdexcept>
 
 // Inclusion projet
 #include <Qubit.hpp>
@@ -17,6 +18,7 @@
 #include <Piece.hpp>
 #include <math_utility.hpp>
 #include <Constexpr.hpp>
+#include <Move.hpp>
 #include "Board.hpp"
 
 bool operator==(Coord const &lhs, Coord const &rhs)
@@ -228,6 +230,10 @@ CONSTEXPR bool Board<N, M>::mesure(Coord const &p)
         {
             x -= pow_coef;
             indice_mes++;
+            if (indice_mes >= std::size(m_board))
+            {
+                throw std::runtime_error("Indice mesuré de mesure trop grand");
+            }
             pow_coef = std::pow(std::abs(m_board[indice_mes].second), 2);
         }
         bool mes = m_board[indice_mes].first[offset(p.n, p.m)];
@@ -1164,6 +1170,10 @@ CONSTEXPR void Board<N, M>::move_merge(Coord const &s1,
 template <std::size_t N, std::size_t M>
 CONSTEXPR void Board<N, M>::move(Move const &movement)
 {
+    if (std::empty(m_board))
+    {
+        throw std::runtime_error("Le plateau est vide impossible de réaliser l'opération move");
+    }
     switch (movement.type)
     {
     case TypeMove::NORMAL:
@@ -1233,17 +1243,16 @@ void Board<N, M>::update_after_merge() noexcept
 template <std::size_t N, std::size_t M>
 CONSTEXPR bool Board<N, M>::winning_position(Color c)
 {
-    for(std::size_t i{0}; i<N*M; i++)
+    for (std::size_t i{0}; i < N * M; i++)
     {
-        if(m_piece_board[i].get_type() == TypePiece::KING 
-           && m_piece_board[i].get_color() !=c)
+        if (m_piece_board[i].get_type() == TypePiece::KING &&
+            m_piece_board[i].get_color() != c)
         {
             return false;
         }
     }
     return true;
 }
-
 
 template <std::size_t N, std::size_t M>
 CONSTEXPR bool
