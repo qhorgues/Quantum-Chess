@@ -91,23 +91,15 @@ namespace computer
                             }
                             if (found_W_king == found_B_king)
                             {
-                                goto END_FOR_WINNER_FUNC;
+                                return false;
                             }
                         }
                     }
                 }
             }
-        END_FOR_WINNER_FUNC:
             if (found_B_king)
             {
-                if (found_W_king)
-                {
-                    return false;
-                }
-                else
-                {
-                    winner_color = Color::BLACK;
-                }
+                winner_color = Color::BLACK;
             }
             else
             {

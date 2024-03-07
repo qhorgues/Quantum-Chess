@@ -40,7 +40,7 @@ int main()
     
     while (!ChessBoard.winning_position(ChessBoard.get_current_player()))
     {
-        Move m {computer::get_best_move(ChessBoard, 7)};
+        Move m {computer::get_best_move(ChessBoard, 5)};
         if (m.type == TypeMove::NORMAL)
         {
             log_file << "N " << m.normal.src.n << '/' << m.normal.src.m << " -> " << m.normal.arv.n << '/' << m.normal.arv.m;
