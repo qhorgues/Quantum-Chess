@@ -1,10 +1,11 @@
 #ifndef FINAL_SOLVER_HPP
 #define FINAL_SOLVER_HPP
 #include <Color.hpp>
+#include <Constexpr.hpp>
 namespace Final
 {
 template <std::size_t N, std::size_t M>
-brut_force(Board<N, M> const &board, std::size_t profondeur, Color c);
+CONSTEXPR bool brut_force(Board<N, M> const &board, std::size_t profondeur, Color c);
 }
 
 

@@ -1,10 +1,12 @@
 #include <Board.hpp>
 #include <Piece.hpp>
 #include <Move.hpp>
+#include <iostream>
+#include <Color.hpp>
 
 
 template <std::size_t N, std::size_t M>
-Final::brut_force(Board<N, M> const &board, std::size_t profondeur, Color c)
+CONSTEXPR bool Final::brut_force(Board<N, M>  &board, std::size_t profondeur, Color c)
 {
     if (board.winning_position(c))
     {
@@ -12,7 +14,12 @@ Final::brut_force(Board<N, M> const &board, std::size_t profondeur, Color c)
     }
     else
     {
-        if (board.winning_position(!c))
+        Color col = Color::WHITE;
+        if(c == Color::WHITE)
+        {
+            col = Color::BLACK;
+        }
+        if (board.winning_position(col))
         {
             return false;
         }
@@ -24,20 +31,22 @@ Final::brut_force(Board<N, M> const &board, std::size_t profondeur, Color c)
             }
             else
             {
-                if (board.m_color_current_player == c)
+                if (board.get_current_player() == c)
                 {
                     for(std::size_t i{0}; i<N; i++)
                     {
                         for(std::size_t j{0}; j<M; j++)
                         {
-                            if (board.m_piece_board[offset(i, j)] != nullptr)
+                            if (board(i, j) != nullptr && board(i, j)->get_color ()== board.get_current_player())
                             {
                                 std::forward_list<Coord> l = board.get_list_normal_move(Coord(i, j));
                                  for (auto const &e : l)
                                  {
                                     Move m = Move_classic(Coord(i, j), e);
-                                    b = board;
-                                    if(brut_force(b.move(m), profondeur-1, c))
+                                    Board<N, M> b = board;
+                                    b.change_player();
+                                    b.move(m);
+                                    if(brut_force(b, profondeur-1, c))
                                     {
                                         return true;
                                     }
@@ -54,14 +63,16 @@ Final::brut_force(Board<N, M> const &board, std::size_t profondeur, Color c)
                     {
                         for(std::size_t j{0}; j<M; j++)
                         {
-                            if (board.m_piece_board[offset(i, j)] != nullptr)
+                            if (board(i, j) != nullptr && board(i, j)->get_color()== board.get_current_player())
                             {
                                 std::forward_list<Coord> l = board.get_list_normal_move(Coord(i, j));
                                  for (auto const &e : l)
                                  {
                                     Move m = Move_classic(Coord(i, j), e);
-                                    b = board;
-                                    if(!brut_force(b.move(m), profondeur-1, c))
+                                    Board<N, M> b = board;
+                                    b.change_player();
+                                    b.move(m);
+                                    if(!brut_force(b, profondeur-1, c))
                                     {
                                         return false;
                                     }
@@ -76,4 +87,6 @@ Final::brut_force(Board<N, M> const &board, std::size_t profondeur, Color c)
             }
         }
     }
+    std::cout<<"erreur"<<std::endl;
+    return false;
 }
