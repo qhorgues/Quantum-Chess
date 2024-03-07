@@ -1251,9 +1251,9 @@ CONSTEXPR bool Board<N, M>::winning_position(Color c)
 {
     for (std::size_t i{0}; i < N * M; i++)
     {
-        if (m_piece_board[i] != nullptr ||
-            (m_piece_board[i].get_type() == TypePiece::KING &&
-             m_piece_board[i].get_color() != c))
+        if (m_piece_board[i] != nullptr &&
+            m_piece_board[i]->get_type() == TypePiece::KING &&
+            m_piece_board[i]->get_color() != c)
         {
             return false;
         }
