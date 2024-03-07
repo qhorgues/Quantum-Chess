@@ -120,8 +120,6 @@ namespace computer
          * @brief Renvoi la fonction permettant de calculer le meilleur
          * score du joueur
          *
-         * @tparam N Le nombre de ligne du plateau
-         * @tparam M Le nombre de colonne du plateau
          * @param[in] board Le plateau de jeu
          * @param[in] x Le premier score
          * @param[in] y Le second score
@@ -129,13 +127,12 @@ namespace computer
          * interessant pour le joueur
          * @return false sinon
          */
-        template <std::size_t N, std::size_t M>
         CONSTEXPR bool
-        get_player_calc_best_score(Board<N, M> const &board,
+        get_player_calc_best_score(Color color,
                                    double x,
                                    double y)
         {
-            if (board.get_current_player() == Color::WHITE)
+            if (color == Color::WHITE)
             {
                 return (y > x) ? true : false;
             }
@@ -196,20 +193,54 @@ namespace computer
         template <std::size_t N, std::size_t M>
         CONSTEXPR double rec_get_best_move(
             Board<N, M> &board,
+            std::forward_list<double> best_score_alpha_beta,
             int profondeur)
         {
+            Color win;
             if (profondeur <= 0)
             {
                 return heuristic(board);
             }
+            else if (winner(board, win))
+            {
+                return __utility::sign_color(win) *
+                       std::numeric_limits<double>::max();
+            }
             else
             {
+
                 std::unordered_map<TypePiece,
                                    std::unordered_map<Coord, std::vector<Coord>, Coord_hash>>
                     move_merge{};
 
                 double best_score{-1 * sign_color(board.get_current_player()) *
                                   std::numeric_limits<double>::max()};
+                auto check_best_score{[&board, &best_score_alpha_beta, best_score](double score) mutable -> bool
+                                      {
+                                          if (get_player_calc_best_score(
+                                                  board.get_current_player(),
+                                                  best_score, score))
+                                          {
+                                              best_score = score;
+                                              Color current{board.get_current_player()};
+                                              for (double const alpha : best_score_alpha_beta)
+                                              {
+                                                  if (get_player_calc_best_score(current, best_score, alpha))
+                                                  {
+                                                      return true;
+                                                  }
+                                                  if (current == Color::WHITE)
+                                                  {
+                                                    current = Color::BLACK;
+                                                  }
+                                                  else
+                                                  {
+                                                    current = Color::WHITE;
+                                                  }
+                                              }
+                                          }
+                                          return false;
+                                      }};
                 for (std::size_t i{0}; i < board.numberLines(); i++)
                 {
                     for (std::size_t j{0}; j < board.numberColumns(); j++)
@@ -229,35 +260,40 @@ namespace computer
                                     board(i, j)->get_type() == TypePiece::PAWN)
                                 {
                                     Board<N, M> board_cpy = board;
-                                    try 
+                                    try
                                     {
                                         board_cpy.move(
                                             Move_classic(Coord(i, j), c));
                                     }
-                                    catch (std::runtime_error const& e)
+                                    catch (std::runtime_error const &e)
                                     {
                                         continue;
                                     }
                                     board_cpy.change_player();
-
+                                    best_score_alpha_beta.push_front(best_score);
                                     score = rec_get_best_move(board_cpy,
-                                                              profondeur - 1);
+                                                              best_score_alpha_beta,
+                                                              profondeur -
+                                                                  1);
+                                    best_score_alpha_beta.pop_front();
                                 }
                                 else
                                 {
                                     board.move(Move_classic(Coord(i, j), c));
                                     board.change_player();
 
+                                    best_score_alpha_beta.push_front(best_score);
                                     score = rec_get_best_move(board,
-                                                              profondeur - 1);
+                                                              best_score_alpha_beta,
+                                                              profondeur -
+                                                                  1);
+                                    best_score_alpha_beta.pop_front();
                                     board.change_player();
                                     board.move(Move_classic(c, Coord(i, j)));
                                 }
-                                if (get_player_calc_best_score(
-                                        board,
-                                        best_score, score))
+                                if (check_best_score(score))
                                 {
-                                    best_score = score;
+                                    return best_score;
                                 }
                             }
 
@@ -278,25 +314,25 @@ namespace computer
                                         continue;
                                     }
                                     Board<N, M> board_cpy = board;
-                                    try 
+                                    try
                                     {
                                         board_cpy.move(
-                                        Move_split(Coord(i, j),
-                                                   *it_move, *it2));
+                                            Move_split(Coord(i, j),
+                                                       *it_move, *it2));
                                     }
-                                    catch (std::runtime_error const& e)
+                                    catch (std::runtime_error const &e)
                                     {
                                         continue;
                                     }
                                     board_cpy.change_player();
-                                    double score =
-                                        rec_get_best_move(board_cpy,
-                                                          profondeur - 1);
-                                    if (get_player_calc_best_score(
-                                            board,
-                                            best_score, score))
+                                    best_score_alpha_beta.push_front(best_score);
+                                    double score = rec_get_best_move(board_cpy,
+                                                                     best_score_alpha_beta,
+                                                                     profondeur - 1);
+                                    best_score_alpha_beta.pop_front();
+                                    if (check_best_score(score))
                                     {
-                                        best_score = score;
+                                        return best_score;
                                     }
                                 }
                                 if (piece->get_type() != TypePiece::PAWN)
@@ -320,20 +356,19 @@ namespace computer
                                                     board_cpy.change_player();
                                                     try
                                                     {
-                                                        double score{
-                                                            rec_get_best_move(
-                                                                board_cpy,
-                                                                profondeur - 1)};
+                                                        best_score_alpha_beta.push_front(best_score);
+                                                        double score = rec_get_best_move(board_cpy,
+                                                                                         best_score_alpha_beta,
+                                                                                         profondeur - 1);
+                                                        best_score_alpha_beta.pop_front();
                                                         // board.change_player();
                                                         /* move = Move_split(
                                                             *it_move,
                                                             Coord(i, j), c);
                                                         board.move(move); */
-                                                        if (get_player_calc_best_score(
-                                                                board,
-                                                                best_score, score))
+                                                        if (check_best_score(score))
                                                         {
-                                                            best_score = score;
+                                                            return best_score;
                                                         }
                                                     }
                                                     catch (std::exception const &e)
@@ -400,6 +435,7 @@ namespace computer
                     board_cpy.move(move);
                     board_cpy.change_player();
                     score = rec_get_best_move(board_cpy,
+                                              std::forward_list<double>{param.best_eval},
                                               param.profondeur - 1);
                 }
                 else
@@ -407,6 +443,7 @@ namespace computer
                     param.board.move(move);
                     param.board.change_player();
                     score = rec_get_best_move(param.board,
+                                              std::forward_list<double>{param.best_eval},
                                               param.profondeur - 1);
                     param.board.change_player();
                     if (move.type == TypeMove::MERGE)
@@ -426,7 +463,7 @@ namespace computer
                     }
                 }
                 if (get_player_calc_best_score(
-                        param.board,
+                        param.board.get_current_player(),
                         param.best_eval, score))
                 {
                     param.best_eval = score;
@@ -571,7 +608,7 @@ namespace computer
         for (std::size_t i{0}; i < number_thread; i++)
         {
             threads[i].join();
-            if (__utility::get_player_calc_best_score(board, better, best_eval[i]))
+            if (__utility::get_player_calc_best_score(board.get_current_player(), better, best_eval[i]))
             {
                 better = best_eval[i];
                 better_move = best_move[i];
