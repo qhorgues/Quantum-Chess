@@ -19,7 +19,7 @@ set (SRCS
     src/check_path/check_path.tpp
     src/ComputerPlayer/ComputerPlayer.tpp
 )
-
+    
 set (HEADERS
     include/Unitary.hpp
     include/CMatrix.hpp

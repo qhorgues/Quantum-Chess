@@ -47,6 +47,8 @@ function(set_target_warnings target)
 				set (CMAKE_CXX_FLAGS_DEBUG "-g" CACHE INTERNAL "debug flags")
 			endif (ENEABLE_SANITIZER)
 		endif (NOT MSVC)
+	else ()
+		set (CMAKE_CXX_FLAGS_DEBUG "-g" CACHE INTERNAL "debug flags")
 	endif (NOT MINGW)
 
     set (GCC_WARNINGS
