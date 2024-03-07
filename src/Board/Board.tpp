@@ -302,6 +302,10 @@ Board<N, M>::mesure_capture_slide(
         {
             x -= pow_coef;
             indice_mes++;
+            if (indice_mes >= std::size(m_board))
+            {
+                throw std::runtime_error("Indice mesuré de mesure trop grand");
+            }
             pow_coef = std::pow(std::abs(m_board[indice_mes].second), 2);
 
             // indice_suppr++,
@@ -368,6 +372,10 @@ Board<N, M>::mesure_castle(
     {
         x -= pow_coef;
         indice_mes++;
+        if (indice_mes >= std::size(m_board))
+        {
+            throw std::runtime_error("Indice mesuré de mesure trop grand");
+        }
         pow_coef = std::pow(std::abs(m_board[indice_mes].second), 2);
 
         // indice_suppr++,
