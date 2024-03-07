@@ -1066,6 +1066,10 @@ CONSTEXPR void Board<N, M>::move_pawn(Coord const &s, Coord const &t)
                 capture_pawn(s, t);
             }
         }
+        else
+        {
+            move_pawn_one_step(s, t);
+        }
     }
 }
 
