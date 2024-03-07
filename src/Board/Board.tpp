@@ -824,7 +824,6 @@ Board<N, M>::move_split_jump(Coord const &s, Coord const &t1, Coord const &t2)
     update_case(source);
     update_case(target1);
     update_case(target2);
-
 }
 
 template <std::size_t N, std::size_t M>
@@ -1020,7 +1019,6 @@ Board<N, M>::move_merge_slide(
     update_case(target);
     update_case(source1);
     update_case(source2);
-    
 }
 
 template <std::size_t N, std::size_t M>
@@ -1253,8 +1251,9 @@ CONSTEXPR bool Board<N, M>::winning_position(Color c)
 {
     for (std::size_t i{0}; i < N * M; i++)
     {
-        if (m_piece_board[i].get_type() == TypePiece::KING &&
-            m_piece_board[i].get_color() != c)
+        if (m_piece_board[i] != nullptr ||
+            (m_piece_board[i].get_type() == TypePiece::KING &&
+             m_piece_board[i].get_color() != c))
         {
             return false;
         }
@@ -1322,10 +1321,10 @@ Board<N, M>::move_is_legal(Move const &move) const
 template <std::size_t N, std::size_t M>
 void Board<N, M>::update_case(std::size_t pos) noexcept
 {
-    std::size_t size_board {std::size(m_board)};
-    for(std::size_t i{0}; i<size_board; i++)
+    std::size_t size_board{std::size(m_board)};
+    for (std::size_t i{0}; i < size_board; i++)
     {
-        if(m_board[i].first[pos])
+        if (m_board[i].first[pos])
         {
             return;
         }
