@@ -38,26 +38,28 @@ int main()
         }
     };
     
-    int number_move {80};
+    int number_move {20};
     while (number_move  > 0 && !ChessBoard.winning_position(ChessBoard.get_current_player()))
     {
 
-        Move m {computer::get_best_move(ChessBoard, 6)};
+        Move m {computer::get_best_move(ChessBoard, 4)};
+        std::string data1 {{static_cast<char>('a' + m.normal.src.m), static_cast<char>('0' + 8-m.normal.src.n)}};
+        std::string data2 {{static_cast<char>('a' + m.normal.arv.m), static_cast<char>('0' + 8-m.normal.arv.n)}};
         if (m.type == TypeMove::NORMAL)
         {
-            log_file << "N " << m.normal.src.n << '/' << m.normal.src.m << " -> " << m.normal.arv.n << '/' << m.normal.arv.m << '\n';
+            log_file << "N " << data1 << data2 << '\n';
         }
-        else if (m.type == TypeMove::SPLIT)
+        else 
         {
-            log_file << "S " << m.split.src.n << '/' << m.split.src.m << " -> " 
-                    << m.split.arv1.n << '/' << m.split.arv1.m << " | "
-                     << m.split.arv2.n << '/' << m.split.arv2.m << '\n';
-        }
-        else
-        {
-            log_file << "M " << m.merge.src1.n << '/' << m.merge.src1.m << " | " 
-                    << m.merge.src2.n << '/' << m.merge.src2.m << " | "
-                     << m.merge.arv.n << '/' << m.merge.arv.m << '\n';
+            std::string data3 {{static_cast<char>('a' + m.split.arv2.m), static_cast<char>('0' + 7-m.split.arv2.n)}};
+            if (m.type == TypeMove::SPLIT)
+            {
+                log_file << "S " << data1 << '(' << data2 << data3 << ')' << '\n'; 
+            }
+            else
+            {
+                log_file << "M " << '(' << data1 << data2 << ')' << data3 << '\n'; 
+            }
         }
         ChessBoard.move(m);
         ChessBoard.change_player();
