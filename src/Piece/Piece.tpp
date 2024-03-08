@@ -263,7 +263,7 @@ Piece::get_list_move_pawn(Board<N, M> const &board, Coord const &pos) const
         if (arv >= 0)
         {
             std::size_t n{arv / N}, m{arv % N};
-            if (board(n, m) != nullptr ||
+            if ((board(n, m) != nullptr && !same_color(*board(n, m))) ||
                 (board.m_ep != std::nullopt &&
                  board.m_ep->n == pos.n &&
                  board.m_ep->m == pos.m))
