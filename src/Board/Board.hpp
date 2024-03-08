@@ -180,7 +180,23 @@ public:
         Coord const &arv,
         std::size_t position);
 
+    /**
+     * @brief Fonction qui permet de faire un mouvement de pion quelconque avec une promotion
+     *
+     * @param s Coordonnées de la source
+     * @param t Coordonnées de la cible
+     * @param p Le type de la pièce de la promotion
+     */
+    CONSTEXPR void
+    move_promotion(Coord const &s, Coord const &t, TypePiece p);
+
 private:
+    /**
+     * @brief Vérifie si la case à une possibilité de contenir une pièce,
+     * et si elle n'en a pas modifie m_piece_board en nullptr.
+     *
+     * @param pos Les coordonnées de a position de la case a vérifier.
+     */
     void update_case(std::size_t pos) noexcept;
     /**
      * @brief Fonction qui permet de mattre à jour le plateau après un merge,

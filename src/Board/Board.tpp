@@ -16,6 +16,7 @@
 #include <CMatrix.hpp>
 #include <Unitary.hpp>
 #include <Piece.hpp>
+#include <TypePiece.hpp>
 #include <math_utility.hpp>
 #include <Constexpr.hpp>
 #include <Move.hpp>
@@ -814,6 +815,7 @@ Board<N, M>::move_enpassant(Coord const &s, Coord const &t, Coord const &ep)
     }
 }
 
+
 template <std::size_t N, std::size_t M>
 CONSTEXPR void
 Board<N, M>::move_split_jump(Coord const &s, Coord const &t1, Coord const &t2)
@@ -1075,7 +1077,17 @@ CONSTEXPR void Board<N, M>::move_pawn(Coord const &s, Coord const &t)
         }
     }
 }
-
+template <std::size_t N, std::size_t M>
+CONSTEXPR void
+Board<N, M>::move_promotion(Coord const &s, Coord const &t, TypePiece p)
+{
+    if(p==TypePiece::QUEEN || p==TypePiece::KNIGHT || p == TypePiece::BISHOP || p == TypePiece::ROOK)
+    {
+        move_pawn(s, t);
+        Piece piece{p, m_piece_board[offset(t.n, t.m)]->get_color()};
+        m_piece_board[offset(t.n, t.m)] = make_observer(&piece);
+    }
+}
 template <std::size_t N, std::size_t M>
 CONSTEXPR void Board<N, M>::move_classic(Coord const &s, Coord const &t)
 {

@@ -10,6 +10,7 @@
 #include <observer_ptr.hpp>
 #include <check_path.hpp>
 #include <Constexpr.hpp>
+#include <TypePiece.hpp>
 
 int main()
 {
@@ -21,8 +22,7 @@ int main()
             {  make_observer(&W_ROOK),                   nullptr,                nullptr,    make_observer(&B_KING) }
         }
     };
-    Move m {Move_classic(Coord(3, 0), Coord(3, 3))};
-    B4.move(m);
+    B4.move_promotion(Coord(1,1), Coord(0,1), TypePiece::BISHOP);
     Move m2 = Move_merge(Coord(0,3), Coord(1,3), Coord(1, 2));
     Board B5 = B4;
     B5.move(m2);
