@@ -226,8 +226,8 @@ CONSTEXPR bool Board<N, M>::mesure(Coord const &p)
         double pow_coef{
             std::pow(
                 std::abs(m_board[indice_mes].second), 2)};
-        std::size_t size_board {std::size(m_board)};
-        while (x - pow_coef > 0 && indice_mes<size_board)
+        std::size_t size_board{std::size(m_board)};
+        while (x - pow_coef > 0 && indice_mes < size_board)
         {
             x -= pow_coef;
             indice_mes++;
@@ -298,8 +298,8 @@ Board<N, M>::mesure_capture_slide(
         std::size_t indice_mes = 0;
         double pow_coef{
             std::pow(std::abs(m_board[0].second), 2)};
-        std::size_t size_board {std::size(m_board)};
-        while (x - pow_coef > 0 && indice_mes<size_board)
+        std::size_t size_board{std::size(m_board)};
+        while (x - pow_coef > 0 && indice_mes < size_board)
         {
             x -= pow_coef;
             indice_mes++;
@@ -366,11 +366,11 @@ Board<N, M>::mesure_castle(
 
     double x = get_random_number_0_1();
     std::size_t indice_mes = 0;
-    std::size_t size_board {std::size(m_board)};
+    std::size_t size_board{std::size(m_board)};
     double pow_coef{
         std::pow(std::abs(m_board[0].second), 2)};
 
-    while (x - pow_coef > 0 && indice_mes<size_board)
+    while (x - pow_coef > 0 && indice_mes < size_board)
     {
         x -= pow_coef;
         indice_mes++;
@@ -575,7 +575,7 @@ Board<N, M>::move_classic_jump(Coord const &s, Coord const &t)
             {
                 for (std::size_t i{0}; i < std::size(m_board); i++)
                 {
-                    auto const A{
+                    CONSTEXPR CMatrix<8> A{
                         MATRIX_JUMP
                             .tensoriel_product(
                                 CMatrix<2>::identity()) *
@@ -654,7 +654,7 @@ Board<N, M>::move_pawn_two_step(Coord const &s, Coord const &t)
                                     false,
                                     m_board[i].first[source]},
                 i, MATRIX_SLIDE,
-                std::array<std::size_t, 3>{N*M+1, target, source});
+                std::array<std::size_t, 3>{N * M + 1, target, source});
         }
         m_piece_board[target] = m_piece_board[source];
         m_piece_board[source] = nullptr;
@@ -671,7 +671,7 @@ Board<N, M>::move_pawn_two_step(Coord const &s, Coord const &t)
                                         false,
                                         m_board[i].first[source]},
                     i, MATRIX_SLIDE,
-                    std::array<std::size_t, 3>{N*M+1, target, source});
+                    std::array<std::size_t, 3>{N * M + 1, target, source});
             }
             m_piece_board[target] = m_piece_board[source];
             m_piece_board[source] = nullptr;
@@ -690,12 +690,13 @@ CONSTEXPR void Board<N, M>::capture_pawn(Coord const &s, Coord const &t)
         {
             if (m_board[i].first[target])
             {
-                auto const A{
+                CONSTEXPR CMatrix<8> A{
                     MATRIX_JUMP
                         .tensoriel_product(
                             CMatrix<2>::identity()) *
                     CMatrix<2>::identity()
                         .tensoriel_product(MATRIX_JUMP)};
+
                 move_1_instance(
                     std::array<bool, 3>{
                         m_board[i].first[source],
@@ -888,7 +889,7 @@ Board<N, M>::move_classic_slide(
                     false,
                     m_board[i].first[source]},
                 i, MATRIX_SLIDE,
-                std::array<std::size_t, 3>{N*M+1, target, source});
+                std::array<std::size_t, 3>{N * M + 1, target, source});
         }
         m_piece_board[target] = m_piece_board[source];
         update_case(source);
@@ -907,7 +908,7 @@ Board<N, M>::move_classic_slide(
                             false,
                             m_board[i].first[source]},
                         i, MATRIX_SLIDE,
-                        std::array<std::size_t, 3>{N*M+1, target, source});
+                        std::array<std::size_t, 3>{N * M + 1, target, source});
                 }
                 m_piece_board[target] = m_piece_board[source];
                 m_piece_board[source] = nullptr;
