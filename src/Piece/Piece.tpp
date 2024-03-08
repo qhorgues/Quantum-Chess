@@ -79,7 +79,7 @@ Piece::get_list_move_king(Board<N, M> const &board, Coord const &pos) const
             {
                 eval = arvPiece == nullptr ||
                        !same_color(*arvPiece) ||
-                       board.get_proba(Coord(n, m)) < 1.;
+                       board.get_proba(Coord(n, m)) < 1. - EPSILON;
             }
             else
             {
@@ -130,7 +130,7 @@ Piece::get_list_move_knight(Board<N, M> const &board, Coord const &pos) const
             {
                 eval = arvPiece == nullptr ||
                        !same_color(*arvPiece) ||
-                       board.get_proba(Coord(n, m)) < 1.;
+                       board.get_proba(Coord(n, m)) < 1. - EPSILON;
             }
             else
             {
@@ -165,7 +165,7 @@ Piece::get_list_move_rec(Board<N, M> const &board,
             if CONSTEXPR (MOVE == Move_Mode::NORMAL)
             {
                 if (arvPiece == nullptr ||
-                    board.get_proba(Coord(n, m)) < 1.)
+                    board.get_proba(Coord(n, m)) < 1. - EPSILON)
                 {
                     move.push_front(Coord(n, m));
                 }
@@ -245,13 +245,13 @@ Piece::get_list_move_pawn(Board<N, M> const &board, Coord const &pos) const
     {
         std::size_t n{arv / N}, m{arv % N};
         if (board(n, m) == nullptr ||
-            board.get_proba(Coord(n, m)) < 1.)
+            board.get_proba(Coord(n, m)) < 1. - EPSILON)
         {
             list_move.push_front(Coord(n, m));
             if (((pos.n == 1 && get_color() == Color::BLACK) ||
                  (pos.n == N - 2 && get_color() == Color::WHITE)) &&
                 (board(n + sign, m) == nullptr ||
-                 board.get_proba(Coord(n + sign, m)) < 1.))
+                 board.get_proba(Coord(n + sign, m)) < 1. - EPSILON))
             {
                 list_move.push_front(Coord(n + sign, m));
             }
