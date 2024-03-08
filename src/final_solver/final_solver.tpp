@@ -27,6 +27,7 @@ CONSTEXPR bool Final::brut_force(Board<N, M>  &board, std::size_t profondeur, Co
         {
             if (profondeur == 0)
             {
+                std::cout<<"profondeur pas assez élevé"<<std::endl;
                 return false;
             }
             else

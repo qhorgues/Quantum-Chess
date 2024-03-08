@@ -25,13 +25,11 @@ int main()
     Board<3> B {
         {
             {make_observer(&B_KING),                nullptr,                nullptr},
-            {               nullptr, make_observer(&W_ROOK),                nullptr},
-            {               nullptr, make_observer(&W_ROOK), make_observer(&W_KING)}
+            {               nullptr,                nullptr,                nullptr},
+            {               nullptr,                nullptr, make_observer(&W_KING)}
         }
     };
-    Move m = Move_classic(Coord(2,1), Coord(0,1));
-    B.move(m);
-    bool b = Final::brut_force(B, 4, Color::WHITE);
+    bool b = Final::brut_force(B, 10, Color::WHITE);
     std::cout<<std::boolalpha<<b<<std::endl;
 
     return 0;
