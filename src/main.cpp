@@ -38,27 +38,30 @@ int main()
         }
     };
     
-    while (!ChessBoard.winning_position(ChessBoard.get_current_player()))
+    int number_move {80};
+    while (number_move  > 0 && !ChessBoard.winning_position(ChessBoard.get_current_player()))
     {
-        Move m {computer::get_best_move(ChessBoard, 5)};
+
+        Move m {computer::get_best_move(ChessBoard, 6)};
         if (m.type == TypeMove::NORMAL)
         {
-            log_file << "N " << m.normal.src.n << '/' << m.normal.src.m << " -> " << m.normal.arv.n << '/' << m.normal.arv.m;
+            log_file << "N " << m.normal.src.n << '/' << m.normal.src.m << " -> " << m.normal.arv.n << '/' << m.normal.arv.m << '\n';
         }
         else if (m.type == TypeMove::SPLIT)
         {
             log_file << "S " << m.split.src.n << '/' << m.split.src.m << " -> " 
                     << m.split.arv1.n << '/' << m.split.arv1.m << " | "
-                     << m.split.arv2.n << '/' << m.split.arv2.m;
+                     << m.split.arv2.n << '/' << m.split.arv2.m << '\n';
         }
         else
         {
             log_file << "M " << m.merge.src1.n << '/' << m.merge.src1.m << " | " 
                     << m.merge.src2.n << '/' << m.merge.src2.m << " | "
-                     << m.merge.arv.n << '/' << m.merge.arv.m;
+                     << m.merge.arv.n << '/' << m.merge.arv.m << '\n';
         }
         ChessBoard.move(m);
         ChessBoard.change_player();
+        number_move--;
     }
         
     log_file.close();
