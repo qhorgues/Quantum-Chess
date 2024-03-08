@@ -223,11 +223,11 @@ namespace computer
                                                   }
                                                   if (current == Color::WHITE)
                                                   {
-                                                    current = Color::BLACK;
+                                                      current = Color::BLACK;
                                                   }
                                                   else
                                                   {
-                                                    current = Color::WHITE;
+                                                      current = Color::WHITE;
                                                   }
                                               }
                                           }
@@ -248,27 +248,27 @@ namespace computer
                             for (Coord const &c : move_normal)
                             {
                                 double score;
-                                if (true || board(c.n, c.m) != nullptr ||
+                                /* if (true || board(c.n, c.m) != nullptr ||
                                     board(i, j)->get_type() == TypePiece::PAWN)
+                                { */
+                                Board<N, M> board_cpy = board;
+                                try
                                 {
-                                    Board<N, M> board_cpy = board;
-                                    try
-                                    {
-                                        board_cpy.move(
-                                            Move_classic(Coord(i, j), c));
-                                    }
-                                    catch (std::runtime_error const &e)
-                                    {
-                                        continue;
-                                    }
-                                    board_cpy.change_player();
-                                    best_score_alpha_beta.push_front(best_score);
-                                    score = rec_get_best_move(board_cpy,
-                                                              best_score_alpha_beta,
-                                                              profondeur -
-                                                                  1);
-                                    best_score_alpha_beta.pop_front();
+                                    board_cpy.move(
+                                        Move_classic(Coord(i, j), c));
                                 }
+                                catch (std::runtime_error const &e)
+                                {
+                                    continue;
+                                }
+                                board_cpy.change_player();
+                                best_score_alpha_beta.push_front(best_score);
+                                score = rec_get_best_move(board_cpy,
+                                                          best_score_alpha_beta,
+                                                          profondeur -
+                                                              1);
+                                best_score_alpha_beta.pop_front();
+                                /* }
                                 else
                                 {
                                     board.move(Move_classic(Coord(i, j), c));
@@ -282,7 +282,7 @@ namespace computer
                                     best_score_alpha_beta.pop_front();
                                     board.change_player();
                                     board.move(Move_classic(c, Coord(i, j)));
-                                }
+                                } */
                                 if (check_best_score(score))
                                 {
                                     return best_score;
@@ -418,18 +418,18 @@ namespace computer
             for (Move const &move : param.move)
             {
                 double score;
-                if (true || move.type == TypeMove::SPLIT ||
-                    (move.type == TypeMove::NORMAL &&
-                     param.board(move.normal.arv.n,
-                                 move.normal.arv.m) != nullptr))
-                {
-                    Board<N, M> board_cpy = param.board;
-                    board_cpy.move(move);
-                    board_cpy.change_player();
-                    score = rec_get_best_move(board_cpy,
-                                              std::forward_list<double>{param.best_eval},
-                                              param.profondeur - 1);
-                }
+                /* if (true || move.type == TypeMove::SPLIT ||
+                       (move.type == TypeMove::NORMAL &&
+                        param.board(move.normal.arv.n,
+                                    move.normal.arv.m) != nullptr))
+                   { */
+                Board<N, M> board_cpy = param.board;
+                board_cpy.move(move);
+                board_cpy.change_player();
+                score = rec_get_best_move(board_cpy,
+                                          std::forward_list<double>{param.best_eval},
+                                          param.profondeur - 1);
+                /* }
                 else
                 {
                     param.board.move(move);
@@ -453,7 +453,7 @@ namespace computer
                                 move.normal.arv,
                                 move.normal.src));
                     }
-                }
+                } */
                 if (get_player_calc_best_score(
                         param.board.get_current_player(),
                         param.best_eval, score))
