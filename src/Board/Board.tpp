@@ -706,6 +706,8 @@ CONSTEXPR void Board<N, M>::capture_pawn(Coord const &s, Coord const &t)
                     std::array<std::size_t, 3>{source, target, N * M + 1});
             }
         }
+        m_piece_board[target] = m_piece_board[source];
+        update_case(source);
     }
 }
 
