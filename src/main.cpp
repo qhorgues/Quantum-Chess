@@ -14,16 +14,16 @@
 
 int main()
 {
-    Board<4> B4 {
-        {
-            { Piece(), Piece(), Piece(), W_QUEEN },
-            { Piece(), B_PAWN,  Piece(), W_QUEEN },
-            {  W_PAWN, Piece(),  Piece(), W_BISHOP },
-            {  W_ROOK, Piece(), Piece(), B_KING }
-        }
-    };
-    B4.move_promotion(Coord(1,1), Coord(0,1), TypePiece::BISHOP);
-    Move m2 = Move_merge(Coord(0,3), Coord(1,3), Coord(1, 2));
+    Board<4> B4{
+        {{W_ROOK, Piece(), Piece(), W_QUEEN},
+         {Piece(), W_PAWN, Piece(), W_QUEEN},
+         {B_PAWN, Piece(), Piece(), W_BISHOP},
+         {Piece(), Piece(), Piece(), B_KING}}};
+
+    std::forward_list<Move> l = B4.get_list_promote(Coord(1, 1));
+    Move m = Move_promote(Coord(1, 1), Coord(0, 1), TypePiece::QUEEN);
+    B4.move_promotion(m);
+    Move m2 = Move_merge(Coord(0, 3), Coord(1, 3), Coord(1, 2));
     Board B5 = B4;
     B5.move(m2);
 

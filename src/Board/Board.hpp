@@ -109,6 +109,33 @@ public:
     get_list_split_move(Coord const &pos) const;
 
     /**
+     * @brief Teste si les mouvement de la piece sont si la
+     * pièce est un pion un mouvement de promotion
+     * 
+     * @note peut etre utiliser sans verifier si la pièce est un pion
+     * 
+     * @param[in] pos La position de la pièce
+     * @return true si le mouvement possible est un mouvement
+     * de promotion
+     * @return false sinon
+     */
+    CONSTEXPR bool
+    check_if_use_move_promote(Coord const &pos) const noexcept;
+
+    /**
+     * @brief Renvoie la liste de toutes les promotions 
+     * 
+     * @warning Ne verifie pas la validité du mouvement,
+     * de la position ou du type de la pièce
+     * 
+     * @param[in] pos La position du pion
+     * @return La liste de tout les mouvements de promotion
+     */
+    CONSTEXPR std::forward_list<Move>
+    get_list_promote(Coord const &pos) const noexcept;
+
+
+    /**
      * @brief Test si un mouvement est réalisable
      *
      * @param[in] move Le mouvement à tester
@@ -188,7 +215,7 @@ public:
      * @param p Le type de la pièce de la promotion
      */
     CONSTEXPR void
-    move_promotion(Coord const &s, Coord const &t, TypePiece p);
+    move_promotion(Move const &move) noexcept;
 
 private:
     /**

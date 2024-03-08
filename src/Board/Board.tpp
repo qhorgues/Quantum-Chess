@@ -258,8 +258,7 @@ CONSTEXPR bool Board<N, M>::mesure(Coord const &p)
         }
         for (std::size_t i{0}; i < N * M; i++)
         {
-            if (m_piece_board[i].get_type() != TypePiece::EMPTY &&
-                p_actuelle.get_type() == m_piece_board[i].get_type())
+            if (p_actuelle.get_type() == m_piece_board[i].get_type())
             {
                 for (auto &e : m_board)
                 {
@@ -334,8 +333,7 @@ Board<N, M>::mesure_capture_slide(
         }
         for (std::size_t i{0}; i < N * M; i++)
         {
-            if (m_piece_board[i].get_type() != TypePiece::EMPTY &&
-                p_actuelle.get_type() == m_piece_board[i].get_type())
+            if (p_actuelle.get_type() == m_piece_board[i].get_type())
             {
                 for (auto &e : m_board)
                 {
@@ -408,9 +406,8 @@ Board<N, M>::mesure_castle(
     }
     for (std::size_t i{0}; i < N * M; i++)
     {
-        if (m_piece_board[i].get_type() != TypePiece::EMPTY &&
-            (m_piece_board[i].get_type() == TypePiece::ROOK ||
-             m_piece_board[i].get_type() == TypePiece::KING))
+        if (m_piece_board[i].get_type() == TypePiece::ROOK ||
+            m_piece_board[i].get_type() == TypePiece::KING)
         {
             for (auto &e : m_board)
             {
@@ -815,7 +812,6 @@ Board<N, M>::move_enpassant(Coord const &s, Coord const &t, Coord const &ep)
     }
 }
 
-
 template <std::size_t N, std::size_t M>
 CONSTEXPR void
 Board<N, M>::move_split_jump(Coord const &s, Coord const &t1, Coord const &t2)
@@ -1077,17 +1073,26 @@ CONSTEXPR void Board<N, M>::move_pawn(Coord const &s, Coord const &t)
         }
     }
 }
+
 template <std::size_t N, std::size_t M>
 CONSTEXPR void
-Board<N, M>::move_promotion(Coord const &s, Coord const &t, TypePiece p)
+Board<N, M>::move_promotion(Move const &move) noexcept
 {
-    if(p==TypePiece::QUEEN || p==TypePiece::KNIGHT || p == TypePiece::BISHOP || p == TypePiece::ROOK)
+    TypePiece p{move.promote.piece};
+    Coord s{move.promote.src};
+    Coord t{move.promote.arv};
+
+    if (p == TypePiece::QUEEN ||
+        p == TypePiece::KNIGHT ||
+        p == TypePiece::BISHOP ||
+        p == TypePiece::ROOK)
     {
         move_pawn(s, t);
         Piece piece{p, m_piece_board[offset(t.n, t.m)].get_color()};
         m_piece_board[offset(t.n, t.m)] = std::move(piece);
     }
 }
+
 template <std::size_t N, std::size_t M>
 CONSTEXPR void Board<N, M>::move_classic(Coord const &s, Coord const &t)
 {
@@ -1234,7 +1239,7 @@ CONSTEXPR void Board<N, M>::move(Move const &movement)
 }
 
 template <std::size_t N, std::size_t M>
-CONSTEXPR Piece const&
+CONSTEXPR Piece const &
 Board<N, M>::operator()(std::size_t n, std::size_t m) const noexcept
 {
     return m_piece_board[offset(n, m)];
@@ -1284,8 +1289,7 @@ CONSTEXPR bool Board<N, M>::winning_position(Color c)
 {
     for (std::size_t i{0}; i < N * M; i++)
     {
-        if (m_piece_board[i].get_type() != TypePiece::EMPTY &&
-            m_piece_board[i].get_type() == TypePiece::KING &&
+        if (m_piece_board[i].get_type() == TypePiece::KING &&
             m_piece_board[i].get_color() != c)
         {
             return false;
@@ -1363,4 +1367,11 @@ void Board<N, M>::update_case(std::size_t pos) noexcept
         }
     }
     m_piece_board[pos] = Piece();
+}
+
+template <std::size_t N, std::size_t M>
+std::forward_list<Move> 
+Board<N, M>::get_list_promote(Coord const &pos) const noexcept
+{
+    return (*this)(pos.n, pos.m).get_list_promote(*this, pos);
 }

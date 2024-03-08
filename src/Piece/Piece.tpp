@@ -65,7 +65,8 @@ CONSTEXPR double Piece::norm(Coord const &x, Coord const &y) noexcept
 
 template <Piece::Move_Mode MOVE, std::size_t N, std::size_t M>
 CONSTEXPR std::forward_list<Coord>
-Piece::get_list_move_king(Board<N, M> const &board, Coord const &pos) const
+Piece::get_list_move_king(Board<N, M> const &board,
+                          Coord const &pos) const noexcept
 {
     CONSTEXPR int P{M + 2};
     std::array<int, 8> const
@@ -79,7 +80,7 @@ Piece::get_list_move_king(Board<N, M> const &board, Coord const &pos) const
         if (arv >= 0)
         {
             std::size_t n{arv / N}, m{arv % M};
-            Piece const& arvPiece{board(n, m)};
+            Piece const &arvPiece{board(n, m)};
             bool eval;
             if CONSTEXPR (MOVE == Move_Mode::NORMAL)
             {
@@ -115,7 +116,8 @@ Piece::get_list_move_king(Board<N, M> const &board, Coord const &pos) const
 
 template <Piece::Move_Mode MOVE, std::size_t N, std::size_t M>
 CONSTEXPR std::forward_list<Coord>
-Piece::get_list_move_knight(Board<N, M> const &board, Coord const &pos) const
+Piece::get_list_move_knight(Board<N, M> const &board,
+                            Coord const &pos) const noexcept
 {
     CONSTEXPR int P{M + 2};
     std::array<int, 8> const
@@ -130,7 +132,7 @@ Piece::get_list_move_knight(Board<N, M> const &board, Coord const &pos) const
         if (arv >= 0)
         {
             std::size_t n{arv / N}, m{arv % N};
-            Piece const& arvPiece{board(n, m)};
+            Piece const &arvPiece{board(n, m)};
             bool eval;
             if CONSTEXPR (MOVE == Move_Mode::NORMAL)
             {
@@ -151,11 +153,15 @@ Piece::get_list_move_knight(Board<N, M> const &board, Coord const &pos) const
     return list_move;
 }
 
-template <Piece::Move_Mode MOVE, std::size_t N, std::size_t M, std::size_t SIZE>
+template <Piece::Move_Mode MOVE,
+          std::size_t N,
+          std::size_t M,
+          std::size_t SIZE>
 CONSTEXPR std::forward_list<Coord>
-Piece::get_list_move_rec(Board<N, M> const &board,
-                         Coord const &pos,
-                         std::array<int, SIZE> const &list_move) const
+Piece::get_list_move_rec(
+    Board<N, M> const &board,
+    Coord const &pos,
+    std::array<int, SIZE> const &list_move) const noexcept
 {
     std::size_t current_pos{board.offset(pos.n, pos.m)};
     int const posBox{board.m_S_mailbox[current_pos]};
@@ -167,7 +173,7 @@ Piece::get_list_move_rec(Board<N, M> const &board,
         while (arv >= 0)
         {
             std::size_t n{arv / N}, m{arv % N};
-            Piece const& arvPiece{board(n, m)};
+            Piece const &arvPiece{board(n, m)};
             if CONSTEXPR (MOVE == Move_Mode::NORMAL)
             {
                 if (arvPiece.get_type() == TypePiece::EMPTY ||
@@ -205,7 +211,8 @@ Piece::get_list_move_rec(Board<N, M> const &board,
 
 template <Piece::Move_Mode MOVE, std::size_t N, std::size_t M>
 CONSTEXPR std::forward_list<Coord>
-Piece::get_list_move_bishop(Board<N, M> const &board, Coord const &pos) const
+Piece::get_list_move_bishop(Board<N, M> const &board,
+                            Coord const &pos) const noexcept
 {
     CONSTEXPR int P{M + 2};
     std::array<int, 4> const move_bishop{{-P - 1, -P + 1, P - 1, P + 1}};
@@ -214,7 +221,8 @@ Piece::get_list_move_bishop(Board<N, M> const &board, Coord const &pos) const
 
 template <Piece::Move_Mode MOVE, std::size_t N, std::size_t M>
 CONSTEXPR std::forward_list<Coord>
-Piece::get_list_move_rook(Board<N, M> const &board, Coord const &pos) const
+Piece::get_list_move_rook(Board<N, M> const &board,
+                          Coord const &pos) const noexcept
 {
     CONSTEXPR int P{M + 2};
     std::array<int, 4> const move_rook{{-P, 1, P, -1}};
@@ -223,7 +231,8 @@ Piece::get_list_move_rook(Board<N, M> const &board, Coord const &pos) const
 
 template <Piece::Move_Mode MOVE, std::size_t N, std::size_t M>
 CONSTEXPR std::forward_list<Coord>
-Piece::get_list_move_queen(Board<N, M> const &board, Coord const &pos) const
+Piece::get_list_move_queen(Board<N, M> const &board,
+                           Coord const &pos) const noexcept
 {
     CONSTEXPR int P{M + 2};
     std::array<int, 8> const
@@ -233,7 +242,8 @@ Piece::get_list_move_queen(Board<N, M> const &board, Coord const &pos) const
 
 template <std::size_t N, std::size_t M>
 CONSTEXPR std::forward_list<Coord>
-Piece::get_list_move_pawn(Board<N, M> const &board, Coord const &pos) const noexcept
+Piece::get_list_move_pawn(Board<N, M> const &board,
+                          Coord const &pos) const noexcept
 {
     CONSTEXPR int P{M + 2};
     auto sign_color{
@@ -269,7 +279,8 @@ Piece::get_list_move_pawn(Board<N, M> const &board, Coord const &pos) const noex
         if (arv >= 0)
         {
             std::size_t n{arv / N}, m{arv % N};
-            if ((board(n, m).get_type() != TypePiece::EMPTY && !same_color(*board(n, m))) ||
+            if ((board(n, m).get_type() != TypePiece::EMPTY &&
+                 !same_color(board(n, m))) ||
                 (board.m_ep != std::nullopt &&
                  board.m_ep->n == pos.n &&
                  board.m_ep->m == pos.m))
@@ -282,35 +293,49 @@ Piece::get_list_move_pawn(Board<N, M> const &board, Coord const &pos) const noex
 }
 
 template <std::size_t N, std::size_t M>
+CONSTEXPR bool
+Piece::check_if_use_move_promote(Board<N, M> const &board,
+                                 Coord const &pos) const noexcept
+{
+    if (board(pos.n, pos.m).get_type() == TypePiece::PAWN)
+    {
+        auto sign_color{
+            [](Color color) -> int
+            {
+                return (color == Color::WHITE) ? -1 : 1;
+            }};
+        int required_line{(get_color() == Color::WHITE) ? 1 : N - 2};
+        if (pos.n == required_line)
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
+template <std::size_t N, std::size_t M>
 CONSTEXPR std::forward_list<Move>
 Piece::get_list_promote(Board<N, M> const &board, Coord const &pos) const noexcept
 {
-    auto sign_color {
-        [](Color color) -> int {
-            return (color == Color::WHITE) ? -1 : 1; 
-        }
-    };
-    int required_line {(get_color() == Color::WHITE) ? 1 : N -2};
-    if (pos.n == required_line)
+    std::forward_list<Coord> list_move{get_list_move_pawn(board, pos)};
+    std::forward_list<Move> list_promote;
+    std::array<TypePiece, 4> promote_choice{TypePiece::QUEEN,
+                                            TypePiece::ROOK,
+                                            TypePiece::BISHOP,
+                                            TypePiece::KNIGHT};
+    for (Coord const &e : list_move)
     {
-        std::forward_list<Coord> list_move {get_list_move_pawn(board, pos)};
-        std::forward_list<Move> list_promote;
-        std::array<TypePiece, 4> promote_choice{TypePiece::QUEEN, TypePiece::ROOK, TypePiece::BISHOP, TypePiece::KNIGHT};
-        for (Coord const &e : list_move)
+        for (TypePiece p : promote_choice)
         {
-            for (TypePiece p : promote_choice)
-            {
-                list_promote.push_front(Move_promote(pos, e, p));
-            }
+            list_promote.push_front(Move_promote(pos, e, p));
         }
-        return list_promote;
     }
-    return std::forward_list<Move>{};
+    return list_promote;
 }
 
 template <Piece::Move_Mode MOVE, std::size_t N, std::size_t M>
 CONSTEXPR std::forward_list<Coord>
-Piece::get_list_move(Board<N, M> const &board, Coord const &pos) const
+Piece::get_list_move(Board<N, M> const &board, Coord const &pos) const noexcept
 {
     switch (get_type())
     {
@@ -339,15 +364,17 @@ Piece::get_list_move(Board<N, M> const &board, Coord const &pos) const
 }
 
 template <std::size_t N, std::size_t M>
-CONSTEXPR std::forward_list<Coord> 
-Piece::get_list_normal_move(Board<N, M> const &board, Coord const &pos) const
+CONSTEXPR std::forward_list<Coord>
+Piece::get_list_normal_move(Board<N, M> const &board,
+                            Coord const &pos) const noexcept
 {
     return get_list_move<Move_Mode::NORMAL>(board, pos);
 }
 
 template <std::size_t N, std::size_t M>
 CONSTEXPR std::forward_list<Coord>
-Piece::get_list_split_move(Board<N, M> const &board, Coord const &pos) const
+Piece::get_list_split_move(Board<N, M> const &board,
+                           Coord const &pos) const noexcept
 {
     return get_list_move<Move_Mode::SPLIT>(board, pos);
 }
