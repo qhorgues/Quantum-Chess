@@ -499,8 +499,8 @@ CONSTEXPR void Board<N, M>::king_side_castle(Coord const &k,
                 MATRIX_ISWAP,
                 std::array<std::size_t, 2>{rook, new_rook});
         }
-        m_piece_board[new_king] = std::move(m_piece_board[king]);
-        m_piece_board[new_rook] = std::move(m_piece_board[rook]);
+        m_piece_board[new_king] = m_piece_board[king];
+        m_piece_board[new_rook] = m_piece_board[rook];
         m_piece_board[king] = nullptr;
         m_piece_board[rook] = nullptr;
     }
@@ -526,8 +526,8 @@ CONSTEXPR void Board<N, M>::queen_side_castle(Coord const &k,
                 MATRIX_ISWAP,
                 std::array<std::size_t, 2>{rook, new_rook});
         }
-        m_piece_board[new_king] = std::move(m_piece_board[king]);
-        m_piece_board[new_rook] = std::move(m_piece_board[rook]);
+        m_piece_board[new_king] = m_piece_board[king];
+        m_piece_board[new_rook] = m_piece_board[rook];
         m_piece_board[king] = nullptr;
         m_piece_board[rook] = nullptr;
     }
@@ -549,7 +549,7 @@ Board<N, M>::move_classic_jump(Coord const &s, Coord const &t)
                 MATRIX_ISWAP,
                 std::array<std::size_t, 2>{source, target});
         }
-        m_piece_board[target] = std::move(m_piece_board[source]);
+        m_piece_board[target] = m_piece_board[source];
         m_piece_board[source] = nullptr;
     }
     else
@@ -616,7 +616,7 @@ Board<N, M>::move_pawn_one_step(Coord const &s, Coord const &t)
                 i, MATRIX_ISWAP,
                 std::array<std::size_t, 2>{source, target});
         }
-        m_piece_board[target] = std::move(m_piece_board[source]);
+        m_piece_board[target] = m_piece_board[source];
         m_piece_board[source] = nullptr;
     }
     else
