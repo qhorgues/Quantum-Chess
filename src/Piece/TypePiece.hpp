@@ -6,6 +6,7 @@
  */
 enum class TypePiece
 {
+    EMPTY,
     PAWN,
     KNIGHT,
     BISHOP,

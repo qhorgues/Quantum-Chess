@@ -1,6 +1,8 @@
 #ifndef MATH_UTILITY_HPP
 #define MATH_UTILITY_HPP
 
+#define EPSILON 10e-6
+
 bool double_equal(double x, double y);
 bool complex_equal(
     std::complex<double> const &z1,

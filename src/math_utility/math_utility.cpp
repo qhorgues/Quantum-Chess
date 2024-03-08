@@ -1,7 +1,6 @@
 #include <cmath>
 #include <complex>
-
-#define EPSILON 0.00001
+#include "math_utility.hpp"
 
 bool double_equal(double x, double y)
 {

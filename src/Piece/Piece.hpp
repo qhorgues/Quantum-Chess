@@ -7,22 +7,20 @@
 #include <vector>
 #include <forward_list>
 #include <Constexpr.hpp>
+#include <Move.hpp>
 #include "TypePiece.hpp"
-
-
 
 template <std::size_t N, std::size_t M>
 class Board;
 
-
 /**
  * @brief Class conservant le type et la couleur d'une pièce.
- * Elle permet aussi de recuperer ses mouvement possible 
+ * Elle permet aussi de recuperer ses mouvement possible
  */
 class Piece
 {
 public:
-    CONSTEXPR Piece() = delete;
+    CONSTEXPR Piece() noexcept;
 
     /**
      * @brief Construit une piece à l'aide de son type et de sa couleur
@@ -31,8 +29,8 @@ public:
      * @param[in] color La couleur de la piece
      */
     CONSTEXPR Piece(TypePiece piece, Color color) noexcept;
-    CONSTEXPR Piece(Piece const &) = delete;
-    CONSTEXPR Piece &operator=(Piece const &) = delete;
+    CONSTEXPR Piece(Piece const &) = default;
+    CONSTEXPR Piece &operator=(Piece const &) = default;
 
     /**
      * @brief Deplacement d'un objet piece vers un autre objet piece
@@ -69,7 +67,8 @@ public:
      */
     template <std::size_t N, std::size_t M>
     CONSTEXPR std::forward_list<Coord>
-    get_list_normal_move(Board<N, M> const &board, Coord const &pos) const;
+    get_list_normal_move(Board<N, M> const &board,
+                         Coord const &pos) const noexcept;
 
     /**
      * @brief Récupère la liste des mouvements split pour une piece
@@ -89,7 +88,8 @@ public:
      */
     template <std::size_t N, std::size_t M>
     CONSTEXPR std::forward_list<Coord>
-    get_list_split_move(Board<N, M> const &board, Coord const &pos) const;
+    get_list_split_move(Board<N, M> const &board,
+                        Coord const &pos) const noexcept;
 
     /**
      * @brief Teste si la piece est blanche
@@ -107,12 +107,44 @@ public:
 
     /**
      * @brief Teste si l'autre piece est de la meme couleur
-     * 
+     *
      * @param[in] other L'autre pièce à comparer
      *
      * @return bool true si la piece est de la meme couleur, false sinon
      */
     CONSTEXPR bool same_color(Piece const &other) const noexcept;
+
+    /**
+     * @brief Teste si les mouvement de la piece sont si la
+     * pièce est un pion un mouvement de promotion
+     * 
+     * @note peut etre utiliser sans verifier si la pièce est un pion
+     * 
+     * @param[in] board Le plateau
+     * @param[in] pos La position de la pièce
+     * @return true si le mouvement possible est un mouvement
+     * de promotion
+     * @return false sinon
+     */
+    template <std::size_t N, std::size_t M>
+    CONSTEXPR bool
+    check_if_use_move_promote(Board<N, M> const &board,
+                              Coord const &pos) const noexcept;
+
+    /**
+     * @brief Renvoie la liste de toutes les promotions 
+     * 
+     * @warning Ne verifie pas la validité du mouvement,
+     * de la position ou du type de la pièce
+     * 
+     * @param[in] board Le plateau
+     * @param[in] pos La position du pion
+     * @return La liste de tout les mouvements de promotion
+     */
+    template <std::size_t N, std::size_t M>
+    CONSTEXPR std::forward_list<Move>
+    get_list_promote(Board<N, M> const &board,
+                     Coord const &pos) const noexcept;
 
 private:
     /**
@@ -123,7 +155,7 @@ private:
     enum class Move_Mode
     {
         /**
-         * @brief Dans le cas du mouvement classique on 
+         * @brief Dans le cas du mouvement classique on
          * autorise la prise de pièce.
          */
         NORMAL,
@@ -146,7 +178,7 @@ private:
     abs_substracte(std::size_t x, std::size_t y) noexcept;
 
     /**
-     * @brief renvoie la distance entre deux coordonnées 
+     * @brief renvoie la distance entre deux coordonnées
      * à l'aide de la norme 2
      *
      * @param[in] x Première coordonnée
@@ -174,16 +206,16 @@ private:
     template <Move_Mode MOVE, std::size_t N, std::size_t M, std::size_t SIZE>
     CONSTEXPR std::forward_list<Coord>
     get_list_move_rec(Board<N, M> const &board, Coord const &pos,
-                      std::array<int, SIZE> const &list_move) const;
+                      std::array<int, SIZE> const &list_move) const noexcept;
 
     /**
      * @brief Récupère la liste de mouvement du roi
      *
      * @warning Ne récupère les mouvements du roque que pour un tableau
      * de taille 8 x 8
-     * 
+     *
      * @warning ne verifie pas si c'est bien un roi
-     * 
+     *
      * @tparam MOVE Le type de mouvement utiliser entre normal
      * et split (split ne prend pas les mouvements de capture de pièce)
      * @tparam N Le nombre de ligne du plateau
@@ -194,14 +226,15 @@ private:
      * des positions d'arrivées possible pour le roi
      */
     template <Move_Mode MOVE, std::size_t N, std::size_t M>
-    CONSTEXPR std::forward_list<Coord> 
-    get_list_move_king(Board<N, M> const &board, Coord const &pos) const;
+    CONSTEXPR std::forward_list<Coord>
+    get_list_move_king(Board<N, M> const &board,
+                       Coord const &pos) const noexcept;
 
     /**
      * @brief Récupère la liste de mouvement du cavalier
      *
      * @warning ne verifie pas si c'est bien un cavalier
-     * 
+     *
      * @tparam MOVE Le type de mouvement utiliser entre normal
      * et split (split ne prend pas les mouvements de capture de pièce)
      * @tparam N Le nombre de ligne du plateau
@@ -212,14 +245,15 @@ private:
      * des positions d'arrivées possible pour le cavalier
      */
     template <Move_Mode MOVE, std::size_t N, std::size_t M>
-    CONSTEXPR std::forward_list<Coord> 
-    get_list_move_knight(Board<N, M> const &board, Coord const &pos) const;
+    CONSTEXPR std::forward_list<Coord>
+    get_list_move_knight(Board<N, M> const &board,
+                         Coord const &pos) const noexcept;
 
     /**
      * @brief Récupère la liste de mouvement du fou
      *
      * @warning ne verifie pas si c'est bien un fou
-     * 
+     *
      * @tparam MOVE Le type de mouvement utiliser entre normal
      * et split (split ne prend pas les mouvements de capture de pièce)
      * @tparam N Le nombre de ligne du plateau
@@ -230,14 +264,15 @@ private:
      * des positions d'arrivées possible pour le fou
      */
     template <Move_Mode MOVE, std::size_t N, std::size_t M>
-    CONSTEXPR std::forward_list<Coord> 
-    get_list_move_bishop(Board<N, M> const &board, Coord const &pos) const;
+    CONSTEXPR std::forward_list<Coord>
+    get_list_move_bishop(Board<N, M> const &board,
+                         Coord const &pos) const noexcept;
 
     /**
      * @brief Récupère la liste de mouvement de la tour
      *
      * @warning ne verifie pas si c'est bien une tour
-     * 
+     *
      * @tparam MOVE Le type de mouvement utiliser entre normal
      * et split (split ne prend pas les mouvements de capture de pièce)
      * @tparam N Le nombre de ligne du plateau
@@ -248,14 +283,15 @@ private:
      * des positions d'arrivées possible pour la tour
      */
     template <Move_Mode MOVE, std::size_t N, std::size_t M>
-    CONSTEXPR std::forward_list<Coord> 
-    get_list_move_rook(Board<N, M> const &board, Coord const &pos) const;
+    CONSTEXPR std::forward_list<Coord>
+    get_list_move_rook(Board<N, M> const &board,
+                       Coord const &pos) const noexcept;
 
     /**
      * @brief Récupère la liste de mouvement de la dame
      *
      * @warning ne verifie pas si c'est bien une dame
-     * 
+     *
      * @tparam MOVE Le type de mouvement utiliser entre normal
      * et split (split ne prend pas les mouvements de capture de pièce)
      * @tparam N Le nombre de ligne du plateau
@@ -266,14 +302,15 @@ private:
      * des positions d'arrivées possible pour la dame
      */
     template <Move_Mode MOVE, std::size_t N, std::size_t M>
-    CONSTEXPR std::forward_list<Coord> 
-    get_list_move_queen(Board<N, M> const &board, Coord const &pos) const;
+    CONSTEXPR std::forward_list<Coord>
+    get_list_move_queen(Board<N, M> const &board,
+                        Coord const &pos) const noexcept;
 
     /**
      * @brief Récupère la liste de mouvement du pion
      *
      * @warning ne verifie pas si c'est bien un pion
-     * 
+     *
      * @tparam N Le nombre de ligne du plateau
      * @tparam M Le nombre de colonne du plateau
      * @param[in] board Le plateau
@@ -282,12 +319,13 @@ private:
      * des positions d'arrivées possible pour le pion
      */
     template <std::size_t N, std::size_t M>
-    CONSTEXPR std::forward_list<Coord> 
-    get_list_move_pawn(Board<N, M> const &board, Coord const &pos) const;
+    CONSTEXPR std::forward_list<Coord>
+    get_list_move_pawn(Board<N, M> const &board,
+                       Coord const &pos) const noexcept;
 
     /**
-     * @brief Récupère la liste de mouvement pour 
-     * n'importe qu'elle pièce 
+     * @brief Récupère la liste de mouvement pour
+     * n'importe qu'elle pièce
      *
      * @tparam MOVE Le type de mouvement utiliser entre normal
      * et split (split ne prend pas les mouvements de capture de pièce)
@@ -300,8 +338,9 @@ private:
      * des positions d'arrivées possible
      */
     template <Move_Mode MOVE, std::size_t N, std::size_t M>
-    CONSTEXPR std::forward_list<Coord> 
-    get_list_move(Board<N, M> const &board, Coord const &pos) const;
+    CONSTEXPR std::forward_list<Coord>
+    get_list_move(Board<N, M> const &board,
+                  Coord const &pos) const noexcept;
 
     /**
      * @brief La couleur de la pièce (WHITE/BLACK)
