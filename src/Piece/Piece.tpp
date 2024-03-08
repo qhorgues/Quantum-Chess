@@ -227,7 +227,7 @@ Piece::get_list_move_queen(Board<N, M> const &board, Coord const &pos) const
 
 template <std::size_t N, std::size_t M>
 CONSTEXPR std::forward_list<Coord>
-Piece::get_list_move_pawn(Board<N, M> const &board, Coord const &pos) const
+Piece::get_list_move_pawn(Board<N, M> const &board, Coord const &pos) const noexcept
 {
     CONSTEXPR int P{M + 2};
     auto sign_color{
@@ -263,7 +263,7 @@ Piece::get_list_move_pawn(Board<N, M> const &board, Coord const &pos) const
         if (arv >= 0)
         {
             std::size_t n{arv / N}, m{arv % N};
-            if (board(n, m) != nullptr ||
+            if ((board(n, m) != nullptr && !same_color(*board(n, m))) ||
                 (board.m_ep != std::nullopt &&
                  board.m_ep->n == pos.n &&
                  board.m_ep->m == pos.m))
@@ -273,6 +273,33 @@ Piece::get_list_move_pawn(Board<N, M> const &board, Coord const &pos) const
         }
     }
     return list_move;
+}
+
+template <std::size_t N, std::size_t M>
+CONSTEXPR std::forward_list<Move>
+Piece::get_list_promote(Board<N, M> const &board, Coord const &pos) const noexcept
+{
+    auto sign_color {
+        [](Color color) -> int {
+            return (color == Color::WHITE) ? -1 : 1; 
+        }
+    };
+    int required_line {(get_color() == Color::WHITE) ? 1 : N -2};
+    if (pos.n == required_line)
+    {
+        std::forward_list<Coord> list_move {get_list_move_pawn(board, pos)};
+        std::forward_list<Move> list_promote;
+        std::array<TypePiece, 4> promote_choice{TypePiece::QUEEN, TypePiece::ROOK, TypePiece::BISHOP, TypePiece::KNIGHT};
+        for (Coord const &e : list_move)
+        {
+            for (TypePiece p : promote_choice)
+            {
+                list_promote.push_front(Move_promote(pos, e, p));
+            }
+        }
+        return list_promote;
+    }
+    return std::forward_list<Move>{};
 }
 
 template <Piece::Move_Mode MOVE, std::size_t N, std::size_t M>

@@ -283,7 +283,11 @@ private:
      */
     template <std::size_t N, std::size_t M>
     CONSTEXPR std::forward_list<Coord> 
-    get_list_move_pawn(Board<N, M> const &board, Coord const &pos) const;
+    get_list_move_pawn(Board<N, M> const &board, Coord const &pos) const noexcept;
+
+    template <std::size_t N, std::size_t M>
+    CONSTEXPR std::forward_list<Move>
+    get_list_promote(Board<N, M> const &board, Coord const &pos) const noexcept;
 
     /**
      * @brief Récupère la liste de mouvement pour 
