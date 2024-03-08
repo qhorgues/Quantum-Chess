@@ -40,6 +40,7 @@ namespace computer
                 return 9;
             case TypePiece::KING:
                 return 5;
+            case TypePiece::EMPTY:
             default:
                 return 0;
             }
@@ -77,22 +78,19 @@ namespace computer
                 for (std::size_t j{0}; j < board.numberColumns(); j++)
                 {
                     auto piece = board(i, j);
-                    if (piece != nullptr)
+                    if (piece.get_type() == TypePiece::KING)
                     {
-                        if (piece->get_type() == TypePiece::KING)
+                        if (piece.get_color() == Color::WHITE)
                         {
-                            if (piece->get_color() == Color::WHITE)
-                            {
-                                found_W_king = true;
-                            }
-                            else
-                            {
-                                found_B_king = true;
-                            }
-                            if (found_W_king == found_B_king)
-                            {
-                                return false;
-                            }
+                            found_W_king = true;
+                        }
+                        else
+                        {
+                            found_B_king = true;
+                        }
+                        if (found_W_king == found_B_king)
+                        {
+                            return false;
                         }
                     }
                 }
@@ -171,10 +169,10 @@ namespace computer
                 for (std::size_t j{0}; j < board.numberColumns(); j++)
                 {
                     auto p = board(i, j);
-                    if (p != nullptr)
+                    if (p.get_type() != TypePiece::EMPTY)
                     {
-                        h += sign_color(p->get_color()) *
-                             __utility::value_piece(p->get_type()) *
+                        h += sign_color(p.get_color()) *
+                             __utility::value_piece(p.get_type()) *
                              board.get_proba(Coord(i, j));
                     }
                 }
@@ -237,80 +235,27 @@ namespace computer
                 {
                     for (std::size_t j{0}; j < board.numberColumns(); j++)
                     {
-                        observer_ptr<Piece const> piece{board(i, j)};
-                        if (piece != nullptr &&
-                            piece->get_color() == board.get_current_player())
+                        Piece const &piece{board(i, j)};
+                        if (piece.get_type() != TypePiece::EMPTY &&
+                            piece.get_color() == board.get_current_player())
                         {
-                            double p_proba{board.get_proba(Coord(i, j))};
-                            std::forward_list<Coord> move_normal{
-                                board.get_list_normal_move(Coord(i, j))};
-
-                            for (Coord const &c : move_normal)
+                            if (!board.check_if_use_move_promote(Coord(i, j)))
                             {
-                                double score;
-                                /* if (true || board(c.n, c.m) != nullptr ||
-                                    board(i, j)->get_type() == TypePiece::PAWN)
-                                { */
-                                Board<N, M> board_cpy = board;
-                                try
-                                {
-                                    board_cpy.move(
-                                        Move_classic(Coord(i, j), c));
-                                }
-                                catch (std::runtime_error const &e)
-                                {
-                                    continue;
-                                }
-                                board_cpy.change_player();
-                                best_score_alpha_beta.push_front(best_score);
-                                score = rec_get_best_move(board_cpy,
-                                                          best_score_alpha_beta,
-                                                          profondeur -
-                                                              1);
-                                best_score_alpha_beta.pop_front();
-                                /* }
-                                else
-                                {
-                                    board.move(Move_classic(Coord(i, j), c));
-                                    board.change_player();
+                                double p_proba{board.get_proba(Coord(i, j))};
+                                std::forward_list<Coord> move_normal{
+                                    board.get_list_normal_move(Coord(i, j))};
 
-                                    best_score_alpha_beta.push_front(best_score);
-                                    score = rec_get_best_move(board,
-                                                              best_score_alpha_beta,
-                                                              profondeur -
-                                                                  1);
-                                    best_score_alpha_beta.pop_front();
-                                    board.change_player();
-                                    board.move(Move_classic(c, Coord(i, j)));
-                                } */
-                                if (check_best_score(score))
+                                for (Coord const &c : move_normal)
                                 {
-                                    return best_score;
-                                }
-                            }
-
-                            std::forward_list<Coord> move_split{
-                                board.get_list_split_move(Coord(i, j))};
-
-                            std::forward_list<Coord>::const_iterator it_move{
-                                std::cbegin(move_split)};
-                            for (; it_move != std::cend(move_split);
-                                 it_move++)
-                            {
-                                for (std::forward_list<Coord>::const_iterator it2{
-                                         std::cbegin(move_split)};
-                                     it2 != cend(move_split); it2++)
-                                {
-                                    if (it_move == it2)
-                                    {
-                                        continue;
-                                    }
+                                    double score;
+                                    /* if (true || board(c.n, c.m).get_type() != TypePiece::EMPTY ||
+                                        board(i, j).get_type() == TypePiece::PAWN)
+                                    { */
                                     Board<N, M> board_cpy = board;
                                     try
                                     {
                                         board_cpy.move(
-                                            Move_split(Coord(i, j),
-                                                       *it_move, *it2));
+                                            Move_classic(Coord(i, j), c));
                                     }
                                     catch (std::runtime_error const &e)
                                     {
@@ -318,78 +263,168 @@ namespace computer
                                     }
                                     board_cpy.change_player();
                                     best_score_alpha_beta.push_front(best_score);
-                                    double score = rec_get_best_move(board_cpy,
-                                                                     best_score_alpha_beta,
-                                                                     profondeur - 1);
+                                    score = rec_get_best_move(board_cpy,
+                                                            best_score_alpha_beta,
+                                                            profondeur -
+                                                                1);
                                     best_score_alpha_beta.pop_front();
+                                    /* }
+                                    else
+                                    {
+                                        board.move(Move_classic(Coord(i, j), c));
+                                        board.change_player();
+
+                                        best_score_alpha_beta.push_front(best_score);
+                                        score = rec_get_best_move(board,
+                                                                best_score_alpha_beta,
+                                                                profondeur -
+                                                                    1);
+                                        best_score_alpha_beta.pop_front();
+                                        board.change_player();
+                                        board.move(Move_classic(c, Coord(i, j)));
+                                    } */
                                     if (check_best_score(score))
                                     {
                                         return best_score;
                                     }
                                 }
-                                if (piece->get_type() != TypePiece::PAWN)
+
+                                std::forward_list<Coord> move_split{
+                                    board.get_list_split_move(Coord(i, j))};
+
+                                std::forward_list<Coord>::const_iterator it_move{
+                                    std::cbegin(move_split)};
+                                for (; it_move != std::cend(move_split);
+                                    it_move++)
                                 {
-                                    if (move_merge.contains(piece->get_type()))
+                                    for (std::forward_list<Coord>::const_iterator it2{
+                                            std::cbegin(move_split)};
+                                        it2 != cend(move_split); it2++)
                                     {
-                                        if (move_merge.at(piece->get_type())
-                                                .contains(*it_move))
+                                        if (it_move == it2)
                                         {
-                                            for (Coord const &c :
-                                                 move_merge.at(piece->get_type())
-                                                     .at(*it_move))
+                                            continue;
+                                        }
+                                        Board<N, M> board_cpy = board;
+                                        try
+                                        {
+                                            board_cpy.move(
+                                                Move_split(Coord(i, j),
+                                                        *it_move, *it2));
+                                        }
+                                        catch (std::runtime_error const &e)
+                                        {
+                                            continue;
+                                        }
+                                        board_cpy.change_player();
+                                        best_score_alpha_beta.push_front(best_score);
+                                        double score = rec_get_best_move(board_cpy,
+                                                                        best_score_alpha_beta,
+                                                                        profondeur - 1);
+                                        best_score_alpha_beta.pop_front();
+                                        if (check_best_score(score))
+                                        {
+                                            return best_score;
+                                        }
+                                    }
+                                    if (piece.get_type() != TypePiece::PAWN)
+                                    {
+                                        if (move_merge.contains(piece.get_type()))
+                                        {
+                                            if (move_merge.at(piece.get_type())
+                                                    .contains(*it_move))
                                             {
-                                                if (p_proba < 1. ||
-                                                    board.get_proba(Coord(c.n, c.m)) < 1.)
+                                                for (Coord const &c :
+                                                    move_merge.at(piece.get_type())
+                                                        .at(*it_move))
                                                 {
-                                                    Move move = Move_merge(
-                                                        Coord(i, j), c, *it_move);
-                                                    Board<N, M> board_cpy = board;
-                                                    board_cpy.move(move);
-                                                    board_cpy.change_player();
-                                                    try
+                                                    if (p_proba < 1. ||
+                                                        board.get_proba(Coord(c.n, c.m)) < 1.)
                                                     {
-                                                        best_score_alpha_beta.push_front(best_score);
-                                                        double score = rec_get_best_move(board_cpy,
-                                                                                         best_score_alpha_beta,
-                                                                                         profondeur - 1);
-                                                        best_score_alpha_beta.pop_front();
-                                                        // board.change_player();
-                                                        /* move = Move_split(
-                                                            *it_move,
-                                                            Coord(i, j), c);
-                                                        board.move(move); */
-                                                        if (check_best_score(score))
+                                                        Move move = Move_merge(
+                                                            Coord(i, j), c, *it_move);
+                                                        Board<N, M> board_cpy = board;
+                                                        board_cpy.move(move);
+                                                        board_cpy.change_player();
+                                                        try
                                                         {
-                                                            return best_score;
+                                                            best_score_alpha_beta.push_front(best_score);
+                                                            double score = rec_get_best_move(board_cpy,
+                                                                                            best_score_alpha_beta,
+                                                                                            profondeur - 1);
+                                                            best_score_alpha_beta.pop_front();
+                                                            // board.change_player();
+                                                            /* move = Move_split(
+                                                                *it_move,
+                                                                Coord(i, j), c);
+                                                            board.move(move); */
+                                                            if (check_best_score(score))
+                                                            {
+                                                                return best_score;
+                                                            }
+                                                        }
+                                                        catch (std::exception const &e)
+                                                        {
+                                                            continue;
                                                         }
                                                     }
-                                                    catch (std::exception const &e)
-                                                    {
-                                                        continue;
-                                                    }
                                                 }
+                                            }
+                                            else
+                                            {
+                                                move_merge.at(piece.get_type())
+                                                    .insert({*it_move,
+                                                            std::vector{Coord(i, j)}});
                                             }
                                         }
                                         else
                                         {
-                                            move_merge.at(piece->get_type())
-                                                .insert({*it_move,
-                                                         std::vector{Coord(i, j)}});
+                                            move_merge
+                                                .insert(
+                                                    std::make_pair(
+                                                        piece.get_type(),
+                                                        std::unordered_map<
+                                                            Coord,
+                                                            std::vector<Coord>, Coord_hash>{
+                                                            std::make_pair(
+                                                                *it_move,
+                                                                std::vector{Coord(i, j)})}));
                                         }
                                     }
-                                    else
+                                }
+                            }
+                            else
+                            {
+                                std::forward_list<Move> list { 
+                                    board.get_list_promote(Coord(i, j)) };
+
+                                for (Move const &move : list)
+                                {
+                                    double score;
+                                    /* if (true || board(c.n, c.m).get_type() != TypePiece::EMPTY ||
+                                        board(i, j).get_type() == TypePiece::PAWN)
+                                    { */
+                                    Board<N, M> board_cpy = board;
+                                    try
                                     {
-                                        move_merge
-                                            .insert(
-                                                std::make_pair(
-                                                    piece->get_type(),
-                                                    std::unordered_map<
-                                                        Coord,
-                                                        std::vector<Coord>, Coord_hash>{
-                                                        std::make_pair(
-                                                            *it_move,
-                                                            std::vector{Coord(i, j)})}));
+                                        board_cpy.move_promotion(move);
                                     }
+                                    catch (std::runtime_error const &e)
+                                    {
+                                        continue;
+                                    }
+                                    board_cpy.change_player();
+                                    best_score_alpha_beta.push_front(best_score);
+                                    score = rec_get_best_move(board_cpy,
+                                                            best_score_alpha_beta,
+                                                            profondeur -
+                                                                1);
+                                    best_score_alpha_beta.pop_front();
+                                    if (check_best_score(score))
+                                    {
+                                        return best_score;
+                                    }
+                                    
                                 }
                             }
                         }
@@ -421,10 +456,17 @@ namespace computer
                 /* if (true || move.type == TypeMove::SPLIT ||
                        (move.type == TypeMove::NORMAL &&
                         param.board(move.normal.arv.n,
-                                    move.normal.arv.m) != nullptr))
+                                    move.normal.arv.m).get_type() != TypePiece::EMPTY))
                    { */
                 Board<N, M> board_cpy = param.board;
-                board_cpy.move(move);
+                if (move.type == TypeMove::PROMOTE)
+                {
+                    board_cpy.move_promotion(move);
+                }
+                else
+                {
+                    board_cpy.move(move);
+                }
                 board_cpy.change_player();
                 score = rec_get_best_move(board_cpy,
                                           std::forward_list<double>{param.best_eval},
@@ -484,97 +526,111 @@ namespace computer
         {
             for (std::size_t j{0}; j < board.numberColumns(); j++)
             {
-                observer_ptr<Piece const> p = board(i, j);
-                if (p != nullptr &&
-                    p->get_color() == board.get_current_player())
+                Piece const &p = board(i, j);
+                if (p.get_type() != TypePiece::EMPTY &&
+                    p.get_color() == board.get_current_player())
                 {
-                    double p_proba{board.get_proba(Coord(i, j))};
-                    std::forward_list<Coord> move_normal{
-                        board.get_list_normal_move(Coord(i, j))};
-
-                    std::forward_list<Coord>::const_iterator it_move{
-                        std::cbegin(move_normal)};
-                    std::size_t k{0};
-                    for (; it_move != std::cend(move_normal);
-                         k++, it_move++)
+                    if (!board.check_if_use_move_promote(Coord(i, j)))
                     {
-                        Move move{Move_classic(Coord(i, j), *it_move)};
-                        list_move[(last_th_view + k) % number_thread]
-                            .push_front(std::move(move));
-                    }
-                    last_th_view = (last_th_view + k) % number_thread;
+                        double p_proba{board.get_proba(Coord(i, j))};
+                        std::forward_list<Coord> move_normal{
+                            board.get_list_normal_move(Coord(i, j))};
 
-                    std::forward_list<Coord> move_split{
-                        board.get_list_split_move(Coord(i, j))};
-
-                    it_move = std::cbegin(move_split);
-                    k = 0;
-                    for (; it_move != std::cend(move_split);
-                         it_move++)
-                    {
-                        for (std::forward_list<Coord>::const_iterator it2{
-                                 std::cbegin(move_split)};
-                             it2 != cend(move_split); k++, it2++)
+                        std::forward_list<Coord>::const_iterator it_move{
+                            std::cbegin(move_normal)};
+                        std::size_t k{0};
+                        for (; it_move != std::cend(move_normal);
+                            k++, it_move++)
                         {
-                            if (it_move == it2)
-                            {
-                                k--;
-                                continue;
-                            }
-                            Move move{Move_split(Coord(i, j),
-                                                 *it_move, *it2)};
+                            Move move{Move_classic(Coord(i, j), *it_move)};
                             list_move[(last_th_view + k) % number_thread]
                                 .push_front(std::move(move));
                         }
-                        if (p->get_type() != TypePiece::PAWN)
+                        last_th_view = (last_th_view + k) % number_thread;
+
+                        std::forward_list<Coord> move_split{
+                            board.get_list_split_move(Coord(i, j))};
+
+                        it_move = std::cbegin(move_split);
+                        k = 0;
+                        for (; it_move != std::cend(move_split);
+                            it_move++)
                         {
-                            if (move_merge.contains(p->get_type()))
+                            for (std::forward_list<Coord>::const_iterator it2{
+                                    std::cbegin(move_split)};
+                                it2 != cend(move_split); k++, it2++)
                             {
-                                if (move_merge.at(p->get_type())
-                                        .contains(*it_move))
+                                if (it_move == it2)
                                 {
-                                    for (Coord const &c :
-                                         move_merge.at(p->get_type())
-                                             .at(*it_move))
+                                    k--;
+                                    continue;
+                                }
+                                Move move{Move_split(Coord(i, j),
+                                                    *it_move, *it2)};
+                                list_move[(last_th_view + k) % number_thread]
+                                    .push_front(std::move(move));
+                            }
+                            if (p.get_type() != TypePiece::PAWN)
+                            {
+                                if (move_merge.contains(p.get_type()))
+                                {
+                                    if (move_merge.at(p.get_type())
+                                            .contains(*it_move))
                                     {
-                                        if (p_proba < 1. ||
-                                            board.get_proba(Coord(c.n, c.m)) < 1.)
+                                        for (Coord const &c :
+                                            move_merge.at(p.get_type())
+                                                .at(*it_move))
                                         {
-                                            Move move = Move_merge(
-                                                Coord(i, j), c, *it_move);
+                                            if (p_proba < 1. ||
+                                                board.get_proba(Coord(c.n, c.m)) < 1.)
+                                            {
+                                                Move move = Move_merge(
+                                                    Coord(i, j), c, *it_move);
 
-                                            list_move[last_th_view %
-                                                      number_thread]
-                                                .push_front(std::move(move));
+                                                list_move[last_th_view %
+                                                        number_thread]
+                                                    .push_front(std::move(move));
 
-                                            last_th_view = (last_th_view + 1) %
-                                                           number_thread;
+                                                last_th_view = (last_th_view + 1) %
+                                                            number_thread;
+                                            }
                                         }
+                                    }
+                                    else
+                                    {
+                                        move_merge.at(p.get_type())
+                                            .insert({*it_move,
+                                                    std::vector{Coord(i, j)}});
                                     }
                                 }
                                 else
                                 {
-                                    move_merge.at(p->get_type())
-                                        .insert({*it_move,
-                                                 std::vector{Coord(i, j)}});
+                                    move_merge
+                                        .insert(
+                                            std::make_pair(
+                                                p.get_type(),
+                                                std::unordered_map<
+                                                    Coord,
+                                                    std::vector<Coord>, Coord_hash>{
+                                                    std::make_pair(
+                                                        *it_move,
+                                                        std::vector{Coord(i, j)})}));
                                 }
                             }
-                            else
-                            {
-                                move_merge
-                                    .insert(
-                                        std::make_pair(
-                                            p->get_type(),
-                                            std::unordered_map<
-                                                Coord,
-                                                std::vector<Coord>, Coord_hash>{
-                                                std::make_pair(
-                                                    *it_move,
-                                                    std::vector{Coord(i, j)})}));
-                            }
+                        }
+                        last_th_view = (last_th_view + k) % number_thread;
+                    }
+                    else
+                    {
+                        std::forward_list<Move> list { 
+                            board.get_list_promote(Coord(i, j)) };
+
+                        for (Move const &move : list)
+                        {
+                            list_move[last_th_view].push_front(move);
+                            last_th_view = (last_th_view + 1) % number_thread;                       
                         }
                     }
-                    last_th_view = (last_th_view + k) % number_thread;
                 }
             }
         }

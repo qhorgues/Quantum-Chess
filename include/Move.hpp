@@ -2,6 +2,7 @@
 #define MOVE_HPP
 
 #include <Coord.hpp>
+#include <TypePiece.hpp>
 
 /**
  * @brief Enumération représentant tout les types de mouvements
@@ -21,7 +22,13 @@ enum class TypeMove
     /**
      * @brief Représente le mouvement de fusion de deux pièces
      */
-    MERGE
+    MERGE,
+
+    /**
+     * @brief Représente le mouvement de promotion du pion
+     * 
+     */
+    PROMOTE
 };
 
 /**
@@ -104,6 +111,28 @@ struct Move
              */
             Coord arv;
         } merge;
+
+        /**
+         * @brief stoque l'ensemble des coordonnées et la piece choisi
+         * pour un mouvement de promotion
+         */
+        struct
+        {
+            /**
+             * @brief La case de depart
+             */
+            Coord src;
+
+            /**
+             * @brief La case d'arrviée
+             */
+            Coord arv;
+
+            /**
+             * @brief La piece choisi pour le move
+             */
+            TypePiece piece;
+        } promote;
     };
 };
 
@@ -133,6 +162,16 @@ CONSTEXPR Move Move_merge(Coord const &src1, Coord const &src2, Coord const &arv
     move.merge.src1 = src1;
     move.merge.src2 = src2;
     move.merge.arv = arv;
+    return move;
+}
+
+CONSTEXPR Move Move_promote(Coord const &src, Coord const &arv, TypePiece promotion)
+{
+    Move move;
+    move.type = TypeMove::PROMOTE;
+    move.promote.src = src;
+    move.promote.arv = arv;
+    move.promote.piece = promotion;
     return move;
 }
 #endif

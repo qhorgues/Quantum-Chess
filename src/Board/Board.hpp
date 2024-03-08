@@ -42,7 +42,7 @@ public:
      */
     CONSTEXPR Board(std::initializer_list<
                     std::initializer_list<
-                        observer_ptr<Piece const>>> const &
+                        Piece>> const &
                         board);
 
     // Copie
@@ -76,9 +76,9 @@ public:
      * @param[in] n L'indice de la ligne
      * @param[in] m L'indice de la colonne
      * @return Un pointeur observateur sur une piece
-     * ou nullptr si la case est vide
+     * ou Piece() si la case est vide
      */
-    CONSTEXPR observer_ptr<Piece const>
+    CONSTEXPR Piece const&
     operator()(std::size_t n,
                std::size_t m) const noexcept;
 
@@ -107,6 +107,33 @@ public:
      */
     CONSTEXPR std::forward_list<Coord>
     get_list_split_move(Coord const &pos) const;
+
+    /**
+     * @brief Teste si les mouvement de la piece sont si la
+     * pièce est un pion un mouvement de promotion
+     * 
+     * @note peut etre utiliser sans verifier si la pièce est un pion
+     * 
+     * @param[in] pos La position de la pièce
+     * @return true si le mouvement possible est un mouvement
+     * de promotion
+     * @return false sinon
+     */
+    CONSTEXPR bool
+    check_if_use_move_promote(Coord const &pos) const noexcept;
+
+    /**
+     * @brief Renvoie la liste de toutes les promotions 
+     * 
+     * @warning Ne verifie pas la validité du mouvement,
+     * de la position ou du type de la pièce
+     * 
+     * @param[in] pos La position du pion
+     * @return La liste de tout les mouvements de promotion
+     */
+    CONSTEXPR std::forward_list<Move>
+    get_list_promote(Coord const &pos) const noexcept;
+
 
     /**
      * @brief Test si un mouvement est réalisable
@@ -180,7 +207,23 @@ public:
         Coord const &arv,
         std::size_t position);
 
+    /**
+     * @brief Fonction qui permet de faire un mouvement de pion quelconque avec une promotion
+     *
+     * @param s Coordonnées de la source
+     * @param t Coordonnées de la cible
+     * @param p Le type de la pièce de la promotion
+     */
+    CONSTEXPR void
+    move_promotion(Move const &move) noexcept;
+
 private:
+    /**
+     * @brief Vérifie si la case à une possibilité de contenir une pièce,
+     * et si elle n'en a pas modifie m_piece_board en Piece().
+     *
+     * @param pos Les coordonnées de a position de la case a vérifier.
+     */
     void update_case(std::size_t pos) noexcept;
     /**
      * @brief Fonction qui permet de mattre à jour le plateau après un merge,
@@ -469,9 +512,9 @@ private:
     initializer_list_to_2_array(
         std::initializer_list<
             std::initializer_list<
-                observer_ptr<Piece const>>> const &board,
+                Piece>> const &board,
         std::array<bool, N * M> &first_instance,
-        std::array<observer_ptr<Piece const>, N * M> &piece_board) noexcept;
+        std::array<Piece, N * M> &piece_board) noexcept;
 
     /**
      * @brief Construit les mailbox en fonction
@@ -580,7 +623,7 @@ private:
     /**
      * @brief Le plateau indiquant le type des pièces
      */
-    std::array<observer_ptr<Piece const>, N * M> m_piece_board;
+    std::array<Piece, N * M> m_piece_board;
 
     /**
      * @brief La petite mailbox
