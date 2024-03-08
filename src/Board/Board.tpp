@@ -649,12 +649,12 @@ Board<N, M>::move_pawn_two_step(Coord const &s, Coord const &t)
         for (std::size_t i{0}; i < size_board; i++)
         {
             move_1_instance(
-                std::array<bool, 3>{m_board[i].first[source],
+                std::array<bool, 3>{!check_path_straight_1_instance(
+                                        *this, s, t, i),
                                     false,
-                                    check_path_straight_1_instance(
-                                        *this, s, t, i)},
+                                    m_board[i].first[source]},
                 i, MATRIX_SLIDE,
-                std::array<std::size_t, 3>{source, target, N * M + 1});
+                std::array<std::size_t, 3>{N*M+1, target, source});
         }
         m_piece_board[target] = m_piece_board[source];
         m_piece_board[source] = nullptr;
@@ -666,12 +666,12 @@ Board<N, M>::move_pawn_two_step(Coord const &s, Coord const &t)
             for (std::size_t i{0}; i < std::size(m_board); i++)
             {
                 move_1_instance(
-                    std::array<bool, 3>{m_board[i].first[source],
+                    std::array<bool, 3>{!check_path_straight_1_instance(
+                                            *this, s, t, i),
                                         false,
-                                        check_path_straight_1_instance(
-                                            *this, s, t, i)},
+                                        m_board[i].first[source]},
                     i, MATRIX_SLIDE,
-                    std::array<std::size_t, 3>{source, target, N * M + 1});
+                    std::array<std::size_t, 3>{N*M+1, target, source});
             }
             m_piece_board[target] = m_piece_board[source];
             m_piece_board[source] = nullptr;
