@@ -736,7 +736,7 @@ Board<N, M>::move_enpassant(Coord const &s, Coord const &t, Coord const &ep)
                     std::array<std::size_t, 2>{source, target});
             }
         }
-        m_piece_board[target] = std::move(m_piece_board[source]);
+        m_piece_board[target] = m_piece_board[source];
         m_piece_board[source] = nullptr;
         m_piece_board[enpassant] = nullptr;
     }
@@ -767,7 +767,7 @@ Board<N, M>::move_enpassant(Coord const &s, Coord const &t, Coord const &ep)
                             std::array<std::size_t, 2>{source, target});
                     }
                 }
-                m_piece_board[target] = std::move(m_piece_board[source]);
+                m_piece_board[target] = m_piece_board[source];
                 m_piece_board[source] = nullptr;
             }
         }
