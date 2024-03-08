@@ -40,9 +40,9 @@ set (HEADERS
 include(FetchContent)
 
 FetchContent_Declare(Matrix
-GIT_REPOSITORY "https://github.com/qhorgues/Matrix.git"
-GIT_TAG "origin/master"
-SOURCE_DIR "Matrix"
+    GIT_REPOSITORY "https://github.com/qhorgues/Matrix"
+    GIT_TAG "origin/master"
+    SOURCE_DIR "Matrix"
 )
 
 FetchContent_MakeAvailable(Matrix)
