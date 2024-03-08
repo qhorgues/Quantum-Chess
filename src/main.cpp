@@ -22,8 +22,9 @@ int main()
          {Piece(), B_PAWN, Piece(), W_QUEEN},
          {W_PAWN, Piece(), Piece(), W_BISHOP},
          {W_ROOK, W_KING, Piece(), B_KING}}};
+    
 
-    Board<> ChessBoard{
+    /* Board<> ChessBoard{
         {{B_ROOK, B_KNIGHT, B_BISHOP, B_QUEEN, B_KING, B_BISHOP, B_KNIGHT, B_ROOK},
          {B_PAWN, B_PAWN, B_PAWN, B_PAWN, B_PAWN, B_PAWN, B_PAWN, B_PAWN},
          {Piece(), Piece(), Piece(), Piece(), Piece(), Piece(), Piece(), Piece()},
@@ -31,22 +32,28 @@ int main()
          {Piece(), Piece(), Piece(), Piece(), Piece(), Piece(), Piece(), Piece()},
          {Piece(), Piece(), Piece(), Piece(), Piece(), Piece(), Piece(), Piece()},
          {W_PAWN, W_PAWN, W_PAWN, W_PAWN, W_PAWN, W_PAWN, W_PAWN, W_PAWN},
-         {W_ROOK, W_KNIGHT, W_BISHOP, W_QUEEN, W_KING, W_BISHOP, W_KNIGHT, W_ROOK}}};
+         {W_ROOK, W_KNIGHT, W_BISHOP, W_QUEEN, W_KING, W_BISHOP, W_KNIGHT, W_ROOK}}}; */
+
+    Board<3> ChessBoard{
+        {B_KING, B_ROOK, Piece()},
+        {B_PAWN, Piece(), Piece()},
+        {Piece(), W_QUEEN, W_KING}
+    };
 
     int number_move{20};
     while (number_move > 0 && !ChessBoard.winning_position(ChessBoard.get_current_player()))
     {
 
-        Move m{computer::get_best_move(ChessBoard, 4)};
-        std::string data1{{static_cast<char>('a' + m.normal.src.m), static_cast<char>('0' + 8 - m.normal.src.n)}};
-        std::string data2{{static_cast<char>('a' + m.normal.arv.m), static_cast<char>('0' + 8 - m.normal.arv.n)}};
+        Move m{computer::get_best_move(ChessBoard, 10)};
+        std::string data1{{static_cast<char>('a' + m.normal.src.m), static_cast<char>('0' + 3 - m.normal.src.n)}};
+        std::string data2{{static_cast<char>('a' + m.normal.arv.m), static_cast<char>('0' + 3 - m.normal.arv.n)}};
         if (m.type == TypeMove::NORMAL)
         {
             log_file << "N " << data1 << data2 << '\n';
         }
         else if (m.type == TypeMove::PROMOTE)
         {
-            log_file << "P " << data1 << data2 << std::to_string(static_cast<int>(m.promote.piece)) << '\n';
+            log_file << "P " << data1 << data2 << " :: " << std::to_string(static_cast<int>(m.promote.piece)) << '\n';
         }
         else
         {

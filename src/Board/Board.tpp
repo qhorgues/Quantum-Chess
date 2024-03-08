@@ -248,8 +248,7 @@ CONSTEXPR bool Board<N, M>::mesure(Coord const &p)
                     std::pow(std::abs(m_board[i - 1].second), 2);
 
                 m_board.erase(
-                    std::begin(m_board) +
-                    std::size(m_board) - i + 1);
+                    std::begin(m_board) + i - 1);
             }
         }
         for (auto &e : m_board)
@@ -323,8 +322,7 @@ Board<N, M>::mesure_capture_slide(
                     std::pow(std::abs(m_board[i - 1].second), 2);
 
                 m_board.erase(
-                    std::begin(m_board) +
-                    std::size(m_board) - i + 1);
+                    std::begin(m_board) + i - 1);
             }
         }
         for (auto &e : m_board)
@@ -396,8 +394,7 @@ Board<N, M>::mesure_castle(
                 std::pow(std::abs(m_board[i - 1].second), 2);
 
             m_board.erase(
-                std::begin(m_board) +
-                std::size(m_board) - i + 1);
+                std::begin(m_board) + i - 1);
         }
     }
     for (auto &e : m_board)

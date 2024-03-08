@@ -264,12 +264,15 @@ Piece::get_list_move_pawn(Board<N, M> const &board,
             board.get_proba(Coord(n, m)) < 1. - EPSILON)
         {
             list_move.push_front(Coord(n, m));
-            if (((pos.n == 1 && get_color() == Color::BLACK) ||
-                 (pos.n == N - 2 && get_color() == Color::WHITE)) &&
-                (board(n + sign, m).get_type() == TypePiece::EMPTY ||
-                 board.get_proba(Coord(n + sign, m)) < 1. - EPSILON))
-            {
-                list_move.push_front(Coord(n + sign, m));
+            if CONSTEXPR (N >= 4) {
+
+                if (((pos.n == 1 && get_color() == Color::BLACK) ||
+                    (pos.n == N - 2 && get_color() == Color::WHITE)) &&
+                    (board(n + sign, m).get_type() == TypePiece::EMPTY ||
+                    board.get_proba(Coord(n + sign, m)) < 1. - EPSILON))
+                {
+                    list_move.push_front(Coord(n + sign, m));
+                }
             }
         }
     }
