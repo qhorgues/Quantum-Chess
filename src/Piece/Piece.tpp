@@ -9,6 +9,12 @@
 
 #define POW2(x) ((x) * (x))
 
+CONSTEXPR Piece::Piece() noexcept
+    : m_color(Color::BLACK),
+      m_type(TypePiece::EMPTY)
+{
+}
+
 CONSTEXPR Piece::Piece(TypePiece piece, Color color) noexcept
     : m_color(color),
       m_type(piece)
@@ -73,17 +79,17 @@ Piece::get_list_move_king(Board<N, M> const &board, Coord const &pos) const
         if (arv >= 0)
         {
             std::size_t n{arv / N}, m{arv % M};
-            observer_ptr<Piece const> arvPiece{board(n, m)};
+            Piece const& arvPiece{board(n, m)};
             bool eval;
             if CONSTEXPR (MOVE == Move_Mode::NORMAL)
             {
-                eval = arvPiece == nullptr ||
-                       !same_color(*arvPiece) ||
+                eval = arvPiece.get_type() == TypePiece::EMPTY ||
+                       !same_color(arvPiece) ||
                        board.get_proba(Coord(n, m)) < 1. - EPSILON;
             }
             else
             {
-                eval = arvPiece == nullptr;
+                eval = arvPiece.get_type() == TypePiece::EMPTY;
             }
             if (eval)
             {
@@ -124,17 +130,17 @@ Piece::get_list_move_knight(Board<N, M> const &board, Coord const &pos) const
         if (arv >= 0)
         {
             std::size_t n{arv / N}, m{arv % N};
-            observer_ptr<Piece const> arvPiece{board(n, m)};
+            Piece const& arvPiece{board(n, m)};
             bool eval;
             if CONSTEXPR (MOVE == Move_Mode::NORMAL)
             {
-                eval = arvPiece == nullptr ||
-                       !same_color(*arvPiece) ||
+                eval = arvPiece.get_type() == TypePiece::EMPTY ||
+                       !same_color(arvPiece) ||
                        board.get_proba(Coord(n, m)) < 1. - EPSILON;
             }
             else
             {
-                eval = arvPiece == nullptr;
+                eval = arvPiece.get_type() == TypePiece::EMPTY;
             }
             if (eval)
             {
@@ -161,15 +167,15 @@ Piece::get_list_move_rec(Board<N, M> const &board,
         while (arv >= 0)
         {
             std::size_t n{arv / N}, m{arv % N};
-            observer_ptr<Piece const> arvPiece{board(n, m)};
+            Piece const& arvPiece{board(n, m)};
             if CONSTEXPR (MOVE == Move_Mode::NORMAL)
             {
-                if (arvPiece == nullptr ||
+                if (arvPiece.get_type() == TypePiece::EMPTY ||
                     board.get_proba(Coord(n, m)) < 1. - EPSILON)
                 {
                     move.push_front(Coord(n, m));
                 }
-                else if (!same_color(*arvPiece))
+                else if (!same_color(arvPiece))
                 {
                     move.push_front(Coord(n, m));
                     break;
@@ -181,7 +187,7 @@ Piece::get_list_move_rec(Board<N, M> const &board,
             }
             else
             {
-                if (arvPiece == nullptr)
+                if (arvPiece.get_type() == TypePiece::EMPTY)
                 {
                     move.push_front(Coord(n, m));
                 }
@@ -244,13 +250,13 @@ Piece::get_list_move_pawn(Board<N, M> const &board, Coord const &pos) const noex
     if (arv >= 0)
     {
         std::size_t n{arv / N}, m{arv % N};
-        if (board(n, m) == nullptr ||
+        if (board(n, m).get_type() == TypePiece::EMPTY ||
             board.get_proba(Coord(n, m)) < 1. - EPSILON)
         {
             list_move.push_front(Coord(n, m));
             if (((pos.n == 1 && get_color() == Color::BLACK) ||
                  (pos.n == N - 2 && get_color() == Color::WHITE)) &&
-                (board(n + sign, m) == nullptr ||
+                (board(n + sign, m).get_type() == TypePiece::EMPTY ||
                  board.get_proba(Coord(n + sign, m)) < 1. - EPSILON))
             {
                 list_move.push_front(Coord(n + sign, m));
@@ -263,7 +269,7 @@ Piece::get_list_move_pawn(Board<N, M> const &board, Coord const &pos) const noex
         if (arv >= 0)
         {
             std::size_t n{arv / N}, m{arv % N};
-            if ((board(n, m) != nullptr && !same_color(*board(n, m))) ||
+            if ((board(n, m).get_type() != TypePiece::EMPTY && !same_color(*board(n, m))) ||
                 (board.m_ep != std::nullopt &&
                  board.m_ep->n == pos.n &&
                  board.m_ep->m == pos.m))

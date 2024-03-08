@@ -16,10 +16,10 @@ int main()
 {
     Board<4> B4 {
         {
-            {                  nullptr,                  nullptr,                nullptr,   make_observer(&W_QUEEN) },
-            {                  nullptr,   make_observer(&B_PAWN),                nullptr,    make_observer(&W_QUEEN) },
-            {  make_observer (&W_PAWN),                  nullptr,                nullptr, make_observer (&W_BISHOP) },
-            {  make_observer(&W_ROOK),                   nullptr,                nullptr,    make_observer(&B_KING) }
+            { Piece(), Piece(), Piece(), W_QUEEN },
+            { Piece(), B_PAWN,  Piece(), W_QUEEN },
+            {  W_PAWN, Piece(),  Piece(), W_BISHOP },
+            {  W_ROOK, Piece(), Piece(), B_KING }
         }
     };
     B4.move_promotion(Coord(1,1), Coord(0,1), TypePiece::BISHOP);

@@ -2,6 +2,7 @@
 #define MOVE_HPP
 
 #include <Coord.hpp>
+#include <TypePiece.hpp>
 
 /**
  * @brief Enumération représentant tout les types de mouvements

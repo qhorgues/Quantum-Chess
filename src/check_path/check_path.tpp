@@ -17,7 +17,7 @@ check_path_straight(
              i < std::max(dpt.m, arv.m);
              i++)
         {
-            if (board(dpt.n, i) != nullptr ||
+            if (board(dpt.n, i).get_type() != TypePiece::EMPTY ||
                 board.get_proba(Coord(dpt.n, i)) < 1.)
             {
                 return false;
@@ -31,7 +31,7 @@ check_path_straight(
              i < std::max(dpt.n, arv.n);
              i++)
         {
-            if (board(i, dpt.m) != nullptr ||
+            if (board(i, dpt.m).get_type() != TypePiece::EMPTY ||
                 board.get_proba(Coord(i, dpt.m)) < 1.)
             {
                 return false;
@@ -60,7 +60,7 @@ check_path_diagonal(
     {
         for (std::size_t i{1}; i < dist; i++)
         {
-            if (board(min_lines + i, min_columns + i) != nullptr)
+            if (board(min_lines + i, min_columns + i).get_type() != TypePiece::EMPTY)
             {
                 return false;
             }

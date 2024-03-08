@@ -42,7 +42,7 @@ public:
      */
     CONSTEXPR Board(std::initializer_list<
                     std::initializer_list<
-                        observer_ptr<Piece const>>> const &
+                        Piece>> const &
                         board);
 
     // Copie
@@ -78,7 +78,7 @@ public:
      * @return Un pointeur observateur sur une piece
      * ou nullptr si la case est vide
      */
-    CONSTEXPR observer_ptr<Piece const>
+    CONSTEXPR Piece const&
     operator()(std::size_t n,
                std::size_t m) const noexcept;
 
@@ -485,9 +485,9 @@ private:
     initializer_list_to_2_array(
         std::initializer_list<
             std::initializer_list<
-                observer_ptr<Piece const>>> const &board,
+                Piece>> const &board,
         std::array<bool, N * M> &first_instance,
-        std::array<observer_ptr<Piece const>, N * M> &piece_board) noexcept;
+        std::array<Piece, N * M> &piece_board) noexcept;
 
     /**
      * @brief Construit les mailbox en fonction
@@ -596,7 +596,7 @@ private:
     /**
      * @brief Le plateau indiquant le type des pièces
      */
-    std::array<observer_ptr<Piece const>, N * M> m_piece_board;
+    std::array<Piece, N * M> m_piece_board;
 
     /**
      * @brief La petite mailbox

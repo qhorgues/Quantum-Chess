@@ -7,6 +7,7 @@
 #include <vector>
 #include <forward_list>
 #include <Constexpr.hpp>
+#include <Move.hpp>
 #include "TypePiece.hpp"
 
 
@@ -22,7 +23,7 @@ class Board;
 class Piece
 {
 public:
-    CONSTEXPR Piece() = delete;
+    CONSTEXPR Piece() noexcept;
 
     /**
      * @brief Construit une piece à l'aide de son type et de sa couleur
@@ -31,8 +32,8 @@ public:
      * @param[in] color La couleur de la piece
      */
     CONSTEXPR Piece(TypePiece piece, Color color) noexcept;
-    CONSTEXPR Piece(Piece const &) = delete;
-    CONSTEXPR Piece &operator=(Piece const &) = delete;
+    CONSTEXPR Piece(Piece const &) = default;
+    CONSTEXPR Piece &operator=(Piece const &) = default;
 
     /**
      * @brief Deplacement d'un objet piece vers un autre objet piece
