@@ -1346,6 +1346,13 @@ void Board<N, M>::update_case(std::size_t pos) noexcept
 }
 
 template <std::size_t N, std::size_t M>
+CONSTEXPR bool
+Board<N, M>::check_if_use_move_promote(Coord const &pos) const noexcept
+{
+    return (*this)(pos.n, pos.m).check_if_use_move_promote(*this, pos);
+}
+
+template <std::size_t N, std::size_t M>
 std::forward_list<Move>
 Board<N, M>::get_list_promote(Coord const &pos) const noexcept
 {
