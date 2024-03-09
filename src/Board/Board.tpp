@@ -22,11 +22,6 @@
 #include <Move.hpp>
 #include "Board.hpp"
 
-bool operator==(Coord const &lhs, Coord const &rhs)
-{
-    return lhs.n == rhs.n && lhs.m == rhs.m;
-}
-
 template <std::size_t N, std::size_t M>
 CONSTEXPR Board<N, M>::Board()
     : m_board(),
@@ -257,7 +252,7 @@ CONSTEXPR bool Board<N, M>::mesure(Coord const &p)
         }
         for (std::size_t i{0}; i < N * M; i++)
         {
-            if (p_actuelle.get_type() == m_piece_board[i].get_type())
+            if (p_actuelle.get_type() != TypePiece::EMPTY)
             {
                 update_case(i);
             }
@@ -324,7 +319,7 @@ Board<N, M>::mesure_capture_slide(
         }
         for (std::size_t i{0}; i < N * M; i++)
         {
-            if (p_actuelle.get_type() == m_piece_board[i].get_type())
+            if (p_actuelle.get_type() != TypePiece::EMPTY)
             {
                 update_case(i);
             }
@@ -389,8 +384,7 @@ Board<N, M>::mesure_castle(
     }
     for (std::size_t i{0}; i < N * M; i++)
     {
-        if (m_piece_board[i].get_type() == TypePiece::ROOK ||
-            m_piece_board[i].get_type() == TypePiece::KING)
+        if (m_piece_board[i].get_type() != TypePiece::EMPTY)
         {
             update_case(i);
         }
@@ -446,7 +440,8 @@ CONSTEXPR void
 Board<N, M>::move_1_instance(std::array<bool, Q> const &case_modif,
                              std::size_t position,
                              CMatrix<_2POW(Q)> const &matrix,
-                             std::array<std::size_t, Q> const &tab_positions)
+                             std::array<std::size_t, Q> const
+                                 &tab_positions) noexcept
 {
     Qubit<Q> q{case_modif};
     auto x{qubitToArray(matrix * q)};
@@ -1010,7 +1005,9 @@ Board<N, M>::move_merge_slide(
 }
 
 template <std::size_t N, std::size_t M>
-CONSTEXPR void Board<N, M>::move_pawn(Coord const &s, Coord const &t)
+CONSTEXPR void Board<N, M>::move_pawn(
+    Coord const &s,
+    Coord const &t) noexcept
 {
     auto abs_diff{[](std::size_t x, std::size_t y) -> std::size_t
                   {
@@ -1053,7 +1050,7 @@ CONSTEXPR void Board<N, M>::move_pawn(Coord const &s, Coord const &t)
 
 template <std::size_t N, std::size_t M>
 CONSTEXPR void
-Board<N, M>::move_promotion(Move const &move) noexcept
+Board<N, M>::move_promotion(Move const &move)
 {
     TypePiece p{move.promote.piece};
     Coord s{move.promote.src};
@@ -1067,6 +1064,10 @@ Board<N, M>::move_promotion(Move const &move) noexcept
         move_pawn(s, t);
         Piece piece{p, m_piece_board[offset(t.n, t.m)].get_color()};
         m_piece_board[offset(t.n, t.m)] = std::move(piece);
+    }
+    else
+    {
+        throw std::runtime_error("Piece non valide pour faire une promotion");
     }
 }
 
@@ -1210,6 +1211,8 @@ CONSTEXPR void Board<N, M>::move(Move const &movement)
                    movement.merge.arv);
         break;
     case TypeMove::PROMOTE:
+        move_promotion(movement);
+        break;
     default:
         return;
     }

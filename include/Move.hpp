@@ -136,7 +136,8 @@ struct Move
     };
 };
 
-CONSTEXPR Move Move_classic(Coord const &src, Coord const &arv)
+constexpr inline
+Move Move_classic(Coord const &src, Coord const &arv)
 {
     Move move;
     move.type = TypeMove::NORMAL;
@@ -145,7 +146,8 @@ CONSTEXPR Move Move_classic(Coord const &src, Coord const &arv)
     return move;
 }
 
-CONSTEXPR Move Move_split(Coord const &src, Coord const &arv1, Coord const &arv2)
+constexpr inline
+Move Move_split(Coord const &src, Coord const &arv1, Coord const &arv2)
 {
     Move move;
     move.type = TypeMove::SPLIT;
@@ -155,7 +157,8 @@ CONSTEXPR Move Move_split(Coord const &src, Coord const &arv1, Coord const &arv2
     return move;
 }
 
-CONSTEXPR Move Move_merge(Coord const &src1, Coord const &src2, Coord const &arv)
+constexpr inline
+Move Move_merge(Coord const &src1, Coord const &src2, Coord const &arv)
 {
     Move move;
     move.type = TypeMove::MERGE;
@@ -165,7 +168,8 @@ CONSTEXPR Move Move_merge(Coord const &src1, Coord const &src2, Coord const &arv
     return move;
 }
 
-CONSTEXPR Move Move_promote(Coord const &src, Coord const &arv, TypePiece promotion)
+constexpr inline
+Move Move_promote(Coord const &src, Coord const &arv, TypePiece promotion)
 {
     Move move;
     move.type = TypeMove::PROMOTE;

@@ -78,7 +78,7 @@ public:
      * @return Un pointeur observateur sur une piece
      * ou nullptr si la case est vide
      */
-    CONSTEXPR Piece const&
+    CONSTEXPR Piece const &
     operator()(std::size_t n,
                std::size_t m) const noexcept;
 
@@ -111,9 +111,9 @@ public:
     /**
      * @brief Teste si les mouvement de la piece sont si la
      * pièce est un pion un mouvement de promotion
-     * 
+     *
      * @note peut etre utiliser sans verifier si la pièce est un pion
-     * 
+     *
      * @param[in] pos La position de la pièce
      * @return true si le mouvement possible est un mouvement
      * de promotion
@@ -123,17 +123,16 @@ public:
     check_if_use_move_promote(Coord const &pos) const noexcept;
 
     /**
-     * @brief Renvoie la liste de toutes les promotions 
-     * 
+     * @brief Renvoie la liste de toutes les promotions
+     *
      * @warning Ne verifie pas la validité du mouvement,
      * de la position ou du type de la pièce
-     * 
+     *
      * @param[in] pos La position du pion
      * @return La liste de tout les mouvements de promotion
      */
     CONSTEXPR std::forward_list<Move>
     get_list_promote(Coord const &pos) const noexcept;
-
 
     /**
      * @brief Test si un mouvement est réalisable
@@ -215,7 +214,7 @@ public:
      * @param p Le type de la pièce de la promotion
      */
     CONSTEXPR void
-    move_promotion(Move const &move) noexcept;
+    move_promotion(Move const &move);
 
 private:
     /**
@@ -487,7 +486,7 @@ private:
      * @param[in] s Coordonnées de la source
      * @param[in] t Coordonnées de la cible
      */
-    CONSTEXPR void move_pawn(Coord const &s, Coord const &t);
+    CONSTEXPR void move_pawn(Coord const &s, Coord const &t) noexcept;
 
     /**
      * @brief Renvoie une position 1D d'une coordonnée 2D
@@ -580,7 +579,7 @@ private:
                                    std::size_t position,
                                    CMatrix<_2POW(Q)> const &matrix,
                                    std::array<std::size_t, Q> const
-                                       &tab_positions);
+                                       &tab_positions) noexcept;
 
     /**
      * @brief Mouvement du petit roque.

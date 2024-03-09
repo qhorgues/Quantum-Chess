@@ -28,14 +28,12 @@ struct Coord
     std::size_t m;
 };
 
+
 struct Coord_hash
 {
-    std::size_t operator () (Coord const &coord) const
-    {
-        std::size_t h1 = std::hash<std::size_t>()(coord.n);
-        std::size_t h2 = std::hash<std::size_t>()(coord.m);
- 
-        return h1 ^ h2;
-    }
+    std::size_t operator () (Coord const &coord) const;
 };
+
+bool operator==(Coord const &lhs, Coord const &rhs);
+
 #endif
