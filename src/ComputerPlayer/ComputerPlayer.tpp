@@ -200,37 +200,46 @@ namespace computer
             {
 
                 std::unordered_map<TypePiece,
-                                   std::unordered_map<Coord, std::vector<Coord>, Coord_hash>>
+                                   std::unordered_map<
+                                       Coord,
+                                       std::vector<Coord>,
+                                       Coord_hash>>
                     move_merge{};
 
                 double best_score{-1 * sign_color(board.get_current_player()) *
                                   std::numeric_limits<double>::max()};
-                auto check_best_score{[&board, &best_score_alpha_beta, best_score](double score) mutable -> bool
-                                      {
-                                          if (get_player_calc_best_score(
-                                                  board.get_current_player(),
-                                                  best_score, score))
-                                          {
-                                              best_score = score;
-                                              Color current{board.get_current_player()};
-                                              for (double const alpha : best_score_alpha_beta)
-                                              {
-                                                  if (get_player_calc_best_score(current, best_score, alpha))
-                                                  {
-                                                      return true;
-                                                  }
-                                                  if (current == Color::WHITE)
-                                                  {
-                                                      current = Color::BLACK;
-                                                  }
-                                                  else
-                                                  {
-                                                      current = Color::WHITE;
-                                                  }
-                                              }
-                                          }
-                                          return false;
-                                      }};
+                auto check_best_score{
+                    [&board,
+                     &best_score_alpha_beta,
+                     best_score](double score) mutable -> bool
+                    {
+                        if (get_player_calc_best_score(
+                                board.get_current_player(),
+                                best_score, score))
+                        {
+                            best_score = score;
+                            Color current{board.get_current_player()};
+                            for (double const alpha : best_score_alpha_beta)
+                            {
+                                if (get_player_calc_best_score(
+                                        current,
+                                        best_score,
+                                        alpha))
+                                {
+                                    return true;
+                                }
+                                if (current == Color::WHITE)
+                                {
+                                    current = Color::BLACK;
+                                }
+                                else
+                                {
+                                    current = Color::WHITE;
+                                }
+                            }
+                        }
+                        return false;
+                    }};
                 for (std::size_t i{0}; i < board.numberLines(); i++)
                 {
                     for (std::size_t j{0}; j < board.numberColumns(); j++)
@@ -248,9 +257,6 @@ namespace computer
                                 for (Coord const &c : move_normal)
                                 {
                                     double score;
-                                    /* if (true || board(c.n, c.m).get_type() != TypePiece::EMPTY ||
-                                        board(i, j).get_type() == TypePiece::PAWN)
-                                    { */
                                     Board<N, M> board_cpy = board;
                                     try
                                     {
@@ -262,27 +268,15 @@ namespace computer
                                         continue;
                                     }
                                     board_cpy.change_player();
-                                    best_score_alpha_beta.push_front(best_score);
-                                    score = rec_get_best_move(board_cpy,
-                                                            best_score_alpha_beta,
-                                                            profondeur -
-                                                                1);
+                                    best_score_alpha_beta
+                                        .push_front(best_score);
+                                    score =
+                                        rec_get_best_move(
+                                            board_cpy,
+                                            best_score_alpha_beta,
+                                            profondeur -
+                                                1);
                                     best_score_alpha_beta.pop_front();
-                                    /* }
-                                    else
-                                    {
-                                        board.move(Move_classic(Coord(i, j), c));
-                                        board.change_player();
-
-                                        best_score_alpha_beta.push_front(best_score);
-                                        score = rec_get_best_move(board,
-                                                                best_score_alpha_beta,
-                                                                profondeur -
-                                                                    1);
-                                        best_score_alpha_beta.pop_front();
-                                        board.change_player();
-                                        board.move(Move_classic(c, Coord(i, j)));
-                                    } */
                                     if (check_best_score(score))
                                     {
                                         return best_score;
@@ -292,14 +286,16 @@ namespace computer
                                 std::forward_list<Coord> move_split{
                                     board.get_list_split_move(Coord(i, j))};
 
-                                std::forward_list<Coord>::const_iterator it_move{
-                                    std::cbegin(move_split)};
+                                std::forward_list<Coord>::
+                                    const_iterator it_move{
+                                        std::cbegin(move_split)};
                                 for (; it_move != std::cend(move_split);
-                                    it_move++)
+                                     it_move++)
                                 {
-                                    for (std::forward_list<Coord>::const_iterator it2{
-                                            std::cbegin(move_split)};
-                                        it2 != cend(move_split); it2++)
+                                    for (std::forward_list<Coord>::
+                                             const_iterator it2{
+                                                 std::cbegin(move_split)};
+                                         it2 != cend(move_split); it2++)
                                     {
                                         if (it_move == it2)
                                         {
@@ -310,17 +306,20 @@ namespace computer
                                         {
                                             board_cpy.move(
                                                 Move_split(Coord(i, j),
-                                                        *it_move, *it2));
+                                                           *it_move, *it2));
                                         }
                                         catch (std::runtime_error const &e)
                                         {
                                             continue;
                                         }
                                         board_cpy.change_player();
-                                        best_score_alpha_beta.push_front(best_score);
-                                        double score = rec_get_best_move(board_cpy,
-                                                                        best_score_alpha_beta,
-                                                                        profondeur - 1);
+                                        best_score_alpha_beta
+                                            .push_front(best_score);
+                                        double score =
+                                            rec_get_best_move(
+                                                board_cpy,
+                                                best_score_alpha_beta,
+                                                profondeur - 1);
                                         best_score_alpha_beta.pop_front();
                                         if (check_best_score(score))
                                         {
@@ -329,41 +328,61 @@ namespace computer
                                     }
                                     if (piece.get_type() != TypePiece::PAWN)
                                     {
-                                        if (move_merge.contains(piece.get_type()))
+                                        if (move_merge
+                                                .contains(piece.get_type()))
                                         {
-                                            if (move_merge.at(piece.get_type())
+                                            if (move_merge
+                                                    .at(piece.get_type())
                                                     .contains(*it_move))
                                             {
                                                 for (Coord const &c :
-                                                    move_merge.at(piece.get_type())
-                                                        .at(*it_move))
+                                                     move_merge
+                                                         .at(piece.get_type())
+                                                         .at(*it_move))
                                                 {
                                                     if (p_proba < 1. ||
-                                                        board.get_proba(Coord(c.n, c.m)) < 1.)
+                                                        board.get_proba(
+                                                            Coord(
+                                                                c.n,
+                                                                c.m)) < 1.)
                                                     {
-                                                        Move move = Move_merge(
-                                                            Coord(i, j), c, *it_move);
-                                                        Board<N, M> board_cpy = board;
-                                                        board_cpy.move(move);
-                                                        board_cpy.change_player();
+                                                        Move move =
+                                                            Move_merge(
+                                                                Coord(i, j),
+                                                                c,
+                                                                *it_move);
+
+                                                        Board<N, M>
+                                                            board_cpy =
+                                                                board;
+
+                                                        board_cpy
+                                                            .move(move);
+                                                        board_cpy
+                                                            .change_player();
                                                         try
                                                         {
-                                                            best_score_alpha_beta.push_front(best_score);
-                                                            double score = rec_get_best_move(board_cpy,
-                                                                                            best_score_alpha_beta,
-                                                                                            profondeur - 1);
-                                                            best_score_alpha_beta.pop_front();
-                                                            // board.change_player();
-                                                            /* move = Move_split(
-                                                                *it_move,
-                                                                Coord(i, j), c);
-                                                            board.move(move); */
-                                                            if (check_best_score(score))
+                                                            best_score_alpha_beta
+                                                                .push_front(
+                                                                    best_score);
+
+                                                            double score =
+                                                                rec_get_best_move(
+                                                                    board_cpy,
+                                                                    best_score_alpha_beta,
+                                                                    profondeur - 1);
+                                                            best_score_alpha_beta
+                                                                .pop_front();
+                                                            if (
+                                                                check_best_score(
+                                                                    score))
                                                             {
                                                                 return best_score;
                                                             }
                                                         }
-                                                        catch (std::exception const &e)
+                                                        catch (
+                                                            std::exception const
+                                                                &e)
                                                         {
                                                             continue;
                                                         }
@@ -372,9 +391,11 @@ namespace computer
                                             }
                                             else
                                             {
-                                                move_merge.at(piece.get_type())
+                                                move_merge
+                                                    .at(piece.get_type())
                                                     .insert({*it_move,
-                                                            std::vector{Coord(i, j)}});
+                                                             std::vector{
+                                                                 Coord(i, j)}});
                                             }
                                         }
                                         else
@@ -382,28 +403,28 @@ namespace computer
                                             move_merge
                                                 .insert(
                                                     std::make_pair(
-                                                        piece.get_type(),
+                                                        piece
+                                                            .get_type(),
                                                         std::unordered_map<
                                                             Coord,
-                                                            std::vector<Coord>, Coord_hash>{
+                                                            std::vector<Coord>,
+                                                            Coord_hash>{
                                                             std::make_pair(
                                                                 *it_move,
-                                                                std::vector{Coord(i, j)})}));
+                                                                std::vector{
+                                                                    Coord(i, j)})}));
                                         }
                                     }
                                 }
                             }
                             else
                             {
-                                std::forward_list<Move> list { 
-                                    board.get_list_promote(Coord(i, j)) };
+                                std::forward_list<Move> list{
+                                    board.get_list_promote(Coord(i, j))};
 
                                 for (Move const &move : list)
                                 {
                                     double score;
-                                    /* if (true || board(c.n, c.m).get_type() != TypePiece::EMPTY ||
-                                        board(i, j).get_type() == TypePiece::PAWN)
-                                    { */
                                     Board<N, M> board_cpy = board;
                                     try
                                     {
@@ -416,15 +437,14 @@ namespace computer
                                     board_cpy.change_player();
                                     best_score_alpha_beta.push_front(best_score);
                                     score = rec_get_best_move(board_cpy,
-                                                            best_score_alpha_beta,
-                                                            profondeur -
-                                                                1);
+                                                              best_score_alpha_beta,
+                                                              profondeur -
+                                                                  1);
                                     best_score_alpha_beta.pop_front();
                                     if (check_best_score(score))
                                     {
                                         return best_score;
                                     }
-                                    
                                 }
                             }
                         }
@@ -453,11 +473,6 @@ namespace computer
             for (Move const &move : param.move)
             {
                 double score;
-                /* if (true || move.type == TypeMove::SPLIT ||
-                       (move.type == TypeMove::NORMAL &&
-                        param.board(move.normal.arv.n,
-                                    move.normal.arv.m).get_type() != TypePiece::EMPTY))
-                   { */
                 Board<N, M> board_cpy = param.board;
                 if (move.type == TypeMove::PROMOTE)
                 {
@@ -469,33 +484,9 @@ namespace computer
                 }
                 board_cpy.change_player();
                 score = rec_get_best_move(board_cpy,
-                                          std::forward_list<double>{param.best_eval},
+                                          std::forward_list<double>{
+                                              param.best_eval},
                                           param.profondeur - 1);
-                /* }
-                else
-                {
-                    param.board.move(move);
-                    param.board.change_player();
-                    score = rec_get_best_move(param.board,
-                                              std::forward_list<double>{param.best_eval},
-                                              param.profondeur - 1);
-                    param.board.change_player();
-                    if (move.type == TypeMove::MERGE)
-                    {
-                        param.board.move(
-                            Move_split(
-                                move.merge.arv,
-                                move.merge.src1,
-                                move.merge.src2));
-                    }
-                    else
-                    {
-                        param.board.move(
-                            Move_classic(
-                                move.normal.arv,
-                                move.normal.src));
-                    }
-                } */
                 if (get_player_calc_best_score(
                         param.board.get_current_player(),
                         param.best_eval, score))
@@ -519,7 +510,10 @@ namespace computer
         // et de la meme couleur qui partage cette case en mouvement
         // possible et peuvent donc effectuer un merge
         std::unordered_map<TypePiece,
-                           std::unordered_map<Coord, std::vector<Coord>, Coord_hash>>
+                           std::unordered_map<
+                               Coord,
+                               std::vector<Coord>,
+                               Coord_hash>>
             move_merge{};
 
         for (std::size_t i{0}; i < board.numberLines(); i++)
@@ -540,7 +534,7 @@ namespace computer
                             std::cbegin(move_normal)};
                         std::size_t k{0};
                         for (; it_move != std::cend(move_normal);
-                            k++, it_move++)
+                             k++, it_move++)
                         {
                             Move move{Move_classic(Coord(i, j), *it_move)};
                             list_move[(last_th_view + k) % number_thread]
@@ -554,11 +548,11 @@ namespace computer
                         it_move = std::cbegin(move_split);
                         k = 0;
                         for (; it_move != std::cend(move_split);
-                            it_move++)
+                             it_move++)
                         {
                             for (std::forward_list<Coord>::const_iterator it2{
-                                    std::cbegin(move_split)};
-                                it2 != cend(move_split); k++, it2++)
+                                     std::cbegin(move_split)};
+                                 it2 != cend(move_split); k++, it2++)
                             {
                                 if (it_move == it2)
                                 {
@@ -566,7 +560,7 @@ namespace computer
                                     continue;
                                 }
                                 Move move{Move_split(Coord(i, j),
-                                                    *it_move, *it2)};
+                                                     *it_move, *it2)};
                                 list_move[(last_th_view + k) % number_thread]
                                     .push_front(std::move(move));
                             }
@@ -578,21 +572,24 @@ namespace computer
                                             .contains(*it_move))
                                     {
                                         for (Coord const &c :
-                                            move_merge.at(p.get_type())
-                                                .at(*it_move))
+                                             move_merge.at(p.get_type())
+                                                 .at(*it_move))
                                         {
                                             if (p_proba < 1. ||
-                                                board.get_proba(Coord(c.n, c.m)) < 1.)
+                                                board.get_proba(
+                                                    Coord(c.n, c.m)) < 1.)
                                             {
                                                 Move move = Move_merge(
                                                     Coord(i, j), c, *it_move);
 
                                                 list_move[last_th_view %
-                                                        number_thread]
-                                                    .push_front(std::move(move));
+                                                          number_thread]
+                                                    .push_front(
+                                                        std::move(move));
 
-                                                last_th_view = (last_th_view + 1) %
-                                                            number_thread;
+                                                last_th_view =
+                                                    (last_th_view + 1) %
+                                                    number_thread;
                                             }
                                         }
                                     }
@@ -600,7 +597,7 @@ namespace computer
                                     {
                                         move_merge.at(p.get_type())
                                             .insert({*it_move,
-                                                    std::vector{Coord(i, j)}});
+                                                     std::vector{Coord(i, j)}});
                                     }
                                 }
                                 else
@@ -611,10 +608,12 @@ namespace computer
                                                 p.get_type(),
                                                 std::unordered_map<
                                                     Coord,
-                                                    std::vector<Coord>, Coord_hash>{
+                                                    std::vector<Coord>,
+                                                    Coord_hash>{
                                                     std::make_pair(
                                                         *it_move,
-                                                        std::vector{Coord(i, j)})}));
+                                                        std::vector{
+                                                            Coord(i, j)})}));
                                 }
                             }
                         }
@@ -622,13 +621,13 @@ namespace computer
                     }
                     else
                     {
-                        std::forward_list<Move> list { 
-                            board.get_list_promote(Coord(i, j)) };
+                        std::forward_list<Move> list{
+                            board.get_list_promote(Coord(i, j))};
 
                         for (Move const &move : list)
                         {
                             list_move[last_th_view].push_front(move);
-                            last_th_view = (last_th_view + 1) % number_thread;                       
+                            last_th_view = (last_th_view + 1) % number_thread;
                         }
                     }
                 }
@@ -656,7 +655,10 @@ namespace computer
         for (std::size_t i{0}; i < number_thread; i++)
         {
             threads[i].join();
-            if (__utility::get_player_calc_best_score(board.get_current_player(), better, best_eval[i]))
+            if (__utility::get_player_calc_best_score(
+                    board.get_current_player(),
+                    better,
+                    best_eval[i]))
             {
                 better = best_eval[i];
                 better_move = best_move[i];
