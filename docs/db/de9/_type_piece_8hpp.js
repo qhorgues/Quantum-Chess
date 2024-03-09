@@ -1,6 +1,7 @@
 var _type_piece_8hpp =
 [
     [ "TypePiece", "db/de9/_type_piece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83", [
+      [ "EMPTY", "db/de9/_type_piece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83aba2b45bdc11e2a4a6e86aab2ac693cbb", null ],
       [ "PAWN", "db/de9/_type_piece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83a3acd2a53aca11e0f883236ea27a3b627", null ],
       [ "KNIGHT", "db/de9/_type_piece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83af7f210da15dbb4283299b2affd9bb238", null ],
       [ "BISHOP", "db/de9/_type_piece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83a1834d375f684613c725d039a10db1976", null ],

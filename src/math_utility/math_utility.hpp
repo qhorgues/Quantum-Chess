@@ -3,6 +3,8 @@
 
 #define EPSILON 10e-6
 
+#include <complex>
+
 bool double_equal(double x, double y);
 bool complex_equal(
     std::complex<double> const &z1,

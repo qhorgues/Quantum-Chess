@@ -1,9 +1,12 @@
 var searchData=
 [
-  ['quantum_20chess_0',['Quantum-Chess',['../d5/da7/md__d_1_2_users_2quent_2_programmes_2_c_09_09_2_project_2_quantum-_chess_2_r_e_a_d_m_e.html',1,'']]],
-  ['qubit_1',['Qubit',['../dc/dd9/class_qubit.html',1,'Qubit&lt; N &gt;'],['../dc/dd9/class_qubit.html#a121b85ff88baa736e838b9d228920a5b',1,'Qubit::Qubit()=default'],['../dc/dd9/class_qubit.html#a72ca8ba5555b0fc1ee571a3cea41bf36',1,'Qubit::Qubit(std::array&lt; bool, N &gt; const &amp;data)'],['../dc/dd9/class_qubit.html#a9ebdacd51f01e64ef171ea8897ece33e',1,'Qubit::Qubit(std::array&lt; std::complex&lt; double &gt;, _2POW(N)&gt; &amp;&amp;init_list)'],['../dc/dd9/class_qubit.html#a57e9e938201723191c8d408361ffb069',1,'Qubit::Qubit(Qubit const &amp;)=delete'],['../dc/dd9/class_qubit.html#a7b8a6bb92e4e783b72c7a81e950fee5d',1,'Qubit::Qubit(Qubit &amp;&amp;)=delete']]],
-  ['qubit_2ehpp_2',['Qubit.hpp',['../da/dfc/_qubit_8hpp.html',1,'']]],
-  ['qubittoarray_3',['qubitToArray',['../dc/dd9/class_qubit.html#a5c7c8a482adb96c18fe393c2016730d3',1,'Qubit::qubitToArray'],['../da/dfc/_qubit_8hpp.html#a520deb0865f61f8f2c5be011671ce4a0',1,'qubitToArray(Qubit&lt; N &gt; const &amp;qubit):&#160;Qubit.hpp']]],
-  ['queen_4',['QUEEN',['../db/de9/_type_piece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83a02d144e18eda99bcb94f3a764756805e',1,'TypePiece.hpp']]],
-  ['queen_5fside_5fcastle_5',['queen_side_castle',['../d3/dfd/class_board.html#ac07d79a31513fb11ed5e9687eef0258a',1,'Board']]]
+  ['same_5fcolor_0',['same_color',['../d7/d87/class_piece.html#a5c6acfe864b7db5717ae67cad216169f',1,'Piece']]],
+  ['split_1',['SPLIT',['../d7/d87/class_piece.html#ac846621b089305b5f854bb67d2e36082a913bcc607ae0d97776698d9ed424be6a',1,'Piece']]],
+  ['split_2',['split',['../d8/d4e/struct_move.html#aaa5ff06d9cb7463d11180a7620628bd4',1,'Move']]],
+  ['split_3',['SPLIT',['../d1/dc9/_move_8hpp.html#ac365680f0388487d538d24242d1f421aa913bcc607ae0d97776698d9ed424be6a',1,'Move.hpp']]],
+  ['src_4',['src',['../d8/d4e/struct_move.html#ad28a195cbbde5d4a6368bd7e9950cddf',1,'Move']]],
+  ['src1_5',['src1',['../d8/d4e/struct_move.html#aec1af57787d8553e33a71e701d65ecbb',1,'Move']]],
+  ['src2_6',['src2',['../d8/d4e/struct_move.html#afa540d35475b04e58ed568cb69745b05',1,'Move']]],
+  ['std_7',['std',['../d8/dcc/namespacestd.html',1,'']]],
+  ['swap_8',['swap',['../d6/d4d/classobserver__ptr.html#a716aac32d184b983fe5a4538afa678f8',1,'observer_ptr::swap()'],['../d9/d88/observer__ptr_8hpp.html#a0d79ae8874afb660dd7e519a350e0382',1,'swap():&#160;observer_ptr.hpp']]]
 ];

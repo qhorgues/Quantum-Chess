@@ -10,44 +10,45 @@
 
 #define POW2(x) ((x) * (x))
 
-CONSTEXPR Piece::Piece() noexcept
+constexpr inline Piece::Piece() noexcept
     : m_color(Color::BLACK),
       m_type(TypePiece::EMPTY)
 {
 }
 
-CONSTEXPR Piece::Piece(TypePiece piece, Color color) noexcept
+constexpr inline Piece::Piece(TypePiece piece, Color color) noexcept
     : m_color(color),
       m_type(piece)
 {
 }
 
-CONSTEXPR bool Piece::is_white() const noexcept
+constexpr inline bool Piece::is_white() const noexcept
 {
     return m_color == Color::WHITE;
 }
 
-CONSTEXPR bool Piece::is_black() const noexcept
+constexpr inline bool Piece::is_black() const noexcept
 {
     return m_color == Color::BLACK;
 }
 
-CONSTEXPR bool Piece::same_color(Piece const &other) const noexcept
+constexpr inline bool
+Piece::same_color(Piece const &other) const noexcept
 {
     return m_color == other.m_color;
 }
 
-CONSTEXPR TypePiece Piece::get_type() const noexcept
+constexpr inline TypePiece Piece::get_type() const noexcept
 {
     return m_type;
 }
 
-CONSTEXPR Color Piece::get_color() const noexcept
+constexpr inline Color Piece::get_color() const noexcept
 {
     return m_color;
 }
 
-CONSTEXPR std::size_t
+constexpr inline std::size_t
 Piece::abs_substracte(std::size_t x, std::size_t y) noexcept
 {
     if (x >= y)
@@ -57,7 +58,8 @@ Piece::abs_substracte(std::size_t x, std::size_t y) noexcept
     return y - x;
 }
 
-CONSTEXPR double Piece::norm(Coord const &x, Coord const &y) noexcept
+constexpr inline double
+Piece::norm(Coord const &x, Coord const &y) noexcept
 {
     return sqrt(
         static_cast<double>(POW2(abs_substracte(x.n, y.n)) +

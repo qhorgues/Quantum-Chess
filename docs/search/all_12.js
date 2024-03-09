@@ -1,10 +1,11 @@
 var searchData=
 [
-  ['tensoriel_5fproduct_0',['tensoriel_product',['../d6/d3f/class_matrix.html#ab5ad991d8c6aab1645c116fff6df5788',1,'Matrix']]],
-  ['to_5fstring_1',['to_string',['../d8/dcc/namespacestd.html#a4f444ca087720cc758379d609dbbc72c',1,'std']]],
-  ['transposed_2',['transposed',['../d6/d3f/class_matrix.html#ac921328914167e3b2fc821169fd8d10d',1,'Matrix']]],
-  ['type_3',['type',['../d8/d4e/struct_move.html#a3907a77e98c162320f1ff34a6cb07a62',1,'Move']]],
-  ['typemove_4',['TypeMove',['../d1/dc9/_move_8hpp.html#ac365680f0388487d538d24242d1f421a',1,'Move.hpp']]],
-  ['typepiece_5',['TypePiece',['../db/de9/_type_piece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83',1,'TypePiece.hpp']]],
-  ['typepiece_2ehpp_6',['TypePiece.hpp',['../db/de9/_type_piece_8hpp.html',1,'']]]
+  ['w_5fbishop_0',['W_BISHOP',['../da/d03/_piece_8hpp.html#a1c86a44ecec5133b1afcba7557f50a5d',1,'Piece.hpp']]],
+  ['w_5fking_1',['W_KING',['../da/d03/_piece_8hpp.html#ae377970cfe6327abc4bd238362e37e13',1,'Piece.hpp']]],
+  ['w_5fknight_2',['W_KNIGHT',['../da/d03/_piece_8hpp.html#aa2357ffb5242a8083eb0821974c217b0',1,'Piece.hpp']]],
+  ['w_5fpawn_3',['W_PAWN',['../da/d03/_piece_8hpp.html#acedced8aae6bcdcb12581ac55c00ce74',1,'Piece.hpp']]],
+  ['w_5fqueen_4',['W_QUEEN',['../da/d03/_piece_8hpp.html#af1e3c5b9fa8518392767ae0c01c9bb9d',1,'Piece.hpp']]],
+  ['w_5frook_5',['W_ROOK',['../da/d03/_piece_8hpp.html#a56c209905c7a520c7c8ba0847066084f',1,'Piece.hpp']]],
+  ['white_6',['WHITE',['../d3/d06/_color_8hpp.html#a78abb31bad0fd1834c54a3ca6f8daab5ab5bf627e448384cf3a4c35121ca6008d',1,'Color.hpp']]],
+  ['winning_5fposition_7',['winning_position',['../d3/dfd/class_board.html#aaf8494df6b609884d1226b875b265c15',1,'Board']]]
 ];

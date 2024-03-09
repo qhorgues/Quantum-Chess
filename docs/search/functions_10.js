@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['update_5fafter_5fmerge_0',['update_after_merge',['../d3/dfd/class_board.html#ae5c22da736ae255dc98e53450b39961c',1,'Board']]]
+  ['winning_5fposition_0',['winning_position',['../d3/dfd/class_board.html#aaf8494df6b609884d1226b875b265c15',1,'Board']]]
 ];
