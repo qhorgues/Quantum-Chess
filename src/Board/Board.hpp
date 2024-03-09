@@ -148,7 +148,7 @@ public:
      *
      * @warning Ne procède aucune vérification sur la validité du mouvement
      *
-     * @param movement
+     * @param movement Le mouvement à raliser
      */
     CONSTEXPR void move(Move const &movement);
 
@@ -361,8 +361,10 @@ private:
      * @tparam M Le nombre de colonnes du plateau
      * @param[in] s Coordonnées de la source
      * @param[in] t Coordonnées de la cible
+     * @return true si le mouvement à etait effectué
+     * @return false sinon
      */
-    CONSTEXPR void move_pawn_one_step(Coord const &s, Coord const &t);
+    CONSTEXPR bool move_pawn_one_step(Coord const &s, Coord const &t);
 
     /**
      * @brief Le mouvement de pion de deux cases fonctionne
@@ -378,8 +380,10 @@ private:
      * @tparam M Le nombre de colonnes du plateau
      * @param[in] s Coordonnées de la source
      * @param[in] t Coordonnées de la cible
+     * @return true si le mouvement à etait effectué
+     * @return false sinon
      */
-    CONSTEXPR void move_pawn_two_step(Coord const &s, Coord const &t);
+    CONSTEXPR bool move_pawn_two_step(Coord const &s, Coord const &t);
     /**
      * @brief Mouvement de capture dun pion. A la différence
      * d'un mouvement de "capture jump", on mesure la présence
@@ -389,9 +393,10 @@ private:
      *
      * @param s Coordonnées de la source
      * @param t Coordonnées de la cible
-     * @return CONSTEXPR
+     * @return true si le mouvement à etait effectué
+     * @return false sinon
      */
-    CONSTEXPR void capture_pawn(Coord const &s, Coord const &t);
+    CONSTEXPR bool capture_pawn(Coord const &s, Coord const &t);
 
     /**
      * @brief Permet d'effectuer un mouvement de prise en passant
@@ -404,8 +409,10 @@ private:
      * @param[in] s Les coordonnées de la source
      * @param[in] t Les coordonnées de la cible (l'endroit où arrive le pion)
      * @param[in] ep Les coordonnées du pion capturer "en passant"
+     * @return true si le mouvement à etait effectué
+     * @return false sinon
      */
-    CONSTEXPR void
+    CONSTEXPR bool
     move_enpassant(Coord const &s, Coord const &t, Coord const &ep);
 
     /**
@@ -485,8 +492,10 @@ private:
      * @tparam M Le nombre de colonnes du plateau
      * @param[in] s Coordonnées de la source
      * @param[in] t Coordonnées de la cible
+     * @return true si le mouvement à etait effectué
+     * @return false sinon
      */
-    CONSTEXPR void move_pawn(Coord const &s, Coord const &t) noexcept;
+    CONSTEXPR bool move_pawn(Coord const &s, Coord const &t) noexcept;
 
     /**
      * @brief Renvoie une position 1D d'une coordonnée 2D
@@ -651,7 +660,9 @@ private:
 
     /**
      * @brief Contient la case sur laquelle il est
-     * possible de faire une prise en passant
+     * possible de faire une prise en passant qui
+     * est vide (la case occupé si le pion avait avancé
+     * d'une seule case)
      */
     std::optional<Coord> m_ep;
 };

@@ -20,6 +20,7 @@ int test_move_split_with_mesure(int argc, char* argv[])
     board.move(m);
     board.move(m1);
     board.move(m2);
+    board.move(m3);
     std::size_t acc{0};
     for(std::size_t i{0}; i<5; i++)
     {
@@ -31,5 +32,5 @@ int test_move_split_with_mesure(int argc, char* argv[])
         }
         }
     }
-    return acc == 2;
+    return acc != 2 && acc != 1;
 }

@@ -1,13 +1,13 @@
 enable_testing()
 
 create_test_sourcelist (Tests
-        QuantumChessTest.cxx
-        test_move_promotion.cpp
-        test_move_enpassant_with_capture.cpp
-        test_move_pawn_two_step.cpp
-        test_move_promotion_with_capture.cpp
-        test_move_promotion_with_split_before.cpp
-        test_move_split_with_mesure.cpp
+    QuantumChessTest.cxx
+    test_move_promotion.cpp
+    test_move_enpassant_with_capture.cpp
+    test_move_pawn_two_step.cpp
+    test_move_promotion_with_capture.cpp
+    test_move_promotion_with_split_before.cpp
+    test_move_split_with_mesure.cpp
 )
 
 # add the executable
