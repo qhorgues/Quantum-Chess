@@ -1,9 +1,7 @@
 var searchData=
 [
-  ['w_5fbishop_0',['W_BISHOP',['../da/d03/_piece_8hpp.html#a7aa02930aa835e8648843182b5bb9665',1,'Piece.hpp']]],
-  ['w_5fking_1',['W_KING',['../da/d03/_piece_8hpp.html#ad462e8c1c8271929ba491965d102e884',1,'Piece.hpp']]],
-  ['w_5fknight_2',['W_KNIGHT',['../da/d03/_piece_8hpp.html#af1c15a5dbf4e9fcc49b13095088ef57d',1,'Piece.hpp']]],
-  ['w_5fpawn_3',['W_PAWN',['../da/d03/_piece_8hpp.html#ac7c64de0d7ab6217ce3f2f063306f7a8',1,'Piece.hpp']]],
-  ['w_5fqueen_4',['W_QUEEN',['../da/d03/_piece_8hpp.html#ad4d8e97ebbb19c13306b5d5438d592bd',1,'Piece.hpp']]],
-  ['w_5frook_5',['W_ROOK',['../da/d03/_piece_8hpp.html#acfed4544fb7e11887d404f9b48b7da07',1,'Piece.hpp']]]
+  ['split_0',['split',['../d8/d4e/struct_move.html#aaa5ff06d9cb7463d11180a7620628bd4',1,'Move']]],
+  ['src_1',['src',['../d8/d4e/struct_move.html#ad28a195cbbde5d4a6368bd7e9950cddf',1,'Move']]],
+  ['src1_2',['src1',['../d8/d4e/struct_move.html#aec1af57787d8553e33a71e701d65ecbb',1,'Move']]],
+  ['src2_3',['src2',['../d8/d4e/struct_move.html#afa540d35475b04e58ed568cb69745b05',1,'Move']]]
 ];

@@ -1,11 +1,6 @@
 var searchData=
 [
-  ['w_5fbishop_0',['W_BISHOP',['../da/d03/_piece_8hpp.html#a7aa02930aa835e8648843182b5bb9665',1,'Piece.hpp']]],
-  ['w_5fking_1',['W_KING',['../da/d03/_piece_8hpp.html#ad462e8c1c8271929ba491965d102e884',1,'Piece.hpp']]],
-  ['w_5fknight_2',['W_KNIGHT',['../da/d03/_piece_8hpp.html#af1c15a5dbf4e9fcc49b13095088ef57d',1,'Piece.hpp']]],
-  ['w_5fpawn_3',['W_PAWN',['../da/d03/_piece_8hpp.html#ac7c64de0d7ab6217ce3f2f063306f7a8',1,'Piece.hpp']]],
-  ['w_5fqueen_4',['W_QUEEN',['../da/d03/_piece_8hpp.html#ad4d8e97ebbb19c13306b5d5438d592bd',1,'Piece.hpp']]],
-  ['w_5frook_5',['W_ROOK',['../da/d03/_piece_8hpp.html#acfed4544fb7e11887d404f9b48b7da07',1,'Piece.hpp']]],
-  ['white_6',['WHITE',['../d3/d06/_color_8hpp.html#a78abb31bad0fd1834c54a3ca6f8daab5ab5bf627e448384cf3a4c35121ca6008d',1,'Color.hpp']]],
-  ['winning_5fposition_7',['winning_position',['../d3/dfd/class_board.html#aaf8494df6b609884d1226b875b265c15',1,'Board']]]
+  ['_7eboard_0',['~Board',['../d3/dfd/class_board.html#a21962785efbc9128587809c4c996a142',1,'Board']]],
+  ['_7epiece_1',['~Piece',['../d7/d87/class_piece.html#a9cef27dae4add5b9926fc16652d4037e',1,'Piece']]],
+  ['_7equbit_2',['~Qubit',['../dc/dd9/class_qubit.html#a9024dab71df840fe491c4a76119b661f',1,'Qubit']]]
 ];
