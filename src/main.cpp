@@ -14,17 +14,46 @@
 #include <Constexpr.hpp>
 #include <ComputerPlayer.hpp>
 
+template <std::size_t N, std::size_t M>
+void auto_playing(Board<N, M> &board, std::ofstream &output, int nb_moves, int search_depth)
+{
+    while (nb_moves > 0 && !board.winning_position(opponent_color(board.get_current_player())))
+    {
+
+        Move m{computer::get_best_move(board, search_depth)};
+        std::string data1{{static_cast<char>('a' + m.normal.src.m), static_cast<char>('0' + N - m.normal.src.n)}};
+        std::string data2{{static_cast<char>('a' + m.normal.arv.m), static_cast<char>('0' + N - m.normal.arv.n)}};
+        if (m.type == TypeMove::NORMAL)
+        {
+            output << "N " << data1 << data2 << '\n';
+        }
+        else if (m.type == TypeMove::PROMOTE)
+        {
+            output << "P " << data1 << data2 << " :: " << std::to_string(static_cast<int>(m.promote.piece)) << '\n';
+        }
+        else
+        {
+            std::string data3{{static_cast<char>('a' + m.split.arv2.m), static_cast<char>('0' + N - m.split.arv2.n)}};
+            if (m.type == TypeMove::SPLIT)
+            {
+                output << "S " << data1 << '(' << data2 << data3 << ')' << '\n';
+            }
+            else
+            {
+                output << "M " << '(' << data1 << data2 << ')' << data3 << '\n';
+            }
+        }
+        board.move(m);
+        board.change_player();
+        nb_moves--;
+    }
+}
+
 int main()
 {
     std::ofstream log_file{"Output.txt"};
-    Board<4> B4{
-        {{Piece(), Piece(), Piece(), W_QUEEN},
-         {Piece(), B_PAWN, Piece(), W_QUEEN},
-         {W_PAWN, Piece(), Piece(), W_BISHOP},
-         {W_ROOK, W_KING, Piece(), B_KING}}};
-    
 
-    /* Board<> ChessBoard{
+    Board<> ChessBoard{
         {{B_ROOK, B_KNIGHT, B_BISHOP, B_QUEEN, B_KING, B_BISHOP, B_KNIGHT, B_ROOK},
          {B_PAWN, B_PAWN, B_PAWN, B_PAWN, B_PAWN, B_PAWN, B_PAWN, B_PAWN},
          {Piece(), Piece(), Piece(), Piece(), Piece(), Piece(), Piece(), Piece()},
@@ -32,45 +61,14 @@ int main()
          {Piece(), Piece(), Piece(), Piece(), Piece(), Piece(), Piece(), Piece()},
          {Piece(), Piece(), Piece(), Piece(), Piece(), Piece(), Piece(), Piece()},
          {W_PAWN, W_PAWN, W_PAWN, W_PAWN, W_PAWN, W_PAWN, W_PAWN, W_PAWN},
-         {W_ROOK, W_KNIGHT, W_BISHOP, W_QUEEN, W_KING, W_BISHOP, W_KNIGHT, W_ROOK}}}; */
+         {W_ROOK, W_KNIGHT, W_BISHOP, W_QUEEN, W_KING, W_BISHOP, W_KNIGHT, W_ROOK}}};
 
-    Board<3> ChessBoard{
+    /* Board<3> B1{
         {B_KING, B_ROOK, Piece()},
         {B_PAWN, Piece(), Piece()},
-        {Piece(), W_QUEEN, W_KING}
-    };
+        {Piece(), W_QUEEN, W_KING}}; */
 
-    int number_move{20};
-    while (number_move > 0 && !ChessBoard.winning_position(ChessBoard.get_current_player()))
-    {
-
-        Move m{computer::get_best_move(ChessBoard, 10)};
-        std::string data1{{static_cast<char>('a' + m.normal.src.m), static_cast<char>('0' + 3 - m.normal.src.n)}};
-        std::string data2{{static_cast<char>('a' + m.normal.arv.m), static_cast<char>('0' + 3 - m.normal.arv.n)}};
-        if (m.type == TypeMove::NORMAL)
-        {
-            log_file << "N " << data1 << data2 << '\n';
-        }
-        else if (m.type == TypeMove::PROMOTE)
-        {
-            log_file << "P " << data1 << data2 << " :: " << std::to_string(static_cast<int>(m.promote.piece)) << '\n';
-        }
-        else
-        {
-            std::string data3{{static_cast<char>('a' + m.split.arv2.m), static_cast<char>('0' + 7 - m.split.arv2.n)}};
-            if (m.type == TypeMove::SPLIT)
-            {
-                log_file << "S " << data1 << '(' << data2 << data3 << ')' << '\n';
-            }
-            else
-            {
-                log_file << "M " << '(' << data1 << data2 << ')' << data3 << '\n';
-            }
-        }
-        ChessBoard.move(m);
-        ChessBoard.change_player();
-        number_move--;
-    }
+    auto_playing(ChessBoard, log_file, 40, 5);
 
     log_file.close();
     return 0;
