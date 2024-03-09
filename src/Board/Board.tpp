@@ -248,8 +248,7 @@ CONSTEXPR bool Board<N, M>::mesure(Coord const &p)
                     std::pow(std::abs(m_board[i - 1].second), 2);
 
                 m_board.erase(
-                    std::begin(m_board) +
-                    std::size(m_board) - i + 1);
+                    std::begin(m_board) + i - 1);
             }
         }
         for (auto &e : m_board)
@@ -260,14 +259,7 @@ CONSTEXPR bool Board<N, M>::mesure(Coord const &p)
         {
             if (p_actuelle.get_type() == m_piece_board[i].get_type())
             {
-                for (auto &e : m_board)
-                {
-                    if (e.first[i])
-                    {
-                        break;
-                    }
-                    m_piece_board[i] = Piece();
-                }
+                update_case(i);
             }
         }
         return mes;
@@ -323,8 +315,7 @@ Board<N, M>::mesure_capture_slide(
                     std::pow(std::abs(m_board[i - 1].second), 2);
 
                 m_board.erase(
-                    std::begin(m_board) +
-                    std::size(m_board) - i + 1);
+                    std::begin(m_board) + i - 1);
             }
         }
         for (auto &e : m_board)
@@ -335,14 +326,7 @@ Board<N, M>::mesure_capture_slide(
         {
             if (p_actuelle.get_type() == m_piece_board[i].get_type())
             {
-                for (auto &e : m_board)
-                {
-                    if (e.first[i])
-                    {
-                        break;
-                    }
-                    m_piece_board[i] = Piece();
-                }
+                update_case(i);
             }
         }
         return mes;
@@ -396,8 +380,7 @@ Board<N, M>::mesure_castle(
                 std::pow(std::abs(m_board[i - 1].second), 2);
 
             m_board.erase(
-                std::begin(m_board) +
-                std::size(m_board) - i + 1);
+                std::begin(m_board) + i - 1);
         }
     }
     for (auto &e : m_board)
@@ -409,14 +392,7 @@ Board<N, M>::mesure_castle(
         if (m_piece_board[i].get_type() == TypePiece::ROOK ||
             m_piece_board[i].get_type() == TypePiece::KING)
         {
-            for (auto &e : m_board)
-            {
-                if (e.first[i])
-                {
-                    break;
-                }
-                m_piece_board[i] = Piece();
-            }
+            update_case(i);
         }
     }
     return mes;
@@ -1370,7 +1346,7 @@ void Board<N, M>::update_case(std::size_t pos) noexcept
 }
 
 template <std::size_t N, std::size_t M>
-std::forward_list<Move> 
+std::forward_list<Move>
 Board<N, M>::get_list_promote(Coord const &pos) const noexcept
 {
     return (*this)(pos.n, pos.m).get_list_promote(*this, pos);
