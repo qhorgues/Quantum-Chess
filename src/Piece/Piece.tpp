@@ -4,6 +4,7 @@
 #include <cmath>
 #include <forward_list>
 #include <observer_ptr.hpp>
+#include <math_utility.hpp>
 #include <Constexpr.hpp>
 #include <Move.hpp>
 
