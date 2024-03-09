@@ -1353,7 +1353,7 @@ Board<N, M>::check_if_use_move_promote(Coord const &pos) const noexcept
 }
 
 template <std::size_t N, std::size_t M>
-std::forward_list<Move>
+CONSTEXPR std::forward_list<Move>
 Board<N, M>::get_list_promote(Coord const &pos) const noexcept
 {
     return (*this)(pos.n, pos.m).get_list_promote(*this, pos);
