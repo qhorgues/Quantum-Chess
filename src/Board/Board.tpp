@@ -452,6 +452,7 @@ Board<N, M>::move_1_instance(std::array<bool, Q> const &case_modif,
     auto x{qubitToArray(matrix * q)};
     modify(std::move(x), position, tab_positions);
 }
+
 template <std::size_t N, std::size_t M>
 CONSTEXPR void Board<N, M>::king_side_castle(Coord const &k,
                                              Coord const &r)
