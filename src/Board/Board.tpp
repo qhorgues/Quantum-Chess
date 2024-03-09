@@ -259,14 +259,7 @@ CONSTEXPR bool Board<N, M>::mesure(Coord const &p)
         {
             if (p_actuelle.get_type() == m_piece_board[i].get_type())
             {
-                for (auto &e : m_board)
-                {
-                    if (e.first[i])
-                    {
-                        break;
-                    }
-                    m_piece_board[i] = Piece();
-                }
+                update_case(i);
             }
         }
         return mes;
@@ -333,14 +326,7 @@ Board<N, M>::mesure_capture_slide(
         {
             if (p_actuelle.get_type() == m_piece_board[i].get_type())
             {
-                for (auto &e : m_board)
-                {
-                    if (e.first[i])
-                    {
-                        break;
-                    }
-                    m_piece_board[i] = Piece();
-                }
+                update_case(i);
             }
         }
         return mes;
@@ -406,14 +392,7 @@ Board<N, M>::mesure_castle(
         if (m_piece_board[i].get_type() == TypePiece::ROOK ||
             m_piece_board[i].get_type() == TypePiece::KING)
         {
-            for (auto &e : m_board)
-            {
-                if (e.first[i])
-                {
-                    break;
-                }
-                m_piece_board[i] = Piece();
-            }
+            update_case(i);
         }
     }
     return mes;
