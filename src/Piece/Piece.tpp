@@ -196,7 +196,9 @@ Piece::get_list_move_rec(
             }
             else
             {
-                if (arvPiece.get_type() == TypePiece::EMPTY)
+                if (arvPiece.get_type() == TypePiece::EMPTY ||
+                    (arvPiece.get_type() == board(pos.n, pos.m).get_type() &&
+                     arvPiece.get_color() == board(pos.n, pos.m).get_color()))
                 {
                     move.push_front(Coord(n, m));
                 }
