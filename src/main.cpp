@@ -15,7 +15,7 @@
 #include <ComputerPlayer.hpp>
 
 template <std::size_t N, std::size_t M>
-void auto_playing(Board<N, M> &board, std::ofstream &output, int nb_moves, int search_depth)
+void auto_playing(Board<N, M> &board, std::ostream &output, int nb_moves, int search_depth)
 {
     while (nb_moves > 0 && !board.winning_position(opponent_color(board.get_current_player())))
     {
@@ -25,22 +25,22 @@ void auto_playing(Board<N, M> &board, std::ofstream &output, int nb_moves, int s
         std::string data2{{static_cast<char>('a' + m.normal.arv.m), static_cast<char>('0' + N - m.normal.arv.n)}};
         if (m.type == TypeMove::NORMAL)
         {
-            output << "N " << data1 << data2 << '\n';
+            output << "N " << data1 << data2 << std::endl;
         }
         else if (m.type == TypeMove::PROMOTE)
         {
-            output << "P " << data1 << data2 << " :: " << std::to_string(static_cast<int>(m.promote.piece)) << '\n';
+            output << "P " << data1 << data2 << " :: " << std::to_string(static_cast<int>(m.promote.piece)) << std::endl;
         }
         else
         {
             std::string data3{{static_cast<char>('a' + m.split.arv2.m), static_cast<char>('0' + N - m.split.arv2.n)}};
             if (m.type == TypeMove::SPLIT)
             {
-                output << "S " << data1 << '(' << data2 << data3 << ')' << '\n';
+                output << "S " << data1 << '(' << data2 << data3 << ')' << std::endl;
             }
             else
             {
-                output << "M " << '(' << data1 << data2 << ')' << data3 << '\n';
+                output << "M " << '(' << data1 << data2 << ')' << data3 << std::endl;
             }
         }
         board.move(m);
@@ -68,7 +68,7 @@ int main()
         {B_PAWN, Piece(), Piece()},
         {Piece(), W_QUEEN, W_KING}}; */
 
-    auto_playing(ChessBoard, log_file, 40, 5);
+    auto_playing(ChessBoard, log_file, 5, 3);
 
     log_file.close();
     return 0;
