@@ -5,7 +5,7 @@
 #include <Move.hpp>
 #include <math_utility.hpp>
 
-int test_move_promotion(int argc, char *argv[])
+int test_move_promotion(int argc, char **argv)
 {
     Board<3> board{
         {W_ROOK, Piece(), Piece()},

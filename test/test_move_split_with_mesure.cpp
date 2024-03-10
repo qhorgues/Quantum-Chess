@@ -5,7 +5,7 @@
 #include <Move.hpp>
 #include <math_utility.hpp>
 
-int test_move_split_with_mesure(int argc, char* argv[])
+int test_move_split_with_mesure(int argc, char* *argv)
 {
     Board<5> board{
         {W_ROOK, Piece(), Piece(),Piece(), Piece()},
