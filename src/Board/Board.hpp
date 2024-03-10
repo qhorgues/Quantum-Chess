@@ -225,7 +225,7 @@ private:
      */
     void update_case(std::size_t pos) noexcept;
     /**
-     * @brief Fonction qui permet de mattre à jour le plateau après un merge,
+     * @brief Fonction qui permet de mattre à jour le plateau,
      * car ce mouvement entraine l'apparition de plusieurs instance de board
      * identique, il faut donc les concaténer en ajoutant les probas, si la
      * proba vaut 0, on supprime l'instance
@@ -234,7 +234,7 @@ private:
      * c'est à dire le nombre d'instance du plateau, N et M les dimensions
      * du plateau
      */
-    void update_after_merge() noexcept;
+    void update_board() noexcept;
 
     /**
      * @brief Mouvement classique d'une pièce qui "saute"

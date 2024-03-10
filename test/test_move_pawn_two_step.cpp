@@ -5,7 +5,7 @@
 #include <TypePiece.hpp>
 #include <Move.hpp>
 
-int test_move_pawn_two_step(int argc, char *argv[])
+int test_move_pawn_two_step(int argc, char **argv)
 {
     Board<5> board{
         {W_ROOK, Piece(), Piece(), Piece(), Piece()},

@@ -508,7 +508,9 @@ Board<N, M>::move_classic_jump(Coord const &s, Coord const &t)
     std::size_t source = offset(s.n, s.m);
     std::size_t target = offset(t.n, t.m);
 
-    if (m_piece_board[target].get_type() == TypePiece::EMPTY)
+    if (m_piece_board[target].get_type() == TypePiece::EMPTY ||
+        (m_piece_board[target].get_type() == m_piece_board[source].get_type() &&
+         m_piece_board[target].get_color() == m_piece_board[source].get_color()))
     {
         std::size_t const size_board{std::size(m_board)};
         for (std::size_t i{0}; i < size_board; i++)
@@ -575,7 +577,9 @@ Board<N, M>::move_pawn_one_step(Coord const &s, Coord const &t)
     std::size_t source = offset(s.n, s.m);
     std::size_t target = offset(t.n, t.m);
 
-    if (m_piece_board[target].get_type() == TypePiece::EMPTY)
+    if (m_piece_board[target].get_type() == TypePiece::EMPTY ||
+        (m_piece_board[target].get_type() == m_piece_board[source].get_type() &&
+         m_piece_board[target].get_color() == m_piece_board[source].get_color()))
     {
         std::size_t const size_board{std::size(m_board)};
         for (std::size_t i{0}; i < size_board; i++)
@@ -615,7 +619,9 @@ Board<N, M>::move_pawn_two_step(Coord const &s, Coord const &t)
 {
     std::size_t source = offset(s.n, s.m);
     std::size_t target = offset(t.n, t.m);
-    if (m_piece_board[target].get_type() == TypePiece::EMPTY)
+    if (m_piece_board[target].get_type() == TypePiece::EMPTY ||
+        (m_piece_board[target].get_type() == m_piece_board[source].get_type() &&
+         m_piece_board[target].get_color() == m_piece_board[source].get_color()))
     {
         std::size_t const size_board{std::size(m_board)};
         for (std::size_t i{0}; i < size_board; i++)
@@ -696,7 +702,9 @@ Board<N, M>::move_enpassant(Coord const &s, Coord const &t, Coord const &ep)
     std::size_t target = offset(t.n, t.m);
     std::size_t enpassant = offset(ep.n, ep.m);
 
-    if (m_piece_board[target].get_type() == TypePiece::EMPTY)
+    if (m_piece_board[target].get_type() == TypePiece::EMPTY ||
+        (m_piece_board[target].get_type() == m_piece_board[source].get_type() &&
+         m_piece_board[target].get_color() == m_piece_board[source].get_color()))
     {
 
         std::size_t const size_board{std::size(m_board)};
@@ -769,21 +777,21 @@ Board<N, M>::move_enpassant(Coord const &s, Coord const &t, Coord const &ep)
                             i, MATRIX_ISWAP,
                             std::array<std::size_t, 2>{
                                 enpassant, N * M + 1});
-                    // ces deux instructions représentent un mouvement
-                    // de capture jump
-                    move_1_instance(
-                        std::array<bool, 2>{
-                            m_board[i].first[target], false},
-                        i, MATRIX_ISWAP,
-                        std::array<std::size_t, 2>{
-                            target, N * M + 1});
+                        // ces deux instructions représentent un mouvement
+                        // de capture jump
+                        move_1_instance(
+                            std::array<bool, 2>{
+                                m_board[i].first[target], false},
+                            i, MATRIX_ISWAP,
+                            std::array<std::size_t, 2>{
+                                target, N * M + 1});
 
-                    move_1_instance(
-                        std::array<bool, 2>{
-                            m_board[i].first[source], false},
-                        i, MATRIX_ISWAP,
-                        std::array<std::size_t, 2>{
-                            source, target});
+                        move_1_instance(
+                            std::array<bool, 2>{
+                                m_board[i].first[source], false},
+                            i, MATRIX_ISWAP,
+                            std::array<std::size_t, 2>{
+                                source, target});
                     }
                 }
                 m_piece_board[target] = std::move(m_piece_board[source]);
@@ -816,9 +824,20 @@ Board<N, M>::move_split_jump(Coord const &s, Coord const &t1, Coord const &t2)
     }
     m_piece_board[target1] = m_piece_board[source];
     m_piece_board[target2] = std::move(m_piece_board[source]);
-    update_case(source);
-    update_case(target1);
-    update_case(target2);
+    if (m_piece_board[target1].get_type() == TypePiece::EMPTY &&
+        m_piece_board[target2].get_type() == TypePiece::EMPTY)
+    {
+        update_case(source);
+        update_case(target1);
+        update_case(target2);
+    }
+    else
+    {
+        update_case(source);
+        update_case(target1);
+        update_case(target2);
+        update_board();
+    }
 }
 
 template <std::size_t N, std::size_t M>
@@ -840,7 +859,7 @@ Board<N, M>::move_merge_jump(Coord const &s1, Coord const &s2, Coord const &t)
             std::array<std::size_t, 3>{source1, source2, target});
     }
     m_piece_board[target] = std::move(m_piece_board[source1]);
-    update_after_merge();
+    update_board();
     update_case(target);
     update_case(source1);
     update_case(source2);
@@ -861,7 +880,9 @@ Board<N, M>::move_classic_slide(
 {
     std::size_t source = offset(s.n, s.m);
     std::size_t target = offset(t.n, t.m);
-    if (m_piece_board[target].get_type() == TypePiece::EMPTY)
+    if (m_piece_board[target].get_type() == TypePiece::EMPTY ||
+        (m_piece_board[target].get_type() == m_piece_board[source].get_type() &&
+         m_piece_board[target].get_color() == m_piece_board[source].get_color()))
     {
         std::size_t const size_board{std::size(m_board)};
         for (std::size_t i{0}; i < size_board; i++)
@@ -963,11 +984,24 @@ Board<N, M>::move_split_slide(
           un chemin, nos fonctions check_path renvoie
           un résultat où l'on a appliquer la porte cnot */
     }
-    m_piece_board[target1] = m_piece_board[source];
-    m_piece_board[target2] = std::move(m_piece_board[source]);
-    update_case(source);
-    update_case(target1);
-    update_case(target2);
+    if (m_piece_board[target1].get_type() == TypePiece::EMPTY &&
+        m_piece_board[target2].get_type() == TypePiece::EMPTY)
+    {
+        m_piece_board[target1] = m_piece_board[source];
+        m_piece_board[target2] = std::move(m_piece_board[source]);
+        update_case(source);
+        update_case(target1);
+        update_case(target2);
+    }
+    else
+    {
+        m_piece_board[target1] = m_piece_board[source];
+        m_piece_board[target2] = std::move(m_piece_board[source]);
+        update_case(source);
+        update_case(target1);
+        update_case(target2);
+        update_board();
+    }
 }
 
 template <std::size_t N, std::size_t M>
@@ -1010,7 +1044,7 @@ Board<N, M>::move_merge_slide(
            a appliquer la porte cnot */
     }
     m_piece_board[target] = std::move(m_piece_board[source1]);
-    update_after_merge();
+    update_board();
     update_case(target);
     update_case(source1);
     update_case(source2);
@@ -1247,7 +1281,7 @@ Board<N, M>::operator()(std::size_t n, std::size_t m) const noexcept
 }
 
 template <std::size_t N, std::size_t M>
-void Board<N, M>::update_after_merge() noexcept
+void Board<N, M>::update_board() noexcept
 {
     std::size_t size_board = std::size(m_board);
     for (std::size_t i{size_board}; i > 0; i--)
