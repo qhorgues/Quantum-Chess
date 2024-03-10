@@ -8,6 +8,8 @@ create_test_sourcelist (Tests
     test_move_promotion_with_capture.cpp
     test_move_promotion_with_split_before.cpp
     test_move_split_with_mesure.cpp
+    test_split_in_non_empty_case.cpp
+    test_slide_merge_move_through_a_split_piece.cpp
 )
 
 # add the executable
