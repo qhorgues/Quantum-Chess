@@ -107,20 +107,19 @@ CMatrix<32> MATRIX_SPLIT_SLIDE {
     CMatrix<16>{
         MATRIX_SPLIT, CMatrix<8>{},
         CMatrix<8>{}, MATRIX_ISWAP_8
-    },                                  
-    CMatrix<16>{},
-    CMatrix<16>{},                      
-    CMatrix<16>{
-        MATRIX_ISWAP_8, CMatrix<8>{},
-        CMatrix<8>{}, CMatrix<8>::identity()
-    }
+    },                                  CMatrix<16>{},
+    CMatrix<16>{},                      CMatrix<16>{
+                                            CMatrix<2>::identity()
+                                                .tensoriel_product(MATRIX_ISWAP), CMatrix<8>{},
+                                            CMatrix<8>{}, CMatrix<8>::identity()
+                                        }
 };
 
 constexpr inline
 CMatrix<32> MATRIX_MERGE_SLIDE {
     CMatrix<16>{
         MATRIX_MERGE, CMatrix<8>{},
-        CMatrix<8>{}, MATRIX_ISWAP_8.transposed()
+        CMatrix<8>{}, CMatrix<2>::identity().tensoriel_product(MATRIX_ISWAP).transposed()
     },                                                  
     CMatrix<16>{},
     CMatrix<16>{},                                      
