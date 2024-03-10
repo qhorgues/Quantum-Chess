@@ -97,7 +97,9 @@ $(function(){initNavTree('df/d0a/main_8cpp.html','../../'); initResizable(); });
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;iostream&gt;</code><br />
+<code>#include &lt;fstream&gt;</code><br />
 <code>#include &lt;complex&gt;</code><br />
+<code>#include &lt;string&gt;</code><br />
 <code>#include &lt;<a class="el" href="../../db/da4/_complex__printer_8hpp_source.html">Complex_printer.hpp</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="../../d2/deb/_c_matrix_8hpp_source.html">CMatrix.hpp</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="../../d6/d69/_unitary_8hpp_source.html">Unitary.hpp</a>&gt;</code><br />
@@ -108,14 +110,50 @@ $(function(){initNavTree('df/d0a/main_8cpp.html','../../'); initResizable(); });
 <code>#include &lt;<a class="el" href="../../d9/d88/observer__ptr_8hpp_source.html">observer_ptr.hpp</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="../../d8/dbf/check__path_8hpp_source.html">check_path.hpp</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="../../da/d0b/_constexpr_8hpp_source.html">Constexpr.hpp</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="../../db/de9/_type_piece_8hpp_source.html">TypePiece.hpp</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="../../dd/da0/_computer_player_8hpp_source.html">ComputerPlayer.hpp</a>&gt;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Fonctions</h2></td></tr>
+<tr class="memitem:afcee78947b7112b54c65956971a26cc1" id="r_afcee78947b7112b54c65956971a26cc1"><td class="memTemplParams" colspan="2">template&lt;std::size_t N, std::size_t M&gt; </td></tr>
+<tr class="memitem:afcee78947b7112b54c65956971a26cc1"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d6/d4d/classobserver__ptr.html">void</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#afcee78947b7112b54c65956971a26cc1">auto_playing</a> (<a class="el" href="../../d3/dfd/class_board.html">Board</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">N</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">M</a> &gt; &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">board</a>, std::ofstream &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">output</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">int</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">nb_moves</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">int</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">search_depth</a>)</td></tr>
+<tr class="separator:afcee78947b7112b54c65956971a26cc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae66f6b31b5ad750f1fe042a706a4e3d4" id="r_ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d6/d4d/classobserver__ptr.html">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a> ()</td></tr>
 <tr class="separator:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Documentation des fonctions</h2>
+<a id="afcee78947b7112b54c65956971a26cc1" name="afcee78947b7112b54c65956971a26cc1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afcee78947b7112b54c65956971a26cc1">&#9670;&#160;</a></span>auto_playing()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;std::size_t N, std::size_t M&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d6/d4d/classobserver__ptr.html">void</a> auto_playing </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d3/dfd/class_board.html">Board</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">N</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">M</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>board</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::ofstream &amp;</td>          <td class="paramname"><span class="paramname"><em>output</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d6/d4d/classobserver__ptr.html">int</a></td>          <td class="paramname"><span class="paramname"><em>nb_moves</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d6/d4d/classobserver__ptr.html">int</a></td>          <td class="paramname"><span class="paramname"><em>search_depth</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="ae66f6b31b5ad750f1fe042a706a4e3d4" name="ae66f6b31b5ad750f1fe042a706a4e3d4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae66f6b31b5ad750f1fe042a706a4e3d4">&#9670;&#160;</a></span>main()</h2>
 

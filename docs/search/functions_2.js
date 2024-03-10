@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['capture_5fpawn_0',['capture_pawn',['../d3/dfd/class_board.html#a005e82316f3d4a4fb68cfae852ab1fa7',1,'Board']]],
+  ['capture_5fpawn_0',['capture_pawn',['../d3/dfd/class_board.html#ac6a7fe2e66df0baf28f847eac641b0c6',1,'Board']]],
   ['change_5fplayer_1',['change_player',['../d3/dfd/class_board.html#aa9fcccd89ef3b7af6dc54867671fb3f3',1,'Board']]],
   ['check_5fif_5fuse_5fmove_5fpromote_2',['check_if_use_move_promote',['../d3/dfd/class_board.html#a11407f64550ac37b959f98d7e83db64c',1,'Board::check_if_use_move_promote()'],['../d7/d87/class_piece.html#a43afa2c15773fed068b2075f819f6400',1,'Piece::check_if_use_move_promote()']]],
   ['check_5fpath_5fdiagonal_5f1_5finstance_3',['check_path_diagonal_1_instance',['../d8/dbf/check__path_8hpp.html#a4624039a2a4a3219ae39456df8bb0be3',1,'check_path.hpp']]],

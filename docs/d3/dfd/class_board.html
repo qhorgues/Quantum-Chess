@@ -174,7 +174,7 @@ Fonctions membres publiques statiques</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Fonctions membres privées</h2></td></tr>
 <tr class="memitem:a2b7efeb273cc2b2b07fa87b8d9eb3b7f" id="r_a2b7efeb273cc2b2b07fa87b8d9eb3b7f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d6/d4d/classobserver__ptr.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2b7efeb273cc2b2b07fa87b8d9eb3b7f">update_case</a> (std::size_t <a class="el" href="../../d6/d4d/classobserver__ptr.html">pos</a>) <a class="el" href="../../d6/d4d/classobserver__ptr.html">noexcept</a></td></tr>
-<tr class="memdesc:a2b7efeb273cc2b2b07fa87b8d9eb3b7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vérifie si la case à une possibilité de contenir une pièce, et si elle n'en a pas modifie m_piece_board en nullptr.  <br /></td></tr>
+<tr class="memdesc:a2b7efeb273cc2b2b07fa87b8d9eb3b7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vérifie si la case à une possibilité de contenir une pièce, et si elle n'en a pas modifie m_piece_board en <a class="el" href="#ae6fa0350c8ef33e791f1f9a4daa5e3d1">Piece()</a>.  <br /></td></tr>
 <tr class="separator:a2b7efeb273cc2b2b07fa87b8d9eb3b7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae5c22da736ae255dc98e53450b39961c" id="r_ae5c22da736ae255dc98e53450b39961c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d6/d4d/classobserver__ptr.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae5c22da736ae255dc98e53450b39961c">update_after_merge</a> () <a class="el" href="../../d6/d4d/classobserver__ptr.html">noexcept</a></td></tr>
 <tr class="memdesc:ae5c22da736ae255dc98e53450b39961c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui permet de mattre à jour le plateau après un merge, car ce mouvement entraine l'apparition de plusieurs instance de board identique, il faut donc les concaténer en ajoutant les probas, si la proba vaut 0, on supprime l'instance.  <br /></td></tr>
@@ -197,18 +197,18 @@ Fonctions membres privées</h2></td></tr>
 <tr class="memitem:a3407e545ad949fc2e6573e240f98f225" id="r_a3407e545ad949fc2e6573e240f98f225"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../da/d0b/_constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3407e545ad949fc2e6573e240f98f225">move_merge_slide</a> (<a class="el" href="../../d2/df1/struct_coord.html">Coord</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">s1</a>, <a class="el" href="../../d2/df1/struct_coord.html">Coord</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">s2</a>, <a class="el" href="../../d2/df1/struct_coord.html">Coord</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">t</a>, std::function&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">bool</a>(<a class="el" href="../../d3/dfd/class_board.html">Board</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">N</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">M</a> &gt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;, <a class="el" href="../../d2/df1/struct_coord.html">Coord</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;, <a class="el" href="../../d2/df1/struct_coord.html">Coord</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;, std::size_t)&gt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">check_path</a>)</td></tr>
 <tr class="memdesc:a3407e545ad949fc2e6573e240f98f225"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mouvement de merge.  <br /></td></tr>
 <tr class="separator:a3407e545ad949fc2e6573e240f98f225"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a371a0429a5fa1e6d51824067770ab2cf" id="r_a371a0429a5fa1e6d51824067770ab2cf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../da/d0b/_constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a371a0429a5fa1e6d51824067770ab2cf">move_pawn_one_step</a> (<a class="el" href="../../d2/df1/struct_coord.html">Coord</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">s</a>, <a class="el" href="../../d2/df1/struct_coord.html">Coord</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">t</a>)</td></tr>
-<tr class="memdesc:a371a0429a5fa1e6d51824067770ab2cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Le mouvement de piond'une case fonctionne comme un mouvementde jump classique, à la différence qu'un pion ne peut pas capturer une pièce en avançant. On mesure de la même façon qu'un jump classique en considérant toutes les pièces comme des pièces alliées.  <br /></td></tr>
-<tr class="separator:a371a0429a5fa1e6d51824067770ab2cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1c6141bddb049026c7b2032f483a2098" id="r_a1c6141bddb049026c7b2032f483a2098"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../da/d0b/_constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1c6141bddb049026c7b2032f483a2098">move_pawn_two_step</a> (<a class="el" href="../../d2/df1/struct_coord.html">Coord</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">s</a>, <a class="el" href="../../d2/df1/struct_coord.html">Coord</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">t</a>)</td></tr>
-<tr class="memdesc:a1c6141bddb049026c7b2032f483a2098"><td class="mdescLeft">&#160;</td><td class="mdescRight">Le mouvement de pion de deux cases fonctionne comme un mouvement de slide classique, à la différence qu'un pion ne peut pas capturer une pièce en avançant, on mesure de la même façon qu'un slide classique en considérant toutes les pièces comme des pièces alliées.  <br /></td></tr>
-<tr class="separator:a1c6141bddb049026c7b2032f483a2098"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a005e82316f3d4a4fb68cfae852ab1fa7" id="r_a005e82316f3d4a4fb68cfae852ab1fa7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../da/d0b/_constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a005e82316f3d4a4fb68cfae852ab1fa7">capture_pawn</a> (<a class="el" href="../../d2/df1/struct_coord.html">Coord</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">s</a>, <a class="el" href="../../d2/df1/struct_coord.html">Coord</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">t</a>)</td></tr>
-<tr class="memdesc:a005e82316f3d4a4fb68cfae852ab1fa7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mouvement de capture dun pion. A la différence d'un mouvement de "capture jump", on mesure la présence de la cible car le pion a besoin de la cible pour se déplacer.  <br /></td></tr>
-<tr class="separator:a005e82316f3d4a4fb68cfae852ab1fa7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5a35fc944f77bab7201f2883d65e4d1e" id="r_a5a35fc944f77bab7201f2883d65e4d1e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../da/d0b/_constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5a35fc944f77bab7201f2883d65e4d1e">move_enpassant</a> (<a class="el" href="../../d2/df1/struct_coord.html">Coord</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">s</a>, <a class="el" href="../../d2/df1/struct_coord.html">Coord</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">t</a>, <a class="el" href="../../d2/df1/struct_coord.html">Coord</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">ep</a>)</td></tr>
-<tr class="memdesc:a5a35fc944f77bab7201f2883d65e4d1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet d'effectuer un mouvement de prise en passant.  <br /></td></tr>
-<tr class="separator:a5a35fc944f77bab7201f2883d65e4d1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0113d0f8dd8bdcdc12fcdb7285e49ad8" id="r_a0113d0f8dd8bdcdc12fcdb7285e49ad8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../da/d0b/_constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0113d0f8dd8bdcdc12fcdb7285e49ad8">move_pawn_one_step</a> (<a class="el" href="../../d2/df1/struct_coord.html">Coord</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">s</a>, <a class="el" href="../../d2/df1/struct_coord.html">Coord</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">t</a>)</td></tr>
+<tr class="memdesc:a0113d0f8dd8bdcdc12fcdb7285e49ad8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Le mouvement de piond'une case fonctionne comme un mouvementde jump classique, à la différence qu'un pion ne peut pas capturer une pièce en avançant. On mesure de la même façon qu'un jump classique en considérant toutes les pièces comme des pièces alliées.  <br /></td></tr>
+<tr class="separator:a0113d0f8dd8bdcdc12fcdb7285e49ad8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85d8b708354941cc5035fc19447041a8" id="r_a85d8b708354941cc5035fc19447041a8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../da/d0b/_constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a85d8b708354941cc5035fc19447041a8">move_pawn_two_step</a> (<a class="el" href="../../d2/df1/struct_coord.html">Coord</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">s</a>, <a class="el" href="../../d2/df1/struct_coord.html">Coord</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">t</a>)</td></tr>
+<tr class="memdesc:a85d8b708354941cc5035fc19447041a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Le mouvement de pion de deux cases fonctionne comme un mouvement de slide classique, à la différence qu'un pion ne peut pas capturer une pièce en avançant, on mesure de la même façon qu'un slide classique en considérant toutes les pièces comme des pièces alliées.  <br /></td></tr>
+<tr class="separator:a85d8b708354941cc5035fc19447041a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6a7fe2e66df0baf28f847eac641b0c6" id="r_ac6a7fe2e66df0baf28f847eac641b0c6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../da/d0b/_constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac6a7fe2e66df0baf28f847eac641b0c6">capture_pawn</a> (<a class="el" href="../../d2/df1/struct_coord.html">Coord</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">s</a>, <a class="el" href="../../d2/df1/struct_coord.html">Coord</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">t</a>)</td></tr>
+<tr class="memdesc:ac6a7fe2e66df0baf28f847eac641b0c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mouvement de capture dun pion. A la différence d'un mouvement de "capture jump", on mesure la présence de la cible car le pion a besoin de la cible pour se déplacer.  <br /></td></tr>
+<tr class="separator:ac6a7fe2e66df0baf28f847eac641b0c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a48b2c81f73e9f35b56dac3ec3ad70d" id="r_a3a48b2c81f73e9f35b56dac3ec3ad70d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../da/d0b/_constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3a48b2c81f73e9f35b56dac3ec3ad70d">move_enpassant</a> (<a class="el" href="../../d2/df1/struct_coord.html">Coord</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">s</a>, <a class="el" href="../../d2/df1/struct_coord.html">Coord</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">t</a>, <a class="el" href="../../d2/df1/struct_coord.html">Coord</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">ep</a>)</td></tr>
+<tr class="memdesc:a3a48b2c81f73e9f35b56dac3ec3ad70d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet d'effectuer un mouvement de prise en passant.  <br /></td></tr>
+<tr class="separator:a3a48b2c81f73e9f35b56dac3ec3ad70d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaabbfbac212ebfec930eb3921b7ee83d" id="r_aaabbfbac212ebfec930eb3921b7ee83d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../da/d0b/_constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaabbfbac212ebfec930eb3921b7ee83d">mesure</a> (<a class="el" href="../../d2/df1/struct_coord.html">Coord</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">p</a>)</td></tr>
 <tr class="memdesc:aaabbfbac212ebfec930eb3921b7ee83d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mesure la présence d'une pièce.  <br /></td></tr>
 <tr class="separator:aaabbfbac212ebfec930eb3921b7ee83d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -224,9 +224,9 @@ Fonctions membres privées</h2></td></tr>
 <tr class="memitem:a737f514e7dade61e66ea9e5f8980cc92" id="r_a737f514e7dade61e66ea9e5f8980cc92"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../da/d0b/_constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a737f514e7dade61e66ea9e5f8980cc92">move_merge</a> (<a class="el" href="../../d2/df1/struct_coord.html">Coord</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">s1</a>, <a class="el" href="../../d2/df1/struct_coord.html">Coord</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">s2</a>, <a class="el" href="../../d2/df1/struct_coord.html">Coord</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">t</a>)</td></tr>
 <tr class="memdesc:a737f514e7dade61e66ea9e5f8980cc92"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mouvement de merge de pièce (pion exclu)  <br /></td></tr>
 <tr class="separator:a737f514e7dade61e66ea9e5f8980cc92"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa9a33c7ee8d331b423e06c73945d1ddd" id="r_aa9a33c7ee8d331b423e06c73945d1ddd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../da/d0b/_constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa9a33c7ee8d331b423e06c73945d1ddd">move_pawn</a> (<a class="el" href="../../d2/df1/struct_coord.html">Coord</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">s</a>, <a class="el" href="../../d2/df1/struct_coord.html">Coord</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">t</a>) <a class="el" href="../../d6/d4d/classobserver__ptr.html">noexcept</a></td></tr>
-<tr class="memdesc:aa9a33c7ee8d331b423e06c73945d1ddd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gère tout les mouvements d'un pion.  <br /></td></tr>
-<tr class="separator:aa9a33c7ee8d331b423e06c73945d1ddd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6480daeab6c67a0aa574d714a6286295" id="r_a6480daeab6c67a0aa574d714a6286295"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../da/d0b/_constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6480daeab6c67a0aa574d714a6286295">move_pawn</a> (<a class="el" href="../../d2/df1/struct_coord.html">Coord</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">s</a>, <a class="el" href="../../d2/df1/struct_coord.html">Coord</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">t</a>) <a class="el" href="../../d6/d4d/classobserver__ptr.html">noexcept</a></td></tr>
+<tr class="memdesc:a6480daeab6c67a0aa574d714a6286295"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gère tout les mouvements d'un pion.  <br /></td></tr>
+<tr class="separator:a6480daeab6c67a0aa574d714a6286295"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a62526dd62f43780104ba8ccf85c49622" id="r_a62526dd62f43780104ba8ccf85c49622"><td class="memTemplParams" colspan="2">template&lt;std::size_t Q&gt; </td></tr>
 <tr class="memitem:a62526dd62f43780104ba8ccf85c49622"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../da/d0b/_constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">void</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a62526dd62f43780104ba8ccf85c49622">modify</a> (std::array&lt; std::pair&lt; std::array&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">bool</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">Q</a> &gt;, std::complex&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">double</a> &gt; &gt;, 2 &gt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">arrayQubit</a>, std::size_t <a class="el" href="../../d6/d4d/classobserver__ptr.html">position_board</a>, std::array&lt; std::size_t, <a class="el" href="../../d6/d4d/classobserver__ptr.html">Q</a> &gt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">tab_positions</a>)</td></tr>
 <tr class="memdesc:a62526dd62f43780104ba8ccf85c49622"><td class="mdescLeft">&#160;</td><td class="mdescRight">fonction auxiliaire qui permet de modifier un plateau à l'aide d'un array de la forme du type de retour de la fonction qubitToArray, le deuxième éléments du tableau à une probalité non nulle lors d'un mouvement split  <br /></td></tr>
@@ -284,7 +284,7 @@ Attributs privés</h2></td></tr>
 <tr class="memdesc:af90c264e8b40a8ed8bccb4630d90db53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vrai si les noirs[0] / blancs[1] peuvent faire le grand roque.  <br /></td></tr>
 <tr class="separator:af90c264e8b40a8ed8bccb4630d90db53"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a203d91808d0894e86a5945f6579421f0" id="r_a203d91808d0894e86a5945f6579421f0"><td class="memItemLeft" align="right" valign="top">std::optional&lt; <a class="el" href="../../d2/df1/struct_coord.html">Coord</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a203d91808d0894e86a5945f6579421f0">m_ep</a></td></tr>
-<tr class="memdesc:a203d91808d0894e86a5945f6579421f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contient la case sur laquelle il est possible de faire une prise en passant.  <br /></td></tr>
+<tr class="memdesc:a203d91808d0894e86a5945f6579421f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contient la case sur laquelle il est possible de faire une prise en passant qui est vide (la case occupé si le pion avait avancé d'une seule case)  <br /></td></tr>
 <tr class="separator:a203d91808d0894e86a5945f6579421f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
@@ -440,8 +440,8 @@ template&lt;std::size_t N = 8, std::size_t M = N&gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Documentation des fonctions membres</h2>
-<a id="a005e82316f3d4a4fb68cfae852ab1fa7" name="a005e82316f3d4a4fb68cfae852ab1fa7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a005e82316f3d4a4fb68cfae852ab1fa7">&#9670;&#160;</a></span>capture_pawn()</h2>
+<a id="ac6a7fe2e66df0baf28f847eac641b0c6" name="ac6a7fe2e66df0baf28f847eac641b0c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6a7fe2e66df0baf28f847eac641b0c6">&#9670;&#160;</a></span>capture_pawn()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -452,7 +452,7 @@ template&lt;std::size_t N = 8, std::size_t M = N&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../da/d0b/_constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">void</a> <a class="el" href="../../d3/dfd/class_board.html">Board</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">N</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">M</a> &gt;::capture_pawn </td>
+          <td class="memname"><a class="el" href="../../da/d0b/_constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">bool</a> <a class="el" href="../../d3/dfd/class_board.html">Board</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">N</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">M</a> &gt;::capture_pawn </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="../../d2/df1/struct_coord.html">Coord</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>s</em>, </span></td>
         </tr>
@@ -478,7 +478,9 @@ template&lt;std::size_t N = 8, std::size_t M = N&gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Renvoie</dt><dd>CONSTEXPR </dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd>true si le mouvement à etait effectué </dd>
+<dd>
+false sinon </dd></dl>
 
 </div>
 </div>
@@ -1087,7 +1089,7 @@ template&lt;std::size_t N = 8, std::size_t M = N&gt; </div>
 <dl class="section warning"><dt>Avertissement</dt><dd>Ne procède aucune vérification sur la validité du mouvement</dd></dl>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">movement</td><td></td></tr>
+    <tr><td class="paramname">movement</td><td>Le mouvement à raliser </td></tr>
   </table>
   </dd>
 </dl>
@@ -1306,8 +1308,8 @@ template&lt;std::size_t N = 8, std::size_t M = N&gt; </div>
 
 </div>
 </div>
-<a id="a5a35fc944f77bab7201f2883d65e4d1e" name="a5a35fc944f77bab7201f2883d65e4d1e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5a35fc944f77bab7201f2883d65e4d1e">&#9670;&#160;</a></span>move_enpassant()</h2>
+<a id="a3a48b2c81f73e9f35b56dac3ec3ad70d" name="a3a48b2c81f73e9f35b56dac3ec3ad70d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a48b2c81f73e9f35b56dac3ec3ad70d">&#9670;&#160;</a></span>move_enpassant()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1318,7 +1320,7 @@ template&lt;std::size_t N = 8, std::size_t M = N&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../da/d0b/_constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">void</a> <a class="el" href="../../d3/dfd/class_board.html">Board</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">N</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">M</a> &gt;::move_enpassant </td>
+          <td class="memname"><a class="el" href="../../da/d0b/_constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">bool</a> <a class="el" href="../../d3/dfd/class_board.html">Board</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">N</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">M</a> &gt;::move_enpassant </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="../../d2/df1/struct_coord.html">Coord</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>s</em>, </span></td>
         </tr>
@@ -1357,6 +1359,9 @@ template&lt;std::size_t N = 8, std::size_t M = N&gt; </div>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Renvoie</dt><dd>true si le mouvement à etait effectué </dd>
+<dd>
+false sinon </dd></dl>
 
 </div>
 </div>
@@ -1556,8 +1561,8 @@ template&lt;std::size_t N = 8, std::size_t M = N&gt; </div>
 
 </div>
 </div>
-<a id="aa9a33c7ee8d331b423e06c73945d1ddd" name="aa9a33c7ee8d331b423e06c73945d1ddd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa9a33c7ee8d331b423e06c73945d1ddd">&#9670;&#160;</a></span>move_pawn()</h2>
+<a id="a6480daeab6c67a0aa574d714a6286295" name="a6480daeab6c67a0aa574d714a6286295"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6480daeab6c67a0aa574d714a6286295">&#9670;&#160;</a></span>move_pawn()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1568,7 +1573,7 @@ template&lt;std::size_t N = 8, std::size_t M = N&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../da/d0b/_constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">void</a> <a class="el" href="../../d3/dfd/class_board.html">Board</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">N</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">M</a> &gt;::move_pawn </td>
+          <td class="memname"><a class="el" href="../../da/d0b/_constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">bool</a> <a class="el" href="../../d3/dfd/class_board.html">Board</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">N</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">M</a> &gt;::move_pawn </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="../../d2/df1/struct_coord.html">Coord</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>s</em>, </span></td>
         </tr>
@@ -1601,11 +1606,14 @@ template&lt;std::size_t N = 8, std::size_t M = N&gt; </div>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Renvoie</dt><dd>true si le mouvement à etait effectué </dd>
+<dd>
+false sinon </dd></dl>
 
 </div>
 </div>
-<a id="a371a0429a5fa1e6d51824067770ab2cf" name="a371a0429a5fa1e6d51824067770ab2cf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a371a0429a5fa1e6d51824067770ab2cf">&#9670;&#160;</a></span>move_pawn_one_step()</h2>
+<a id="a0113d0f8dd8bdcdc12fcdb7285e49ad8" name="a0113d0f8dd8bdcdc12fcdb7285e49ad8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0113d0f8dd8bdcdc12fcdb7285e49ad8">&#9670;&#160;</a></span>move_pawn_one_step()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1616,7 +1624,7 @@ template&lt;std::size_t N = 8, std::size_t M = N&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../da/d0b/_constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">void</a> <a class="el" href="../../d3/dfd/class_board.html">Board</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">N</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">M</a> &gt;::move_pawn_one_step </td>
+          <td class="memname"><a class="el" href="../../da/d0b/_constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">bool</a> <a class="el" href="../../d3/dfd/class_board.html">Board</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">N</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">M</a> &gt;::move_pawn_one_step </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="../../d2/df1/struct_coord.html">Coord</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>s</em>, </span></td>
         </tr>
@@ -1649,11 +1657,14 @@ template&lt;std::size_t N = 8, std::size_t M = N&gt; </div>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Renvoie</dt><dd>true si le mouvement à etait effectué </dd>
+<dd>
+false sinon </dd></dl>
 
 </div>
 </div>
-<a id="a1c6141bddb049026c7b2032f483a2098" name="a1c6141bddb049026c7b2032f483a2098"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1c6141bddb049026c7b2032f483a2098">&#9670;&#160;</a></span>move_pawn_two_step()</h2>
+<a id="a85d8b708354941cc5035fc19447041a8" name="a85d8b708354941cc5035fc19447041a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a85d8b708354941cc5035fc19447041a8">&#9670;&#160;</a></span>move_pawn_two_step()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1664,7 +1675,7 @@ template&lt;std::size_t N = 8, std::size_t M = N&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../da/d0b/_constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">void</a> <a class="el" href="../../d3/dfd/class_board.html">Board</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">N</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">M</a> &gt;::move_pawn_two_step </td>
+          <td class="memname"><a class="el" href="../../da/d0b/_constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">bool</a> <a class="el" href="../../d3/dfd/class_board.html">Board</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">N</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">M</a> &gt;::move_pawn_two_step </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="../../d2/df1/struct_coord.html">Coord</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>s</em>, </span></td>
         </tr>
@@ -1697,6 +1708,9 @@ template&lt;std::size_t N = 8, std::size_t M = N&gt; </div>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Renvoie</dt><dd>true si le mouvement à etait effectué </dd>
+<dd>
+false sinon </dd></dl>
 
 </div>
 </div>
@@ -2035,7 +2049,7 @@ template&lt;std::size_t N = 8, std::size_t M = N&gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Renvoie</dt><dd>Un pointeur observateur sur une piece ou nullptr si la case est vide </dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Un pointeur observateur sur une piece ou <a class="el" href="#ae6fa0350c8ef33e791f1f9a4daa5e3d1">Piece()</a> si la case est vide </dd></dl>
 
 </div>
 </div>
@@ -2189,7 +2203,7 @@ template&lt;std::size_t N = 8, std::size_t M = N&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Vérifie si la case à une possibilité de contenir une pièce, et si elle n'en a pas modifie m_piece_board en nullptr. </p>
+<p>Vérifie si la case à une possibilité de contenir une pièce, et si elle n'en a pas modifie m_piece_board en <a class="el" href="#ae6fa0350c8ef33e791f1f9a4daa5e3d1">Piece()</a>. </p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramname">pos</td><td>Les coordonnées de a position de la case a vérifier. </td></tr>
@@ -2458,7 +2472,7 @@ template&lt;std::size_t N = 8, std::size_t M = N&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Contient la case sur laquelle il est possible de faire une prise en passant. </p>
+<p>Contient la case sur laquelle il est possible de faire une prise en passant qui est vide (la case occupé si le pion avait avancé d'une seule case) </p>
 
 </div>
 </div>

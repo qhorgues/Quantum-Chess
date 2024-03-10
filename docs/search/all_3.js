@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['capture_5fpawn_0',['capture_pawn',['../d3/dfd/class_board.html#a005e82316f3d4a4fb68cfae852ab1fa7',1,'Board']]],
+  ['capture_5fpawn_0',['capture_pawn',['../d3/dfd/class_board.html#ac6a7fe2e66df0baf28f847eac641b0c6',1,'Board']]],
   ['change_5fplayer_1',['change_player',['../d3/dfd/class_board.html#aa9fcccd89ef3b7af6dc54867671fb3f3',1,'Board']]],
   ['check_5fif_5fuse_5fmove_5fpromote_2',['check_if_use_move_promote',['../d3/dfd/class_board.html#a11407f64550ac37b959f98d7e83db64c',1,'Board::check_if_use_move_promote()'],['../d7/d87/class_piece.html#a43afa2c15773fed068b2075f819f6400',1,'Piece::check_if_use_move_promote()']]],
   ['check_5fpath_2ehpp_3',['check_path.hpp',['../d8/dbf/check__path_8hpp.html',1,'']]],
@@ -14,10 +14,12 @@ var searchData=
   ['color_2ehpp_11',['Color.hpp',['../d3/d06/_color_8hpp.html',1,'']]],
   ['complex_5fequal_12',['complex_equal',['../da/dd5/math__utility_8cpp.html#a696be5c8dc8adf49935989d6184c0dbb',1,'complex_equal(std::complex&lt; double &gt; const &amp;z1, std::complex&lt; double &gt; const &amp;z2):&#160;math_utility.cpp'],['../d3/dc5/math__utility_8hpp.html#a696be5c8dc8adf49935989d6184c0dbb',1,'complex_equal(std::complex&lt; double &gt; const &amp;z1, std::complex&lt; double &gt; const &amp;z2):&#160;math_utility.cpp']]],
   ['complex_5fprinter_2ehpp_13',['Complex_printer.hpp',['../db/da4/_complex__printer_8hpp.html',1,'']]],
-  ['constexpr_14',['CONSTEXPR',['../da/d0b/_constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280',1,'Constexpr.hpp']]],
-  ['constexpr_2ehpp_15',['Constexpr.hpp',['../da/d0b/_constexpr_8hpp.html',1,'']]],
-  ['coord_16',['Coord',['../d2/df1/struct_coord.html',1,'Coord'],['../d2/df1/struct_coord.html#a14caa1114c95058bd25e1a7ff2ad8e43',1,'Coord::Coord()=default'],['../d2/df1/struct_coord.html#abafff409eb0f46a5796aa1f6c71aa4a2',1,'Coord::Coord(std::size_t i, std::size_t j)'],['../d2/df1/struct_coord.html#a1fc16d40e952dc4d7c3bedb97225354a',1,'Coord::Coord(Coord const &amp;)=default'],['../d2/df1/struct_coord.html#a89131b77a50cf91a64c4d10a2a9e06a1',1,'Coord::Coord(Coord &amp;&amp;)=default']]],
-  ['coord_2ecpp_17',['Coord.cpp',['../d6/da6/_coord_8cpp.html',1,'']]],
-  ['coord_2ehpp_18',['Coord.hpp',['../dd/d4f/_coord_8hpp.html',1,'']]],
-  ['coord_5fhash_19',['Coord_hash',['../d3/da0/struct_coord__hash.html',1,'']]]
+  ['computer_14',['computer',['../d2/de0/namespacecomputer.html',1,'']]],
+  ['computerplayer_2ehpp_15',['ComputerPlayer.hpp',['../dd/da0/_computer_player_8hpp.html',1,'']]],
+  ['constexpr_16',['CONSTEXPR',['../da/d0b/_constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280',1,'Constexpr.hpp']]],
+  ['constexpr_2ehpp_17',['Constexpr.hpp',['../da/d0b/_constexpr_8hpp.html',1,'']]],
+  ['coord_18',['Coord',['../d2/df1/struct_coord.html',1,'Coord'],['../d2/df1/struct_coord.html#a14caa1114c95058bd25e1a7ff2ad8e43',1,'Coord::Coord()=default'],['../d2/df1/struct_coord.html#abafff409eb0f46a5796aa1f6c71aa4a2',1,'Coord::Coord(std::size_t i, std::size_t j)'],['../d2/df1/struct_coord.html#a1fc16d40e952dc4d7c3bedb97225354a',1,'Coord::Coord(Coord const &amp;)=default'],['../d2/df1/struct_coord.html#a89131b77a50cf91a64c4d10a2a9e06a1',1,'Coord::Coord(Coord &amp;&amp;)=default']]],
+  ['coord_2ecpp_19',['Coord.cpp',['../d6/da6/_coord_8cpp.html',1,'']]],
+  ['coord_2ehpp_20',['Coord.hpp',['../dd/d4f/_coord_8hpp.html',1,'']]],
+  ['coord_5fhash_21',['Coord_hash',['../d3/da0/struct_coord__hash.html',1,'']]]
 ];
