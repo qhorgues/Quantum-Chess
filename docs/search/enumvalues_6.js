@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['rook_0',['ROOK',['../db/de9/_type_piece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83a97c60a3a4e61ee21e3f38a2f950fe293',1,'TypePiece.hpp']]]
+  ['queen_0',['QUEEN',['../db/de9/_type_piece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83a02d144e18eda99bcb94f3a764756805e',1,'TypePiece.hpp']]]
 ];

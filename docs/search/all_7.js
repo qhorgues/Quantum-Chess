@@ -1,4 +1,7 @@
 var searchData=
 [
-  ['hex_0',['HEX',['../d1/d3a/_c_make_c_compiler_id_8c.html#a46d5d95daa1bef867bd0179594310ed5',1,'HEX:&#160;CMakeCCompilerId.c'],['../d3/d66/_c_make_c_x_x_compiler_id_8cpp.html#a46d5d95daa1bef867bd0179594310ed5',1,'HEX:&#160;CMakeCXXCompilerId.cpp']]]
+  ['init_5fmailbox_0',['init_mailbox',['../d3/dfd/class_board.html#a94fe407a5f6e87dee2e62bfc2a79504b',1,'Board']]],
+  ['initializer_5flist_5fto_5f2_5farray_1',['initializer_list_to_2_array',['../d3/dfd/class_board.html#abe3e7d2bea8beebb399193f1a0ad622c',1,'Board']]],
+  ['is_5fblack_2',['is_black',['../d7/d87/class_piece.html#a9b5c0ed275af57d3324bda002b7bf6ae',1,'Piece']]],
+  ['is_5fwhite_3',['is_white',['../d7/d87/class_piece.html#a8a9b55a3c8198d841e3273ae0ff208b0',1,'Piece']]]
 ];

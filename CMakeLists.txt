@@ -2,47 +2,46 @@ cmake_minimum_required (VERSION 3.20)
 
 project (Quantum-Chess LANGUAGES CXX VERSION 0.5)
 
-include(CTest)
 enable_testing()
 
 include(${CMAKE_SOURCE_DIR}/cmake/option.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/CompilerWarnings.cmake)
 
+
 set_choice (CMAKE_BUILD_TYPE "Debug;Release;MinSizeRel;RelWithDebInfo" "Debug" "Choose type of build")
 
 set (SRCS
-    src/main.cpp
-    src/math_utility/math_utility.cpp
-    src/Board/Board.tpp
-    src/Piece/Piece.tpp
-    src/Qubit/Qubit.tpp
-    src/check_path/check_path.tpp
-    src/final_solver/final_solver.tpp
+    ${CMAKE_SOURCE_DIR}/src/math_utility/math_utility.cpp
+    ${CMAKE_SOURCE_DIR}/src/Coord/Coord.cpp
+    ${CMAKE_SOURCE_DIR}/src/Board/Board.tpp
+    ${CMAKE_SOURCE_DIR}/src/Piece/Piece.tpp
+    ${CMAKE_SOURCE_DIR}/src/Qubit/Qubit.tpp
+    ${CMAKE_SOURCE_DIR}/src/check_path/check_path.tpp
+    ${CMAKE_SOURCE_DIR}/src/final_solver/final_solver.tpp
 )
 
 set (HEADERS
-    include/Unitary.hpp
-    include/CMatrix.hpp
-    include/Complex_printer.hpp
-    include/Move.hpp
-    include/Constexpr.hpp
-    src/Piece/TypePiece.hpp
-    src/Piece/Piece.hpp
-    src/Board/Board.hpp
-    src/Qubit/Qubit.hpp
-    src/check_path/check_path.hpp
-    src/math_utility/math_utility.hpp
-    src/final_solver/final_solver.hpp
+    ${CMAKE_SOURCE_DIR}/include/Unitary.hpp
+    ${CMAKE_SOURCE_DIR}/include/CMatrix.hpp
+    ${CMAKE_SOURCE_DIR}/include/Complex_printer.hpp
+    ${CMAKE_SOURCE_DIR}/include/Move.hpp
+    ${CMAKE_SOURCE_DIR}/include/Constexpr.hpp
+    ${CMAKE_SOURCE_DIR}/src/Coord/Coord.hpp
+    ${CMAKE_SOURCE_DIR}/src/Piece/TypePiece.hpp
+    ${CMAKE_SOURCE_DIR}/src/Piece/Piece.hpp
+    ${CMAKE_SOURCE_DIR}/src/Board/Board.hpp
+    ${CMAKE_SOURCE_DIR}/src/Qubit/Qubit.hpp
+    ${CMAKE_SOURCE_DIR}/src/check_path/check_path.hpp
+    ${CMAKE_SOURCE_DIR}/src/math_utility/math_utility.hpp
+    ${CMAKE_SOURCE_DIR}/src/final_solver/final_solver.hpp
 )
-
-
 
 include(FetchContent)
 
 FetchContent_Declare(Matrix
-GIT_REPOSITORY "https://github.com/qhorgues/Matrix.git"
-GIT_TAG "origin/master"
-SOURCE_DIR "Matrix"
+    GIT_REPOSITORY "https://github.com/qhorgues/Matrix.git"
+    GIT_TAG "origin/master"
+    SOURCE_DIR "Matrix"
 )
 
 FetchContent_MakeAvailable(Matrix)
@@ -71,17 +70,21 @@ endif()
 set (CMAKE_CXX_STANDARD 20)
 set (CMAKE_CXX_STANDARD_REQUIRED ON)
 
-#set_sanitizer()
+if(BUILD_TESTING)
+  add_subdirectory(test)
+endif()
+
+set_sanitizer()
 
 if (MINGW)
     set (CMAKE_EXE_LINKER_FLAGS "-static-libgcc -static-libstdc++ -static")
 
-    if (${CMAKE_BUILD_TYPE} MATCHES "Debug" OR ${CMAKE_BUILD_TYPE} MATCHES "RelWithDebInfo")
-        set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -mwindows")
-    endif()
+    # if (${CMAKE_BUILD_TYPE} MATCHES "Release" OR ${CMAKE_BUILD_TYPE} MATCHES "MinSizeRel")
+    #     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -mwindows")
+    # endif()
 endif (MINGW)
 
-add_executable (${PROJECT_NAME} ${SRCS} ${HEADERS})
+add_executable (${PROJECT_NAME} ${SRCS} src/main.cpp ${HEADERS})
 target_link_libraries(${PROJECT_NAME} Matrix m)
 #set_target_properties(${PROJECT_NAME} PROPERTIES PUBLIC_HEADER ${HEADERS})
 set_target_warnings(${PROJECT_NAME})
@@ -103,6 +106,6 @@ SET(CPACK_RESOURCE_FILE_README "${CMAKE_SOURCE_DIR}/README.md")
 SET(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_SOURCE_DIR}/LICENSE")
 SET(CPACK_DEBIAN_PACKAGE_DEPENDS "libc6")
 SET(CPACK_PACKAGE_VENDOR "Horgues")
-# make postinst run after install                                                #
+# make postinst run after install
 
 include(CPack)

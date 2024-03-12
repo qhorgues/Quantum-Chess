@@ -20,7 +20,7 @@ class Board;
 class Piece
 {
 public:
-    CONSTEXPR Piece() noexcept;
+    constexpr inline Piece() noexcept;
 
     /**
      * @brief Construit une piece à l'aide de son type et de sa couleur
@@ -28,30 +28,30 @@ public:
      * @param[in] piece Le type de la piece
      * @param[in] color La couleur de la piece
      */
-    CONSTEXPR Piece(TypePiece piece, Color color) noexcept;
-    CONSTEXPR Piece(Piece const &) = default;
-    CONSTEXPR Piece &operator=(Piece const &) = default;
+    constexpr inline Piece(TypePiece piece, Color color) noexcept;
+    constexpr inline Piece(Piece const &) = default;
+    constexpr inline Piece &operator=(Piece const &) = default;
 
     /**
      * @brief Deplacement d'un objet piece vers un autre objet piece
      */
-    CONSTEXPR Piece(Piece &&) = default;
-    CONSTEXPR Piece &operator=(Piece &&) = default;
-    CONSTEXPR ~Piece() = default;
+    constexpr inline Piece(Piece &&) = default;
+    constexpr inline Piece &operator=(Piece &&) = default;
+    constexpr inline ~Piece() = default;
 
     /**
      * @brief Renvoie le type de la piece
      *
      * @return Une enumération TypePiece
      */
-    CONSTEXPR TypePiece get_type() const noexcept;
+    constexpr inline TypePiece get_type() const noexcept;
 
     /**
      * @brief Renvoie la couleur d'un piece
      *
      * @return Color La couleur de la piece
      */
-    CONSTEXPR Color get_color() const noexcept;
+    constexpr inline Color get_color() const noexcept;
 
     /**
      * @brief Récupère la liste des mouvements classics pour une piece
@@ -96,14 +96,14 @@ public:
      *
      * @return bool true si la piece est blanche, false sinon
      */
-    CONSTEXPR bool is_white() const noexcept;
+    constexpr inline bool is_white() const noexcept;
 
     /**
      * @brief Teste si la piece est noire
      *
      * @return bool true si la piece est noire, false sinon
      */
-    CONSTEXPR bool is_black() const noexcept;
+    constexpr inline bool is_black() const noexcept;
 
     /**
      * @brief Teste si l'autre piece est de la meme couleur
@@ -112,7 +112,7 @@ public:
      *
      * @return bool true si la piece est de la meme couleur, false sinon
      */
-    CONSTEXPR bool same_color(Piece const &other) const noexcept;
+    constexpr inline bool same_color(Piece const &other) const noexcept;
 
     /**
      * @brief Teste si les mouvement de la piece sont si la
@@ -174,7 +174,7 @@ private:
      * @param[in] y Variable de type size_t
      * @return std::size_t Retourne l'opération |x - y|
      */
-    CONSTEXPR static std::size_t
+    constexpr inline static std::size_t
     abs_substracte(std::size_t x, std::size_t y) noexcept;
 
     /**
@@ -185,7 +185,8 @@ private:
      * @param[in] y Seconde coordonnée
      * @return double le résultat de la norme 1
      */
-    CONSTEXPR static double norm(Coord const &x, Coord const &y) noexcept;
+    constexpr inline static double
+    norm(Coord const &x, Coord const &y) noexcept;
 
     /**
      * @brief Récupère la liste de mouvement d'une pièce pour
@@ -359,61 +360,61 @@ private:
 /**
  * @brief L'objet représentant le roi blanc
  */
-CONSTEXPR Piece W_KING{TypePiece::KING, Color::WHITE};
+constexpr Piece W_KING{TypePiece::KING, Color::WHITE};
 
 /**
  * @brief L'objet représentant le roi noir
  */
-CONSTEXPR Piece B_KING{TypePiece::KING, Color::BLACK};
+constexpr Piece B_KING{TypePiece::KING, Color::BLACK};
 
 /**
  * @brief L'objet représentant la renne blanche
  */
-CONSTEXPR Piece W_QUEEN{TypePiece::QUEEN, Color::WHITE};
+constexpr Piece W_QUEEN{TypePiece::QUEEN, Color::WHITE};
 
 /**
  * @brief L'objet représentant la renne noire
  */
-CONSTEXPR Piece B_QUEEN{TypePiece::KING, Color::BLACK};
+constexpr Piece B_QUEEN{TypePiece::KING, Color::BLACK};
 
 /**
  * @brief L'objet représentant le fou blanc
  */
-CONSTEXPR Piece W_BISHOP{TypePiece::BISHOP, Color::WHITE};
+constexpr Piece W_BISHOP{TypePiece::BISHOP, Color::WHITE};
 
 /**
  * @brief L'objet représentant le fou noir
  */
-CONSTEXPR Piece B_BISHOP{TypePiece::BISHOP, Color::BLACK};
+constexpr Piece B_BISHOP{TypePiece::BISHOP, Color::BLACK};
 
 /**
  * @brief L'objet représentant la tour blanche
  */
-CONSTEXPR Piece W_ROOK{TypePiece::ROOK, Color::WHITE};
+constexpr Piece W_ROOK{TypePiece::ROOK, Color::WHITE};
 
 /**
  * @brief L'objet représentant la tour noire
  */
-CONSTEXPR Piece B_ROOK{TypePiece::ROOK, Color::BLACK};
+constexpr Piece B_ROOK{TypePiece::ROOK, Color::BLACK};
 
 /**
  * @brief L'objet représentant le cavalier blanc
  */
-CONSTEXPR Piece W_KNIGHT{TypePiece::KNIGHT, Color::WHITE};
+constexpr Piece W_KNIGHT{TypePiece::KNIGHT, Color::WHITE};
 
 /**
  * @brief L'objet représentant le cavalier noir
  */
-CONSTEXPR Piece B_KNIGHT{TypePiece::KNIGHT, Color::BLACK};
+constexpr Piece B_KNIGHT{TypePiece::KNIGHT, Color::BLACK};
 
 /**
  * @brief L'objet représentant le pion blanc
  */
-CONSTEXPR Piece W_PAWN{TypePiece::PAWN, Color::WHITE};
+constexpr Piece W_PAWN{TypePiece::PAWN, Color::WHITE};
 
 /**
  * @brief L'objet représentant le pion noir
  */
-CONSTEXPR Piece B_PAWN{TypePiece::PAWN, Color::BLACK};
+constexpr Piece B_PAWN{TypePiece::PAWN, Color::BLACK};
 
 #endif

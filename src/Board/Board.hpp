@@ -78,7 +78,7 @@ public:
      * @return Un pointeur observateur sur une piece
      * ou nullptr si la case est vide
      */
-    CONSTEXPR Piece const&
+    CONSTEXPR Piece const &
     operator()(std::size_t n,
                std::size_t m) const noexcept;
 
@@ -111,9 +111,9 @@ public:
     /**
      * @brief Teste si les mouvement de la piece sont si la
      * pièce est un pion un mouvement de promotion
-     * 
+     *
      * @note peut etre utiliser sans verifier si la pièce est un pion
-     * 
+     *
      * @param[in] pos La position de la pièce
      * @return true si le mouvement possible est un mouvement
      * de promotion
@@ -123,17 +123,16 @@ public:
     check_if_use_move_promote(Coord const &pos) const noexcept;
 
     /**
-     * @brief Renvoie la liste de toutes les promotions 
-     * 
+     * @brief Renvoie la liste de toutes les promotions
+     *
      * @warning Ne verifie pas la validité du mouvement,
      * de la position ou du type de la pièce
-     * 
+     *
      * @param[in] pos La position du pion
      * @return La liste de tout les mouvements de promotion
      */
     CONSTEXPR std::forward_list<Move>
     get_list_promote(Coord const &pos) const noexcept;
-
 
     /**
      * @brief Test si un mouvement est réalisable
@@ -149,7 +148,7 @@ public:
      *
      * @warning Ne procède aucune vérification sur la validité du mouvement
      *
-     * @param movement
+     * @param movement Le mouvement à raliser
      */
     CONSTEXPR void move(Move const &movement);
 
@@ -215,7 +214,7 @@ public:
      * @param p Le type de la pièce de la promotion
      */
     CONSTEXPR void
-    move_promotion(Move const &move) noexcept;
+    move_promotion(Move const &move);
 
 private:
     /**
@@ -226,7 +225,7 @@ private:
      */
     void update_case(std::size_t pos) noexcept;
     /**
-     * @brief Fonction qui permet de mattre à jour le plateau après un merge,
+     * @brief Fonction qui permet de mattre à jour le plateau,
      * car ce mouvement entraine l'apparition de plusieurs instance de board
      * identique, il faut donc les concaténer en ajoutant les probas, si la
      * proba vaut 0, on supprime l'instance
@@ -235,7 +234,7 @@ private:
      * c'est à dire le nombre d'instance du plateau, N et M les dimensions
      * du plateau
      */
-    void update_after_merge() noexcept;
+    void update_board() noexcept;
 
     /**
      * @brief Mouvement classique d'une pièce qui "saute"
@@ -362,8 +361,10 @@ private:
      * @tparam M Le nombre de colonnes du plateau
      * @param[in] s Coordonnées de la source
      * @param[in] t Coordonnées de la cible
+     * @return true si le mouvement à etait effectué
+     * @return false sinon
      */
-    CONSTEXPR void move_pawn_one_step(Coord const &s, Coord const &t);
+    CONSTEXPR bool move_pawn_one_step(Coord const &s, Coord const &t);
 
     /**
      * @brief Le mouvement de pion de deux cases fonctionne
@@ -379,8 +380,10 @@ private:
      * @tparam M Le nombre de colonnes du plateau
      * @param[in] s Coordonnées de la source
      * @param[in] t Coordonnées de la cible
+     * @return true si le mouvement à etait effectué
+     * @return false sinon
      */
-    CONSTEXPR void move_pawn_two_step(Coord const &s, Coord const &t);
+    CONSTEXPR bool move_pawn_two_step(Coord const &s, Coord const &t);
     /**
      * @brief Mouvement de capture dun pion. A la différence
      * d'un mouvement de "capture jump", on mesure la présence
@@ -390,9 +393,10 @@ private:
      *
      * @param s Coordonnées de la source
      * @param t Coordonnées de la cible
-     * @return CONSTEXPR
+     * @return true si le mouvement à etait effectué
+     * @return false sinon
      */
-    CONSTEXPR void capture_pawn(Coord const &s, Coord const &t);
+    CONSTEXPR bool capture_pawn(Coord const &s, Coord const &t);
 
     /**
      * @brief Permet d'effectuer un mouvement de prise en passant
@@ -405,8 +409,10 @@ private:
      * @param[in] s Les coordonnées de la source
      * @param[in] t Les coordonnées de la cible (l'endroit où arrive le pion)
      * @param[in] ep Les coordonnées du pion capturer "en passant"
+     * @return true si le mouvement à etait effectué
+     * @return false sinon
      */
-    CONSTEXPR void
+    CONSTEXPR bool
     move_enpassant(Coord const &s, Coord const &t, Coord const &ep);
 
     /**
@@ -486,8 +492,10 @@ private:
      * @tparam M Le nombre de colonnes du plateau
      * @param[in] s Coordonnées de la source
      * @param[in] t Coordonnées de la cible
+     * @return true si le mouvement à etait effectué
+     * @return false sinon
      */
-    CONSTEXPR void move_pawn(Coord const &s, Coord const &t);
+    CONSTEXPR bool move_pawn(Coord const &s, Coord const &t) noexcept;
 
     /**
      * @brief Renvoie une position 1D d'une coordonnée 2D
@@ -580,7 +588,7 @@ private:
                                    std::size_t position,
                                    CMatrix<_2POW(Q)> const &matrix,
                                    std::array<std::size_t, Q> const
-                                       &tab_positions);
+                                       &tab_positions) noexcept;
 
     /**
      * @brief Mouvement du petit roque.
@@ -652,7 +660,9 @@ private:
 
     /**
      * @brief Contient la case sur laquelle il est
-     * possible de faire une prise en passant
+     * possible de faire une prise en passant qui
+     * est vide (la case occupé si le pion avait avancé
+     * d'une seule case)
      */
     std::optional<Coord> m_ep;
 };

@@ -4,6 +4,7 @@
 #include <numeric>
 #include <math_utility.hpp>
 #include <Constexpr.hpp>
+#include <Coord.hpp>
 
 template <std::size_t N>
 CONSTEXPR Qubit<N>::Qubit(
