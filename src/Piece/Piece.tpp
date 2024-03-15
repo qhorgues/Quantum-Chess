@@ -363,6 +363,7 @@ Piece::get_list_move(Board<N, M> const &board, Coord const &pos) const noexcept
         return get_list_move_queen<MOVE>(board, pos);
     case TypePiece::KING:
         return get_list_move_king<MOVE>(board, pos);
+    case TypePiece::EMPTY:
     default:
         return std::forward_list<Coord>{};
     }

@@ -858,7 +858,7 @@ Board<N, M>::move_merge_jump(Coord const &s1, Coord const &s2, Coord const &t)
             i, MATRIX_MERGE,
             std::array<std::size_t, 3>{source1, source2, target});
     }
-    m_piece_board[target] = std::move(m_piece_board[source1]);
+    m_piece_board[target] = m_piece_board[source1];
     update_board();
     update_case(target);
     update_case(source1);
@@ -1043,7 +1043,7 @@ Board<N, M>::move_merge_slide(
            nos fonctions check_path renvoie un résultat où l'on
            a appliquer la porte cnot */
     }
-    m_piece_board[target] = std::move(m_piece_board[source1]);
+    m_piece_board[target] = m_piece_board[source1];
     update_board();
     update_case(target);
     update_case(source1);
