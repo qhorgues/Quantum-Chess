@@ -223,8 +223,8 @@ namespace computer
                             {
                                 if (get_player_calc_best_score(
                                         current,
-                                        best_score,
-                                        alpha))
+                                        alpha,
+                                        best_score))
                                 {
                                     return true;
                                 }

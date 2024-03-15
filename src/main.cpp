@@ -63,12 +63,27 @@ int main()
          {W_PAWN, W_PAWN, W_PAWN, W_PAWN, W_PAWN, W_PAWN, W_PAWN, W_PAWN},
          {W_ROOK, W_KNIGHT, W_BISHOP, W_QUEEN, W_KING, W_BISHOP, W_KNIGHT, W_ROOK}}};
 
+    Board<3> B2{
+        {
+            {B_KING, Piece(), B_QUEEN},
+            {W_PAWN,  B_PAWN, W_QUEEN},
+            {Piece(), Piece(), W_KING}
+        } 
+    };
+
+    Board<3> B3{
+        {
+            {B_KING, Piece(), Piece()},
+            {Piece(), W_ROOK, Piece()},
+            {Piece(), Piece(), W_KING}
+        } 
+    };
     /* Board<3> B1{
         {B_KING, B_ROOK, Piece()},
         {B_PAWN, Piece(), Piece()},
         {Piece(), W_QUEEN, W_KING}}; */
 
-    auto_playing(ChessBoard, log_file, 5, 3);
+    auto_playing(B3, log_file, 10, 5);
 
     log_file.close();
     return 0;
