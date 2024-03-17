@@ -221,7 +221,7 @@ CONSTEXPR bool Board<N, M>::mesure(Coord const &p)
             std::pow(
                 std::abs(m_board[indice_mes].second), 2)};
         std::size_t size_board{std::size(m_board)};
-        while (x - pow_coef > 0 && indice_mes < size_board)
+        while (x - pow_coef > 0 && indice_mes < size_board -1)
         {
             x -= pow_coef;
             indice_mes++;
@@ -284,7 +284,7 @@ Board<N, M>::mesure_capture_slide(
         double pow_coef{
             std::pow(std::abs(m_board[0].second), 2)};
         std::size_t size_board{std::size(m_board)};
-        while (x - pow_coef > 0 && indice_mes < size_board)
+        while (x - pow_coef > 0 && indice_mes < size_board -1)
         {
             x -= pow_coef;
             indice_mes++;
@@ -347,7 +347,7 @@ Board<N, M>::mesure_castle(
     double pow_coef{
         std::pow(std::abs(m_board[0].second), 2)};
 
-    while (x - pow_coef > 0 && indice_mes < size_board)
+    while (x - pow_coef > 0 && indice_mes < size_board -1)
     {
         x -= pow_coef;
         indice_mes++;
@@ -634,7 +634,7 @@ Board<N, M>::move_pawn_two_step(Coord const &s, Coord const &t)
                 i, MATRIX_SLIDE,
                 std::array<std::size_t, 3>{N * M + 1, target, source});
         }
-        m_piece_board[target] = std::move(m_piece_board[source]);
+        m_piece_board[target] = m_piece_board[source];
         update_case(source);
         return true;
     }
@@ -687,7 +687,7 @@ CONSTEXPR bool Board<N, M>::capture_pawn(Coord const &s, Coord const &t)
                     std::array<std::size_t, 3>{source, target, N * M + 1});
             }
         }
-        m_piece_board[target] = std::move(m_piece_board[source]);
+        m_piece_board[target] = m_piece_board[source];
         update_case(source);
         return true;
     }
@@ -755,7 +755,7 @@ Board<N, M>::move_enpassant(Coord const &s, Coord const &t, Coord const &ep)
                             std::array<std::size_t, 2>{source, target});
                     }
                 }
-                m_piece_board[target] = std::move(m_piece_board[source]);
+                m_piece_board[target] = m_piece_board[source];
                 m_piece_board[source] = Piece();
                 return true;
             }
@@ -823,16 +823,18 @@ Board<N, M>::move_split_jump(Coord const &s, Coord const &t1, Coord const &t2)
             std::array<std::size_t, 3>{target2, target1, source});
     }
     m_piece_board[target1] = m_piece_board[source];
-    m_piece_board[target2] = std::move(m_piece_board[source]);
+   
     if (m_piece_board[target1].get_type() == TypePiece::EMPTY &&
         m_piece_board[target2].get_type() == TypePiece::EMPTY)
     {
-        update_case(source);
+         m_piece_board[target2] = std::move(m_piece_board[source]);
+        m_piece_board[source] = Piece();
         update_case(target1);
         update_case(target2);
     }
     else
     {
+         m_piece_board[target2] = m_piece_board[source];
         update_case(source);
         update_case(target1);
         update_case(target2);
@@ -896,7 +898,7 @@ Board<N, M>::move_classic_slide(
                 i, MATRIX_SLIDE,
                 std::array<std::size_t, 3>{N * M + 1, target, source});
         }
-        m_piece_board[target] = std::move(m_piece_board[source]);
+        m_piece_board[target] = m_piece_board[source];
         update_case(source);
     }
     else
@@ -988,7 +990,7 @@ Board<N, M>::move_split_slide(
         m_piece_board[target2].get_type() == TypePiece::EMPTY)
     {
         m_piece_board[target1] = m_piece_board[source];
-        m_piece_board[target2] = std::move(m_piece_board[source]);
+        m_piece_board[target2] = m_piece_board[source];
         update_case(source);
         update_case(target1);
         update_case(target2);
@@ -996,7 +998,7 @@ Board<N, M>::move_split_slide(
     else
     {
         m_piece_board[target1] = m_piece_board[source];
-        m_piece_board[target2] = std::move(m_piece_board[source]);
+        m_piece_board[target2] = m_piece_board[source];
         update_case(source);
         update_case(target1);
         update_case(target2);
