@@ -238,7 +238,7 @@ namespace computer
                      &best_score_alpha_beta,
                      profondeur,
                      check_best_score,
-                     &best_score](Move const &m) mutable -> void
+                     &best_score](Move const &m) mutable -> bool
                     {
                         double score;
                         Board<N, M> board_cpy = board;
@@ -248,7 +248,7 @@ namespace computer
                         }
                         catch (std::runtime_error const &e)
                         {
-                            return;
+                            return false;
                         }
                         board_cpy.change_player();
                         best_score_alpha_beta
@@ -260,12 +260,8 @@ namespace computer
                                 profondeur -
                                     1);
                         best_score_alpha_beta.pop_front();
-                        if (check_best_score(score))
-                        {
-                            goto REC_GET_BEST_MOVE_END;
-                        }
+                        return check_best_score(score);
                     });
-            REC_GET_BEST_MOVE_END:
                 return best_score;
             }
         }
@@ -279,7 +275,7 @@ namespace computer
             Move &best_move;
             int profondeur;
         };
-
+        
         template <std::size_t N, std::size_t M>
         CONSTEXPR void
         th_get_best_move(Param_get_best_move<N, M> &&param)
@@ -323,10 +319,11 @@ namespace computer
         board.all_move(
             [&list_move,
              &last_th_view,
-             number_thread](Move const &m) mutable -> void
+             number_thread](Move const &m) mutable -> bool
             {
                 list_move[last_th_view].push_front(std::move(m));
                 last_th_view = (last_th_view + 1) % number_thread;
+                return false;
             });
 
         std::vector<std::thread> threads(number_thread);
