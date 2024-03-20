@@ -302,17 +302,20 @@ CONSTEXPR bool
 Piece::check_if_use_move_promote(Board<N, M> const &board,
                                  Coord const &pos) const noexcept
 {
-    if (board(pos.n, pos.m).get_type() == TypePiece::PAWN)
+    if constexpr (N >= 2)
     {
-        auto sign_color{
-            [](Color color) -> int
-            {
-                return (color == Color::WHITE) ? -1 : 1;
-            }};
-        int required_line{(get_color() == Color::WHITE) ? 1 : N - 2};
-        if (pos.n == required_line)
+        if (board(pos.n, pos.m).get_type() == TypePiece::PAWN)
         {
-            return true;
+            auto sign_color{
+                [](Color color) -> int
+                {
+                    return (color == Color::WHITE) ? -1 : 1;
+                }};
+            std::size_t required_line{(get_color() == Color::WHITE) ? 1 : N - 2};
+            if (pos.n == required_line)
+            {
+                return true;
+            }
         }
     }
     return false;
