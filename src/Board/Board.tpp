@@ -221,7 +221,7 @@ CONSTEXPR bool Board<N, M>::mesure(Coord const &p)
             std::pow(
                 std::abs(m_board[indice_mes].second), 2)};
         std::size_t size_board{std::size(m_board)};
-        while (x - pow_coef > 0 && indice_mes < size_board -1)
+        while (x - pow_coef > 0 && indice_mes < size_board - 1)
         {
             x -= pow_coef;
             indice_mes++;
@@ -284,7 +284,7 @@ Board<N, M>::mesure_capture_slide(
         double pow_coef{
             std::pow(std::abs(m_board[0].second), 2)};
         std::size_t size_board{std::size(m_board)};
-        while (x - pow_coef > 0 && indice_mes < size_board -1)
+        while (x - pow_coef > 0 && indice_mes < size_board - 1)
         {
             x -= pow_coef;
             indice_mes++;
@@ -347,7 +347,7 @@ Board<N, M>::mesure_castle(
     double pow_coef{
         std::pow(std::abs(m_board[0].second), 2)};
 
-    while (x - pow_coef > 0 && indice_mes < size_board -1)
+    while (x - pow_coef > 0 && indice_mes < size_board - 1)
     {
         x -= pow_coef;
         indice_mes++;
@@ -823,18 +823,18 @@ Board<N, M>::move_split_jump(Coord const &s, Coord const &t1, Coord const &t2)
             std::array<std::size_t, 3>{target2, target1, source});
     }
     m_piece_board[target1] = m_piece_board[source];
-   
+
     if (m_piece_board[target1].get_type() == TypePiece::EMPTY &&
         m_piece_board[target2].get_type() == TypePiece::EMPTY)
     {
-         m_piece_board[target2] = std::move(m_piece_board[source]);
+        m_piece_board[target2] = std::move(m_piece_board[source]);
         m_piece_board[source] = Piece();
         update_case(target1);
         update_case(target2);
     }
     else
     {
-         m_piece_board[target2] = m_piece_board[source];
+        m_piece_board[target2] = m_piece_board[source];
         update_case(source);
         update_case(target1);
         update_case(target2);
@@ -1403,4 +1403,128 @@ CONSTEXPR std::forward_list<Move>
 Board<N, M>::get_list_promote(Coord const &pos) const noexcept
 {
     return (*this)(pos.n, pos.m).get_list_promote(*this, pos);
+}
+
+template <std::size_t N, std::size_t M>
+template <class UnitaryFunction>
+CONSTEXPR void
+Board<N, M>::all_move(
+    UnitaryFunction func,
+    std::optional<Color> color_player) noexcept
+{
+    std::unordered_map<TypePiece,
+                       std::unordered_map<
+                           Coord,
+                           std::vector<Coord>,
+                           Coord_hash>>
+        move_merge{};
+
+    for (std::size_t i{0}; i < numberLines(); i++)
+    {
+        for (std::size_t j{0}; j < numberColumns(); j++)
+        {
+            Piece const &piece{(*this)(i, j)};
+            double p_proba{get_proba(Coord(i, j))};
+            if (piece.get_type() != TypePiece::EMPTY &&
+                piece.get_color() == color_player
+                                         .value_or(get_current_player()))
+            {
+                if (!check_if_use_move_promote(Coord(i, j)))
+                {
+                    std::forward_list<Coord> move_normal{
+                        get_list_normal_move(Coord(i, j))};
+
+                    for (Coord const &c : move_normal)
+                    {
+                        func(Move_classic(Coord(i, j), c));
+                    }
+
+                    std::forward_list<Coord> move_split{
+                        get_list_split_move(Coord(i, j))};
+
+                    std::forward_list<Coord>::
+                        const_iterator it_move{
+                            std::cbegin(move_split)};
+                    for (; it_move != std::cend(move_split);
+                         it_move++)
+                    {
+                        for (std::forward_list<Coord>::
+                                 const_iterator it2{
+                                     std::cbegin(move_split)};
+                             it2 != cend(move_split); it2++)
+                        {
+                            if (it_move == it2)
+                            {
+                                continue;
+                            }
+                            func(Move_split(Coord(i, j), *it_move, *it2));
+                        }
+                        if (piece.get_type() != TypePiece::PAWN)
+                        {
+                            if (move_merge
+                                    .contains(piece.get_type()))
+                            {
+                                if (move_merge
+                                        .at(piece.get_type())
+                                        .contains(*it_move))
+                                {
+                                    for (Coord const &c :
+                                         move_merge
+                                             .at(piece.get_type())
+                                             .at(*it_move))
+                                    {
+                                        if (p_proba < 1. ||
+                                            get_proba(
+                                                Coord(
+                                                    c.n,
+                                                    c.m)) < 1.)
+                                        {
+                                            func(Move_merge(
+                                                Coord(i, j),
+                                                c,
+                                                *it_move));
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    move_merge
+                                        .at(piece.get_type())
+                                        .insert({*it_move,
+                                                 std::vector{
+                                                     Coord(i, j)}});
+                                }
+                            }
+                            else
+                            {
+                                move_merge
+                                    .insert(
+                                        std::make_pair(
+                                            piece
+                                                .get_type(),
+                                            std::unordered_map<
+                                                Coord,
+                                                std::vector<Coord>,
+                                                Coord_hash>{
+                                                std::make_pair(
+                                                    *it_move,
+                                                    std::vector{
+                                                        Coord(i, j)})}));
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    std::forward_list<Move> list{
+                        get_list_promote(Coord(i, j))};
+
+                    for (Move const &move : list)
+                    {
+                        func(move);
+                    }
+                }
+            }
+        }
+    }
 }

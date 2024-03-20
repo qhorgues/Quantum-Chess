@@ -20,6 +20,11 @@ int main()
          {B_PAWN, Piece(), Piece(), W_BISHOP},
          {Piece(), Piece(), Piece(), B_KING}}};
 
+    std::forward_list<Move> all_move {};
+    B4.all_move([&all_move](Move const& m) mutable -> void {
+        all_move.push_front(m);
+    });
+
     std::forward_list<Move> l = B4.get_list_promote(Coord(1, 1));
     Move m = Move_promote(Coord(1, 1), Coord(0, 1), TypePiece::QUEEN);
     Move m1 = Move_split(Coord(1,2), Coord(3,2), Coord(0,3));
