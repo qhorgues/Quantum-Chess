@@ -135,6 +135,19 @@ public:
     get_list_promote(Coord const &pos) const noexcept;
 
     /**
+     * @brief Applique une fonction à l'entiéreté des mouvements possible
+     *
+     * @param[in, out] func La fonction à appliquer sur tout les mouvements
+     * @param[in] color La couleur du joueur au qu'elle on 
+     * récupère les mouvements
+     */
+    template <class UnitaryFunction>
+    CONSTEXPR void
+    all_move(
+        UnitaryFunction func,
+        std::optional<Color> color_player = std::nullopt) noexcept;
+
+    /**
      * @brief Test si un mouvement est réalisable
      *
      * @param[in] move Le mouvement à tester
