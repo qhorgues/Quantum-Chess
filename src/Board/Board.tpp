@@ -1410,7 +1410,7 @@ template <class UnitaryFunction>
 CONSTEXPR void
 Board<N, M>::all_move(
     UnitaryFunction func,
-    std::optional<Color> color_player) noexcept
+    std::optional<Color> color_player) const noexcept
 {
     std::unordered_map<TypePiece,
                        std::unordered_map<
@@ -1436,7 +1436,10 @@ Board<N, M>::all_move(
 
                     for (Coord const &c : move_normal)
                     {
-                        func(Move_classic(Coord(i, j), c));
+                        if(func(Move_classic(Coord(i, j), c)))
+                        {
+                            return;
+                        }
                     }
 
                     std::forward_list<Coord> move_split{
@@ -1457,7 +1460,10 @@ Board<N, M>::all_move(
                             {
                                 continue;
                             }
-                            func(Move_split(Coord(i, j), *it_move, *it2));
+                            if (func(Move_split(Coord(i, j), *it_move, *it2)))
+                            {
+                                return;
+                            }
                         }
                         if (piece.get_type() != TypePiece::PAWN)
                         {
@@ -1479,10 +1485,13 @@ Board<N, M>::all_move(
                                                     c.n,
                                                     c.m)) < 1.)
                                         {
-                                            func(Move_merge(
+                                            if (func(Move_merge(
                                                 Coord(i, j),
                                                 c,
-                                                *it_move));
+                                                *it_move)))
+                                            {
+                                                return;
+                                            }
                                         }
                                     }
                                 }
@@ -1521,7 +1530,10 @@ Board<N, M>::all_move(
 
                     for (Move const &move : list)
                     {
-                        func(move);
+                        if (func(move))
+                        {
+                            return;
+                        }
                     }
                 }
             }
