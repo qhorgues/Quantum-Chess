@@ -198,14 +198,6 @@ namespace computer
             }
             else
             {
-
-                std::unordered_map<TypePiece,
-                                   std::unordered_map<
-                                       Coord,
-                                       std::vector<Coord>,
-                                       Coord_hash>>
-                    move_merge{};
-
                 double best_score{-1 * sign_color(board.get_current_player()) *
                                   std::numeric_limits<double>::max()};
                 auto check_best_score{
@@ -240,216 +232,40 @@ namespace computer
                         }
                         return false;
                     }};
-                for (std::size_t i{0}; i < board.numberLines(); i++)
-                {
-                    for (std::size_t j{0}; j < board.numberColumns(); j++)
+
+                board.all_move(
+                    [&board,
+                     &best_score_alpha_beta,
+                     profondeur,
+                     check_best_score,
+                     &best_score](Move const &m) mutable -> void
                     {
-                        Piece const &piece{board(i, j)};
-                        if (piece.get_type() != TypePiece::EMPTY &&
-                            piece.get_color() == board.get_current_player())
+                        double score;
+                        Board<N, M> board_cpy = board;
+                        try
                         {
-                            if (!board.check_if_use_move_promote(Coord(i, j)))
-                            {
-                                double p_proba{board.get_proba(Coord(i, j))};
-                                std::forward_list<Coord> move_normal{
-                                    board.get_list_normal_move(Coord(i, j))};
-
-                                for (Coord const &c : move_normal)
-                                {
-                                    double score;
-                                    Board<N, M> board_cpy = board;
-                                    try
-                                    {
-                                        board_cpy.move(
-                                            Move_classic(Coord(i, j), c));
-                                    }
-                                    catch (std::runtime_error const &e)
-                                    {
-                                        continue;
-                                    }
-                                    board_cpy.change_player();
-                                    best_score_alpha_beta
-                                        .push_front(best_score);
-                                    score =
-                                        rec_get_best_move(
-                                            board_cpy,
-                                            best_score_alpha_beta,
-                                            profondeur -
-                                                1);
-                                    best_score_alpha_beta.pop_front();
-                                    if (check_best_score(score))
-                                    {
-                                        return best_score;
-                                    }
-                                }
-
-                                std::forward_list<Coord> move_split{
-                                    board.get_list_split_move(Coord(i, j))};
-
-                                std::forward_list<Coord>::
-                                    const_iterator it_move{
-                                        std::cbegin(move_split)};
-                                for (; it_move != std::cend(move_split);
-                                     it_move++)
-                                {
-                                    for (std::forward_list<Coord>::
-                                             const_iterator it2{
-                                                 std::cbegin(move_split)};
-                                         it2 != cend(move_split); it2++)
-                                    {
-                                        if (it_move == it2)
-                                        {
-                                            continue;
-                                        }
-                                        Board<N, M> board_cpy = board;
-                                        try
-                                        {
-                                            board_cpy.move(
-                                                Move_split(Coord(i, j),
-                                                           *it_move, *it2));
-                                        }
-                                        catch (std::runtime_error const &e)
-                                        {
-                                            continue;
-                                        }
-                                        board_cpy.change_player();
-                                        best_score_alpha_beta
-                                            .push_front(best_score);
-                                        double score =
-                                            rec_get_best_move(
-                                                board_cpy,
-                                                best_score_alpha_beta,
-                                                profondeur - 1);
-                                        best_score_alpha_beta.pop_front();
-                                        if (check_best_score(score))
-                                        {
-                                            return best_score;
-                                        }
-                                    }
-                                    if (piece.get_type() != TypePiece::PAWN)
-                                    {
-                                        if (move_merge
-                                                .contains(piece.get_type()))
-                                        {
-                                            if (move_merge
-                                                    .at(piece.get_type())
-                                                    .contains(*it_move))
-                                            {
-                                                for (Coord const &c :
-                                                     move_merge
-                                                         .at(piece.get_type())
-                                                         .at(*it_move))
-                                                {
-                                                    if (p_proba < 1. ||
-                                                        board.get_proba(
-                                                            Coord(
-                                                                c.n,
-                                                                c.m)) < 1.)
-                                                    {
-                                                        Move move =
-                                                            Move_merge(
-                                                                Coord(i, j),
-                                                                c,
-                                                                *it_move);
-
-                                                        Board<N, M>
-                                                            board_cpy =
-                                                                board;
-
-                                                        board_cpy
-                                                            .move(move);
-                                                        board_cpy
-                                                            .change_player();
-                                                        try
-                                                        {
-                                                            best_score_alpha_beta
-                                                                .push_front(
-                                                                    best_score);
-
-                                                            double score =
-                                                                rec_get_best_move(
-                                                                    board_cpy,
-                                                                    best_score_alpha_beta,
-                                                                    profondeur - 1);
-                                                            best_score_alpha_beta
-                                                                .pop_front();
-                                                            if (
-                                                                check_best_score(
-                                                                    score))
-                                                            {
-                                                                return best_score;
-                                                            }
-                                                        }
-                                                        catch (
-                                                            std::exception const
-                                                                &e)
-                                                        {
-                                                            continue;
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                            else
-                                            {
-                                                move_merge
-                                                    .at(piece.get_type())
-                                                    .insert({*it_move,
-                                                             std::vector{
-                                                                 Coord(i, j)}});
-                                            }
-                                        }
-                                        else
-                                        {
-                                            move_merge
-                                                .insert(
-                                                    std::make_pair(
-                                                        piece
-                                                            .get_type(),
-                                                        std::unordered_map<
-                                                            Coord,
-                                                            std::vector<Coord>,
-                                                            Coord_hash>{
-                                                            std::make_pair(
-                                                                *it_move,
-                                                                std::vector{
-                                                                    Coord(i, j)})}));
-                                        }
-                                    }
-                                }
-                            }
-                            else
-                            {
-                                std::forward_list<Move> list{
-                                    board.get_list_promote(Coord(i, j))};
-
-                                for (Move const &move : list)
-                                {
-                                    double score;
-                                    Board<N, M> board_cpy = board;
-                                    try
-                                    {
-                                        board_cpy.move_promotion(move);
-                                    }
-                                    catch (std::runtime_error const &e)
-                                    {
-                                        continue;
-                                    }
-                                    board_cpy.change_player();
-                                    best_score_alpha_beta.push_front(best_score);
-                                    score = rec_get_best_move(board_cpy,
-                                                              best_score_alpha_beta,
-                                                              profondeur -
-                                                                  1);
-                                    best_score_alpha_beta.pop_front();
-                                    if (check_best_score(score))
-                                    {
-                                        return best_score;
-                                    }
-                                }
-                            }
+                            board_cpy.move(m);
                         }
-                    }
-                }
+                        catch (std::runtime_error const &e)
+                        {
+                            return;
+                        }
+                        board_cpy.change_player();
+                        best_score_alpha_beta
+                            .push_front(best_score);
+                        score =
+                            rec_get_best_move(
+                                board_cpy,
+                                best_score_alpha_beta,
+                                profondeur -
+                                    1);
+                        best_score_alpha_beta.pop_front();
+                        if (check_best_score(score))
+                        {
+                            goto REC_GET_BEST_MOVE_END;
+                        }
+                    });
+            REC_GET_BEST_MOVE_END:
                 return best_score;
             }
         }
@@ -496,7 +312,6 @@ namespace computer
                 }
             }
         }
-
     }
     template <std::size_t N, std::size_t M>
     CONSTEXPR Move get_best_move(Board<N, M> const &board, int profondeur)
@@ -505,134 +320,15 @@ namespace computer
         std::vector<std::forward_list<Move>> list_move(number_thread);
         std::size_t last_th_view{0};
 
-        // contient pour chaque piece un dictionnaire avec des cases
-        // et le tableau correspond à toutes les pièces du meme type
-        // et de la meme couleur qui partage cette case en mouvement
-        // possible et peuvent donc effectuer un merge
-        std::unordered_map<TypePiece,
-                           std::unordered_map<
-                               Coord,
-                               std::vector<Coord>,
-                               Coord_hash>>
-            move_merge{};
-
-        for (std::size_t i{0}; i < board.numberLines(); i++)
-        {
-            for (std::size_t j{0}; j < board.numberColumns(); j++)
+        board.all_move(
+            [&list_move,
+             &last_th_view,
+             number_thread](Move const &m) mutable -> void
             {
-                Piece const &p = board(i, j);
-                if (p.get_type() != TypePiece::EMPTY &&
-                    p.get_color() == board.get_current_player())
-                {
-                    if (!board.check_if_use_move_promote(Coord(i, j)))
-                    {
-                        double p_proba{board.get_proba(Coord(i, j))};
-                        std::forward_list<Coord> move_normal{
-                            board.get_list_normal_move(Coord(i, j))};
+                list_move[last_th_view].push_front(std::move(m));
+                last_th_view = (last_th_view + 1) % number_thread;
+            });
 
-                        std::forward_list<Coord>::const_iterator it_move{
-                            std::cbegin(move_normal)};
-                        std::size_t k{0};
-                        for (; it_move != std::cend(move_normal);
-                             k++, it_move++)
-                        {
-                            Move move{Move_classic(Coord(i, j), *it_move)};
-                            list_move[(last_th_view + k) % number_thread]
-                                .push_front(std::move(move));
-                        }
-                        last_th_view = (last_th_view + k) % number_thread;
-
-                        std::forward_list<Coord> move_split{
-                            board.get_list_split_move(Coord(i, j))};
-
-                        it_move = std::cbegin(move_split);
-                        k = 0;
-                        for (; it_move != std::cend(move_split);
-                             it_move++)
-                        {
-                            for (std::forward_list<Coord>::const_iterator it2{
-                                     std::cbegin(move_split)};
-                                 it2 != cend(move_split); k++, it2++)
-                            {
-                                if (it_move == it2)
-                                {
-                                    k--;
-                                    continue;
-                                }
-                                Move move{Move_split(Coord(i, j),
-                                                     *it_move, *it2)};
-                                list_move[(last_th_view + k) % number_thread]
-                                    .push_front(std::move(move));
-                            }
-                            if (p.get_type() != TypePiece::PAWN)
-                            {
-                                if (move_merge.contains(p.get_type()))
-                                {
-                                    if (move_merge.at(p.get_type())
-                                            .contains(*it_move))
-                                    {
-                                        for (Coord const &c :
-                                             move_merge.at(p.get_type())
-                                                 .at(*it_move))
-                                        {
-                                            if (p_proba < 1. ||
-                                                board.get_proba(
-                                                    Coord(c.n, c.m)) < 1.)
-                                            {
-                                                Move move = Move_merge(
-                                                    Coord(i, j), c, *it_move);
-
-                                                list_move[last_th_view %
-                                                          number_thread]
-                                                    .push_front(
-                                                        std::move(move));
-
-                                                last_th_view =
-                                                    (last_th_view + 1) %
-                                                    number_thread;
-                                            }
-                                        }
-                                    }
-                                    else
-                                    {
-                                        move_merge.at(p.get_type())
-                                            .insert({*it_move,
-                                                     std::vector{Coord(i, j)}});
-                                    }
-                                }
-                                else
-                                {
-                                    move_merge
-                                        .insert(
-                                            std::make_pair(
-                                                p.get_type(),
-                                                std::unordered_map<
-                                                    Coord,
-                                                    std::vector<Coord>,
-                                                    Coord_hash>{
-                                                    std::make_pair(
-                                                        *it_move,
-                                                        std::vector{
-                                                            Coord(i, j)})}));
-                                }
-                            }
-                        }
-                        last_th_view = (last_th_view + k) % number_thread;
-                    }
-                    else
-                    {
-                        std::forward_list<Move> list{
-                            board.get_list_promote(Coord(i, j))};
-
-                        for (Move const &move : list)
-                        {
-                            list_move[last_th_view].push_front(move);
-                            last_th_view = (last_th_view + 1) % number_thread;
-                        }
-                    }
-                }
-            }
-        }
         std::vector<std::thread> threads(number_thread);
 
         std::vector<double> best_eval(number_thread);
