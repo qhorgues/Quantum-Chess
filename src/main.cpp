@@ -62,6 +62,12 @@ int main()
          {Piece(), Piece(), Piece(), Piece(), Piece(), Piece(), Piece(), Piece()},
          {W_PAWN, W_PAWN, W_PAWN, W_PAWN, W_PAWN, W_PAWN, W_PAWN, W_PAWN},
          {W_ROOK, W_KNIGHT, W_BISHOP, W_QUEEN, W_KING, W_BISHOP, W_KNIGHT, W_ROOK}}};
+         
+    std::forward_list<Move> all_move {};
+    B4.all_move([&all_move](Move const& m) mutable -> bool {
+        all_move.push_front(m);
+        return false;
+    });
 
     Board<3> B2{
         {
