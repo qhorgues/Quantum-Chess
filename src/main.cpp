@@ -21,8 +21,9 @@ int main()
          {Piece(), Piece(), Piece(), B_KING}}};
 
     std::forward_list<Move> all_move {};
-    B4.all_move([&all_move](Move const& m) mutable -> void {
+    B4.all_move([&all_move](Move const& m) mutable -> bool {
         all_move.push_front(m);
+        return false;
     });
 
     std::forward_list<Move> l = B4.get_list_promote(Coord(1, 1));
