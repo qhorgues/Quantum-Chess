@@ -143,6 +143,41 @@ namespace computer
             return rep;
         }
 
+        template <std::size_t N, std::size_t M>
+        bool check_alpha_beta(
+            Board<N, M> const &board,
+            std::forward_list<double> const &best_all_round_score,
+            double &best_score,
+            double score)
+        {
+            if (get_player_calc_best_score(
+                    board.get_current_player(),
+                    best_score, score))
+            {
+                best_score = score;
+                Color current{board.get_current_player()};
+                for (double const alpha : best_all_round_score)
+                {
+                    if (get_player_calc_best_score(
+                            current,
+                            alpha,
+                            best_score))
+                    {
+                        return true;
+                    }
+                    if (current == Color::WHITE)
+                    {
+                        current = Color::BLACK;
+                    }
+                    else
+                    {
+                        current = Color::WHITE;
+                    }
+                }
+            }
+            return false;
+        }
+
         /**
          * @brief Renvoie une évaluation du plateau
          * @details L'évaluation du plateau est calculé
@@ -200,44 +235,11 @@ namespace computer
             {
                 double best_score{-1 * sign_color(board.get_current_player()) *
                                   std::numeric_limits<double>::max()};
-                auto check_best_score{
-                    [&board,
-                     &best_score_alpha_beta,
-                     best_score](double score) mutable -> bool
-                    {
-                        if (get_player_calc_best_score(
-                                board.get_current_player(),
-                                best_score, score))
-                        {
-                            best_score = score;
-                            Color current{board.get_current_player()};
-                            for (double const alpha : best_score_alpha_beta)
-                            {
-                                if (get_player_calc_best_score(
-                                        current,
-                                        alpha,
-                                        best_score))
-                                {
-                                    return true;
-                                }
-                                if (current == Color::WHITE)
-                                {
-                                    current = Color::BLACK;
-                                }
-                                else
-                                {
-                                    current = Color::WHITE;
-                                }
-                            }
-                        }
-                        return false;
-                    }};
 
                 board.all_move(
                     [&board,
                      &best_score_alpha_beta,
                      profondeur,
-                     check_best_score,
                      &best_score](Move const &m) mutable -> bool
                     {
                         double score;
@@ -260,7 +262,7 @@ namespace computer
                                 profondeur -
                                     1);
                         best_score_alpha_beta.pop_front();
-                        return check_best_score(score);
+                        return check_alpha_beta(board, best_score_alpha_beta, best_score, score);
                     });
                 return best_score;
             }
@@ -275,7 +277,7 @@ namespace computer
             Move &best_move;
             int profondeur;
         };
-        
+
         template <std::size_t N, std::size_t M>
         CONSTEXPR void
         th_get_best_move(Param_get_best_move<N, M> &&param)
