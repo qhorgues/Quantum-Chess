@@ -1301,6 +1301,7 @@ void Board<N, M>::update_board() noexcept
                 {
                     m_board[j - 1].second += m_board[i - 1].second;
                     m_board.erase(std::begin(m_board) + i - 1);
+                    break;
                 }
             }
         }
