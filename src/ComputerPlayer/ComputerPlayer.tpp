@@ -345,7 +345,8 @@ namespace computer
             // param.board = board;
             threads[i] = std::thread(__utility::th_get_best_move<N, M>, param);
         }
-        double better{0};
+        double better{-1 * __utility::sign_color(board.get_current_player()) *
+                           std::numeric_limits<double>::max()};
         Move better_move;
         for (std::size_t i{0}; i < number_thread; i++)
         {
