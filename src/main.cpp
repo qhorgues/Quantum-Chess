@@ -20,7 +20,14 @@ int main()
          {Piece(), W_ROOK, Piece()},
          {Piece(), Piece(),W_KING}}};
 
-    bool b = Final::brut_force_quantum_chess(B, 7, Color::WHITE);
+    Board<1,6> B2{
+        {
+            {W_KING, W_ROOK, Piece(), Piece(), B_KING, Piece()}
+        }
+    };
+    B2.change_player();
+
+    bool b = Final::brut_force_quantum_chess(B2, 1, Color::WHITE);
     std::cout<<std::boolalpha<<b<<std::endl;
 
     return 0;
