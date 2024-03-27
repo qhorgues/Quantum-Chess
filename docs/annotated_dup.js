@@ -1,10 +1,10 @@
 var annotated_dup =
 [
-    [ "Board", "d3/dfd/class_board.html", "d3/dfd/class_board" ],
-    [ "Coord", "d2/df1/struct_coord.html", "d2/df1/struct_coord" ],
-    [ "Coord_hash", "d3/da0/struct_coord__hash.html", "d3/da0/struct_coord__hash" ],
-    [ "Move", "d8/d4e/struct_move.html", "d8/d4e/struct_move" ],
+    [ "Board", "de/d23/classBoard.html", "de/d23/classBoard" ],
+    [ "Coord", "d9/dfc/structCoord.html", "d9/dfc/structCoord" ],
+    [ "Coord_hash", "d5/d51/structCoord__hash.html", "d5/d51/structCoord__hash" ],
+    [ "Move", "df/d5b/structMove.html", "df/d5b/structMove" ],
     [ "observer_ptr", "d6/d4d/classobserver__ptr.html", "d6/d4d/classobserver__ptr" ],
-    [ "Piece", "d7/d87/class_piece.html", "d7/d87/class_piece" ],
-    [ "Qubit", "dc/dd9/class_qubit.html", "dc/dd9/class_qubit" ]
+    [ "Piece", "d5/df0/classPiece.html", "d5/df0/classPiece" ],
+    [ "Qubit", "da/deb/classQubit.html", "da/deb/classQubit" ]
 ];

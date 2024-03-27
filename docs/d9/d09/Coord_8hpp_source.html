@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.4"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Quantum-Chess:  Fichier source de /home/quentin/Programmes/C++/Quantum-Chess/src/Coord/Coord.hpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Quantum-Chess<span id="projectnumber">&#160;0.5</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.4 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "../../search",'Recherche','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('../../',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('d9/d09/Coord_8hpp_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Coord.hpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d9/d09/Coord_8hpp.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef COORD_HPP</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define COORD_HPP</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;cstddef&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="../../d9/dfc/structCoord.html">   10</a></span><span class="keyword">struct </span><a class="code hl_struct" href="../../d9/dfc/structCoord.html">Coord</a></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>{</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="../../d9/dfc/structCoord.html#a14caa1114c95058bd25e1a7ff2ad8e43">   12</a></span>    <a class="code hl_function" href="../../d9/dfc/structCoord.html#a14caa1114c95058bd25e1a7ff2ad8e43">Coord</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="../../d9/dfc/structCoord.html#abafff409eb0f46a5796aa1f6c71aa4a2">   13</a></span>    <a class="code hl_function" href="../../d9/dfc/structCoord.html#abafff409eb0f46a5796aa1f6c71aa4a2">Coord</a>(std::size_t i, std::size_t j) : <a class="code hl_variable" href="../../d9/dfc/structCoord.html#aa748c08760a2979468295f4a1dc4df92">n</a>(i), <a class="code hl_variable" href="../../d9/dfc/structCoord.html#a93cffc8a62dd5d3b0c18e19c8e9fa1f6">m</a>(j) {};</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="../../d9/dfc/structCoord.html#a1fc16d40e952dc4d7c3bedb97225354a">   14</a></span>    <a class="code hl_function" href="../../d9/dfc/structCoord.html#a1fc16d40e952dc4d7c3bedb97225354a">Coord</a>(<a class="code hl_struct" href="../../d9/dfc/structCoord.html">Coord</a> <span class="keyword">const</span>&amp;) = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="../../d9/dfc/structCoord.html#a5ae1d18ec864bbfa9e76b7b96699aa5a">   15</a></span>    <a class="code hl_struct" href="../../d9/dfc/structCoord.html">Coord</a>&amp; <a class="code hl_function" href="../../d9/dfc/structCoord.html#a5ae1d18ec864bbfa9e76b7b96699aa5a">operator=</a>(<a class="code hl_struct" href="../../d9/dfc/structCoord.html">Coord</a> <span class="keyword">const</span>&amp;) = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="../../d9/dfc/structCoord.html#a89131b77a50cf91a64c4d10a2a9e06a1">   16</a></span>    <a class="code hl_function" href="../../d9/dfc/structCoord.html#a89131b77a50cf91a64c4d10a2a9e06a1">Coord</a>(<a class="code hl_struct" href="../../d9/dfc/structCoord.html">Coord</a> &amp;&amp;) = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="../../d9/dfc/structCoord.html#a3acf63cacc629195e3157792e69be2f1">   17</a></span>    <a class="code hl_struct" href="../../d9/dfc/structCoord.html">Coord</a>&amp; <a class="code hl_function" href="../../d9/dfc/structCoord.html#a3acf63cacc629195e3157792e69be2f1">operator=</a>(<a class="code hl_struct" href="../../d9/dfc/structCoord.html">Coord</a> &amp;&amp;) = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="../../d9/dfc/structCoord.html#aa748c08760a2979468295f4a1dc4df92">   23</a></span>    std::size_t <a class="code hl_variable" href="../../d9/dfc/structCoord.html#aa748c08760a2979468295f4a1dc4df92">n</a>;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="../../d9/dfc/structCoord.html#a93cffc8a62dd5d3b0c18e19c8e9fa1f6">   28</a></span>    std::size_t <a class="code hl_variable" href="../../d9/dfc/structCoord.html#a93cffc8a62dd5d3b0c18e19c8e9fa1f6">m</a>;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>};</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="../../d5/d51/structCoord__hash.html">   32</a></span><span class="keyword">struct </span><a class="code hl_struct" href="../../d5/d51/structCoord__hash.html">Coord_hash</a></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>{</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    std::size_t <a class="code hl_function" href="../../d5/d51/structCoord__hash.html#ac2da9a1b0fa0c5f7cbdce776ba181476">operator () </a>(<a class="code hl_struct" href="../../d9/dfc/structCoord.html">Coord</a> <span class="keyword">const</span> &amp;coord) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>};</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="keywordtype">bool</span> <a class="code hl_function" href="../../d9/d09/Coord_8hpp.html#aa61522c0a553f235e9a82781dfb765cb">operator==</a>(<a class="code hl_struct" href="../../d9/dfc/structCoord.html">Coord</a> <span class="keyword">const</span> &amp;lhs, <a class="code hl_struct" href="../../d9/dfc/structCoord.html">Coord</a> <span class="keyword">const</span> &amp;rhs);</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aCoord_8hpp_html_aa61522c0a553f235e9a82781dfb765cb"><div class="ttname"><a href="../../d9/d09/Coord_8hpp.html#aa61522c0a553f235e9a82781dfb765cb">operator==</a></div><div class="ttdeci">bool operator==(Coord const &amp;lhs, Coord const &amp;rhs)</div><div class="ttdef"><b>Definition:</b> Coord.cpp:13</div></div>
+<div class="ttc" id="astructCoord__hash_html"><div class="ttname"><a href="../../d5/d51/structCoord__hash.html">Coord_hash</a></div><div class="ttdef"><b>Definition:</b> Coord.hpp:33</div></div>
+<div class="ttc" id="astructCoord__hash_html_ac2da9a1b0fa0c5f7cbdce776ba181476"><div class="ttname"><a href="../../d5/d51/structCoord__hash.html#ac2da9a1b0fa0c5f7cbdce776ba181476">Coord_hash::operator()</a></div><div class="ttdeci">std::size_t operator()(Coord const &amp;coord) const</div><div class="ttdef"><b>Definition:</b> Coord.cpp:4</div></div>
+<div class="ttc" id="astructCoord_html"><div class="ttname"><a href="../../d9/dfc/structCoord.html">Coord</a></div><div class="ttdoc">La structure qui représente une coordonnée sur le plateau.</div><div class="ttdef"><b>Definition:</b> Coord.hpp:11</div></div>
+<div class="ttc" id="astructCoord_html_a14caa1114c95058bd25e1a7ff2ad8e43"><div class="ttname"><a href="../../d9/dfc/structCoord.html#a14caa1114c95058bd25e1a7ff2ad8e43">Coord::Coord</a></div><div class="ttdeci">Coord()=default</div></div>
+<div class="ttc" id="astructCoord_html_a1fc16d40e952dc4d7c3bedb97225354a"><div class="ttname"><a href="../../d9/dfc/structCoord.html#a1fc16d40e952dc4d7c3bedb97225354a">Coord::Coord</a></div><div class="ttdeci">Coord(Coord const &amp;)=default</div></div>
+<div class="ttc" id="astructCoord_html_a3acf63cacc629195e3157792e69be2f1"><div class="ttname"><a href="../../d9/dfc/structCoord.html#a3acf63cacc629195e3157792e69be2f1">Coord::operator=</a></div><div class="ttdeci">Coord &amp; operator=(Coord &amp;&amp;)=default</div></div>
+<div class="ttc" id="astructCoord_html_a5ae1d18ec864bbfa9e76b7b96699aa5a"><div class="ttname"><a href="../../d9/dfc/structCoord.html#a5ae1d18ec864bbfa9e76b7b96699aa5a">Coord::operator=</a></div><div class="ttdeci">Coord &amp; operator=(Coord const &amp;)=default</div></div>
+<div class="ttc" id="astructCoord_html_a89131b77a50cf91a64c4d10a2a9e06a1"><div class="ttname"><a href="../../d9/dfc/structCoord.html#a89131b77a50cf91a64c4d10a2a9e06a1">Coord::Coord</a></div><div class="ttdeci">Coord(Coord &amp;&amp;)=default</div></div>
+<div class="ttc" id="astructCoord_html_a93cffc8a62dd5d3b0c18e19c8e9fa1f6"><div class="ttname"><a href="../../d9/dfc/structCoord.html#a93cffc8a62dd5d3b0c18e19c8e9fa1f6">Coord::m</a></div><div class="ttdeci">std::size_t m</div><div class="ttdoc">l'indice sur les colonnes</div><div class="ttdef"><b>Definition:</b> Coord.hpp:28</div></div>
+<div class="ttc" id="astructCoord_html_aa748c08760a2979468295f4a1dc4df92"><div class="ttname"><a href="../../d9/dfc/structCoord.html#aa748c08760a2979468295f4a1dc4df92">Coord::n</a></div><div class="ttdeci">std::size_t n</div><div class="ttdoc">l'indice sur les lignes</div><div class="ttdef"><b>Definition:</b> Coord.hpp:23</div></div>
+<div class="ttc" id="astructCoord_html_abafff409eb0f46a5796aa1f6c71aa4a2"><div class="ttname"><a href="../../d9/dfc/structCoord.html#abafff409eb0f46a5796aa1f6c71aa4a2">Coord::Coord</a></div><div class="ttdeci">Coord(std::size_t i, std::size_t j)</div><div class="ttdef"><b>Definition:</b> Coord.hpp:13</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_a3437aea84205c6c482d013bb6ce592c.html">Coord</a></li><li class="navelem"><a class="el" href="../../d9/d09/Coord_8hpp.html">Coord.hpp</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+  </ul>
+</div>
+</body>
+</html>

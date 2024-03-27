@@ -1,9 +1,10 @@
 var NAVTREEINDEX1 =
 {
-"df/d0a/main_8cpp.html":[3,0,1,6],
-"df/d0a/main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4":[3,0,1,6,0],
-"df/d80/_board_8hpp.html":[3,0,1,0,0],
-"df/d80/_board_8hpp_source.html":[3,0,1,0,0],
+"df/d5b/structMove.html#ab2c466f4efa515edf581fa0d3ae901a6":[2,0,3,0],
+"df/d5b/structMove.html#ab8b350ee6f27c49ed78d730b10912b0a":[2,0,3,3],
+"df/d5b/structMove.html#ad28a195cbbde5d4a6368bd7e9950cddf":[2,0,3,13],
+"df/d5b/structMove.html#aec1af57787d8553e33a71e701d65ecbb":[2,0,3,14],
+"df/d5b/structMove.html#afa540d35475b04e58ed568cb69745b05":[2,0,3,15],
 "dir_05e0fd15101eac278a495a1bc0bec445.html":[3,0,1,3],
 "dir_3ff44f5f61a87232b90f642c33a86093.html":[3,0,1,1],
 "dir_68267d1309a1af8e8297ef4c3efbcdba.html":[3,0,1],

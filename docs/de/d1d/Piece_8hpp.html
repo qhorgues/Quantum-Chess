@@ -1,0 +1,447 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.4"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Quantum-Chess: Référence du fichier /home/quentin/Programmes/C++/Quantum-Chess/src/Piece/Piece.hpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Quantum-Chess<span id="projectnumber">&#160;0.5</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.4 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "../../search",'Recherche','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('../../',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('de/d1d/Piece_8hpp.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#var-members">Variables</a>  </div>
+  <div class="headertitle"><div class="title">Référence du fichier Piece.hpp</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;<a class="el" href="../../d6/da3/Color_8hpp_source.html">Color.hpp</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="../../d9/d09/Coord_8hpp_source.html">Coord.hpp</a>&gt;</code><br />
+<code>#include &lt;concepts&gt;</code><br />
+<code>#include &lt;vector&gt;</code><br />
+<code>#include &lt;forward_list&gt;</code><br />
+<code>#include &lt;<a class="el" href="../../d0/d5d/Constexpr_8hpp_source.html">Constexpr.hpp</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="../../d0/d21/Move_8hpp_source.html">Move.hpp</a>&gt;</code><br />
+<code>#include &quot;<a class="el" href="../../dc/dae/TypePiece_8hpp_source.html">TypePiece.hpp</a>&quot;</code><br />
+<code>#include &quot;Piece.tpp&quot;</code><br />
+</div>
+<p><a href="../../de/d1d/Piece_8hpp_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/df0/classPiece.html">Piece</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class conservant le type et la couleur d'une pièce. Elle permet aussi de recuperer ses mouvement possible.  <a href="../../d5/df0/classPiece.html#details">Plus de détails...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:ae377970cfe6327abc4bd238362e37e13"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="../../d5/df0/classPiece.html">Piece</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d1d/Piece_8hpp.html#ae377970cfe6327abc4bd238362e37e13">W_KING</a> {<a class="el" href="../../dc/dae/TypePiece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83a123b28961dd0f97d91bcb55d7a3b7c1c">TypePiece::KING</a>, <a class="el" href="../../d6/da3/Color_8hpp.html#a78abb31bad0fd1834c54a3ca6f8daab5ab5bf627e448384cf3a4c35121ca6008d">Color::WHITE</a>}</td></tr>
+<tr class="memdesc:ae377970cfe6327abc4bd238362e37e13"><td class="mdescLeft">&#160;</td><td class="mdescRight">L'objet représentant le roi blanc.  <a href="../../de/d1d/Piece_8hpp.html#ae377970cfe6327abc4bd238362e37e13">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ae377970cfe6327abc4bd238362e37e13"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3f33807d3f4e8413ff9777415e410a0"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="../../d5/df0/classPiece.html">Piece</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d1d/Piece_8hpp.html#af3f33807d3f4e8413ff9777415e410a0">B_KING</a> {<a class="el" href="../../dc/dae/TypePiece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83a123b28961dd0f97d91bcb55d7a3b7c1c">TypePiece::KING</a>, <a class="el" href="../../d6/da3/Color_8hpp.html#a78abb31bad0fd1834c54a3ca6f8daab5a08d0012388564e95c3b4a7407cf04965">Color::BLACK</a>}</td></tr>
+<tr class="memdesc:af3f33807d3f4e8413ff9777415e410a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">L'objet représentant le roi noir.  <a href="../../de/d1d/Piece_8hpp.html#af3f33807d3f4e8413ff9777415e410a0">Plus de détails...</a><br /></td></tr>
+<tr class="separator:af3f33807d3f4e8413ff9777415e410a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1e3c5b9fa8518392767ae0c01c9bb9d"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="../../d5/df0/classPiece.html">Piece</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d1d/Piece_8hpp.html#af1e3c5b9fa8518392767ae0c01c9bb9d">W_QUEEN</a> {<a class="el" href="../../dc/dae/TypePiece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83a02d144e18eda99bcb94f3a764756805e">TypePiece::QUEEN</a>, <a class="el" href="../../d6/da3/Color_8hpp.html#a78abb31bad0fd1834c54a3ca6f8daab5ab5bf627e448384cf3a4c35121ca6008d">Color::WHITE</a>}</td></tr>
+<tr class="memdesc:af1e3c5b9fa8518392767ae0c01c9bb9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">L'objet représentant la renne blanche.  <a href="../../de/d1d/Piece_8hpp.html#af1e3c5b9fa8518392767ae0c01c9bb9d">Plus de détails...</a><br /></td></tr>
+<tr class="separator:af1e3c5b9fa8518392767ae0c01c9bb9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f61d6dce3141f454592840394b44409"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="../../d5/df0/classPiece.html">Piece</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d1d/Piece_8hpp.html#a0f61d6dce3141f454592840394b44409">B_QUEEN</a> {<a class="el" href="../../dc/dae/TypePiece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83a123b28961dd0f97d91bcb55d7a3b7c1c">TypePiece::KING</a>, <a class="el" href="../../d6/da3/Color_8hpp.html#a78abb31bad0fd1834c54a3ca6f8daab5a08d0012388564e95c3b4a7407cf04965">Color::BLACK</a>}</td></tr>
+<tr class="memdesc:a0f61d6dce3141f454592840394b44409"><td class="mdescLeft">&#160;</td><td class="mdescRight">L'objet représentant la renne noire.  <a href="../../de/d1d/Piece_8hpp.html#a0f61d6dce3141f454592840394b44409">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a0f61d6dce3141f454592840394b44409"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c86a44ecec5133b1afcba7557f50a5d"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="../../d5/df0/classPiece.html">Piece</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d1d/Piece_8hpp.html#a1c86a44ecec5133b1afcba7557f50a5d">W_BISHOP</a> {<a class="el" href="../../dc/dae/TypePiece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83a1834d375f684613c725d039a10db1976">TypePiece::BISHOP</a>, <a class="el" href="../../d6/da3/Color_8hpp.html#a78abb31bad0fd1834c54a3ca6f8daab5ab5bf627e448384cf3a4c35121ca6008d">Color::WHITE</a>}</td></tr>
+<tr class="memdesc:a1c86a44ecec5133b1afcba7557f50a5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">L'objet représentant le fou blanc.  <a href="../../de/d1d/Piece_8hpp.html#a1c86a44ecec5133b1afcba7557f50a5d">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a1c86a44ecec5133b1afcba7557f50a5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e75fb3f0243ea337b870b43de6e231b"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="../../d5/df0/classPiece.html">Piece</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d1d/Piece_8hpp.html#a4e75fb3f0243ea337b870b43de6e231b">B_BISHOP</a> {<a class="el" href="../../dc/dae/TypePiece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83a1834d375f684613c725d039a10db1976">TypePiece::BISHOP</a>, <a class="el" href="../../d6/da3/Color_8hpp.html#a78abb31bad0fd1834c54a3ca6f8daab5a08d0012388564e95c3b4a7407cf04965">Color::BLACK</a>}</td></tr>
+<tr class="memdesc:a4e75fb3f0243ea337b870b43de6e231b"><td class="mdescLeft">&#160;</td><td class="mdescRight">L'objet représentant le fou noir.  <a href="../../de/d1d/Piece_8hpp.html#a4e75fb3f0243ea337b870b43de6e231b">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a4e75fb3f0243ea337b870b43de6e231b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56c209905c7a520c7c8ba0847066084f"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="../../d5/df0/classPiece.html">Piece</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d1d/Piece_8hpp.html#a56c209905c7a520c7c8ba0847066084f">W_ROOK</a> {<a class="el" href="../../dc/dae/TypePiece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83a97c60a3a4e61ee21e3f38a2f950fe293">TypePiece::ROOK</a>, <a class="el" href="../../d6/da3/Color_8hpp.html#a78abb31bad0fd1834c54a3ca6f8daab5ab5bf627e448384cf3a4c35121ca6008d">Color::WHITE</a>}</td></tr>
+<tr class="memdesc:a56c209905c7a520c7c8ba0847066084f"><td class="mdescLeft">&#160;</td><td class="mdescRight">L'objet représentant la tour blanche.  <a href="../../de/d1d/Piece_8hpp.html#a56c209905c7a520c7c8ba0847066084f">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a56c209905c7a520c7c8ba0847066084f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f5cb29cb869ea07b4b883b0c8611f32"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="../../d5/df0/classPiece.html">Piece</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d1d/Piece_8hpp.html#a3f5cb29cb869ea07b4b883b0c8611f32">B_ROOK</a> {<a class="el" href="../../dc/dae/TypePiece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83a97c60a3a4e61ee21e3f38a2f950fe293">TypePiece::ROOK</a>, <a class="el" href="../../d6/da3/Color_8hpp.html#a78abb31bad0fd1834c54a3ca6f8daab5a08d0012388564e95c3b4a7407cf04965">Color::BLACK</a>}</td></tr>
+<tr class="memdesc:a3f5cb29cb869ea07b4b883b0c8611f32"><td class="mdescLeft">&#160;</td><td class="mdescRight">L'objet représentant la tour noire.  <a href="../../de/d1d/Piece_8hpp.html#a3f5cb29cb869ea07b4b883b0c8611f32">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a3f5cb29cb869ea07b4b883b0c8611f32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2357ffb5242a8083eb0821974c217b0"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="../../d5/df0/classPiece.html">Piece</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d1d/Piece_8hpp.html#aa2357ffb5242a8083eb0821974c217b0">W_KNIGHT</a> {<a class="el" href="../../dc/dae/TypePiece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83af7f210da15dbb4283299b2affd9bb238">TypePiece::KNIGHT</a>, <a class="el" href="../../d6/da3/Color_8hpp.html#a78abb31bad0fd1834c54a3ca6f8daab5ab5bf627e448384cf3a4c35121ca6008d">Color::WHITE</a>}</td></tr>
+<tr class="memdesc:aa2357ffb5242a8083eb0821974c217b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">L'objet représentant le cavalier blanc.  <a href="../../de/d1d/Piece_8hpp.html#aa2357ffb5242a8083eb0821974c217b0">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aa2357ffb5242a8083eb0821974c217b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2420afc5df87f1b219c245b544d6f54f"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="../../d5/df0/classPiece.html">Piece</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d1d/Piece_8hpp.html#a2420afc5df87f1b219c245b544d6f54f">B_KNIGHT</a> {<a class="el" href="../../dc/dae/TypePiece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83af7f210da15dbb4283299b2affd9bb238">TypePiece::KNIGHT</a>, <a class="el" href="../../d6/da3/Color_8hpp.html#a78abb31bad0fd1834c54a3ca6f8daab5a08d0012388564e95c3b4a7407cf04965">Color::BLACK</a>}</td></tr>
+<tr class="memdesc:a2420afc5df87f1b219c245b544d6f54f"><td class="mdescLeft">&#160;</td><td class="mdescRight">L'objet représentant le cavalier noir.  <a href="../../de/d1d/Piece_8hpp.html#a2420afc5df87f1b219c245b544d6f54f">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a2420afc5df87f1b219c245b544d6f54f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acedced8aae6bcdcb12581ac55c00ce74"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="../../d5/df0/classPiece.html">Piece</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d1d/Piece_8hpp.html#acedced8aae6bcdcb12581ac55c00ce74">W_PAWN</a> {<a class="el" href="../../dc/dae/TypePiece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83a3acd2a53aca11e0f883236ea27a3b627">TypePiece::PAWN</a>, <a class="el" href="../../d6/da3/Color_8hpp.html#a78abb31bad0fd1834c54a3ca6f8daab5ab5bf627e448384cf3a4c35121ca6008d">Color::WHITE</a>}</td></tr>
+<tr class="memdesc:acedced8aae6bcdcb12581ac55c00ce74"><td class="mdescLeft">&#160;</td><td class="mdescRight">L'objet représentant le pion blanc.  <a href="../../de/d1d/Piece_8hpp.html#acedced8aae6bcdcb12581ac55c00ce74">Plus de détails...</a><br /></td></tr>
+<tr class="separator:acedced8aae6bcdcb12581ac55c00ce74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0f5488784beba8358bb17946e008e7e"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="../../d5/df0/classPiece.html">Piece</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d1d/Piece_8hpp.html#aa0f5488784beba8358bb17946e008e7e">B_PAWN</a> {<a class="el" href="../../dc/dae/TypePiece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83a3acd2a53aca11e0f883236ea27a3b627">TypePiece::PAWN</a>, <a class="el" href="../../d6/da3/Color_8hpp.html#a78abb31bad0fd1834c54a3ca6f8daab5a08d0012388564e95c3b4a7407cf04965">Color::BLACK</a>}</td></tr>
+<tr class="memdesc:aa0f5488784beba8358bb17946e008e7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">L'objet représentant le pion noir.  <a href="../../de/d1d/Piece_8hpp.html#aa0f5488784beba8358bb17946e008e7e">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aa0f5488784beba8358bb17946e008e7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Documentation des variables</h2>
+<a id="a4e75fb3f0243ea337b870b43de6e231b" name="a4e75fb3f0243ea337b870b43de6e231b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e75fb3f0243ea337b870b43de6e231b">&#9670;&nbsp;</a></span>B_BISHOP</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr <a class="el" href="../../d5/df0/classPiece.html">Piece</a> B_BISHOP {<a class="el" href="../../dc/dae/TypePiece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83a1834d375f684613c725d039a10db1976">TypePiece::BISHOP</a>, <a class="el" href="../../d6/da3/Color_8hpp.html#a78abb31bad0fd1834c54a3ca6f8daab5a08d0012388564e95c3b4a7407cf04965">Color::BLACK</a>}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>L'objet représentant le fou noir. </p>
+
+</div>
+</div>
+<a id="af3f33807d3f4e8413ff9777415e410a0" name="af3f33807d3f4e8413ff9777415e410a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3f33807d3f4e8413ff9777415e410a0">&#9670;&nbsp;</a></span>B_KING</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr <a class="el" href="../../d5/df0/classPiece.html">Piece</a> B_KING {<a class="el" href="../../dc/dae/TypePiece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83a123b28961dd0f97d91bcb55d7a3b7c1c">TypePiece::KING</a>, <a class="el" href="../../d6/da3/Color_8hpp.html#a78abb31bad0fd1834c54a3ca6f8daab5a08d0012388564e95c3b4a7407cf04965">Color::BLACK</a>}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>L'objet représentant le roi noir. </p>
+
+</div>
+</div>
+<a id="a2420afc5df87f1b219c245b544d6f54f" name="a2420afc5df87f1b219c245b544d6f54f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2420afc5df87f1b219c245b544d6f54f">&#9670;&nbsp;</a></span>B_KNIGHT</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr <a class="el" href="../../d5/df0/classPiece.html">Piece</a> B_KNIGHT {<a class="el" href="../../dc/dae/TypePiece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83af7f210da15dbb4283299b2affd9bb238">TypePiece::KNIGHT</a>, <a class="el" href="../../d6/da3/Color_8hpp.html#a78abb31bad0fd1834c54a3ca6f8daab5a08d0012388564e95c3b4a7407cf04965">Color::BLACK</a>}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>L'objet représentant le cavalier noir. </p>
+
+</div>
+</div>
+<a id="aa0f5488784beba8358bb17946e008e7e" name="aa0f5488784beba8358bb17946e008e7e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa0f5488784beba8358bb17946e008e7e">&#9670;&nbsp;</a></span>B_PAWN</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr <a class="el" href="../../d5/df0/classPiece.html">Piece</a> B_PAWN {<a class="el" href="../../dc/dae/TypePiece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83a3acd2a53aca11e0f883236ea27a3b627">TypePiece::PAWN</a>, <a class="el" href="../../d6/da3/Color_8hpp.html#a78abb31bad0fd1834c54a3ca6f8daab5a08d0012388564e95c3b4a7407cf04965">Color::BLACK</a>}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>L'objet représentant le pion noir. </p>
+
+</div>
+</div>
+<a id="a0f61d6dce3141f454592840394b44409" name="a0f61d6dce3141f454592840394b44409"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f61d6dce3141f454592840394b44409">&#9670;&nbsp;</a></span>B_QUEEN</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr <a class="el" href="../../d5/df0/classPiece.html">Piece</a> B_QUEEN {<a class="el" href="../../dc/dae/TypePiece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83a123b28961dd0f97d91bcb55d7a3b7c1c">TypePiece::KING</a>, <a class="el" href="../../d6/da3/Color_8hpp.html#a78abb31bad0fd1834c54a3ca6f8daab5a08d0012388564e95c3b4a7407cf04965">Color::BLACK</a>}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>L'objet représentant la renne noire. </p>
+
+</div>
+</div>
+<a id="a3f5cb29cb869ea07b4b883b0c8611f32" name="a3f5cb29cb869ea07b4b883b0c8611f32"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f5cb29cb869ea07b4b883b0c8611f32">&#9670;&nbsp;</a></span>B_ROOK</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr <a class="el" href="../../d5/df0/classPiece.html">Piece</a> B_ROOK {<a class="el" href="../../dc/dae/TypePiece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83a97c60a3a4e61ee21e3f38a2f950fe293">TypePiece::ROOK</a>, <a class="el" href="../../d6/da3/Color_8hpp.html#a78abb31bad0fd1834c54a3ca6f8daab5a08d0012388564e95c3b4a7407cf04965">Color::BLACK</a>}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>L'objet représentant la tour noire. </p>
+
+</div>
+</div>
+<a id="a1c86a44ecec5133b1afcba7557f50a5d" name="a1c86a44ecec5133b1afcba7557f50a5d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c86a44ecec5133b1afcba7557f50a5d">&#9670;&nbsp;</a></span>W_BISHOP</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr <a class="el" href="../../d5/df0/classPiece.html">Piece</a> W_BISHOP {<a class="el" href="../../dc/dae/TypePiece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83a1834d375f684613c725d039a10db1976">TypePiece::BISHOP</a>, <a class="el" href="../../d6/da3/Color_8hpp.html#a78abb31bad0fd1834c54a3ca6f8daab5ab5bf627e448384cf3a4c35121ca6008d">Color::WHITE</a>}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>L'objet représentant le fou blanc. </p>
+
+</div>
+</div>
+<a id="ae377970cfe6327abc4bd238362e37e13" name="ae377970cfe6327abc4bd238362e37e13"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae377970cfe6327abc4bd238362e37e13">&#9670;&nbsp;</a></span>W_KING</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr <a class="el" href="../../d5/df0/classPiece.html">Piece</a> W_KING {<a class="el" href="../../dc/dae/TypePiece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83a123b28961dd0f97d91bcb55d7a3b7c1c">TypePiece::KING</a>, <a class="el" href="../../d6/da3/Color_8hpp.html#a78abb31bad0fd1834c54a3ca6f8daab5ab5bf627e448384cf3a4c35121ca6008d">Color::WHITE</a>}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>L'objet représentant le roi blanc. </p>
+
+</div>
+</div>
+<a id="aa2357ffb5242a8083eb0821974c217b0" name="aa2357ffb5242a8083eb0821974c217b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2357ffb5242a8083eb0821974c217b0">&#9670;&nbsp;</a></span>W_KNIGHT</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr <a class="el" href="../../d5/df0/classPiece.html">Piece</a> W_KNIGHT {<a class="el" href="../../dc/dae/TypePiece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83af7f210da15dbb4283299b2affd9bb238">TypePiece::KNIGHT</a>, <a class="el" href="../../d6/da3/Color_8hpp.html#a78abb31bad0fd1834c54a3ca6f8daab5ab5bf627e448384cf3a4c35121ca6008d">Color::WHITE</a>}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>L'objet représentant le cavalier blanc. </p>
+
+</div>
+</div>
+<a id="acedced8aae6bcdcb12581ac55c00ce74" name="acedced8aae6bcdcb12581ac55c00ce74"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acedced8aae6bcdcb12581ac55c00ce74">&#9670;&nbsp;</a></span>W_PAWN</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr <a class="el" href="../../d5/df0/classPiece.html">Piece</a> W_PAWN {<a class="el" href="../../dc/dae/TypePiece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83a3acd2a53aca11e0f883236ea27a3b627">TypePiece::PAWN</a>, <a class="el" href="../../d6/da3/Color_8hpp.html#a78abb31bad0fd1834c54a3ca6f8daab5ab5bf627e448384cf3a4c35121ca6008d">Color::WHITE</a>}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>L'objet représentant le pion blanc. </p>
+
+</div>
+</div>
+<a id="af1e3c5b9fa8518392767ae0c01c9bb9d" name="af1e3c5b9fa8518392767ae0c01c9bb9d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1e3c5b9fa8518392767ae0c01c9bb9d">&#9670;&nbsp;</a></span>W_QUEEN</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr <a class="el" href="../../d5/df0/classPiece.html">Piece</a> W_QUEEN {<a class="el" href="../../dc/dae/TypePiece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83a02d144e18eda99bcb94f3a764756805e">TypePiece::QUEEN</a>, <a class="el" href="../../d6/da3/Color_8hpp.html#a78abb31bad0fd1834c54a3ca6f8daab5ab5bf627e448384cf3a4c35121ca6008d">Color::WHITE</a>}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>L'objet représentant la renne blanche. </p>
+
+</div>
+</div>
+<a id="a56c209905c7a520c7c8ba0847066084f" name="a56c209905c7a520c7c8ba0847066084f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56c209905c7a520c7c8ba0847066084f">&#9670;&nbsp;</a></span>W_ROOK</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr <a class="el" href="../../d5/df0/classPiece.html">Piece</a> W_ROOK {<a class="el" href="../../dc/dae/TypePiece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83a97c60a3a4e61ee21e3f38a2f950fe293">TypePiece::ROOK</a>, <a class="el" href="../../d6/da3/Color_8hpp.html#a78abb31bad0fd1834c54a3ca6f8daab5ab5bf627e448384cf3a4c35121ca6008d">Color::WHITE</a>}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>L'objet représentant la tour blanche. </p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_c85bbe744eb3f453b27a8f2bfc5fc483.html">Piece</a></li><li class="navelem"><a class="el" href="../../de/d1d/Piece_8hpp.html">Piece.hpp</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+  </ul>
+</div>
+</body>
+</html>

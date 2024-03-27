@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['king_5fside_5fcastle_0',['king_side_castle',['../d3/dfd/class_board.html#a778c80c1a1ba0e2b66b1e63d87659965',1,'Board']]]
+  ['king_5fside_5fcastle_0',['king_side_castle',['../de/d23/classBoard.html#a98e9116b596e139482e7d54f21ea9bc3',1,'Board']]]
 ];
