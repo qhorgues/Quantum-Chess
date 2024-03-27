@@ -140,7 +140,7 @@ public:
      * @param[in, out] func La fonction à appliquer sur tout les mouvements
      * Prototype : bool f(Move const&)
      * Si renvoie true alors le parcourt est intérompue
-     * @param[in] color La couleur du joueur au qu'elle on 
+     * @param[in] color La couleur du joueur au qu'elle on
      * récupère les mouvements
      */
     template <class UnitaryFunction>
@@ -163,9 +163,12 @@ public:
      *
      * @warning Ne procède aucune vérification sur la validité du mouvement
      *
-     * @param movement Le mouvement à raliser
+     * @param[in] movement Le mouvement à raliser
+     * @param[in] val_mes Optionel peut determiner la mesure de 
+     * la présence d'une pièce ou non
      */
-    CONSTEXPR void move(Move const &movement);
+    CONSTEXPR void 
+    move(Move const &movement, std::optional<bool> val_mes = std::nullopt);
 
     /**
      * @brief Test si un plateau est gagnant pour une couleur
@@ -227,9 +230,12 @@ public:
      * @param s Coordonnées de la source
      * @param t Coordonnées de la cible
      * @param p Le type de la pièce de la promotion
+     * @param[in] val_mes Optionel peut determiner la mesure de 
+     * la présence d'une pièce ou non
      */
-    CONSTEXPR void
-    move_promotion(Move const &move);
+    CONSTEXPR void move_promotion(
+        Move const &move,
+        std::optional<bool> val_mes = std::nullopt);
 
 private:
     /**
@@ -261,8 +267,13 @@ private:
      * @tparam M Le nombre de colonnes du plateau
      * @param[in] s Coordonnées de la source du mouvement
      * @param[in] t Coordonnées de la cible du mouvement
+     * @param[in] val_mes Optionel peut determiner la mesure de 
+     * la présence d'une pièce ou non
      */
-    CONSTEXPR void move_classic_jump(Coord const &s, Coord const &t);
+    CONSTEXPR void move_classic_jump(
+        Coord const &s,
+        Coord const &t,
+        std::optional<bool> val_mes = std::nullopt);
 
     /**
      * @brief Mouvement "split jump"
@@ -307,15 +318,19 @@ private:
      * @param[in] t Coordonnées de la cible
      * @param[in] check_path  Fonction qui permet de vérifier la présence
      * d'une pièce entre la source et la cible sur une instance du plateau
+     * @param[in] val_mes Optionel peut determiner la mesure de 
+     * la présence d'une pièce ou non
      */
-    CONSTEXPR void move_classic_slide(Coord const &s, Coord const &t,
-                                      std::function<
-                                          bool(
-                                              Board<N, M> const &,
-                                              Coord const &,
-                                              Coord const &,
-                                              std::size_t)>
-                                          check_path);
+    CONSTEXPR void
+    move_classic_slide(Coord const &s, Coord const &t,
+                       std::function<
+                           bool(
+                               Board<N, M> const &,
+                               Coord const &,
+                               Coord const &,
+                               std::size_t)>
+                           check_path,
+                       std::optional<bool> val_mes = std::nullopt);
     /**
      * @brief Mouvement "split slide"
      * @warning Aucun tests sur la validité du mouvement (cible vide, ect)
@@ -376,10 +391,14 @@ private:
      * @tparam M Le nombre de colonnes du plateau
      * @param[in] s Coordonnées de la source
      * @param[in] t Coordonnées de la cible
+     * @param[in] val_mes Optionel peut determiner la mesure de 
+     * la présence d'une pièce ou non
      * @return true si le mouvement à etait effectué
      * @return false sinon
      */
-    CONSTEXPR bool move_pawn_one_step(Coord const &s, Coord const &t);
+    CONSTEXPR bool
+    move_pawn_one_step(Coord const &s, Coord const &t,
+                       std::optional<bool> val_mes = std::nullopt);
 
     /**
      * @brief Le mouvement de pion de deux cases fonctionne
@@ -395,10 +414,14 @@ private:
      * @tparam M Le nombre de colonnes du plateau
      * @param[in] s Coordonnées de la source
      * @param[in] t Coordonnées de la cible
+     * @param[in] val_mes Optionel peut determiner la mesure de 
+     * la présence d'une pièce ou non
      * @return true si le mouvement à etait effectué
      * @return false sinon
      */
-    CONSTEXPR bool move_pawn_two_step(Coord const &s, Coord const &t);
+    CONSTEXPR bool
+    move_pawn_two_step(Coord const &s, Coord const &t,
+                       std::optional<bool> val_mes = std::nullopt);
     /**
      * @brief Mouvement de capture dun pion. A la différence
      * d'un mouvement de "capture jump", on mesure la présence
@@ -406,12 +429,16 @@ private:
      *
      * @warning Ne procède aucune vérification sur la validité du mouvement
      *
-     * @param s Coordonnées de la source
-     * @param t Coordonnées de la cible
+     * @param[in] s Coordonnées de la source
+     * @param[in] t Coordonnées de la cible
+     * @param[in] val_mes Optionel peut determiner la mesure de 
+     * la présence d'une pièce ou non
      * @return true si le mouvement à etait effectué
      * @return false sinon
      */
-    CONSTEXPR bool capture_pawn(Coord const &s, Coord const &t);
+    CONSTEXPR bool capture_pawn(Coord const &s,
+                                Coord const &t,
+                                std::optional<bool> val_mes = std::nullopt);
 
     /**
      * @brief Permet d'effectuer un mouvement de prise en passant
@@ -424,11 +451,14 @@ private:
      * @param[in] s Les coordonnées de la source
      * @param[in] t Les coordonnées de la cible (l'endroit où arrive le pion)
      * @param[in] ep Les coordonnées du pion capturer "en passant"
+     * @param[in] val_mes Optionel peut determiner la mesure de 
+     * la présence d'une pièce ou non
      * @return true si le mouvement à etait effectué
      * @return false sinon
      */
     CONSTEXPR bool
-    move_enpassant(Coord const &s, Coord const &t, Coord const &ep);
+    move_enpassant(Coord const &s, Coord const &t, Coord const &ep,
+                   std::optional<bool> val_mes = std::nullopt);
 
     /**
      * @brief Mesure la présence d'une pièce
@@ -436,10 +466,13 @@ private:
      * @tparam N Le nombre de lignes du plateau
      * @tparam M Le nombre de colonnes du plateau
      * @param[in] position La position de la pièce mesurée
+     * @param[in] val_mes Optionel peut determiner la mesure de 
+     * la présence d'une pièce ou non
      * @return true Si la pièce est présente sur la case position
      * @return false Sinon
      */
-    CONSTEXPR bool mesure(Coord const &p);
+    CONSTEXPR bool mesure(Coord const &p,
+                          std::optional<bool> val_mes = std::nullopt);
 
     /**
      * @brief Fonction qui permet de faire une mesure dans le cas
@@ -451,6 +484,8 @@ private:
      * @param[in] t Coordonnées de la cible du mouvement
      * @param[in] check_path Fonction qui permet de vérifier si il y a une pièce
      * entre la source et la cible sur une instance du plateau
+     * @param[in] val_mes Optionel peut determiner la mesure de 
+     * la présence d'une pièce ou non
      * @return true Si la mesure indique de faire le mouvement
      * @return false Sinon
      */
@@ -459,7 +494,8 @@ private:
                          std::function<bool(Board<N, M> const &,
                                             Coord const &, Coord const &,
                                             std::size_t)>
-                             check_path);
+                             check_path,
+                         std::optional<bool> val_mes = std::nullopt);
 
     /**
      * @brief Mouvement classique d'une pièce (pion exclu)
@@ -469,7 +505,8 @@ private:
      * @param[in] s Coordonnées de la source du mouvement
      * @param[in] t Coordonnées de la cible du mouvement
      */
-    CONSTEXPR void move_classic(Coord const &s, Coord const &t);
+    CONSTEXPR void move_classic(Coord const &s, Coord const &t,
+                                std::optional<bool> val_mes);
 
     /**
      * @brief Mouvement split d'une pièce (pion exclu)
@@ -507,10 +544,15 @@ private:
      * @tparam M Le nombre de colonnes du plateau
      * @param[in] s Coordonnées de la source
      * @param[in] t Coordonnées de la cible
+     * @param[in] val_mes Optionel peut determiner la mesure de 
+     * la présence d'une pièce ou non
      * @return true si le mouvement à etait effectué
      * @return false sinon
      */
-    CONSTEXPR bool move_pawn(Coord const &s, Coord const &t) noexcept;
+    CONSTEXPR bool move_pawn(
+        Coord const &s,
+        Coord const &t,
+        std::optional<bool> val_mes = std::nullopt) noexcept;
 
     /**
      * @brief Renvoie une position 1D d'une coordonnée 2D
@@ -610,20 +652,28 @@ private:
      * @warning Auncun test sur la validité du mouvement
      * @param[in] king Coordonnées du roi
      * @param[in] rook Coordonnées de la tour
+     * @param[in] val_mes Optionel peut determiner la mesure de 
+     * la présence d'une pièce ou non
      */
-    CONSTEXPR void king_side_castle(Coord const &king, Coord const &rook);
+    CONSTEXPR void king_side_castle(
+        Coord const &king,
+        Coord const &rook,
+        std::optional<bool> val_mes = std::nullopt);
 
     /**
      * @brief Fonction qui permet de mesurer la possibilité de faire le roque
      *
      * @param[in] king Coordonnées du roi
      * @param[in] rook Coordonnées de la tour
+     * @param[in] val_mes Optionel peut determiner la mesure de 
+     * la présence d'une pièce ou non
      * @return true si le roque est possible
      * @return false sinon
      */
     CONSTEXPR bool mesure_castle(
         Coord const &king,
-        Coord const &rook);
+        Coord const &rook,
+        std::optional<bool> val_mes = std::nullopt);
 
     /**
      * @brief Mouvement du grand roque.
@@ -632,8 +682,13 @@ private:
      *
      * @param[in] king Coordonnées du roi
      * @param[in] rook Coordonnées de la tour
+     * @param[in] val_mes Optionel peut determiner la mesure de 
+     * la présence d'une pièce ou non
      */
-    CONSTEXPR void queen_side_castle(Coord const &king, Coord const &rook);
+    CONSTEXPR void queen_side_castle(
+        Coord const &king,
+        Coord const &rook,
+        std::optional<bool> val_mes = std::nullopt);
 
     /**
      * @brief Le tableau de toutes les instances possibles
