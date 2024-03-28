@@ -10,6 +10,9 @@ create_test_sourcelist (Tests
     test_move_split_with_mesure.cpp
     test_split_in_non_empty_case.cpp
     test_slide_merge_move_through_a_split_piece.cpp
+    test_get_proba_move_slide_capture.cpp
+    test_get_proba_move_slide_on_same_color.cpp
+    test_get_proba_move_slide_without_target.cpp
 )
 
 # add the executable

@@ -236,6 +236,7 @@ public:
     CONSTEXPR void move_promotion(
         Move const &move,
         std::optional<bool> val_mes = std::nullopt);
+CONSTEXPR double get_proba_move(Move const &move);
 
 private:
 

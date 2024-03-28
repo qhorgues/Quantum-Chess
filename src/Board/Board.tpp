@@ -477,7 +477,7 @@ Board<N, M>::get_proba_mesure_castle(
 }
 
 template <std::size_t N, std::size_t M>
-CONSTEXPR double get_proba_move(Move const &move)
+CONSTEXPR double Board<N, M>::get_proba_move(Move const &move)
 {
     Coord s;
     Coord t;
@@ -486,13 +486,20 @@ CONSTEXPR double get_proba_move(Move const &move)
     case TypeMove::NORMAL:
         s = move.normal.src;
         t = move.normal.arv;
+        break;
     case TypeMove::PROMOTE:
         s = move.promote.src;
         t = move.promote.arv;
+        break;
+    case TypeMove::MERGE:
+        return 1.;
+    case TypeMove::SPLIT:
+        return 1.;
     default:
         return 1.;
     }
-    TypePiece piece{(*this)(s..n, s.m).get_type()};
+    TypePiece piece{(*this)(s.n, s.m).get_type()};
+    TypePiece piece_target{(*this)(t.n, t.m).get_type()};
     switch (piece)
     {
     case TypePiece::KING:
@@ -507,54 +514,142 @@ CONSTEXPR double get_proba_move(Move const &move)
             {
                 if (s.m > t.m)
                 {
-                    get_proba_mesure_castle(s, Coord(s.n, t.m - 2));
+                    return get_proba_mesure_castle(s, Coord(s.n, t.m - 2));
                 }
                 else
                 {
-                    get_proba_mesure_castle(s, Coord(s.n, t.m + 1));
+                    return get_proba_mesure_castle(s, Coord(s.n, t.m + 1));
                 }
             }
             else
             {
-                return get_proba_mesure(s, t);
+                if (piece_target != TypePiece::EMPTY)
+                {
+                    if ((*this)(s.n, s.m).same_color((*this)(t.n, t.m)))
+                    {
+                        return 1. - get_proba_mesure(t);
+                    }
+                    else
+                    {
+                        return get_proba_mesure(s);
+                    }
+                }
+                else
+                {
+                    return 1.;
+                }
             }
         }
         else
         {
-            get_proba_mesure(s, t);
+            if (piece_target != TypePiece::EMPTY)
+            {
+                if ((*this)(s.n, s.m).same_color((*this)(t.n, t.m)))
+                {
+                    return 1. - get_proba_mesure(t);
+                }
+                else
+                {
+                    return get_proba_mesure(s);
+                }
+            }
+            else
+            {
+                return 1.;
+            }
         }
         break;
     case TypePiece::KNIGHT:
-        get_proba_mesure(s, t);
+        if (piece_target != TypePiece::EMPTY)
+        {
+            if ((*this)(s.n, s.m).same_color((*this)(t.n, t.m)))
+            {
+                return 1. - get_proba_mesure(t);
+            }
+            else
+            {
+                return get_proba_mesure(s);
+            }
+        }
+        else
+        {
+            return 1.;
+        }
+
         break;
     case TypePiece::BISHOP:
-        if ((*this)(t.n, t.m).get_type() == TypePiece::EMPTY ||
-            !(*this)(t.n, t.m).get_color().same_color((*this)(s.n, s.m)))
+        if ((*this)(t.n, t.m).get_type() == TypePiece::EMPTY)
         {
-            get_proba_mesure_capture_slide(
-                s, t,
-                &check_path_diagonal_1_instance<N, M>);
+            return 1.;
+        }
+        else
+        {
+            if (!(*this)(t.n, t.m).same_color((*this)(s.n, s.m)))
+            {
+                return get_proba_mesure_capture_slide(
+                    s, t,
+                    &check_path_diagonal_1_instance<N, M>);
+            }
+            else
+            {
+                return 1. - get_proba_mesure(t);
+            }
         }
         break;
     case TypePiece::ROOK:
-        move_classic_slide(
-            s, t,
-            &check_path_straight_1_instance<N, M>,
-            val_mes);
+        if ((*this)(t.n, t.m).get_type() == TypePiece::EMPTY)
+        {
+            return 1.;
+        }
+        else
+        {
+            if (!(*this)(t.n, t.m).same_color((*this)(s.n, s.m)))
+            {
+                return get_proba_mesure_capture_slide(
+                    s, t,
+                    &check_path_straight_1_instance<N, M>);
+            }
+            else
+            {
+                return 1. - get_proba_mesure(t);
+            }
+        }
         break;
     case TypePiece::QUEEN:
-        move_classic_slide(
-            s, t,
-            &check_path_queen_1_instance<N, M>,
-            val_mes);
+       if ((*this)(t.n, t.m).get_type() == TypePiece::EMPTY)
+        {
+            return 1.;
+        }
+        else
+        {
+            if (!(*this)(t.n, t.m).same_color((*this)(s.n, s.m)))
+            {
+                return get_proba_mesure_capture_slide(
+                    s, t,
+                    &check_path_queen_1_instance<N, M>);
+            }
+            else
+            {
+                return 1. - get_proba_mesure(t);
+            }
+        }
         break;
     case TypePiece::PAWN:
-        move_pawn(s, t, val_mes);
-        return;
+        if ((*this)(t.n, t.m).get_type() == TypePiece::EMPTY ||
+            ((*this)(t.n, t.m).get_type() == (*this)(s.n, s.m).get_type() &&
+             (*this)(t.n, t.m).get_color() == (*this)(s.n, s.m).get_color()))
+        {
+            return 1.;
+        }
+        else
+        {
+            return 1. - get_proba_mesure(t);
+        }
     case TypePiece::EMPTY:
     default:
         break;
     }
+    return 1.;
 }
 
 template <std::size_t N, std::size_t M>
