@@ -15,6 +15,7 @@ set (SRCS
     ${CMAKE_SOURCE_DIR}/src/Coord/Coord.cpp
     ${CMAKE_SOURCE_DIR}/src/Board/Board.tpp
     ${CMAKE_SOURCE_DIR}/src/Piece/Piece.tpp
+    ${CMAKE_SOURCE_DIR}/src/Piece/get_list_move.tpp
     ${CMAKE_SOURCE_DIR}/src/Qubit/Qubit.tpp
     ${CMAKE_SOURCE_DIR}/src/check_path/check_path.tpp
 )
