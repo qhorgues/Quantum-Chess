@@ -17,4 +17,9 @@ enum class Color : bool
     WHITE = true
 };
 
+constexpr inline Color other_color(Color color) noexcept
+{
+    return (color == Color::WHITE ? Color::BLACK : Color::WHITE);
+}
+
 #endif
