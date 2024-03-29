@@ -477,7 +477,7 @@ Board<N, M>::get_proba_mesure_castle(
 }
 
 template <std::size_t N, std::size_t M>
-CONSTEXPR double Board<N, M>::get_proba_move(Move const &move)
+CONSTEXPR double Board<N, M>::get_proba_move(Move const &move) const noexcept
 {
     Coord s;
     Coord t;
