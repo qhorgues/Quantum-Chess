@@ -1,5 +1,9 @@
 var NAVTREEINDEX1 =
 {
+"df/d5b/structMove.html#a76b0f6b36345a111df99f72443bb1176":[2,0,3,7],
+"df/d5b/structMove.html#a88c4bc9f06b951decf09b3b009c4bfd8":[2,0,3,10],
+"df/d5b/structMove.html#a8afc5f682e249d0e1bc418da22cf8019":[2,0,3,8],
+"df/d5b/structMove.html#aaa5ff06d9cb7463d11180a7620628bd4":[2,0,3,12],
 "df/d5b/structMove.html#ab2c466f4efa515edf581fa0d3ae901a6":[2,0,3,0],
 "df/d5b/structMove.html#ab8b350ee6f27c49ed78d730b10912b0a":[2,0,3,3],
 "df/d5b/structMove.html#ad28a195cbbde5d4a6368bd7e9950cddf":[2,0,3,13],

@@ -156,6 +156,8 @@ Fonctions membres publiques</h2></td></tr>
 <tr class="memitem:a70da9f8bdaa77d42712fdd123f40dad5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d23/classBoard.html#a70da9f8bdaa77d42712fdd123f40dad5">move_promotion</a> (<a class="el" href="../../df/d5b/structMove.html">Move</a> const &amp;<a class="el" href="../../de/d23/classBoard.html#a368cf7ba6b2ed27dcad86645ad1c1953">move</a>, std::optional&lt; bool &gt; val_mes=std::nullopt)</td></tr>
 <tr class="memdesc:a70da9f8bdaa77d42712fdd123f40dad5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui permet de faire un mouvement de pion quelconque avec une promotion.  <a href="../../de/d23/classBoard.html#a70da9f8bdaa77d42712fdd123f40dad5">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a70da9f8bdaa77d42712fdd123f40dad5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76fb13459b79eeeba579227aed36e078"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d23/classBoard.html#a76fb13459b79eeeba579227aed36e078">get_proba_move</a> (<a class="el" href="../../df/d5b/structMove.html">Move</a> const &amp;<a class="el" href="../../de/d23/classBoard.html#a368cf7ba6b2ed27dcad86645ad1c1953">move</a>)</td></tr>
+<tr class="separator:a76fb13459b79eeeba579227aed36e078"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Fonctions membres publiques statiques</h2></td></tr>
@@ -168,6 +170,15 @@ Fonctions membres publiques statiques</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Fonctions membres privées</h2></td></tr>
+<tr class="memitem:a1ff54cf54eb30a76ee8dea34343b5f40"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d23/classBoard.html#a1ff54cf54eb30a76ee8dea34343b5f40">get_proba_mesure</a> (<a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;p) const noexcept</td></tr>
+<tr class="memdesc:a1ff54cf54eb30a76ee8dea34343b5f40"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie la probabilité que la fonction mesure renvoie true, c'est-à-dire la proba que le mouvement soit"réussi".  <a href="../../de/d23/classBoard.html#a1ff54cf54eb30a76ee8dea34343b5f40">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a1ff54cf54eb30a76ee8dea34343b5f40"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a88aab24d8caf90b67660ef679e708d8a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d23/classBoard.html#a88aab24d8caf90b67660ef679e708d8a">get_proba_mesure_capture_slide</a> (<a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;s, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;t, std::function&lt; bool(<a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; N, M &gt; const &amp;, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;, std::size_t)&gt; check_path) const noexcept</td></tr>
+<tr class="memdesc:a88aab24d8caf90b67660ef679e708d8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie la probabilité que la fonction mesure_capture_slide renvoie true, c'est-à-dire la proba que le mouvement de capture_slide soit"réussi".  <a href="../../de/d23/classBoard.html#a88aab24d8caf90b67660ef679e708d8a">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a88aab24d8caf90b67660ef679e708d8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84791fcc38cf0dae066dc4cfb45d4d9f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d23/classBoard.html#a84791fcc38cf0dae066dc4cfb45d4d9f">get_proba_mesure_castle</a> (<a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;king, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;rook) const noexcept</td></tr>
+<tr class="memdesc:a84791fcc38cf0dae066dc4cfb45d4d9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie laprobabilité que la fonction mesure_castle renvoie true, c'est-à-dire la proba que le mouvement de roque soit"réussi".  <a href="../../de/d23/classBoard.html#a84791fcc38cf0dae066dc4cfb45d4d9f">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a84791fcc38cf0dae066dc4cfb45d4d9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2b7efeb273cc2b2b07fa87b8d9eb3b7f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d23/classBoard.html#a2b7efeb273cc2b2b07fa87b8d9eb3b7f">update_case</a> (std::size_t pos) noexcept</td></tr>
 <tr class="memdesc:a2b7efeb273cc2b2b07fa87b8d9eb3b7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vérifie si la case à une possibilité de contenir une pièce, et si elle n'en a pas modifie m_piece_board en nullptr.  <a href="../../de/d23/classBoard.html#a2b7efeb273cc2b2b07fa87b8d9eb3b7f">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a2b7efeb273cc2b2b07fa87b8d9eb3b7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -773,6 +784,166 @@ template&lt;std::size_t N = 8, std::size_t M = N&gt; </div>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a1ff54cf54eb30a76ee8dea34343b5f40" name="a1ff54cf54eb30a76ee8dea34343b5f40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ff54cf54eb30a76ee8dea34343b5f40">&#9670;&nbsp;</a></span>get_proba_mesure()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;std::size_t N = 8, std::size_t M = N&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> double <a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; N, M &gt;::get_proba_mesure </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;&#160;</td>
+          <td class="paramname"><em>p</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Renvoie la probabilité que la fonction mesure renvoie true, c'est-à-dire la proba que le mouvement soit"réussi". </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p</td><td>Coordonnées de la case </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>La probabilité </dd></dl>
+
+</div>
+</div>
+<a id="a88aab24d8caf90b67660ef679e708d8a" name="a88aab24d8caf90b67660ef679e708d8a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a88aab24d8caf90b67660ef679e708d8a">&#9670;&nbsp;</a></span>get_proba_mesure_capture_slide()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;std::size_t N = 8, std::size_t M = N&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> double <a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; N, M &gt;::get_proba_mesure_capture_slide </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;&#160;</td>
+          <td class="paramname"><em>t</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::function&lt; bool(<a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; N, M &gt; const &amp;, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;, std::size_t)&gt;&#160;</td>
+          <td class="paramname"><em>check_path</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Renvoie la probabilité que la fonction mesure_capture_slide renvoie true, c'est-à-dire la proba que le mouvement de capture_slide soit"réussi". </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">s</td><td>Coordonnées de la source </td></tr>
+    <tr><td class="paramname">t</td><td>Coordonnées de la cible </td></tr>
+    <tr><td class="paramname">check_path</td><td>Fonction qui teste la présence d'une pièce entre une source et une cible </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>La probabilité </dd></dl>
+
+</div>
+</div>
+<a id="a84791fcc38cf0dae066dc4cfb45d4d9f" name="a84791fcc38cf0dae066dc4cfb45d4d9f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84791fcc38cf0dae066dc4cfb45d4d9f">&#9670;&nbsp;</a></span>get_proba_mesure_castle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;std::size_t N = 8, std::size_t M = N&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> double <a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; N, M &gt;::get_proba_mesure_castle </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;&#160;</td>
+          <td class="paramname"><em>king</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;&#160;</td>
+          <td class="paramname"><em>rook</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Renvoie laprobabilité que la fonction mesure_castle renvoie true, c'est-à-dire la proba que le mouvement de roque soit"réussi". </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">king</td><td>Coordonnées du roi </td></tr>
+    <tr><td class="paramname">rook</td><td>Coordonnées de la tour </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>La probabilité </dd></dl>
+
+</div>
+</div>
+<a id="a76fb13459b79eeeba579227aed36e078" name="a76fb13459b79eeeba579227aed36e078"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76fb13459b79eeeba579227aed36e078">&#9670;&nbsp;</a></span>get_proba_move()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;std::size_t N = 8, std::size_t M = N&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> double <a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; N, M &gt;::get_proba_move </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../df/d5b/structMove.html">Move</a> const &amp;&#160;</td>
+          <td class="paramname"><em>move</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>
