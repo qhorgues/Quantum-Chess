@@ -236,7 +236,14 @@ public:
     CONSTEXPR void move_promotion(
         Move const &move,
         std::optional<bool> val_mes = std::nullopt);
-CONSTEXPR double get_proba_move(Move const &move);
+
+    /**
+     * @brief Renvoie la probabilité que le mouvement soit réalisé
+     * 
+     * @param move Le mouvement à réaliser
+     * @return Une probabilité comprise entre 0 et 1
+     */
+    CONSTEXPR double get_proba_move(Move const &move) const noexcept;
 
 private:
 
@@ -782,4 +789,8 @@ private:
 };
 
 #include "Board.tpp"
+#include "mesure.tpp"
+#include "get_proba_move.tpp"
+#include "move.tpp"
+
 #endif

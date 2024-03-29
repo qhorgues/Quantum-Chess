@@ -356,6 +356,7 @@ private:
 };
 
 #include "Piece.tpp"
+#include "get_list_move.tpp"
 
 /**
  * @brief L'objet représentant le roi blanc

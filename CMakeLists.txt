@@ -15,9 +15,13 @@ set (SRCS
     ${CMAKE_SOURCE_DIR}/src/Coord/Coord.cpp
     ${CMAKE_SOURCE_DIR}/src/Board/Board.tpp
     ${CMAKE_SOURCE_DIR}/src/Piece/Piece.tpp
+    ${CMAKE_SOURCE_DIR}/src/Piece/get_list_move.tpp
     ${CMAKE_SOURCE_DIR}/src/Qubit/Qubit.tpp
     ${CMAKE_SOURCE_DIR}/src/check_path/check_path.tpp
     ${CMAKE_SOURCE_DIR}/src/final_solver/final_solver.tpp
+    ${CMAKE_SOURCE_DIR}/src/Board/mesure.tpp
+    ${CMAKE_SOURCE_DIR}/src/Board/get_proba_move.tpp
+    ${CMAKE_SOURCE_DIR}/src/Board/move.tpp
 )
 
 set (HEADERS
