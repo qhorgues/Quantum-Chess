@@ -1,20 +1,18 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.10.0"/>
+<meta name="generator" content="Doxygen 1.9.4"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Quantum-Chess: Membres de fichier</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<script type="text/javascript" src="clipboard.js"></script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
-<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -35,10 +33,10 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.10.0 -->
+<!-- Généré par Doxygen 1.9.4 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-var searchBox = new SearchBox("searchBox", "search/",'.html');
+var searchBox = new SearchBox("searchBox", "search",'Recherche','.html');
 /* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
@@ -47,7 +45,7 @@ var searchBox = new SearchBox("searchBox", "search/",'.html');
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
   initMenu('',true,false,'search.php','Recherche');
-  $(function() { init_search(); });
+  $(document).ready(function() { init_search(); });
 });
 /* @license-end */
 </script>
@@ -65,7 +63,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function(){initNavTree('globals_func.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('globals_func.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -78,20 +76,13 @@ $(function(){initNavTree('globals_func.html',''); initResizable(); });
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
-<div id="MSearchResults">
-<div class="SRPage">
-<div id="SRIndex">
-<div id="SRResults"></div>
-<div class="SRStatus" id="Loading">Chargement...</div>
-<div class="SRStatus" id="Searching">Recherche...</div>
-<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
-</div>
-</div>
-</div>
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
 </div>
 
 <div class="contents">
-<div class="textblock">&#160;</div><ul>
+&#160;<ul>
 <li>check_path_diagonal_1_instance()&#160;:&#160;<a class="el" href="d8/dbf/check__path_8hpp.html#a4624039a2a4a3219ae39456df8bb0be3">check_path.hpp</a></li>
 <li>check_path_queen_1_instance()&#160;:&#160;<a class="el" href="d8/dbf/check__path_8hpp.html#aaf7fac3f658f214403dd662b2b4dd242">check_path.hpp</a></li>
 <li>check_path_straight_1_instance()&#160;:&#160;<a class="el" href="d8/dbf/check__path_8hpp.html#ab0d51b8e64b78c5e15b1cc1b1c484537">check_path.hpp</a></li>
@@ -99,19 +90,19 @@ $(function(){initNavTree('globals_func.html',''); initResizable(); });
 <li>double_equal()&#160;:&#160;<a class="el" href="da/dd5/math__utility_8cpp.html#ab860314031adda81f6775840e82a92cd">math_utility.cpp</a>, <a class="el" href="d3/dc5/math__utility_8hpp.html#ab860314031adda81f6775840e82a92cd">math_utility.hpp</a></li>
 <li>main()&#160;:&#160;<a class="el" href="df/d0a/main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main.cpp</a></li>
 <li>make_observer()&#160;:&#160;<a class="el" href="d9/d88/observer__ptr_8hpp.html#a14336bfd132c7f835e4980feb0faaaa3">observer_ptr.hpp</a></li>
-<li>Move_classic()&#160;:&#160;<a class="el" href="d1/dc9/_move_8hpp.html#a3685d244dcc494970e7e1d816ea7f615">Move.hpp</a></li>
-<li>Move_merge()&#160;:&#160;<a class="el" href="d1/dc9/_move_8hpp.html#ad9a864aa9288f6fd015f32a6dde99444">Move.hpp</a></li>
-<li>Move_promote()&#160;:&#160;<a class="el" href="d1/dc9/_move_8hpp.html#a1e4e5599eabf0b18a2ce87088e3fc500">Move.hpp</a></li>
-<li>Move_split()&#160;:&#160;<a class="el" href="d1/dc9/_move_8hpp.html#aa5fd19599eb105c815a86eaa4188651e">Move.hpp</a></li>
+<li>Move_classic()&#160;:&#160;<a class="el" href="d0/d21/Move_8hpp.html#a3685d244dcc494970e7e1d816ea7f615">Move.hpp</a></li>
+<li>Move_merge()&#160;:&#160;<a class="el" href="d0/d21/Move_8hpp.html#ad9a864aa9288f6fd015f32a6dde99444">Move.hpp</a></li>
+<li>Move_promote()&#160;:&#160;<a class="el" href="d0/d21/Move_8hpp.html#a1e4e5599eabf0b18a2ce87088e3fc500">Move.hpp</a></li>
+<li>Move_split()&#160;:&#160;<a class="el" href="d0/d21/Move_8hpp.html#aa5fd19599eb105c815a86eaa4188651e">Move.hpp</a></li>
 <li>operator!=()&#160;:&#160;<a class="el" href="d9/d88/observer__ptr_8hpp.html#a30759f8d19de75f3cb38d2cdd88c9fa1">observer_ptr.hpp</a></li>
-<li>operator*()&#160;:&#160;<a class="el" href="da/dfc/_qubit_8hpp.html#acb32f00af421a51ecd4a821bd99f4ff3">Qubit.hpp</a></li>
+<li>operator*()&#160;:&#160;<a class="el" href="d8/d3c/Qubit_8hpp.html#acb32f00af421a51ecd4a821bd99f4ff3">Qubit.hpp</a></li>
 <li>operator&lt;()&#160;:&#160;<a class="el" href="d9/d88/observer__ptr_8hpp.html#a9d08f5068ab26f538fac4c4127103ff8">observer_ptr.hpp</a></li>
-<li>operator&lt;&lt;()&#160;:&#160;<a class="el" href="da/dfc/_qubit_8hpp.html#a640c92029c9271137d85cde6c72dd7ac">Qubit.hpp</a></li>
+<li>operator&lt;&lt;()&#160;:&#160;<a class="el" href="d8/d3c/Qubit_8hpp.html#a640c92029c9271137d85cde6c72dd7ac">Qubit.hpp</a></li>
 <li>operator&lt;=()&#160;:&#160;<a class="el" href="d9/d88/observer__ptr_8hpp.html#af5a46a39520d69b82d5e456b8181d546">observer_ptr.hpp</a></li>
-<li>operator==()&#160;:&#160;<a class="el" href="d9/d88/observer__ptr_8hpp.html#ab83d6093e054120e36ff1996638d4d84">observer_ptr.hpp</a>, <a class="el" href="d6/da6/_coord_8cpp.html#aa61522c0a553f235e9a82781dfb765cb">Coord.cpp</a>, <a class="el" href="dd/d4f/_coord_8hpp.html#aa61522c0a553f235e9a82781dfb765cb">Coord.hpp</a></li>
+<li>operator==()&#160;:&#160;<a class="el" href="d9/d88/observer__ptr_8hpp.html#ab83d6093e054120e36ff1996638d4d84">observer_ptr.hpp</a>, <a class="el" href="db/d0e/Coord_8cpp.html#aa61522c0a553f235e9a82781dfb765cb">Coord.cpp</a>, <a class="el" href="d9/d09/Coord_8hpp.html#aa61522c0a553f235e9a82781dfb765cb">Coord.hpp</a></li>
 <li>operator&gt;()&#160;:&#160;<a class="el" href="d9/d88/observer__ptr_8hpp.html#a95c5e46d37b5f12a67b9953194375784">observer_ptr.hpp</a></li>
 <li>operator&gt;=()&#160;:&#160;<a class="el" href="d9/d88/observer__ptr_8hpp.html#aee693017f5e66f8fe64edc463dc10774">observer_ptr.hpp</a></li>
-<li>qubitToArray()&#160;:&#160;<a class="el" href="da/dfc/_qubit_8hpp.html#a520deb0865f61f8f2c5be011671ce4a0">Qubit.hpp</a></li>
+<li>qubitToArray()&#160;:&#160;<a class="el" href="d8/d3c/Qubit_8hpp.html#a520deb0865f61f8f2c5be011671ce4a0">Qubit.hpp</a></li>
 <li>swap()&#160;:&#160;<a class="el" href="d9/d88/observer__ptr_8hpp.html#a0d79ae8874afb660dd7e519a350e0382">observer_ptr.hpp</a></li>
 </ul>
 </div><!-- contents -->
@@ -119,7 +110,7 @@ $(function(){initNavTree('globals_func.html',''); initResizable(); });
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0 </li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>

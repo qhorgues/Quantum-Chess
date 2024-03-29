@@ -82,7 +82,7 @@ Piece::get_list_move_king(Board<N, M> const &board,
         int arv{board.m_L_mailbox[posBox + e]};
         if (arv >= 0)
         {
-            std::size_t n{arv / N}, m{arv % M};
+            std::size_t n{arv / M}, m{arv % M};
             Piece const &arvPiece{board(n, m)};
             bool eval;
             if CONSTEXPR (MOVE == Move_Mode::NORMAL)
@@ -134,7 +134,7 @@ Piece::get_list_move_knight(Board<N, M> const &board,
         int arv{board.m_L_mailbox[posBox + e]};
         if (arv >= 0)
         {
-            std::size_t n{arv / N}, m{arv % N};
+            std::size_t n{arv / M}, m{arv % M};
             Piece const &arvPiece{board(n, m)};
             bool eval;
             if CONSTEXPR (MOVE == Move_Mode::NORMAL)
@@ -175,7 +175,7 @@ Piece::get_list_move_rec(
         int posBox_tmp{posBox};
         while (arv >= 0)
         {
-            std::size_t n{arv / N}, m{arv % N};
+            std::size_t n{arv / M}, m{arv % M};
             Piece const &arvPiece{board(n, m)};
             if CONSTEXPR (MOVE == Move_Mode::NORMAL)
             {

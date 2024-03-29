@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['qubit_0',['Qubit',['../dc/dd9/class_qubit.html',1,'']]]
+  ['qubit_0',['Qubit',['../da/deb/classQubit.html',1,'']]]
 ];
