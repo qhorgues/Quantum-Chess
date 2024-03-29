@@ -789,4 +789,8 @@ private:
 };
 
 #include "Board.tpp"
+#include "mesure.tpp"
+#include "get_proba_move.tpp"
+#include "move.tpp"
+
 #endif
