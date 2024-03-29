@@ -129,20 +129,6 @@ namespace computer
             return (y < x) ? true : false;
         }
 
-        CONSTEXPR inline std::size_t factorial(std::size_t x)
-        {
-            if (x == 0)
-            {
-                return 1;
-            }
-            std::size_t rep{1};
-            for (std::size_t i{2}; i <= x; i++)
-            {
-                rep *= i;
-            }
-            return rep;
-        }
-
         template <std::size_t N, std::size_t M>
         bool check_alpha_beta(
             Board<N, M> const &board,
@@ -217,8 +203,50 @@ namespace computer
 
         template <std::size_t N, std::size_t M>
         CONSTEXPR double rec_get_best_move(
-            Board<N, M> &board,
-            std::forward_list<double> best_score_alpha_beta,
+            Board<N, M> const& board,
+            std::forward_list<double>& best_score_alpha_beta,
+            int profondeur);
+
+        template <std::size_t N, std::size_t M>
+        CONSTEXPR double deterministic_eval_move(
+            Board<N, M> const& board,
+            std::forward_list<double>& best_score_alpha_beta,
+            Move const& move,
+            int profondeur)
+        {
+            double proba_move { board.get_proba_move(move) };
+            Board<N, M> board_cpy1 { board };
+            if ( double_equal(proba_move, 1.) )
+            {
+                board_cpy1.move(move, true);
+                board_cpy1.change_player();
+                return rec_get_best_move(board_cpy1, best_score_alpha_beta, profondeur-1);
+            }
+            else if ( double_equal(proba_move, 0.) )
+            {
+                board_cpy1.move(move, false);
+                board_cpy1.change_player();
+                return rec_get_best_move(board_cpy1, best_score_alpha_beta, profondeur-1);
+            }
+            else
+            {
+                Board<N, M> board_cpy2 { board };
+                board_cpy1.move(move, true);
+                board_cpy2.move(move, false);
+                board_cpy1.change_player();
+                board_cpy2.change_player();
+                double eval1 {rec_get_best_move(board_cpy1, best_score_alpha_beta, profondeur-1)};
+                double eval2 {rec_get_best_move(board_cpy2, best_score_alpha_beta, profondeur-1)};
+
+                return std::max(proba_move*eval1 , (1. - proba_move)*eval2);
+            }
+
+        }
+
+        template <std::size_t N, std::size_t M>
+        CONSTEXPR double rec_get_best_move(
+            Board<N, M> const& board,
+            std::forward_list<double>& best_score_alpha_beta,
             int profondeur)
         {
             Color win;
@@ -242,25 +270,17 @@ namespace computer
                      profondeur,
                      &best_score](Move const &m) mutable -> bool
                     {
+                        best_score_alpha_beta
+                            .push_front(best_score);
                         double score;
-                        Board<N, M> board_cpy = board;
                         try
                         {
-                            board_cpy.move(m);
+                            score = deterministic_eval_move(board, best_score_alpha_beta, m, profondeur);
                         }
                         catch (std::runtime_error const &e)
                         {
                             return false;
                         }
-                        board_cpy.change_player();
-                        best_score_alpha_beta
-                            .push_front(best_score);
-                        score =
-                            rec_get_best_move(
-                                board_cpy,
-                                best_score_alpha_beta,
-                                profondeur -
-                                    1);
                         best_score_alpha_beta.pop_front();
                         return check_alpha_beta(board, best_score_alpha_beta, best_score, score);
                     });
@@ -297,9 +317,9 @@ namespace computer
                     board_cpy.move(move);
                 }
                 board_cpy.change_player();
+                std::forward_list<double> list_best_score {param.best_eval};
                 score = rec_get_best_move(board_cpy,
-                                          std::forward_list<double>{
-                                              param.best_eval},
+                                          list_best_score,
                                           param.profondeur - 1);
                 if (get_player_calc_best_score(
                         param.board.get_current_player(),
@@ -311,10 +331,11 @@ namespace computer
             }
         }
     }
+
     template <std::size_t N, std::size_t M>
     CONSTEXPR Move get_best_move(Board<N, M> const &board, int profondeur)
     {
-        unsigned int number_thread{std::thread::hardware_concurrency()};
+        unsigned int number_thread{20};//std::thread::hardware_concurrency()};
         std::vector<std::forward_list<Move>> list_move(number_thread);
         std::size_t last_th_view{0};
 
