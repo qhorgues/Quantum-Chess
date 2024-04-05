@@ -101,7 +101,12 @@ Board<N, M>::move_classic_jump(Coord const &s, Coord const &t,
     {
         if (m_piece_board[source].same_color(m_piece_board[target]))
         {
-            if (!mesure(t, !val_mes))
+            std::optional<bool> negation ;
+            if(val_mes.has_value())
+            {
+                negation = !val_mes.value();
+            }
+            if (!mesure(t, negation))
             {
                 for (std::size_t i{0}; i < std::size(m_board); i++)
                 {
@@ -170,7 +175,12 @@ Board<N, M>::move_pawn_one_step(Coord const &s, Coord const &t,
     }
     else
     {
-        if (!mesure(t, !val_mes))
+        std::optional<bool> negation ;
+            if(val_mes.has_value())
+            {
+                negation = !val_mes.value();
+            }
+        if (!mesure(t, negation))
         {
             for (std::size_t i{0}; i < std::size(m_board); i++)
             {
@@ -216,7 +226,12 @@ Board<N, M>::move_pawn_two_step(Coord const &s, Coord const &t,
     }
     else
     {
-        if (!mesure(t, !val_mes))
+        std::optional<bool> negation ;
+            if(val_mes.has_value())
+            {
+                negation = !val_mes.value();
+            }
+        if (!mesure(t, negation))
         {
             for (std::size_t i{0}; i < std::size(m_board); i++)
             {
@@ -312,7 +327,12 @@ Board<N, M>::move_enpassant(Coord const &s, Coord const &t, Coord const &ep,
     {
         if (m_piece_board[source].same_color(m_piece_board[target]))
         {
-            if (!mesure(t, !val_mes))
+            std::optional<bool> negation ;
+            if(val_mes.has_value())
+            {
+                negation = !val_mes.value();
+            }
+            if (!mesure(t, negation))
             {
 
                 for (std::size_t i{0}; i < std::size(m_board); i++)
@@ -486,7 +506,12 @@ Board<N, M>::move_classic_slide(
     {
         if (m_piece_board[source].same_color(m_piece_board[target]))
         {
-            if (!mesure(t, !val_mes))
+            std::optional<bool> negation ;
+            if(val_mes.has_value())
+            {
+                negation = !val_mes.value();
+            }
+            if (!mesure(t, negation))
             {
                 for (std::size_t i{0}; i < std::size(m_board); i++)
                 {
