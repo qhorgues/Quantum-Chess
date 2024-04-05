@@ -15,10 +15,11 @@
 #include <functional>
 int main()
 {
-    Board<3> B{
-        {{B_KING, Piece(), Piece()},
-         {Piece(), W_ROOK, Piece()},
-         {Piece(), Piece(),W_KING}}};
+    Board<4> B{
+        {{B_KING, Piece(), Piece(), Piece()},
+         {Piece(), B_ROOK, Piece(), Piece()},
+         {Piece(), Piece(),  W_QUEEN, Piece()},
+         {Piece(), Piece(), W_QUEEN, W_KING}}};
 
     Board<1,6> B2{
         {
@@ -27,7 +28,7 @@ int main()
     };
     /*bool b = Final::brut_force_quantum_chess(B2, 1, Color::WHITE);
     std::cout<<std::boolalpha<<b<<std::endl;*/
-    double res {Final::res_pos(B, 2)};
+    double res {Final::res_pos(B, 6)};
     std::cout<<res<<std::endl;
 
     return 0;
