@@ -203,9 +203,6 @@ double Board<N, M>::get_random_number_0_1()
     return gen(rd);
 }
 
-
-
-
 template <std::size_t N, std::size_t M>
 template <std::size_t Q>
 CONSTEXPR void Board<N, M>::modify(
@@ -261,8 +258,6 @@ Board<N, M>::move_1_instance(std::array<bool, Q> const &case_modif,
     auto x{qubitToArray(matrix * q)};
     modify(std::move(x), position, tab_positions);
 }
-
-
 
 template <std::size_t N, std::size_t M>
 CONSTEXPR Piece const &
@@ -431,84 +426,86 @@ Board<N, M>::all_move(
                             return;
                         }
                     }
-
-                    std::forward_list<Coord> move_split{
-                        get_list_split_move(Coord(i, j))};
-
-                    std::forward_list<Coord>::
-                        const_iterator it_move{
-                            std::cbegin(move_split)};
-                    for (; it_move != std::cend(move_split);
-                         it_move++)
+                    if (piece.get_type() != TypePiece::KING)
                     {
-                        for (std::forward_list<Coord>::
-                                 const_iterator it2{
-                                     std::cbegin(move_split)};
-                             it2 != cend(move_split); it2++)
+                        std::forward_list<Coord> move_split{
+                            get_list_split_move(Coord(i, j))};
+
+                        std::forward_list<Coord>::
+                            const_iterator it_move{
+                                std::cbegin(move_split)};
+                        for (; it_move != std::cend(move_split);
+                             it_move++)
                         {
-                            if (it_move == it2)
+                            for (std::forward_list<Coord>::
+                                     const_iterator it2{
+                                         std::cbegin(move_split)};
+                                 it2 != cend(move_split); it2++)
                             {
-                                continue;
+                                if (it_move == it2)
+                                {
+                                    continue;
+                                }
+                                if (func(Move_split(Coord(i, j), *it_move, *it2)))
+                                {
+                                    return;
+                                }
                             }
-                            if (func(Move_split(Coord(i, j), *it_move, *it2)))
-                            {
-                                return;
-                            }
-                        }
-                        if (piece.get_type() != TypePiece::PAWN)
-                        {
-                            if (move_merge
-                                    .contains(piece.get_type()))
+                            if (piece.get_type() != TypePiece::PAWN)
                             {
                                 if (move_merge
-                                        .at(piece.get_type())
-                                        .contains(*it_move))
+                                        .contains(piece.get_type()))
                                 {
-                                    for (Coord const &c :
-                                         move_merge
-                                             .at(piece.get_type())
-                                             .at(*it_move))
+                                    if (move_merge
+                                            .at(piece.get_type())
+                                            .contains(*it_move))
                                     {
-                                        if (p_proba < 1. ||
-                                            get_proba(
-                                                Coord(
-                                                    c.n,
-                                                    c.m)) < 1.)
+                                        for (Coord const &c :
+                                             move_merge
+                                                 .at(piece.get_type())
+                                                 .at(*it_move))
                                         {
-                                            if (func(Move_merge(
-                                                    Coord(i, j),
-                                                    c,
-                                                    *it_move)))
+                                            if (p_proba < 1. ||
+                                                get_proba(
+                                                    Coord(
+                                                        c.n,
+                                                        c.m)) < 1.)
                                             {
-                                                return;
+                                                if (func(Move_merge(
+                                                        Coord(i, j),
+                                                        c,
+                                                        *it_move)))
+                                                {
+                                                    return;
+                                                }
                                             }
                                         }
+                                    }
+                                    else
+                                    {
+                                        move_merge
+                                            .at(piece.get_type())
+                                            .insert({*it_move,
+                                                     std::vector{
+                                                         Coord(i, j)}});
                                     }
                                 }
                                 else
                                 {
                                     move_merge
-                                        .at(piece.get_type())
-                                        .insert({*it_move,
-                                                 std::vector{
-                                                     Coord(i, j)}});
+                                        .insert(
+                                            std::make_pair(
+                                                piece
+                                                    .get_type(),
+                                                std::unordered_map<
+                                                    Coord,
+                                                    std::vector<Coord>,
+                                                    Coord_hash>{
+                                                    std::make_pair(
+                                                        *it_move,
+                                                        std::vector{
+                                                            Coord(i, j)})}));
                                 }
-                            }
-                            else
-                            {
-                                move_merge
-                                    .insert(
-                                        std::make_pair(
-                                            piece
-                                                .get_type(),
-                                            std::unordered_map<
-                                                Coord,
-                                                std::vector<Coord>,
-                                                Coord_hash>{
-                                                std::make_pair(
-                                                    *it_move,
-                                                    std::vector{
-                                                        Coord(i, j)})}));
                             }
                         }
                     }
