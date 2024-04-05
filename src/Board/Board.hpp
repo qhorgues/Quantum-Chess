@@ -177,7 +177,7 @@ public:
      * @return true si la position est gagnante pour la couleur c
      * @return false sinon
      */
-    CONSTEXPR bool winning_position(Color c);
+    CONSTEXPR bool winning_position(Color c) const noexcept;
 
     /**
      * @brief Recupère la couleur du joueur au tour de jouer
