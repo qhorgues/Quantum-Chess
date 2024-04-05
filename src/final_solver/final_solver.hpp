@@ -9,7 +9,16 @@ CONSTEXPR bool brut_force_classic_chess(Board<N, M> const &board, std::size_t pr
 
 template <std::size_t N, std::size_t M>
 CONSTEXPR bool brut_force_quantum_chess(Board<N, M> const &board, std::size_t profondeur, Color c);
+
+template <std::size_t N, std::size_t M>
+CONSTEXPR double alphaBeta(const Board<N, M> &board, std::size_t profondeur, double alpha, double beta, bool estMax);
+
+template <std::size_t N, std::size_t M>
+CONSTEXPR double res_pos(Board<N, M> &board, std::size_t profondeur);
 };
+
+
+
 struct C_hash{
 std::size_t operator () (std::pair<TypePiece, Coord> const &c) const;
 };

@@ -106,46 +106,196 @@ CONSTEXPR bool Final::brut_force_classic_chess(Board<N, M> &board, std::size_t p
 template <std::size_t N, std::size_t M>
 CONSTEXPR bool Final::brut_force_quantum_chess(Board<N, M> &board, std::size_t profondeur, Color c)
 {
-    bool found_win_pos {false};
+    bool found_win_pos{false};
     if (board.winning_position(c))
     {
         return true;
     }
     else
     {
-        if(profondeur == 0)
+        if (profondeur == 0)
         {
             return false;
         }
         else
         {
-        board.all_move(
-            [&board,
-             profondeur,
-             c,
-             &found_win_pos](Move const &m) mutable -> bool {
-                Board<N, M> board_cpy = board;
-                board_cpy.move(m);
-                board_cpy.change_player();
-                if(c == board.get_current_player())
-                {             
-                    if(brut_force_quantum_chess(board_cpy, profondeur -1, c))
-                    {
-                        found_win_pos = true;
-                        return true;
-                    }
-                }
-                else
+            board.all_move(
+                [&board,
+                 profondeur,
+                 c,
+                 &found_win_pos](Move const &m) mutable -> bool
                 {
-                   if(!brut_force_quantum_chess(board_cpy, profondeur -1, c))
+                    Board<N, M> board_cpy = board;
+                    board_cpy.move(m);
+                    board_cpy.change_player();
+                    if (c == board.get_current_player())
                     {
-                        return true;
+                        if (brut_force_quantum_chess(board_cpy, profondeur - 1, c))
+                        {
+                            found_win_pos = true;
+                            return true;
+                        }
                     }
-                    found_win_pos = true;   
-                }
-                return false;
-            });
+                    else
+                    {
+                        if (!brut_force_quantum_chess(board_cpy, profondeur - 1, c))
+                        {
+                            return true;
+                        }
+                        found_win_pos = true;
+                    }
+                    return false;
+                });
         }
     }
     return found_win_pos;
+}
+
+template <std::size_t N, std::size_t M>
+double evaluer(const Board<N, M> &board)
+{
+    Color c {board.get_current_player()};
+
+    if (board.winning_position(c))
+    {
+        return 1.;
+    }
+    else
+    {
+        if (board.winning_position(other_color(c)))
+        {
+            return -1.;
+        }
+        else
+        {
+            return 0.;
+        }
+    }
+}
+// Fonction récursive pour l'élagage alpha-bêta
+template <std::size_t N, std::size_t M>
+CONSTEXPR double Final::alphaBeta(const Board<N, M> &board, std::size_t profondeur, double alpha, double beta, bool estMax)
+{
+    Color c {board.get_current_player()};
+    if (profondeur == 0 || board.winning_position(c) || board.winning_position(other_color(c)))
+    {
+        return evaluer(board);
+    }
+
+    if (estMax)
+    {
+        double meilleurScore = -2.;
+        board.all_move(
+            [&board,
+            profondeur,
+             estMax,
+             meilleurScore,
+             beta,
+             alpha](Move const &m) -> bool
+
+            {
+                bool one_move{true};
+                double proba_move{board.get_proba_move(m)};
+                if (double_equal(proba_move, 1.))
+                {
+                    Board<N, M> board_cpy = board;
+                    board_cpy.change_player();
+                    board_cpy.move(m, true);
+                    meilleurScore = std::max(meilleurScore, alphaBeta(board_cpy, profondeur - 1, alpha, beta, false));
+                }
+                else
+                {
+                    if (double_equal(proba_move, 0.))
+                    {
+                        Board<N, M> board_cpy = board;
+                        board_cpy.change_player();
+                        board_cpy.move(m, false);
+                        meilleurScore = std::max(meilleurScore, alphaBeta(board_cpy, profondeur - 1, alpha, beta, false));
+                    }
+                    else
+                    {
+                        one_move = false;
+                        Board<N, M> board_cpy1 = board;
+                        board_cpy1.change_player();
+                        board_cpy1.move(m, false);
+                        Board<N, M> board_cpy2 = board;
+                        board_cpy2.change_player();
+                        board_cpy2.move(m, true);
+
+                        meilleurScore = std::max(meilleurScore, (alphaBeta(board_cpy1, profondeur - 1, alpha, beta, false) + alphaBeta(board_cpy2, profondeur - 1, alpha, beta, false)) / 2);
+                    }
+                }
+                if (one_move)
+                {
+                    alpha = std::max(alpha, meilleurScore);
+                    if (beta <= alpha)
+                    {
+                        return true; // Élagage bêta
+                    }
+                    return false;
+                }
+            });
+             return meilleurScore;
+    }
+    else
+    {
+        double meilleurScore = 2.;
+        board.all_move(
+            [&board,
+            profondeur,
+             alpha,
+             meilleurScore,
+             estMax,
+             beta](Move const &m) mutable -> bool
+
+            {
+                bool one_move{true};
+                double proba_move{board.get_proba_move(m)};
+                if (double_equal(proba_move, 1.))
+                {
+                    Board<N, M> board_cpy = board;
+                    board_cpy.change_player();
+                    board_cpy.move(m, true);
+                    meilleurScore = std::min(meilleurScore, alphaBeta(board_cpy, profondeur - 1, alpha, beta, false));
+                }
+                else
+                {
+                    if (double_equal(proba_move, 0.))
+                    {
+                        Board<N, M> board_cpy = board;
+                        board_cpy.change_player();
+                        board_cpy.move(m, true);
+                        meilleurScore = std::min(meilleurScore, alphaBeta(board_cpy, profondeur - 1, alpha, beta, true));
+                    }
+                    else
+                    {
+                        one_move = false;
+                        Board<N, M> board_cpy1 = board;
+                        board_cpy1.change_player();
+                        board_cpy1.move(m, false);
+                        Board<N, M> board_cpy2 = board;
+                        board_cpy2.change_player();
+                        board_cpy2.move(m, true);
+
+                        meilleurScore = std::min(meilleurScore, (alphaBeta(board_cpy1, profondeur - 1, alpha, beta, true) + alphaBeta(board_cpy2, profondeur - 1, alpha, beta, true)) / 2);
+                    }
+                }
+                if(one_move)
+                {
+                beta = std::min(beta, meilleurScore);
+                if (beta <= alpha)
+                {
+                    return true; // Élagage bêta
+                }
+                return false;
+                }
+            });
+             return meilleurScore;
+    }
+}
+
+template <std::size_t N, std::size_t M>
+CONSTEXPR double Final::res_pos(Board<N, M> &board, std::size_t profondeur)
+{
+    return alphaBeta(board, profondeur, -2., 2., true);
 }
