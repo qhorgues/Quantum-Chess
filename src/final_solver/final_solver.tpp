@@ -173,7 +173,7 @@ double evaluer(const Board<N, M> &board, Color c)
 }
 // Fonction récursive pour l'élagage alpha-bêta
 template <std::size_t N, std::size_t M>
-CONSTEXPR double alphaBeta(const Board<N, M> &board, std::size_t profondeur, double alpha, double beta, bool estMax, Color c)
+CONSTEXPR double alphaBeta(Board<N, M> const &board, std::size_t profondeur, double alpha, double beta, bool estMax, Color c)
 {
     if (profondeur == 0 || board.winning_position(c) || board.winning_position(other_color(c)))
     {

@@ -18,8 +18,14 @@ int main()
     Board<4> B{
         {{B_KING, Piece(), Piece(), Piece()},
          {Piece(), B_ROOK, Piece(), Piece()},
-         {Piece(), Piece(),  W_QUEEN, Piece()},
+         {Piece(), Piece(),  Piece(), Piece()},
          {Piece(), Piece(), W_QUEEN, W_KING}}};
+
+         Board<4> Bt{
+        {{B_KING, Piece(), Piece(), Piece()},
+         {Piece(), Piece(), Piece(), Piece()},
+         {Piece(), Piece(),  Piece(), Piece()},
+         {Piece(), Piece(), Piece(), W_KING}}};
 
     Board<1,6> B2{
         {
