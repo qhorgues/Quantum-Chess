@@ -5,6 +5,7 @@
 #include <cmath>
 #include <optional>
 #include <stdexcept>
+#include <iostream>
 
 // Inclusion projet
 #include <Piece.hpp>
@@ -73,6 +74,13 @@ CONSTEXPR bool Board<N, M>::mesure(Coord const &p,
                 update_case(i);
             }
         }
+        if (std::empty(m_board))
+    {
+        bool erreur = p_actuelle.get_type() == TypePiece::ROOK;
+        std::cout<<erreur<<std::endl;
+        std::cout<<mes<<std::endl;
+        throw std::runtime_error("La mesure fait nimp");
+    }
         return mes;
     }
 }
@@ -149,6 +157,10 @@ Board<N, M>::mesure_capture_slide(
                 update_case(i);
             }
         }
+        if (std::empty(m_board))
+    {
+        throw std::runtime_error("La mesure_capture_slide fait nimp");
+    }
         return mes;
     }
 }
