@@ -100,6 +100,10 @@ CONSTEXPR double Board<N, M>::get_proba_move(Move const &move) const noexcept
     }
     TypePiece piece{(*this)(s.n, s.m).get_type()};
     TypePiece piece_target{(*this)(t.n, t.m).get_type()};
+    if((piece == piece_target) && (*this)(s.n, s.m).same_color((*this)(t.n, t.m)))
+    {
+        return 1.;
+    }
     switch (piece)
     {
     case TypePiece::KING:
