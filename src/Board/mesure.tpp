@@ -85,7 +85,8 @@ Board<N, M>::mesure_capture_slide(
     std::function<bool(Board<N, M> const &,
                        Coord const &,
                        Coord const &,
-                       std::size_t)>
+                       std::size_t,
+                       std::optional<Coord>)>
         check_path,
     std::optional<bool> val_mes)
 {
@@ -118,7 +119,7 @@ Board<N, M>::mesure_capture_slide(
                 // indice_suppr++,
             }
             mes = m_board[indice_mes].first[position] &&
-                  check_path(*this, s, t, indice_mes);
+                  check_path(*this, s, t, indice_mes, std::nullopt);
         }
         else
         {
@@ -129,7 +130,7 @@ Board<N, M>::mesure_capture_slide(
         for (std::size_t i{std::size(m_board)}; i > 0; i--)
         {
             if ((m_board[i - 1].first[position] &&
-                 check_path(*this, s, t, i - 1)) != mes)
+                 check_path(*this, s, t, i - 1, std::nullopt)) != mes)
             {
                 proba_delete +=
                     std::pow(std::abs(m_board[i - 1].second), 2);
@@ -184,7 +185,7 @@ Board<N, M>::mesure_castle(
         }
         mes = m_board[indice_mes].first[position_king] &&
               m_board[indice_mes].first[position_rook] &&
-              check_path_straight_1_instance(*this, king, rook, indice_mes);
+              check_path_straight_1_instance(*this, king, rook, indice_mes, std::nullopt);
     }
     else
     {
@@ -196,7 +197,7 @@ Board<N, M>::mesure_castle(
     {
         if ((m_board[i - 1].first[position_king] &&
              m_board[i - 1].first[position_rook] &&
-             check_path_straight_1_instance(*this, king, rook, i - 1)) != mes)
+             check_path_straight_1_instance(*this, king, rook, i - 1, std::nullopt)) != mes)
         {
             proba_delete +=
                 std::pow(std::abs(m_board[i - 1].second), 2);

@@ -76,7 +76,8 @@ check_path_straight_1_instance(
     Board<N, M> const &board,
     Coord const &dpt,
     Coord const &arv,
-    std::size_t position)
+    std::size_t position,
+    std::optional<Coord> position_other_piece_merge)
 {
     if (dpt.n == arv.n)
     {
@@ -86,64 +87,102 @@ check_path_straight_1_instance(
         {
             if (board.m_board[position].first[board.offset(dpt.n, i)])
             {
-                return false;
+                if (position_other_piece_merge.has_value())
+                {
+                    if (!(board.offset(position_other_piece_merge.value().n,
+                                       position_other_piece_merge.value().m) == board.offset(dpt.n, i)))
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    return false;
+                }
             }
         }
-        return true;
+            return true;
+        
     }
-    else if (dpt.m == arv.m)
-    {
-        for (std::size_t i{std::min(dpt.n, arv.n) + 1};
-             i < std::max(dpt.n, arv.n);
-             i++)
+        else if (dpt.m == arv.m)
         {
-            if (board.m_board[position].first[board.offset(i, dpt.m)])
+            for (std::size_t i{std::min(dpt.n, arv.n) + 1};
+                 i < std::max(dpt.n, arv.n);
+                 i++)
             {
-                return false;
+                if (board.m_board[position].first[board.offset(i, dpt.m)])
+                {
+                    if (position_other_piece_merge.has_value())
+                    {
+                        if (!(board.offset(position_other_piece_merge.value().n,
+                                           position_other_piece_merge.value().m) == board.offset(i, dpt.m)))
+                        {
+                            return false;
+                        }
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
             }
+            return true;
         }
-        return true;
+        return false;
     }
-    return false;
-}
 
-template <std::size_t N, std::size_t M>
-CONSTEXPR bool
-check_path_diagonal_1_instance(
-    Board<N, M> const &board,
-    Coord const &dpt,
-    Coord const &arv,
-    std::size_t position)
-{
-    std::size_t const max_lines{std::max(dpt.n, arv.n)};
-    std::size_t const min_lines{std::min(dpt.n, arv.n)};
-    std::size_t const max_columns{std::max(dpt.m, arv.m)};
-    std::size_t const min_columns{std::min(dpt.m, arv.m)};
-
-    std::size_t const dist{max_lines - min_lines};
-
-    if (dist == max_columns - min_columns)
+    template <std::size_t N, std::size_t M>
+    CONSTEXPR bool
+    check_path_diagonal_1_instance(
+        Board<N, M> const &board,
+        Coord const &dpt,
+        Coord const &arv,
+        std::size_t position,
+        std::optional<Coord> position_other_piece_merge)
     {
-        for (std::size_t i{1}; i < dist; i++)
-        {
-            if (board.m_board[position]
-                     .first[board.offset(min_lines + i, min_columns + i)])
-            {
-                return false;
-            }
-        }
-        return true;
-    }
-    return false;
-}
+        std::size_t const max_lines{std::max(dpt.n, arv.n)};
+        std::size_t const min_lines{std::min(dpt.n, arv.n)};
+        std::size_t const max_columns{std::max(dpt.m, arv.m)};
+        std::size_t const min_columns{std::min(dpt.m, arv.m)};
 
-template <std::size_t N, std::size_t M>
-CONSTEXPR bool check_path_queen_1_instance(
-    Board<N, M> const &board,
-    Coord const &dpt,
-    Coord const &arv,
-    std::size_t position)
-{
-    return check_path_straight_1_instance<N, M>(board, dpt, arv, position) ||
-           check_path_diagonal_1_instance<N, M>(board, dpt, arv, position);
-}
+        std::size_t const dist{max_lines - min_lines};
+
+        if (dist == max_columns - min_columns)
+        {
+            for (std::size_t i{1}; i < dist; i++)
+            {
+                if (board.m_board[position]
+                        .first[board.offset(min_lines + i, min_columns + i)])
+                {
+                    if (position_other_piece_merge.has_value())
+                    {
+                        if (!(board.offset(position_other_piece_merge.value().n,
+                                           position_other_piece_merge.value().m) ==
+                              board.offset(min_lines + i,
+                                           min_columns + i)))
+                        {
+                            return false;
+                        }
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+        return false;
+    }
+
+    template <std::size_t N, std::size_t M>
+    CONSTEXPR bool check_path_queen_1_instance(
+        Board<N, M> const &board,
+        Coord const &dpt,
+        Coord const &arv,
+        std::size_t position,
+        std::optional<Coord> position_other_piece_merge)
+    {
+        return check_path_straight_1_instance<N, M>(board, dpt, arv, position, position_other_piece_merge) ||
+               check_path_diagonal_1_instance<N, M>(board, dpt, arv, position, position_other_piece_merge);
+    }
