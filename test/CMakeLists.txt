@@ -15,6 +15,8 @@ create_test_sourcelist (Tests
     test_get_proba_move_slide_without_target.cpp
     test_get_proba_move_jump_same_color.cpp
     test_get_proba_move_jump_capture.cpp
+    test_capture_slide_move_true.cpp
+    test_capture_slide_move_false.cpp
 )
 
 # add the executable
