@@ -577,8 +577,8 @@ Board<N, M>::move_split_slide(
     {
         move_1_instance(
             std::array<bool, 5>{
-                !check_path(*this, s, t2, i, std::nullopt),
-                !check_path(*this, s, t1, i, std::nullopt),
+                !check_path(*this, s, t2, i, t1),
+                !check_path(*this, s, t1, i, t2),
                 m_board[i].first[target2],
                 m_board[i].first[target1],
                 m_board[i].first[source]},
