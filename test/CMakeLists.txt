@@ -17,6 +17,7 @@ create_test_sourcelist (Tests
     test_get_proba_move_jump_capture.cpp
     test_capture_slide_move_true.cpp
     test_capture_slide_move_false.cpp
+    test_move_merge_after_split.cpp
 )
 
 # add the executable

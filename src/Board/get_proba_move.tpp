@@ -37,7 +37,8 @@ Board<N, M>::get_proba_mesure_capture_slide(
     std::function<bool(Board<N, M> const &,
                        Coord const &,
                        Coord const &,
-                       std::size_t)>
+                       std::size_t,
+                       std::optional<Coord>)>
         check_path) const noexcept
 {
     double res{0};
@@ -46,7 +47,7 @@ Board<N, M>::get_proba_mesure_capture_slide(
     for (std::size_t i{0}; i < size_board; i++)
     {
         if (m_board[i].first[position] &&
-            check_path(*this, s, t, i))
+            check_path(*this, s, t, i, std::nullopt))
         {
             res += std::pow(std::abs(m_board[i].second), 2);
         }
@@ -68,7 +69,7 @@ Board<N, M>::get_proba_mesure_castle(
     {
         if (m_board[i].first[position_king] &&
             m_board[i].first[position_rook] &&
-            check_path_straight_1_instance(*this, king, rook, i))
+            check_path_straight_1_instance(*this, king, rook, i, std::nullopt))
         {
             res += std::pow(std::abs(m_board[i].second), 2);
         }

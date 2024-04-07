@@ -39,7 +39,8 @@ check_path_straight_1_instance(
     Board<N, M> const &board,
     Coord const &dpt,
     Coord const &arv,
-    std::size_t position);
+    std::size_t position,
+    std::optional<Coord> position_other_piece_merge);
 
 /**
  * @brief Vérififie si il y a une pièce entre deux cases sur une
@@ -60,7 +61,8 @@ CONSTEXPR bool check_path_diagonal_1_instance(
     Board<N, M> const &board,
     Coord const &dpt,
     Coord const &arv,
-    std::size_t position);
+    std::size_t position,
+    std::optional<Coord> position_other_piece_merge);
 
 /**
  * @brief Vérififie si il y a une pièce entre deux cases
@@ -81,7 +83,8 @@ CONSTEXPR bool check_path_queen_1_instance(
     Board<N, M> const &board,
     Coord const &dpt,
     Coord const &arv,
-    std::size_t position);
+    std::size_t position,
+    std::optional<Coord> position_other_piece_merge);
 
 #include "check_path.tpp"
 #endif

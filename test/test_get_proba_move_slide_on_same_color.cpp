@@ -9,7 +9,7 @@ int test_get_proba_move_slide_on_same_color(int argc, char **argv)
 {
     Board<3, 5> board{
         {Piece(), Piece(), Piece(), Piece(), Piece()},
-        {B_ROOK, W_ROOK,  W_ROOK,  W_ROOK, Piece()},
+        {B_QUEEN, W_ROOK,  W_ROOK,  W_ROOK, Piece()},
         {Piece(),Piece(),Piece(),  Piece(), B_ROOK}};
     Move m1 = Move_split(Coord(1, 1), Coord(0, 1), Coord(2, 1));
     Move m2 = Move_split(Coord(1, 2), Coord(0, 2), Coord(2, 2));
