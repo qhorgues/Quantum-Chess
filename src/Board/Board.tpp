@@ -5,14 +5,12 @@
 #include <cassert>
 #include <utility>
 #include <random>
-#include <functional>
 #include <cmath>
 #include <optional>
 #include <stdexcept>
 
 // Inclusion projet
 #include <Qubit.hpp>
-#include <Piece.hpp>
 #include <CMatrix.hpp>
 #include <Unitary.hpp>
 #include <TypePiece.hpp>
