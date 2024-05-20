@@ -18,19 +18,26 @@ class NodeTree final
 {
 public:
     NodeTree() = default;
-    NodeTree(NodeTree const&) = delete;
-    NodeTree& operator=(NodeTree const&) = delete;
+    NodeTree(NodeTree const &) = delete;
+    NodeTree &operator=(NodeTree const &) = delete;
 
     NodeTree(NodeTree &&) = default;
-    NodeTree& operator=(NodeTree &&) = default;
+    NodeTree &operator=(NodeTree &&) = default;
 
     ~NodeTree() = default;
 
-    void add_node()
+    void add_node();
 
     friend ExploreTree;
+
 private:
-    std::priority_queue<std::unique_ptr<NodeTree>, > m_sub_node;
+    bool cmpNodeTree(NodeTree const &lhs, NodeTree const &rhs) const;
+
+    std::priority_queue<
+        std::unique_ptr<NodeTree>,
+        std::vector<std::unique_ptr<NodeTree>>,
+        decltype(NodeTree::cmpNodeTree)>
+        m_sub_node;
     Move m_move;
     double m_eval;
     TypeMinMax m_min_max;
@@ -39,19 +46,17 @@ private:
 class ExploreTree final
 {
 public:
-
     ExploreTree() = default;
 
-    ExploreTree(ExploreTree const&) = delete;
-    ExploreTree& operator=(ExploreTree const&) = delete;
+    ExploreTree(ExploreTree const &) = delete;
+    ExploreTree &operator=(ExploreTree const &) = delete;
 
     ExploreTree(ExploreTree &&) = default;
-    ExploreTree& operator=(ExploreTree &&) = default;
+    ExploreTree &operator=(ExploreTree &&) = default;
 
     ~ExploreTree() = default;
 
-
-    void keep_one_branch(Move const& move_play);
+    void keep_one_branch(Move const &move_play);
 
 private:
     std::unique_ptr<NodeTree> m_root;

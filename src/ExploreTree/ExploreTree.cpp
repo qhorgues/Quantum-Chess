@@ -3,31 +3,42 @@
 #include <algorithm>
 #include <stdexcept>
 
+#if defined(UNUSED)
 bool operator=(Move const& lhs, Move const& rhs) noexcept
 {
-  if (m.type == move_play.type) {
-    switch (m.type) {
+  if (lhs.type == rhs.type) {
+    switch (lhs.type) {
       case TypeMove::NORMAL:
-        return m.normal.src == move_play.normal.src &&
-        m.normal.arv == move_play.normal.arv;
+        return lhs.normal.src == rhs.normal.src &&
+        lhs.normal.arv == rhs.normal.arv;
       case TypeMove::SPLIT:
-        return m.split.src == move_play.split.src &&
-        m.split.arv1 == move_play.split.arv1 &&
-        m.split.arv2 == move_play.split.arv2;
+        return lhs.split.src == rhs.split.src &&
+        lhs.split.arv1 == rhs.split.arv1 &&
+        lhs.split.arv2 == rhs.split.arv2;
       case TypeMove::MERGE:
-        return m.merge.src1 == move_play.merge.src1 &&
-        m.merge.src2 == move_play.merge.src2 &&
-        m.merge.arv == move_play.merge.arv;
+        return lhs.merge.src1 == rhs.merge.src1 &&
+        lhs.merge.src2 == rhs.merge.src2 &&
+        lhs.merge.arv == rhs.merge.arv;
       case TypeMove::PROMOTE:
-        return m.promote.src == move_play.promote.src &&
-        m.promote.arv == move_play.promote.arv &&
-        m.promote.piece == move_play.promote.piece;
+        return lhs.promote.src == rhs.promote.src &&
+        lhs.promote.arv == rhs.promote.arv &&
+        lhs.promote.piece == rhs.promote.piece;
       default:
         return false;
     }
     return false;
 }
+#endif
 
+bool NodeTree::cmpNodeTree(NodeTree const& lhs, NodeTree const& rhs) const
+{
+  if (lhs.m_min_max != rhs.m_min_max)
+  {
+    throw std::runtime_error("Invalid compare between Max-Node and Min-Node");
+  }
+}
+
+#if defined(UNUSED)
 void ExploreTree::keep_one_branch(Move const &move_play) {
   if (!m_root) {
     throw std::runtime_error("Explore tree is empty");
@@ -43,4 +54,4 @@ void ExploreTree::keep_one_branch(Move const &move_play) {
   }
   m_root = *it_move;
 }
-
+#endif
