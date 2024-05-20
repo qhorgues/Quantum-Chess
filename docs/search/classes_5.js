@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['qubit_0',['Qubit',['../da/deb/classQubit.html',1,'']]]
+  ['observer_5fptr_0',['observer_ptr',['../d6/d4d/classobserver__ptr.html',1,'']]]
 ];

@@ -17,7 +17,7 @@ var classBoard =
     [ "get_proba_mesure", "de/d23/classBoard.html#a1ff54cf54eb30a76ee8dea34343b5f40", null ],
     [ "get_proba_mesure_capture_slide", "de/d23/classBoard.html#a88aab24d8caf90b67660ef679e708d8a", null ],
     [ "get_proba_mesure_castle", "de/d23/classBoard.html#a84791fcc38cf0dae066dc4cfb45d4d9f", null ],
-    [ "get_proba_move", "de/d23/classBoard.html#a76fb13459b79eeeba579227aed36e078", null ],
+    [ "get_proba_move", "de/d23/classBoard.html#ace033903065bef449576f323789d8b4a", null ],
     [ "king_side_castle", "de/d23/classBoard.html#a98e9116b596e139482e7d54f21ea9bc3", null ],
     [ "mesure", "de/d23/classBoard.html#a098fd4cacdfb366dab2f6259b1521692", null ],
     [ "mesure_capture_slide", "de/d23/classBoard.html#a51ab08672583d4d816857fce86bcb560", null ],
