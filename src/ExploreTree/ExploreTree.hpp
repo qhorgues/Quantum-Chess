@@ -1,0 +1,60 @@
+#ifndef EXPLORE_TREE
+#define EXPLORE_TREE
+
+#include <queue>
+#include <vector>
+#include <memory>
+#include <Move.hpp>
+
+enum class TypeMinMax
+{
+    MIN,
+    MAX
+};
+
+class ExploreTree;
+
+class NodeTree final
+{
+public:
+    NodeTree() = default;
+    NodeTree(NodeTree const&) = delete;
+    NodeTree& operator=(NodeTree const&) = delete;
+
+    NodeTree(NodeTree &&) = default;
+    NodeTree& operator=(NodeTree &&) = default;
+
+    ~NodeTree() = default;
+
+    void add_node()
+
+    friend ExploreTree;
+private:
+    std::priority_queue<std::unique_ptr<NodeTree>, > m_sub_node;
+    Move m_move;
+    double m_eval;
+    TypeMinMax m_min_max;
+};
+
+class ExploreTree final
+{
+public:
+
+    ExploreTree() = default;
+
+    ExploreTree(ExploreTree const&) = delete;
+    ExploreTree& operator=(ExploreTree const&) = delete;
+
+    ExploreTree(ExploreTree &&) = default;
+    ExploreTree& operator=(ExploreTree &&) = default;
+
+    ~ExploreTree() = default;
+
+
+    void keep_one_branch(Move const& move_play);
+
+private:
+    std::unique_ptr<NodeTree> m_root;
+};
+
+#endif
