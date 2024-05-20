@@ -84,7 +84,7 @@ int main()
         {B_PAWN, Piece(), Piece()},
         {Piece(), W_QUEEN, W_KING}}; */
 
-    auto_playing(B3, std::cout, 15, 10);
+    //auto_playing(B3, std::cout, 15, 10);
 
     // log_file.close();
     return 0;
