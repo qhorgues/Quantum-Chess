@@ -140,7 +140,7 @@ public:
      * @param[in, out] func La fonction à appliquer sur tout les mouvements
      * Prototype : bool f(Move const&)
      * Si renvoie true alors le parcourt est intérompue
-     * @param[in] color La couleur du joueur au qu'elle on
+     * @param[in] color La couleur du joueur auquel on
      * récupère les mouvements
      */
     template <class UnitaryFunction>
