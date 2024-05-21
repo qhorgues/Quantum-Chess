@@ -33,6 +33,7 @@ Piece::get_list_move_king(Board<N, M> const &board,
                        !same_color(arvPiece) ||
                        board.get_proba(Coord(n, m)) < 1. - EPSILON;
             }
+#if !defined(KING_NO_SPLIT)
             else
             {
                 eval = arvPiece.get_type() == TypePiece::EMPTY;
@@ -41,6 +42,9 @@ Piece::get_list_move_king(Board<N, M> const &board,
             {
                 list_move.push_front(Coord(n, m));
             }
+#else
+            (void)eval;
+#endif
         }
     }
     if CONSTEXPR (N == 8 && M == 8 && MOVE == Move_Mode::NORMAL)
@@ -285,7 +289,7 @@ Piece::get_list_move(Board<N, M> const &board, Coord const &pos) const noexcept
     case TypePiece::KING:
         return get_list_move_king<MOVE>(board, pos);
     case TypePiece::EMPTY:
-    default:
+    default: 
         return std::forward_list<Coord>{};
     }
 }

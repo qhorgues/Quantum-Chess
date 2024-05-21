@@ -16,15 +16,19 @@ int main()
 {
    Board<4> board{
         {Piece(), Piece(), Piece(), Piece()},
-        {Piece(), B_KING,  B_ROOK, Piece()},
+        {Piece(), B_KING,  Piece(), Piece()},
         {Piece(),Piece(),Piece(),  Piece()},
         {W_QUEEN, Piece(), Piece(), W_KING}};
-    Move m1 = Move_split(Coord(3, 0), Coord(2, 1), Coord(3, 2));
+   /* Move m1 = Move_split(Coord(3, 0), Coord(2, 1), Coord(3, 2));
     Move m2 = Move_split(Coord(3, 2), Coord(1, 0), Coord(2, 1));
     board.move(m1);
     board.move(m2, true);
     bool res{double_equal(board.get_proba(Coord(3,3)), 1.)};
-    std::cout<<res<<std::endl;
+    std::cout<<res<<std::endl;*/
+    board.all_move([](Move const& m) -> bool {
+        std::cout << static_cast<int>(m.type) << std::endl;
+        return false;
+    }, Color::BLACK);
 
     return 0;
 }
