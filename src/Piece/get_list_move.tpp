@@ -26,7 +26,7 @@ Piece::get_list_move_king(Board<N, M> const &board,
         {
             std::size_t n{arv / M}, m{arv % M};
             Piece const &arvPiece{board(n, m)};
-            bool eval;
+            bool eval {false};
             if CONSTEXPR (MOVE == Move_Mode::NORMAL)
             {
                 eval = arvPiece.get_type() == TypePiece::EMPTY ||
@@ -38,13 +38,11 @@ Piece::get_list_move_king(Board<N, M> const &board,
             {
                 eval = arvPiece.get_type() == TypePiece::EMPTY;
             }
+#endif
             if (eval)
             {
                 list_move.push_front(Coord(n, m));
             }
-#else
-            (void)eval;
-#endif
         }
     }
     if CONSTEXPR (N == 8 && M == 8 && MOVE == Move_Mode::NORMAL)
