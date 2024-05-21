@@ -1,18 +1,20 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.9.4"/>
+<meta name="generator" content="Doxygen 1.10.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Quantum-Chess: Référence de la classe Piece</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
+<script type="text/javascript" src="../../clipboard.js"></script>
 <link href="../../navtree.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../resize.js"></script>
 <script type="text/javascript" src="../../navtreedata.js"></script>
 <script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript" src="../../cookie.js"></script>
 <link href="../../search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../search/searchdata.js"></script>
 <script type="text/javascript" src="../../search/search.js"></script>
@@ -33,10 +35,10 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.9.4 -->
+<!-- Généré par Doxygen 1.10.0 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-var searchBox = new SearchBox("searchBox", "../../search",'Recherche','.html');
+var searchBox = new SearchBox("searchBox", "../../search/",'.html');
 /* @license-end */
 </script>
 <script type="text/javascript" src="../../menudata.js"></script>
@@ -45,7 +47,7 @@ var searchBox = new SearchBox("searchBox", "../../search",'Recherche','.html');
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
   initMenu('../../',true,false,'search.php','Recherche');
-  $(document).ready(function() { init_search(); });
+  $(function() { init_search(); });
 });
 /* @license-end */
 </script>
@@ -63,7 +65,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('d5/df0/classPiece.html','../../'); initResizable(); });
+$(function(){initNavTree('d5/df0/classPiece.html','../../'); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -76,9 +78,16 @@ $(document).ready(function(){initNavTree('d5/df0/classPiece.html','../../'); ini
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
-<iframe src="javascript:void(0)" frameborder="0" 
-        name="MSearchResults" id="MSearchResults">
-</iframe>
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
 </div>
 
 <div class="header">
@@ -94,126 +103,126 @@ $(document).ready(function(){initNavTree('d5/df0/classPiece.html','../../'); ini
 <div class="contents">
 
 <p>Class conservant le type et la couleur d'une pièce. Elle permet aussi de recuperer ses mouvement possible.  
- <a href="../../d5/df0/classPiece.html#details">Plus de détails...</a></p>
+ <a href="#details">Plus de détails...</a></p>
 
 <p><code>#include &lt;<a class="el" href="../../de/d1d/Piece_8hpp_source.html">Piece.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Fonctions membres publiques</h2></td></tr>
-<tr class="memitem:a873d4632bbd71c9a074608a268a2bbc0"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/df0/classPiece.html#a873d4632bbd71c9a074608a268a2bbc0">Piece</a> () noexcept</td></tr>
+<tr class="memitem:a873d4632bbd71c9a074608a268a2bbc0" id="r_a873d4632bbd71c9a074608a268a2bbc0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a873d4632bbd71c9a074608a268a2bbc0">Piece</a> () <a class="el" href="../../d6/d4d/classobserver__ptr.html">noexcept</a></td></tr>
 <tr class="separator:a873d4632bbd71c9a074608a268a2bbc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a54712fd34a64f0fa8f4ffc822dba6130"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/df0/classPiece.html#a54712fd34a64f0fa8f4ffc822dba6130">Piece</a> (<a class="el" href="../../dc/dae/TypePiece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83">TypePiece</a> piece, <a class="el" href="../../d6/da3/Color_8hpp.html#a78abb31bad0fd1834c54a3ca6f8daab5">Color</a> color) noexcept</td></tr>
-<tr class="memdesc:a54712fd34a64f0fa8f4ffc822dba6130"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construit une piece à l'aide de son type et de sa couleur.  <a href="../../d5/df0/classPiece.html#a54712fd34a64f0fa8f4ffc822dba6130">Plus de détails...</a><br /></td></tr>
+<tr class="memitem:a54712fd34a64f0fa8f4ffc822dba6130" id="r_a54712fd34a64f0fa8f4ffc822dba6130"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a54712fd34a64f0fa8f4ffc822dba6130">Piece</a> (<a class="el" href="../../dc/dae/TypePiece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83">TypePiece</a> piece, <a class="el" href="../../d6/da3/Color_8hpp.html#a78abb31bad0fd1834c54a3ca6f8daab5">Color</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">color</a>) <a class="el" href="../../d6/d4d/classobserver__ptr.html">noexcept</a></td></tr>
+<tr class="memdesc:a54712fd34a64f0fa8f4ffc822dba6130"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construit une piece à l'aide de son type et de sa couleur.  <br /></td></tr>
 <tr class="separator:a54712fd34a64f0fa8f4ffc822dba6130"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1c618e4a2bf080d3f184717fd2a94fd6"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/df0/classPiece.html#a1c618e4a2bf080d3f184717fd2a94fd6">Piece</a> (<a class="el" href="../../d5/df0/classPiece.html">Piece</a> const &amp;)=default</td></tr>
+<tr class="memitem:a1c618e4a2bf080d3f184717fd2a94fd6" id="r_a1c618e4a2bf080d3f184717fd2a94fd6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1c618e4a2bf080d3f184717fd2a94fd6">Piece</a> (<a class="el" href="../../d5/df0/classPiece.html">Piece</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;)=<a class="el" href="../../d6/d4d/classobserver__ptr.html">default</a></td></tr>
 <tr class="separator:a1c618e4a2bf080d3f184717fd2a94fd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a408ca3fd49346b5d644b9c7c57360c94"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="../../d5/df0/classPiece.html">Piece</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/df0/classPiece.html#a408ca3fd49346b5d644b9c7c57360c94">operator=</a> (<a class="el" href="../../d5/df0/classPiece.html">Piece</a> const &amp;)=default</td></tr>
+<tr class="memitem:a408ca3fd49346b5d644b9c7c57360c94" id="r_a408ca3fd49346b5d644b9c7c57360c94"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a> <a class="el" href="../../d5/df0/classPiece.html">Piece</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a408ca3fd49346b5d644b9c7c57360c94">operator=</a> (<a class="el" href="../../d5/df0/classPiece.html">Piece</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;)=<a class="el" href="../../d6/d4d/classobserver__ptr.html">default</a></td></tr>
 <tr class="separator:a408ca3fd49346b5d644b9c7c57360c94"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a305638ccbdbea69cf64be0ac258c63a0"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/df0/classPiece.html#a305638ccbdbea69cf64be0ac258c63a0">Piece</a> (<a class="el" href="../../d5/df0/classPiece.html">Piece</a> &amp;&amp;)=default</td></tr>
-<tr class="memdesc:a305638ccbdbea69cf64be0ac258c63a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deplacement d'un objet piece vers un autre objet piece.  <a href="../../d5/df0/classPiece.html#a305638ccbdbea69cf64be0ac258c63a0">Plus de détails...</a><br /></td></tr>
+<tr class="memitem:a305638ccbdbea69cf64be0ac258c63a0" id="r_a305638ccbdbea69cf64be0ac258c63a0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a305638ccbdbea69cf64be0ac258c63a0">Piece</a> (<a class="el" href="../../d5/df0/classPiece.html">Piece</a> &amp;&amp;)=<a class="el" href="../../d6/d4d/classobserver__ptr.html">default</a></td></tr>
+<tr class="memdesc:a305638ccbdbea69cf64be0ac258c63a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deplacement d'un objet piece vers un autre objet piece.  <br /></td></tr>
 <tr class="separator:a305638ccbdbea69cf64be0ac258c63a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4f33c8435181de0942c5b55d1ae7bcb4"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="../../d5/df0/classPiece.html">Piece</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/df0/classPiece.html#a4f33c8435181de0942c5b55d1ae7bcb4">operator=</a> (<a class="el" href="../../d5/df0/classPiece.html">Piece</a> &amp;&amp;)=default</td></tr>
+<tr class="memitem:a4f33c8435181de0942c5b55d1ae7bcb4" id="r_a4f33c8435181de0942c5b55d1ae7bcb4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a> <a class="el" href="../../d5/df0/classPiece.html">Piece</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4f33c8435181de0942c5b55d1ae7bcb4">operator=</a> (<a class="el" href="../../d5/df0/classPiece.html">Piece</a> &amp;&amp;)=<a class="el" href="../../d6/d4d/classobserver__ptr.html">default</a></td></tr>
 <tr class="separator:a4f33c8435181de0942c5b55d1ae7bcb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9cef27dae4add5b9926fc16652d4037e"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/df0/classPiece.html#a9cef27dae4add5b9926fc16652d4037e">~Piece</a> ()=default</td></tr>
+<tr class="memitem:a9cef27dae4add5b9926fc16652d4037e" id="r_a9cef27dae4add5b9926fc16652d4037e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9cef27dae4add5b9926fc16652d4037e">~Piece</a> ()=<a class="el" href="../../d6/d4d/classobserver__ptr.html">default</a></td></tr>
 <tr class="separator:a9cef27dae4add5b9926fc16652d4037e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae0b897cb041aba5d32a68e7a3165787d"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="../../dc/dae/TypePiece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83">TypePiece</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/df0/classPiece.html#ae0b897cb041aba5d32a68e7a3165787d">get_type</a> () const noexcept</td></tr>
-<tr class="memdesc:ae0b897cb041aba5d32a68e7a3165787d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie le type de la piece.  <a href="../../d5/df0/classPiece.html#ae0b897cb041aba5d32a68e7a3165787d">Plus de détails...</a><br /></td></tr>
+<tr class="memitem:ae0b897cb041aba5d32a68e7a3165787d" id="r_ae0b897cb041aba5d32a68e7a3165787d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a> <a class="el" href="../../dc/dae/TypePiece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83">TypePiece</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae0b897cb041aba5d32a68e7a3165787d">get_type</a> () <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">noexcept</a></td></tr>
+<tr class="memdesc:ae0b897cb041aba5d32a68e7a3165787d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie le type de la piece.  <br /></td></tr>
 <tr class="separator:ae0b897cb041aba5d32a68e7a3165787d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae1e51ae569b7e131cd5bfc4666159cab"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="../../d6/da3/Color_8hpp.html#a78abb31bad0fd1834c54a3ca6f8daab5">Color</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/df0/classPiece.html#ae1e51ae569b7e131cd5bfc4666159cab">get_color</a> () const noexcept</td></tr>
-<tr class="memdesc:ae1e51ae569b7e131cd5bfc4666159cab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie la couleur d'un piece.  <a href="../../d5/df0/classPiece.html#ae1e51ae569b7e131cd5bfc4666159cab">Plus de détails...</a><br /></td></tr>
+<tr class="memitem:ae1e51ae569b7e131cd5bfc4666159cab" id="r_ae1e51ae569b7e131cd5bfc4666159cab"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a> <a class="el" href="../../d6/da3/Color_8hpp.html#a78abb31bad0fd1834c54a3ca6f8daab5">Color</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae1e51ae569b7e131cd5bfc4666159cab">get_color</a> () <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">noexcept</a></td></tr>
+<tr class="memdesc:ae1e51ae569b7e131cd5bfc4666159cab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie la couleur d'un piece.  <br /></td></tr>
 <tr class="separator:ae1e51ae569b7e131cd5bfc4666159cab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adc7f734589a2e2f6ed1032d8d9c362be"><td class="memTemplParams" colspan="2">template&lt;std::size_t N, std::size_t M&gt; </td></tr>
-<tr class="memitem:adc7f734589a2e2f6ed1032d8d9c362be"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> std::forward_list&lt; <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/df0/classPiece.html#adc7f734589a2e2f6ed1032d8d9c362be">get_list_normal_move</a> (<a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; N, M &gt; const &amp;board, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;pos) const noexcept</td></tr>
-<tr class="memdesc:adc7f734589a2e2f6ed1032d8d9c362be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Récupère la liste des mouvements classics pour une piece.  <a href="../../d5/df0/classPiece.html#adc7f734589a2e2f6ed1032d8d9c362be">Plus de détails...</a><br /></td></tr>
+<tr class="memitem:adc7f734589a2e2f6ed1032d8d9c362be" id="r_adc7f734589a2e2f6ed1032d8d9c362be"><td class="memTemplParams" colspan="2">template&lt;std::size_t N, std::size_t M&gt; </td></tr>
+<tr class="memitem:adc7f734589a2e2f6ed1032d8d9c362be"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> std::forward_list&lt; <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#adc7f734589a2e2f6ed1032d8d9c362be">get_list_normal_move</a> (<a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">N</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">M</a> &gt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">board</a>, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">pos</a>) <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">noexcept</a></td></tr>
+<tr class="memdesc:adc7f734589a2e2f6ed1032d8d9c362be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Récupère la liste des mouvements classics pour une piece.  <br /></td></tr>
 <tr class="separator:adc7f734589a2e2f6ed1032d8d9c362be"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af3893c68fb75af14f1828bf0ca6478d0"><td class="memTemplParams" colspan="2">template&lt;std::size_t N, std::size_t M&gt; </td></tr>
-<tr class="memitem:af3893c68fb75af14f1828bf0ca6478d0"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> std::forward_list&lt; <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/df0/classPiece.html#af3893c68fb75af14f1828bf0ca6478d0">get_list_split_move</a> (<a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; N, M &gt; const &amp;board, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;pos) const noexcept</td></tr>
-<tr class="memdesc:af3893c68fb75af14f1828bf0ca6478d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Récupère la liste des mouvements split pour une piece.  <a href="../../d5/df0/classPiece.html#af3893c68fb75af14f1828bf0ca6478d0">Plus de détails...</a><br /></td></tr>
+<tr class="memitem:af3893c68fb75af14f1828bf0ca6478d0" id="r_af3893c68fb75af14f1828bf0ca6478d0"><td class="memTemplParams" colspan="2">template&lt;std::size_t N, std::size_t M&gt; </td></tr>
+<tr class="memitem:af3893c68fb75af14f1828bf0ca6478d0"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> std::forward_list&lt; <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#af3893c68fb75af14f1828bf0ca6478d0">get_list_split_move</a> (<a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">N</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">M</a> &gt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">board</a>, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">pos</a>) <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">noexcept</a></td></tr>
+<tr class="memdesc:af3893c68fb75af14f1828bf0ca6478d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Récupère la liste des mouvements split pour une piece.  <br /></td></tr>
 <tr class="separator:af3893c68fb75af14f1828bf0ca6478d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8a9b55a3c8198d841e3273ae0ff208b0"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/df0/classPiece.html#a8a9b55a3c8198d841e3273ae0ff208b0">is_white</a> () const noexcept</td></tr>
-<tr class="memdesc:a8a9b55a3c8198d841e3273ae0ff208b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Teste si la piece est blanche.  <a href="../../d5/df0/classPiece.html#a8a9b55a3c8198d841e3273ae0ff208b0">Plus de détails...</a><br /></td></tr>
+<tr class="memitem:a8a9b55a3c8198d841e3273ae0ff208b0" id="r_a8a9b55a3c8198d841e3273ae0ff208b0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8a9b55a3c8198d841e3273ae0ff208b0">is_white</a> () <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">noexcept</a></td></tr>
+<tr class="memdesc:a8a9b55a3c8198d841e3273ae0ff208b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Teste si la piece est blanche.  <br /></td></tr>
 <tr class="separator:a8a9b55a3c8198d841e3273ae0ff208b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9b5c0ed275af57d3324bda002b7bf6ae"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/df0/classPiece.html#a9b5c0ed275af57d3324bda002b7bf6ae">is_black</a> () const noexcept</td></tr>
-<tr class="memdesc:a9b5c0ed275af57d3324bda002b7bf6ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Teste si la piece est noire.  <a href="../../d5/df0/classPiece.html#a9b5c0ed275af57d3324bda002b7bf6ae">Plus de détails...</a><br /></td></tr>
+<tr class="memitem:a9b5c0ed275af57d3324bda002b7bf6ae" id="r_a9b5c0ed275af57d3324bda002b7bf6ae"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9b5c0ed275af57d3324bda002b7bf6ae">is_black</a> () <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">noexcept</a></td></tr>
+<tr class="memdesc:a9b5c0ed275af57d3324bda002b7bf6ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Teste si la piece est noire.  <br /></td></tr>
 <tr class="separator:a9b5c0ed275af57d3324bda002b7bf6ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5c6acfe864b7db5717ae67cad216169f"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/df0/classPiece.html#a5c6acfe864b7db5717ae67cad216169f">same_color</a> (<a class="el" href="../../d5/df0/classPiece.html">Piece</a> const &amp;other) const noexcept</td></tr>
-<tr class="memdesc:a5c6acfe864b7db5717ae67cad216169f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Teste si l'autre piece est de la meme couleur.  <a href="../../d5/df0/classPiece.html#a5c6acfe864b7db5717ae67cad216169f">Plus de détails...</a><br /></td></tr>
+<tr class="memitem:a5c6acfe864b7db5717ae67cad216169f" id="r_a5c6acfe864b7db5717ae67cad216169f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5c6acfe864b7db5717ae67cad216169f">same_color</a> (<a class="el" href="../../d5/df0/classPiece.html">Piece</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">other</a>) <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">noexcept</a></td></tr>
+<tr class="memdesc:a5c6acfe864b7db5717ae67cad216169f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Teste si l'autre piece est de la meme couleur.  <br /></td></tr>
 <tr class="separator:a5c6acfe864b7db5717ae67cad216169f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a43afa2c15773fed068b2075f819f6400"><td class="memTemplParams" colspan="2">template&lt;std::size_t N, std::size_t M&gt; </td></tr>
-<tr class="memitem:a43afa2c15773fed068b2075f819f6400"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/df0/classPiece.html#a43afa2c15773fed068b2075f819f6400">check_if_use_move_promote</a> (<a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; N, M &gt; const &amp;board, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;pos) const noexcept</td></tr>
-<tr class="memdesc:a43afa2c15773fed068b2075f819f6400"><td class="mdescLeft">&#160;</td><td class="mdescRight">Teste si les mouvement de la piece sont si la pièce est un pion un mouvement de promotion.  <a href="../../d5/df0/classPiece.html#a43afa2c15773fed068b2075f819f6400">Plus de détails...</a><br /></td></tr>
+<tr class="memitem:a43afa2c15773fed068b2075f819f6400" id="r_a43afa2c15773fed068b2075f819f6400"><td class="memTemplParams" colspan="2">template&lt;std::size_t N, std::size_t M&gt; </td></tr>
+<tr class="memitem:a43afa2c15773fed068b2075f819f6400"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">bool</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a43afa2c15773fed068b2075f819f6400">check_if_use_move_promote</a> (<a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">N</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">M</a> &gt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">board</a>, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">pos</a>) <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">noexcept</a></td></tr>
+<tr class="memdesc:a43afa2c15773fed068b2075f819f6400"><td class="mdescLeft">&#160;</td><td class="mdescRight">Teste si les mouvement de la piece sont si la pièce est un pion un mouvement de promotion.  <br /></td></tr>
 <tr class="separator:a43afa2c15773fed068b2075f819f6400"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2fea6095483976d2a3b00612c6c889bc"><td class="memTemplParams" colspan="2">template&lt;std::size_t N, std::size_t M&gt; </td></tr>
-<tr class="memitem:a2fea6095483976d2a3b00612c6c889bc"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> std::forward_list&lt; <a class="el" href="../../df/d5b/structMove.html">Move</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/df0/classPiece.html#a2fea6095483976d2a3b00612c6c889bc">get_list_promote</a> (<a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; N, M &gt; const &amp;board, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;pos) const noexcept</td></tr>
-<tr class="memdesc:a2fea6095483976d2a3b00612c6c889bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie la liste de toutes les promotions.  <a href="../../d5/df0/classPiece.html#a2fea6095483976d2a3b00612c6c889bc">Plus de détails...</a><br /></td></tr>
+<tr class="memitem:a2fea6095483976d2a3b00612c6c889bc" id="r_a2fea6095483976d2a3b00612c6c889bc"><td class="memTemplParams" colspan="2">template&lt;std::size_t N, std::size_t M&gt; </td></tr>
+<tr class="memitem:a2fea6095483976d2a3b00612c6c889bc"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> std::forward_list&lt; <a class="el" href="../../df/d5b/structMove.html">Move</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a2fea6095483976d2a3b00612c6c889bc">get_list_promote</a> (<a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">N</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">M</a> &gt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">board</a>, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">pos</a>) <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">noexcept</a></td></tr>
+<tr class="memdesc:a2fea6095483976d2a3b00612c6c889bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie la liste de toutes les promotions.  <br /></td></tr>
 <tr class="separator:a2fea6095483976d2a3b00612c6c889bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-types" name="pri-types"></a>
 Types privés</h2></td></tr>
-<tr class="memitem:ac846621b089305b5f854bb67d2e36082"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/df0/classPiece.html#ac846621b089305b5f854bb67d2e36082">Move_Mode</a> { <a class="el" href="../../d5/df0/classPiece.html#ac846621b089305b5f854bb67d2e36082a1e23852820b9154316c7c06e2b7ba051">NORMAL</a>
-, <a class="el" href="../../d5/df0/classPiece.html#ac846621b089305b5f854bb67d2e36082a913bcc607ae0d97776698d9ed424be6a">SPLIT</a>
+<tr class="memitem:ac846621b089305b5f854bb67d2e36082" id="r_ac846621b089305b5f854bb67d2e36082"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac846621b089305b5f854bb67d2e36082">Move_Mode</a> { <a class="el" href="#ac846621b089305b5f854bb67d2e36082a1e23852820b9154316c7c06e2b7ba051">NORMAL</a>
+, <a class="el" href="#ac846621b089305b5f854bb67d2e36082a913bcc607ae0d97776698d9ed424be6a">SPLIT</a>
  }</td></tr>
-<tr class="memdesc:ac846621b089305b5f854bb67d2e36082"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enumération utilisé dans le template des fonctions qui récupère les listes de mouvement pour modifier leurs comportement lors de la prise de pièce.  <a href="../../d5/df0/classPiece.html#ac846621b089305b5f854bb67d2e36082">Plus de détails...</a><br /></td></tr>
+<tr class="memdesc:ac846621b089305b5f854bb67d2e36082"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enumération utilisé dans le template des fonctions qui récupère les listes de mouvement pour modifier leurs comportement lors de la prise de pièce.  <a href="#ac846621b089305b5f854bb67d2e36082">Plus de détails...</a><br /></td></tr>
 <tr class="separator:ac846621b089305b5f854bb67d2e36082"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Fonctions membres privées</h2></td></tr>
-<tr class="memitem:a1f6a0aada0a81bb106d80432a4dfaef5"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="../../d5/df0/classPiece.html#ac846621b089305b5f854bb67d2e36082">Move_Mode</a> MOVE, std::size_t N, std::size_t M, std::size_t SIZE&gt; </td></tr>
-<tr class="memitem:a1f6a0aada0a81bb106d80432a4dfaef5"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> std::forward_list&lt; <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/df0/classPiece.html#a1f6a0aada0a81bb106d80432a4dfaef5">get_list_move_rec</a> (<a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; N, M &gt; const &amp;board, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;pos, std::array&lt; int, SIZE &gt; const &amp;list_move) const noexcept</td></tr>
-<tr class="memdesc:a1f6a0aada0a81bb106d80432a4dfaef5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Récupère la liste de mouvement d'une pièce pour les déplacements indiqué de manière récursive c'est à dire tout les mouvements infini (ex : diagonale du fou)  <a href="../../d5/df0/classPiece.html#a1f6a0aada0a81bb106d80432a4dfaef5">Plus de détails...</a><br /></td></tr>
+<tr class="memitem:a1f6a0aada0a81bb106d80432a4dfaef5" id="r_a1f6a0aada0a81bb106d80432a4dfaef5"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="#ac846621b089305b5f854bb67d2e36082">Move_Mode</a> MOVE, std::size_t N, std::size_t M, std::size_t SIZE&gt; </td></tr>
+<tr class="memitem:a1f6a0aada0a81bb106d80432a4dfaef5"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> std::forward_list&lt; <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a1f6a0aada0a81bb106d80432a4dfaef5">get_list_move_rec</a> (<a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">N</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">M</a> &gt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">board</a>, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">pos</a>, std::array&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">int</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">SIZE</a> &gt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">list_move</a>) <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">noexcept</a></td></tr>
+<tr class="memdesc:a1f6a0aada0a81bb106d80432a4dfaef5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Récupère la liste de mouvement d'une pièce pour les déplacements indiqué de manière récursive c'est à dire tout les mouvements infini (ex : diagonale du fou)  <br /></td></tr>
 <tr class="separator:a1f6a0aada0a81bb106d80432a4dfaef5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a581baf1f64710ef926a645fcee9a0559"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="../../d5/df0/classPiece.html#ac846621b089305b5f854bb67d2e36082">Move_Mode</a> MOVE, std::size_t N, std::size_t M&gt; </td></tr>
-<tr class="memitem:a581baf1f64710ef926a645fcee9a0559"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> std::forward_list&lt; <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/df0/classPiece.html#a581baf1f64710ef926a645fcee9a0559">get_list_move_king</a> (<a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; N, M &gt; const &amp;board, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;pos) const noexcept</td></tr>
-<tr class="memdesc:a581baf1f64710ef926a645fcee9a0559"><td class="mdescLeft">&#160;</td><td class="mdescRight">Récupère la liste de mouvement du roi.  <a href="../../d5/df0/classPiece.html#a581baf1f64710ef926a645fcee9a0559">Plus de détails...</a><br /></td></tr>
+<tr class="memitem:a581baf1f64710ef926a645fcee9a0559" id="r_a581baf1f64710ef926a645fcee9a0559"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="#ac846621b089305b5f854bb67d2e36082">Move_Mode</a> MOVE, std::size_t N, std::size_t M&gt; </td></tr>
+<tr class="memitem:a581baf1f64710ef926a645fcee9a0559"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> std::forward_list&lt; <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a581baf1f64710ef926a645fcee9a0559">get_list_move_king</a> (<a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">N</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">M</a> &gt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">board</a>, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">pos</a>) <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">noexcept</a></td></tr>
+<tr class="memdesc:a581baf1f64710ef926a645fcee9a0559"><td class="mdescLeft">&#160;</td><td class="mdescRight">Récupère la liste de mouvement du roi.  <br /></td></tr>
 <tr class="separator:a581baf1f64710ef926a645fcee9a0559"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abd1b37cfbb564b526fe792a59137c3ca"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="../../d5/df0/classPiece.html#ac846621b089305b5f854bb67d2e36082">Move_Mode</a> MOVE, std::size_t N, std::size_t M&gt; </td></tr>
-<tr class="memitem:abd1b37cfbb564b526fe792a59137c3ca"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> std::forward_list&lt; <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/df0/classPiece.html#abd1b37cfbb564b526fe792a59137c3ca">get_list_move_knight</a> (<a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; N, M &gt; const &amp;board, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;pos) const noexcept</td></tr>
-<tr class="memdesc:abd1b37cfbb564b526fe792a59137c3ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Récupère la liste de mouvement du cavalier.  <a href="../../d5/df0/classPiece.html#abd1b37cfbb564b526fe792a59137c3ca">Plus de détails...</a><br /></td></tr>
+<tr class="memitem:abd1b37cfbb564b526fe792a59137c3ca" id="r_abd1b37cfbb564b526fe792a59137c3ca"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="#ac846621b089305b5f854bb67d2e36082">Move_Mode</a> MOVE, std::size_t N, std::size_t M&gt; </td></tr>
+<tr class="memitem:abd1b37cfbb564b526fe792a59137c3ca"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> std::forward_list&lt; <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#abd1b37cfbb564b526fe792a59137c3ca">get_list_move_knight</a> (<a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">N</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">M</a> &gt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">board</a>, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">pos</a>) <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">noexcept</a></td></tr>
+<tr class="memdesc:abd1b37cfbb564b526fe792a59137c3ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Récupère la liste de mouvement du cavalier.  <br /></td></tr>
 <tr class="separator:abd1b37cfbb564b526fe792a59137c3ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a78b63592d9c5e53edc3740bb2f06b568"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="../../d5/df0/classPiece.html#ac846621b089305b5f854bb67d2e36082">Move_Mode</a> MOVE, std::size_t N, std::size_t M&gt; </td></tr>
-<tr class="memitem:a78b63592d9c5e53edc3740bb2f06b568"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> std::forward_list&lt; <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/df0/classPiece.html#a78b63592d9c5e53edc3740bb2f06b568">get_list_move_bishop</a> (<a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; N, M &gt; const &amp;board, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;pos) const noexcept</td></tr>
-<tr class="memdesc:a78b63592d9c5e53edc3740bb2f06b568"><td class="mdescLeft">&#160;</td><td class="mdescRight">Récupère la liste de mouvement du fou.  <a href="../../d5/df0/classPiece.html#a78b63592d9c5e53edc3740bb2f06b568">Plus de détails...</a><br /></td></tr>
+<tr class="memitem:a78b63592d9c5e53edc3740bb2f06b568" id="r_a78b63592d9c5e53edc3740bb2f06b568"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="#ac846621b089305b5f854bb67d2e36082">Move_Mode</a> MOVE, std::size_t N, std::size_t M&gt; </td></tr>
+<tr class="memitem:a78b63592d9c5e53edc3740bb2f06b568"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> std::forward_list&lt; <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a78b63592d9c5e53edc3740bb2f06b568">get_list_move_bishop</a> (<a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">N</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">M</a> &gt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">board</a>, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">pos</a>) <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">noexcept</a></td></tr>
+<tr class="memdesc:a78b63592d9c5e53edc3740bb2f06b568"><td class="mdescLeft">&#160;</td><td class="mdescRight">Récupère la liste de mouvement du fou.  <br /></td></tr>
 <tr class="separator:a78b63592d9c5e53edc3740bb2f06b568"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9667e1fb527d335f897ac7ed122f71a5"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="../../d5/df0/classPiece.html#ac846621b089305b5f854bb67d2e36082">Move_Mode</a> MOVE, std::size_t N, std::size_t M&gt; </td></tr>
-<tr class="memitem:a9667e1fb527d335f897ac7ed122f71a5"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> std::forward_list&lt; <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/df0/classPiece.html#a9667e1fb527d335f897ac7ed122f71a5">get_list_move_rook</a> (<a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; N, M &gt; const &amp;board, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;pos) const noexcept</td></tr>
-<tr class="memdesc:a9667e1fb527d335f897ac7ed122f71a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Récupère la liste de mouvement de la tour.  <a href="../../d5/df0/classPiece.html#a9667e1fb527d335f897ac7ed122f71a5">Plus de détails...</a><br /></td></tr>
+<tr class="memitem:a9667e1fb527d335f897ac7ed122f71a5" id="r_a9667e1fb527d335f897ac7ed122f71a5"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="#ac846621b089305b5f854bb67d2e36082">Move_Mode</a> MOVE, std::size_t N, std::size_t M&gt; </td></tr>
+<tr class="memitem:a9667e1fb527d335f897ac7ed122f71a5"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> std::forward_list&lt; <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a9667e1fb527d335f897ac7ed122f71a5">get_list_move_rook</a> (<a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">N</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">M</a> &gt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">board</a>, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">pos</a>) <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">noexcept</a></td></tr>
+<tr class="memdesc:a9667e1fb527d335f897ac7ed122f71a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Récupère la liste de mouvement de la tour.  <br /></td></tr>
 <tr class="separator:a9667e1fb527d335f897ac7ed122f71a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a30ef638901259edad0a2834930adde8f"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="../../d5/df0/classPiece.html#ac846621b089305b5f854bb67d2e36082">Move_Mode</a> MOVE, std::size_t N, std::size_t M&gt; </td></tr>
-<tr class="memitem:a30ef638901259edad0a2834930adde8f"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> std::forward_list&lt; <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/df0/classPiece.html#a30ef638901259edad0a2834930adde8f">get_list_move_queen</a> (<a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; N, M &gt; const &amp;board, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;pos) const noexcept</td></tr>
-<tr class="memdesc:a30ef638901259edad0a2834930adde8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Récupère la liste de mouvement de la dame.  <a href="../../d5/df0/classPiece.html#a30ef638901259edad0a2834930adde8f">Plus de détails...</a><br /></td></tr>
+<tr class="memitem:a30ef638901259edad0a2834930adde8f" id="r_a30ef638901259edad0a2834930adde8f"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="#ac846621b089305b5f854bb67d2e36082">Move_Mode</a> MOVE, std::size_t N, std::size_t M&gt; </td></tr>
+<tr class="memitem:a30ef638901259edad0a2834930adde8f"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> std::forward_list&lt; <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a30ef638901259edad0a2834930adde8f">get_list_move_queen</a> (<a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">N</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">M</a> &gt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">board</a>, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">pos</a>) <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">noexcept</a></td></tr>
+<tr class="memdesc:a30ef638901259edad0a2834930adde8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Récupère la liste de mouvement de la dame.  <br /></td></tr>
 <tr class="separator:a30ef638901259edad0a2834930adde8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a131a0b83732b451f5c6c777c17970703"><td class="memTemplParams" colspan="2">template&lt;std::size_t N, std::size_t M&gt; </td></tr>
-<tr class="memitem:a131a0b83732b451f5c6c777c17970703"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> std::forward_list&lt; <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/df0/classPiece.html#a131a0b83732b451f5c6c777c17970703">get_list_move_pawn</a> (<a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; N, M &gt; const &amp;board, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;pos) const noexcept</td></tr>
-<tr class="memdesc:a131a0b83732b451f5c6c777c17970703"><td class="mdescLeft">&#160;</td><td class="mdescRight">Récupère la liste de mouvement du pion.  <a href="../../d5/df0/classPiece.html#a131a0b83732b451f5c6c777c17970703">Plus de détails...</a><br /></td></tr>
+<tr class="memitem:a131a0b83732b451f5c6c777c17970703" id="r_a131a0b83732b451f5c6c777c17970703"><td class="memTemplParams" colspan="2">template&lt;std::size_t N, std::size_t M&gt; </td></tr>
+<tr class="memitem:a131a0b83732b451f5c6c777c17970703"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> std::forward_list&lt; <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a131a0b83732b451f5c6c777c17970703">get_list_move_pawn</a> (<a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">N</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">M</a> &gt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">board</a>, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">pos</a>) <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">noexcept</a></td></tr>
+<tr class="memdesc:a131a0b83732b451f5c6c777c17970703"><td class="mdescLeft">&#160;</td><td class="mdescRight">Récupère la liste de mouvement du pion.  <br /></td></tr>
 <tr class="separator:a131a0b83732b451f5c6c777c17970703"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a837f1a71d962bc72dffc7bec5a417891"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="../../d5/df0/classPiece.html#ac846621b089305b5f854bb67d2e36082">Move_Mode</a> MOVE, std::size_t N, std::size_t M&gt; </td></tr>
-<tr class="memitem:a837f1a71d962bc72dffc7bec5a417891"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> std::forward_list&lt; <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/df0/classPiece.html#a837f1a71d962bc72dffc7bec5a417891">get_list_move</a> (<a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; N, M &gt; const &amp;board, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;pos) const noexcept</td></tr>
-<tr class="memdesc:a837f1a71d962bc72dffc7bec5a417891"><td class="mdescLeft">&#160;</td><td class="mdescRight">Récupère la liste de mouvement pour n'importe qu'elle pièce.  <a href="../../d5/df0/classPiece.html#a837f1a71d962bc72dffc7bec5a417891">Plus de détails...</a><br /></td></tr>
+<tr class="memitem:a837f1a71d962bc72dffc7bec5a417891" id="r_a837f1a71d962bc72dffc7bec5a417891"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="#ac846621b089305b5f854bb67d2e36082">Move_Mode</a> MOVE, std::size_t N, std::size_t M&gt; </td></tr>
+<tr class="memitem:a837f1a71d962bc72dffc7bec5a417891"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> std::forward_list&lt; <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a837f1a71d962bc72dffc7bec5a417891">get_list_move</a> (<a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">N</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">M</a> &gt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">board</a>, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">pos</a>) <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">noexcept</a></td></tr>
+<tr class="memdesc:a837f1a71d962bc72dffc7bec5a417891"><td class="mdescLeft">&#160;</td><td class="mdescRight">Récupère la liste de mouvement pour n'importe qu'elle pièce.  <br /></td></tr>
 <tr class="separator:a837f1a71d962bc72dffc7bec5a417891"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
 Fonctions membres privées statiques</h2></td></tr>
-<tr class="memitem:a42f13e43845dad888314b9b39ce4e469"><td class="memItemLeft" align="right" valign="top">static constexpr std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/df0/classPiece.html#a42f13e43845dad888314b9b39ce4e469">abs_substracte</a> (std::size_t x, std::size_t y) noexcept</td></tr>
-<tr class="memdesc:a42f13e43845dad888314b9b39ce4e469"><td class="mdescLeft">&#160;</td><td class="mdescRight">renvoie la valeur absolue d'un soustraction sur des types size_t  <a href="../../d5/df0/classPiece.html#a42f13e43845dad888314b9b39ce4e469">Plus de détails...</a><br /></td></tr>
+<tr class="memitem:a42f13e43845dad888314b9b39ce4e469" id="r_a42f13e43845dad888314b9b39ce4e469"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d6/d4d/classobserver__ptr.html">static</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a> std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a42f13e43845dad888314b9b39ce4e469">abs_substracte</a> (std::size_t <a class="el" href="../../d6/d4d/classobserver__ptr.html">x</a>, std::size_t <a class="el" href="../../d6/d4d/classobserver__ptr.html">y</a>) <a class="el" href="../../d6/d4d/classobserver__ptr.html">noexcept</a></td></tr>
+<tr class="memdesc:a42f13e43845dad888314b9b39ce4e469"><td class="mdescLeft">&#160;</td><td class="mdescRight">renvoie la valeur absolue d'un soustraction sur des types size_t  <br /></td></tr>
 <tr class="separator:a42f13e43845dad888314b9b39ce4e469"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8e8dfbfae0a2fcb70bd4bea72a45c6ae"><td class="memItemLeft" align="right" valign="top">static constexpr double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/df0/classPiece.html#a8e8dfbfae0a2fcb70bd4bea72a45c6ae">norm</a> (<a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;x, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;y) noexcept</td></tr>
-<tr class="memdesc:a8e8dfbfae0a2fcb70bd4bea72a45c6ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">renvoie la distance entre deux coordonnées à l'aide de la norme 2  <a href="../../d5/df0/classPiece.html#a8e8dfbfae0a2fcb70bd4bea72a45c6ae">Plus de détails...</a><br /></td></tr>
+<tr class="memitem:a8e8dfbfae0a2fcb70bd4bea72a45c6ae" id="r_a8e8dfbfae0a2fcb70bd4bea72a45c6ae"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d6/d4d/classobserver__ptr.html">static</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">double</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8e8dfbfae0a2fcb70bd4bea72a45c6ae">norm</a> (<a class="el" href="../../d9/dfc/structCoord.html">Coord</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">x</a>, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;<a class="el" href="../../d6/d4d/classobserver__ptr.html">y</a>) <a class="el" href="../../d6/d4d/classobserver__ptr.html">noexcept</a></td></tr>
+<tr class="memdesc:a8e8dfbfae0a2fcb70bd4bea72a45c6ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">renvoie la distance entre deux coordonnées à l'aide de la norme 2  <br /></td></tr>
 <tr class="separator:a8e8dfbfae0a2fcb70bd4bea72a45c6ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Attributs privés</h2></td></tr>
-<tr class="memitem:a5a31d1b235b1615e61627693e8c1d0d2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d6/da3/Color_8hpp.html#a78abb31bad0fd1834c54a3ca6f8daab5">Color</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/df0/classPiece.html#a5a31d1b235b1615e61627693e8c1d0d2">m_color</a></td></tr>
-<tr class="memdesc:a5a31d1b235b1615e61627693e8c1d0d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">La couleur de la pièce (WHITE/BLACK)  <a href="../../d5/df0/classPiece.html#a5a31d1b235b1615e61627693e8c1d0d2">Plus de détails...</a><br /></td></tr>
+<tr class="memitem:a5a31d1b235b1615e61627693e8c1d0d2" id="r_a5a31d1b235b1615e61627693e8c1d0d2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d6/da3/Color_8hpp.html#a78abb31bad0fd1834c54a3ca6f8daab5">Color</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5a31d1b235b1615e61627693e8c1d0d2">m_color</a></td></tr>
+<tr class="memdesc:a5a31d1b235b1615e61627693e8c1d0d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">La couleur de la pièce (WHITE/BLACK)  <br /></td></tr>
 <tr class="separator:a5a31d1b235b1615e61627693e8c1d0d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aed7df97376e33c3ce3d30ba52bb241b7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dc/dae/TypePiece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83">TypePiece</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/df0/classPiece.html#aed7df97376e33c3ce3d30ba52bb241b7">m_type</a></td></tr>
-<tr class="memdesc:aed7df97376e33c3ce3d30ba52bb241b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Le type de la piece ( KING / QUEEN / ROOK / BISHOP / KNIGHT / PAWN )  <a href="../../d5/df0/classPiece.html#aed7df97376e33c3ce3d30ba52bb241b7">Plus de détails...</a><br /></td></tr>
+<tr class="memitem:aed7df97376e33c3ce3d30ba52bb241b7" id="r_aed7df97376e33c3ce3d30ba52bb241b7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dc/dae/TypePiece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83">TypePiece</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aed7df97376e33c3ce3d30ba52bb241b7">m_type</a></td></tr>
+<tr class="memdesc:aed7df97376e33c3ce3d30ba52bb241b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Le type de la piece ( KING / QUEEN / ROOK / BISHOP / KNIGHT / PAWN )  <br /></td></tr>
 <tr class="separator:aed7df97376e33c3ce3d30ba52bb241b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
-<div class="textblock"><p >Class conservant le type et la couleur d'une pièce. Elle permet aussi de recuperer ses mouvement possible. </p>
+<div class="textblock"><p>Class conservant le type et la couleur d'une pièce. Elle permet aussi de recuperer ses mouvement possible. </p>
 </div><h2 class="groupheader">Documentation des énumérations membres</h2>
 <a id="ac846621b089305b5f854bb67d2e36082" name="ac846621b089305b5f854bb67d2e36082"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac846621b089305b5f854bb67d2e36082">&#9670;&nbsp;</a></span>Move_Mode</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ac846621b089305b5f854bb67d2e36082">&#9670;&#160;</a></span>Move_Mode</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -222,7 +231,7 @@ Attributs privés</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">enum class <a class="el" href="../../d5/df0/classPiece.html#ac846621b089305b5f854bb67d2e36082">Piece::Move_Mode</a></td>
+          <td class="memname"><a class="el" href="../../d6/d4d/classobserver__ptr.html">enum</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">class</a> <a class="el" href="#ac846621b089305b5f854bb67d2e36082">Piece::Move_Mode</a></td>
         </tr>
       </table>
   </td>
@@ -234,9 +243,9 @@ Attributs privés</h2></td></tr>
 
 <p>Enumération utilisé dans le template des fonctions qui récupère les listes de mouvement pour modifier leurs comportement lors de la prise de pièce. </p>
 <table class="fieldtable">
-<tr><th colspan="2">Valeurs énumérées</th></tr><tr><td class="fieldname"><a id="ac846621b089305b5f854bb67d2e36082a1e23852820b9154316c7c06e2b7ba051" name="ac846621b089305b5f854bb67d2e36082a1e23852820b9154316c7c06e2b7ba051"></a>NORMAL&#160;</td><td class="fielddoc"><p >Dans le cas du mouvement classique on autorise la prise de pièce. </p>
+<tr><th colspan="2">Valeurs énumérées</th></tr><tr><td class="fieldname"><a id="ac846621b089305b5f854bb67d2e36082a1e23852820b9154316c7c06e2b7ba051" name="ac846621b089305b5f854bb67d2e36082a1e23852820b9154316c7c06e2b7ba051"></a>NORMAL&#160;</td><td class="fielddoc"><p>Dans le cas du mouvement classique on autorise la prise de pièce. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ac846621b089305b5f854bb67d2e36082a913bcc607ae0d97776698d9ed424be6a" name="ac846621b089305b5f854bb67d2e36082a913bcc607ae0d97776698d9ed424be6a"></a>SPLIT&#160;</td><td class="fielddoc"><p >Dans le cas du split on interdit la prise de pièce. </p>
+<tr><td class="fieldname"><a id="ac846621b089305b5f854bb67d2e36082a913bcc607ae0d97776698d9ed424be6a" name="ac846621b089305b5f854bb67d2e36082a913bcc607ae0d97776698d9ed424be6a"></a>SPLIT&#160;</td><td class="fielddoc"><p>Dans le cas du split on interdit la prise de pièce. </p>
 </td></tr>
 </table>
 
@@ -244,7 +253,7 @@ Attributs privés</h2></td></tr>
 </div>
 <h2 class="groupheader">Documentation des constructeurs et destructeur</h2>
 <a id="a873d4632bbd71c9a074608a268a2bbc0" name="a873d4632bbd71c9a074608a268a2bbc0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a873d4632bbd71c9a074608a268a2bbc0">&#9670;&nbsp;</a></span>Piece() <span class="overload">[1/4]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a873d4632bbd71c9a074608a268a2bbc0">&#9670;&#160;</a></span>Piece() <span class="overload">[1/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -253,9 +262,9 @@ Attributs privés</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr Piece::Piece </td>
+          <td class="memname"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a> Piece::Piece </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -269,7 +278,7 @@ Attributs privés</h2></td></tr>
 </div>
 </div>
 <a id="a54712fd34a64f0fa8f4ffc822dba6130" name="a54712fd34a64f0fa8f4ffc822dba6130"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a54712fd34a64f0fa8f4ffc822dba6130">&#9670;&nbsp;</a></span>Piece() <span class="overload">[2/4]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a54712fd34a64f0fa8f4ffc822dba6130">&#9670;&#160;</a></span>Piece() <span class="overload">[2/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -278,21 +287,14 @@ Attributs privés</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr Piece::Piece </td>
+          <td class="memname"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a> Piece::Piece </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../dc/dae/TypePiece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83">TypePiece</a>&#160;</td>
-          <td class="paramname"><em>piece</em>, </td>
+          <td class="paramtype"><a class="el" href="../../dc/dae/TypePiece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83">TypePiece</a></td>          <td class="paramname"><span class="paramname"><em>piece</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="../../d6/da3/Color_8hpp.html#a78abb31bad0fd1834c54a3ca6f8daab5">Color</a>&#160;</td>
-          <td class="paramname"><em>color</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype"><a class="el" href="../../d6/da3/Color_8hpp.html#a78abb31bad0fd1834c54a3ca6f8daab5">Color</a></td>          <td class="paramname"><span class="paramname"><em>color</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -314,7 +316,7 @@ Attributs privés</h2></td></tr>
 </div>
 </div>
 <a id="a1c618e4a2bf080d3f184717fd2a94fd6" name="a1c618e4a2bf080d3f184717fd2a94fd6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1c618e4a2bf080d3f184717fd2a94fd6">&#9670;&nbsp;</a></span>Piece() <span class="overload">[3/4]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c618e4a2bf080d3f184717fd2a94fd6">&#9670;&#160;</a></span>Piece() <span class="overload">[3/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -323,10 +325,9 @@ Attributs privés</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr Piece::Piece </td>
+          <td class="memname"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a> Piece::Piece </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../d5/df0/classPiece.html">Piece</a> const &amp;&#160;</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype"><a class="el" href="../../d5/df0/classPiece.html">Piece</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;</td>          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -340,7 +341,7 @@ Attributs privés</h2></td></tr>
 </div>
 </div>
 <a id="a305638ccbdbea69cf64be0ac258c63a0" name="a305638ccbdbea69cf64be0ac258c63a0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a305638ccbdbea69cf64be0ac258c63a0">&#9670;&nbsp;</a></span>Piece() <span class="overload">[4/4]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a305638ccbdbea69cf64be0ac258c63a0">&#9670;&#160;</a></span>Piece() <span class="overload">[4/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -349,10 +350,9 @@ Attributs privés</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr Piece::Piece </td>
+          <td class="memname"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a> Piece::Piece </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../d5/df0/classPiece.html">Piece</a> &amp;&amp;&#160;</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype"><a class="el" href="../../d5/df0/classPiece.html">Piece</a> &amp;&amp;</td>          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -368,7 +368,7 @@ Attributs privés</h2></td></tr>
 </div>
 </div>
 <a id="a9cef27dae4add5b9926fc16652d4037e" name="a9cef27dae4add5b9926fc16652d4037e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9cef27dae4add5b9926fc16652d4037e">&#9670;&nbsp;</a></span>~Piece()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a9cef27dae4add5b9926fc16652d4037e">&#9670;&#160;</a></span>~Piece()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -377,9 +377,9 @@ Attributs privés</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr Piece::~Piece </td>
+          <td class="memname"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a> Piece::~Piece </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -394,7 +394,7 @@ Attributs privés</h2></td></tr>
 </div>
 <h2 class="groupheader">Documentation des fonctions membres</h2>
 <a id="a42f13e43845dad888314b9b39ce4e469" name="a42f13e43845dad888314b9b39ce4e469"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a42f13e43845dad888314b9b39ce4e469">&#9670;&nbsp;</a></span>abs_substracte()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a42f13e43845dad888314b9b39ce4e469">&#9670;&#160;</a></span>abs_substracte()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -403,21 +403,14 @@ Attributs privés</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static constexpr std::size_t Piece::abs_substracte </td>
+          <td class="memname"><a class="el" href="../../d6/d4d/classobserver__ptr.html">static</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a> std::size_t Piece::abs_substracte </td>
           <td>(</td>
-          <td class="paramtype">std::size_t&#160;</td>
-          <td class="paramname"><em>x</em>, </td>
+          <td class="paramtype">std::size_t</td>          <td class="paramname"><span class="paramname"><em>x</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
-          <td class="paramname"><em>y</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">std::size_t</td>          <td class="paramname"><span class="paramname"><em>y</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -440,7 +433,7 @@ Attributs privés</h2></td></tr>
 </div>
 </div>
 <a id="a43afa2c15773fed068b2075f819f6400" name="a43afa2c15773fed068b2075f819f6400"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a43afa2c15773fed068b2075f819f6400">&#9670;&nbsp;</a></span>check_if_use_move_promote()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a43afa2c15773fed068b2075f819f6400">&#9670;&#160;</a></span>check_if_use_move_promote()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -451,21 +444,14 @@ template&lt;std::size_t N, std::size_t M&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> bool Piece::check_if_use_move_promote </td>
+          <td class="memname"><a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">bool</a> Piece::check_if_use_move_promote </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; N, M &gt; const &amp;&#160;</td>
-          <td class="paramname"><em>board</em>, </td>
+          <td class="paramtype"><a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">N</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">M</a> &gt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>board</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;&#160;</td>
-          <td class="paramname"><em>pos</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td> const</td>
+          <td class="paramtype"><a class="el" href="../../d9/dfc/structCoord.html">Coord</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>pos</em></span>&#160;) const</td>
         </tr>
       </table>
   </td>
@@ -491,7 +477,7 @@ false sinon </dd></dl>
 </div>
 </div>
 <a id="ae1e51ae569b7e131cd5bfc4666159cab" name="ae1e51ae569b7e131cd5bfc4666159cab"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae1e51ae569b7e131cd5bfc4666159cab">&#9670;&nbsp;</a></span>get_color()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1e51ae569b7e131cd5bfc4666159cab">&#9670;&#160;</a></span>get_color()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -500,9 +486,9 @@ false sinon </dd></dl>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr <a class="el" href="../../d6/da3/Color_8hpp.html#a78abb31bad0fd1834c54a3ca6f8daab5">Color</a> Piece::get_color </td>
+          <td class="memname"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a> <a class="el" href="../../d6/da3/Color_8hpp.html#a78abb31bad0fd1834c54a3ca6f8daab5">Color</a> Piece::get_color </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -519,12 +505,12 @@ false sinon </dd></dl>
 </div>
 </div>
 <a id="a837f1a71d962bc72dffc7bec5a417891" name="a837f1a71d962bc72dffc7bec5a417891"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a837f1a71d962bc72dffc7bec5a417891">&#9670;&nbsp;</a></span>get_list_move()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a837f1a71d962bc72dffc7bec5a417891">&#9670;&#160;</a></span>get_list_move()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;<a class="el" href="../../d5/df0/classPiece.html#ac846621b089305b5f854bb67d2e36082">Move_Mode</a> MOVE, std::size_t N, std::size_t M&gt; </div>
+template&lt;<a class="el" href="#ac846621b089305b5f854bb67d2e36082">Move_Mode</a> MOVE, std::size_t N, std::size_t M&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -532,19 +518,12 @@ template&lt;<a class="el" href="../../d5/df0/classPiece.html#ac846621b089305b5f8
         <tr>
           <td class="memname"><a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> std::forward_list&lt; <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> &gt; Piece::get_list_move </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; N, M &gt; const &amp;&#160;</td>
-          <td class="paramname"><em>board</em>, </td>
+          <td class="paramtype"><a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">N</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">M</a> &gt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>board</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;&#160;</td>
-          <td class="paramname"><em>pos</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td> const</td>
+          <td class="paramtype"><a class="el" href="../../d9/dfc/structCoord.html">Coord</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>pos</em></span>&#160;) const</td>
         </tr>
       </table>
   </td>
@@ -576,12 +555,12 @@ template&lt;<a class="el" href="../../d5/df0/classPiece.html#ac846621b089305b5f8
 </div>
 </div>
 <a id="a78b63592d9c5e53edc3740bb2f06b568" name="a78b63592d9c5e53edc3740bb2f06b568"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a78b63592d9c5e53edc3740bb2f06b568">&#9670;&nbsp;</a></span>get_list_move_bishop()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a78b63592d9c5e53edc3740bb2f06b568">&#9670;&#160;</a></span>get_list_move_bishop()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;<a class="el" href="../../d5/df0/classPiece.html#ac846621b089305b5f854bb67d2e36082">Move_Mode</a> MOVE, std::size_t N, std::size_t M&gt; </div>
+template&lt;<a class="el" href="#ac846621b089305b5f854bb67d2e36082">Move_Mode</a> MOVE, std::size_t N, std::size_t M&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -589,19 +568,12 @@ template&lt;<a class="el" href="../../d5/df0/classPiece.html#ac846621b089305b5f8
         <tr>
           <td class="memname"><a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> std::forward_list&lt; <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> &gt; Piece::get_list_move_bishop </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; N, M &gt; const &amp;&#160;</td>
-          <td class="paramname"><em>board</em>, </td>
+          <td class="paramtype"><a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">N</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">M</a> &gt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>board</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;&#160;</td>
-          <td class="paramname"><em>pos</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td> const</td>
+          <td class="paramtype"><a class="el" href="../../d9/dfc/structCoord.html">Coord</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>pos</em></span>&#160;) const</td>
         </tr>
       </table>
   </td>
@@ -633,12 +605,12 @@ template&lt;<a class="el" href="../../d5/df0/classPiece.html#ac846621b089305b5f8
 </div>
 </div>
 <a id="a581baf1f64710ef926a645fcee9a0559" name="a581baf1f64710ef926a645fcee9a0559"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a581baf1f64710ef926a645fcee9a0559">&#9670;&nbsp;</a></span>get_list_move_king()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a581baf1f64710ef926a645fcee9a0559">&#9670;&#160;</a></span>get_list_move_king()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;<a class="el" href="../../d5/df0/classPiece.html#ac846621b089305b5f854bb67d2e36082">Move_Mode</a> MOVE, std::size_t N, std::size_t M&gt; </div>
+template&lt;<a class="el" href="#ac846621b089305b5f854bb67d2e36082">Move_Mode</a> MOVE, std::size_t N, std::size_t M&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -646,19 +618,12 @@ template&lt;<a class="el" href="../../d5/df0/classPiece.html#ac846621b089305b5f8
         <tr>
           <td class="memname"><a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> std::forward_list&lt; <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> &gt; Piece::get_list_move_king </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; N, M &gt; const &amp;&#160;</td>
-          <td class="paramname"><em>board</em>, </td>
+          <td class="paramtype"><a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">N</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">M</a> &gt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>board</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;&#160;</td>
-          <td class="paramname"><em>pos</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td> const</td>
+          <td class="paramtype"><a class="el" href="../../d9/dfc/structCoord.html">Coord</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>pos</em></span>&#160;) const</td>
         </tr>
       </table>
   </td>
@@ -692,12 +657,12 @@ ne verifie pas si c'est bien un roi</dd></dl>
 </div>
 </div>
 <a id="abd1b37cfbb564b526fe792a59137c3ca" name="abd1b37cfbb564b526fe792a59137c3ca"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abd1b37cfbb564b526fe792a59137c3ca">&#9670;&nbsp;</a></span>get_list_move_knight()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#abd1b37cfbb564b526fe792a59137c3ca">&#9670;&#160;</a></span>get_list_move_knight()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;<a class="el" href="../../d5/df0/classPiece.html#ac846621b089305b5f854bb67d2e36082">Move_Mode</a> MOVE, std::size_t N, std::size_t M&gt; </div>
+template&lt;<a class="el" href="#ac846621b089305b5f854bb67d2e36082">Move_Mode</a> MOVE, std::size_t N, std::size_t M&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -705,19 +670,12 @@ template&lt;<a class="el" href="../../d5/df0/classPiece.html#ac846621b089305b5f8
         <tr>
           <td class="memname"><a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> std::forward_list&lt; <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> &gt; Piece::get_list_move_knight </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; N, M &gt; const &amp;&#160;</td>
-          <td class="paramname"><em>board</em>, </td>
+          <td class="paramtype"><a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">N</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">M</a> &gt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>board</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;&#160;</td>
-          <td class="paramname"><em>pos</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td> const</td>
+          <td class="paramtype"><a class="el" href="../../d9/dfc/structCoord.html">Coord</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>pos</em></span>&#160;) const</td>
         </tr>
       </table>
   </td>
@@ -749,7 +707,7 @@ template&lt;<a class="el" href="../../d5/df0/classPiece.html#ac846621b089305b5f8
 </div>
 </div>
 <a id="a131a0b83732b451f5c6c777c17970703" name="a131a0b83732b451f5c6c777c17970703"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a131a0b83732b451f5c6c777c17970703">&#9670;&nbsp;</a></span>get_list_move_pawn()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a131a0b83732b451f5c6c777c17970703">&#9670;&#160;</a></span>get_list_move_pawn()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -762,19 +720,12 @@ template&lt;std::size_t N, std::size_t M&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> std::forward_list&lt; <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> &gt; Piece::get_list_move_pawn </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; N, M &gt; const &amp;&#160;</td>
-          <td class="paramname"><em>board</em>, </td>
+          <td class="paramtype"><a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">N</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">M</a> &gt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>board</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;&#160;</td>
-          <td class="paramname"><em>pos</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td> const</td>
+          <td class="paramtype"><a class="el" href="../../d9/dfc/structCoord.html">Coord</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>pos</em></span>&#160;) const</td>
         </tr>
       </table>
   </td>
@@ -805,12 +756,12 @@ template&lt;std::size_t N, std::size_t M&gt; </div>
 </div>
 </div>
 <a id="a30ef638901259edad0a2834930adde8f" name="a30ef638901259edad0a2834930adde8f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a30ef638901259edad0a2834930adde8f">&#9670;&nbsp;</a></span>get_list_move_queen()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a30ef638901259edad0a2834930adde8f">&#9670;&#160;</a></span>get_list_move_queen()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;<a class="el" href="../../d5/df0/classPiece.html#ac846621b089305b5f854bb67d2e36082">Move_Mode</a> MOVE, std::size_t N, std::size_t M&gt; </div>
+template&lt;<a class="el" href="#ac846621b089305b5f854bb67d2e36082">Move_Mode</a> MOVE, std::size_t N, std::size_t M&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -818,19 +769,12 @@ template&lt;<a class="el" href="../../d5/df0/classPiece.html#ac846621b089305b5f8
         <tr>
           <td class="memname"><a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> std::forward_list&lt; <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> &gt; Piece::get_list_move_queen </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; N, M &gt; const &amp;&#160;</td>
-          <td class="paramname"><em>board</em>, </td>
+          <td class="paramtype"><a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">N</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">M</a> &gt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>board</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;&#160;</td>
-          <td class="paramname"><em>pos</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td> const</td>
+          <td class="paramtype"><a class="el" href="../../d9/dfc/structCoord.html">Coord</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>pos</em></span>&#160;) const</td>
         </tr>
       </table>
   </td>
@@ -862,12 +806,12 @@ template&lt;<a class="el" href="../../d5/df0/classPiece.html#ac846621b089305b5f8
 </div>
 </div>
 <a id="a1f6a0aada0a81bb106d80432a4dfaef5" name="a1f6a0aada0a81bb106d80432a4dfaef5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1f6a0aada0a81bb106d80432a4dfaef5">&#9670;&nbsp;</a></span>get_list_move_rec()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f6a0aada0a81bb106d80432a4dfaef5">&#9670;&#160;</a></span>get_list_move_rec()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;<a class="el" href="../../d5/df0/classPiece.html#ac846621b089305b5f854bb67d2e36082">Move_Mode</a> MOVE, std::size_t N, std::size_t M, std::size_t SIZE&gt; </div>
+template&lt;<a class="el" href="#ac846621b089305b5f854bb67d2e36082">Move_Mode</a> MOVE, std::size_t N, std::size_t M, std::size_t SIZE&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -875,25 +819,17 @@ template&lt;<a class="el" href="../../d5/df0/classPiece.html#ac846621b089305b5f8
         <tr>
           <td class="memname"><a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> std::forward_list&lt; <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> &gt; Piece::get_list_move_rec </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; N, M &gt; const &amp;&#160;</td>
-          <td class="paramname"><em>board</em>, </td>
+          <td class="paramtype"><a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">N</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">M</a> &gt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>board</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;&#160;</td>
-          <td class="paramname"><em>pos</em>, </td>
+          <td class="paramtype"><a class="el" href="../../d9/dfc/structCoord.html">Coord</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>pos</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::array&lt; int, SIZE &gt; const &amp;&#160;</td>
-          <td class="paramname"><em>list_move</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td> const</td>
+          <td class="paramtype">std::array&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">int</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">SIZE</a> &gt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>list_move</em></span>&#160;) const</td>
         </tr>
       </table>
   </td>
@@ -926,12 +862,12 @@ template&lt;<a class="el" href="../../d5/df0/classPiece.html#ac846621b089305b5f8
 </div>
 </div>
 <a id="a9667e1fb527d335f897ac7ed122f71a5" name="a9667e1fb527d335f897ac7ed122f71a5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9667e1fb527d335f897ac7ed122f71a5">&#9670;&nbsp;</a></span>get_list_move_rook()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a9667e1fb527d335f897ac7ed122f71a5">&#9670;&#160;</a></span>get_list_move_rook()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;<a class="el" href="../../d5/df0/classPiece.html#ac846621b089305b5f854bb67d2e36082">Move_Mode</a> MOVE, std::size_t N, std::size_t M&gt; </div>
+template&lt;<a class="el" href="#ac846621b089305b5f854bb67d2e36082">Move_Mode</a> MOVE, std::size_t N, std::size_t M&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -939,19 +875,12 @@ template&lt;<a class="el" href="../../d5/df0/classPiece.html#ac846621b089305b5f8
         <tr>
           <td class="memname"><a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> std::forward_list&lt; <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> &gt; Piece::get_list_move_rook </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; N, M &gt; const &amp;&#160;</td>
-          <td class="paramname"><em>board</em>, </td>
+          <td class="paramtype"><a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">N</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">M</a> &gt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>board</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;&#160;</td>
-          <td class="paramname"><em>pos</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td> const</td>
+          <td class="paramtype"><a class="el" href="../../d9/dfc/structCoord.html">Coord</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>pos</em></span>&#160;) const</td>
         </tr>
       </table>
   </td>
@@ -983,7 +912,7 @@ template&lt;<a class="el" href="../../d5/df0/classPiece.html#ac846621b089305b5f8
 </div>
 </div>
 <a id="adc7f734589a2e2f6ed1032d8d9c362be" name="adc7f734589a2e2f6ed1032d8d9c362be"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adc7f734589a2e2f6ed1032d8d9c362be">&#9670;&nbsp;</a></span>get_list_normal_move()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#adc7f734589a2e2f6ed1032d8d9c362be">&#9670;&#160;</a></span>get_list_normal_move()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -996,19 +925,12 @@ template&lt;std::size_t N, std::size_t M&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> std::forward_list&lt; <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> &gt; Piece::get_list_normal_move </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; N, M &gt; const &amp;&#160;</td>
-          <td class="paramname"><em>board</em>, </td>
+          <td class="paramtype"><a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">N</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">M</a> &gt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>board</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;&#160;</td>
-          <td class="paramname"><em>pos</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td> const</td>
+          <td class="paramtype"><a class="el" href="../../d9/dfc/structCoord.html">Coord</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>pos</em></span>&#160;) const</td>
         </tr>
       </table>
   </td>
@@ -1039,7 +961,7 @@ template&lt;std::size_t N, std::size_t M&gt; </div>
 </div>
 </div>
 <a id="a2fea6095483976d2a3b00612c6c889bc" name="a2fea6095483976d2a3b00612c6c889bc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2fea6095483976d2a3b00612c6c889bc">&#9670;&nbsp;</a></span>get_list_promote()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a2fea6095483976d2a3b00612c6c889bc">&#9670;&#160;</a></span>get_list_promote()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1052,19 +974,12 @@ template&lt;std::size_t N, std::size_t M&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> std::forward_list&lt; <a class="el" href="../../df/d5b/structMove.html">Move</a> &gt; Piece::get_list_promote </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; N, M &gt; const &amp;&#160;</td>
-          <td class="paramname"><em>board</em>, </td>
+          <td class="paramtype"><a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">N</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">M</a> &gt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>board</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;&#160;</td>
-          <td class="paramname"><em>pos</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td> const</td>
+          <td class="paramtype"><a class="el" href="../../d9/dfc/structCoord.html">Coord</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>pos</em></span>&#160;) const</td>
         </tr>
       </table>
   </td>
@@ -1088,7 +1003,7 @@ template&lt;std::size_t N, std::size_t M&gt; </div>
 </div>
 </div>
 <a id="af3893c68fb75af14f1828bf0ca6478d0" name="af3893c68fb75af14f1828bf0ca6478d0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af3893c68fb75af14f1828bf0ca6478d0">&#9670;&nbsp;</a></span>get_list_split_move()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#af3893c68fb75af14f1828bf0ca6478d0">&#9670;&#160;</a></span>get_list_split_move()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1101,19 +1016,12 @@ template&lt;std::size_t N, std::size_t M&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> std::forward_list&lt; <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> &gt; Piece::get_list_split_move </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; N, M &gt; const &amp;&#160;</td>
-          <td class="paramname"><em>board</em>, </td>
+          <td class="paramtype"><a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">N</a>, <a class="el" href="../../d6/d4d/classobserver__ptr.html">M</a> &gt; <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>board</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;&#160;</td>
-          <td class="paramname"><em>pos</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td> const</td>
+          <td class="paramtype"><a class="el" href="../../d9/dfc/structCoord.html">Coord</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>pos</em></span>&#160;) const</td>
         </tr>
       </table>
   </td>
@@ -1146,7 +1054,7 @@ Ne renvoie qu'une liste de coordonnées uniques car l'ensemble des mouvements po
 </div>
 </div>
 <a id="ae0b897cb041aba5d32a68e7a3165787d" name="ae0b897cb041aba5d32a68e7a3165787d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae0b897cb041aba5d32a68e7a3165787d">&#9670;&nbsp;</a></span>get_type()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ae0b897cb041aba5d32a68e7a3165787d">&#9670;&#160;</a></span>get_type()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1155,9 +1063,9 @@ Ne renvoie qu'une liste de coordonnées uniques car l'ensemble des mouvements po
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr <a class="el" href="../../dc/dae/TypePiece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83">TypePiece</a> Piece::get_type </td>
+          <td class="memname"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a> <a class="el" href="../../dc/dae/TypePiece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83">TypePiece</a> Piece::get_type </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -1174,7 +1082,7 @@ Ne renvoie qu'une liste de coordonnées uniques car l'ensemble des mouvements po
 </div>
 </div>
 <a id="a9b5c0ed275af57d3324bda002b7bf6ae" name="a9b5c0ed275af57d3324bda002b7bf6ae"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9b5c0ed275af57d3324bda002b7bf6ae">&#9670;&nbsp;</a></span>is_black()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b5c0ed275af57d3324bda002b7bf6ae">&#9670;&#160;</a></span>is_black()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1183,9 +1091,9 @@ Ne renvoie qu'une liste de coordonnées uniques car l'ensemble des mouvements po
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr bool Piece::is_black </td>
+          <td class="memname"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">bool</a> Piece::is_black </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -1202,7 +1110,7 @@ Ne renvoie qu'une liste de coordonnées uniques car l'ensemble des mouvements po
 </div>
 </div>
 <a id="a8a9b55a3c8198d841e3273ae0ff208b0" name="a8a9b55a3c8198d841e3273ae0ff208b0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8a9b55a3c8198d841e3273ae0ff208b0">&#9670;&nbsp;</a></span>is_white()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a9b55a3c8198d841e3273ae0ff208b0">&#9670;&#160;</a></span>is_white()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1211,9 +1119,9 @@ Ne renvoie qu'une liste de coordonnées uniques car l'ensemble des mouvements po
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr bool Piece::is_white </td>
+          <td class="memname"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">bool</a> Piece::is_white </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -1230,7 +1138,7 @@ Ne renvoie qu'une liste de coordonnées uniques car l'ensemble des mouvements po
 </div>
 </div>
 <a id="a8e8dfbfae0a2fcb70bd4bea72a45c6ae" name="a8e8dfbfae0a2fcb70bd4bea72a45c6ae"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8e8dfbfae0a2fcb70bd4bea72a45c6ae">&#9670;&nbsp;</a></span>norm()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e8dfbfae0a2fcb70bd4bea72a45c6ae">&#9670;&#160;</a></span>norm()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1239,21 +1147,14 @@ Ne renvoie qu'une liste de coordonnées uniques car l'ensemble des mouvements po
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static constexpr double Piece::norm </td>
+          <td class="memname"><a class="el" href="../../d6/d4d/classobserver__ptr.html">static</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">double</a> Piece::norm </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;&#160;</td>
-          <td class="paramname"><em>x</em>, </td>
+          <td class="paramtype"><a class="el" href="../../d9/dfc/structCoord.html">Coord</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>x</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;&#160;</td>
-          <td class="paramname"><em>y</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype"><a class="el" href="../../d9/dfc/structCoord.html">Coord</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>y</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -1276,7 +1177,7 @@ Ne renvoie qu'une liste de coordonnées uniques car l'ensemble des mouvements po
 </div>
 </div>
 <a id="a4f33c8435181de0942c5b55d1ae7bcb4" name="a4f33c8435181de0942c5b55d1ae7bcb4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4f33c8435181de0942c5b55d1ae7bcb4">&#9670;&nbsp;</a></span>operator=() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f33c8435181de0942c5b55d1ae7bcb4">&#9670;&#160;</a></span>operator=() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1285,10 +1186,9 @@ Ne renvoie qu'une liste de coordonnées uniques car l'ensemble des mouvements po
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr <a class="el" href="../../d5/df0/classPiece.html">Piece</a> &amp; Piece::operator= </td>
+          <td class="memname"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a> <a class="el" href="../../d5/df0/classPiece.html">Piece</a> &amp; Piece::operator= </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../d5/df0/classPiece.html">Piece</a> &amp;&amp;&#160;</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype"><a class="el" href="../../d5/df0/classPiece.html">Piece</a> &amp;&amp;</td>          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -1302,7 +1202,7 @@ Ne renvoie qu'une liste de coordonnées uniques car l'ensemble des mouvements po
 </div>
 </div>
 <a id="a408ca3fd49346b5d644b9c7c57360c94" name="a408ca3fd49346b5d644b9c7c57360c94"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a408ca3fd49346b5d644b9c7c57360c94">&#9670;&nbsp;</a></span>operator=() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a408ca3fd49346b5d644b9c7c57360c94">&#9670;&#160;</a></span>operator=() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1311,10 +1211,9 @@ Ne renvoie qu'une liste de coordonnées uniques car l'ensemble des mouvements po
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr <a class="el" href="../../d5/df0/classPiece.html">Piece</a> &amp; Piece::operator= </td>
+          <td class="memname"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a> <a class="el" href="../../d5/df0/classPiece.html">Piece</a> &amp; Piece::operator= </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../d5/df0/classPiece.html">Piece</a> const &amp;&#160;</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype"><a class="el" href="../../d5/df0/classPiece.html">Piece</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;</td>          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -1328,7 +1227,7 @@ Ne renvoie qu'une liste de coordonnées uniques car l'ensemble des mouvements po
 </div>
 </div>
 <a id="a5c6acfe864b7db5717ae67cad216169f" name="a5c6acfe864b7db5717ae67cad216169f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5c6acfe864b7db5717ae67cad216169f">&#9670;&nbsp;</a></span>same_color()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c6acfe864b7db5717ae67cad216169f">&#9670;&#160;</a></span>same_color()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1337,10 +1236,9 @@ Ne renvoie qu'une liste de coordonnées uniques car l'ensemble des mouvements po
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr bool Piece::same_color </td>
+          <td class="memname"><a class="el" href="../../d6/d4d/classobserver__ptr.html">constexpr</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">bool</a> Piece::same_color </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../d5/df0/classPiece.html">Piece</a> const &amp;&#160;</td>
-          <td class="paramname"><em>other</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="../../d5/df0/classPiece.html">Piece</a> <a class="el" href="../../d6/d4d/classobserver__ptr.html">const</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>other</em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -1364,7 +1262,7 @@ Ne renvoie qu'une liste de coordonnées uniques car l'ensemble des mouvements po
 </div>
 <h2 class="groupheader">Documentation des données membres</h2>
 <a id="a5a31d1b235b1615e61627693e8c1d0d2" name="a5a31d1b235b1615e61627693e8c1d0d2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5a31d1b235b1615e61627693e8c1d0d2">&#9670;&nbsp;</a></span>m_color</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a31d1b235b1615e61627693e8c1d0d2">&#9670;&#160;</a></span>m_color</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1388,7 +1286,7 @@ Ne renvoie qu'une liste de coordonnées uniques car l'ensemble des mouvements po
 </div>
 </div>
 <a id="aed7df97376e33c3ce3d30ba52bb241b7" name="aed7df97376e33c3ce3d30ba52bb241b7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aed7df97376e33c3ce3d30ba52bb241b7">&#9670;&nbsp;</a></span>m_type</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aed7df97376e33c3ce3d30ba52bb241b7">&#9670;&#160;</a></span>m_type</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1420,7 +1318,7 @@ Ne renvoie qu'une liste de coordonnées uniques car l'ensemble des mouvements po
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../d5/df0/classPiece.html">Piece</a></li>
-    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0 </li>
   </ul>
 </div>
 </body>
