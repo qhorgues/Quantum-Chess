@@ -11,14 +11,14 @@ var searchData=
   ['get_5flist_5fmove_5fqueen_8',['get_list_move_queen',['../d5/df0/classPiece.html#a30ef638901259edad0a2834930adde8f',1,'Piece']]],
   ['get_5flist_5fmove_5frec_9',['get_list_move_rec',['../d5/df0/classPiece.html#a1f6a0aada0a81bb106d80432a4dfaef5',1,'Piece']]],
   ['get_5flist_5fmove_5frook_10',['get_list_move_rook',['../d5/df0/classPiece.html#a9667e1fb527d335f897ac7ed122f71a5',1,'Piece']]],
-  ['get_5flist_5fnormal_5fmove_11',['get_list_normal_move',['../d5/df0/classPiece.html#adc7f734589a2e2f6ed1032d8d9c362be',1,'Piece::get_list_normal_move()'],['../de/d23/classBoard.html#a173a95dfc2561c59ef108697eb133c0b',1,'Board::get_list_normal_move(Coord const &amp;pos) const']]],
+  ['get_5flist_5fnormal_5fmove_11',['get_list_normal_move',['../de/d23/classBoard.html#a173a95dfc2561c59ef108697eb133c0b',1,'Board::get_list_normal_move()'],['../d5/df0/classPiece.html#adc7f734589a2e2f6ed1032d8d9c362be',1,'Piece::get_list_normal_move()']]],
   ['get_5flist_5fpromote_12',['get_list_promote',['../de/d23/classBoard.html#a598c56a5f899766f021b2fad0fd70bd6',1,'Board::get_list_promote()'],['../d5/df0/classPiece.html#a2fea6095483976d2a3b00612c6c889bc',1,'Piece::get_list_promote()']]],
   ['get_5flist_5fsplit_5fmove_13',['get_list_split_move',['../de/d23/classBoard.html#a331cc732f6532a34874a2cec3c495a8f',1,'Board::get_list_split_move()'],['../d5/df0/classPiece.html#af3893c68fb75af14f1828bf0ca6478d0',1,'Piece::get_list_split_move()']]],
   ['get_5fproba_14',['get_proba',['../de/d23/classBoard.html#aeb602c14af620edcd7330d3a0cbf0e5d',1,'Board']]],
   ['get_5fproba_5fmesure_15',['get_proba_mesure',['../de/d23/classBoard.html#a1ff54cf54eb30a76ee8dea34343b5f40',1,'Board']]],
-  ['get_5fproba_5fmesure_5fcapture_5fslide_16',['get_proba_mesure_capture_slide',['../de/d23/classBoard.html#a88aab24d8caf90b67660ef679e708d8a',1,'Board']]],
+  ['get_5fproba_5fmesure_5fcapture_5fslide_16',['get_proba_mesure_capture_slide',['../de/d23/classBoard.html#aed8545cdf9ca4e47ffd3306d80c87539',1,'Board']]],
   ['get_5fproba_5fmesure_5fcastle_17',['get_proba_mesure_castle',['../de/d23/classBoard.html#a84791fcc38cf0dae066dc4cfb45d4d9f',1,'Board']]],
-  ['get_5fproba_5fmove_18',['get_proba_move',['../de/d23/classBoard.html#a76fb13459b79eeeba579227aed36e078',1,'Board']]],
+  ['get_5fproba_5fmove_18',['get_proba_move',['../de/d23/classBoard.html#ace033903065bef449576f323789d8b4a',1,'Board']]],
   ['get_5frandom_5fnumber_5f0_5f1_19',['get_random_number_0_1',['../de/d23/classBoard.html#a9d39b22d6a174c0f48f10a7d210be4fa',1,'Board']]],
   ['get_5ftype_20',['get_type',['../d5/df0/classPiece.html#ae0b897cb041aba5d32a68e7a3165787d',1,'Piece']]]
 ];
