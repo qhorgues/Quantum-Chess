@@ -34,7 +34,7 @@ int main()
     };
     /*bool b = Final::brut_force_quantum_chess(B2, 1, Color::WHITE);
     std::cout<<std::boolalpha<<b<<std::endl;*/
-    double res {Final::res_pos(B, 4)};
+    double res {Final::res_pos(B, 3)};
     std::cout<<res<<std::endl;
 
     return 0;
