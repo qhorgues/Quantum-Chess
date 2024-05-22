@@ -161,7 +161,7 @@ double evaluer(const Board<N, M> &board, Color c)
     }
     else
     {
-        if (board.winning_position(other_color(c)))
+        if (board.winning_position(opponent_color(c)))
         {
             return -1.;
         }
@@ -203,7 +203,7 @@ void print_move( std::ostream &output, Move m)
 template <std::size_t N, std::size_t M>
 CONSTEXPR double alphaBeta(Board<N, M> const &board, std::size_t profondeur, double alpha, double beta, bool estMax, Color c)
 {
-    if (profondeur == 0 || board.winning_position(c) || board.winning_position(other_color(c)))
+    if (profondeur == 0 || board.winning_position(c) || board.winning_position(opponent_color(c)))
     {
         return evaluer(board, c);
     }
