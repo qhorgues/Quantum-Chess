@@ -171,6 +171,34 @@ double evaluer(const Board<N, M> &board, Color c)
         }
     }
 }
+
+template <std::size_t N, std::size_t M>
+void print_move( std::ostream &output, Move m)
+{
+        std::string data1{{static_cast<char>('a' + m.normal.src.m), static_cast<char>('0' + N - m.normal.src.n)}};
+        std::string data2{{static_cast<char>('a' + m.normal.arv.m), static_cast<char>('0' + N - m.normal.arv.n)}};
+        if (m.type == TypeMove::NORMAL)
+        {
+            output << "N " << data1 << data2 << std::endl;
+        }
+        else if (m.type == TypeMove::PROMOTE)
+        {
+            output << "P " << data1 << data2 << " :: " << std::to_string(static_cast<int>(m.promote.piece)) << std::endl;
+        }
+        else
+        {
+            std::string data3{{static_cast<char>('a' + m.split.arv2.m), static_cast<char>('0' + N - m.split.arv2.n)}};
+            if (m.type == TypeMove::SPLIT)
+            {
+                output << "S " << data1 << '(' << data2 << data3 << ')' << std::endl;
+            }
+            else
+            {
+                output << "M " << '(' << data1 << data2 << ')' << data3 << std::endl;
+            }
+        }
+     
+}
 // Fonction récursive pour l'élagage alpha-bêta
 template <std::size_t N, std::size_t M>
 CONSTEXPR double alphaBeta(Board<N, M> const &board, std::size_t profondeur, double alpha, double beta, bool estMax, Color c)
@@ -181,6 +209,7 @@ CONSTEXPR double alphaBeta(Board<N, M> const &board, std::size_t profondeur, dou
     }
     else
     {
+        Move meilleur_move;
         if (estMax)
         {
             double meilleurScore = {-2.};
@@ -190,9 +219,11 @@ CONSTEXPR double alphaBeta(Board<N, M> const &board, std::size_t profondeur, dou
                  c,
                  &beta,
                  &alpha,
+                 &meilleur_move,
                  &meilleurScore](Move const &m) mutable -> bool
 
                 {
+                    double res;
                     bool one_move{true};
                     double proba_move{board.get_proba_move(m)};
                     if (double_equal(proba_move, 1.))
@@ -203,17 +234,27 @@ CONSTEXPR double alphaBeta(Board<N, M> const &board, std::size_t profondeur, dou
                         double eval {evaluer(board_cpy, c)};
                         if(double_equal(eval, 1.))
                         {
-                            return 1.;
+                            meilleurScore = 1.;
+                            return true;
                         }
                         else 
                         {
                             if(double_equal(eval, -1.))
                             {
-                               meilleurScore = std::max(meilleurScore, -1.); 
+                                if(-1.>meilleurScore)
+                                {
+                                    meilleurScore = -1.;
+                                    meilleur_move = m;
+                                }
                             }
                         else
                         {
-                        meilleurScore = std::max(meilleurScore, alphaBeta(board_cpy, profondeur - 1, alpha, beta, false, c));
+                            res = alphaBeta(board_cpy, profondeur - 1, alpha, beta, false, c);
+                            if (res> meilleurScore)
+                            {
+                                meilleurScore = res;
+                                meilleur_move = m;
+                            }
                         }}
                     }
                     else
@@ -226,17 +267,27 @@ CONSTEXPR double alphaBeta(Board<N, M> const &board, std::size_t profondeur, dou
                             double eval {evaluer(board_cpy, c)};
                             if(double_equal(eval, 1.))
                         {
-                            return 1.;
+                            meilleurScore = 1.;
+                            return true;
                         }
                         else 
                         {
                             if(double_equal(eval, -1.))
                             {
-                               meilleurScore = std::max(meilleurScore, -1.); 
+                                if(-1.>meilleurScore)
+                                {
+                                    meilleurScore = -1.;
+                                    meilleur_move = m;
+                                }
                             }
                         else
                         {
-                        meilleurScore = std::max(meilleurScore, alphaBeta(board_cpy, profondeur - 1, alpha, beta, false, c));
+                            res = alphaBeta(board_cpy, profondeur - 1, alpha, beta, false, c);
+                            if(res>meilleurScore)
+                            {
+                                meilleurScore = res;
+                                meilleur_move = m;
+                            }
                         }}
                         }
                         else
@@ -244,22 +295,26 @@ CONSTEXPR double alphaBeta(Board<N, M> const &board, std::size_t profondeur, dou
                             one_move = false;
                             Board<N, M> board_cpy1 = board;
                             board_cpy1.change_player();
-                            board_cpy1.move(m, false);
+                            board_cpy1.move(m, true);
                             Board<N, M> board_cpy2 = board;
                             board_cpy2.change_player();
-                            board_cpy2.move(m, true);
+                            board_cpy2.move(m, false);
                             double eval1 {evaluer(board_cpy1, c)};
                             if(double_equal(eval1,0.))
                             {
-                                eval1 = alphaBeta(board_cpy1, profondeur-1, alpha, beta, false, c);
+                                eval1 = alphaBeta(board_cpy1, profondeur-1, -2., 2., false, c);
                             }
                             double eval2 {evaluer(board_cpy2, c)};
                             if(double_equal(eval2,0.))
                             {
-                                eval2 = alphaBeta(board_cpy2, profondeur-1, alpha, beta, false, c);
+                                eval2 = alphaBeta(board_cpy2, profondeur-1, -2., 2., false, c);
                             }
-
-                            meilleurScore = std::max(meilleurScore, eval1*proba_move + eval2*(1-proba_move));
+                            res = eval1*proba_move + eval2*(1-proba_move);
+                            if(res>meilleurScore)
+                            {
+                                meilleurScore = res;
+                                meilleur_move = m;
+                            }
                         }
                     }
                     if (one_move)
@@ -272,6 +327,7 @@ CONSTEXPR double alphaBeta(Board<N, M> const &board, std::size_t profondeur, dou
                     }
                     return false;
                 });
+                print_move<N,M>(std::cout, meilleur_move);
             return meilleurScore;
         }
         else
@@ -283,9 +339,11 @@ CONSTEXPR double alphaBeta(Board<N, M> const &board, std::size_t profondeur, dou
                  c,
                  &alpha,
                  &meilleurScore,
+                 &meilleur_move,
                  &beta](Move const &m) mutable -> bool
 
                 {
+                    double res;
                     bool one_move{true};
                     double proba_move{board.get_proba_move(m)};
                     if (double_equal(proba_move, 1.))
@@ -296,17 +354,27 @@ CONSTEXPR double alphaBeta(Board<N, M> const &board, std::size_t profondeur, dou
                          double eval {evaluer(board_cpy, c)};
                         if(double_equal(eval, -1.))
                         {
-                            return -1.;
+                            meilleurScore = -1.;
+                            return true;
                         }
                         else 
                         {
                             if(double_equal(eval, 1.))
                             {
-                               meilleurScore = std::min(meilleurScore, 1.); 
+                                if(1.<meilleurScore)
+                                {
+                                    meilleurScore = 1.;
+                                    meilleur_move = m;
+                                }
                             }
                         else
                         {
-                        meilleurScore = std::min(meilleurScore, alphaBeta(board_cpy, profondeur - 1, alpha, beta, true, c));
+                            res = alphaBeta(board_cpy, profondeur - 1, alpha, beta, true, c);
+                            if (res<meilleurScore)
+                            {
+                                meilleurScore = res;
+                                meilleur_move = m;
+                            }
                         }}
                     }
                     else
@@ -319,17 +387,27 @@ CONSTEXPR double alphaBeta(Board<N, M> const &board, std::size_t profondeur, dou
                             double eval{evaluer(board_cpy, c)};
                              if(double_equal(eval, -1.))
                         {
-                            return -1.;
+                            meilleurScore = -1.;
+                            return true;
                         }
                         else 
                         {
                             if(double_equal(eval, 1.))
                             {
-                               meilleurScore = std::min(meilleurScore, 1.); 
+                                if (1.< meilleurScore)
+                                {
+                                    meilleurScore = 1.;
+                                    meilleur_move = m;
+                                }
                             }
                         else
                         {
-                            meilleurScore = std::min(meilleurScore, alphaBeta(board_cpy, profondeur - 1, alpha, beta, true, c));
+                            res = alphaBeta(board_cpy, profondeur - 1, alpha, beta, true, c);
+                            if (res<meilleurScore)
+                            {
+                                meilleurScore = res;
+                                meilleur_move = m;
+                            }
                         }}
                         }
                         else
@@ -337,22 +415,26 @@ CONSTEXPR double alphaBeta(Board<N, M> const &board, std::size_t profondeur, dou
                             one_move = false;
                             Board<N, M> board_cpy1 = board;
                             board_cpy1.change_player();
-                            board_cpy1.move(m, false);
+                            board_cpy1.move(m, true);
                             Board<N, M> board_cpy2 = board;
                             board_cpy2.change_player();
-                            board_cpy2.move(m, true);
+                            board_cpy2.move(m, false);
                              double eval1 {evaluer(board_cpy1, c)};
                             if(double_equal(eval1,0.))
                             {
-                                eval1 = alphaBeta(board_cpy1, profondeur-1, alpha, beta, false, c);
+                                eval1 = alphaBeta(board_cpy1, profondeur-1, -2., 2., false, c);
                             }
                             double eval2 {evaluer(board_cpy2, c)};
                             if(double_equal(eval2,0.))
                             {
-                                eval2 = alphaBeta(board_cpy2, profondeur-1, alpha, beta, false, c);
+                                eval2 = alphaBeta(board_cpy2, profondeur-1, -2., 2., false, c);
                             }
-
-                            meilleurScore = std::min(meilleurScore, eval1*proba_move + eval2*(1-proba_move));
+                            res = eval1*proba_move + eval2*(1-proba_move);
+                            if(res<meilleurScore)
+                            {
+                                meilleurScore = res;
+                                meilleur_move = m;
+                            }
                         }
                     }
                     if (one_move)
@@ -365,6 +447,7 @@ CONSTEXPR double alphaBeta(Board<N, M> const &board, std::size_t profondeur, dou
                     }
                     return false;
                 });
+                print_move<N,M>(std::cout, meilleur_move);
             return meilleurScore;
         }
     }
