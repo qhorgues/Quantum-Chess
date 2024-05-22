@@ -5,6 +5,7 @@
 #include <Color.hpp>
 #include <unordered_map>
 #include <functional>
+#include <stack>
 
 /*std::size_t C_hash::operator()(std::pair<TypePiece, Coord> const &c) const
 {
@@ -173,38 +174,39 @@ double evaluer(const Board<N, M> &board, Color c)
 }
 
 template <std::size_t N, std::size_t M>
-void print_move( std::ostream &output, Move m)
+void print_move(std::ostream &output, Move m)
 {
-        std::string data1{{static_cast<char>('a' + m.normal.src.m), static_cast<char>('0' + N - m.normal.src.n)}};
-        std::string data2{{static_cast<char>('a' + m.normal.arv.m), static_cast<char>('0' + N - m.normal.arv.n)}};
-        if (m.type == TypeMove::NORMAL)
+    std::string data1{{static_cast<char>('a' + m.normal.src.m), static_cast<char>('0' + N - m.normal.src.n)}};
+    std::string data2{{static_cast<char>('a' + m.normal.arv.m), static_cast<char>('0' + N - m.normal.arv.n)}};
+    if (m.type == TypeMove::NORMAL)
+    {
+        output << "N " << data1 << data2 << std::endl;
+    }
+    else if (m.type == TypeMove::PROMOTE)
+    {
+        output << "P " << data1 << data2 << " :: " << std::to_string(static_cast<int>(m.promote.piece)) << std::endl;
+    }
+    else
+    {
+        std::string data3{{static_cast<char>('a' + m.split.arv2.m), static_cast<char>('0' + N - m.split.arv2.n)}};
+        if (m.type == TypeMove::SPLIT)
         {
-            output << "N " << data1 << data2 << std::endl;
-        }
-        else if (m.type == TypeMove::PROMOTE)
-        {
-            output << "P " << data1 << data2 << " :: " << std::to_string(static_cast<int>(m.promote.piece)) << std::endl;
+            output << "S " << data1 << '(' << data2 << data3 << ')' << std::endl;
         }
         else
         {
-            std::string data3{{static_cast<char>('a' + m.split.arv2.m), static_cast<char>('0' + N - m.split.arv2.n)}};
-            if (m.type == TypeMove::SPLIT)
-            {
-                output << "S " << data1 << '(' << data2 << data3 << ')' << std::endl;
-            }
-            else
-            {
-                output << "M " << '(' << data1 << data2 << ')' << data3 << std::endl;
-            }
+            output << "M " << '(' << data1 << data2 << ')' << data3 << std::endl;
         }
-     
+    }
 }
 // Fonction récursive pour l'élagage alpha-bêta
 template <std::size_t N, std::size_t M>
-CONSTEXPR double alphaBeta(Board<N, M> const &board, std::size_t profondeur, double alpha, double beta, bool estMax, Color c)
+CONSTEXPR double alphaBeta(Board<N, M> const &board, std::size_t profondeur, double alpha, double beta, bool estMax, Color c, std::stack<Node> &stack)
 {
     if (profondeur == 0 || board.winning_position(c) || board.winning_position(opponent_color(c)))
     {
+        Move m = Move_classic(Coord(0, 0), Coord(0, N));
+        stack.push(m); // Cette information n'a pas d'intérêt dans la pile mais évite les erreurs de segmentation lorsqu'on dépile
         return evaluer(board, c);
     }
     else
@@ -220,7 +222,8 @@ CONSTEXPR double alphaBeta(Board<N, M> const &board, std::size_t profondeur, dou
                  &beta,
                  &alpha,
                  &meilleur_move,
-                 &meilleurScore](Move const &m) mutable -> bool
+                 &meilleurScore,
+                 &stack](Move const &m) mutable -> bool
 
                 {
                     double res;
@@ -231,31 +234,35 @@ CONSTEXPR double alphaBeta(Board<N, M> const &board, std::size_t profondeur, dou
                         Board<N, M> board_cpy = board;
                         board_cpy.change_player();
                         board_cpy.move(m, true);
-                        double eval {evaluer(board_cpy, c)};
-                        if(double_equal(eval, 1.))
+                        double eval{evaluer(board_cpy, c)};
+                        if (double_equal(eval, 1.))
                         {
+                            meilleur_move = m;
                             meilleurScore = 1.;
                             return true;
                         }
-                        else 
+                        else
                         {
-                            if(double_equal(eval, -1.))
+                            if (double_equal(eval, -1.))
                             {
-                                if(-1.>meilleurScore)
+                                if (-1. > meilleurScore)
                                 {
                                     meilleurScore = -1.;
                                     meilleur_move = m;
                                 }
                             }
-                        else
-                        {
-                            res = alphaBeta(board_cpy, profondeur - 1, alpha, beta, false, c);
-                            if (res> meilleurScore)
+                            else
                             {
-                                meilleurScore = res;
-                                meilleur_move = m;
+                                std::stack<Node> new_stack{};
+                                res = alphaBeta(board_cpy, profondeur - 1, alpha, beta, false, c, new_stack);
+                                if (res > meilleurScore)
+                                {
+                                    meilleurScore = res;
+                                    meilleur_move = m;
+                                    stack = std::move(new_stack);
+                                }
                             }
-                        }}
+                        }
                     }
                     else
                     {
@@ -264,31 +271,35 @@ CONSTEXPR double alphaBeta(Board<N, M> const &board, std::size_t profondeur, dou
                             Board<N, M> board_cpy = board;
                             board_cpy.change_player();
                             board_cpy.move(m, false);
-                            double eval {evaluer(board_cpy, c)};
-                            if(double_equal(eval, 1.))
-                        {
-                            meilleurScore = 1.;
-                            return true;
-                        }
-                        else 
-                        {
-                            if(double_equal(eval, -1.))
+                            double eval{evaluer(board_cpy, c)};
+                            if (double_equal(eval, 1.))
                             {
-                                if(-1.>meilleurScore)
+                                meilleur_move = m;
+                                meilleurScore = 1.;
+                                return true;
+                            }
+                            else
+                            {
+                                if (double_equal(eval, -1.))
                                 {
-                                    meilleurScore = -1.;
-                                    meilleur_move = m;
+                                    if (-1. > meilleurScore)
+                                    {
+                                        meilleurScore = -1.;
+                                        meilleur_move = m;
+                                    }
+                                }
+                                else
+                                {
+                                    std::stack<Node> new_stack{};
+                                    res = alphaBeta(board_cpy, profondeur - 1, alpha, beta, false, c, new_stack);
+                                    if (res > meilleurScore)
+                                    {
+                                        meilleurScore = res;
+                                        meilleur_move = m;
+                                        stack = std::move(new_stack);
+                                    }
                                 }
                             }
-                        else
-                        {
-                            res = alphaBeta(board_cpy, profondeur - 1, alpha, beta, false, c);
-                            if(res>meilleurScore)
-                            {
-                                meilleurScore = res;
-                                meilleur_move = m;
-                            }
-                        }}
                         }
                         else
                         {
@@ -299,21 +310,34 @@ CONSTEXPR double alphaBeta(Board<N, M> const &board, std::size_t profondeur, dou
                             Board<N, M> board_cpy2 = board;
                             board_cpy2.change_player();
                             board_cpy2.move(m, false);
-                            double eval1 {evaluer(board_cpy1, c)};
-                            if(double_equal(eval1,0.))
+                            double eval1{evaluer(board_cpy1, c)};
+                            std::stack<Node> new_stack1{};
+                            std::stack<Node> new_stack2{};
+                            if (double_equal(eval1, 0.))
                             {
-                                eval1 = alphaBeta(board_cpy1, profondeur-1, -2., 2., false, c);
+                                eval1 = alphaBeta(board_cpy1, profondeur - 1, -2., 2., false, c, new_stack1);
                             }
-                            double eval2 {evaluer(board_cpy2, c)};
-                            if(double_equal(eval2,0.))
+                            double eval2{evaluer(board_cpy2, c)};
+                            if (double_equal(eval2, 0.))
                             {
-                                eval2 = alphaBeta(board_cpy2, profondeur-1, -2., 2., false, c);
+                                eval2 = alphaBeta(board_cpy2, profondeur - 1, -2., 2., false, c, new_stack2);
                             }
-                            res = eval1*proba_move + eval2*(1-proba_move);
-                            if(res>meilleurScore)
+                            res = eval1 * proba_move + eval2 * (1 - proba_move);
+                            if (res > meilleurScore)
                             {
                                 meilleurScore = res;
                                 meilleur_move = m;
+                                stack = std::move(new_stack1);
+                                if (stack.empty())
+                                {
+                                    stack = std::move(new_stack2);
+                                }
+                                else
+                                {
+                                    Node inter = stack.top();
+                                    stack.pop();
+                                    inter.other_way = std::move(new_stack2);
+                                }
                             }
                         }
                     }
@@ -327,7 +351,7 @@ CONSTEXPR double alphaBeta(Board<N, M> const &board, std::size_t profondeur, dou
                     }
                     return false;
                 });
-                print_move<N,M>(std::cout, meilleur_move);
+            stack.push(Node(meilleur_move));
             return meilleurScore;
         }
         else
@@ -340,7 +364,8 @@ CONSTEXPR double alphaBeta(Board<N, M> const &board, std::size_t profondeur, dou
                  &alpha,
                  &meilleurScore,
                  &meilleur_move,
-                 &beta](Move const &m) mutable -> bool
+                 &beta,
+                 &stack](Move const &m) mutable -> bool
 
                 {
                     double res;
@@ -351,31 +376,35 @@ CONSTEXPR double alphaBeta(Board<N, M> const &board, std::size_t profondeur, dou
                         Board<N, M> board_cpy = board;
                         board_cpy.change_player();
                         board_cpy.move(m, true);
-                         double eval {evaluer(board_cpy, c)};
-                        if(double_equal(eval, -1.))
+                        double eval{evaluer(board_cpy, c)};
+                        if (double_equal(eval, -1.))
                         {
+                            meilleur_move = m;
                             meilleurScore = -1.;
                             return true;
                         }
-                        else 
+                        else
                         {
-                            if(double_equal(eval, 1.))
+                            if (double_equal(eval, 1.))
                             {
-                                if(1.<meilleurScore)
+                                if (1. < meilleurScore)
                                 {
                                     meilleurScore = 1.;
                                     meilleur_move = m;
                                 }
                             }
-                        else
-                        {
-                            res = alphaBeta(board_cpy, profondeur - 1, alpha, beta, true, c);
-                            if (res<meilleurScore)
+                            else
                             {
-                                meilleurScore = res;
-                                meilleur_move = m;
+                                std::stack<Node> new_stack{};
+                                res = alphaBeta(board_cpy, profondeur - 1, alpha, beta, true, c, new_stack);
+                                if (res < meilleurScore)
+                                {
+                                    meilleurScore = res;
+                                    meilleur_move = m;
+                                    stack = std::move(new_stack);
+                                }
                             }
-                        }}
+                        }
                     }
                     else
                     {
@@ -385,30 +414,33 @@ CONSTEXPR double alphaBeta(Board<N, M> const &board, std::size_t profondeur, dou
                             board_cpy.change_player();
                             board_cpy.move(m, false);
                             double eval{evaluer(board_cpy, c)};
-                             if(double_equal(eval, -1.))
-                        {
-                            meilleurScore = -1.;
-                            return true;
-                        }
-                        else 
-                        {
-                            if(double_equal(eval, 1.))
+                            if (double_equal(eval, -1.))
                             {
-                                if (1.< meilleurScore)
+                                meilleur_move = m;
+                                meilleurScore = -1.;
+                                return true;
+                            }
+                            else
+                            {
+                                if (double_equal(eval, 1.))
                                 {
-                                    meilleurScore = 1.;
-                                    meilleur_move = m;
+                                    if (1. < meilleurScore)
+                                    {
+                                        meilleurScore = 1.;
+                                        meilleur_move = m;
+                                    }
+                                }
+                                else
+                                {
+                                    std::stack<Node> new_stack{};
+                                    res = alphaBeta(board_cpy, profondeur - 1, alpha, beta, true, c, new_stack);
+                                    if (res < meilleurScore)
+                                    {
+                                        meilleurScore = res;
+                                        meilleur_move = m;
+                                    }
                                 }
                             }
-                        else
-                        {
-                            res = alphaBeta(board_cpy, profondeur - 1, alpha, beta, true, c);
-                            if (res<meilleurScore)
-                            {
-                                meilleurScore = res;
-                                meilleur_move = m;
-                            }
-                        }}
                         }
                         else
                         {
@@ -419,21 +451,36 @@ CONSTEXPR double alphaBeta(Board<N, M> const &board, std::size_t profondeur, dou
                             Board<N, M> board_cpy2 = board;
                             board_cpy2.change_player();
                             board_cpy2.move(m, false);
-                             double eval1 {evaluer(board_cpy1, c)};
-                            if(double_equal(eval1,0.))
+                            double eval1{evaluer(board_cpy1, c)};
+                            std::stack<Node> new_stack1{};
+                            std::stack<Node> new_stack2{};
+                            if (double_equal(eval1, 0.))
                             {
-                                eval1 = alphaBeta(board_cpy1, profondeur-1, -2., 2., false, c);
+                                eval1 = alphaBeta(board_cpy1, profondeur - 1, -2., 2., false, c, new_stack1);
                             }
-                            double eval2 {evaluer(board_cpy2, c)};
-                            if(double_equal(eval2,0.))
+                            double eval2{evaluer(board_cpy2, c)};
+                            if (double_equal(eval2, 0.))
                             {
-                                eval2 = alphaBeta(board_cpy2, profondeur-1, -2., 2., false, c);
+                                eval2 = alphaBeta(board_cpy2, profondeur - 1, -2., 2., false, c, new_stack2);
                             }
-                            res = eval1*proba_move + eval2*(1-proba_move);
-                            if(res<meilleurScore)
+                            res = eval1 * proba_move + eval2 * (1 - proba_move);
+                            if (res < meilleurScore)
                             {
                                 meilleurScore = res;
                                 meilleur_move = m;
+
+                                stack = std::move(new_stack1);
+                                if (stack.empty())
+                                {
+                                    stack = std::move(new_stack2);
+                                }
+                                else
+                                {
+                                    Node inter = stack.top();
+                                    stack.pop();
+                                    inter.other_way = std::move(new_stack2);
+                                    stack.push(inter);
+                                }
                             }
                         }
                     }
@@ -447,15 +494,16 @@ CONSTEXPR double alphaBeta(Board<N, M> const &board, std::size_t profondeur, dou
                     }
                     return false;
                 });
-                print_move<N,M>(std::cout, meilleur_move);
+            stack.push(Node(meilleur_move));
             return meilleurScore;
         }
     }
 }
 
 template <std::size_t N, std::size_t M>
-CONSTEXPR double Final::res_pos(Board<N, M> &board, std::size_t profondeur)
+CONSTEXPR std::pair<double, std::stack<Node>> Final::res_pos(Board<N, M> &board, std::size_t profondeur)
 {
     Color c{board.get_current_player()};
-    return alphaBeta(board, profondeur, -2., 2., true, c);
+    std::stack<Node> stack{};
+    return std::make_pair(alphaBeta(board, profondeur, -2., 2., true, c, stack), stack);
 }

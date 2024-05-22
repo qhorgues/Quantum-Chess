@@ -2,28 +2,37 @@
 #define FINAL_SOLVER_HPP
 #include <Color.hpp>
 #include <Constexpr.hpp>
-namespace Final
+#include <memory>
+#include <stack>
+
+struct Node
 {
-template <std::size_t N, std::size_t M>
-CONSTEXPR bool brut_force_classic_chess(Board<N, M> const &board, std::size_t profondeur, Color c);
-
-template <std::size_t N, std::size_t M>
-CONSTEXPR bool brut_force_quantum_chess(Board<N, M> const &board, std::size_t profondeur, Color c);
-
-
-template <std::size_t N, std::size_t M>
-CONSTEXPR double res_pos(Board<N, M> &board, std::size_t profondeur);
+    Node(Move const &y, std::stack<Node> &&o = std::stack<Node>{});
+    Move m;
+    std::stack<Node> other_way;
 };
 
+Node::Node(Move const &y, std::stack<Node> &&o) : m(y), other_way(o)
+{
+}
 
+namespace Final
+{
+    template <std::size_t N, std::size_t M>
+    CONSTEXPR bool brut_force_classic_chess(Board<N, M> const &board, std::size_t profondeur, Color c);
+
+    template <std::size_t N, std::size_t M>
+    CONSTEXPR bool brut_force_quantum_chess(Board<N, M> const &board, std::size_t profondeur, Color c);
+
+    template <std::size_t N, std::size_t M>
+    CONSTEXPR std::pair<double, std::stack<Node>> res_pos(Board<N, M> &board, std::size_t profondeur);
+};
 
 /*struct C_hash{
 std::size_t operator () (std::pair<TypePiece, Coord> const &c) const;
 };
 bool operator==(std::pair<TypePiece, Coord> const &lhs, std::pair<TypePiece, Coord> const &rhs);
 */
-
-
 
 #include "final_solver.tpp"
 
