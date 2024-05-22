@@ -5,6 +5,7 @@
 #include <vector>
 #include <memory>
 #include <Move.hpp>
+#include <observer_ptr.hpp>
 
 enum class TypeMinMax
 {
@@ -26,7 +27,7 @@ public:
 
     ~NodeTree() = default;
 
-    void add_node();
+    void add_node(std::unique_ptr<NodeTree>&& node);
 
     friend ExploreTree;
 
@@ -46,7 +47,7 @@ private:
 class ExploreTree final
 {
 public:
-    ExploreTree() = default;
+    ExploreTree();
 
     ExploreTree(ExploreTree const &) = delete;
     ExploreTree &operator=(ExploreTree const &) = delete;
@@ -56,7 +57,7 @@ public:
 
     ~ExploreTree() = default;
 
-    void keep_one_branch(Move const &move_play);
+    void keep_one_branch(std::unique_ptr<NodeTree>&& new_root);
 
 private:
     std::unique_ptr<NodeTree> m_root;

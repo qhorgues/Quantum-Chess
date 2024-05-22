@@ -9,6 +9,11 @@ include(${CMAKE_SOURCE_DIR}/cmake/CompilerWarnings.cmake)
 
 
 set_choice (CMAKE_BUILD_TYPE "Debug;Release;MinSizeRel;RelWithDebInfo" "Debug" "Choose type of build")
+set_option (KING_NO_SPLIT OFF BOOL "empèche le roi de se split")
+
+if (KING_NO_SPLIT)
+    add_compile_definitions(KING_NO_SPLIT)
+endif()
 
 set (SRCS
     ${CMAKE_SOURCE_DIR}/src/math_utility/math_utility.cpp

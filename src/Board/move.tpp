@@ -101,7 +101,12 @@ Board<N, M>::move_classic_jump(Coord const &s, Coord const &t,
     {
         if (m_piece_board[source].same_color(m_piece_board[target]))
         {
-            if (!mesure(t, val_mes))
+            std::optional<bool> negation ;
+            if(val_mes.has_value())
+            {
+                negation = !val_mes.value();
+            }
+            if (!mesure(t, negation))
             {
                 for (std::size_t i{0}; i < std::size(m_board); i++)
                 {
@@ -170,7 +175,12 @@ Board<N, M>::move_pawn_one_step(Coord const &s, Coord const &t,
     }
     else
     {
-        if (!mesure(t, val_mes))
+        std::optional<bool> negation ;
+            if(val_mes.has_value())
+            {
+                negation = !val_mes.value();
+            }
+        if (!mesure(t, negation))
         {
             for (std::size_t i{0}; i < std::size(m_board); i++)
             {
@@ -204,7 +214,7 @@ Board<N, M>::move_pawn_two_step(Coord const &s, Coord const &t,
         {
             move_1_instance(
                 std::array<bool, 3>{!check_path_straight_1_instance(
-                                        *this, s, t, i),
+                                        *this, s, t, i, std::nullopt),
                                     false,
                                     m_board[i].first[source]},
                 i, MATRIX_SLIDE,
@@ -216,13 +226,18 @@ Board<N, M>::move_pawn_two_step(Coord const &s, Coord const &t,
     }
     else
     {
-        if (!mesure(t, val_mes))
+        std::optional<bool> negation ;
+            if(val_mes.has_value())
+            {
+                negation = !val_mes.value();
+            }
+        if (!mesure(t, negation))
         {
             for (std::size_t i{0}; i < std::size(m_board); i++)
             {
                 move_1_instance(
                     std::array<bool, 3>{!check_path_straight_1_instance(
-                                            *this, s, t, i),
+                                            *this, s, t, i, std::nullopt),
                                         false,
                                         m_board[i].first[source]},
                     i, MATRIX_SLIDE,
@@ -312,7 +327,12 @@ Board<N, M>::move_enpassant(Coord const &s, Coord const &t, Coord const &ep,
     {
         if (m_piece_board[source].same_color(m_piece_board[target]))
         {
-            if (!mesure(t, val_mes))
+            std::optional<bool> negation ;
+            if(val_mes.has_value())
+            {
+                negation = !val_mes.value();
+            }
+            if (!mesure(t, negation))
             {
 
                 for (std::size_t i{0}; i < std::size(m_board); i++)
@@ -457,7 +477,8 @@ Board<N, M>::move_classic_slide(
             Board<N, M> const &,
             Coord const &,
             Coord const &,
-            std::size_t)>
+            std::size_t,
+            std::optional<Coord>)>
         check_path,
     std::optional<bool> val_mes)
 {
@@ -473,7 +494,7 @@ Board<N, M>::move_classic_slide(
             move_1_instance(
                 std::array<bool, 3>{
                     !check_path(
-                        *this, s, t, i),
+                        *this, s, t, i, std::nullopt),
                     false,
                     m_board[i].first[source]},
                 i, MATRIX_SLIDE,
@@ -486,13 +507,18 @@ Board<N, M>::move_classic_slide(
     {
         if (m_piece_board[source].same_color(m_piece_board[target]))
         {
-            if (!mesure(t, val_mes))
+            std::optional<bool> negation ;
+            if(val_mes.has_value())
+            {
+                negation = !val_mes.value();
+            }
+            if (!mesure(t, negation))
             {
                 for (std::size_t i{0}; i < std::size(m_board); i++)
                 {
                     move_1_instance(
                         std::array<bool, 3>{
-                            !check_path(*this, s, t, i),
+                            !check_path(*this, s, t, i, std::nullopt),
                             false,
                             m_board[i].first[source]},
                         i, MATRIX_SLIDE,
@@ -539,7 +565,8 @@ Board<N, M>::move_split_slide(
             Board<N, M> const &,
             Coord const &,
             Coord const &,
-            std::size_t)>
+            std::size_t,
+            std::optional<Coord>)>
         check_path)
 {
     std::size_t source = offset(s.n, s.m);
@@ -550,8 +577,8 @@ Board<N, M>::move_split_slide(
     {
         move_1_instance(
             std::array<bool, 5>{
-                !check_path(*this, s, t2, i),
-                !check_path(*this, s, t1, i),
+                !check_path(*this, s, t2, i, t1),
+                !check_path(*this, s, t1, i, t2),
                 m_board[i].first[target2],
                 m_board[i].first[target1],
                 m_board[i].first[source]},
@@ -598,7 +625,8 @@ Board<N, M>::move_merge_slide(
             Board<N, M> const &,
             Coord const &,
             Coord const &,
-            std::size_t)>
+            std::size_t,
+            std::optional<Coord>)>
         check_path)
 {
     std::size_t const source1 = offset(s1.n, s1.m);
@@ -609,8 +637,8 @@ Board<N, M>::move_merge_slide(
     {
         move_1_instance(
             std::array<bool, 5>{
-                !check_path(*this, s2, t, i),
-                !check_path(*this, s1, t, i),
+                !check_path(*this, s2, t, i, s1),
+                !check_path(*this, s1, t, i, s2),
                 m_board[i].first[source1],
                 m_board[i].first[source2],
                 m_board[i].first[target]},

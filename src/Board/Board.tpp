@@ -295,7 +295,7 @@ void Board<N, M>::update_board() noexcept
     }
 }
 template <std::size_t N, std::size_t M>
-CONSTEXPR bool Board<N, M>::winning_position(Color c)
+CONSTEXPR bool Board<N, M>::winning_position(Color c) const noexcept
 {
     for (std::size_t i{0}; i < N * M; i++)
     {

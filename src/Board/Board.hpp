@@ -140,7 +140,7 @@ public:
      * @param[in, out] func La fonction à appliquer sur tout les mouvements
      * Prototype : bool f(Move const&)
      * Si renvoie true alors le parcourt est intérompue
-     * @param[in] color La couleur du joueur au qu'elle on
+     * @param[in] color La couleur du joueur auquel on
      * récupère les mouvements
      */
     template <class UnitaryFunction>
@@ -177,7 +177,7 @@ public:
      * @return true si la position est gagnante pour la couleur c
      * @return false sinon
      */
-    CONSTEXPR bool winning_position(Color c);
+    CONSTEXPR bool winning_position(Color c) const noexcept;
 
     /**
      * @brief Recupère la couleur du joueur au tour de jouer
@@ -206,7 +206,8 @@ public:
         Board<_N, _M> const &board,
         Coord const &dpt,
         Coord const &arv,
-        std::size_t position);
+        std::size_t position,
+        std::optional<Coord>);
 
     template <std::size_t _N, std::size_t _M>
     friend CONSTEXPR bool
@@ -214,7 +215,8 @@ public:
         Board<_N, _M> const &board,
         Coord const &dpt,
         Coord const &arv,
-        std::size_t position);
+        std::size_t position,
+        std::optional<Coord>);
 
     template <std::size_t _N, std::size_t _M>
     friend CONSTEXPR bool
@@ -222,7 +224,8 @@ public:
         Board<_N, _M> const &board,
         Coord const &dpt,
         Coord const &arv,
-        std::size_t position);
+        std::size_t position,
+        std::optional<Coord>);
 
     /**
      * @brief Fonction qui permet de faire un mouvement de pion quelconque avec une promotion
@@ -274,7 +277,8 @@ private:
     std::function<bool(Board<N, M> const &,
                        Coord const &,
                        Coord const &,
-                       std::size_t)>
+                       std::size_t,
+                       std::optional<Coord>)>
         check_path) const noexcept;
 
     /**
@@ -379,7 +383,8 @@ private:
                                Board<N, M> const &,
                                Coord const &,
                                Coord const &,
-                               std::size_t)>
+                               std::size_t,
+                               std::optional<Coord>)>
                            check_path,
                        std::optional<bool> val_mes = std::nullopt);
     /**
@@ -402,7 +407,9 @@ private:
                 Board<N, M> const &,
                 Coord const &,
                 Coord const &,
-                std::size_t)>
+                std::size_t,
+                std::optional<Coord>)
+                >
             check_path);
 
     /**
@@ -426,7 +433,8 @@ private:
                 Board<N, M> const &,
                 Coord const &,
                 Coord const &,
-                std::size_t)>
+                std::size_t,
+                std::optional<Coord>)>
             check_path);
 
     /**
@@ -544,7 +552,8 @@ private:
     mesure_capture_slide(Coord const &s, Coord const &t,
                          std::function<bool(Board<N, M> const &,
                                             Coord const &, Coord const &,
-                                            std::size_t)>
+                                            std::size_t,
+                                            std::optional<Coord>)>
                              check_path,
                          std::optional<bool> val_mes = std::nullopt);
 
