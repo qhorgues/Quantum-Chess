@@ -9,26 +9,26 @@
  */
 enum class TypeMove
 {
-    /**
-     * @brief Représente le mouvement classic
-     */
-    NORMAL,
+  /**
+   * @brief Représente le mouvement classic
+   */
+  NORMAL,
 
-    /**
-     * @brief Réprésente le mouvement de split de deux pièces
-     */
-    SPLIT,
+  /**
+   * @brief Réprésente le mouvement de split de deux pièces
+   */
+  SPLIT,
 
-    /**
-     * @brief Représente le mouvement de fusion de deux pièces
-     */
-    MERGE,
+  /**
+   * @brief Représente le mouvement de fusion de deux pièces
+   */
+  MERGE,
 
-    /**
-     * @brief Représente le mouvement de promotion du pion
-     * 
-     */
-    PROMOTE
+  /**
+   * @brief Représente le mouvement de promotion du pion
+   *
+   */
+  PROMOTE
 };
 
 /**
@@ -36,146 +36,172 @@ enum class TypeMove
  */
 struct Move
 {
-    Move() = default;
-    Move(Move const&) = default;
-    Move& operator=(Move const&) = default;
-    Move(Move &&) = default;
-    Move& operator=(Move &&) = default;
-    /**
-     * @brief Indique quel est le mouvement stoqué par l'union
-     */
-    TypeMove type;
+  Move() = default;
+  Move(Move const &) = default;
+  Move &operator=(Move const &) = default;
+  Move(Move &&) = default;
+  Move &operator=(Move &&) = default;
+  /**
+   * @brief Indique quel est le mouvement stoqué par l'union
+   */
+  TypeMove type;
 
+  /**
+   * @brief Stoque au choix l'un des trois mouvements possible
+   */
+  union
+  {
     /**
-     * @brief Stoque au choix l'un des trois mouvements possible
+     * @brief Stoque les coordonnées pour un mouvement classic
      */
-    union
+    struct
     {
-        /**
-         * @brief Stoque les coordonnées pour un mouvement classic
-         */
-        struct
-        {
-            /**
-             * @brief La coordonnée de depart
-             */
-            Coord src;
+      /**
+       * @brief La coordonnée de depart
+       */
+      Coord src;
 
-            /**
-             * @brief La coordonnées d'arrivée
-             */
-            Coord arv;
-        } normal;
+      /**
+       * @brief La coordonnées d'arrivée
+       */
+      Coord arv;
+    } normal;
 
-        /**
-         * @brief stoque l'ensemble des coordonnées pour un
-         * mouvement splité
-         */
-        struct
-        {
-            /**
-             * @brief La coordonnée de depart
-             */
-            Coord src;
+    /**
+     * @brief stoque l'ensemble des coordonnées pour un
+     * mouvement splité
+     */
+    struct
+    {
+      /**
+       * @brief La coordonnée de depart
+       */
+      Coord src;
 
-            /**
-             * @brief Une coordonnée d'arrivée
-             */
-            Coord arv1;
+      /**
+       * @brief Une coordonnée d'arrivée
+       */
+      Coord arv1;
 
-            /**
-             * @brief Une seconde coordonnée d'arrivée
-             *
-             */
-            Coord arv2;
-        } split;
+      /**
+       * @brief Une seconde coordonnée d'arrivée
+       *
+       */
+      Coord arv2;
+    } split;
 
-        /**
-         * @brief  stoque l'ensemble des coordonnées pour un
-         * mouvement de fusion
-         */
-        struct
-        {
-            /**
-             * @brief La coordonnée de la première pièce à fusioner
-             */
-            Coord src1;
+    /**
+     * @brief  stoque l'ensemble des coordonnées pour un
+     * mouvement de fusion
+     */
+    struct
+    {
+      /**
+       * @brief La coordonnée de la première pièce à fusioner
+       */
+      Coord src1;
 
-            /**
-             * @brief La coordonnée de la seconde pièce à fusioner
-             */
-            Coord src2;
+      /**
+       * @brief La coordonnée de la seconde pièce à fusioner
+       */
+      Coord src2;
 
-            /**
-             * @brief La coordonnée de la position d'arrivée
-             */
-            Coord arv;
-        } merge;
+      /**
+       * @brief La coordonnée de la position d'arrivée
+       */
+      Coord arv;
+    } merge;
 
-        /**
-         * @brief stoque l'ensemble des coordonnées et la piece choisi
-         * pour un mouvement de promotion
-         */
-        struct
-        {
-            /**
-             * @brief La case de depart
-             */
-            Coord src;
+    /**
+     * @brief stoque l'ensemble des coordonnées et la piece choisi
+     * pour un mouvement de promotion
+     */
+    struct
+    {
+      /**
+       * @brief La case de depart
+       */
+      Coord src;
 
-            /**
-             * @brief La case d'arrviée
-             */
-            Coord arv;
+      /**
+       * @brief La case d'arrviée
+       */
+      Coord arv;
 
-            /**
-             * @brief La piece choisi pour le move
-             */
-            TypePiece piece;
-        } promote;
-    };
+      /**
+       * @brief La piece choisi pour le move
+       */
+      TypePiece piece;
+    } promote;
+  };
+
+  bool operator==(Move const &m) const noexcept;
 };
 
-constexpr inline
-Move Move_classic(Coord const &src, Coord const &arv)
+constexpr inline Move Move_classic(Coord const &src, Coord const &arv)
 {
-    Move move;
-    move.type = TypeMove::NORMAL;
-    move.normal.src = src;
-    move.normal.arv = arv;
-    return move;
+  Move move;
+  move.type = TypeMove::NORMAL;
+  move.normal.src = src;
+  move.normal.arv = arv;
+  return move;
 }
 
-constexpr inline
-Move Move_split(Coord const &src, Coord const &arv1, Coord const &arv2)
+constexpr inline Move Move_split(Coord const &src, Coord const &arv1, Coord const &arv2)
 {
-    Move move;
-    move.type = TypeMove::SPLIT;
-    move.split.src = src;
-    move.split.arv1 = arv1;
-    move.split.arv2 = arv2;
-    return move;
+  Move move;
+  move.type = TypeMove::SPLIT;
+  move.split.src = src;
+  move.split.arv1 = arv1;
+  move.split.arv2 = arv2;
+  return move;
 }
 
-constexpr inline
-Move Move_merge(Coord const &src1, Coord const &src2, Coord const &arv)
+constexpr inline Move Move_merge(Coord const &src1, Coord const &src2, Coord const &arv)
 {
-    Move move;
-    move.type = TypeMove::MERGE;
-    move.merge.src1 = src1;
-    move.merge.src2 = src2;
-    move.merge.arv = arv;
-    return move;
+  Move move;
+  move.type = TypeMove::MERGE;
+  move.merge.src1 = src1;
+  move.merge.src2 = src2;
+  move.merge.arv = arv;
+  return move;
 }
 
-constexpr inline
-Move Move_promote(Coord const &src, Coord const &arv, TypePiece promotion)
+constexpr inline Move Move_promote(Coord const &src, Coord const &arv, TypePiece promotion)
 {
-    Move move;
-    move.type = TypeMove::PROMOTE;
-    move.promote.src = src;
-    move.promote.arv = arv;
-    move.promote.piece = promotion;
-    return move;
+  Move move;
+  move.type = TypeMove::PROMOTE;
+  move.promote.src = src;
+  move.promote.arv = arv;
+  move.promote.piece = promotion;
+  return move;
+}
+
+bool Move::operator==(Move const &m) const noexcept
+{
+  if (type == m.type)
+  {
+    switch (type)
+    {
+    case TypeMove::NORMAL:
+      return normal.src == m.normal.src &&
+             normal.arv == m.normal.arv;
+    case TypeMove::SPLIT:
+      return split.src == m.split.src &&
+             split.arv1 == m.split.arv1 &&
+             split.arv2 == m.split.arv2;
+    case TypeMove::MERGE:
+      return merge.src1 == m.merge.src1 &&
+             merge.src2 == m.merge.src2 &&
+             merge.arv == m.merge.arv;
+    case TypeMove::PROMOTE:
+      return promote.src == m.promote.src &&
+             promote.arv == m.promote.arv &&
+             promote.piece == m.promote.piece;
+    default:
+      return false;
+    }
+  }
+  return false;
 }
 #endif
