@@ -27,7 +27,7 @@ CONSTEXPR bool Board<N, M>::mesure(Coord const &p,
         bool mes;
         if (val_mes == std::nullopt)
         {
-            double x = get_random_number_0_1();
+            double x = rnd::randreal(0., 1.);
             std::size_t indice_mes = 0;
             double pow_coef{
                 std::pow(
@@ -101,7 +101,7 @@ Board<N, M>::mesure_capture_slide(
         bool mes;
         if (val_mes == std::nullopt)
         {
-            double x = get_random_number_0_1();
+            double x = rnd::randreal(0., 1.);
             std::size_t indice_mes = 0;
             double pow_coef{
                 std::pow(std::abs(m_board[0].second), 2)};
@@ -167,7 +167,7 @@ Board<N, M>::mesure_castle(
     bool mes;
     if (val_mes == std::nullopt)
     {
-        double x = get_random_number_0_1();
+        double x = rnd::randreal(0., 1.);
         std::size_t indice_mes = 0;
         std::size_t size_board{std::size(m_board)};
         double pow_coef{

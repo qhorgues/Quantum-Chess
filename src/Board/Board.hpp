@@ -656,13 +656,6 @@ private:
                                            &L_mailbox) noexcept;
 
     /**
-     * @brief Renvoie un réel pseudo aléatoirement entre [O, 1)
-     *
-     * @return double Un nombre aléatoire entre 0 et 1
-     */
-    static double get_random_number_0_1();
-
-    /**
      * @brief fonction auxiliaire qui permet de modifier un plateau
      à l'aide d'un array de la forme du type de retour de la fonction
      qubitToArray, le deuxième éléments du tableau à une probalité non nulle
