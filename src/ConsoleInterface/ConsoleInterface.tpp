@@ -70,7 +70,7 @@ std::ostream &operator<<(std::ostream &os, Board<N, M> const &board)
       if (board(i, j).get_type() != TypePiece::EMPTY)
       {
         double proba{board.get_proba(Coord(i, j))};
-        int p{static_cast<int>(100. * proba)};
+        int p{static_cast<int>(std::round(100. * proba))};
         if (p != 100)
         {
           os << "| " << p << "% ";
