@@ -17,10 +17,11 @@
 template <std::size_t N, std::size_t M>
 void auto_playing(Board<N, M> &board, std::ostream &output, int nb_moves, int search_depth)
 {
+    ExploreTree explore;
     while (nb_moves > 0 && !board.winning_position(opponent_color(board.get_current_player())))
     {
 
-        Move m{computer::get_best_move(board, search_depth)};
+        Move m{computer::get_best_move(board, tree, search_depth)};
         std::string data1{{static_cast<char>('a' + m.normal.src.m), static_cast<char>('0' + N - m.normal.src.n)}};
         std::string data2{{static_cast<char>('a' + m.normal.arv.m), static_cast<char>('0' + N - m.normal.arv.n)}};
         if (m.type == TypeMove::NORMAL)

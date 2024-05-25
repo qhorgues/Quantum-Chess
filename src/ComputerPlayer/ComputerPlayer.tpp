@@ -14,6 +14,7 @@
 #include <Coord.hpp>
 #include <Move.hpp>
 #include <ExploreTree.hpp>
+#include <mutex>
 
 namespace computer
 {
@@ -239,7 +240,7 @@ namespace computer
         double eval1{rec_get_best_move(board_cpy1, best_score_alpha_beta, profondeur - 1)};
         double eval2{rec_get_best_move(board_cpy2, best_score_alpha_beta, profondeur - 1)};
 
-        return std::max(proba_move * eval1, (1. - proba_move) * eval2);
+        return proba_move * eval1 + (1. - proba_move) * eval2;
       }
     }
 
@@ -275,14 +276,22 @@ namespace computer
               double score;
               try
               {
-                score = deterministic_eval_move(board, best_score_alpha_beta, m, profondeur);
+                score = deterministic_eval_move(
+                  board, 
+                  best_score_alpha_beta, 
+                  m, 
+                  profondeur);
               }
               catch (std::runtime_error const &e)
               {
                 return false;
               }
               best_score_alpha_beta.pop_front();
-              return check_alpha_beta(board, best_score_alpha_beta, best_score, score);
+              return check_alpha_beta(
+                board, 
+                best_score_alpha_beta, 
+                best_score, 
+                score);
             });
         return best_score;
       }
@@ -293,6 +302,8 @@ namespace computer
     {
       Board<N, M> board;
       std::forward_list<Move> const &move;
+      NodeTree& root;
+      std::mutex& mtx_root;
       double &best_eval;
       Move &best_move;
       int profondeur;
@@ -321,6 +332,8 @@ namespace computer
         score = rec_get_best_move(board_cpy,
                                   list_best_score,
                                   param.profondeur - 1);
+        std::lock_guard<std::mutex> g {}
+        param.root
         if (get_player_calc_best_score(
                 param.board.get_current_player(),
                 param.best_eval, score))
@@ -338,7 +351,6 @@ namespace computer
       ExploreTree& tree,
       int profondeur)
   {
-    if (tree.)
     unsigned int number_thread{std::thread::hardware_concurrency()};
     std::vector<std::forward_list<Move>> list_move(number_thread);
     std::size_t last_th_view{0};
@@ -359,11 +371,15 @@ namespace computer
 
     std::vector<Move> best_move(number_thread);
 
+    std::mutex mutex_root;
+
     for (std::size_t i{0}; i < number_thread; i++)
     {
 
       __utility::Param_get_best_move param{board,
                                            std::move(list_move[i]),
+                                           tree.getRoot(),
+                                           mutex_root;
                                            best_eval[i],
                                            best_move[i],
                                            profondeur};

@@ -9,58 +9,82 @@
 
 enum class TypeMinMax
 {
-    MIN,
-    MAX
+  MIN,
+  MAX
 };
 
 class ExploreTree;
+class NodeTree;
+
+bool operator<(NodeTree const &lhs, NodeTree const &rhs);
 
 class NodeTree final
 {
 public:
-    NodeTree() = default;
-    NodeTree(NodeTree const &) = delete;
-    NodeTree &operator=(NodeTree const &) = delete;
+  NodeTree(Move m, double eval, TypeMinMax min_max);
+  NodeTree(NodeTree const &) = default;
+  NodeTree &operator=(NodeTree const &) = default;
 
-    NodeTree(NodeTree &&) = default;
-    NodeTree &operator=(NodeTree &&) = default;
+  NodeTree(NodeTree &&) = default;
+  NodeTree &operator=(NodeTree &&) = default;
 
-    ~NodeTree() = default;
+  ~NodeTree() = default;
 
-    void add_node(std::unique_ptr<NodeTree>&& node);
+  void add_node(NodeTree const& node);
+  bool empty() const;
+  void setCutAlphaBeta();
+  bool checkCutAlphaBeta() const;
 
-    friend ExploreTree;
+  friend ExploreTree;
 
 private:
-    bool cmpNodeTree(NodeTree const &lhs, NodeTree const &rhs) const;
+  friend bool operator<(
+      NodeTree const &lhs,
+      NodeTree const &rhs);
 
-    std::priority_queue<
-        std::unique_ptr<NodeTree>,
-        std::vector<std::unique_ptr<NodeTree>>,
-        decltype(NodeTree::cmpNodeTree)>
-        m_sub_node;
-    Move m_move;
-    double m_eval;
-    TypeMinMax m_min_max;
+  std::priority_queue<NodeTree>
+      m_sub_node;
+  Move m_move;
+  double m_eval;
+  TypeMinMax m_min_max;
+  bool m_cut_alpha_beta;
 };
 
 class ExploreTree final
 {
 public:
-    ExploreTree();
+  ExploreTree(TypeMinMax root_min_max = TypeMinMax::MIN);
 
-    ExploreTree(ExploreTree const &) = delete;
-    ExploreTree &operator=(ExploreTree const &) = delete;
+  ExploreTree(ExploreTree const &) = delete;
+  ExploreTree &operator=(ExploreTree const &) = delete;
 
-    ExploreTree(ExploreTree &&) = default;
-    ExploreTree &operator=(ExploreTree &&) = default;
+  ExploreTree(ExploreTree &&) = default;
+  ExploreTree &operator=(ExploreTree &&) = default;
 
-    ~ExploreTree() = default;
+  NodeTree& getRoot();
 
-    void keep_one_branch(std::unique_ptr<NodeTree>&& new_root);
+  ~ExploreTree() = default;
+
+  void keep_one_branch(NodeTree &new_root);
 
 private:
-    std::unique_ptr<NodeTree> m_root;
+  NodeTree m_root;
 };
+
+bool operator<(NodeTree const &lhs, NodeTree const &rhs)
+{
+  if (lhs.m_min_max != rhs.m_min_max)
+  {
+    throw std::runtime_error("Invalid compare between Max-Node and Min-Node");
+  }
+  if (lhs.m_min_max == TypeMinMax::MAX)
+  {
+    return lhs.m_eval < rhs.m_eval;
+  }
+  else
+  {
+    return lhs.m_eval > rhs.m_eval;
+  }
+}
 
 #endif

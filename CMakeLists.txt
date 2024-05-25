@@ -26,6 +26,8 @@ set (SRCS
     ${CMAKE_SOURCE_DIR}/src/Board/mesure.tpp
     ${CMAKE_SOURCE_DIR}/src/Board/get_proba_move.tpp
     ${CMAKE_SOURCE_DIR}/src/Board/move.tpp
+    ${CMAKE_SOURCE_DIR}/src/ComputerPlayer/ComputerPlayer.tpp
+    ${CMAKE_SOURCE_DIR}/src/ExploreTree/ExploreTree.cpp
 )
     
 set (HEADERS
@@ -41,6 +43,8 @@ set (HEADERS
     ${CMAKE_SOURCE_DIR}/src/Qubit/Qubit.hpp
     ${CMAKE_SOURCE_DIR}/src/check_path/check_path.hpp
     ${CMAKE_SOURCE_DIR}/src/math_utility/math_utility.hpp
+    ${CMAKE_SOURCE_DIR}/src/ComputerPlayer/ComputerPlayer.hpp
+    ${CMAKE_SOURCE_DIR}/src/ExploreTree/ExploreTree.hpp
 )
 
 include(FetchContent)
