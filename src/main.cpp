@@ -11,6 +11,7 @@
 #include <check_path.hpp>
 #include <Constexpr.hpp>
 #include <TypePiece.hpp>
+#include <ConsoleInterface.hpp>
 
 int main()
 {
@@ -25,10 +26,8 @@ int main()
     board.move(m2, true);
     bool res{double_equal(board.get_proba(Coord(3,3)), 1.)};
     std::cout<<res<<std::endl;*/
-    board.all_move([](Move const& m) -> bool {
-        std::cout << static_cast<int>(m.type) << std::endl;
-        return false;
-    }, Color::BLACK);
+
+     std::cout << board << std::endl;
 
     return 0;
 }
