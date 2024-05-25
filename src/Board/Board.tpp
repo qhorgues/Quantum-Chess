@@ -18,6 +18,7 @@
 #include <math_utility.hpp>
 #include <Constexpr.hpp>
 #include <Move.hpp>
+#include <Random.hpp>
 #include "Board.hpp"
 
 template <std::size_t N, std::size_t M>

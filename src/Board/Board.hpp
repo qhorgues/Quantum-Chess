@@ -19,7 +19,6 @@
 #include <Move.hpp>
 #include <Constexpr.hpp>
 #include <check_path.hpp>
-#include <Random.hpp>
 
 class Piece;
 
