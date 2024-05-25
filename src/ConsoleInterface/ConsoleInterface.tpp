@@ -73,7 +73,11 @@ std::ostream &operator<<(std::ostream &os, Board<N, M> const &board)
         int p{static_cast<int>(std::round(100. * proba))};
         if (p != 100)
         {
-          os << "| " << p << "% ";
+          os << "| ";
+          if (p < 10){
+            os << '0';
+          }
+          os << p << "% ";
         }
         else
         {
