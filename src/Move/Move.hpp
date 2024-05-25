@@ -176,4 +176,5 @@ constexpr inline Move Move_promote(Coord const &src, Coord const &arv, TypePiece
   move.promote.piece = promotion;
   return move;
 }
+
 #endif

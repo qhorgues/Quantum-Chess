@@ -1,6 +1,7 @@
 enable_testing()
 
 create_test_sourcelist (Tests
+
     QuantumChessTest.cxx
     test_move_promotion.cpp
     test_move_enpassant_with_capture.cpp
@@ -30,6 +31,7 @@ add_dependencies(QuantumChessTest Quantum-Chess)
 # remove the test driver source file
 set (TestsToRun ${Tests})
 remove (TestsToRun QuantumChessTest.cxx)
+remove (TestsToRun ${CMAKE_SOURCE_DIR}/build/test/QuantumChessTest.cxx)
 
 # Add all the ADD_TEST for each test
 foreach (test ${TestsToRun})

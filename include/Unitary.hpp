@@ -115,16 +115,16 @@ CMatrix<32> MATRIX_SPLIT_SLIDE {
                                         }
 };
 
-constexpr inline
+CONSTEXPR inline
 CMatrix<32> MATRIX_MERGE_SLIDE {
     CMatrix<16>{
         MATRIX_MERGE, CMatrix<8>{},
-        CMatrix<8>{}, CMatrix<2>::identity().tensoriel_product(MATRIX_ISWAP).transposed()
+        CMatrix<8>{}, conj(CMatrix<2>::identity().tensoriel_product(MATRIX_ISWAP).transposed())
     },                                                  
     CMatrix<16>{},
     CMatrix<16>{},                                      
     CMatrix<16>{
-        MATRIX_ISWAP_8.transposed(), CMatrix<8>{},
+        conj(MATRIX_ISWAP_8.transposed()), CMatrix<8>{},
         CMatrix<8>{},                CMatrix<8>::identity()
     }
 };
