@@ -102,7 +102,6 @@ void auto_playing(
 
 int main()
 {
-    // std::ofstream log_file{"Output.txt"};
 
     Board<> ChessBoard{
         {{B_ROOK, B_KNIGHT, B_BISHOP, B_QUEEN, B_KING, B_BISHOP, B_KNIGHT, B_ROOK},
@@ -114,6 +113,10 @@ int main()
          {W_PAWN, W_PAWN, W_PAWN, W_PAWN, W_PAWN, W_PAWN, W_PAWN, W_PAWN},
          {W_ROOK, W_KNIGHT, W_BISHOP, W_QUEEN, W_KING, W_BISHOP, W_KNIGHT, W_ROOK}}};
          
+    /* Board<3> B1{
+        {B_KING, B_ROOK, Piece()},
+        {B_PAWN, Piece(), Piece()},
+        {Piece(), W_QUEEN, W_KING}};
 
     Board<3> B2{
         {
@@ -130,10 +133,9 @@ int main()
             {Piece(), Piece(), W_KING}
         } 
     };
-    /* Board<3> B1{
-        {B_KING, B_ROOK, Piece()},
-        {B_PAWN, Piece(), Piece()},
-        {Piece(), W_QUEEN, W_KING}}; */
+    */
+   
+    // std::ofstream log_file{"Output.txt"};
 
     auto_playing(ChessBoard, std::cout, 60, 5);
 

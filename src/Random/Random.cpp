@@ -1,6 +1,6 @@
 #include <random>
 #include "Random.hpp"
-
+#include <iostream>
 namespace
 {
   std::random_device rd;

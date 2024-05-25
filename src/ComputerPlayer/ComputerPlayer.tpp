@@ -14,6 +14,7 @@
 #include <Coord.hpp>
 #include <Move.hpp>
 #include <mutex>
+#include <Random.hpp>
 
 namespace computer
 {
@@ -123,6 +124,10 @@ namespace computer
                                double x,
                                double y)
     {
+      if (double_equal(x, y))
+      {
+        return static_cast<bool>(rnd::randint(0, 1));
+      }
       if (color == Color::WHITE)
       {
         return (y > x) ? true : false;

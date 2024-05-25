@@ -1,7 +1,7 @@
 #ifndef MATH_UTILITY_HPP
 #define MATH_UTILITY_HPP
 
-#define EPSILON 10e-6
+#define EPSILON 10e-3
 
 #include <complex>
 
