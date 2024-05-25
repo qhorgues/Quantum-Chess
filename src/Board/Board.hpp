@@ -19,6 +19,7 @@
 #include <Move.hpp>
 #include <Constexpr.hpp>
 #include <check_path.hpp>
+#include <Random.hpp>
 
 class Piece;
 
@@ -654,13 +655,6 @@ private:
                                            &S_mailbox,
                                        std::array<int, (N + 4) * (M + 2)>
                                            &L_mailbox) noexcept;
-
-    /**
-     * @brief Renvoie un réel pseudo aléatoirement entre [O, 1)
-     *
-     * @return double Un nombre aléatoire entre 0 et 1
-     */
-    static double get_random_number_0_1();
 
     /**
      * @brief fonction auxiliaire qui permet de modifier un plateau

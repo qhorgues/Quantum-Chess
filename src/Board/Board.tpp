@@ -4,7 +4,6 @@
 #include <algorithm>
 #include <cassert>
 #include <utility>
-#include <random>
 #include <functional>
 #include <cmath>
 #include <optional>
@@ -194,17 +193,6 @@ CONSTEXPR void Board<N, M>::change_player() noexcept
         m_color_current_player = Color::WHITE;
     }
 }
-
-template <std::size_t N, std::size_t M>
-double Board<N, M>::get_random_number_0_1()
-{
-    std::random_device rd;
-    std::uniform_real_distribution<> gen(0., 1.);
-    return gen(rd);
-}
-
-
-
 
 template <std::size_t N, std::size_t M>
 template <std::size_t Q>
