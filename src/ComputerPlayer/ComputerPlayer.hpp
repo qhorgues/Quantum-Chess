@@ -1,9 +1,9 @@
 #ifndef COMPUTER_PLAYER_HPP
 #define COMPUTER_PLAYER_HPP
+
 #include <cstddef>
 #include <Board.hpp>
 #include <Constexpr.hpp>
-#include <ExploreTree.hpp>
 
 namespace computer
 {
@@ -11,7 +11,6 @@ namespace computer
     CONSTEXPR Move 
     get_best_move(
         Board<N, M> const &board, 
-        ExploreTree& tree, 
         int profondeur);
 }
 

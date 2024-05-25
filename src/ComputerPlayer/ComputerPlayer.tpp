@@ -13,7 +13,6 @@
 #include <Color.hpp>
 #include <Coord.hpp>
 #include <Move.hpp>
-#include <ExploreTree.hpp>
 #include <mutex>
 
 namespace computer
@@ -302,8 +301,6 @@ namespace computer
     {
       Board<N, M> board;
       std::forward_list<Move> const &move;
-      NodeTree& root;
-      std::mutex& mtx_root;
       double &best_eval;
       Move &best_move;
       int profondeur;
@@ -332,8 +329,7 @@ namespace computer
         score = rec_get_best_move(board_cpy,
                                   list_best_score,
                                   param.profondeur - 1);
-        std::lock_guard<std::mutex> g {}
-        param.root
+
         if (get_player_calc_best_score(
                 param.board.get_current_player(),
                 param.best_eval, score))
@@ -348,7 +344,6 @@ namespace computer
   template <std::size_t N, std::size_t M>
   CONSTEXPR Move get_best_move(
       Board<N, M> const &board, 
-      ExploreTree& tree,
       int profondeur)
   {
     unsigned int number_thread{std::thread::hardware_concurrency()};
@@ -371,15 +366,11 @@ namespace computer
 
     std::vector<Move> best_move(number_thread);
 
-    std::mutex mutex_root;
-
     for (std::size_t i{0}; i < number_thread; i++)
     {
 
       __utility::Param_get_best_move param{board,
                                            std::move(list_move[i]),
-                                           tree.getRoot(),
-                                           mutex_root;
                                            best_eval[i],
                                            best_move[i],
                                            profondeur};
