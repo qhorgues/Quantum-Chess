@@ -62,7 +62,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"df/d5b/structMove.html#a0c15b0bb2fa80c365c5220b45bf19ce0"
+"df/d5b/structMove.html"
 ];
 
 var SYNCONMSG = 'cliquez pour désactiver la synchronisation du panel';

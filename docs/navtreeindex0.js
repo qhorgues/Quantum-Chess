@@ -246,8 +246,8 @@ var NAVTREEINDEX0 =
 "de/d23/classBoard.html#afd58eec39cde0e85928af479a735adb1":[2,0,0,47],
 "de/d6b/md__2home_2quentin_2Programmes_2C_09_09_2Quantum-Chess_2README.html":[0],
 "df/d0a/main_8cpp.html":[3,0,1,8],
+"df/d0a/main_8cpp.html#a760c0a7979f30991a814785104411de2":[3,0,1,8,2],
 "df/d0a/main_8cpp.html#a9310a6cb86741ff467defee6dfc7c2b8":[3,0,1,8,0],
 "df/d0a/main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4":[3,0,1,8,1],
-"df/d3e/Move_8cpp.html":[3,0,1,5,0],
-"df/d5b/structMove.html":[2,0,3]
+"df/d3e/Move_8cpp.html":[3,0,1,5,0]
 };
