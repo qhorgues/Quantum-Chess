@@ -76,7 +76,7 @@ function(set_target_warnings target)
 	    -Wduplicated-branches
 	    -Wformat-signedness
 	    -Wshadow
-	    -Wstrict-overflow=4
+	    -Wstrict-overflow=2
 	    -Wundef
 	    -Wswitch-default
 	    -Wswitch-enum
