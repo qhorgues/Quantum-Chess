@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['piece_0',['Piece',['../de/d23/classBoard.html#ae6fa0350c8ef33e791f1f9a4daa5e3d1',1,'Board']]]
+  ['qubittoarray_0',['qubitToArray',['../da/deb/classQubit.html#a5c7c8a482adb96c18fe393c2016730d3',1,'Qubit']]]
 ];

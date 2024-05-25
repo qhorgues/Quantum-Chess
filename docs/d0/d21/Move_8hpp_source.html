@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.11.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Quantum-Chess:  Fichier source de /home/quentin/Programmes/C++/Quantum-Chess/include/Move.hpp</title>
+<title>Quantum-Chess:  Fichier source de /home/quentin/Programmes/C++/Quantum-Chess/src/Move/Move.hpp</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -216,36 +216,7 @@ $(function(){initNavTree('d0/d21/Move_8hpp_source.html','../../'); initResizable
 <div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>}</div>
 </div>
 <div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span> </div>
-<div class="foldopen" id="foldopen00180" data-start="{" data-end="}">
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno"><a class="line" href="../../df/d5b/structMove.html#aadc0044239706aa167d4fdc4fca310ee">  180</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="../../df/d5b/structMove.html#aadc0044239706aa167d4fdc4fca310ee">Move::operator==</a>(<a class="code hl_struct" href="../../df/d5b/structMove.html">Move</a> <span class="keyword">const</span> &amp;m) <span class="keyword">const</span> <span class="keyword">noexcept</span></div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>{</div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>  <span class="keywordflow">if</span> (type == m.type)</div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>  {</div>
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>    <span class="keywordflow">switch</span> (type)</div>
-<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>    {</div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="../../d0/d21/Move_8hpp.html#ac365680f0388487d538d24242d1f421aa1e23852820b9154316c7c06e2b7ba051">TypeMove::NORMAL</a>:</div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>      <span class="keywordflow">return</span> normal.<a class="code hl_variable" href="../../df/d5b/structMove.html#ad28a195cbbde5d4a6368bd7e9950cddf">src</a> == m.normal.src &amp;&amp;</div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>             normal.arv == m.normal.arv;</div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="../../d0/d21/Move_8hpp.html#ac365680f0388487d538d24242d1f421aa913bcc607ae0d97776698d9ed424be6a">TypeMove::SPLIT</a>:</div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>      <span class="keywordflow">return</span> split.src == m.split.src &amp;&amp;</div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>             split.arv1 == m.split.arv1 &amp;&amp;</div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>             split.arv2 == m.split.arv2;</div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="../../d0/d21/Move_8hpp.html#ac365680f0388487d538d24242d1f421aa97c51054c5ed46d2f88641ac57ff6347">TypeMove::MERGE</a>:</div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>      <span class="keywordflow">return</span> merge.src1 == m.merge.src1 &amp;&amp;</div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>             merge.src2 == m.merge.src2 &amp;&amp;</div>
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>             merge.arv == m.merge.arv;</div>
-<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="../../d0/d21/Move_8hpp.html#ac365680f0388487d538d24242d1f421aa99e1333a9cd342f9e07e4876eef54d7a">TypeMove::PROMOTE</a>:</div>
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>      <span class="keywordflow">return</span> promote.src == m.promote.src &amp;&amp;</div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>             promote.arv == m.promote.arv &amp;&amp;</div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>             promote.piece == m.promote.piece;</div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>    <span class="keywordflow">default</span>:</div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>      <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>    }</div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>  }</div>
-<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>  <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>}</div>
-</div>
-<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aCoord_8hpp_html"><div class="ttname"><a href="../../d9/d09/Coord_8hpp.html">Coord.hpp</a></div></div>
 <div class="ttc" id="aMove_8hpp_html_a1e4e5599eabf0b18a2ce87088e3fc500"><div class="ttname"><a href="../../d0/d21/Move_8hpp.html#a1e4e5599eabf0b18a2ce87088e3fc500">Move_promote</a></div><div class="ttdeci">constexpr Move Move_promote(Coord const &amp;src, Coord const &amp;arv, TypePiece promotion)</div><div class="ttdef"><b>Definition</b> Move.hpp:170</div></div>
 <div class="ttc" id="aMove_8hpp_html_a3685d244dcc494970e7e1d816ea7f615"><div class="ttname"><a href="../../d0/d21/Move_8hpp.html#a3685d244dcc494970e7e1d816ea7f615">Move_classic</a></div><div class="ttdeci">constexpr Move Move_classic(Coord const &amp;src, Coord const &amp;arv)</div><div class="ttdef"><b>Definition</b> Move.hpp:141</div></div>
@@ -272,7 +243,7 @@ $(function(){initNavTree('d0/d21/Move_8hpp_source.html','../../'); initResizable
 <div class="ttc" id="astructMove_html_a88c4bc9f06b951decf09b3b009c4bfd8"><div class="ttname"><a href="../../df/d5b/structMove.html#a88c4bc9f06b951decf09b3b009c4bfd8">Move::piece</a></div><div class="ttdeci">TypePiece piece</div><div class="ttdoc">La piece choisi pour le move.</div><div class="ttdef"><b>Definition</b> Move.hpp:134</div></div>
 <div class="ttc" id="astructMove_html_a8afc5f682e249d0e1bc418da22cf8019"><div class="ttname"><a href="../../df/d5b/structMove.html#a8afc5f682e249d0e1bc418da22cf8019">Move::merge</a></div><div class="ttdeci">struct Move::@0::@4 merge</div><div class="ttdoc">stoque l'ensemble des coordonnées pour un mouvement de fusion</div></div>
 <div class="ttc" id="astructMove_html_aaa5ff06d9cb7463d11180a7620628bd4"><div class="ttname"><a href="../../df/d5b/structMove.html#aaa5ff06d9cb7463d11180a7620628bd4">Move::split</a></div><div class="ttdeci">struct Move::@0::@3 split</div><div class="ttdoc">stoque l'ensemble des coordonnées pour un mouvement splité</div></div>
-<div class="ttc" id="astructMove_html_aadc0044239706aa167d4fdc4fca310ee"><div class="ttname"><a href="../../df/d5b/structMove.html#aadc0044239706aa167d4fdc4fca310ee">Move::operator==</a></div><div class="ttdeci">bool operator==(Move const &amp;m) const noexcept</div><div class="ttdef"><b>Definition</b> Move.hpp:180</div></div>
+<div class="ttc" id="astructMove_html_aadc0044239706aa167d4fdc4fca310ee"><div class="ttname"><a href="../../df/d5b/structMove.html#aadc0044239706aa167d4fdc4fca310ee">Move::operator==</a></div><div class="ttdeci">bool operator==(Move const &amp;m) const noexcept</div><div class="ttdef"><b>Definition</b> Move.cpp:5</div></div>
 <div class="ttc" id="astructMove_html_ab2c466f4efa515edf581fa0d3ae901a6"><div class="ttname"><a href="../../df/d5b/structMove.html#ab2c466f4efa515edf581fa0d3ae901a6">Move::Move</a></div><div class="ttdeci">Move()=default</div></div>
 <div class="ttc" id="astructMove_html_ab8b350ee6f27c49ed78d730b10912b0a"><div class="ttname"><a href="../../df/d5b/structMove.html#ab8b350ee6f27c49ed78d730b10912b0a">Move::operator=</a></div><div class="ttdeci">Move &amp; operator=(Move &amp;&amp;)=default</div></div>
 <div class="ttc" id="astructMove_html_ad28a195cbbde5d4a6368bd7e9950cddf"><div class="ttname"><a href="../../df/d5b/structMove.html#ad28a195cbbde5d4a6368bd7e9950cddf">Move::src</a></div><div class="ttdeci">Coord src</div><div class="ttdoc">La coordonnée de depart.</div><div class="ttdef"><b>Definition</b> Move.hpp:62</div></div>
@@ -283,7 +254,7 @@ $(function(){initNavTree('d0/d21/Move_8hpp_source.html','../../'); initResizable
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="../../dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="../../d0/d21/Move_8hpp.html">Move.hpp</a></li>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_614e713c8d2a837ebefac32543b6f55e.html">Move</a></li><li class="navelem"><a class="el" href="../../d0/d21/Move_8hpp.html">Move.hpp</a></li>
     <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>

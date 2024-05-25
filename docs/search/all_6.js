@@ -1,7 +1,7 @@
 var searchData=
 [
   ['get_0',['get',['../d6/d4d/classobserver__ptr.html#ac6337ecd71cc80b97ee2daec809d77f3',1,'observer_ptr']]],
-  ['get_5fbest_5fmove_1',['get_best_move',['../d2/de0/namespacecomputer.html#a71982e002eddf8eeea11eac598be6cdc',1,'computer']]],
+  ['get_5fbest_5fmove_1',['get_best_move',['../d2/de0/namespacecomputer.html#ae4bad3e587be5c6a9ef0f126b29fd1b8',1,'computer']]],
   ['get_5fcolor_2',['get_color',['../d5/df0/classPiece.html#ae1e51ae569b7e131cd5bfc4666159cab',1,'Piece']]],
   ['get_5fcurrent_5fplayer_3',['get_current_player',['../de/d23/classBoard.html#ac92c8b8d8071a54281e194ddf75beba4',1,'Board']]],
   ['get_5flist_5fmove_4',['get_list_move',['../d5/df0/classPiece.html#a837f1a71d962bc72dffc7bec5a417891',1,'Piece']]],
