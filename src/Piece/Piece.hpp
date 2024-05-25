@@ -376,7 +376,7 @@ constexpr Piece W_QUEEN{TypePiece::QUEEN, Color::WHITE};
 /**
  * @brief L'objet représentant la renne noire
  */
-constexpr Piece B_QUEEN{TypePiece::KING, Color::BLACK};
+constexpr Piece B_QUEEN{TypePiece::QUEEN, Color::BLACK};
 
 /**
  * @brief L'objet représentant le fou blanc
