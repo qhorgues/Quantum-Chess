@@ -45,6 +45,36 @@ char print_piece(Board<N, M> &board, Coord const& position)
 }
 
 template <std::size_t N, std::size_t M>
+void auto_playing(Board<N, M> &board, std::ostream &output, int nb_moves, int search_depth)
+{
+    TypePiece piece { board(position.n, position.m).get_type() };
+    Color color { board(position.n, position.m).get_color() };
+    using enum TypePiece;
+    
+    int const offset { (color == Color::BLACK) ? 32 : 0 };
+    using namespace std::literals;
+    switch (piece)
+    {
+    case KING:
+        return static_cast<char>('K' + offset);
+    case QUEEN:
+        return static_cast<char>('Q' + offset);
+    case ROOK:
+        return static_cast<char>('R' + offset);
+    case BISHOP:
+        return static_cast<char>('B' + offset);
+    case KNIGHT:
+        return static_cast<char>('N' + offset);
+    case PAWN:
+        return static_cast<char>('P' + offset);
+    case EMPTY:
+        return ' ';
+    default:
+        return '\0';
+    }
+}
+
+template <std::size_t N, std::size_t M>
 void auto_playing(
     Board<N, M> &board, 
     std::ostream &output, 
