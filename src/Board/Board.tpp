@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <cassert>
 #include <utility>
+#include <functional>
 #include <cmath>
 #include <optional>
 #include <stdexcept>
