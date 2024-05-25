@@ -13,6 +13,7 @@
 #include <check_path.hpp>
 #include <Constexpr.hpp>
 #include <ComputerPlayer.hpp>
+#include <ConsoleInterface.hpp>
 
 template <std::size_t N, std::size_t M>
 char print_piece(Board<N, M> &board, Coord const& position)
