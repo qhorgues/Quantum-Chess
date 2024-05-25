@@ -53,7 +53,7 @@ namespace computer
      *
      * @param color La couleur du joueur
      * @return 1 si c'est le joueur blanc
-     * @return 0 si c'est le joueur noir
+     * @return -1 si c'est le joueur noir
      */
     CONSTEXPR int sign_color(Color color)
     {
