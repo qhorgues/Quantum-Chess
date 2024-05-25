@@ -22,7 +22,7 @@ char print_piece(Board<N, M> &board, Coord const& position)
     using enum TypePiece;
     
     int const offset { (color == Color::BLACK) ? 32 : 0 };
-    using namespace std::literals;
+
     switch (piece)
     {
     case KING:
