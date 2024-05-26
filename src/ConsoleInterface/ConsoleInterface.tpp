@@ -6,6 +6,48 @@ const char *getUnicodeChar(TypePiece piece, Color color)
   using enum TypePiece;
   if (color == Color::WHITE)
   {
+#if defined(WIN32)
+    switch (piece)
+    {
+    case KING:
+      return "K";
+    case QUEEN:
+      return "Q";
+    case ROOK:
+      return "R";
+    case BISHOP:
+      return "B";
+    case KNIGHT:
+      return "N";
+    case PAWN:
+      return "P";
+    case EMPTY:
+    default:
+      return " ";
+    }
+  }
+  else
+  {
+    switch (piece)
+    {
+    case KING:
+      return "k";
+    case QUEEN:
+      return "q";
+    case ROOK:
+      return "r";
+    case BISHOP:
+      return "b";
+    case KNIGHT:
+      return "n";
+    case PAWN:
+      return "p";
+    case EMPTY:
+    default:
+      return " ";
+    }
+  }
+#else
     switch (piece)
     {
     case KING:
@@ -46,6 +88,7 @@ const char *getUnicodeChar(TypePiece piece, Color color)
       return " ";
     }
   }
+#endif
 }
 
 template <std::size_t N, std::size_t M>

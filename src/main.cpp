@@ -98,7 +98,11 @@ void auto_playing(
       }
     }
     board.move(m);
+  #if defined(WIN32)
+    int ret = system("cls");
+  #else
     int ret = system("clear");
+  #endif
     (void)ret;
     std::cout << board << std::endl;
     board.change_player();
