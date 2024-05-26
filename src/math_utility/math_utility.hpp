@@ -6,8 +6,8 @@
 #include <complex>
 #include <Constexpr.hpp>
 
-Constexpr bool double_equal(double x, double y);
-Constexpr bool complex_equal(
+CONSTEXPR bool double_equal(double x, double y);
+CONSTEXPR bool complex_equal(
     std::complex<double> const &z1,
     std::complex<double> const &z2);
 
