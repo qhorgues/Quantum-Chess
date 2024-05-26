@@ -16,10 +16,11 @@ var searchData=
   ['complex_5fprinter_2ehpp_13',['Complex_printer.hpp',['../d5/dee/Complex__printer_8hpp.html',1,'']]],
   ['computer_14',['computer',['../d2/de0/namespacecomputer.html',1,'']]],
   ['computerplayer_2ehpp_15',['ComputerPlayer.hpp',['../da/d2e/ComputerPlayer_8hpp.html',1,'']]],
-  ['constexpr_16',['CONSTEXPR',['../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280',1,'Constexpr.hpp']]],
-  ['constexpr_2ehpp_17',['Constexpr.hpp',['../d0/d5d/Constexpr_8hpp.html',1,'']]],
-  ['coord_18',['Coord',['../d9/dfc/structCoord.html',1,'Coord'],['../d9/dfc/structCoord.html#a14caa1114c95058bd25e1a7ff2ad8e43',1,'Coord::Coord()=default'],['../d9/dfc/structCoord.html#abafff409eb0f46a5796aa1f6c71aa4a2',1,'Coord::Coord(std::size_t i, std::size_t j)'],['../d9/dfc/structCoord.html#a1fc16d40e952dc4d7c3bedb97225354a',1,'Coord::Coord(Coord const &amp;)=default'],['../d9/dfc/structCoord.html#a89131b77a50cf91a64c4d10a2a9e06a1',1,'Coord::Coord(Coord &amp;&amp;)=default']]],
-  ['coord_2ecpp_19',['Coord.cpp',['../db/d0e/Coord_8cpp.html',1,'']]],
-  ['coord_2ehpp_20',['Coord.hpp',['../d9/d09/Coord_8hpp.html',1,'']]],
-  ['coord_5fhash_21',['Coord_hash',['../d5/d51/structCoord__hash.html',1,'']]]
+  ['consoleinterface_2ehpp_16',['ConsoleInterface.hpp',['../dc/d2f/ConsoleInterface_8hpp.html',1,'']]],
+  ['constexpr_17',['CONSTEXPR',['../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280',1,'Constexpr.hpp']]],
+  ['constexpr_2ehpp_18',['Constexpr.hpp',['../d0/d5d/Constexpr_8hpp.html',1,'']]],
+  ['coord_19',['Coord',['../d9/dfc/structCoord.html',1,'Coord'],['../d9/dfc/structCoord.html#a14caa1114c95058bd25e1a7ff2ad8e43',1,'Coord::Coord()=default'],['../d9/dfc/structCoord.html#abafff409eb0f46a5796aa1f6c71aa4a2',1,'Coord::Coord(std::size_t i, std::size_t j)'],['../d9/dfc/structCoord.html#a1fc16d40e952dc4d7c3bedb97225354a',1,'Coord::Coord(Coord const &amp;)=default'],['../d9/dfc/structCoord.html#a89131b77a50cf91a64c4d10a2a9e06a1',1,'Coord::Coord(Coord &amp;&amp;)=default']]],
+  ['coord_2ecpp_20',['Coord.cpp',['../db/d0e/Coord_8cpp.html',1,'']]],
+  ['coord_2ehpp_21',['Coord.hpp',['../d9/d09/Coord_8hpp.html',1,'']]],
+  ['coord_5fhash_22',['Coord_hash',['../d5/d51/structCoord__hash.html',1,'']]]
 ];

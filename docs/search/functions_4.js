@@ -20,6 +20,5 @@ var searchData=
   ['get_5fproba_5fmesure_5fcapture_5fslide_17',['get_proba_mesure_capture_slide',['../de/d23/classBoard.html#aed8545cdf9ca4e47ffd3306d80c87539',1,'Board']]],
   ['get_5fproba_5fmesure_5fcastle_18',['get_proba_mesure_castle',['../de/d23/classBoard.html#a84791fcc38cf0dae066dc4cfb45d4d9f',1,'Board']]],
   ['get_5fproba_5fmove_19',['get_proba_move',['../de/d23/classBoard.html#ace033903065bef449576f323789d8b4a',1,'Board']]],
-  ['get_5frandom_5fnumber_5f0_5f1_20',['get_random_number_0_1',['../de/d23/classBoard.html#a9d39b22d6a174c0f48f10a7d210be4fa',1,'Board']]],
-  ['get_5ftype_21',['get_type',['../d5/df0/classPiece.html#ae0b897cb041aba5d32a68e7a3165787d',1,'Piece']]]
+  ['get_5ftype_20',['get_type',['../d5/df0/classPiece.html#ae0b897cb041aba5d32a68e7a3165787d',1,'Piece']]]
 ];
