@@ -16,6 +16,8 @@
 #include <mutex>
 #include <Random.hpp>
 
+#define WIN_VALUE 15.
+
 namespace computer
 {
   namespace __utility
@@ -187,8 +189,7 @@ namespace computer
       Color win;
       if (__utility::winner(board, win))
       {
-        return __utility::sign_color(win) *
-               std::numeric_limits<double>::max();
+        return __utility::sign_color(win) * WIN_VALUE;
       }
       double h{0};
       for (std::size_t i{0}; i < board.numberLines(); i++)
@@ -261,8 +262,7 @@ namespace computer
       }
       else if (winner(board, win))
       {
-        return __utility::sign_color(win) *
-               std::numeric_limits<double>::max();
+        return __utility::sign_color(win) * WIN_VALUE;
       }
       else
       {
