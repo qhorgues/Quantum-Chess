@@ -311,6 +311,7 @@ private:
      * du plateau
      */
     void update_board() noexcept;
+    void update_board_classic() noexcept;
 
     /**
      * @brief Mouvement classique d'une pièce qui "saute"
