@@ -15,15 +15,10 @@
 #include <ComputerPlayer.hpp>
 #include <ConsoleInterface.hpp>
 
-template <std::size_t N, std::size_t M>
-char print_piece(Board<N, M> &board, Coord const &position)
+char piece_to_char(TypePiece piece, Color color = Color::WHITE)
 {
-  TypePiece piece{board(position.n, position.m).get_type()};
-  Color color{board(position.n, position.m).get_color()};
-  using enum TypePiece;
-
   int const offset{(color == Color::BLACK) ? 32 : 0};
-
+  using enum TypePiece;
   switch (piece)
   {
   case KING:
@@ -46,13 +41,21 @@ char print_piece(Board<N, M> &board, Coord const &position)
 }
 
 template <std::size_t N, std::size_t M>
+char print_piece(Board<N, M> &board, Coord const &position)
+{
+  TypePiece piece{board(position.n, position.m).get_type()};
+  Color color{board(position.n, position.m).get_color()};
+  return piece_to_char(piece, color);
+}
+
+template <std::size_t N, std::size_t M>
 void auto_playing(
     Board<N, M> &board,
     std::ostream &output,
     int nb_moves,
     int search_depth)
 {
-  output << board << std::endl;
+  std::cout << board << std::endl;
   while (
       nb_moves > 0 &&
       !board.winning_position(opponent_color(board.get_current_player())))
@@ -60,7 +63,7 @@ void auto_playing(
 
     Move m{computer::get_best_move(board, search_depth)};
 
-    /*
+    
     std::string data1{{static_cast<char>('a' + m.normal.src.m),
                        static_cast<char>('0' + N - m.normal.src.n)}};
 
@@ -74,8 +77,8 @@ void auto_playing(
     }
     else if (m.type == TypeMove::PROMOTE)
     {
-      output << "P " << data1 << data2 << " :: "
-             << std::to_string(static_cast<int>(m.promote.piece))
+      output << "P " << data1 << data2
+             << piece_to_char(m.promote.piece)
              << std::endl;
     }
     else
@@ -85,19 +88,19 @@ void auto_playing(
 
       if (m.type == TypeMove::SPLIT)
       {
-        output << "S " << data1 << '(' << data2
+        output << "S " << data1 << '(' << data2 << ':'
                << data3 << ')' << std::endl;
       }
       else
       {
-        output << "M " << '(' << data1 << data2
-               << ')' << data3 << std::endl;
+        output << "M " << '(' << data1 << ':' << data2 << ')'
+               << data3 << std::endl;
       }
-    }*/
+    }
     board.move(m);
     int ret = system("clear");
     (void)ret;
-    output << board << std::endl;
+    std::cout << board << std::endl;
     board.change_player();
     nb_moves--;
   }
@@ -106,7 +109,7 @@ void auto_playing(
 int main()
 {
 
-  Board<> ChessBoard{
+  Board<> const ChessBoard{
       {{B_ROOK, B_KNIGHT, B_BISHOP, B_QUEEN, B_KING, B_BISHOP, B_KNIGHT, B_ROOK},
        {B_PAWN, B_PAWN, B_PAWN, B_PAWN, B_PAWN, B_PAWN, B_PAWN, B_PAWN},
        {Piece(), Piece(), Piece(), Piece(), Piece(), Piece(), Piece(), Piece()},
@@ -138,10 +141,14 @@ int main()
   };
   */
 
-  // std::ofstream log_file{"Output.txt"};
+  for (int i = 1; i <= 3; i++)
+  {
+    Board board {ChessBoard};
+    std::ofstream log_file{"partie"+std::to_string(i)+".txt"};
+    auto_playing(board, log_file, 60, 5);
+    log_file.close();
+  }
   
-  auto_playing(ChessBoard, std::cout, 4, 10);
 
-  // log_file.close();
   return 0;
 }
