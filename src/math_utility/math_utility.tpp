@@ -1,13 +1,14 @@
 #include <cmath>
 #include <complex>
+#include <Constexpr.hpp>
 #include "math_utility.hpp"
 
-bool double_equal(double x, double y)
+CONSTEXPR bool double_equal(double x, double y)
 {
     return std::abs(x - y) <= EPSILON;
 }
 
-bool complex_equal(
+CONSTEXPR bool complex_equal(
     std::complex<double> const &z1,
     std::complex<double> const &z2)
 {
