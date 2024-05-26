@@ -156,11 +156,11 @@ int main()
     }
   };
 
-  for (int i = 1; i <= 8; i++)
+  for (int i = 1; i <= 3; i++)
   {
     Board board {smallBoard};
     std::ofstream log_file{"partie"+std::to_string(i)+".txt"};
-    auto_playing(board, log_file, 100, 6);
+    auto_playing(board, log_file, 80, 6);
     log_file.close();
   }
   
