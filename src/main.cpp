@@ -145,11 +145,22 @@ int main()
   };
   */
 
-  for (int i = 1; i <= 3; i++)
+  Board<6, 4> smallBoard{
+    {
+        {B_KNIGHT, B_QUEEN, B_KING, B_BISHOP},
+        {B_PAWN, B_PAWN, B_PAWN, B_PAWN},
+        {Piece(), Piece(), Piece(), Piece()},
+        {Piece(), Piece(), Piece(), Piece()},
+        {W_PAWN, W_PAWN, W_PAWN, W_PAWN},
+        {W_KNIGHT, W_QUEEN, W_KING, W_BISHOP}
+    }
+  };
+
+  for (int i = 1; i <= 8; i++)
   {
-    Board board {ChessBoard};
+    Board board {smallBoard};
     std::ofstream log_file{"partie"+std::to_string(i)+".txt"};
-    auto_playing(board, log_file, 60, 5);
+    auto_playing(board, log_file, 100, 6);
     log_file.close();
   }
   
