@@ -26,8 +26,20 @@ int main()
          Board<4> Bt{
         {{B_KING, Piece(), Piece(), Piece()},
          {Piece(), Piece(), Piece(), Piece()},
-         {Piece(), Piece(),  Piece(), Piece()},
+         {Piece(), Piece(),  Piece(), W_KNIGHT},
          {Piece(), Piece(), Piece(), W_KING}}};
+
+         Board<3> Bt1{
+        {{B_KING, Piece(), Piece()},
+         {Piece(), B_ROOK, Piece()},
+         {Piece(), Piece(),  W_KING}}
+         };
+         Board<3> Bt2{
+        {{B_KING, Piece(), Piece()},
+         {Piece(), W_KING, Piece()},
+         {Piece(), Piece(), Piece()}}
+         };
+
 
     Board<1,6> B2{
         {
@@ -35,7 +47,10 @@ int main()
         }
     };
     /*bool b = Final::brut_force_quantum_chess(B2, 1, Color::WHITE);
-    std::cout<<std::boolalpha<<b<<std::endl;*/
-    double res {Final::res_pos(B, 4).first};
+    std::cout<<std::boolalpha<<b<<std::en
+    dl;*/
+    auto[res, res2] {Final::res_pos(B, 2)};
     std::cout<<res<<std::endl;
+    Final::print_stack<3>(res2);
+   
 }

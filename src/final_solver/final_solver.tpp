@@ -172,30 +172,29 @@ double evaluer(const Board<N, M> &board, Color c)
         }
     }
 }
-
-template <std::size_t N, std::size_t M>
+template<std::size_t N>
 void print_move(std::ostream &output, Move m)
 {
     std::string data1{{static_cast<char>('a' + m.normal.src.m), static_cast<char>('0' + N - m.normal.src.n)}};
     std::string data2{{static_cast<char>('a' + m.normal.arv.m), static_cast<char>('0' + N - m.normal.arv.n)}};
     if (m.type == TypeMove::NORMAL)
     {
-        output << "N " << data1 << data2 << std::endl;
+        output << "N " << data1 << data2 ;
     }
     else if (m.type == TypeMove::PROMOTE)
     {
-        output << "P " << data1 << data2 << " :: " << std::to_string(static_cast<int>(m.promote.piece)) << std::endl;
+        output << "P " << data1 << data2 << " :: " << std::to_string(static_cast<int>(m.promote.piece)) ;
     }
     else
     {
         std::string data3{{static_cast<char>('a' + m.split.arv2.m), static_cast<char>('0' + N - m.split.arv2.n)}};
         if (m.type == TypeMove::SPLIT)
         {
-            output << "S " << data1 << '(' << data2 << data3 << ')' << std::endl;
+            output << "S " << data1 << '(' << data2 << data3 << ')' ;
         }
         else
         {
-            output << "M " << '(' << data1 << data2 << ')' << data3 << std::endl;
+            output << "M " << '(' << data1 << data2 << ')' << data3 ;
         }
     }
 }
@@ -205,7 +204,7 @@ CONSTEXPR double alphaBeta(Board<N, M> const &board, std::size_t profondeur, dou
 {
     if (profondeur == 0 || board.winning_position(c) || board.winning_position(opponent_color(c)))
     {
-        Move m = Move_classic(Coord(0, 0), Coord(0, N));
+        Move m = Move_classic(Coord(0, 0), Coord(0, 0));
         stack.push(m); // Cette information n'a pas d'intérêt dans la pile mais évite les erreurs de segmentation lorsqu'on dépile
         return evaluer(board, c);
     }
@@ -456,12 +455,12 @@ CONSTEXPR double alphaBeta(Board<N, M> const &board, std::size_t profondeur, dou
                             std::stack<Node> new_stack2{};
                             if (double_equal(eval1, 0.))
                             {
-                                eval1 = alphaBeta(board_cpy1, profondeur - 1, -2., 2., false, c, new_stack1);
+                                eval1 = alphaBeta(board_cpy1, profondeur - 1, -2., 2., true, c, new_stack1);
                             }
                             double eval2{evaluer(board_cpy2, c)};
                             if (double_equal(eval2, 0.))
                             {
-                                eval2 = alphaBeta(board_cpy2, profondeur - 1, -2., 2., false, c, new_stack2);
+                                eval2 = alphaBeta(board_cpy2, profondeur - 1, -2., 2., true, c, new_stack2);
                             }
                             res = eval1 * proba_move + eval2 * (1 - proba_move);
                             if (res < meilleurScore)
@@ -506,4 +505,34 @@ CONSTEXPR std::pair<double, std::stack<Node>> Final::res_pos(Board<N, M> &board,
     Color c{board.get_current_player()};
     std::stack<Node> stack{};
     return std::make_pair(alphaBeta(board, profondeur, -2., 2., true, c, stack), stack);
+}
+template <std::size_t N>
+CONSTEXPR void Final::print_stack( std::stack<Node> & stack)
+{
+    std::vector<std::stack<Node>> tab{};
+    tab.push_back(stack);
+    std::size_t compteur{0};
+    while (compteur != std::size(tab))
+    {
+        compteur = 0;
+        for (auto &e : tab)
+        {
+            if (e.empty())
+            {
+                compteur++;
+                std::cout << "      ";
+            }
+            else
+            {
+                Node elt = e.top();
+                e.pop();
+                if(!elt.other_way.empty())
+                {
+                    tab.push_back(elt.other_way);
+                }
+                print_move<N>(std::cout, elt.m);
+            }
+        }
+        std::cout<<std::endl;
+    }
 }

@@ -26,6 +26,8 @@ namespace Final
 
     template <std::size_t N, std::size_t M>
     CONSTEXPR std::pair<double, std::stack<Node>> res_pos(Board<N, M> &board, std::size_t profondeur);
+    template<std::size_t N>
+    CONSTEXPR void print_stack(std::stack<Node> &stack);
 };
 
 /*struct C_hash{

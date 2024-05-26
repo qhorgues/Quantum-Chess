@@ -177,7 +177,7 @@ constexpr inline Move Move_promote(Coord const &src, Coord const &arv, TypePiece
   return move;
 }
 
-bool Move::operator==(Move const &m) const noexcept
+/*bool Move::operator==(Move const &m) const noexcept
 {
   if (type == m.type)
   {
@@ -203,5 +203,5 @@ bool Move::operator==(Move const &m) const noexcept
     }
   }
   return false;
-}
+}*/
 #endif
