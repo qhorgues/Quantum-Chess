@@ -63,7 +63,6 @@ void auto_playing(
 
     Move m{computer::get_best_move(board, search_depth)};
 
-    
     std::string data1{{static_cast<char>('a' + m.normal.src.m),
                        static_cast<char>('0' + N - m.normal.src.n)}};
 
@@ -98,11 +97,11 @@ void auto_playing(
       }
     }
     board.move(m);
-  #if defined(WIN32)
+#if defined(WIN32)
     int ret = system("cls");
-  #else
+#else
     int ret = system("clear");
-  #endif
+#endif
     (void)ret;
     std::cout << board << std::endl;
     board.change_player();
@@ -146,24 +145,27 @@ int main()
   */
 
   Board<6, 4> smallBoard{
-    {
-        {B_KNIGHT, B_QUEEN, B_KING, B_BISHOP},
-        {B_PAWN, B_PAWN, B_PAWN, B_PAWN},
-        {Piece(), Piece(), Piece(), Piece()},
-        {Piece(), Piece(), Piece(), Piece()},
-        {W_PAWN, W_PAWN, W_PAWN, W_PAWN},
-        {W_KNIGHT, W_QUEEN, W_KING, W_BISHOP}
-    }
-  };
+      {{B_KNIGHT, B_QUEEN, B_KING, B_BISHOP},
+       {B_PAWN, B_PAWN, B_PAWN, B_PAWN},
+       {Piece(), Piece(), Piece(), Piece()},
+       {Piece(), Piece(), Piece(), Piece()},
+       {W_PAWN, W_PAWN, W_PAWN, W_PAWN},
+       {W_KNIGHT, W_QUEEN, W_KING, W_BISHOP}}};
 
-  for (int i = 4; i <= 6; i++)
+  Board<3> miniBoard{
+      {
+          {B_KING, Piece(), Piece()},
+          {Piece(), W_ROOK, Piece()},
+          {Piece(), Piece(), W_KING}
+      }};
+
+  for (int i = 1; i <= 3; i++)
   {
-    Board board {smallBoard};
-    std::ofstream log_file{"partie"+std::to_string(i)+".txt"};
-    auto_playing(board, log_file, 80, 6);
+    Board board{smallBoard};
+    std::ofstream log_file{"partie" + std::to_string(i) + ".txt"};
+    auto_playing(board, log_file, 80, 8);
     log_file.close();
   }
-  
 
   return 0;
 }
