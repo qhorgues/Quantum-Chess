@@ -21,6 +21,8 @@ create_test_sourcelist (Tests
     test_move_merge_after_split.cpp
     test_split_after_split.cpp
     test_split_after_split2.cpp
+    test_multiple_split.cpp 
+    test_split_takes.cpp 
 )
 
 # add the executable

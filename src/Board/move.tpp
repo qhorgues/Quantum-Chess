@@ -896,6 +896,8 @@ CONSTEXPR void Board<N, M>::move(Move const &movement, std::optional<bool> val_m
         move_promotion(movement, val_mes);
         break;
     default:
-        return;
+        break;
     }
+    update_board_classic();
+    //update_board();
 }

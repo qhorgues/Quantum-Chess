@@ -16,7 +16,7 @@ if (KING_NO_SPLIT)
 endif()
 
 set (SRCS
-    ${CMAKE_SOURCE_DIR}/src/math_utility/math_utility.cpp
+    ${CMAKE_SOURCE_DIR}/src/math_utility/math_utility.tpp
     ${CMAKE_SOURCE_DIR}/src/Coord/Coord.cpp
     ${CMAKE_SOURCE_DIR}/src/Board/Board.tpp
     ${CMAKE_SOURCE_DIR}/src/Piece/Piece.tpp
