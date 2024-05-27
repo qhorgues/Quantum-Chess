@@ -28,6 +28,7 @@ set (SRCS
     ${CMAKE_SOURCE_DIR}/src/Board/get_proba_move.tpp
     ${CMAKE_SOURCE_DIR}/src/Board/move.tpp
     ${CMAKE_SOURCE_DIR}/src/Random/Random.cpp
+    ${CMAKE_SOURCE_DIR}/src/ConsoleInterface/ConsoleInterface.tpp
 )
 
 set (HEADERS
@@ -44,6 +45,7 @@ set (HEADERS
     ${CMAKE_SOURCE_DIR}/src/check_path/check_path.hpp
     ${CMAKE_SOURCE_DIR}/src/math_utility/math_utility.hpp
     ${CMAKE_SOURCE_DIR}/src/Random/Random.hpp
+    ${CMAKE_SOURCE_DIR}/src/ConsoleInterface/ConsoleInterface.hpp
 )
 
 include(FetchContent)
