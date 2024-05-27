@@ -156,7 +156,7 @@ int main()
     }
   };
 
-  for (int i = 1; i <= 3; i++)
+  for (int i = 4; i <= 6; i++)
   {
     Board board {smallBoard};
     std::ofstream log_file{"partie"+std::to_string(i)+".txt"};
