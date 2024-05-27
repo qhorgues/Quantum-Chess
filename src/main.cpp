@@ -11,6 +11,7 @@
 #include <check_path.hpp>
 #include <Constexpr.hpp>
 #include <TypePiece.hpp>
+#include <ConsoleInterface.hpp>
 #include <final_solver.hpp>
 #include <functional>
 

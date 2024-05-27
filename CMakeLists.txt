@@ -20,6 +20,7 @@ set (SRCS
     ${CMAKE_SOURCE_DIR}/src/Coord/Coord.cpp
     ${CMAKE_SOURCE_DIR}/src/Board/Board.tpp
     ${CMAKE_SOURCE_DIR}/src/Piece/Piece.tpp
+    ${CMAKE_SOURCE_DIR}/src/Move/Move.cpp
     ${CMAKE_SOURCE_DIR}/src/Piece/get_list_move.tpp
     ${CMAKE_SOURCE_DIR}/src/Qubit/Qubit.tpp
     ${CMAKE_SOURCE_DIR}/src/check_path/check_path.tpp
@@ -27,13 +28,15 @@ set (SRCS
     ${CMAKE_SOURCE_DIR}/src/Board/mesure.tpp
     ${CMAKE_SOURCE_DIR}/src/Board/get_proba_move.tpp
     ${CMAKE_SOURCE_DIR}/src/Board/move.tpp
+    ${CMAKE_SOURCE_DIR}/src/Random/Random.cpp
+    ${CMAKE_SOURCE_DIR}/src/ConsoleInterface/ConsoleInterface.tpp
 )
 
 set (HEADERS
     ${CMAKE_SOURCE_DIR}/include/Unitary.hpp
     ${CMAKE_SOURCE_DIR}/include/CMatrix.hpp
     ${CMAKE_SOURCE_DIR}/include/Complex_printer.hpp
-    ${CMAKE_SOURCE_DIR}/include/Move.hpp
+    ${CMAKE_SOURCE_DIR}/src/Move/Move.hpp
     ${CMAKE_SOURCE_DIR}/include/Constexpr.hpp
     ${CMAKE_SOURCE_DIR}/src/Coord/Coord.hpp
     ${CMAKE_SOURCE_DIR}/src/Piece/TypePiece.hpp
@@ -43,6 +46,8 @@ set (HEADERS
     ${CMAKE_SOURCE_DIR}/src/check_path/check_path.hpp
     ${CMAKE_SOURCE_DIR}/src/math_utility/math_utility.hpp
     ${CMAKE_SOURCE_DIR}/src/final_solver/final_solver.hpp
+    ${CMAKE_SOURCE_DIR}/src/Random/Random.hpp
+    ${CMAKE_SOURCE_DIR}/src/ConsoleInterface/ConsoleInterface.hpp
 )
 
 include(FetchContent)

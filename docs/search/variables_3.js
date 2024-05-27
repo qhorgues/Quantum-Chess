@@ -16,7 +16,7 @@ var searchData=
   ['matrix_5fiswap_5f8_13',['MATRIX_ISWAP_8',['../db/daa/Unitary_8hpp.html#acf8962339a8c218a25e2fce17a5ad545',1,'Unitary.hpp']]],
   ['matrix_5fjump_14',['MATRIX_JUMP',['../db/daa/Unitary_8hpp.html#a921f5fb534ece3a1df730454498cc23a',1,'Unitary.hpp']]],
   ['matrix_5fmerge_15',['MATRIX_MERGE',['../db/daa/Unitary_8hpp.html#a568594e8bd922ae738bb20e276e61b7d',1,'Unitary.hpp']]],
-  ['matrix_5fmerge_5fslide_16',['MATRIX_MERGE_SLIDE',['../db/daa/Unitary_8hpp.html#ac206f1ea113b6c5a8df91e477f13520c',1,'Unitary.hpp']]],
+  ['matrix_5fmerge_5fslide_16',['MATRIX_MERGE_SLIDE',['../db/daa/Unitary_8hpp.html#a6dbe9320580400e59019b03e8973406f',1,'Unitary.hpp']]],
   ['matrix_5fslide_17',['MATRIX_SLIDE',['../db/daa/Unitary_8hpp.html#a8f5f243cb8441aec43d79173665a8d12',1,'Unitary.hpp']]],
   ['matrix_5fsplit_18',['MATRIX_SPLIT',['../db/daa/Unitary_8hpp.html#af385eac21fa839b90d4ece9891fd2843',1,'Unitary.hpp']]],
   ['matrix_5fsplit_5fslide_19',['MATRIX_SPLIT_SLIDE',['../db/daa/Unitary_8hpp.html#a4ad68257b8a76387be441974e0539929',1,'Unitary.hpp']]],
