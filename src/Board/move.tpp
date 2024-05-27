@@ -881,7 +881,6 @@ CONSTEXPR void Board<N, M>::move(Move const &movement, std::optional<bool> val_m
     {
     case TypeMove::NORMAL:
         move_classic(movement.normal.src, movement.normal.arv, val_mes);
-        update_board_classic();
         break;
     case TypeMove::SPLIT:
         move_split(movement.split.src,
@@ -899,5 +898,6 @@ CONSTEXPR void Board<N, M>::move(Move const &movement, std::optional<bool> val_m
     default:
         break;
     }
+    update_board_classic();
     //update_board();
 }
