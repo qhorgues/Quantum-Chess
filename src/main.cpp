@@ -76,8 +76,8 @@ void auto_playing(
     }
     else if (m.type == TypeMove::PROMOTE)
     {
-      output << "P " << data1 << data2
-             << piece_to_char(m.promote.piece)
+      output << 'P' << piece_to_char(m.promote.piece) << ' '
+             << data1 << data2
              << std::endl;
     }
     else
@@ -97,12 +97,13 @@ void auto_playing(
       }
     }
     board.move(m);
+/*
 #if defined(WIN32)
     int ret = system("cls");
 #else
     int ret = system("clear");
 #endif
-    (void)ret;
+    (void)ret;*/
     std::cout << board << std::endl;
     board.change_player();
     nb_moves--;
@@ -152,20 +153,30 @@ int main()
        {W_PAWN, W_PAWN, W_PAWN, W_PAWN},
        {W_KNIGHT, W_QUEEN, W_KING, W_BISHOP}}};
 
-  Board<3> miniBoard{
+  Board<4> miniBoard{
       {
-          {B_KING, Piece(), Piece()},
-          {Piece(), W_ROOK, Piece()},
-          {Piece(), Piece(), W_KING}
+          {B_KING, Piece(), Piece(), B_BISHOP},
+          {Piece(), B_KNIGHT, Piece(), Piece()},
+          {Piece(), Piece(), Piece(), Piece()},
+          {Piece(), Piece(), W_QUEEN, W_KING}
       }};
-
-  for (int i = 1; i <= 3; i++)
+  
+  for (int i = 1; i <= 1; i++)
   {
-    Board board{smallBoard};
+    Board board{ChessBoard};
     std::ofstream log_file{"partie" + std::to_string(i) + ".txt"};
-    auto_playing(board, log_file, 80, 8);
+    auto_playing(board, log_file, 80, 5);
     log_file.close();
   }
+
+  /*for (std::size_t i = 0; i < 8; i++)
+  {
+    for (std::size_t j = 0; j < 8; j++)
+    {
+      std::cout << computer::__utility::evalCase<8, 8>(i, j) << ' ';
+    }
+    std::cout << std::endl;
+  }*/
 
   return 0;
 }

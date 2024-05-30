@@ -104,6 +104,11 @@ target_link_libraries(${PROJECT_NAME} Matrix m)
 #set_target_properties(${PROJECT_NAME} PROPERTIES PUBLIC_HEADER ${HEADERS})
 set_target_warnings(${PROJECT_NAME})
 
+add_executable (Heuristic_analyzer ${SRCS} src/heuristicHistory.cpp ${HEADERS})
+target_link_libraries(Heuristic_analyzer Matrix m)
+#set_target_properties(${PROJECT_NAME} PROPERTIES PUBLIC_HEADER ${HEADERS})
+set_target_warnings(Heuristic_analyzer)
+
 include(GNUInstallDirs)
 
 install(TARGETS ${PROJECT_NAME} ARCHIVE)

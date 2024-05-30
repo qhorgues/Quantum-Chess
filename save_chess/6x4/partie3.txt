@@ -1,0 +1,10 @@
+P N b2b4
+p N c5e5
+P N c2c4
+p N c5e4
+P N c4f6
+n N a6c5
+P N b4a5
+n N c5d3
+P P a5b6B
+n N d3c1
