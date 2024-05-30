@@ -512,7 +512,7 @@ CONSTEXPR void Final::print_stack( std::stack<Node> & stack)
     std::vector<std::stack<Node>> tab{};
     tab.push_back(stack);
     std::size_t compteur{0};
-    while (compteur != std::size(tab))
+    while (compteur < std::size(tab))
     {
         compteur = 0;
         for (auto &e : tab)

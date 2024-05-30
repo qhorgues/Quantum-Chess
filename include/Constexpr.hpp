@@ -4,6 +4,6 @@
 /**
  * @brief Utilisé pour utiliser ou non constexpr
  */
-#define CONSTEXPR 
+#define CONSTEXPR constexpr
 
 #endif

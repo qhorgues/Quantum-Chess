@@ -19,16 +19,28 @@
 int main()
 {
     Board<4> B{
-        {{B_KING, Piece(), Piece(), Piece()},
-         {Piece(), B_ROOK, Piece(), Piece()},
+        {{B_KING, B_BISHOP, Piece(), Piece()},
+         {B_KNIGHT, Piece(), Piece(), Piece()},
          {Piece(), Piece(),  Piece(), Piece()},
          {Piece(), Piece(), W_QUEEN, W_KING}}};
+Board<4> B1{
+        {{B_KING, Piece(), Piece(), B_BISHOP},
+         {Piece(), B_KNIGHT, Piece(), Piece()},
+         {Piece(), Piece(),  Piece(), Piece()},
+         {Piece(), Piece(), W_QUEEN, W_KING}}};
+
+         Board<4> B3{
+        {{Piece(), Piece(), B_KNIGHT, B_BISHOP},
+         {Piece(), B_KING, Piece(), Piece()},
+         {Piece(), Piece(),  Piece(), Piece()},
+         {Piece(), Piece(), W_QUEEN, W_KING}}};
+
 
          Board<4> Bt{
         {{B_KING, B_BISHOP, Piece(), Piece()},
          {Piece(), Piece(), Piece(), Piece()},
          {Piece(), Piece(),  Piece(), W_KNIGHT},
-         {Piece(), Piece(), W_ROOK, W_KING}}};
+         {Piece(), Piece(), W_KNIGHT, W_KING}}};
 
          Board<3> Bt1{
         {{B_KING, Piece(), Piece()},
@@ -50,8 +62,10 @@ int main()
     /*bool b = Final::brut_force_quantum_chess(B2, 1, Color::WHITE);
     std::cout<<std::boolalpha<<b<<std::en
     dl;*/
-    auto[res, res2] {Final::res_pos(Bt1, 12)};
+    auto[res, res2] {Final::res_pos(B3, 4)};
     std::cout<<res<<std::endl;
     Final::print_stack<4>(res2);
+    //bool b {Final::brut_force_classic_chess (B1, 10, Color::WHITE)};
+    //std::cout<< std::boolalpha<< b<< std::endl;
    
 }

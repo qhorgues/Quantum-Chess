@@ -418,8 +418,7 @@ Board<N, M>::all_move(
                             return;
                         }
                     }
-                    if (piece.get_type() != TypePiece::KING)
-                    {
+                    
                         std::forward_list<Coord> move_split{
                             get_list_split_move(Coord(i, j))};
 
@@ -500,7 +499,7 @@ Board<N, M>::all_move(
                                 }
                             }
                         }
-                    }
+                    
                 }
                 else
                 {
