@@ -172,6 +172,37 @@ namespace computer
       return false;
     }
 
+    template <std::size_t N, std::size_t M>
+    CONSTEXPR double evalCase(std::size_t i, std::size_t j) noexcept
+    {
+      if constexpr (N % 2 == 0)
+      {
+        if constexpr (M % 2 == 0)
+        {
+          return 2*std::min(std::min(static_cast<double>(i), static_cast<double>(N - i - 1)) / (N - 2),
+            std::min(static_cast<double>(j), static_cast<double>(M - j - 1)) / (M - 2));
+        }
+        else
+        {
+          return 2*std::min(std::min(static_cast<double>(i), static_cast<double>(N - i - 1)) / (N - 2),
+          std::min(static_cast<double>(j), static_cast<double>(M - j - 1)) / (M));
+        }
+      }
+      else
+      {
+        if constexpr (M % 2 == 0)
+        {
+          return  2*std::min(std::min(static_cast<double>(i), static_cast<double>(N - i - 1)) / (N - 2),
+          std::min(static_cast<double>(j), static_cast<double>(M - j - 1)) / (M - 2));
+        }
+        else
+        {
+          return  2*std::min(std::min(static_cast<double>(i), static_cast<double>(N - i - 1)) / (N - 2),
+          std::min(static_cast<double>(j), static_cast<double>(M - j - 1)) / (M));
+        }
+      }
+    }
+
     /**
      * @brief Renvoie une évaluation du plateau
      * @details L'évaluation du plateau est calculé
@@ -200,7 +231,8 @@ namespace computer
           if (p.get_type() != TypePiece::EMPTY)
           {
             h += sign_color(p.get_color()) *
-                 __utility::value_piece(p.get_type()) *
+                 (__utility::value_piece(p.get_type()) +
+                 evalCase<N, M>(i, j)) *
                  board.get_proba(Coord(i, j));
           }
         }
@@ -281,10 +313,10 @@ namespace computer
               try
               {
                 score = deterministic_eval_move(
-                  board, 
-                  best_score_alpha_beta, 
-                  m, 
-                  profondeur);
+                    board,
+                    best_score_alpha_beta,
+                    m,
+                    profondeur);
               }
               catch (std::runtime_error const &e)
               {
@@ -292,10 +324,10 @@ namespace computer
               }
               best_score_alpha_beta.pop_front();
               return check_alpha_beta(
-                board, 
-                best_score_alpha_beta, 
-                best_score, 
-                score);
+                  board,
+                  best_score_alpha_beta,
+                  best_score,
+                  score);
             });
         return best_score;
       }
@@ -348,7 +380,7 @@ namespace computer
 
   template <std::size_t N, std::size_t M>
   CONSTEXPR Move get_best_move(
-      Board<N, M> const &board, 
+      Board<N, M> const &board,
       int profondeur)
   {
     unsigned int number_thread{std::thread::hardware_concurrency()};
