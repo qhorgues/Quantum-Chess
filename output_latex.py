@@ -1,3 +1,4 @@
+import ntpath
 
 list_file = [
   "./src/main.cpp",
@@ -26,26 +27,76 @@ list_file = [
   "./include/CMatrix.hpp",
   "./include/Complex_printer.hpp",
   "./include/Constexpr.hpp",
+  "./src/ConsoleInterface/ConsoleInterface.hpp",
+  "./src/ConsoleInterface/ConsoleInterface.tpp",
+  
+  #----------Computer Player-------------
   "./src/ComputerPlayer/ComputerPlayer.hpp",
   "./src/ComputerPlayer/ComputerPlayer.tpp",
-  "./src/ConsoleInterface/ConsoleInterface.hpp",
-  "./src/ConsoleInterface/ConsoleInterface.tpp"
+  #--------------------------------------
+
+  "./build/Matrix/include/Matrix.hpp",
+  "./build/Matrix/include/Matrix.tpp",
+
+  "./test/test_move_promotion.cpp",
+  "./test/test_move_enpassant_with_capture.cpp",
+  "./test/test_move_pawn_two_step.cpp",
+  "./test/test_move_promotion_with_capture.cpp",
+  "./test/test_move_promotion_with_split_before.cpp",
+  "./test/test_move_split_with_mesure.cpp",
+  "./test/test_split_in_non_empty_case.cpp",
+  "./test/test_slide_merge_move_through_a_split_piece.cpp",
+  "./test/test_get_proba_move_slide_capture.cpp",
+  "./test/test_get_proba_move_slide_on_same_color.cpp",
+  "./test/test_get_proba_move_slide_without_target.cpp",
+  "./test/test_get_proba_move_jump_same_color.cpp",
+  "./test/test_get_proba_move_jump_capture.cpp",
+  "./test/test_capture_slide_move_true.cpp",
+  "./test/test_capture_slide_move_false.cpp",
+  "./test/test_move_merge_after_split.cpp",
+  "./test/test_split_after_split.cpp",
+  "./test/test_split_after_split2.cpp",
+  "./test/test_multiple_split.cpp", 
+  "./test/test_split_takes.cpp"
 ]
 
-output = open("code-latex-output.txt", 'w')
+INDEX_LINES_PER_PAGE = 15
+LINES_PER_PAGE = 30
+
+output = open("code-latex-output.tex", 'w')
+
+output.write("\n\\begin{frame}\n\\frametitle{{Index}}\n")
+nb_line = 0
+for path_file in list_file:
+  file = ntpath.basename(path_file).replace('_', '-')
+  label_name = ntpath.basename(path_file).replace('_', '')
+  nb_line+=1
+  if nb_line >= INDEX_LINES_PER_PAGE:
+    output.write("\n\\end{frame}\n\\begin{frame}\n")
+    nb_line = 0
+  output.write(f"$\\bullet$ \\hyperlink{{{label_name}}}{{{file}}}\\newline\n")
+output.write("\n\\end{frame}")
+
+output.write("{\\tiny") # Pour afficher le code en petit
+
 
 for path_file in list_file:
-  output.write("\n\\begin{frame}[fragile]\n\\begin{minted}{cpp}\n")
+  file_name = ntpath.basename(path_file).replace('_', '-')
+  label_name = ntpath.basename(path_file).replace('_', '')
+  output.write(f"\n\\begin{{frame}}[fragile]\n\\label{{{label_name}}}\n\\frametitle{{{file_name}}}\n\\begin{{minted}}[obeytabs=true,tabsize=2,linenos=true]{{cpp}}\n")
 
   file = open(path_file, 'r')
   i = 0
+  nb_line = 0
   lines = file.readlines()
+  lines.pop()
   for line in lines:
-    if i == 30:
-      output.write("\n\\end{minted}\n\\end{frame}\n\n\\begin{frame}[fragile]\n\\begin{minted}{cpp}\n")
+    nb_line += 1
+    if i >= LINES_PER_PAGE:
+      output.write(f"\\end{{minted}}\n\\end{{frame}}\n\n\\begin{{frame}}[fragile]\n\\begin{{minted}}[obeytabs=true,tabsize=2,linenos=true,firstnumber={nb_line}]{{cpp}}\n")
       i = 0
     output.write(line)
     i+=1
   file.close()
   output.write("\n\\end{minted}\n\\end{frame}\n")
-  
+output.write("}") # Fermant de la balise tiny
