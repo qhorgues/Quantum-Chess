@@ -8,16 +8,16 @@
 template <std::size_t N, std::size_t M>
 CONSTEXPR static bool
 check_path_straight(
-    Board<N, M> const &board,
-    Coord const &dpt,
-    Coord const &arv) noexcept;
+		Board<N, M> const &board,
+		Coord const &dpt,
+		Coord const &arv) noexcept;
 
 template <std::size_t N, std::size_t M>
 CONSTEXPR static bool
 check_path_diagonal(
-    Board<N, M> const &board,
-    Coord const &dpt,
-    Coord const &arv) noexcept;
+		Board<N, M> const &board,
+		Coord const &dpt,
+		Coord const &arv) noexcept;
 
 /**
  * @brief Vérififie si il y a une pièce entre deux cases sur une instance
@@ -36,11 +36,11 @@ check_path_diagonal(
 template <std::size_t N, std::size_t M>
 CONSTEXPR bool
 check_path_straight_1_instance(
-    Board<N, M> const &board,
-    Coord const &dpt,
-    Coord const &arv,
-    std::size_t position,
-    std::optional<Coord> position_other_piece_merge);
+		Board<N, M> const &board,
+		Coord const &dpt,
+		Coord const &arv,
+		std::size_t position,
+		std::optional<Coord> position_other_piece_merge);
 
 /**
  * @brief Vérififie si il y a une pièce entre deux cases sur une
@@ -58,11 +58,11 @@ check_path_straight_1_instance(
  */
 template <std::size_t N, std::size_t M>
 CONSTEXPR bool check_path_diagonal_1_instance(
-    Board<N, M> const &board,
-    Coord const &dpt,
-    Coord const &arv,
-    std::size_t position,
-    std::optional<Coord> position_other_piece_merge);
+		Board<N, M> const &board,
+		Coord const &dpt,
+		Coord const &arv,
+		std::size_t position,
+		std::optional<Coord> position_other_piece_merge);
 
 /**
  * @brief Vérififie si il y a une pièce entre deux cases
@@ -80,11 +80,11 @@ CONSTEXPR bool check_path_diagonal_1_instance(
  */
 template <std::size_t N, std::size_t M>
 CONSTEXPR bool check_path_queen_1_instance(
-    Board<N, M> const &board,
-    Coord const &dpt,
-    Coord const &arv,
-    std::size_t position,
-    std::optional<Coord> position_other_piece_merge);
+		Board<N, M> const &board,
+		Coord const &dpt,
+		Coord const &arv,
+		std::size_t position,
+		std::optional<Coord> position_other_piece_merge);
 
 #include "check_path.tpp"
 #endif

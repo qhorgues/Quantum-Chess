@@ -179,26 +179,26 @@ namespace computer
       {
         if constexpr (M % 2 == 0)
         {
-          return 2*std::min(std::min(static_cast<double>(i), static_cast<double>(N - i - 1)) / (N - 2),
-            std::min(static_cast<double>(j), static_cast<double>(M - j - 1)) / (M - 2));
+          return 2 * std::min(std::min(static_cast<double>(i), static_cast<double>(N - i - 1)) / (N - 2),
+                              std::min(static_cast<double>(j), static_cast<double>(M - j - 1)) / (M - 2));
         }
         else
         {
-          return 2*std::min(std::min(static_cast<double>(i), static_cast<double>(N - i - 1)) / (N - 2),
-          std::min(static_cast<double>(j), static_cast<double>(M - j - 1)) / (M));
+          return 2 * std::min(std::min(static_cast<double>(i), static_cast<double>(N - i - 1)) / (N - 2),
+                              std::min(static_cast<double>(j), static_cast<double>(M - j - 1)) / (M));
         }
       }
       else
       {
         if constexpr (M % 2 == 0)
         {
-          return  2*std::min(std::min(static_cast<double>(i), static_cast<double>(N - i - 1)) / (N - 2),
-          std::min(static_cast<double>(j), static_cast<double>(M - j - 1)) / (M - 2));
+          return 2 * std::min(std::min(static_cast<double>(i), static_cast<double>(N - i - 1)) / (N - 2),
+                              std::min(static_cast<double>(j), static_cast<double>(M - j - 1)) / (M - 2));
         }
         else
         {
-          return  2*std::min(std::min(static_cast<double>(i), static_cast<double>(N - i - 1)) / (N - 2),
-          std::min(static_cast<double>(j), static_cast<double>(M - j - 1)) / (M));
+          return 2 * std::min(std::min(static_cast<double>(i), static_cast<double>(N - i - 1)) / (N - 2),
+                              std::min(static_cast<double>(j), static_cast<double>(M - j - 1)) / (M));
         }
       }
     }
@@ -232,7 +232,7 @@ namespace computer
           {
             h += sign_color(p.get_color()) *
                  (__utility::value_piece(p.get_type()) +
-                 evalCase<N, M>(i, j)) *
+                  evalCase<N, M>(i, j)) *
                  board.get_proba(Coord(i, j));
           }
         }

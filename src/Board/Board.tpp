@@ -520,37 +520,37 @@ Board<N, M>::all_move(
 template <std::size_t N, std::size_t M>
 void Board<N, M>::update_board_classic() noexcept
 {
-    std::size_t size_board = std::size(m_board);
-    for (std::size_t i{size_board}; i > 0; i--)
+  std::size_t size_board = std::size(m_board);
+  for (std::size_t i{size_board}; i > 0; i--)
+  {
+    using namespace std::complex_literals;
+    if (complex_equal(m_board[i - 1].second, 0i))
     {
-        using namespace std::complex_literals;
-        if (complex_equal(m_board[i - 1].second, 0i))
-        {
-            m_board.erase(std::begin(m_board) + i - 1);
-        }
-        else
-        {
-            for (std::size_t j{i - 1}; j > 0; j--)
-            {
-                if (m_board[i - 1].first == m_board[j - 1].first)
-                {
-                    double inter = std::pow(std::abs(m_board[j - 1].second), 2)+ std::pow(std::abs(m_board[i - 1].second), 2);
-                    m_board[j - 1].second =std::pow(inter, 1./2 );
-                    m_board.erase(std::begin(m_board) + i - 1);
-                    break;
-                }
-            }
-        }
+      m_board.erase(std::begin(m_board) + i - 1);
     }
-    /*std::size_t n_size_board = std::size(m_board);
-    double all_proba {0};
-    for (std::size_t i{0}; i<n_size_board; i++)
+    else
     {
-        all_proba += std::pow(std::abs(m_board[i].second), 2);
+      for (std::size_t j{i - 1}; j > 0; j--)
+      {
+        if (m_board[i - 1].first == m_board[j - 1].first)
+        {
+          double inter = std::pow(std::abs(m_board[j - 1].second), 2) + std::pow(std::abs(m_board[i - 1].second), 2);
+          m_board[j - 1].second = std::pow(inter, 1. / 2);
+          m_board.erase(std::begin(m_board) + i - 1);
+          break;
+        }
+      }
     }
-    all_proba = std::pow(all_proba, 1./2);
-    for (std::size_t i{0}; i<n_size_board; i++)
-    {
-        m_board[i].second /= all_proba;
-    }*/
+  }
+  /*std::size_t n_size_board = std::size(m_board);
+  double all_proba {0};
+  for (std::size_t i{0}; i<n_size_board; i++)
+  {
+      all_proba += std::pow(std::abs(m_board[i].second), 2);
+  }
+  all_proba = std::pow(all_proba, 1./2);
+  for (std::size_t i{0}; i<n_size_board; i++)
+  {
+      m_board[i].second /= all_proba;
+  }*/
 }
