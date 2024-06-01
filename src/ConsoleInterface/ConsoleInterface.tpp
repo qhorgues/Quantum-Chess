@@ -91,6 +91,122 @@ const char *getUnicodeChar(TypePiece piece, Color color)
 #endif
 }
 
+TypeMove chr_to_TypeMove(char type_move)
+{
+  using enum TypeMove;
+  switch (type_move)
+  {
+  case 'N':
+    return NORMAL;
+  case 'S':
+    return SPLIT;
+  case 'M':
+    return MERGE;
+  case 'P':
+    return PROMOTE;
+  default:
+    return NORMAL;
+  }
+}
+
+char chr_to_Piece(TypePiece piece, Color color)
+{
+  using enum TypePiece;
+  if (color == Color::WHITE)
+  {
+    switch (piece)
+    {
+    case KING:
+      return 'K';
+    case QUEEN:
+      return 'Q';
+    case ROOK:
+      return 'R';
+    case BISHOP:
+      return 'B';
+    case KNIGHT:
+      return 'N';
+    case PAWN:
+      return 'P';
+    case EMPTY:
+    default:
+      return ' ';
+    }
+  }
+  else
+  {
+    switch (piece)
+    {
+    case KING:
+      return 'k';
+    case QUEEN:
+      return 'q';
+    case ROOK:
+      return 'r';
+    case BISHOP:
+      return 'b';
+    case KNIGHT:
+      return 'n';
+    case PAWN:
+      return 'p';
+    case EMPTY:
+    default:
+      return ' ';
+    }
+  }
+}
+
+Piece Piece_to_chr(char piece)
+{
+  using enum TypePiece;
+  using enum Color;
+
+  switch (piece)
+  {
+  case 'p':
+    return Piece(PAWN, BLACK);
+  case 'P':
+    return Piece(PAWN, WHITE);
+  case 'n':
+    return Piece(KNIGHT, BLACK);
+  case 'N':
+    return Piece(KNIGHT, WHITE);
+  case 'b':
+    return Piece(BISHOP, BLACK);
+  case 'B':
+    return Piece(BISHOP, WHITE);
+  case 'r':
+    return Piece(ROOK, BLACK);
+  case 'R':
+    return Piece(ROOK, WHITE);
+  case 'q':
+    return Piece(QUEEN, BLACK);
+  case 'Q':
+    return Piece(QUEEN, WHITE);
+  case 'k':
+    return Piece(KING, BLACK);
+  case 'K':
+    return Piece(KING, WHITE);
+  case ' ':
+  default:
+    return Piece(EMPTY, BLACK);
+  }
+}
+
+template <std::size_t N, std::size_t M>
+void print_board_light(std::ostream &os, Board<N, M> const &board)
+{
+  for (std::size_t i{0}; i < N; i++)
+  {
+    for (std::size_t j{0}; j < M; j++)
+    {
+      Piece p {board(i, j)};
+      os << chr_to_Piece(p.get_type(), p.get_color());
+    }
+    os << '\n';
+  }
+}
+
 template <std::size_t N, std::size_t M>
 std::ostream &operator<<(std::ostream &os, Board<N, M> const &board)
 {
@@ -117,7 +233,8 @@ std::ostream &operator<<(std::ostream &os, Board<N, M> const &board)
         if (p != 100)
         {
           os << "| ";
-          if (p < 10){
+          if (p < 10)
+          {
             os << '0';
           }
           os << p << "% ";
