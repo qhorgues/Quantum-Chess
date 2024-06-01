@@ -133,7 +133,7 @@ Fonctions membres publiques</h2></td></tr>
 <tr class="memitem:a21962785efbc9128587809c4c996a142" id="r_a21962785efbc9128587809c4c996a142"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a21962785efbc9128587809c4c996a142">~Board</a> ()=default</td></tr>
 <tr class="separator:a21962785efbc9128587809c4c996a142"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a12198d3ba6b3cccc99b4787cbaacccee" id="r_a12198d3ba6b3cccc99b4787cbaacccee"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> <a class="el" href="../../d5/df0/classPiece.html">Piece</a> const &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a12198d3ba6b3cccc99b4787cbaacccee">operator()</a> (std::size_t n, std::size_t m) const noexcept</td></tr>
-<tr class="memdesc:a12198d3ba6b3cccc99b4787cbaacccee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne une référence constante sur une pièce.  <br /></td></tr>
+<tr class="memdesc:a12198d3ba6b3cccc99b4787cbaacccee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne un pointeur sur la piece à l'emplacement cible.  <br /></td></tr>
 <tr class="separator:a12198d3ba6b3cccc99b4787cbaacccee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a173a95dfc2561c59ef108697eb133c0b" id="r_a173a95dfc2561c59ef108697eb133c0b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> std::forward_list&lt; <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a173a95dfc2561c59ef108697eb133c0b">get_list_normal_move</a> (<a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;pos) const</td></tr>
 <tr class="memdesc:a173a95dfc2561c59ef108697eb133c0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie la liste dans tous les mouvements classiques légaux d'une pièce.  <br /></td></tr>
@@ -2288,7 +2288,7 @@ template&lt;std::size_t N = 8, std::size_t M = N&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Retourne une référence constante sur une pièce. </p>
+<p>Retourne un pointeur sur la piece à l'emplacement cible. </p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>L'indice de la ligne </td></tr>
@@ -2296,7 +2296,7 @@ template&lt;std::size_t N = 8, std::size_t M = N&gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Renvoie</dt><dd><a class="el" href="../../d5/df0/classPiece.html" title="Class conservant le type et la couleur d&#39;une pièce. Elle permet aussi de recuperer ses mouvement poss...">Piece</a> La piece contenue ou <a class="el" href="#ae6fa0350c8ef33e791f1f9a4daa5e3d1">Piece()</a> </dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Un pointeur observateur sur une piece ou <a class="el" href="#ae6fa0350c8ef33e791f1f9a4daa5e3d1">Piece()</a> si la case est vide </dd></dl>
 
 </div>
 </div>
