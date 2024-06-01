@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['_7eboard_0',['~Board',['../de/d23/classBoard.html#a21962785efbc9128587809c4c996a142',1,'Board']]],
-  ['_7epiece_1',['~Piece',['../d5/df0/classPiece.html#a9cef27dae4add5b9926fc16652d4037e',1,'Piece']]],
-  ['_7equbit_2',['~Qubit',['../da/deb/classQubit.html#a9024dab71df840fe491c4a76119b661f',1,'Qubit']]]
+  ['unitary_2ehpp_0',['Unitary.hpp',['../db/daa/Unitary_8hpp.html',1,'']]],
+  ['update_5fboard_1',['update_board',['../de/d23/classBoard.html#ac861187330142ee511ed2707ea4c552a',1,'Board']]],
+  ['update_5fboard_5fclassic_2',['update_board_classic',['../de/d23/classBoard.html#a68041aa1a83fe7bb96cc61254142ff25',1,'Board']]],
+  ['update_5fcase_3',['update_case',['../de/d23/classBoard.html#a2b7efeb273cc2b2b07fa87b8d9eb3b7f',1,'Board']]]
 ];
