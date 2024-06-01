@@ -22,14 +22,14 @@ int main()
       {W_QUEEN, Piece(), Piece(), W_KING}};
 
   Board<> ChessBoard{
-      {{B_ROOK, B_KNIGHT, B_BISHOP, B_QUEEN, B_KING, B_BISHOP, B_KNIGHT, B_ROOK},
-       {B_PAWN, B_PAWN, B_PAWN, B_PAWN, B_PAWN, B_PAWN, B_PAWN, B_PAWN},
-       {Piece(), Piece(), Piece(), Piece(), Piece(), Piece(), Piece(), Piece()},
-       {Piece(), Piece(), Piece(), Piece(), Piece(), Piece(), Piece(), Piece()},
-       {Piece(), Piece(), Piece(), Piece(), Piece(), Piece(), Piece(), Piece()},
-       {Piece(), Piece(), Piece(), Piece(), Piece(), Piece(), Piece(), Piece()},
-       {W_PAWN, W_PAWN, W_PAWN, W_PAWN, W_PAWN, W_PAWN, W_PAWN, W_PAWN},
-       {W_ROOK, W_KNIGHT, W_BISHOP, W_QUEEN, W_KING, W_BISHOP, W_KNIGHT, W_ROOK}}};
+      {B_ROOK, B_KNIGHT, B_BISHOP, B_QUEEN, B_KING, B_BISHOP, B_KNIGHT, B_ROOK},
+      {B_PAWN, B_PAWN, B_PAWN, B_PAWN, B_PAWN, B_PAWN, B_PAWN, B_PAWN},
+      {Piece(), Piece(), Piece(), Piece(), Piece(), Piece(), Piece(), Piece()},
+      {Piece(), Piece(), Piece(), Piece(), Piece(), Piece(), Piece(), Piece()},
+      {Piece(), Piece(), Piece(), Piece(), Piece(), Piece(), Piece(), Piece()},
+      {Piece(), Piece(), Piece(), Piece(), Piece(), Piece(), Piece(), Piece()},
+      {W_PAWN, W_PAWN, W_PAWN, W_PAWN, W_PAWN, W_PAWN, W_PAWN, W_PAWN},
+      {W_ROOK, W_KNIGHT, W_BISHOP, W_QUEEN, W_KING, W_BISHOP, W_KNIGHT, W_ROOK}};
   /* Move m1 = Move_split(Coord(3, 0), Coord(2, 1), Coord(3, 2));
    Move m2 = Move_split(Coord(3, 2), Coord(1, 0), Coord(2, 1));
    board.move(m1);
