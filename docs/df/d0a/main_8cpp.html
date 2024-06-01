@@ -1,0 +1,239 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Quantum-Chess: Référence du fichier /home/quentin/Programmes/C++/Quantum-Chess/src/main.cpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<script type="text/javascript" src="../../clipboard.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../cookie.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Quantum-Chess<span id="projectnumber">&#160;0.5</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "../../search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(1); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('../../',true,false,'search.php','Recherche',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('df/d0a/main_8cpp.html','../../'); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle"><div class="title">Référence du fichier main.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;iostream&gt;</code><br />
+<code>#include &lt;fstream&gt;</code><br />
+<code>#include &lt;complex&gt;</code><br />
+<code>#include &lt;string&gt;</code><br />
+<code>#include &lt;<a class="el" href="../../d5/dee/Complex__printer_8hpp_source.html">Complex_printer.hpp</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="../../d9/d46/CMatrix_8hpp_source.html">CMatrix.hpp</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="../../db/daa/Unitary_8hpp_source.html">Unitary.hpp</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="../../d8/d3c/Qubit_8hpp_source.html">Qubit.hpp</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="../../dd/db8/Board_8hpp_source.html">Board.hpp</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="../../de/d1d/Piece_8hpp_source.html">Piece.hpp</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="../../d0/d21/Move_8hpp_source.html">Move.hpp</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="../../d9/d88/observer__ptr_8hpp_source.html">observer_ptr.hpp</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="../../d8/dbf/check__path_8hpp_source.html">check_path.hpp</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="../../d0/d5d/Constexpr_8hpp_source.html">Constexpr.hpp</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="../../da/d2e/ComputerPlayer_8hpp_source.html">ComputerPlayer.hpp</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="../../dc/d2f/ConsoleInterface_8hpp_source.html">ConsoleInterface.hpp</a>&gt;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a1dfb1c4ac0d761e8e370c1a1a81948b5" id="r_a1dfb1c4ac0d761e8e370c1a1a81948b5"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1dfb1c4ac0d761e8e370c1a1a81948b5">piece_to_char</a> (<a class="el" href="../../dc/dae/TypePiece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83">TypePiece</a> piece, <a class="el" href="../../d6/da3/Color_8hpp.html#a78abb31bad0fd1834c54a3ca6f8daab5">Color</a> color=<a class="el" href="../../d6/da3/Color_8hpp.html#a78abb31bad0fd1834c54a3ca6f8daab5ab5bf627e448384cf3a4c35121ca6008d">Color::WHITE</a>)</td></tr>
+<tr class="separator:a1dfb1c4ac0d761e8e370c1a1a81948b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a760c0a7979f30991a814785104411de2" id="r_a760c0a7979f30991a814785104411de2"><td class="memTemplParams" colspan="2">template&lt;std::size_t N, std::size_t M&gt; </td></tr>
+<tr class="memitem:a760c0a7979f30991a814785104411de2"><td class="memTemplItemLeft" align="right" valign="top">char&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a760c0a7979f30991a814785104411de2">print_piece</a> (<a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; N, M &gt; &amp;board, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;position)</td></tr>
+<tr class="separator:a760c0a7979f30991a814785104411de2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9310a6cb86741ff467defee6dfc7c2b8" id="r_a9310a6cb86741ff467defee6dfc7c2b8"><td class="memTemplParams" colspan="2">template&lt;std::size_t N, std::size_t M&gt; </td></tr>
+<tr class="memitem:a9310a6cb86741ff467defee6dfc7c2b8"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a9310a6cb86741ff467defee6dfc7c2b8">auto_playing</a> (<a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; N, M &gt; &amp;board, std::ostream &amp;output, int nb_moves, int search_depth)</td></tr>
+<tr class="separator:a9310a6cb86741ff467defee6dfc7c2b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae66f6b31b5ad750f1fe042a706a4e3d4" id="r_ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a> ()</td></tr>
+<tr class="separator:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Documentation des fonctions</h2>
+<a id="a9310a6cb86741ff467defee6dfc7c2b8" name="a9310a6cb86741ff467defee6dfc7c2b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9310a6cb86741ff467defee6dfc7c2b8">&#9670;&#160;</a></span>auto_playing()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;std::size_t N, std::size_t M&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void auto_playing </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; N, M &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>board</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::ostream &amp;</td>          <td class="paramname"><span class="paramname"><em>output</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>nb_moves</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>search_depth</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae66f6b31b5ad750f1fe042a706a4e3d4" name="ae66f6b31b5ad750f1fe042a706a4e3d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae66f6b31b5ad750f1fe042a706a4e3d4">&#9670;&#160;</a></span>main()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int main </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1dfb1c4ac0d761e8e370c1a1a81948b5" name="a1dfb1c4ac0d761e8e370c1a1a81948b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1dfb1c4ac0d761e8e370c1a1a81948b5">&#9670;&#160;</a></span>piece_to_char()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char piece_to_char </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../dc/dae/TypePiece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83">TypePiece</a></td>          <td class="paramname"><span class="paramname"><em>piece</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d6/da3/Color_8hpp.html#a78abb31bad0fd1834c54a3ca6f8daab5">Color</a></td>          <td class="paramname"><span class="paramname"><em>color</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="../../d6/da3/Color_8hpp.html#a78abb31bad0fd1834c54a3ca6f8daab5ab5bf627e448384cf3a4c35121ca6008d">Color::WHITE</a></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a760c0a7979f30991a814785104411de2" name="a760c0a7979f30991a814785104411de2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a760c0a7979f30991a814785104411de2">&#9670;&#160;</a></span>print_piece()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;std::size_t N, std::size_t M&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">char print_piece </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; N, M &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>board</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;</td>          <td class="paramname"><span class="paramname"><em>position</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../df/d0a/main_8cpp.html">main.cpp</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>
