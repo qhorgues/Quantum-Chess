@@ -56,6 +56,7 @@ void auto_playing(
     int search_depth)
 {
   std::cout << board << std::endl;
+  output << prin
   while (
       nb_moves > 0 &&
       !board.winning_position(opponent_color(board.get_current_player())))
