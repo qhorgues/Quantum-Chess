@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['n_0',['n',['../d9/dfc/structCoord.html#aa748c08760a2979468295f4a1dc4df92',1,'Coord']]],
-  ['normal_1',['normal',['../df/d5b/structMove.html#a1064ee051c36f9e7a51d48eaa6a03250',1,'Move']]]
+  ['i_0',['i',['../d6/de0/namespaceoutput__latex.html#a8d403ea2e7246bde4ba0bf7586163260',1,'output_latex']]],
+  ['index_5flines_5fper_5fpage_1',['INDEX_LINES_PER_PAGE',['../d6/de0/namespaceoutput__latex.html#a2252f65ea05674dc1f941bbe5ae4fa91',1,'output_latex']]]
 ];

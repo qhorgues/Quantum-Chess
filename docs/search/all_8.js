@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['king_0',['KING',['../dc/dae/TypePiece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83a123b28961dd0f97d91bcb55d7a3b7c1c',1,'TypePiece.hpp']]],
-  ['king_5fside_5fcastle_1',['king_side_castle',['../de/d23/classBoard.html#a98e9116b596e139482e7d54f21ea9bc3',1,'Board']]],
-  ['knight_2',['KNIGHT',['../dc/dae/TypePiece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83af7f210da15dbb4283299b2affd9bb238',1,'TypePiece.hpp']]]
+  ['i_0',['i',['../d6/de0/namespaceoutput__latex.html#a8d403ea2e7246bde4ba0bf7586163260',1,'output_latex']]],
+  ['index_5flines_5fper_5fpage_1',['INDEX_LINES_PER_PAGE',['../d6/de0/namespaceoutput__latex.html#a2252f65ea05674dc1f941bbe5ae4fa91',1,'output_latex']]],
+  ['init_5fmailbox_2',['init_mailbox',['../de/d23/classBoard.html#a94fe407a5f6e87dee2e62bfc2a79504b',1,'Board']]],
+  ['is_5fblack_3',['is_black',['../d5/df0/classPiece.html#a9b5c0ed275af57d3324bda002b7bf6ae',1,'Piece']]],
+  ['is_5fwhite_4',['is_white',['../d5/df0/classPiece.html#a8a9b55a3c8198d841e3273ae0ff208b0',1,'Piece']]]
 ];

@@ -1,11 +1,10 @@
 var searchData=
 [
-  ['pawn_0',['PAWN',['../dc/dae/TypePiece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83a3acd2a53aca11e0f883236ea27a3b627',1,'TypePiece.hpp']]],
-  ['piece_1',['Piece',['../d5/df0/classPiece.html',1,'Piece'],['../de/d23/classBoard.html#ae6fa0350c8ef33e791f1f9a4daa5e3d1',1,'Board::Piece'],['../d5/df0/classPiece.html#a873d4632bbd71c9a074608a268a2bbc0',1,'Piece::Piece() noexcept'],['../d5/df0/classPiece.html#a54712fd34a64f0fa8f4ffc822dba6130',1,'Piece::Piece(TypePiece piece, Color color) noexcept'],['../d5/df0/classPiece.html#a1c618e4a2bf080d3f184717fd2a94fd6',1,'Piece::Piece(Piece const &amp;)=default'],['../d5/df0/classPiece.html#a305638ccbdbea69cf64be0ac258c63a0',1,'Piece::Piece(Piece &amp;&amp;)=default']]],
-  ['piece_2',['piece',['../df/d5b/structMove.html#a88c4bc9f06b951decf09b3b009c4bfd8',1,'Move']]],
-  ['piece_2ehpp_3',['Piece.hpp',['../de/d1d/Piece_8hpp.html',1,'']]],
-  ['piece_5fto_5fchar_4',['piece_to_char',['../df/d0a/main_8cpp.html#a1dfb1c4ac0d761e8e370c1a1a81948b5',1,'main.cpp']]],
-  ['print_5fpiece_5',['print_piece',['../df/d0a/main_8cpp.html#a760c0a7979f30991a814785104411de2',1,'main.cpp']]],
-  ['promote_6',['PROMOTE',['../d0/d21/Move_8hpp.html#ac365680f0388487d538d24242d1f421aa99e1333a9cd342f9e07e4876eef54d7a',1,'Move.hpp']]],
-  ['promote_7',['promote',['../df/d5b/structMove.html#a0d2085f7baed425326ab6a926293ee28',1,'Move']]]
+  ['n_0',['n',['../d9/dfc/structCoord.html#aa748c08760a2979468295f4a1dc4df92',1,'Coord']]],
+  ['nb_5fline_1',['nb_line',['../d6/de0/namespaceoutput__latex.html#ae803f8a3f99c793b3d8eb5b84aaae0bb',1,'output_latex']]],
+  ['norm_2',['norm',['../d5/df0/classPiece.html#a8e8dfbfae0a2fcb70bd4bea72a45c6ae',1,'Piece']]],
+  ['normal_3',['NORMAL',['../d5/df0/classPiece.html#ac846621b089305b5f854bb67d2e36082a1e23852820b9154316c7c06e2b7ba051',1,'Piece::NORMAL'],['../d0/d21/Move_8hpp.html#ac365680f0388487d538d24242d1f421aa1e23852820b9154316c7c06e2b7ba051',1,'NORMAL:&#160;Move.hpp']]],
+  ['normal_4',['normal',['../df/d5b/structMove.html#a1064ee051c36f9e7a51d48eaa6a03250',1,'Move']]],
+  ['numbercolumns_5',['numberColumns',['../de/d23/classBoard.html#abbd4419f7856bf0de2f0cb58d6f67fb1',1,'Board']]],
+  ['numberlines_6',['numberLines',['../de/d23/classBoard.html#a7fa8fd1a867a5c5ed31d7819128389e6',1,'Board']]]
 ];

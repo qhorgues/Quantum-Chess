@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['piece_0',['piece',['../df/d5b/structMove.html#a88c4bc9f06b951decf09b3b009c4bfd8',1,'Move']]],
-  ['promote_1',['promote',['../df/d5b/structMove.html#a0d2085f7baed425326ab6a926293ee28',1,'Move']]]
+  ['label_5fname_0',['label_name',['../d6/de0/namespaceoutput__latex.html#a35084f5c6f6fb468aa36ba591285baa9',1,'output_latex']]],
+  ['lines_1',['lines',['../d6/de0/namespaceoutput__latex.html#a5c23d0ab48553e199870dd213823c519',1,'output_latex']]],
+  ['lines_5fper_5fpage_2',['LINES_PER_PAGE',['../d6/de0/namespaceoutput__latex.html#a4cfe85fc181ec0ae33c2bdd803e15071',1,'output_latex']]],
+  ['list_5ffile_3',['list_file',['../d6/de0/namespaceoutput__latex.html#a45833e242300a1227c81564515047b2d',1,'output_latex']]]
 ];

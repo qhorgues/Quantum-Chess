@@ -1,14 +1,11 @@
 var searchData=
 [
-  ['randint_0',['randint',['../d8/dc8/namespacernd.html#a90ede64e761f159e9edfa4dd9dcf2ad2',1,'rnd']]],
-  ['random_2ecpp_1',['Random.cpp',['../d4/dde/Random_8cpp.html',1,'']]],
-  ['random_2ehpp_2',['Random.hpp',['../dd/d6e/Random_8hpp.html',1,'']]],
-  ['randreal_3',['randreal',['../d8/dc8/namespacernd.html#a19ff6ae85d9b4eb479ab17405f9ed41a',1,'rnd']]],
-  ['range_5fto_5f2_5farray_4',['range_to_2_array',['../de/d23/classBoard.html#aaf99d8f5c18672d24c84b3ef22d0bd2c',1,'Board']]],
-  ['readme_2emd_5',['README.md',['../da/ddd/README_8md.html',1,'']]],
-  ['readmove_6',['readMove',['../dc/d37/heuristicHistory_8cpp.html#a87b34ec8fedd73e88fecb747b34c8c2d',1,'heuristicHistory.cpp']]],
-  ['release_7',['release',['../d6/d4d/classobserver__ptr.html#a44fedd0645ae9a9ca0036eaa3bc2af12',1,'observer_ptr']]],
-  ['reset_8',['reset',['../d6/d4d/classobserver__ptr.html#aadf07d605b3dfdfe106843c20cf7f14a',1,'observer_ptr']]],
-  ['rnd_9',['rnd',['../d8/dc8/namespacernd.html',1,'']]],
-  ['rook_10',['ROOK',['../dc/dae/TypePiece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83a97c60a3a4e61ee21e3f38a2f950fe293',1,'TypePiece.hpp']]]
+  ['pawn_0',['PAWN',['../dc/dae/TypePiece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83a3acd2a53aca11e0f883236ea27a3b627',1,'TypePiece.hpp']]],
+  ['piece_1',['Piece',['../d5/df0/classPiece.html',1,'Piece'],['../de/d23/classBoard.html#ae6fa0350c8ef33e791f1f9a4daa5e3d1',1,'Board::Piece'],['../d5/df0/classPiece.html#a873d4632bbd71c9a074608a268a2bbc0',1,'Piece::Piece() noexcept'],['../d5/df0/classPiece.html#a54712fd34a64f0fa8f4ffc822dba6130',1,'Piece::Piece(TypePiece piece, Color color) noexcept'],['../d5/df0/classPiece.html#a1c618e4a2bf080d3f184717fd2a94fd6',1,'Piece::Piece(Piece const &amp;)=default'],['../d5/df0/classPiece.html#a305638ccbdbea69cf64be0ac258c63a0',1,'Piece::Piece(Piece &amp;&amp;)=default']]],
+  ['piece_2',['piece',['../df/d5b/structMove.html#a88c4bc9f06b951decf09b3b009c4bfd8',1,'Move']]],
+  ['piece_2ehpp_3',['Piece.hpp',['../de/d1d/Piece_8hpp.html',1,'']]],
+  ['piece_5fto_5fchar_4',['piece_to_char',['../df/d0a/main_8cpp.html#a1dfb1c4ac0d761e8e370c1a1a81948b5',1,'main.cpp']]],
+  ['print_5fpiece_5',['print_piece',['../df/d0a/main_8cpp.html#a760c0a7979f30991a814785104411de2',1,'main.cpp']]],
+  ['promote_6',['PROMOTE',['../d0/d21/Move_8hpp.html#ac365680f0388487d538d24242d1f421aa99e1333a9cd342f9e07e4876eef54d7a',1,'Move.hpp']]],
+  ['promote_7',['promote',['../df/d5b/structMove.html#a0d2085f7baed425326ab6a926293ee28',1,'Move']]]
 ];

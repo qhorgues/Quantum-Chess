@@ -1,11 +1,9 @@
 var searchData=
 [
-  ['same_5fcolor_0',['same_color',['../d5/df0/classPiece.html#a5c6acfe864b7db5717ae67cad216169f',1,'Piece']]],
-  ['split_1',['SPLIT',['../d5/df0/classPiece.html#ac846621b089305b5f854bb67d2e36082a913bcc607ae0d97776698d9ed424be6a',1,'Piece::SPLIT'],['../d0/d21/Move_8hpp.html#ac365680f0388487d538d24242d1f421aa913bcc607ae0d97776698d9ed424be6a',1,'SPLIT:&#160;Move.hpp']]],
-  ['split_2',['split',['../df/d5b/structMove.html#aaa5ff06d9cb7463d11180a7620628bd4',1,'Move']]],
-  ['src_3',['src',['../df/d5b/structMove.html#ad28a195cbbde5d4a6368bd7e9950cddf',1,'Move']]],
-  ['src1_4',['src1',['../df/d5b/structMove.html#aec1af57787d8553e33a71e701d65ecbb',1,'Move']]],
-  ['src2_5',['src2',['../df/d5b/structMove.html#afa540d35475b04e58ed568cb69745b05',1,'Move']]],
-  ['std_6',['std',['../d8/dcc/namespacestd.html',1,'']]],
-  ['swap_7',['swap',['../d6/d4d/classobserver__ptr.html#a716aac32d184b983fe5a4538afa678f8',1,'observer_ptr::swap()'],['../d9/d88/observer__ptr_8hpp.html#a0d79ae8874afb660dd7e519a350e0382',1,'swap():&#160;observer_ptr.hpp']]]
+  ['quantum_20chess_0',['Quantum-Chess',['../de/d6b/md__2home_2quentin_2Programmes_2C_09_09_2Quantum-Chess_2README.html',1,'']]],
+  ['qubit_1',['Qubit',['../da/deb/classQubit.html',1,'Qubit&lt; N &gt;'],['../da/deb/classQubit.html#a121b85ff88baa736e838b9d228920a5b',1,'Qubit::Qubit()=default'],['../da/deb/classQubit.html#a72ca8ba5555b0fc1ee571a3cea41bf36',1,'Qubit::Qubit(std::array&lt; bool, N &gt; const &amp;data)'],['../da/deb/classQubit.html#a9ebdacd51f01e64ef171ea8897ece33e',1,'Qubit::Qubit(std::array&lt; std::complex&lt; double &gt;, _2POW(N)&gt; &amp;&amp;init_list)'],['../da/deb/classQubit.html#a57e9e938201723191c8d408361ffb069',1,'Qubit::Qubit(Qubit const &amp;)=delete'],['../da/deb/classQubit.html#a7b8a6bb92e4e783b72c7a81e950fee5d',1,'Qubit::Qubit(Qubit &amp;&amp;)=delete']]],
+  ['qubit_2ehpp_2',['Qubit.hpp',['../d8/d3c/Qubit_8hpp.html',1,'']]],
+  ['qubittoarray_3',['qubitToArray',['../da/deb/classQubit.html#a5c7c8a482adb96c18fe393c2016730d3',1,'Qubit::qubitToArray'],['../d8/d3c/Qubit_8hpp.html#a520deb0865f61f8f2c5be011671ce4a0',1,'qubitToArray(Qubit&lt; N &gt; const &amp;qubit):&#160;Qubit.hpp']]],
+  ['queen_4',['QUEEN',['../dc/dae/TypePiece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83a02d144e18eda99bcb94f3a764756805e',1,'TypePiece.hpp']]],
+  ['queen_5fside_5fcastle_5',['queen_side_castle',['../de/d23/classBoard.html#a37bbcd7a49d362b34f8d4cd7c65e818f',1,'Board']]]
 ];

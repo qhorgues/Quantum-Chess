@@ -29,7 +29,8 @@ var menudata={children:[
 {text:"Liste des espaces de nommage",url:"namespaces.html"},
 {text:"Membres de l'espace de nommage",url:"namespacemembers.html",children:[
 {text:"Tout",url:"namespacemembers.html"},
-{text:"Fonctions",url:"namespacemembers_func.html"}]}]},
+{text:"Fonctions",url:"namespacemembers_func.html"},
+{text:"Variables",url:"namespacemembers_vars.html"}]}]},
 {text:"Classes",url:"annotated.html",children:[
 {text:"Liste des classes",url:"annotated.html"},
 {text:"Index des classes",url:"classes.html"},
