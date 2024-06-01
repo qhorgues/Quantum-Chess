@@ -131,7 +131,7 @@ Fonctions membres publiques</h2></td></tr>
 <tr class="memitem:a21962785efbc9128587809c4c996a142" id="r_a21962785efbc9128587809c4c996a142"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a21962785efbc9128587809c4c996a142">~Board</a> ()=default</td></tr>
 <tr class="separator:a21962785efbc9128587809c4c996a142"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a12198d3ba6b3cccc99b4787cbaacccee" id="r_a12198d3ba6b3cccc99b4787cbaacccee"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> <a class="el" href="../../d5/df0/classPiece.html">Piece</a> const &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a12198d3ba6b3cccc99b4787cbaacccee">operator()</a> (std::size_t n, std::size_t m) const noexcept</td></tr>
-<tr class="memdesc:a12198d3ba6b3cccc99b4787cbaacccee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne un pointeur sur la piece à l'emplacement cible.  <br /></td></tr>
+<tr class="memdesc:a12198d3ba6b3cccc99b4787cbaacccee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne une référence constante sur une pièce.  <br /></td></tr>
 <tr class="separator:a12198d3ba6b3cccc99b4787cbaacccee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a173a95dfc2561c59ef108697eb133c0b" id="r_a173a95dfc2561c59ef108697eb133c0b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> std::forward_list&lt; <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a173a95dfc2561c59ef108697eb133c0b">get_list_normal_move</a> (<a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;pos) const</td></tr>
 <tr class="memdesc:a173a95dfc2561c59ef108697eb133c0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie la liste dans tous les mouvements classiques légaux d'une pièce.  <br /></td></tr>
@@ -200,6 +200,8 @@ Fonctions membres privées</h2></td></tr>
 <tr class="memitem:ac861187330142ee511ed2707ea4c552a" id="r_ac861187330142ee511ed2707ea4c552a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac861187330142ee511ed2707ea4c552a">update_board</a> () noexcept</td></tr>
 <tr class="memdesc:ac861187330142ee511ed2707ea4c552a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui permet de mattre à jour le plateau, car ce mouvement entraine l'apparition de plusieurs instance de board identique, il faut donc les concaténer en ajoutant les probas, si la proba vaut 0, on supprime l'instance.  <br /></td></tr>
 <tr class="separator:ac861187330142ee511ed2707ea4c552a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68041aa1a83fe7bb96cc61254142ff25" id="r_a68041aa1a83fe7bb96cc61254142ff25"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a68041aa1a83fe7bb96cc61254142ff25">update_board_classic</a> () noexcept</td></tr>
+<tr class="separator:a68041aa1a83fe7bb96cc61254142ff25"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af3f1ee5615d1c83e8b4f47f5d3462826" id="r_af3f1ee5615d1c83e8b4f47f5d3462826"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af3f1ee5615d1c83e8b4f47f5d3462826">move_classic_jump</a> (<a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;s, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;t, std::optional&lt; bool &gt; val_mes=std::nullopt)</td></tr>
 <tr class="memdesc:af3f1ee5615d1c83e8b4f47f5d3462826"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mouvement classique d'une pièce qui "saute" (cavalier, roi)  <br /></td></tr>
 <tr class="separator:af3f1ee5615d1c83e8b4f47f5d3462826"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -212,9 +214,9 @@ Fonctions membres privées</h2></td></tr>
 <tr class="memitem:a584a98568ae1d949ded33456ce472fb3" id="r_a584a98568ae1d949ded33456ce472fb3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a584a98568ae1d949ded33456ce472fb3">move_classic_slide</a> (<a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;s, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;t, std::function&lt; bool(<a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; N, M &gt; const &amp;, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;, std::size_t, std::optional&lt; <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> &gt;)&gt; check_path, std::optional&lt; bool &gt; val_mes=std::nullopt)</td></tr>
 <tr class="memdesc:a584a98568ae1d949ded33456ce472fb3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mouvement classique d'un pièce qui "glisse" (fou, dame, tour)  <br /></td></tr>
 <tr class="separator:a584a98568ae1d949ded33456ce472fb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac735f5b430a40dc8f279d2717b4a0fa2" id="r_ac735f5b430a40dc8f279d2717b4a0fa2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac735f5b430a40dc8f279d2717b4a0fa2">move_split_slide</a> (<a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;s, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;t1, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;t2, std::function&lt; bool(<a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; N, M &gt; const &amp;, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;, std::size_t, std::optional&lt; <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> &gt;) &gt; check_path)</td></tr>
-<tr class="memdesc:ac735f5b430a40dc8f279d2717b4a0fa2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mouvement "split slide".  <br /></td></tr>
-<tr class="separator:ac735f5b430a40dc8f279d2717b4a0fa2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a021d47a138270ee0ae8e3427b7d5f9d2" id="r_a021d47a138270ee0ae8e3427b7d5f9d2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a021d47a138270ee0ae8e3427b7d5f9d2">move_split_slide</a> (<a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;s, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;t1, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;t2, std::function&lt; bool(<a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; N, M &gt; const &amp;, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;, std::size_t, std::optional&lt; <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> &gt;)&gt; check_path)</td></tr>
+<tr class="memdesc:a021d47a138270ee0ae8e3427b7d5f9d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mouvement "split slide".  <br /></td></tr>
+<tr class="separator:a021d47a138270ee0ae8e3427b7d5f9d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab6beab7f1900a5ef2703302d65e32fd6" id="r_ab6beab7f1900a5ef2703302d65e32fd6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab6beab7f1900a5ef2703302d65e32fd6">move_merge_slide</a> (<a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;s1, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;s2, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;t, std::function&lt; bool(<a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; N, M &gt; const &amp;, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;, std::size_t, std::optional&lt; <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> &gt;)&gt; check_path)</td></tr>
 <tr class="memdesc:ab6beab7f1900a5ef2703302d65e32fd6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mouvement de merge.  <br /></td></tr>
 <tr class="separator:ab6beab7f1900a5ef2703302d65e32fd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -2121,8 +2123,8 @@ template&lt;std::size_t N = 8, std::size_t M = N&gt; </div>
 
 </div>
 </div>
-<a id="ac735f5b430a40dc8f279d2717b4a0fa2" name="ac735f5b430a40dc8f279d2717b4a0fa2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac735f5b430a40dc8f279d2717b4a0fa2">&#9670;&#160;</a></span>move_split_slide()</h2>
+<a id="a021d47a138270ee0ae8e3427b7d5f9d2" name="a021d47a138270ee0ae8e3427b7d5f9d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a021d47a138270ee0ae8e3427b7d5f9d2">&#9670;&#160;</a></span>move_split_slide()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2150,7 +2152,7 @@ template&lt;std::size_t N = 8, std::size_t M = N&gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::function&lt; bool(<a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; N, M &gt; const &amp;, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;, std::size_t, std::optional&lt; <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> &gt;) &gt;</td>          <td class="paramname"><span class="paramname"><em>check_path</em></span>&#160;)</td>
+          <td class="paramtype">std::function&lt; bool(<a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; N, M &gt; const &amp;, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;, std::size_t, std::optional&lt; <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> &gt;)&gt;</td>          <td class="paramname"><span class="paramname"><em>check_path</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -2311,7 +2313,7 @@ template&lt;std::size_t N = 8, std::size_t M = N&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Retourne un pointeur sur la piece à l'emplacement cible. </p>
+<p>Retourne une référence constante sur une pièce. </p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>L'indice de la ligne </td></tr>
@@ -2319,7 +2321,7 @@ template&lt;std::size_t N = 8, std::size_t M = N&gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Renvoie</dt><dd>Un pointeur observateur sur une piece ou nullptr si la case est vide </dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd><a class="el" href="../../d5/df0/classPiece.html" title="Class conservant le type et la couleur d&#39;une pièce. Elle permet aussi de recuperer ses mouvement poss...">Piece</a> La piece contenue ou <a class="el" href="#ae6fa0350c8ef33e791f1f9a4daa5e3d1">Piece()</a> </dd></dl>
 
 </div>
 </div>
@@ -2451,6 +2453,33 @@ template&lt;std::size_t N = 8, std::size_t M = N&gt; </div>
 
 <p>Fonction qui permet de mattre à jour le plateau, car ce mouvement entraine l'apparition de plusieurs instance de board identique, il faut donc les concaténer en ajoutant les probas, si la proba vaut 0, on supprime l'instance. </p>
 <dl class="section warning"><dt>Avertissement</dt><dd>Complexité en k² x N x M, avec k la taille de m_board c'est à dire le nombre d'instance du plateau, N et M les dimensions du plateau </dd></dl>
+
+</div>
+</div>
+<a id="a68041aa1a83fe7bb96cc61254142ff25" name="a68041aa1a83fe7bb96cc61254142ff25"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a68041aa1a83fe7bb96cc61254142ff25">&#9670;&#160;</a></span>update_board_classic()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;std::size_t N = 8, std::size_t M = N&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; N, M &gt;::update_board_classic </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
