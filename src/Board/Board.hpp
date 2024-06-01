@@ -34,16 +34,18 @@ class Board final
 public:
   // Constructeur
   CONSTEXPR Board();
-  /**
-   * @brief Initialise le plateau à partir d'une liste de pièce,
-   * les pièces ne sont pas divisées initialement.
-   *
-   * @param[in] board Double initializer_list sur des pointeurs sur Piece
-   */
+
   CONSTEXPR Board(std::initializer_list<
                   std::initializer_list<
-                      Piece>> const &
-                      board);
+                      Piece>> const &board);
+
+  /**
+   * @brief Initialise le plateau à partir d'un ensemble de pièce,
+   * les pièces ne sont pas divisées initialement.
+   *
+   * @param[in] board Double initializer_list sur des Piece
+   */
+  CONSTEXPR Board(std::ranges::common_range auto const &board);
 
   // Copie
   CONSTEXPR Board(Board const &) = default;
@@ -623,18 +625,16 @@ private:
          std::size_t colonne) noexcept;
 
   /**
-   * @brief Initialise un plateau à l'aide des listes d'initialisations
+   * @brief Initialise un plateau à l'aide d'un container 2D
    *
-   * @param[in] board La liste d'initialisation en 2D
+   * @param[in] board Un container 2D
    * @param[out] first_instance Le tableau de la première
    * instance du plateau
    * @param[out] piece_board Le plateau contenant les pièces
    */
   CONSTEXPR static void
-  initializer_list_to_2_array(
-      std::initializer_list<
-          std::initializer_list<
-              Piece>> const &board,
+  range_to_2_array(
+      std::ranges::common_range auto const &board,
       std::array<bool, N * M> &first_instance,
       std::array<Piece, N * M> &piece_board) noexcept;
 
