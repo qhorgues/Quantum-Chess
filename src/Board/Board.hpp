@@ -59,6 +59,18 @@ public:
   CONSTEXPR ~Board() = default;
 
   /**
+   * @brief Retourne un pointeur sur la piece à l'emplacement cible
+   *
+   * @param[in] n L'indice de la ligne
+   * @param[in] m L'indice de la colonne
+   * @return Un pointeur observateur sur une piece
+   * ou Piece() si la case est vide
+   */
+  CONSTEXPR Piece const &
+  operator()(std::size_t n,
+             std::size_t m) const noexcept;
+
+  /**
    * @brief Retourne le nombre de ligne du plateau
    *
    * @return std::size_t Le nombre de ligne
@@ -71,17 +83,6 @@ public:
    * @return std::size_t Le nombre de colonne
    */
   CONSTEXPR static std::size_t numberColumns() noexcept;
-
-  /**
-   * @brief Retourne une référence constante sur une pièce
-   *
-   * @param[in] n L'indice de la ligne
-   * @param[in] m L'indice de la colonne
-   * @return Piece La piece contenue ou Piece()
-   */
-  CONSTEXPR Piece const &
-  operator()(std::size_t n,
-             std::size_t m) const noexcept;
 
   /**
    * @brief Renvoie la liste dans tous les mouvements
