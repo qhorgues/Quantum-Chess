@@ -52,7 +52,24 @@ CONSTEXPR Board<N, M>::Board(std::initializer_list<
   init_mailbox(m_S_mailbox, m_L_mailbox);
   m_board.push_back(std::pair<std::array<bool, N * M>,
                               std::complex<double>>{{false}, 1.});
-  initializer_list_to_2_array(board, m_board[0].first, m_piece_board);
+  range_to_2_array(board, m_board[0].first, m_piece_board);
+};
+
+template <std::size_t N, std::size_t M>
+CONSTEXPR Board<N, M>::Board(std::ranges::common_range auto const &board)
+    : m_board(),
+      m_piece_board(),
+      m_S_mailbox(),
+      m_L_mailbox(),
+      m_color_current_player(Color::WHITE),
+      m_k_castle({true, true}),
+      m_q_castle({true, true}),
+      m_ep()
+{
+  init_mailbox(m_S_mailbox, m_L_mailbox);
+  m_board.push_back(std::pair<std::array<bool, N * M>,
+                              std::complex<double>>{{false}, 1.});
+  range_to_2_array(board, m_board[0].first, m_piece_board);
 };
 
 template <std::size_t N, std::size_t M>
@@ -76,10 +93,8 @@ CONSTEXPR std::size_t Board<N, M>::numberColumns() noexcept
 
 template <std::size_t N, std::size_t M>
 CONSTEXPR void
-Board<N, M>::initializer_list_to_2_array(
-    std::initializer_list<
-        std::initializer_list<
-            Piece>> const &board,
+Board<N, M>::range_to_2_array(
+    std::ranges::common_range auto const &board,
     std::array<bool, N * M> &first_instance,
     std::array<Piece, N * M> &piece_board) noexcept
 {
@@ -87,7 +102,7 @@ Board<N, M>::initializer_list_to_2_array(
   auto it_tab{std::begin(first_instance)};
   auto it_piece_dst{std::begin(piece_board)};
   assert(std::size(board) <= N && "Value entry out of Board");
-  for (std::initializer_list<Piece> const &e : board)
+  for (auto const &e : board)
   {
     auto const it_tab_begin_line{it_tab};
     assert(std::size(e) <= M && "Value entry out of Board");
@@ -534,7 +549,8 @@ void Board<N, M>::update_board_classic() noexcept
       {
         if (m_board[i - 1].first == m_board[j - 1].first)
         {
-          double inter = std::pow(std::abs(m_board[j - 1].second), 2) + std::pow(std::abs(m_board[i - 1].second), 2);
+          double inter = std::pow(std::abs(m_board[j - 1].second), 2) +
+                         std::pow(std::abs(m_board[i - 1].second), 2);
           m_board[j - 1].second = std::pow(inter, 1. / 2);
           m_board.erase(std::begin(m_board) + i - 1);
           break;
