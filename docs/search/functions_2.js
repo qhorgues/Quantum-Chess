@@ -6,5 +6,7 @@ var searchData=
   ['check_5fpath_5fdiagonal_5f1_5finstance_3',['check_path_diagonal_1_instance',['../d8/dbf/check__path_8hpp.html#a60ea766c25b86e456f97ed58f1ef60d8',1,'check_path.hpp']]],
   ['check_5fpath_5fqueen_5f1_5finstance_4',['check_path_queen_1_instance',['../d8/dbf/check__path_8hpp.html#a797bbd2e4ff0a1e9027140fa01cfae24',1,'check_path.hpp']]],
   ['check_5fpath_5fstraight_5f1_5finstance_5',['check_path_straight_1_instance',['../d8/dbf/check__path_8hpp.html#a800770aa8cf33ed229cc50d00f866739',1,'check_path.hpp']]],
-  ['coord_6',['Coord',['../d9/dfc/structCoord.html#a14caa1114c95058bd25e1a7ff2ad8e43',1,'Coord::Coord()=default'],['../d9/dfc/structCoord.html#abafff409eb0f46a5796aa1f6c71aa4a2',1,'Coord::Coord(std::size_t i, std::size_t j)'],['../d9/dfc/structCoord.html#a1fc16d40e952dc4d7c3bedb97225354a',1,'Coord::Coord(Coord const &amp;)=default'],['../d9/dfc/structCoord.html#a89131b77a50cf91a64c4d10a2a9e06a1',1,'Coord::Coord(Coord &amp;&amp;)=default']]]
+  ['chr_5fto_5fpiece_6',['chr_to_Piece',['../dc/d2f/ConsoleInterface_8hpp.html#adc93af28b6635ac9083e9e48fa27b112',1,'ConsoleInterface.hpp']]],
+  ['chr_5fto_5ftypemove_7',['chr_to_TypeMove',['../dc/d2f/ConsoleInterface_8hpp.html#a7ea4afd1baf401c7473ab00f1a085f7c',1,'ConsoleInterface.hpp']]],
+  ['coord_8',['Coord',['../d9/dfc/structCoord.html#a14caa1114c95058bd25e1a7ff2ad8e43',1,'Coord::Coord()=default'],['../d9/dfc/structCoord.html#abafff409eb0f46a5796aa1f6c71aa4a2',1,'Coord::Coord(std::size_t i, std::size_t j)'],['../d9/dfc/structCoord.html#a1fc16d40e952dc4d7c3bedb97225354a',1,'Coord::Coord(Coord const &amp;)=default'],['../d9/dfc/structCoord.html#a89131b77a50cf91a64c4d10a2a9e06a1',1,'Coord::Coord(Coord &amp;&amp;)=default']]]
 ];

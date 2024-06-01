@@ -155,7 +155,12 @@ var NAVTREEINDEX0 =
 "db/daa/Unitary_8hpp.html#af385eac21fa839b90d4ece9891fd2843":[3,0,0,5,6],
 "db/daa/Unitary_8hpp_source.html":[3,0,0,5],
 "dc/d2f/ConsoleInterface_8hpp.html":[3,0,1,2,0],
-"dc/d2f/ConsoleInterface_8hpp.html#ae603137f7ce31de7fc0c5b240a703048":[3,0,1,2,0,0],
+"dc/d2f/ConsoleInterface_8hpp.html#a0e6f2e3958af5aec3c558266cd2896c3":[3,0,1,2,0,4],
+"dc/d2f/ConsoleInterface_8hpp.html#a25b351bd86ae70e6515207524b2b270c":[3,0,1,2,0,2],
+"dc/d2f/ConsoleInterface_8hpp.html#a3f8e5f5ce16832927ea73288307d3cee":[3,0,1,2,0,5],
+"dc/d2f/ConsoleInterface_8hpp.html#a7ea4afd1baf401c7473ab00f1a085f7c":[3,0,1,2,0,1],
+"dc/d2f/ConsoleInterface_8hpp.html#adc93af28b6635ac9083e9e48fa27b112":[3,0,1,2,0,0],
+"dc/d2f/ConsoleInterface_8hpp.html#ae603137f7ce31de7fc0c5b240a703048":[3,0,1,2,0,3],
 "dc/d2f/ConsoleInterface_8hpp_source.html":[3,0,1,2,0],
 "dc/dae/TypePiece_8hpp.html":[3,0,1,6,1],
 "dc/dae/TypePiece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83":[3,0,1,6,1,0],
@@ -244,10 +249,5 @@ var NAVTREEINDEX0 =
 "de/d23/classBoard.html#aec7237f84ab2e9fd71d19d96958936ea":[2,0,0,36],
 "de/d23/classBoard.html#aed8545cdf9ca4e47ffd3306d80c87539":[2,0,0,16],
 "de/d23/classBoard.html#af34231e3e62c2965fb6524c332570b23":[2,0,0,54],
-"de/d23/classBoard.html#af3f1ee5615d1c83e8b4f47f5d3462826":[2,0,0,27],
-"de/d23/classBoard.html#af6a338387fffeb3aadc8ed3adb9a3649":[2,0,0,3],
-"de/d23/classBoard.html#af90c264e8b40a8ed8bccb4630d90db53":[2,0,0,59],
-"de/d23/classBoard.html#afb03bcfcdf37570704d535714e867c97":[2,0,0,2],
-"de/d23/classBoard.html#afd58eec39cde0e85928af479a735adb1":[2,0,0,49],
-"de/d6b/md__2home_2quentin_2Programmes_2C_09_09_2Quantum-Chess_2README.html":[0]
+"de/d23/classBoard.html#af3f1ee5615d1c83e8b4f47f5d3462826":[2,0,0,27]
 };

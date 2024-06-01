@@ -1,5 +1,10 @@
 var NAVTREEINDEX1 =
 {
+"de/d23/classBoard.html#af6a338387fffeb3aadc8ed3adb9a3649":[2,0,0,3],
+"de/d23/classBoard.html#af90c264e8b40a8ed8bccb4630d90db53":[2,0,0,59],
+"de/d23/classBoard.html#afb03bcfcdf37570704d535714e867c97":[2,0,0,2],
+"de/d23/classBoard.html#afd58eec39cde0e85928af479a735adb1":[2,0,0,49],
+"de/d6b/md__2home_2quentin_2Programmes_2C_09_09_2Quantum-Chess_2README.html":[0],
 "df/d0a/main_8cpp.html":[3,0,1,9],
 "df/d0a/main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4":[3,0,1,9,0],
 "df/d3e/Move_8cpp.html":[3,0,1,5,0],
