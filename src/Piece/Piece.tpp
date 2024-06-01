@@ -24,46 +24,46 @@ constexpr inline Piece::Piece(TypePiece piece, Color color) noexcept
 
 constexpr inline bool Piece::is_white() const noexcept
 {
-    return m_color == Color::WHITE;
+  return m_color == Color::WHITE;
 }
 
 constexpr inline bool Piece::is_black() const noexcept
 {
-    return m_color == Color::BLACK;
+  return m_color == Color::BLACK;
 }
 
 constexpr inline bool
 Piece::same_color(Piece const &other) const noexcept
 {
-    return m_color == other.m_color;
+  return m_color == other.m_color;
 }
 
 constexpr inline TypePiece Piece::get_type() const noexcept
 {
-    return m_type;
+  return m_type;
 }
 
 constexpr inline Color Piece::get_color() const noexcept
 {
-    return m_color;
+  return m_color;
 }
 
 constexpr inline std::size_t
 Piece::abs_substracte(std::size_t x, std::size_t y) noexcept
 {
-    if (x >= y)
-    {
-        return x - y;
-    }
-    return y - x;
+  if (x >= y)
+  {
+    return x - y;
+  }
+  return y - x;
 }
 
 constexpr inline double
 Piece::norm(Coord const &x, Coord const &y) noexcept
 {
-    return sqrt(
-        static_cast<double>(POW2(abs_substracte(x.n, y.n)) +
-                            POW2(abs_substracte(x.m, y.m))));
+  return sqrt(
+      static_cast<double>(POW2(abs_substracte(x.n, y.n)) +
+                          POW2(abs_substracte(x.m, y.m))));
 }
 
 template <std::size_t N, std::size_t M>
@@ -71,21 +71,21 @@ CONSTEXPR bool
 Piece::check_if_use_move_promote(Board<N, M> const &board,
                                  Coord const &pos) const noexcept
 {
-    if constexpr (N >= 2)
+  if constexpr (N >= 2)
+  {
+    if (board(pos.n, pos.m).get_type() == TypePiece::PAWN)
     {
-        if (board(pos.n, pos.m).get_type() == TypePiece::PAWN)
-        {
-            auto sign_color{
-                [](Color color) -> int
-                {
-                    return (color == Color::WHITE) ? -1 : 1;
-                }};
-            std::size_t required_line{(get_color() == Color::WHITE) ? 1 : N - 2};
-            if (pos.n == required_line)
-            {
-                return true;
-            }
-        }
+      auto sign_color{
+          [](Color color) -> int
+          {
+            return (color == Color::WHITE) ? -1 : 1;
+          }};
+      std::size_t required_line{(get_color() == Color::WHITE) ? 1 : N - 2};
+      if (pos.n == required_line)
+      {
+        return true;
+      }
     }
-    return false;
+  }
+  return false;
 }

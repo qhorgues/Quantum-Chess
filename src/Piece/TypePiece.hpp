@@ -6,13 +6,13 @@
  */
 enum class TypePiece
 {
-    EMPTY,
-    PAWN,
-    KNIGHT,
-    BISHOP,
-    ROOK,
-    QUEEN,
-    KING
+  EMPTY,
+  PAWN,
+  KNIGHT,
+  BISHOP,
+  ROOK,
+  QUEEN,
+  KING
 };
 
 #endif

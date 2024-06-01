@@ -10,5 +10,6 @@ var dir_68267d1309a1af8e8297ef4c3efbcdba =
     [ "Piece", "dir_c85bbe744eb3f453b27a8f2bfc5fc483.html", "dir_c85bbe744eb3f453b27a8f2bfc5fc483" ],
     [ "Qubit", "dir_a6fef3026f5a27d72dc9580dd8191044.html", "dir_a6fef3026f5a27d72dc9580dd8191044" ],
     [ "Random", "dir_409a8aab452d80e48310980cb832c7a5.html", "dir_409a8aab452d80e48310980cb832c7a5" ],
+    [ "heuristicHistory.cpp", "dc/d37/heuristicHistory_8cpp.html", "dc/d37/heuristicHistory_8cpp" ],
     [ "main.cpp", "df/d0a/main_8cpp.html", "df/d0a/main_8cpp" ]
 ];

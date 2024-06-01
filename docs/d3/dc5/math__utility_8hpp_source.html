@@ -105,15 +105,20 @@ $(function(){initNavTree('d3/dc5/math__utility_8hpp_source.html','../../'); init
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno"><a class="line" href="../../d3/dc5/math__utility_8hpp.html#a002b2f4894492820fe708b1b7e7c5e70">    4</a></span><span class="preprocessor">#define EPSILON 10e-3</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;complex&gt;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keywordtype">bool</span> <a class="code hl_function" href="../../d3/dc5/math__utility_8hpp.html#ab860314031adda81f6775840e82a92cd">double_equal</a>(<span class="keywordtype">double</span> x, <span class="keywordtype">double</span> y);</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keywordtype">bool</span> <a class="code hl_function" href="../../d3/dc5/math__utility_8hpp.html#a696be5c8dc8adf49935989d6184c0dbb">complex_equal</a>(</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    std::complex&lt;double&gt; <span class="keyword">const</span> &amp;z1,</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    std::complex&lt;double&gt; <span class="keyword">const</span> &amp;z2);</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="amath__utility_8hpp_html_a696be5c8dc8adf49935989d6184c0dbb"><div class="ttname"><a href="../../d3/dc5/math__utility_8hpp.html#a696be5c8dc8adf49935989d6184c0dbb">complex_equal</a></div><div class="ttdeci">bool complex_equal(std::complex&lt; double &gt; const &amp;z1, std::complex&lt; double &gt; const &amp;z2)</div><div class="ttdef"><b>Definition</b> math_utility.cpp:10</div></div>
-<div class="ttc" id="amath__utility_8hpp_html_ab860314031adda81f6775840e82a92cd"><div class="ttname"><a href="../../d3/dc5/math__utility_8hpp.html#ab860314031adda81f6775840e82a92cd">double_equal</a></div><div class="ttdeci">bool double_equal(double x, double y)</div><div class="ttdef"><b>Definition</b> math_utility.cpp:5</div></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;<a class="code" href="../../d0/d5d/Constexpr_8hpp.html">Constexpr.hpp</a>&gt;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keyword">namespace</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>{</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>  <a class="code hl_define" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> <span class="keywordtype">bool</span> double_equal(<span class="keywordtype">double</span> x, <span class="keywordtype">double</span> y);</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>  <a class="code hl_define" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> <span class="keywordtype">bool</span> complex_equal(</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>      std::complex&lt;double&gt; <span class="keyword">const</span> &amp;z1,</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>      std::complex&lt;double&gt; <span class="keyword">const</span> &amp;z2);</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>}</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &quot;math_utility.tpp&quot;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aConstexpr_8hpp_html"><div class="ttname"><a href="../../d0/d5d/Constexpr_8hpp.html">Constexpr.hpp</a></div></div>
+<div class="ttc" id="aConstexpr_8hpp_html_acaa06fbc27c59926a41e7575667e5280"><div class="ttname"><a href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a></div><div class="ttdeci">#define CONSTEXPR</div><div class="ttdoc">Utilisé pour utiliser ou non constexpr.</div><div class="ttdef"><b>Definition</b> Constexpr.hpp:7</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
