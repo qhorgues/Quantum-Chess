@@ -203,7 +203,7 @@ void print_board_light(std::ostream &os, Board<N, M> const &board)
       Piece p {board(i, j)};
       os << chr_to_Piece(p.get_type(), p.get_color());
     }
-    os << '\n'
+    os << '\n';
   }
 }
 
