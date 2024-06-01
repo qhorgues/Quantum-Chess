@@ -2,6 +2,7 @@ var classBoard =
 [
     [ "Board", "de/d23/classBoard.html#a3fe651d57c4fd92cb42fe8ae6eca8562", null ],
     [ "Board", "de/d23/classBoard.html#a58b73103e0d55cb217ea516b72ff9969", null ],
+    [ "Board", "de/d23/classBoard.html#afb03bcfcdf37570704d535714e867c97", null ],
     [ "Board", "de/d23/classBoard.html#af6a338387fffeb3aadc8ed3adb9a3649", null ],
     [ "Board", "de/d23/classBoard.html#abac6288166ce6aef6441fca8d06b6f81", null ],
     [ "~Board", "de/d23/classBoard.html#a21962785efbc9128587809c4c996a142", null ],
