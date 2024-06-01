@@ -6,61 +6,8 @@
 #include <Piece.hpp>
 #include <string>
 #include <observer_ptr.hpp>
+#include <ConsoleInterface.hpp>
 
-TypeMove chr_to_TypeMove(char type_move)
-{
-  using enum TypeMove;
-  switch (type_move)
-  {
-  case 'N':
-    return NORMAL;
-  case 'S':
-    return SPLIT;
-  case 'M':
-    return MERGE;
-  case 'P':
-    return PROMOTE;
-  default:
-    return NORMAL;
-  }
-}
-
-Piece chr_to_Piece(char piece)
-{
-  using enum TypePiece;
-  using enum Color;
-
-  switch (piece)
-  {
-  case 'p':
-    return Piece(PAWN, BLACK);
-  case 'P':
-    return Piece(PAWN, WHITE);
-  case 'n':
-    return Piece(KNIGHT, BLACK);
-  case 'N':
-    return Piece(KNIGHT, WHITE);
-  case 'b':
-    return Piece(BISHOP, BLACK);
-  case 'B':
-    return Piece(BISHOP, WHITE);
-  case 'r':
-    return Piece(ROOK, BLACK);
-  case 'R':
-    return Piece(ROOK, WHITE);
-  case 'q':
-    return Piece(QUEEN, BLACK);
-  case 'Q':
-    return Piece(QUEEN, WHITE);
-  case 'k':
-    return Piece(KING, BLACK);
-  case 'K':
-    return Piece(KING, WHITE);
-  case ' ':
-  default:
-    return Piece(EMPTY, BLACK);
-  }
-}
 
 template<std::size_t N>
 Move readMove(std::istream& is, observer_ptr<Piece> piece = nullptr)

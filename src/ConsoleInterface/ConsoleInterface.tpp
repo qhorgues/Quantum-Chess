@@ -109,7 +109,7 @@ TypeMove chr_to_TypeMove(char type_move)
   }
 }
 
-char chr_to_Piece(TypePiece piece, Color color)
+char Piece_to_chr(TypePiece piece, Color color)
 {
   using enum TypePiece;
   if (color == Color::WHITE)
@@ -156,7 +156,7 @@ char chr_to_Piece(TypePiece piece, Color color)
   }
 }
 
-Piece Piece_to_chr(char piece)
+Piece chr_to_Piece(char piece)
 {
   using enum TypePiece;
   using enum Color;
@@ -201,7 +201,7 @@ void print_board_light(std::ostream &os, Board<N, M> const &board)
     for (std::size_t j{0}; j < M; j++)
     {
       Piece p {board(i, j)};
-      os << chr_to_Piece(p.get_type(), p.get_color());
+      os << Piece_to_chr(p.get_type(), p.get_color());
     }
     os << '\n';
   }
