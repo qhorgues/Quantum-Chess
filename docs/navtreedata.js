@@ -30,7 +30,8 @@ var NAVTREE =
       [ "Liste des espaces de nommage", "namespaces.html", "namespaces_dup" ],
       [ "Membres de l'espace de nommage", "namespacemembers.html", [
         [ "Tout", "namespacemembers.html", null ],
-        [ "Fonctions", "namespacemembers_func.html", null ]
+        [ "Fonctions", "namespacemembers_func.html", null ],
+        [ "Variables", "namespacemembers_vars.html", null ]
       ] ]
     ] ],
     [ "Classes", "annotated.html", [
@@ -62,7 +63,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"de/d23/classBoard.html#ae6fa0350c8ef33e791f1f9a4daa5e3d1"
+"de/d23/classBoard.html#abac6288166ce6aef6441fca8d06b6f81"
 ];
 
 var SYNCONMSG = 'cliquez pour désactiver la synchronisation du panel';
