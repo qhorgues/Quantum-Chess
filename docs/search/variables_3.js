@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['file_5fname_0',['file_name',['../d8/d9e/namespaceclear-doc.html#a70b527df43202a6bd68fa057021a3e5b',1,'clear-doc']]],
-  ['file_5fpath_1',['file_path',['../d8/d9e/namespaceclear-doc.html#a158f1cb6de35f840c1f163cb4c55273d',1,'clear-doc']]],
-  ['folder_2',['folder',['../d8/d9e/namespaceclear-doc.html#a350c3bfbbe880360caaf3253ae70ecbb',1,'clear-doc']]]
+  ['color_0',['color',['../d4/d18/namespacecsv-to-graph.html#a3e08ceaa072c880d8cbe034639032eaf',1,'csv-to-graph']]],
+  ['csv_5freader_1',['csv_reader',['../d4/d18/namespacecsv-to-graph.html#a68dbe06da7a1f0750802cd1017554e65',1,'csv-to-graph']]]
 ];

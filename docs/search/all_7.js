@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['heuristichistory_2ecpp_0',['heuristicHistory.cpp',['../dc/d37/heuristicHistory_8cpp.html',1,'']]]
+  ['heuristichistory_2ecpp_0',['heuristicHistory.cpp',['../dc/d37/heuristicHistory_8cpp.html',1,'']]],
+  ['heuristique_1',['heuristique',['../d4/d18/namespacecsv-to-graph.html#a33293177e436bc2e58f2624b4c457045',1,'csv-to-graph']]]
 ];

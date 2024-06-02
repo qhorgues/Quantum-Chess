@@ -1,11 +1,15 @@
 var searchData=
 [
-  ['same_5fcolor_0',['same_color',['../d5/df0/classPiece.html#a5c6acfe864b7db5717ae67cad216169f',1,'Piece']]],
-  ['split_1',['SPLIT',['../d5/df0/classPiece.html#ac846621b089305b5f854bb67d2e36082a913bcc607ae0d97776698d9ed424be6a',1,'Piece::SPLIT'],['../d0/d21/Move_8hpp.html#ac365680f0388487d538d24242d1f421aa913bcc607ae0d97776698d9ed424be6a',1,'SPLIT:&#160;Move.hpp']]],
-  ['split_2',['split',['../df/d5b/structMove.html#aaa5ff06d9cb7463d11180a7620628bd4',1,'Move']]],
-  ['src_3',['src',['../df/d5b/structMove.html#ad28a195cbbde5d4a6368bd7e9950cddf',1,'Move']]],
-  ['src1_4',['src1',['../df/d5b/structMove.html#aec1af57787d8553e33a71e701d65ecbb',1,'Move']]],
-  ['src2_5',['src2',['../df/d5b/structMove.html#afa540d35475b04e58ed568cb69745b05',1,'Move']]],
-  ['std_6',['std',['../d8/dcc/namespacestd.html',1,'']]],
-  ['swap_7',['swap',['../d6/d4d/classobserver__ptr.html#a716aac32d184b983fe5a4538afa678f8',1,'observer_ptr::swap()'],['../d9/d88/observer__ptr_8hpp.html#a0d79ae8874afb660dd7e519a350e0382',1,'swap():&#160;observer_ptr.hpp']]]
+  ['randint_0',['randint',['../d8/dc8/namespacernd.html#a90ede64e761f159e9edfa4dd9dcf2ad2',1,'rnd']]],
+  ['random_2ecpp_1',['Random.cpp',['../d4/dde/Random_8cpp.html',1,'']]],
+  ['random_2ehpp_2',['Random.hpp',['../dd/d6e/Random_8hpp.html',1,'']]],
+  ['randreal_3',['randreal',['../d8/dc8/namespacernd.html#a19ff6ae85d9b4eb479ab17405f9ed41a',1,'rnd']]],
+  ['range_5fto_5f2_5farray_4',['range_to_2_array',['../de/d23/classBoard.html#aaf99d8f5c18672d24c84b3ef22d0bd2c',1,'Board']]],
+  ['readboard_5',['readBoard',['../dc/d37/heuristicHistory_8cpp.html#a0d8974450dfb956b4c60f48a9d02c130',1,'heuristicHistory.cpp']]],
+  ['readme_2emd_6',['README.md',['../da/ddd/README_8md.html',1,'']]],
+  ['readmove_7',['readMove',['../dc/d37/heuristicHistory_8cpp.html#a87b34ec8fedd73e88fecb747b34c8c2d',1,'heuristicHistory.cpp']]],
+  ['release_8',['release',['../d6/d4d/classobserver__ptr.html#a44fedd0645ae9a9ca0036eaa3bc2af12',1,'observer_ptr']]],
+  ['reset_9',['reset',['../d6/d4d/classobserver__ptr.html#aadf07d605b3dfdfe106843c20cf7f14a',1,'observer_ptr']]],
+  ['rnd_10',['rnd',['../d8/dc8/namespacernd.html',1,'']]],
+  ['rook_11',['ROOK',['../dc/dae/TypePiece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83a97c60a3a4e61ee21e3f38a2f950fe293',1,'TypePiece.hpp']]]
 ];
