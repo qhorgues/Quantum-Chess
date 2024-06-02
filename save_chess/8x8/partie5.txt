@@ -1,3 +1,12 @@
+rnbqkbnr
+pppppppp
+        
+        
+        
+        
+PPPPPPPP
+RNBQKBNR
+
 P N d2d4
 p N h7h5
 N S b1a3c3

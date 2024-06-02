@@ -56,6 +56,8 @@ void auto_playing(
     int search_depth)
 {
   std::cout << board << std::endl;
+  print_board_light(output, board);
+  output << "\n";
   while (
       nb_moves > 0 &&
       !board.winning_position(opponent_color(board.get_current_player())))
@@ -163,7 +165,7 @@ int main()
   
   for (int i = 1; i <= 1; i++)
   {
-    Board board{ChessBoard};
+    Board board{smallBoard};
     std::ofstream log_file{"partie" + std::to_string(i) + ".txt"};
     auto_playing(board, log_file, 80, 5);
     log_file.close();
