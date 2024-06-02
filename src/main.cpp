@@ -52,12 +52,14 @@ template <std::size_t N, std::size_t M>
 void auto_playing(
     Board<N, M> &board,
     std::ostream &output,
+    std::ostream &csv,
     int nb_moves,
     int search_depth)
 {
   std::cout << board << std::endl;
-  print_board_light(output, board);
-  output << "\n";
+  csv << "Heuristique; Type-Move" << std::endl;
+  //print_board_light(output, board);
+  //output << "\n";
   while (
       nb_moves > 0 &&
       !board.winning_position(opponent_color(board.get_current_player())))
@@ -99,13 +101,32 @@ void auto_playing(
       }
     }
     board.move(m);
-/*
-#if defined(WIN32)
-    int ret = system("cls");
-#else
-    int ret = system("clear");
-#endif
-    (void)ret;*/
+    std::string Tmove;
+    switch (m.type)
+    {
+    case TypeMove::NORMAL:
+      Tmove = "Normal";
+      break;
+    case TypeMove::SPLIT:
+      Tmove = "Split";
+      break;
+    case TypeMove::MERGE:
+      Tmove = "Merge";
+      break;
+    case TypeMove::PROMOTE:
+      Tmove = "Promote";
+      break;
+    default:
+      return;
+    }
+    csv << computer::__utility::heuristic(board) << ';' << Tmove << std::endl;
+    /*
+    #if defined(WIN32)
+        int ret = system("cls");
+    #else
+        int ret = system("clear");
+    #endif
+        (void)ret;*/
     std::cout << board << std::endl;
     board.change_player();
     nb_moves--;
@@ -156,18 +177,17 @@ int main()
        {W_KNIGHT, W_QUEEN, W_KING, W_BISHOP}}};
 
   Board<4> miniBoard{
-      {
-          {B_KING, Piece(), Piece(), B_BISHOP},
-          {Piece(), B_KNIGHT, Piece(), Piece()},
-          {Piece(), Piece(), Piece(), Piece()},
-          {Piece(), Piece(), W_QUEEN, W_KING}
-      }};
-  
+      {{B_KING, Piece(), Piece(), B_BISHOP},
+       {Piece(), B_KNIGHT, Piece(), Piece()},
+       {Piece(), Piece(), Piece(), Piece()},
+       {Piece(), Piece(), W_QUEEN, W_KING}}};
+
   for (int i = 1; i <= 1; i++)
   {
     Board board{smallBoard};
     std::ofstream log_file{"partie" + std::to_string(i) + ".txt"};
-    auto_playing(board, log_file, 80, 5);
+    std::ofstream csv{"partie" + std::to_string(i) + ".csv"};
+    auto_playing(board, log_file, csv, 80, 6);
     log_file.close();
   }
 
