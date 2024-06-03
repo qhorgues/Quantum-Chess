@@ -182,7 +182,7 @@ int main()
        {Piece(), Piece(), Piece(), Piece()},
        {Piece(), Piece(), W_QUEEN, W_KING}}};
 
-  for (int i = 1; i <= 1; i++)
+  for (int i = 2; i <= 2; i++)
   {
     Board board{smallBoard};
     std::ofstream log_file{"partie" + std::to_string(i) + ".txt"};

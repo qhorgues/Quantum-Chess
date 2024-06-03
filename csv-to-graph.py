@@ -19,29 +19,27 @@ with open('partie1.csv') as csv_file:
             line_count += 1
     print(f'Processed {line_count} lines.')
 
-fig, ax = plt.subplots()
 x = np.arange(1, len(move)+1, 1)
 print(x)
 print(move)
 print(len(move))
-ax.plot(heuristique)
-ax.axhline(y = 0, color='black')
-ax.grid(axis='y', linestyle='-')
+plt.plot(heuristique)
+plt.axhline(y = 0, color='black')
+plt.grid(axis='y', linestyle='-')
 
 
 def player(x):
     if x % 2 == 0:
         return 0
     else:
-        return 2   
+        return 3   
 
 eval = np.array([move[i] == 'Split' for i in range(len(move))])
-ymax = [player(i) for i in range(len(move))]
+ymax1 = [player(i) for i in range(len(move))]
 ymax2 = [-player(i+1) for i in range(len(move))]
 
-print(ymax)
-print(ymax2)
-print(eval)
-ax.fill_between(x, 0, 1, where=eval,
-                color='red', alpha=0.5, transform=ax.get_xaxis_transform())
+for i in range(len(move)):
+    if eval[i]:
+        plt.plot([x[i], x[i]],[ymax1[i], ymax2[i]], color='red', alpha=0.5)
+
 plt.show()
