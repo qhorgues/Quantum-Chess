@@ -16,7 +16,7 @@
 #include <mutex>
 #include <Random.hpp>
 
-#define WIN_VALUE 15.
+#define WIN_VALUE 20.
 
 namespace computer
 {
@@ -152,13 +152,6 @@ namespace computer
         Color current{board.get_current_player()};
         for (double const alpha : best_all_round_score)
         {
-          if (get_player_calc_best_score(
-                  current,
-                  alpha,
-                  best_score))
-          {
-            return true;
-          }
           if (current == Color::WHITE)
           {
             current = Color::BLACK;
@@ -166,6 +159,13 @@ namespace computer
           else
           {
             current = Color::WHITE;
+          }
+          if (get_player_calc_best_score(
+                  current,
+                  alpha,
+                  best_score))
+          {
+            return true;
           }
         }
       }

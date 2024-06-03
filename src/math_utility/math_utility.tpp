@@ -5,11 +5,13 @@
 
 namespace
 {
+  [[maybe_unused]]
   CONSTEXPR bool double_equal(double x, double y)
   {
     return std::abs(x - y) <= EPSILON;
   }
 
+  [[maybe_unused]]
   CONSTEXPR bool complex_equal(
       std::complex<double> const &z1,
       std::complex<double> const &z2)

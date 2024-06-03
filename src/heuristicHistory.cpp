@@ -7,12 +7,32 @@
 #include <string>
 #include <observer_ptr.hpp>
 #include <ConsoleInterface.hpp>
+#include <ComputerPlayer.hpp>
+
+template<std::size_t N, std::size_t M>
+Board<N, M> readBoard(std::istream& is)
+{
+  std::vector<std::vector<Piece>> piece_board{};
+  std::string str;
+  std::getline(is, str);
+  str.pop_back();
+  while (str != "" && !is.eof())
+  {
+    piece_board.push_back(std::vector<Piece>{});
+    for (const char c : str)
+    {
+      piece_board.back().push_back(chr_to_Piece(c));
+    }
+    std::getline(is, str);
+    str.pop_back();
+  }
+  return Board<N, M>(piece_board);
+}
 
 
 template<std::size_t N>
 Move readMove(std::istream& is, observer_ptr<Piece> piece = nullptr)
 {
-  (void)piece;
   char type_piece;
   char type_move;
   char promote_piece;
@@ -74,6 +94,40 @@ Move readMove(std::istream& is, observer_ptr<Piece> piece = nullptr)
   return move;
 }
 
+template<std::size_t N, std::size_t M>
+void GameToCSV(std::istream& is, std::string const& result_name)
+{
+  std::ofstream csv {result_name + ".csv"};
+  Board<N, M> board {readBoard<N, M>(is)};
+
+  csv << "Heuristique; Type-Move" << std::endl;
+  while (!is.eof())
+  {
+    Move m { readMove<N>(is) };
+    board.move(m);
+    std::string Tmove;
+    switch (m.type)
+    {
+    case TypeMove::NORMAL:
+      Tmove = "Normal";
+      break;
+    case TypeMove::SPLIT:
+      Tmove = "Split";
+      break;
+    case TypeMove::MERGE:
+      Tmove = "Merge";
+      break;
+    case TypeMove::PROMOTE:
+      Tmove = "Promote";
+      break;
+    default:
+      return;
+    }
+    csv << computer::__utility::heuristic(board) << ';' << Tmove << std::endl;
+  }
+  csv.close();
+}
+
 int main(int argc, char** argv)
 {
   if (argc <= 1)
@@ -90,9 +144,12 @@ int main(int argc, char** argv)
     return EXIT_FAILURE;
   }
 
+  /*
   Piece piece;
   readMove<6>(gameHistory, make_observer(&piece));
+  */
 
+  GameToCSV<8, 8>(gameHistory, "8x8-game-1");
   gameHistory.close();
   return EXIT_SUCCESS;
 }
