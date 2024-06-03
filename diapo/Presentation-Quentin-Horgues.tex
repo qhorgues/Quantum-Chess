@@ -11,57 +11,95 @@
 \AtBeginEnvironment{minted}{\dontdofcolorbox}
 \def\dontdofcolorbox{\renewcommand\fcolorbox[4][]{##4}}
 \makeatother
-\usetheme{Boadilla}
+\usetheme{metropolis}
 
 \begin{document}
-	\author{n°xxxxx Quentin Horgues}
+	\author{n°54856 Quentin Horgues}
 	\title{JEU D'ECHECS QUANTIQUES}
-	\subtitle{}
+	\subtitle{Quelles sont les meilleures stratégies aux échecs quantiques ?}
 	%\logo{}
 	%\institute{}
 	\date{}
 	%\subject{}
 	%\setbeamercovered{transparent}
 	%\setbeamertemplate{navigation symbols}{}
+
+
 	\begin{frame}[plain]
-		\maketitle
-		\includegraphics[scale = 0.20, center]{./assets/intro-présentation.jpg}
+	\maketitle
+	\includegraphics[scale = 0.15, center]{./assets/intro-présentation.jpg} 
 	\end{frame}
 	
 	\begin{frame}
-		\frametitle{Présentation des règles du jeu}
-		$\bullet$ 2 joueurs qui joue à tour de rôle \newline
-		$\bullet$ Un tour = un mouvement \newline
-		$\bullet$ Objectif : capturer le roi adverse \newline     
+	\frametitle{Présentation des règles du jeu}
+	$\bullet$ 2 joueurs qui joue à tour de rôle \newline
+	$\bullet$ différents types de pièces \newline
+	$\bullet$ Un tour = un mouvement \newline %mal dit
+	$\bullet$ Objectif : capturer le roi adverse \newline     
 	\end{frame}
 	
 	\begin{frame}
-		\frametitle{Mouvement classique : fou}
-		\includegraphics[scale = 0.4, center]{./assets/fou.jpg}
+		\frametitle{Le plateau}
+		\includegraphics[scale = 0.5, center]{./assets/plateau.jpg}    
 	\end{frame}
 	
 	\begin{frame}
-		\frametitle{Mouvement classique : dame}
-		\includegraphics[scale = 0.4, center]{./assets/dame.jpg}
+	\frametitle{Mouvement classique : fou}
+	\includegraphics[scale = 0.4, center]{./assets/fou.jpg}    
 	\end{frame}
 	
 	\begin{frame}
-		\frametitle{Mouvement classique : cavalier}
-		\includegraphics[scale = 0.4, center]{./assets/cavalier2.jpg}
+	\frametitle{Mouvement classique : tour}
+	\includegraphics[scale = 0.4, center]{./assets/tour.jpg}    
 	\end{frame}
 	
 	\begin{frame}
-		\frametitle{Mouvement classique : roi}
-		\includegraphics[scale = 0.4, center]{./assets/king.jpg}
+	\frametitle{Mouvement classique : dame}
+	\includegraphics[scale = 0.4, center]{./assets/dame.jpg}    
 	\end{frame}
 	
 	\begin{frame}
-		\frametitle{Mouvement split}
-		\includegraphics[scale = 0.3, left ]{./assets/split1.jpg}
-		\includegraphics[scale = 0.3, right]{./assets/split2.jpg}
+	\frametitle{Mouvement classique : cavalier}
+	\includegraphics[scale = 0.4, center]{./assets/cavalier2.jpg}    
 	\end{frame}
 	
-	\import{./../}{code-latex-output}		
-			
+	\begin{frame}
+	\frametitle{Mouvement classique : roi}
+	\includegraphics[scale = 0.4, center]{./assets/king.jpg}    
+	\end{frame}
 	
+	\begin{frame}
+	\frametitle{Mouvement split}
+	\includegraphics[scale = 0.45, center]{./assets/split.png}    
+	\end{frame}
+	
+	\begin{frame}
+	\frametitle{Mouvement merge}
+	\includegraphics[scale = 1.45, center]{./assets/merge.png}    
+	\end{frame}
+	
+	\begin{frame}
+	\frametitle{Principe des mesures}
+	%$\bullet$ Non-occupation simultanée 
+	\includegraphics[scale = 1.4, center]{./assets/mesure.png}    
+	\end{frame}
+	
+	\begin{frame}
+	\frametitle{Implémentation}
+	$\bullet$ Représentations des différentes structures (plateau, pièces, matrice, qubit, ...)\newline
+	$\bullet$ Récupération des mouvements légaux \newline
+	$\bullet$ Les mesures \newline
+	$\bullet$ Réalisation des mouvements \newline %mal dit
+	$\bullet$ L'IA \newline     
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Récupération des mouvements : le backtrack}
+		%$\bullet$ Non-occupation simultanée 
+		\includegraphics[scale = 0.3, center]{./assets/backtrack.png}    
+	\end{frame}
+	
+	
+	%\import{./../}{code-latex-output}		
+
 \end{document}
