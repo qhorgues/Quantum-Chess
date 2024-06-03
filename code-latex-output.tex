@@ -314,16 +314,18 @@ class Board final
 public:
   // Constructeur
   CONSTEXPR Board();
-  /**
-   * @brief Initialise le plateau à partir d'une liste de pièce,
-   * les pièces ne sont pas divisées initialement.
-   *
-   * @param[in] board Double initializer_list sur des pointeurs sur Piece
-   */
+
   CONSTEXPR Board(std::initializer_list<
                   std::initializer_list<
-                      Piece>> const &
-                      board);
+                      Piece>> const &board);
+
+  /**
+   * @brief Initialise le plateau à partir d'un ensemble de pièce,
+   * les pièces ne sont pas divisées initialement.
+   *
+   * @param[in] board Double initializer_list sur des Piece
+   */
+  CONSTEXPR Board(std::ranges::common_range auto const &board);
 
   // Copie
   CONSTEXPR Board(Board const &) = default;
@@ -336,25 +338,11 @@ public:
   // Destructeur
   CONSTEXPR ~Board() = default;
 
-  /**
-   * @brief Retourne le nombre de ligne du plateau
 \end{minted}
 \end{frame}
 
 \begin{frame}[fragile]
 \begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=61]{cpp}
-   *
-   * @return std::size_t Le nombre de ligne
-   */
-  CONSTEXPR static std::size_t numberLines() noexcept;
-
-  /**
-   * @brief Retourne le nombre de colonne
-   *
-   * @return std::size_t Le nombre de colonne
-   */
-  CONSTEXPR static std::size_t numberColumns() noexcept;
-
   /**
    * @brief Retourne un pointeur sur la piece à l'emplacement cible
    *
@@ -368,16 +356,30 @@ public:
              std::size_t m) const noexcept;
 
   /**
+   * @brief Retourne le nombre de ligne du plateau
+   *
+   * @return std::size_t Le nombre de ligne
+   */
+  CONSTEXPR static std::size_t numberLines() noexcept;
+
+  /**
+   * @brief Retourne le nombre de colonne
+   *
+   * @return std::size_t Le nombre de colonne
+   */
+  CONSTEXPR static std::size_t numberColumns() noexcept;
+
+  /**
    * @brief Renvoie la liste dans tous les mouvements
    * classiques légaux d'une pièce
-   *
-   * @param pos Position de la pièce
    *
 \end{minted}
 \end{frame}
 
 \begin{frame}[fragile]
 \begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=91]{cpp}
+   * @param pos Position de la pièce
+   *
    * @return std::forward_list<Coord> La liste de coordonnées des positions
    * d'arrivées de chaque mouvement possible
    */
@@ -406,13 +408,13 @@ public:
    *
    * @param[in] pos La position de la pièce
    * @return true si le mouvement possible est un mouvement
-   * de promotion
-   * @return false sinon
 \end{minted}
 \end{frame}
 
 \begin{frame}[fragile]
 \begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=121]{cpp}
+   * de promotion
+   * @return false sinon
    */
   CONSTEXPR bool
   check_if_use_move_promote(Coord const &pos) const noexcept;
@@ -441,13 +443,13 @@ public:
   template <class UnitaryFunction>
   CONSTEXPR void
   all_move(
-      UnitaryFunction func,
-      std::optional<Color> color_player = std::nullopt) const noexcept;
 \end{minted}
 \end{frame}
 
 \begin{frame}[fragile]
 \begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=151]{cpp}
+      UnitaryFunction func,
+      std::optional<Color> color_player = std::nullopt) const noexcept;
 
   /**
    * @brief Test si un mouvement est réalisable
@@ -476,13 +478,13 @@ public:
    * @param[in] c Couleur
    * @return true si la position est gagnante pour la couleur c
    * @return false sinon
-   */
-  CONSTEXPR bool winning_position(Color c) const noexcept;
 \end{minted}
 \end{frame}
 
 \begin{frame}[fragile]
 \begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=181]{cpp}
+   */
+  CONSTEXPR bool winning_position(Color c) const noexcept;
 
   /**
    * @brief Recupère la couleur du joueur au tour de jouer
@@ -511,13 +513,13 @@ public:
       Board<_N, _M> const &board,
       Coord const &dpt,
       Coord const &arv,
-      std::size_t position,
-      std::optional<Coord>);
 \end{minted}
 \end{frame}
 
 \begin{frame}[fragile]
 \begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=211]{cpp}
+      std::size_t position,
+      std::optional<Coord>);
 
   template <std::size_t _N, std::size_t _M>
   friend CONSTEXPR bool
@@ -546,13 +548,13 @@ public:
    * @param[in] val_mes Optionel peut determiner la mesure de
    * la présence d'une pièce ou non
    */
-  CONSTEXPR void move_promotion(
-      Move const &move,
 \end{minted}
 \end{frame}
 
 \begin{frame}[fragile]
 \begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=241]{cpp}
+  CONSTEXPR void move_promotion(
+      Move const &move,
       std::optional<bool> val_mes = std::nullopt);
 
   /**
@@ -581,13 +583,13 @@ private:
    * @param s Coordonnées de la source
    * @param t Coordonnées de la cible
    * @param check_path Fonction qui teste la présence d'une pièce
-   * entre une source et une cible
-   * @return La probabilité
 \end{minted}
 \end{frame}
 
 \begin{frame}[fragile]
 \begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=271]{cpp}
+   * entre une source et une cible
+   * @return La probabilité
    */
   CONSTEXPR double get_proba_mesure_capture_slide(
       Coord const &s,
@@ -613,16 +615,16 @@ private:
 
   /**
    * @brief Vérifie si la case à une possibilité de contenir une pièce,
-   * et si elle n'en a pas modifie m_piece_board en Piece().
+   * et si elle n'en a pas modifie m_piece_board en nullptr.
    *
    * @param pos Les coordonnées de a position de la case a vérifier.
-   */
-  void update_case(std::size_t pos) noexcept;
 \end{minted}
 \end{frame}
 
 \begin{frame}[fragile]
 \begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=301]{cpp}
+   */
+  void update_case(std::size_t pos) noexcept;
   /**
    * @brief Fonction qui permet de mattre à jour le plateau,
    * car ce mouvement entraine l'apparition de plusieurs instance de board
@@ -651,13 +653,13 @@ private:
    */
   CONSTEXPR void move_classic_jump(
       Coord const &s,
-      Coord const &t,
-      std::optional<bool> val_mes = std::nullopt);
 \end{minted}
 \end{frame}
 
 \begin{frame}[fragile]
 \begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=331]{cpp}
+      Coord const &t,
+      std::optional<bool> val_mes = std::nullopt);
 
   /**
    * @brief Mouvement "split jump"
@@ -686,13 +688,13 @@ private:
    * @param[in] s1 Coordonnées de la source 1
    * @param[in] s2 Coordonnées de la source 2
    * @param[in] t Coordonnées de la cible
-   */
-  CONSTEXPR void move_merge_jump(
 \end{minted}
 \end{frame}
 
 \begin{frame}[fragile]
 \begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=361]{cpp}
+   */
+  CONSTEXPR void move_merge_jump(
       Coord const &s,
       Coord const &t1,
       Coord const &t2);
@@ -721,13 +723,13 @@ private:
                              std::optional<Coord>)>
                          check_path,
                      std::optional<bool> val_mes = std::nullopt);
-  /**
-   * @brief Mouvement "split slide"
 \end{minted}
 \end{frame}
 
 \begin{frame}[fragile]
 \begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=391]{cpp}
+  /**
+   * @brief Mouvement "split slide"
    * @warning Aucun tests sur la validité du mouvement (cible vide, ect)
    * @tparam N Le nombre de lignes du plateau
    * @tparam M Le nombre de colonnes du plateau
@@ -756,13 +758,13 @@ private:
    * (cible vide, pièce identique sur les sources, ect)
    * @tparam N Le nombre de lignes du plateau
    * @tparam M Le nombre de colonnes du plateau
-   * @param[in] s1 Coordonnées de la source 1
-   * @param[in] s2 Coordonnées de la source 2
 \end{minted}
 \end{frame}
 
 \begin{frame}[fragile]
 \begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=421]{cpp}
+   * @param[in] s1 Coordonnées de la source 1
+   * @param[in] s2 Coordonnées de la source 2
    * @param[in] t Coordonnées de la cible
    * @param[in] check_path Fonction qui permet de vérifier la présence d'une
    * pièce entre la source et la cible sur une instance du plateau
@@ -791,13 +793,13 @@ private:
    *
    * @tparam N Le nombre de lignes du plateau
    * @tparam M Le nombre de colonnes du plateau
-   * @param[in] s Coordonnées de la source
-   * @param[in] t Coordonnées de la cible
 \end{minted}
 \end{frame}
 
 \begin{frame}[fragile]
 \begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=451]{cpp}
+   * @param[in] s Coordonnées de la source
+   * @param[in] t Coordonnées de la cible
    * @param[in] val_mes Optionel peut determiner la mesure de
    * la présence d'une pièce ou non
    * @return true si le mouvement à etait effectué
@@ -826,13 +828,13 @@ private:
    * @return true si le mouvement à etait effectué
    * @return false sinon
    */
-  CONSTEXPR bool
-  move_pawn_two_step(Coord const &s, Coord const &t,
 \end{minted}
 \end{frame}
 
 \begin{frame}[fragile]
 \begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=481]{cpp}
+  CONSTEXPR bool
+  move_pawn_two_step(Coord const &s, Coord const &t,
                      std::optional<bool> val_mes = std::nullopt);
   /**
    * @brief Mouvement de capture dun pion. A la différence
@@ -861,13 +863,13 @@ private:
    * @tparam N Le nombre de lignes du plateau
    * @tparam M Le nombre de colonnnes du plateau
    * @param[in] s Les coordonnées de la source
-   * @param[in] t Les coordonnées de la cible (l'endroit où arrive le pion)
-   * @param[in] ep Les coordonnées du pion capturer "en passant"
 \end{minted}
 \end{frame}
 
 \begin{frame}[fragile]
 \begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=511]{cpp}
+   * @param[in] t Les coordonnées de la cible (l'endroit où arrive le pion)
+   * @param[in] ep Les coordonnées du pion capturer "en passant"
    * @param[in] val_mes Optionel peut determiner la mesure de
    * la présence d'une pièce ou non
    * @return true si le mouvement à etait effectué
@@ -896,13 +898,13 @@ private:
    d'un mouvement "capture slide"
    *
    * @tparam N Le nombre de lignes du plateau
-   * @tparam M Le nombre de colonnes du plateau
-   * @param[in] s Coordonnées de la source du mouvement
 \end{minted}
 \end{frame}
 
 \begin{frame}[fragile]
 \begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=541]{cpp}
+   * @tparam M Le nombre de colonnes du plateau
+   * @param[in] s Coordonnées de la source du mouvement
    * @param[in] t Coordonnées de la cible du mouvement
    * @param[in] check_path Fonction qui permet de vérifier si il y a une pièce
    * entre la source et la cible sur une instance du plateau
@@ -931,13 +933,13 @@ private:
   CONSTEXPR void move_classic(Coord const &s, Coord const &t,
                               std::optional<bool> val_mes);
 
-  /**
-   * @brief Mouvement split d'une pièce (pion exclu)
 \end{minted}
 \end{frame}
 
 \begin{frame}[fragile]
 \begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=571]{cpp}
+  /**
+   * @brief Mouvement split d'une pièce (pion exclu)
    * @warning Ne procède aucune vérification sur la validité du mouvement
    * @tparam N Le nombre de ligne du plateau
    * @tparam M Le nombre de colonnes du plateau
@@ -966,13 +968,13 @@ private:
                             Coord const &t);
 
   /**
-   * @brief Gère tout les mouvements d'un pion
-   * @warning Ne procède aucune vérification sur la validité du mouvement
 \end{minted}
 \end{frame}
 
 \begin{frame}[fragile]
 \begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=601]{cpp}
+   * @brief Gère tout les mouvements d'un pion
+   * @warning Ne procède aucune vérification sur la validité du mouvement
    * @tparam N Le nombre de lignes du plateau
    * @tparam M Le nombre de colonnes du plateau
    * @param[in] s Coordonnées de la source
@@ -999,23 +1001,21 @@ private:
          std::size_t colonne) noexcept;
 
   /**
-   * @brief Initialise un plateau à l'aide des listes d'initialisations
+   * @brief Initialise un plateau à l'aide d'un container 2D
    *
-   * @param[in] board La liste d'initialisation en 2D
-   * @param[out] first_instance Le tableau de la première
 \end{minted}
 \end{frame}
 
 \begin{frame}[fragile]
 \begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=631]{cpp}
+   * @param[in] board Un container 2D
+   * @param[out] first_instance Le tableau de la première
    * instance du plateau
    * @param[out] piece_board Le plateau contenant les pièces
    */
   CONSTEXPR static void
-  initializer_list_to_2_array(
-      std::initializer_list<
-          std::initializer_list<
-              Piece>> const &board,
+  range_to_2_array(
+      std::ranges::common_range auto const &board,
       std::array<bool, N * M> &first_instance,
       std::array<Piece, N * M> &piece_board) noexcept;
 
@@ -1265,17 +1265,34 @@ CONSTEXPR Board<N, M>::Board(std::initializer_list<
   init_mailbox(m_S_mailbox, m_L_mailbox);
   m_board.push_back(std::pair<std::array<bool, N * M>,
                               std::complex<double>>{{false}, 1.});
-  initializer_list_to_2_array(board, m_board[0].first, m_piece_board);
+  range_to_2_array(board, m_board[0].first, m_piece_board);
 };
 
 template <std::size_t N, std::size_t M>
-CONSTEXPR std::size_t
-Board<N, M>::offset(std::size_t ligne, std::size_t colonne) noexcept
+CONSTEXPR Board<N, M>::Board(std::ranges::common_range auto const &board)
+    : m_board(),
 \end{minted}
 \end{frame}
 
 \begin{frame}[fragile]
 \begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=61]{cpp}
+      m_piece_board(),
+      m_S_mailbox(),
+      m_L_mailbox(),
+      m_color_current_player(Color::WHITE),
+      m_k_castle({true, true}),
+      m_q_castle({true, true}),
+      m_ep()
+{
+  init_mailbox(m_S_mailbox, m_L_mailbox);
+  m_board.push_back(std::pair<std::array<bool, N * M>,
+                              std::complex<double>>{{false}, 1.});
+  range_to_2_array(board, m_board[0].first, m_piece_board);
+};
+
+template <std::size_t N, std::size_t M>
+CONSTEXPR std::size_t
+Board<N, M>::offset(std::size_t ligne, std::size_t colonne) noexcept
 {
   return ligne * M + colonne;
 };
@@ -1289,15 +1306,18 @@ CONSTEXPR std::size_t Board<N, M>::numberLines() noexcept
 template <std::size_t N, std::size_t M>
 CONSTEXPR std::size_t Board<N, M>::numberColumns() noexcept
 {
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=91]{cpp}
   return M;
 };
 
 template <std::size_t N, std::size_t M>
 CONSTEXPR void
-Board<N, M>::initializer_list_to_2_array(
-    std::initializer_list<
-        std::initializer_list<
-            Piece>> const &board,
+Board<N, M>::range_to_2_array(
+    std::ranges::common_range auto const &board,
     std::array<bool, N * M> &first_instance,
     std::array<Piece, N * M> &piece_board) noexcept
 {
@@ -1305,12 +1325,7 @@ Board<N, M>::initializer_list_to_2_array(
   auto it_tab{std::begin(first_instance)};
   auto it_piece_dst{std::begin(piece_board)};
   assert(std::size(board) <= N && "Value entry out of Board");
-  for (std::initializer_list<Piece> const &e : board)
-\end{minted}
-\end{frame}
-
-\begin{frame}[fragile]
-\begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=91]{cpp}
+  for (auto const &e : board)
   {
     auto const it_tab_begin_line{it_tab};
     assert(std::size(e) <= M && "Value entry out of Board");
@@ -1326,6 +1341,11 @@ Board<N, M>::initializer_list_to_2_array(
                         else
                         {
                             *it_tab = false;
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=121]{cpp}
                         }
                         it_tab++; });
     std::move(std::begin(e), std::end(e), it_piece_dst);
@@ -1341,11 +1361,6 @@ Board<N, M>::init_mailbox(
     std::array<int, (N + 4) * (M + 2)> &L_mailbox) noexcept
 {
   std::fill(std::begin(L_mailbox),
-\end{minted}
-\end{frame}
-
-\begin{frame}[fragile]
-\begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=121]{cpp}
             std::begin(L_mailbox) + (2 * (M + 2) + 1), -1);
 
   std::fill(std::end(L_mailbox) - (2 * (M + 2) + 1),
@@ -1361,6 +1376,11 @@ Board<N, M>::init_mailbox(
     L_mailbox[offset_L_mailboard(i + 2, 0)] = -1;
     L_mailbox[offset_L_mailboard(i + 2, M + 1)] = -1;
     for (std::size_t j{0}; j < M; j++)
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=151]{cpp}
     {
       L_mailbox[offset_L_mailboard(i + 2, j + 1)] =
           static_cast<int>(Board<N, M>::offset(i, j));
@@ -1376,11 +1396,6 @@ CONSTEXPR double Board<N, M>::get_proba(Coord const &pos) const noexcept
   double acc{0.};
   for (auto const &e : m_board)
   {
-\end{minted}
-\end{frame}
-
-\begin{frame}[fragile]
-\begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=151]{cpp}
     acc += pow(abs(e.second), 2.) * e.first[offset(pos.n, pos.m)];
   }
   return acc;
@@ -1396,6 +1411,11 @@ Board<N, M>::get_list_normal_move(Coord const &pos) const
   }
   return std::forward_list<Coord>{};
 }
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=181]{cpp}
 
 template <std::size_t N, std::size_t M>
 CONSTEXPR std::forward_list<Coord>
@@ -1411,11 +1431,6 @@ Board<N, M>::get_list_split_move(Coord const &pos) const
 template <std::size_t N, std::size_t M>
 CONSTEXPR Color Board<N, M>::get_current_player() const noexcept
 {
-\end{minted}
-\end{frame}
-
-\begin{frame}[fragile]
-\begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=181]{cpp}
   return m_color_current_player;
 }
 
@@ -1431,6 +1446,11 @@ CONSTEXPR void Board<N, M>::change_player() noexcept
     m_color_current_player = Color::WHITE;
   }
 }
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=211]{cpp}
 
 template <std::size_t N, std::size_t M>
 template <std::size_t Q>
@@ -1446,11 +1466,6 @@ CONSTEXPR void Board<N, M>::modify(
 {
   if (!complex_equal(arrayQubit[1].second, 0i))
   {
-\end{minted}
-\end{frame}
-
-\begin{frame}[fragile]
-\begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=211]{cpp}
     std::pair<std::array<bool, N * M>, std::complex<double>> new_b{};
     std::copy(std::begin(m_board[position_board].first),
               std::end(m_board[position_board].first),
@@ -1466,6 +1481,11 @@ CONSTEXPR void Board<N, M>::modify(
       }
     }
     new_b.second *= arrayQubit[1].second;
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=241]{cpp}
     m_board.push_back(new_b);
   }
   for (std::size_t i{0}; i < Q; i++)
@@ -1481,11 +1501,6 @@ CONSTEXPR void Board<N, M>::modify(
 
 template <std::size_t N, std::size_t M>
 template <std::size_t Q>
-\end{minted}
-\end{frame}
-
-\begin{frame}[fragile]
-\begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=241]{cpp}
 CONSTEXPR void
 Board<N, M>::move_1_instance(std::array<bool, Q> const &case_modif,
                              std::size_t position,
@@ -1501,6 +1516,11 @@ Board<N, M>::move_1_instance(std::array<bool, Q> const &case_modif,
 template <std::size_t N, std::size_t M>
 CONSTEXPR Piece const &
 Board<N, M>::operator()(std::size_t n, std::size_t m) const noexcept
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=271]{cpp}
 {
   return m_piece_board[offset(n, m)];
 }
@@ -1516,11 +1536,6 @@ void Board<N, M>::update_board() noexcept
     {
       m_board.erase(std::begin(m_board) + i - 1);
     }
-\end{minted}
-\end{frame}
-
-\begin{frame}[fragile]
-\begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=271]{cpp}
     else
     {
       for (std::size_t j{i - 1}; j > 0; j--)
@@ -1536,6 +1551,11 @@ void Board<N, M>::update_board() noexcept
   }
 }
 template <std::size_t N, std::size_t M>
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=301]{cpp}
 CONSTEXPR bool Board<N, M>::winning_position(Color c) const noexcept
 {
   for (std::size_t i{0}; i < N * M; i++)
@@ -1551,11 +1571,6 @@ CONSTEXPR bool Board<N, M>::winning_position(Color c) const noexcept
 
 template <std::size_t N, std::size_t M>
 CONSTEXPR bool
-\end{minted}
-\end{frame}
-
-\begin{frame}[fragile]
-\begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=301]{cpp}
 Board<N, M>::move_is_legal(Move const &move) const
 {
   if (move.type == TypeMove::NORMAL)
@@ -1571,6 +1586,11 @@ Board<N, M>::move_is_legal(Move const &move) const
   {
     std::forward_list<Coord> list{get_list_split_move(move.split.src)};
     std::array<bool, 2> found{};
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=331]{cpp}
     std::array<Coord, 2> arv{{move.split.arv1, move.split.arv2}};
     for (Coord const &e : list)
     {
@@ -1586,11 +1606,6 @@ Board<N, M>::move_is_legal(Move const &move) const
               std::end(found),
               [](bool v) -> bool
               { return v; }))
-\end{minted}
-\end{frame}
-
-\begin{frame}[fragile]
-\begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=331]{cpp}
       {
         break;
       }
@@ -1606,6 +1621,11 @@ Board<N, M>::move_is_legal(Move const &move) const
     return std::find(
                std::begin(list1),
                std::end(list1),
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=361]{cpp}
                move.merge.arv) !=
                std::end(list1) &&
            std::find(
@@ -1621,11 +1641,6 @@ void Board<N, M>::update_case(std::size_t pos) noexcept
 {
   std::size_t size_board{std::size(m_board)};
   for (std::size_t i{0}; i < size_board; i++)
-\end{minted}
-\end{frame}
-
-\begin{frame}[fragile]
-\begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=361]{cpp}
   {
     if (m_board[i].first[pos])
     {
@@ -1641,6 +1656,11 @@ Board<N, M>::check_if_use_move_promote(Coord const &pos) const noexcept
 {
   return (*this)(pos.n, pos.m).check_if_use_move_promote(*this, pos);
 }
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=391]{cpp}
 
 template <std::size_t N, std::size_t M>
 CONSTEXPR std::forward_list<Move>
@@ -1656,11 +1676,6 @@ Board<N, M>::all_move(
     UnitaryFunction func,
     std::optional<Color> color_player) const noexcept
 {
-\end{minted}
-\end{frame}
-
-\begin{frame}[fragile]
-\begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=391]{cpp}
   std::unordered_map<TypePiece,
                      std::unordered_map<
                          Coord,
@@ -1676,6 +1691,11 @@ Board<N, M>::all_move(
       double p_proba{get_proba(Coord(i, j))};
       if (piece.get_type() != TypePiece::EMPTY &&
           piece.get_color() == color_player
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=421]{cpp}
                                    .value_or(get_current_player()))
       {
         if (!check_if_use_move_promote(Coord(i, j)))
@@ -1691,11 +1711,6 @@ Board<N, M>::all_move(
             }
           }
 
-\end{minted}
-\end{frame}
-
-\begin{frame}[fragile]
-\begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=421]{cpp}
           std::forward_list<Coord> move_split{
               get_list_split_move(Coord(i, j))};
 
@@ -1711,6 +1726,11 @@ Board<N, M>::all_move(
                  it2 != cend(move_split); it2++)
             {
               if (it_move == it2)
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=451]{cpp}
               {
                 continue;
               }
@@ -1726,11 +1746,6 @@ Board<N, M>::all_move(
               {
                 if (move_merge
                         .at(piece.get_type())
-\end{minted}
-\end{frame}
-
-\begin{frame}[fragile]
-\begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=451]{cpp}
                         .contains(*it_move))
                 {
                   for (Coord const &c :
@@ -1746,6 +1761,11 @@ Board<N, M>::all_move(
                     {
                       if (func(Move_merge(
                               Coord(i, j),
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=481]{cpp}
                               c,
                               *it_move)))
                       {
@@ -1761,11 +1781,6 @@ Board<N, M>::all_move(
                       .insert({*it_move,
                                std::vector{
                                    Coord(i, j)}});
-\end{minted}
-\end{frame}
-
-\begin{frame}[fragile]
-\begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=481]{cpp}
                 }
               }
               else
@@ -1781,6 +1796,11 @@ Board<N, M>::all_move(
                                 Coord_hash>{
                                 std::make_pair(
                                     *it_move,
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=511]{cpp}
                                     std::vector{
                                         Coord(i, j)})}));
               }
@@ -1796,11 +1816,6 @@ Board<N, M>::all_move(
           {
             if (func(move))
             {
-\end{minted}
-\end{frame}
-
-\begin{frame}[fragile]
-\begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=511]{cpp}
               return;
             }
           }
@@ -1816,6 +1831,11 @@ void Board<N, M>::update_board_classic() noexcept
   std::size_t size_board = std::size(m_board);
   for (std::size_t i{size_board}; i > 0; i--)
   {
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=541]{cpp}
     using namespace std::complex_literals;
     if (complex_equal(m_board[i - 1].second, 0i))
     {
@@ -1827,15 +1847,11 @@ void Board<N, M>::update_board_classic() noexcept
       {
         if (m_board[i - 1].first == m_board[j - 1].first)
         {
-          double inter = std::pow(std::abs(m_board[j - 1].second), 2) + std::pow(std::abs(m_board[i - 1].second), 2);
+          double inter = std::pow(std::abs(m_board[j - 1].second), 2) +
+                         std::pow(std::abs(m_board[i - 1].second), 2);
           m_board[j - 1].second = std::pow(inter, 1. / 2);
           m_board.erase(std::begin(m_board) + i - 1);
           break;
-\end{minted}
-\end{frame}
-
-\begin{frame}[fragile]
-\begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=541]{cpp}
         }
       }
     }
@@ -1850,6 +1866,11 @@ void Board<N, M>::update_board_classic() noexcept
   for (std::size_t i{0}; i<n_size_board; i++)
   {
       m_board[i].second /= all_proba;
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=571]{cpp}
   }*/
 
 \end{minted}
@@ -5326,40 +5347,40 @@ check_path_straight(
 		Coord const &dpt,
 		Coord const &arv) noexcept
 {
-	if (dpt.n == arv.n)
-	{
-		for (std::size_t i{std::min(dpt.m, arv.m) + 1};
-				 i < std::max(dpt.m, arv.m);
-				 i++)
-		{
-			if (board(dpt.n, i).get_type() != TypePiece::EMPTY ||
-					board.get_proba(Coord(dpt.n, i)) < 1.)
-			{
-				return false;
-			}
-		}
-		return true;
-	}
-	else if (dpt.m == arv.m)
-	{
-		for (std::size_t i{std::min(dpt.n, arv.n) + 1};
+  if (dpt.n == arv.n)
+  {
+    for (std::size_t i{std::min(dpt.m, arv.m) + 1};
+         i < std::max(dpt.m, arv.m);
+         i++)
+    {
+      if (board(dpt.n, i).get_type() != TypePiece::EMPTY ||
+          board.get_proba(Coord(dpt.n, i)) < 1.)
+      {
+        return false;
+      }
+    }
+    return true;
+  }
+  else if (dpt.m == arv.m)
+  {
+    for (std::size_t i{std::min(dpt.n, arv.n) + 1};
 \end{minted}
 \end{frame}
 
 \begin{frame}[fragile]
 \begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=31]{cpp}
-				 i < std::max(dpt.n, arv.n);
-				 i++)
-		{
-			if (board(i, dpt.m).get_type() != TypePiece::EMPTY ||
-					board.get_proba(Coord(i, dpt.m)) < 1.)
-			{
-				return false;
-			}
-		}
-		return true;
-	}
-	return false;
+         i < std::max(dpt.n, arv.n);
+         i++)
+    {
+      if (board(i, dpt.m).get_type() != TypePiece::EMPTY ||
+          board.get_proba(Coord(i, dpt.m)) < 1.)
+      {
+        return false;
+      }
+    }
+    return true;
+  }
+  return false;
 }
 
 template <std::size_t N, std::size_t M>
@@ -5369,30 +5390,30 @@ check_path_diagonal(
 		Coord const &dpt,
 		Coord const &arv) noexcept
 {
-	std::size_t const max_lines{std::max(dpt.n, arv.n)};
-	std::size_t const min_lines{std::min(dpt.n, arv.n)};
-	std::size_t const max_columns{std::max(dpt.m, arv.m)};
-	std::size_t const min_columns{std::min(dpt.m, arv.m)};
+  std::size_t const max_lines{std::max(dpt.n, arv.n)};
+  std::size_t const min_lines{std::min(dpt.n, arv.n)};
+  std::size_t const max_columns{std::max(dpt.m, arv.m)};
+  std::size_t const min_columns{std::min(dpt.m, arv.m)};
 
-	std::size_t const dist{max_lines - min_lines};
+  std::size_t const dist{max_lines - min_lines};
 
-	if (dist == max_columns - min_columns)
-	{
+  if (dist == max_columns - min_columns)
+  {
 \end{minted}
 \end{frame}
 
 \begin{frame}[fragile]
 \begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=61]{cpp}
-		for (std::size_t i{1}; i < dist; i++)
-		{
-			if (board(min_lines + i, min_columns + i).get_type() != TypePiece::EMPTY)
-			{
-				return false;
-			}
-		}
-		return true;
-	}
-	return false;
+    for (std::size_t i{1}; i < dist; i++)
+    {
+      if (board(min_lines + i, min_columns + i).get_type() != TypePiece::EMPTY)
+      {
+        return false;
+      }
+    }
+    return true;
+  }
+  return false;
 }
 
 template <std::size_t N, std::size_t M>
@@ -5404,131 +5425,131 @@ check_path_straight_1_instance(
 		std::size_t position,
 		std::optional<Coord> position_other_piece_merge)
 {
-	if (dpt.n == arv.n)
-	{
-		for (std::size_t i{std::min(dpt.m, arv.m) + 1};
-				 i < std::max(dpt.m, arv.m);
-				 i++)
-		{
-			if (board.m_board[position].first[board.offset(dpt.n, i)])
-			{
-				if (position_other_piece_merge.has_value())
+  if (dpt.n == arv.n)
+  {
+    for (std::size_t i{std::min(dpt.m, arv.m) + 1};
+         i < std::max(dpt.m, arv.m);
+         i++)
+    {
+      if (board.m_board[position].first[board.offset(dpt.n, i)])
+      {
+        if (position_other_piece_merge.has_value())
 \end{minted}
 \end{frame}
 
 \begin{frame}[fragile]
 \begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=91]{cpp}
-				{
-					if (!(board.offset(position_other_piece_merge.value().n,
-														 position_other_piece_merge.value().m) == board.offset(dpt.n, i)))
-					{
-						return false;
-					}
-				}
-				else
-				{
-					return false;
-				}
-			}
-		}
-		return true;
-	}
-	else if (dpt.m == arv.m)
-	{
-		for (std::size_t i{std::min(dpt.n, arv.n) + 1};
-				 i < std::max(dpt.n, arv.n);
-				 i++)
-		{
-			if (board.m_board[position].first[board.offset(i, dpt.m)])
-			{
-				if (position_other_piece_merge.has_value())
-				{
-					if (!(board.offset(position_other_piece_merge.value().n,
-														 position_other_piece_merge.value().m) == board.offset(i, dpt.m)))
-					{
-						return false;
-					}
+        {
+          if (!(board.offset(position_other_piece_merge.value().n,
+                             position_other_piece_merge.value().m) == board.offset(dpt.n, i)))
+          {
+            return false;
+          }
+        }
+        else
+        {
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+  else if (dpt.m == arv.m)
+  {
+    for (std::size_t i{std::min(dpt.n, arv.n) + 1};
+         i < std::max(dpt.n, arv.n);
+         i++)
+    {
+      if (board.m_board[position].first[board.offset(i, dpt.m)])
+      {
+        if (position_other_piece_merge.has_value())
+        {
+          if (!(board.offset(position_other_piece_merge.value().n,
+                             position_other_piece_merge.value().m) == board.offset(i, dpt.m)))
+          {
+            return false;
+          }
 \end{minted}
 \end{frame}
 
 \begin{frame}[fragile]
 \begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=121]{cpp}
-				}
-				else
-				{
-					return false;
-				}
-			}
-		}
-		return true;
-	}
-	return false;
+        }
+        else
+        {
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+  return false;
 }
 
 template <std::size_t N, std::size_t M>
 CONSTEXPR bool
 check_path_diagonal_1_instance(
-		Board<N, M> const &board,
-		Coord const &dpt,
-		Coord const &arv,
-		std::size_t position,
-		std::optional<Coord> position_other_piece_merge)
+    Board<N, M> const &board,
+    Coord const &dpt,
+    Coord const &arv,
+    std::size_t position,
+    std::optional<Coord> position_other_piece_merge)
 {
-	std::size_t const max_lines{std::max(dpt.n, arv.n)};
-	std::size_t const min_lines{std::min(dpt.n, arv.n)};
-	std::size_t const max_columns{std::max(dpt.m, arv.m)};
-	std::size_t const min_columns{std::min(dpt.m, arv.m)};
+  std::size_t const max_lines{std::max(dpt.n, arv.n)};
+  std::size_t const min_lines{std::min(dpt.n, arv.n)};
+  std::size_t const max_columns{std::max(dpt.m, arv.m)};
+  std::size_t const min_columns{std::min(dpt.m, arv.m)};
 
-	std::size_t const dist{max_lines - min_lines};
+  std::size_t const dist{max_lines - min_lines};
 
-	if (dist == max_columns - min_columns)
-	{
+  if (dist == max_columns - min_columns)
+  {
 \end{minted}
 \end{frame}
 
 \begin{frame}[fragile]
 \begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=151]{cpp}
-		for (std::size_t i{1}; i < dist; i++)
-		{
-			if (board.m_board[position]
-							.first[board.offset(min_lines + i, min_columns + i)])
-			{
-				if (position_other_piece_merge.has_value())
-				{
-					if (!(board.offset(position_other_piece_merge.value().n,
-														 position_other_piece_merge.value().m) ==
-								board.offset(min_lines + i,
-														 min_columns + i)))
-					{
-						return false;
-					}
-				}
-				else
-				{
-					return false;
-				}
-			}
-		}
-		return true;
-	}
-	return false;
+    for (std::size_t i{1}; i < dist; i++)
+    {
+      if (board.m_board[position]
+              .first[board.offset(min_lines + i, min_columns + i)])
+      {
+        if (position_other_piece_merge.has_value())
+        {
+          if (!(board.offset(position_other_piece_merge.value().n,
+                             position_other_piece_merge.value().m) ==
+                board.offset(min_lines + i,
+                             min_columns + i)))
+          {
+            return false;
+          }
+        }
+        else
+        {
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+  return false;
 }
 
 template <std::size_t N, std::size_t M>
 CONSTEXPR bool check_path_queen_1_instance(
-		Board<N, M> const &board,
-		Coord const &dpt,
+    Board<N, M> const &board,
+    Coord const &dpt,
 \end{minted}
 \end{frame}
 
 \begin{frame}[fragile]
 \begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=181]{cpp}
-		Coord const &arv,
-		std::size_t position,
-		std::optional<Coord> position_other_piece_merge)
+    Coord const &arv,
+    std::size_t position,
+    std::optional<Coord> position_other_piece_merge)
 {
-	return check_path_straight_1_instance<N, M>(board, dpt, arv, position, position_other_piece_merge) ||
-				 check_path_diagonal_1_instance<N, M>(board, dpt, arv, position, position_other_piece_merge);
+  return check_path_straight_1_instance<N, M>(board, dpt, arv, position, position_other_piece_merge) ||
+         check_path_diagonal_1_instance<N, M>(board, dpt, arv, position, position_other_piece_merge);
 
 \end{minted}
 \end{frame}
@@ -5823,6 +5844,14 @@ namespace std
 #include <ostream>
 #include <Board.hpp>
 
+const char *getUnicodeChar(TypePiece piece, Color color);
+TypeMove chr_to_TypeMove(char type_move);
+char Piece_to_chr(TypePiece piece, Color color);
+Piece chr_to_Piece(char piece);
+
+template <std::size_t N, std::size_t M>
+void print_board_light(std::ostream &os, Board<N, M> const &board);
+
 template <std::size_t N, std::size_t M>
 std::ostream& operator<<(std::ostream& os, Board<N, M> const& board);
 
@@ -5843,6 +5872,7 @@ const char *getUnicodeChar(TypePiece piece, Color color)
   using enum TypePiece;
   if (color == Color::WHITE)
   {
+#if defined(WIN32)
     switch (piece)
     {
     case KING:
@@ -5864,12 +5894,12 @@ const char *getUnicodeChar(TypePiece piece, Color color)
   }
   else
   {
-    switch (piece)
 \end{minted}
 \end{frame}
 
 \begin{frame}[fragile]
 \begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=31]{cpp}
+    switch (piece)
     {
     case KING:
       return "k";
@@ -5888,9 +5918,197 @@ const char *getUnicodeChar(TypePiece piece, Color color)
       return " ";
     }
   }
+#else
+    switch (piece)
+    {
+    case KING:
+      return "K";
+    case QUEEN:
+      return "Q";
+    case ROOK:
+      return "R";
+    case BISHOP:
+      return "B";
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=61]{cpp}
+    case KNIGHT:
+      return "N";
+    case PAWN:
+      return "P";
+    case EMPTY:
+    default:
+      return " ";
+    }
+  }
+  else
+  {
+    switch (piece)
+    {
+    case KING:
+      return "k";
+    case QUEEN:
+      return "q";
+    case ROOK:
+      return "r";
+    case BISHOP:
+      return "b";
+    case KNIGHT:
+      return "n";
+    case PAWN:
+      return "p";
+    case EMPTY:
+    default:
+      return " ";
+    }
+  }
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=91]{cpp}
+#endif
+}
+
+TypeMove chr_to_TypeMove(char type_move)
+{
+  using enum TypeMove;
+  switch (type_move)
+  {
+  case 'N':
+    return NORMAL;
+  case 'S':
+    return SPLIT;
+  case 'M':
+    return MERGE;
+  case 'P':
+    return PROMOTE;
+  default:
+    return NORMAL;
+  }
+}
+
+char Piece_to_chr(TypePiece piece, Color color)
+{
+  using enum TypePiece;
+  if (color == Color::WHITE)
+  {
+    switch (piece)
+    {
+    case KING:
+      return 'K';
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=121]{cpp}
+    case QUEEN:
+      return 'Q';
+    case ROOK:
+      return 'R';
+    case BISHOP:
+      return 'B';
+    case KNIGHT:
+      return 'N';
+    case PAWN:
+      return 'P';
+    case EMPTY:
+    default:
+      return ' ';
+    }
+  }
+  else
+  {
+    switch (piece)
+    {
+    case KING:
+      return 'k';
+    case QUEEN:
+      return 'q';
+    case ROOK:
+      return 'r';
+    case BISHOP:
+      return 'b';
+    case KNIGHT:
+      return 'n';
+    case PAWN:
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=151]{cpp}
+      return 'p';
+    case EMPTY:
+    default:
+      return ' ';
+    }
+  }
+}
+
+Piece chr_to_Piece(char piece)
+{
+  using enum TypePiece;
+  using enum Color;
+
+  switch (piece)
+  {
+  case 'p':
+    return Piece(PAWN, BLACK);
+  case 'P':
+    return Piece(PAWN, WHITE);
+  case 'n':
+    return Piece(KNIGHT, BLACK);
+  case 'N':
+    return Piece(KNIGHT, WHITE);
+  case 'b':
+    return Piece(BISHOP, BLACK);
+  case 'B':
+    return Piece(BISHOP, WHITE);
+  case 'r':
+    return Piece(ROOK, BLACK);
+  case 'R':
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=181]{cpp}
+    return Piece(ROOK, WHITE);
+  case 'q':
+    return Piece(QUEEN, BLACK);
+  case 'Q':
+    return Piece(QUEEN, WHITE);
+  case 'k':
+    return Piece(KING, BLACK);
+  case 'K':
+    return Piece(KING, WHITE);
+  case ' ':
+  default:
+    return Piece(EMPTY, BLACK);
+  }
 }
 
 template <std::size_t N, std::size_t M>
+void print_board_light(std::ostream &os, Board<N, M> const &board)
+{
+  for (std::size_t i{0}; i < N; i++)
+  {
+    for (std::size_t j{0}; j < M; j++)
+    {
+      Piece p {board(i, j)};
+      os << Piece_to_chr(p.get_type(), p.get_color());
+    }
+    os << '\n';
+  }
+}
+
+template <std::size_t N, std::size_t M>
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=211]{cpp}
 std::ostream &operator<<(std::ostream &os, Board<N, M> const &board)
 {
   for (std::size_t i{0}; i < M; i++)
@@ -5900,11 +6118,6 @@ std::ostream &operator<<(std::ostream &os, Board<N, M> const &board)
   os << "|\n";
   for (std::size_t i{0}; i < N; i++)
   {
-\end{minted}
-\end{frame}
-
-\begin{frame}[fragile]
-\begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=61]{cpp}
     for (std::size_t j{0}; j < M; j++)
     {
       TypePiece piece{board(i, j).get_type()};
@@ -5921,10 +6134,16 @@ std::ostream &operator<<(std::ostream &os, Board<N, M> const &board)
         if (p != 100)
         {
           os << "| ";
-          if (p < 10){
+          if (p < 10)
+          {
             os << '0';
           }
           os << p << "% ";
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=241]{cpp}
         }
         else
         {
@@ -5935,11 +6154,6 @@ std::ostream &operator<<(std::ostream &os, Board<N, M> const &board)
       {
         os << "|     ";
       }
-\end{minted}
-\end{frame}
-
-\begin{frame}[fragile]
-\begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=91]{cpp}
     }
     os << "|\n";
     for (std::size_t j{0}; j < M; j++)
@@ -7073,15 +7287,15 @@ constexpr Matrix<T, LINES*N, COLUMNS*M> Matrix<T, LINES, COLUMNS>::tensoriel_pro
 
 int test_move_promotion(int argc, char **argv)
 {
-    Board<3> board{
-        {W_ROOK, Piece(), Piece()},
-        {B_PAWN, Piece(), Piece()},
-        {Piece(), Piece(), Piece()}};
-    Move m = Move_promote(Coord(1, 0), Coord(2, 0), TypePiece::BISHOP);
-    board.move_promotion(m);
-    return !(board(2, 0).get_type() == TypePiece::BISHOP &&
-             double_equal(board.get_proba(Coord(1, 0)), 0.) &&
-             board(1, 0).get_type() == TypePiece::EMPTY);
+  Board<3> board{
+      {W_ROOK, Piece(), Piece()},
+      {B_PAWN, Piece(), Piece()},
+      {Piece(), Piece(), Piece()}};
+  Move m = Move_promote(Coord(1, 0), Coord(2, 0), TypePiece::BISHOP);
+  board.move_promotion(m);
+  return !(board(2, 0).get_type() == TypePiece::BISHOP &&
+           double_equal(board.get_proba(Coord(1, 0)), 0.) &&
+           board(1, 0).get_type() == TypePiece::EMPTY);
 
 \end{minted}
 \end{frame}
@@ -7099,23 +7313,23 @@ int test_move_promotion(int argc, char **argv)
 
 int test_move_enpassant_with_capture(int argc, char **argv)
 {
-    Board<5> board{
-        {W_ROOK, Piece(), Piece(), Piece(), Piece()},
-        {B_PAWN, Piece(), Piece(), Piece(), Piece()},
-        {Piece(), Piece(), Piece(), Piece(), Piece()},
-        {Piece(), W_PAWN, Piece(), Piece(), Piece()},
-        {Piece(), Piece(), Piece(), W_BISHOP, Piece()}};
-    Move m = Move_split(Coord(4, 3), Coord(3, 2), Coord(2, 1));
-    Move m1 = Move_classic(Coord(3, 1), Coord(1, 1));
-    Move m2 = Move_classic(Coord(1, 0), Coord(2, 1));
-    board.move(m);
-    board.move(m1);
-    board.move(m2);
-    bool equal = double_equal(board.get_proba(Coord(3, 2)), 0.5);
-    return !(board(2, 1).get_type() == TypePiece::PAWN &&
-             equal &&
-             board(1, 1).get_type() == TypePiece::EMPTY &&
-             board(1, 0).get_type() == TypePiece::EMPTY);
+  Board<5> board{
+      {W_ROOK, Piece(), Piece(), Piece(), Piece()},
+      {B_PAWN, Piece(), Piece(), Piece(), Piece()},
+      {Piece(), Piece(), Piece(), Piece(), Piece()},
+      {Piece(), W_PAWN, Piece(), Piece(), Piece()},
+      {Piece(), Piece(), Piece(), W_BISHOP, Piece()}};
+  Move m = Move_split(Coord(4, 3), Coord(3, 2), Coord(2, 1));
+  Move m1 = Move_classic(Coord(3, 1), Coord(1, 1));
+  Move m2 = Move_classic(Coord(1, 0), Coord(2, 1));
+  board.move(m);
+  board.move(m1);
+  board.move(m2);
+  bool equal = double_equal(board.get_proba(Coord(3, 2)), 0.5);
+  return !(board(2, 1).get_type() == TypePiece::PAWN &&
+           equal &&
+           board(1, 1).get_type() == TypePiece::EMPTY &&
+           board(1, 0).get_type() == TypePiece::EMPTY);
 
 \end{minted}
 \end{frame}
@@ -7133,17 +7347,17 @@ int test_move_enpassant_with_capture(int argc, char **argv)
 
 int test_move_pawn_two_step(int argc, char **argv)
 {
-    Board<5> board{
-        {W_ROOK, Piece(), Piece(), Piece(), Piece()},
-        {B_PAWN, Piece(), Piece(), Piece(), Piece()},
-        {Piece(), Piece(), Piece(), Piece(), Piece()},
-        {Piece(), Piece(), Piece(), Piece(), Piece()},
-        {Piece(), Piece(), Piece(), Piece(), Piece()}};
-    Move m = Move_classic(Coord(1, 0), Coord(3, 0));
-    board.move(m);
-    return !(board(3, 0).get_type() == TypePiece::PAWN &&
-             double_equal(board.get_proba(Coord(1, 0)), 0.) &&
-             board(1, 0).get_type() == TypePiece::EMPTY);
+  Board<5> board{
+      {W_ROOK, Piece(), Piece(), Piece(), Piece()},
+      {B_PAWN, Piece(), Piece(), Piece(), Piece()},
+      {Piece(), Piece(), Piece(), Piece(), Piece()},
+      {Piece(), Piece(), Piece(), Piece(), Piece()},
+      {Piece(), Piece(), Piece(), Piece(), Piece()}};
+  Move m = Move_classic(Coord(1, 0), Coord(3, 0));
+  board.move(m);
+  return !(board(3, 0).get_type() == TypePiece::PAWN &&
+           double_equal(board.get_proba(Coord(1, 0)), 0.) &&
+           board(1, 0).get_type() == TypePiece::EMPTY);
 
 \end{minted}
 \end{frame}
@@ -7161,16 +7375,16 @@ int test_move_pawn_two_step(int argc, char **argv)
 
 int test_move_promotion_with_capture(int argc, char **argv)
 {
-    Board<3> board{
-        {W_ROOK, Piece(), Piece()},
-        {B_PAWN, Piece(), Piece()},
-        {Piece(), W_QUEEN, Piece()}};
-    Move m = Move_promote(Coord(1, 0), Coord(2, 1), TypePiece::BISHOP);
-    board.move(m);
-    return !(board(2, 1).get_type() == TypePiece::BISHOP &&
-             board(2, 1).get_color() == Color::BLACK &&
-             double_equal(board.get_proba(Coord(1, 0)), 0.) &&
-             board(1, 0).get_type() == TypePiece::EMPTY);
+  Board<3> board{
+      {W_ROOK, Piece(), Piece()},
+      {B_PAWN, Piece(), Piece()},
+      {Piece(), W_QUEEN, Piece()}};
+  Move m = Move_promote(Coord(1, 0), Coord(2, 1), TypePiece::BISHOP);
+  board.move(m);
+  return !(board(2, 1).get_type() == TypePiece::BISHOP &&
+           board(2, 1).get_color() == Color::BLACK &&
+           double_equal(board.get_proba(Coord(1, 0)), 0.) &&
+           board(1, 0).get_type() == TypePiece::EMPTY);
 
 \end{minted}
 \end{frame}
@@ -7188,23 +7402,23 @@ int test_move_promotion_with_capture(int argc, char **argv)
 
 int test_move_promotion_with_split_before(int argc, char **argv)
 {
-    Board<3> board{
-        {W_ROOK, Piece(), Piece()},
-        {B_PAWN, Piece(), Piece()},
-        {Piece(), W_QUEEN, Piece()}};
-    Move m1 = Move_split(Coord(2, 1), Coord(2, 0), Coord(2, 2));
-    Move m2 = Move_promote(Coord(1, 0), Coord(2, 0), TypePiece::BISHOP);
-    board.move(m1);
-    board.move(m2);
-    bool res = !((board(2, 0).get_type() == TypePiece::BISHOP &&
-                  board(2, 0).get_color() == Color::BLACK &&
-                  board(1, 0).get_type() == TypePiece::EMPTY &&
-                  double_equal(board.get_proba(Coord(2, 2)), 1.)) ||
-                 (board(2, 0).get_type() == TypePiece::QUEEN &&
-                  board(2, 0).get_color() == Color::WHITE &&
-                  board(1, 0).get_type() == TypePiece::PAWN &&
-                  double_equal(board.get_proba(Coord(2, 2)), 0.)));
-    return res;
+  Board<3> board{
+      {W_ROOK, Piece(), Piece()},
+      {B_PAWN, Piece(), Piece()},
+      {Piece(), W_QUEEN, Piece()}};
+  Move m1 = Move_split(Coord(2, 1), Coord(2, 0), Coord(2, 2));
+  Move m2 = Move_promote(Coord(1, 0), Coord(2, 0), TypePiece::BISHOP);
+  board.move(m1);
+  board.move(m2);
+  bool res = !((board(2, 0).get_type() == TypePiece::BISHOP &&
+                board(2, 0).get_color() == Color::BLACK &&
+                board(1, 0).get_type() == TypePiece::EMPTY &&
+                double_equal(board.get_proba(Coord(2, 2)), 1.)) ||
+               (board(2, 0).get_type() == TypePiece::QUEEN &&
+                board(2, 0).get_color() == Color::WHITE &&
+                board(1, 0).get_type() == TypePiece::PAWN &&
+                double_equal(board.get_proba(Coord(2, 2)), 0.)));
+  return res;
 
 \end{minted}
 \end{frame}
@@ -7220,39 +7434,39 @@ int test_move_promotion_with_split_before(int argc, char **argv)
 #include <Move.hpp>
 #include <math_utility.hpp>
 
-int test_move_split_with_mesure(int argc, char* *argv)
+int test_move_split_with_mesure(int argc, char **argv)
 {
-    Board<5> board{
-        {W_ROOK, Piece(), Piece(),Piece(), Piece()},
-        {Piece(), Piece(), Piece(), Piece(), Piece()},
-        {Piece(), Piece(), Piece(),Piece(),Piece()},
-        {Piece(), Piece(),  Piece(), Piece(),Piece()},
-        {Piece(), Piece(), Piece(),B_ROOK,Piece()}};
-    Move m = Move_split(Coord(4,3), Coord(4, 1), Coord(4,4));
-    Move m1 = Move_split(Coord(0, 0), Coord(0, 1), Coord(0 ,4));
-    Move m2 = Move_classic(Coord(0,1), Coord(4,1));
-    Move m3 = Move_classic(Coord(4, 4), Coord(0, 4));
-    board.move(m);
-    board.move(m1);
-    board.move(m2);
-    board.move(m3);
-    std::size_t acc{0};
-    for(std::size_t i{0}; i<5; i++)
+  Board<5> board{
+      {W_ROOK, Piece(), Piece(), Piece(), Piece()},
+      {Piece(), Piece(), Piece(), Piece(), Piece()},
+      {Piece(), Piece(), Piece(), Piece(), Piece()},
+      {Piece(), Piece(), Piece(), Piece(), Piece()},
+      {Piece(), Piece(), Piece(), B_ROOK, Piece()}};
+  Move m = Move_split(Coord(4, 3), Coord(4, 1), Coord(4, 4));
+  Move m1 = Move_split(Coord(0, 0), Coord(0, 1), Coord(0, 4));
+  Move m2 = Move_classic(Coord(0, 1), Coord(4, 1));
+  Move m3 = Move_classic(Coord(4, 4), Coord(0, 4));
+  board.move(m);
+  board.move(m1);
+  board.move(m2);
+  board.move(m3);
+  std::size_t acc{0};
+  for (std::size_t i{0}; i < 5; i++)
+  {
+    for (std::size_t j{0}; j < 5; j++)
     {
-        for(std::size_t j{0}; j<5; j++)
-        {
-        if(board(i, j).get_type() == TypePiece::ROOK)
-        {
+      if (board(i, j).get_type() == TypePiece::ROOK)
+      {
 \end{minted}
 \end{frame}
 
 \begin{frame}[fragile]
 \begin{minted}[obeytabs=true,tabsize=2,linenos=true,firstnumber=31]{cpp}
-            acc++;
-        }
-        }
+        acc++;
+      }
     }
-    return acc != 2 && acc != 1;
+  }
+  return acc != 2 && acc != 1;
 
 \end{minted}
 \end{frame}
@@ -7267,27 +7481,25 @@ int test_move_split_with_mesure(int argc, char* *argv)
 #include <Coord.hpp>
 #include <math_utility.hpp>
 
-int test_split_in_non_empty_case(int argc, char** argv)
+int test_split_in_non_empty_case(int argc, char **argv)
 {
-    Board<1, 4> board {
-        {W_ROOK, Piece(), Piece(), Piece()}
-    };
+  Board<1, 4> board{
+      {W_ROOK, Piece(), Piece(), Piece()}};
 
-    Move m1 {Move_split(Coord(0, 0), Coord(0, 1), Coord(0, 3))};
-    Move m2 {Move_split(Coord(0, 1), Coord(0, 2), Coord(0, 3))};
+  Move m1{Move_split(Coord(0, 0), Coord(0, 1), Coord(0, 3))};
+  Move m2{Move_split(Coord(0, 1), Coord(0, 2), Coord(0, 3))};
 
-    board.move(m1);
-    board.move(m2);
-    
-    bool ret {
-        board(0, 1).get_type() == TypePiece::ROOK &&
-        board(0, 2).get_type() == TypePiece::ROOK &&
-        board(0, 3).get_type() == TypePiece::ROOK &&
-        double_equal(board.get_proba(Coord(0, 1)), 0.5) &&
-        double_equal(board.get_proba(Coord(0, 2)), 0.25) &&
-        double_equal(board.get_proba(Coord(0, 3)), 0.25)
-    };
-    return !ret;
+  board.move(m1);
+  board.move(m2);
+
+  bool ret{
+      board(0, 1).get_type() == TypePiece::ROOK &&
+      board(0, 2).get_type() == TypePiece::ROOK &&
+      board(0, 3).get_type() == TypePiece::ROOK &&
+      double_equal(board.get_proba(Coord(0, 1)), 0.5) &&
+      double_equal(board.get_proba(Coord(0, 2)), 0.25) &&
+      double_equal(board.get_proba(Coord(0, 3)), 0.25)};
+  return !ret;
 
 \end{minted}
 \end{frame}
@@ -7305,25 +7517,25 @@ int test_split_in_non_empty_case(int argc, char** argv)
 
 int test_slide_merge_move_through_a_split_piece(int argc, char **argv)
 {
-    Board<2, 5> board{
-        {W_ROOK, Piece(), Piece(), Piece(), Piece()},
-        {Piece(), Piece(), B_ROOK, Piece(), Piece()}};
-    Move m = Move_split(Coord(1, 2), Coord(0, 2), Coord(1, 4));
-    Move m1 = Move_split(Coord(0, 0), Coord(0, 1), Coord(0, 4));
-    Move m2 = Move_merge(Coord(0, 1), Coord(0, 4), Coord(0, 3));
-    board.move(m);
-    board.move(m1);
-    board.move(m2);
-    bool res{board(0, 2).get_type() == TypePiece::ROOK &&
-             board(0, 2).get_color() == Color::BLACK &&
-             board(0, 1).get_type() == TypePiece::ROOK &&
-             board(0, 1).get_color() == Color::WHITE &&
-             double_equal(board.get_proba(Coord(0, 1)), 0.5) &&
-             board(0, 3).get_type() == TypePiece::ROOK &&
-             board(0, 3).get_color() == Color::WHITE &&
-             double_equal(board.get_proba(Coord(0, 3)), 0.5) &&
-             board(0, 4).get_type() == TypePiece::EMPTY};
-    return !res;
+  Board<2, 5> board{
+      {W_ROOK, Piece(), Piece(), Piece(), Piece()},
+      {Piece(), Piece(), B_ROOK, Piece(), Piece()}};
+  Move m = Move_split(Coord(1, 2), Coord(0, 2), Coord(1, 4));
+  Move m1 = Move_split(Coord(0, 0), Coord(0, 1), Coord(0, 4));
+  Move m2 = Move_merge(Coord(0, 1), Coord(0, 4), Coord(0, 3));
+  board.move(m);
+  board.move(m1);
+  board.move(m2);
+  bool res{board(0, 2).get_type() == TypePiece::ROOK &&
+           board(0, 2).get_color() == Color::BLACK &&
+           board(0, 1).get_type() == TypePiece::ROOK &&
+           board(0, 1).get_color() == Color::WHITE &&
+           double_equal(board.get_proba(Coord(0, 1)), 0.5) &&
+           board(0, 3).get_type() == TypePiece::ROOK &&
+           board(0, 3).get_color() == Color::WHITE &&
+           double_equal(board.get_proba(Coord(0, 3)), 0.5) &&
+           board(0, 4).get_type() == TypePiece::EMPTY};
+  return !res;
 
 \end{minted}
 \end{frame}
@@ -7341,21 +7553,21 @@ int test_slide_merge_move_through_a_split_piece(int argc, char **argv)
 
 int test_get_proba_move_slide_capture(int argc, char **argv)
 {
-    Board<3, 5> board{
-        {W_ROOK, Piece(), Piece(), Piece(), Piece()},
-        {Piece(), W_ROOK,  W_ROOK,  W_ROOK, Piece()},
-        {Piece(),Piece(),Piece(),  Piece(), B_ROOK}};
-    Move m1 = Move_split(Coord(1, 1), Coord(0, 1), Coord(2, 1));
-    Move m2 = Move_split(Coord(1, 2), Coord(0, 2), Coord(2, 2));
-    Move m3 = Move_split(Coord(1, 3), Coord(0, 3), Coord(2, 3));
-    Move m4 = Move_split(Coord(2, 4), Coord(0, 4), Coord(1, 4));
-    Move m5 = Move_classic(Coord(0, 4), Coord(0, 0));
-    board.move(m1);
-    board.move(m2);
-    board.move(m3);
-    board.move(m4);
-    bool res{double_equal(board.get_proba_move(m5), 1./16)};
-    return !res;
+  Board<3, 5> board{
+      {W_ROOK, Piece(), Piece(), Piece(), Piece()},
+      {Piece(), W_ROOK, W_ROOK, W_ROOK, Piece()},
+      {Piece(), Piece(), Piece(), Piece(), B_ROOK}};
+  Move m1 = Move_split(Coord(1, 1), Coord(0, 1), Coord(2, 1));
+  Move m2 = Move_split(Coord(1, 2), Coord(0, 2), Coord(2, 2));
+  Move m3 = Move_split(Coord(1, 3), Coord(0, 3), Coord(2, 3));
+  Move m4 = Move_split(Coord(2, 4), Coord(0, 4), Coord(1, 4));
+  Move m5 = Move_classic(Coord(0, 4), Coord(0, 0));
+  board.move(m1);
+  board.move(m2);
+  board.move(m3);
+  board.move(m4);
+  bool res{double_equal(board.get_proba_move(m5), 1. / 16)};
+  return !res;
 
 \end{minted}
 \end{frame}
@@ -7373,23 +7585,23 @@ int test_get_proba_move_slide_capture(int argc, char **argv)
 
 int test_get_proba_move_slide_on_same_color(int argc, char **argv)
 {
-    Board<3, 5> board{
-        {Piece(), Piece(), Piece(), Piece(), Piece()},
-        {B_QUEEN, W_ROOK,  W_ROOK,  W_ROOK, Piece()},
-        {Piece(),Piece(),Piece(),  Piece(), B_ROOK}};
-    Move m1 = Move_split(Coord(1, 1), Coord(0, 1), Coord(2, 1));
-    Move m2 = Move_split(Coord(1, 2), Coord(0, 2), Coord(2, 2));
-    Move m3 = Move_split(Coord(1, 3), Coord(0, 3), Coord(2, 3));
-    Move m4 = Move_split(Coord(2, 4), Coord(0, 4), Coord(1, 4));
-    Move m = Move_split(Coord(1, 0), Coord(0, 0), Coord(2, 0));
-    Move m5 = Move_classic(Coord(0, 4), Coord(0, 0));
-    board.move(m1);
-    board.move(m2);
-    board.move(m3);
-    board.move(m4);
-    board.move(m);
-    bool res{double_equal(board.get_proba_move(m5), 1./2)};
-    return !res;
+  Board<3, 5> board{
+      {Piece(), Piece(), Piece(), Piece(), Piece()},
+      {B_QUEEN, W_ROOK, W_ROOK, W_ROOK, Piece()},
+      {Piece(), Piece(), Piece(), Piece(), B_ROOK}};
+  Move m1 = Move_split(Coord(1, 1), Coord(0, 1), Coord(2, 1));
+  Move m2 = Move_split(Coord(1, 2), Coord(0, 2), Coord(2, 2));
+  Move m3 = Move_split(Coord(1, 3), Coord(0, 3), Coord(2, 3));
+  Move m4 = Move_split(Coord(2, 4), Coord(0, 4), Coord(1, 4));
+  Move m = Move_split(Coord(1, 0), Coord(0, 0), Coord(2, 0));
+  Move m5 = Move_classic(Coord(0, 4), Coord(0, 0));
+  board.move(m1);
+  board.move(m2);
+  board.move(m3);
+  board.move(m4);
+  board.move(m);
+  bool res{double_equal(board.get_proba_move(m5), 1. / 2)};
+  return !res;
 
 \end{minted}
 \end{frame}
@@ -7407,21 +7619,21 @@ int test_get_proba_move_slide_on_same_color(int argc, char **argv)
 
 int test_get_proba_move_slide_without_target(int argc, char **argv)
 {
-    Board<3, 5> board{
-        {Piece(), Piece(), Piece(), Piece(), Piece()},
-        {Piece(), W_ROOK,  W_ROOK,  W_ROOK, Piece()},
-        {Piece(),Piece(),Piece(),  Piece(), B_ROOK}};
-    Move m1 = Move_split(Coord(1, 1), Coord(0, 1), Coord(2, 1));
-    Move m2 = Move_split(Coord(1, 2), Coord(0, 2), Coord(2, 2));
-    Move m3 = Move_split(Coord(1, 3), Coord(0, 3), Coord(2, 3));
-    Move m4 = Move_split(Coord(2, 4), Coord(0, 4), Coord(1, 4));
-    Move m5 = Move_classic(Coord(0, 4), Coord(0, 0));
-    board.move(m1);
-    board.move(m2);
-    board.move(m3);
-    board.move(m4);
-    bool res{double_equal(board.get_proba_move(m5), 1.)};
-    return !res;
+  Board<3, 5> board{
+      {Piece(), Piece(), Piece(), Piece(), Piece()},
+      {Piece(), W_ROOK, W_ROOK, W_ROOK, Piece()},
+      {Piece(), Piece(), Piece(), Piece(), B_ROOK}};
+  Move m1 = Move_split(Coord(1, 1), Coord(0, 1), Coord(2, 1));
+  Move m2 = Move_split(Coord(1, 2), Coord(0, 2), Coord(2, 2));
+  Move m3 = Move_split(Coord(1, 3), Coord(0, 3), Coord(2, 3));
+  Move m4 = Move_split(Coord(2, 4), Coord(0, 4), Coord(1, 4));
+  Move m5 = Move_classic(Coord(0, 4), Coord(0, 0));
+  board.move(m1);
+  board.move(m2);
+  board.move(m3);
+  board.move(m4);
+  bool res{double_equal(board.get_proba_move(m5), 1.)};
+  return !res;
 
 \end{minted}
 \end{frame}
@@ -7439,15 +7651,15 @@ int test_get_proba_move_slide_without_target(int argc, char **argv)
 
 int test_get_proba_move_jump_same_color(int argc, char **argv)
 {
-    Board<3> board{
-        { W_KING, Piece(), Piece()},
-        {Piece(), Piece(), Piece()},
-        {Piece(), Piece(), W_KNIGHT}};
-    Move m1 = Move_split(Coord(2, 2), Coord(0, 1), Coord(1, 0));
-    Move m5 = Move_classic(Coord(0, 0), Coord(0, 1));
-    board.move(m1);
-    bool res{double_equal(board.get_proba_move(m5), 1./2)};
-    return !res;
+  Board<3> board{
+      {W_KING, Piece(), Piece()},
+      {Piece(), Piece(), Piece()},
+      {Piece(), Piece(), W_KNIGHT}};
+  Move m1 = Move_split(Coord(2, 2), Coord(0, 1), Coord(1, 0));
+  Move m5 = Move_classic(Coord(0, 0), Coord(0, 1));
+  board.move(m1);
+  bool res{double_equal(board.get_proba_move(m5), 1. / 2)};
+  return !res;
 
 \end{minted}
 \end{frame}
@@ -7465,15 +7677,15 @@ int test_get_proba_move_jump_same_color(int argc, char **argv)
 
 int test_get_proba_move_jump_capture(int argc, char **argv)
 {
-    Board<3> board{
-        { W_KING, Piece(), Piece()},
-        {Piece(), Piece(), Piece()},
-        {Piece(), Piece(), B_KNIGHT}};
-    Move m1 = Move_split(Coord(2, 2), Coord(0, 1), Coord(1, 0));
-    Move m5 = Move_classic(Coord(0, 0), Coord(0, 1));
-    board.move(m1);
-    bool res{double_equal(board.get_proba_move(m5), 1.)};
-    return !res;
+  Board<3> board{
+      {W_KING, Piece(), Piece()},
+      {Piece(), Piece(), Piece()},
+      {Piece(), Piece(), B_KNIGHT}};
+  Move m1 = Move_split(Coord(2, 2), Coord(0, 1), Coord(1, 0));
+  Move m5 = Move_classic(Coord(0, 0), Coord(0, 1));
+  board.move(m1);
+  bool res{double_equal(board.get_proba_move(m5), 1.)};
+  return !res;
 
 \end{minted}
 \end{frame}
@@ -7492,22 +7704,22 @@ int test_get_proba_move_jump_capture(int argc, char **argv)
 
 int test_capture_slide_move_true(int argc, char **argv)
 {
-    Board<3, 5> board{
-        {W_ROOK, Piece(), Piece(), Piece(), Piece()},
-        {Piece(), W_ROOK,  W_ROOK,  W_ROOK, Piece()},
-        {Piece(),Piece(),Piece(),  Piece(), B_ROOK}};
-    Move m1 = Move_split(Coord(1, 1), Coord(0, 1), Coord(2, 1));
-    Move m2 = Move_split(Coord(1, 2), Coord(0, 2), Coord(2, 2));
-    Move m3 = Move_split(Coord(1, 3), Coord(0, 3), Coord(2, 3));
-    Move m4 = Move_split(Coord(2, 4), Coord(0, 4), Coord(1, 4));
-    Move m5 = Move_classic(Coord(0, 4), Coord(0, 0));
-    board.move(m1);
-    board.move(m2);
-    board.move(m3);
-    board.move(m4);
-    board.move(m5, true);
-    bool res{board(0, 0).get_type() == TypePiece::ROOK && board(0, 0).get_color() == Color::BLACK };
-    return !res;
+  Board<3, 5> board{
+      {W_ROOK, Piece(), Piece(), Piece(), Piece()},
+      {Piece(), W_ROOK, W_ROOK, W_ROOK, Piece()},
+      {Piece(), Piece(), Piece(), Piece(), B_ROOK}};
+  Move m1 = Move_split(Coord(1, 1), Coord(0, 1), Coord(2, 1));
+  Move m2 = Move_split(Coord(1, 2), Coord(0, 2), Coord(2, 2));
+  Move m3 = Move_split(Coord(1, 3), Coord(0, 3), Coord(2, 3));
+  Move m4 = Move_split(Coord(2, 4), Coord(0, 4), Coord(1, 4));
+  Move m5 = Move_classic(Coord(0, 4), Coord(0, 0));
+  board.move(m1);
+  board.move(m2);
+  board.move(m3);
+  board.move(m4);
+  board.move(m5, true);
+  bool res{board(0, 0).get_type() == TypePiece::ROOK && board(0, 0).get_color() == Color::BLACK};
+  return !res;
 
 \end{minted}
 \end{frame}
@@ -7526,22 +7738,22 @@ int test_capture_slide_move_true(int argc, char **argv)
 
 int test_capture_slide_move_false(int argc, char **argv)
 {
-    Board<3, 5> board{
-        {W_ROOK, Piece(), Piece(), Piece(), Piece()},
-        {Piece(), W_ROOK,  W_ROOK,  W_ROOK, Piece()},
-        {Piece(),Piece(),Piece(),  Piece(), B_ROOK}};
-    Move m1 = Move_split(Coord(1, 1), Coord(0, 1), Coord(2, 1));
-    Move m2 = Move_split(Coord(1, 2), Coord(0, 2), Coord(2, 2));
-    Move m3 = Move_split(Coord(1, 3), Coord(0, 3), Coord(2, 3));
-    Move m4 = Move_split(Coord(2, 4), Coord(0, 4), Coord(1, 4));
-    Move m5 = Move_classic(Coord(0, 4), Coord(0, 0));
-    board.move(m1);
-    board.move(m2);
-    board.move(m3);
-    board.move(m4);
-    board.move(m5, false);
-    bool res{board(0, 4).get_type() == TypePiece::ROOK && board(0, 4).get_color() == Color::BLACK };
-    return !res;
+  Board<3, 5> board{
+      {W_ROOK, Piece(), Piece(), Piece(), Piece()},
+      {Piece(), W_ROOK, W_ROOK, W_ROOK, Piece()},
+      {Piece(), Piece(), Piece(), Piece(), B_ROOK}};
+  Move m1 = Move_split(Coord(1, 1), Coord(0, 1), Coord(2, 1));
+  Move m2 = Move_split(Coord(1, 2), Coord(0, 2), Coord(2, 2));
+  Move m3 = Move_split(Coord(1, 3), Coord(0, 3), Coord(2, 3));
+  Move m4 = Move_split(Coord(2, 4), Coord(0, 4), Coord(1, 4));
+  Move m5 = Move_classic(Coord(0, 4), Coord(0, 0));
+  board.move(m1);
+  board.move(m2);
+  board.move(m3);
+  board.move(m4);
+  board.move(m5, false);
+  bool res{board(0, 4).get_type() == TypePiece::ROOK && board(0, 4).get_color() == Color::BLACK};
+  return !res;
 
 \end{minted}
 \end{frame}
@@ -7559,17 +7771,17 @@ int test_capture_slide_move_false(int argc, char **argv)
 
 int test_move_merge_after_split(int argc, char **argv)
 {
-    Board<4> board{
-        {B_KING, Piece(), Piece(), Piece()},
-        {B_ROOK, Piece(),  Piece(), Piece()},
-        {Piece(),Piece(),Piece(),  Piece()},
-        {W_QUEEN, Piece(), Piece(), W_KING}};
-    Move m1 = Move_split(Coord(3, 0), Coord(3, 1), Coord(3, 2));
-    Move m2 = Move_merge(Coord(3, 1), Coord(3, 2), Coord(3, 0));
-    board.move(m1);
-    board.move(m2, true);
-    bool res{double_equal(board.get_proba(Coord(3,0)), 1.)};
-    return !res;
+  Board<4> board{
+      {B_KING, Piece(), Piece(), Piece()},
+      {B_ROOK, Piece(), Piece(), Piece()},
+      {Piece(), Piece(), Piece(), Piece()},
+      {W_QUEEN, Piece(), Piece(), W_KING}};
+  Move m1 = Move_split(Coord(3, 0), Coord(3, 1), Coord(3, 2));
+  Move m2 = Move_merge(Coord(3, 1), Coord(3, 2), Coord(3, 0));
+  board.move(m1);
+  board.move(m2, true);
+  bool res{double_equal(board.get_proba(Coord(3, 0)), 1.)};
+  return !res;
 
 \end{minted}
 \end{frame}
@@ -7587,19 +7799,19 @@ int test_move_merge_after_split(int argc, char **argv)
 
 int test_split_after_split(int argc, char **argv)
 {
-    Board<4> board{
-        {Piece(), Piece(), Piece(), Piece()},
-        {Piece(), B_KING,  B_ROOK, Piece()},
-        {Piece(),Piece(),Piece(),  Piece()},
-        {W_QUEEN, Piece(), Piece(), W_KING}};
-    Move m1 = Move_split(Coord(3, 0), Coord(2, 1), Coord(3, 2));
-    Move m2 = Move_split(Coord(3, 2), Coord(2, 1), Coord(1, 0));
-    board.move(m1);
-    board.move(m2, true);
-    bool res{double_equal(board.get_proba(Coord(3,3)), 1.)&&
-    double_equal(board.get_proba(Coord(2,1)), 1./2) &&
-    double_equal(board.get_proba(Coord(1,0)), 1./2)};
-    return !res;
+  Board<4> board{
+      {Piece(), Piece(), Piece(), Piece()},
+      {Piece(), B_KING, B_ROOK, Piece()},
+      {Piece(), Piece(), Piece(), Piece()},
+      {W_QUEEN, Piece(), Piece(), W_KING}};
+  Move m1 = Move_split(Coord(3, 0), Coord(2, 1), Coord(3, 2));
+  Move m2 = Move_split(Coord(3, 2), Coord(2, 1), Coord(1, 0));
+  board.move(m1);
+  board.move(m2, true);
+  bool res{double_equal(board.get_proba(Coord(3, 3)), 1.) &&
+           double_equal(board.get_proba(Coord(2, 1)), 1. / 2) &&
+           double_equal(board.get_proba(Coord(1, 0)), 1. / 2)};
+  return !res;
 
 \end{minted}
 \end{frame}
@@ -7617,20 +7829,20 @@ int test_split_after_split(int argc, char **argv)
 
 int test_split_after_split2(int argc, char **argv)
 {
-    Board<4> board{
-        {Piece(), Piece(), Piece(), Piece()},
-        {Piece(), B_KING,  B_ROOK, Piece()},
-        {Piece(),Piece(),Piece(),  Piece()},
-        {W_QUEEN, Piece(), Piece(), W_KING}};
-    Move m1 = Move_split(Coord(3, 0), Coord(2, 1), Coord(3, 2));
-    Move m2 = Move_split(Coord(3, 2), Coord(1, 0), Coord(2, 1));
-    board.move(m1);
-    board.move(m2, true);
-    bool res{double_equal(board.get_proba(Coord(3,3)), 1.)&&
-    double_equal(board.get_proba(Coord(2,1)), 1./4) &&
-    double_equal(board.get_proba(Coord(1,0)), 1./4) &&
-    double_equal(board.get_proba(Coord(3,2)), 1./2) };
-    return !res;
+  Board<4> board{
+      {Piece(), Piece(), Piece(), Piece()},
+      {Piece(), B_KING, B_ROOK, Piece()},
+      {Piece(), Piece(), Piece(), Piece()},
+      {W_QUEEN, Piece(), Piece(), W_KING}};
+  Move m1 = Move_split(Coord(3, 0), Coord(2, 1), Coord(3, 2));
+  Move m2 = Move_split(Coord(3, 2), Coord(1, 0), Coord(2, 1));
+  board.move(m1);
+  board.move(m2, true);
+  bool res{double_equal(board.get_proba(Coord(3, 3)), 1.) &&
+           double_equal(board.get_proba(Coord(2, 1)), 1. / 4) &&
+           double_equal(board.get_proba(Coord(1, 0)), 1. / 4) &&
+           double_equal(board.get_proba(Coord(3, 2)), 1. / 2)};
+  return !res;
 
 \end{minted}
 \end{frame}
@@ -7648,20 +7860,20 @@ int test_split_after_split2(int argc, char **argv)
 
 int test_multiple_split(int argc, char **argv)
 {
-    Board<3> board{
-        {Piece(), Piece(), B_BISHOP},
-        {Piece(), B_KING,  Piece()},
-        {Piece(),Piece(),Piece()}};
-    Move m1 = Move_split(Coord(1, 1), Coord(2, 1), Coord(2, 2));
-    Move m2 = Move_split(Coord(2, 2), Coord(1, 1), Coord(1,2));
-    Move m3 = Move_classic(Coord(1, 2), Coord(2, 2));
-    Move m4 = Move_split(Coord(1, 1), Coord(0, 0), Coord(0, 1));
-    board.move(m1);
-    board.move(m2);
-    board.move(m3);
-    board.move(m4);
-    bool res{double_equal(board.get_proba(Coord(0,2)), 1.)};
-    return !res;
+  Board<3> board{
+      {Piece(), Piece(), B_BISHOP},
+      {Piece(), B_KING, Piece()},
+      {Piece(), Piece(), Piece()}};
+  Move m1 = Move_split(Coord(1, 1), Coord(2, 1), Coord(2, 2));
+  Move m2 = Move_split(Coord(2, 2), Coord(1, 1), Coord(1, 2));
+  Move m3 = Move_classic(Coord(1, 2), Coord(2, 2));
+  Move m4 = Move_split(Coord(1, 1), Coord(0, 0), Coord(0, 1));
+  board.move(m1);
+  board.move(m2);
+  board.move(m3);
+  board.move(m4);
+  bool res{double_equal(board.get_proba(Coord(0, 2)), 1.)};
+  return !res;
 
 \end{minted}
 \end{frame}
@@ -7679,20 +7891,20 @@ int test_multiple_split(int argc, char **argv)
 
 int test_split_takes(int argc, char **argv)
 {
-    Board<3> board{
-        {Piece(), Piece(), W_BISHOP},
-        {Piece(), B_KING,  Piece()},
-        {Piece(),Piece(),Piece()}};
-    Move m1 = Move_split(Coord(1, 1), Coord(2, 1), Coord(2, 0));
-    Move m2 = Move_split(Coord(2, 1), Coord(1, 1), Coord(2, 2));
-    Move m3 = Move_classic(Coord(0, 2), Coord(1, 1));
-    Move m4 = Move_classic(Coord(1, 1), Coord(2, 0));
-    board.move(m1);
-    board.move(m2);
-    board.move(m3);
-    board.move(m4);
-    bool res{double_equal(board.get_proba(Coord(2,0)), 1.)};
-    return !res;
+  Board<3> board{
+      {Piece(), Piece(), W_BISHOP},
+      {Piece(), B_KING, Piece()},
+      {Piece(), Piece(), Piece()}};
+  Move m1 = Move_split(Coord(1, 1), Coord(2, 1), Coord(2, 0));
+  Move m2 = Move_split(Coord(2, 1), Coord(1, 1), Coord(2, 2));
+  Move m3 = Move_classic(Coord(0, 2), Coord(1, 1));
+  Move m4 = Move_classic(Coord(1, 1), Coord(2, 0));
+  board.move(m1);
+  board.move(m2);
+  board.move(m3);
+  board.move(m4);
+  bool res{double_equal(board.get_proba(Coord(2, 0)), 1.)};
+  return !res;
 
 \end{minted}
 \end{frame}
