@@ -99,7 +99,46 @@
 		\includegraphics[scale = 0.3, center]{./assets/backtrack.png}    
 	\end{frame}
 	
+	\begin{frame}
+		\frametitle{Implémentation de l'IA}
+		$\bullet$ Utilisation de l'algorithme Min-Max\newline
+		$\bullet$ Optimisation avec l'algorithme Alpha-Beta \newline
+		$\bullet$ Parallélisation des calculs \newline
+		$\bullet$ Heuristique \newline
+		\[
+			H(A) = \sum_{i=0}^{n} {\sum_{j=0}^{m} {C(j) P(B_{i, j}) val(B_{i, j})}}
+		\]    
+	\end{frame}
 	
-	%\import{./../}{code-latex-output}		
+	\begin{frame}
+		\frametitle{Expérience 1: determination des cases importantes}
+		%$\bullet$ Non-occupation simultanée 
+		\includegraphics[scale = 0.7, center]{./assets/figure-board.png}    
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Ajout de l'evaluation des cases}
+		\[
+		eval(c) = \min(\min(i, \frac{N-i-1}{N-2}), \min(j, \frac{M-i-1}{M-2}))
+		\] \newline
+		\[
+		H(A) = \sum_{i=0}^{n} {\sum_{j=0}^{m} {C(j) P(B_{i, j}) val(B_{i, j})eval(B_{i,j})}}
+		\]    
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Expérience 2: determination des cases importantes}
+		%$\bullet$ Non-occupation simultanée 
+		\includegraphics[scale = 0.7, center]{./assets/figure-heuristique.png}    
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Conclusion}
+		$\bullet$ Résultat long à obtenir\newline
+		$\bullet$ Pas toujours précis 
+	\end{frame}
+	
+	
+	\import{./../}{code-latex-output}		
 
 \end{document}
