@@ -22,6 +22,7 @@ var searchData=
   ['matrix_5fsplit_5fslide_19',['MATRIX_SPLIT_SLIDE',['../db/daa/Unitary_8hpp.html#a4ad68257b8a76387be441974e0539929',1,'Unitary.hpp']]],
   ['matrix_5fsqrt_5fiswap_20',['MATRIX_SQRT_ISWAP',['../db/daa/Unitary_8hpp.html#abeb483183b3aa8e47022c808409c8a97',1,'Unitary.hpp']]],
   ['matrix_5fsqrt_5fiswap_5f8_21',['MATRIX_SQRT_ISWAP_8',['../db/daa/Unitary_8hpp.html#a0c1955ba8378b1dad7217bb8e55b38db',1,'Unitary.hpp']]],
-  ['merge_22',['merge',['../df/d5b/structMove.html#a8afc5f682e249d0e1bc418da22cf8019',1,'Move']]],
-  ['move_23',['move',['../d4/d18/namespacecsv-to-graph.html#ae5e332e10c215e65cba648d13e8d6caa',1,'csv-to-graph']]]
+  ['maxline_22',['maxline',['../d6/de0/namespaceoutput__latex.html#a319b4c2e8067d05126117cdc093eaf9e',1,'output_latex']]],
+  ['merge_23',['merge',['../df/d5b/structMove.html#a8afc5f682e249d0e1bc418da22cf8019',1,'Move']]],
+  ['move_24',['move',['../d4/d18/namespacecsv-to-graph.html#ae5e332e10c215e65cba648d13e8d6caa',1,'csv-to-graph']]]
 ];
