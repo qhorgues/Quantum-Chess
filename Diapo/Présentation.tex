@@ -1,0 +1,118 @@
+\documentclass[11pt]{beamer}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[]{import}
+\usepackage[]{graphicx}
+\usepackage[export]{adjustbox}
+\usepackage{lmodern}
+\usepackage[]{minted}
+\setminted{linenos=true, numbersep=5pt, xleftmargin=20pt}
+\makeatletter
+\AtBeginEnvironment{minted}{\dontdofcolorbox}
+\def\dontdofcolorbox{\renewcommand\fcolorbox[4][]{##4}}
+\makeatother
+\usetheme{Boadilla}
+
+
+\begin{document}
+	\author{Maël Petit n°32502}
+	\title{JEU D'ECHECS QUANTIQUES}
+	\subtitle{}
+	%\logo{}
+	%\institute{}
+	\date{}
+	%\subject{}
+	%\setbeamercovered{transparent}
+	%\setbeamertemplate{navigation symbols}{}
+	\begin{frame}[plain]
+		\maketitle
+		\includegraphics[scale = 0.15, center]{./intro-presentation.jpg} 
+	\end{frame}
+	
+
+	\begin{frame}
+		\frametitle{Présentation des règles du jeu}
+		$\bullet$ 2 joueurs qui jouent à tour de rôle \newline
+		$\bullet$ Sur un carré plateau de 64 cases \newline
+		$\bullet$ Différents types de pièces \newline
+		$\bullet$ Un tour = un mouvement \newline %mal dit
+		$\bullet$ Objectif : capturer le roi adverse \newline     
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Mouvements classique}
+		\includegraphics[scale = 0.9, center]{./classic-chess.png}    
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Mouvement split}
+		\includegraphics[scale = 0.45, center]{./split.png}    
+		{\tiny lichess.org}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Mouvement merge}
+		\includegraphics[scale = 1.7, center]{./merge.png}    
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Principe des mesures}
+		%$\bullet$ Non-occupation simultanée 
+		\includegraphics[scale = 1.4, center]{./mesure.png}    
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Objectif : Etude de la finale fou-cavalier contre dame}
+		$\bullet$ Diminution de la taille du plateau \newline
+		$\bullet$ Jeu d'échecs classique : finale gagnate pour les blancs mais difficile à gagner \newline
+		$\bullet$ Jeu d'échecs quantique : stratégie simple pour avoir une chance de gagner rapidement 
+		\includegraphics[scale = 1, center]{./pos1_exp1.jpg}	
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{ALgorithme min-max : principe}
+		\includegraphics[scale=1, center]{alpha-beta.png} \newline
+		
+		
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{ALgorithme min-max}
+		$\bullet$ Besoin d'être adapté lors des mesures\newline 
+		$\bullet$ Calcul de la valeur d'un mouvement : \newline
+		$proba_1*board_1 + proba_2*board_2$ \newline
+		$\bullet$ Pas d'élagage alpha-béta après une mesure
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Première expérience}
+		$\bullet$ Profondeur = 4
+		\includegraphics[scale = 1, center]{./pos2_exp1.jpg}	
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Première expérience}
+		$\bullet$ Profondeur = 4
+		\includegraphics[scale = 1, center]{./pos3_exp1.png}	
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Première expérience}
+		$\bullet$ Profondeur = 4
+		\includegraphics[scale = 1, center]{./pos4_exp1.png}	
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Effet horizon}
+	%	$\bullet$ La finale suivante est gagnante pour les noirs
+		\includegraphics[scale = 1, center]{./hor1.jpg}	
+		$\bullet$ Changement de la fonction d'évaluation : \newline
+		- 1 si le plateau est gagnant pour les blancs
+		- -1 si le plateau est gagnant pour les noirs ou si la dame blache est capturée
+		-0 Sinon
+		$\bullet$ Cette fonction d'évaluation semble favoriser les noirs
+		
+	\end{frame}
+	\import{./../}{code-latex-output}      
+
+\end{document}

@@ -19,8 +19,8 @@
 int main()
 {
     Board<4> B{
-        {{B_KING, B_BISHOP, Piece(), Piece()},
-         {B_KNIGHT, Piece(), Piece(), Piece()},
+        {{B_KING, B_KNIGHT, Piece(), Piece()},
+         {B_BISHOP, Piece(), Piece(), Piece()},
          {Piece(), Piece(),  Piece(), Piece()},
          {Piece(), Piece(), W_QUEEN, W_KING}}};
 Board<4> B1{
@@ -62,7 +62,7 @@ Board<4> B1{
     /*bool b = Final::brut_force_quantum_chess(B2, 1, Color::WHITE);
     std::cout<<std::boolalpha<<b<<std::en
     dl;*/
-    auto[res, res2] {Final::res_pos(B3, 4)};
+    auto[res, res2] {Final::res_pos(B,4)};
     std::cout<<res<<std::endl;
     Final::print_stack<4>(res2);
     //bool b {Final::brut_force_classic_chess (B1, 10, Color::WHITE)};
