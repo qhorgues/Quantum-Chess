@@ -59,13 +59,13 @@ Board<4> B1{
             {W_KING, W_ROOK, Piece(), Piece(), B_KING, Piece()}
         }
     };
-    /*bool b = Final::brut_force_quantum_chess(B2, 1, Color::WHITE);
-    std::cout<<std::boolalpha<<b<<std::en
-    dl;*/
-    auto[res, res2] {Final::res_pos(B3, 4)};
-    std::cout<<res<<std::endl;
-    Final::print_stack<4>(res2);
-    //bool b {Final::brut_force_classic_chess (B1, 10, Color::WHITE)};
-    //std::cout<< std::boolalpha<< b<< std::endl;
+    
+    //auto[res, res2] {Final::res_pos(B3, 4)};
+    //std::cout<<res<<std::endl;
+    //Final::print_stack<4>(res2);
+    Board<4> board = Final::init_random_board<4,4>();
+    int p {0};
+    p++;
+
    
 }

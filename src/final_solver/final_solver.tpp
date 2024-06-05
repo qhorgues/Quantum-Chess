@@ -536,3 +536,39 @@ CONSTEXPR void Final::print_stack( std::stack<Node> & stack)
         std::cout<<std::endl;
     }
 }
+
+template<std::size_t N, std::size_t M>
+CONSTEXPR Board<N, M> Final::init_random_board()
+{
+    int queen = rnd::randint(0,N*M-1);
+    int bishop = rnd::randint(0,N*M-1);
+    if(bishop == queen)
+    {
+        bishop = rnd::randint(0,N*M-1);
+    }
+    int knight = rnd::randint(0, N*M-1);
+      if(knight == queen || knight == bishop)
+    {
+        knight = rnd::randint(0,N*M-1);
+    }
+    int b_king = rnd::randint(0, N*M-1);
+      if(b_king ==knight || b_king == queen || b_king == bishop)
+    {
+        b_king = rnd::randint(0,N*M-1);
+    }
+     int w_king = rnd::randint(0, N*M-1);
+      if(w_king==b_king || w_king ==knight || w_king == queen || w_king == bishop)
+    {
+        w_king = rnd::randint(0,N*M-1);
+    }
+    std::array<std::array<Piece,M>, N> init {};
+    init[queen/M][queen%M] = W_QUEEN;
+    init[bishop/M][bishop%M] = B_BISHOP;
+    init[knight/M][knight%M] = B_KNIGHT;
+    init[b_king/M][b_king%M] = B_KING;
+    init[w_king/M][w_king%M] = W_KING;
+    Board <N,M> B {init};
+    return B;
+    
+
+}
