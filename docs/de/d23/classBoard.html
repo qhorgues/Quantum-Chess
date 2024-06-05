@@ -118,8 +118,10 @@ Fonctions membres publiques</h2></td></tr>
 <tr class="memitem:a3fe651d57c4fd92cb42fe8ae6eca8562" id="r_a3fe651d57c4fd92cb42fe8ae6eca8562"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3fe651d57c4fd92cb42fe8ae6eca8562">Board</a> ()</td></tr>
 <tr class="separator:a3fe651d57c4fd92cb42fe8ae6eca8562"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a58b73103e0d55cb217ea516b72ff9969" id="r_a58b73103e0d55cb217ea516b72ff9969"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a58b73103e0d55cb217ea516b72ff9969">Board</a> (std::initializer_list&lt; std::initializer_list&lt; <a class="el" href="../../d5/df0/classPiece.html">Piece</a> &gt; &gt; const &amp;board)</td></tr>
-<tr class="memdesc:a58b73103e0d55cb217ea516b72ff9969"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise le plateau à partir d'une liste de pièce, les pièces ne sont pas divisées initialement.  <br /></td></tr>
 <tr class="separator:a58b73103e0d55cb217ea516b72ff9969"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb03bcfcdf37570704d535714e867c97" id="r_afb03bcfcdf37570704d535714e867c97"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afb03bcfcdf37570704d535714e867c97">Board</a> (std::ranges::common_range auto const &amp;board)</td></tr>
+<tr class="memdesc:afb03bcfcdf37570704d535714e867c97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise le plateau à partir d'un ensemble de pièce, les pièces ne sont pas divisées initialement.  <br /></td></tr>
+<tr class="separator:afb03bcfcdf37570704d535714e867c97"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af6a338387fffeb3aadc8ed3adb9a3649" id="r_af6a338387fffeb3aadc8ed3adb9a3649"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af6a338387fffeb3aadc8ed3adb9a3649">Board</a> (<a class="el" href="../../de/d23/classBoard.html">Board</a> const &amp;)=default</td></tr>
 <tr class="separator:af6a338387fffeb3aadc8ed3adb9a3649"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac2081cea73b0212e1d3a1f1937fc24cc" id="r_ac2081cea73b0212e1d3a1f1937fc24cc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> <a class="el" href="../../de/d23/classBoard.html">Board</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac2081cea73b0212e1d3a1f1937fc24cc">operator=</a> (<a class="el" href="../../de/d23/classBoard.html">Board</a> const &amp;)=default</td></tr>
@@ -200,6 +202,8 @@ Fonctions membres privées</h2></td></tr>
 <tr class="memitem:ac861187330142ee511ed2707ea4c552a" id="r_ac861187330142ee511ed2707ea4c552a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac861187330142ee511ed2707ea4c552a">update_board</a> () noexcept</td></tr>
 <tr class="memdesc:ac861187330142ee511ed2707ea4c552a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui permet de mattre à jour le plateau, car ce mouvement entraine l'apparition de plusieurs instance de board identique, il faut donc les concaténer en ajoutant les probas, si la proba vaut 0, on supprime l'instance.  <br /></td></tr>
 <tr class="separator:ac861187330142ee511ed2707ea4c552a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68041aa1a83fe7bb96cc61254142ff25" id="r_a68041aa1a83fe7bb96cc61254142ff25"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a68041aa1a83fe7bb96cc61254142ff25">update_board_classic</a> () noexcept</td></tr>
+<tr class="separator:a68041aa1a83fe7bb96cc61254142ff25"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af3f1ee5615d1c83e8b4f47f5d3462826" id="r_af3f1ee5615d1c83e8b4f47f5d3462826"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af3f1ee5615d1c83e8b4f47f5d3462826">move_classic_jump</a> (<a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;s, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;t, std::optional&lt; bool &gt; val_mes=std::nullopt)</td></tr>
 <tr class="memdesc:af3f1ee5615d1c83e8b4f47f5d3462826"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mouvement classique d'une pièce qui "saute" (cavalier, roi)  <br /></td></tr>
 <tr class="separator:af3f1ee5615d1c83e8b4f47f5d3462826"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -212,9 +216,9 @@ Fonctions membres privées</h2></td></tr>
 <tr class="memitem:a584a98568ae1d949ded33456ce472fb3" id="r_a584a98568ae1d949ded33456ce472fb3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a584a98568ae1d949ded33456ce472fb3">move_classic_slide</a> (<a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;s, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;t, std::function&lt; bool(<a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; N, M &gt; const &amp;, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;, std::size_t, std::optional&lt; <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> &gt;)&gt; check_path, std::optional&lt; bool &gt; val_mes=std::nullopt)</td></tr>
 <tr class="memdesc:a584a98568ae1d949ded33456ce472fb3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mouvement classique d'un pièce qui "glisse" (fou, dame, tour)  <br /></td></tr>
 <tr class="separator:a584a98568ae1d949ded33456ce472fb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac735f5b430a40dc8f279d2717b4a0fa2" id="r_ac735f5b430a40dc8f279d2717b4a0fa2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac735f5b430a40dc8f279d2717b4a0fa2">move_split_slide</a> (<a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;s, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;t1, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;t2, std::function&lt; bool(<a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; N, M &gt; const &amp;, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;, std::size_t, std::optional&lt; <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> &gt;) &gt; check_path)</td></tr>
-<tr class="memdesc:ac735f5b430a40dc8f279d2717b4a0fa2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mouvement "split slide".  <br /></td></tr>
-<tr class="separator:ac735f5b430a40dc8f279d2717b4a0fa2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a021d47a138270ee0ae8e3427b7d5f9d2" id="r_a021d47a138270ee0ae8e3427b7d5f9d2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a021d47a138270ee0ae8e3427b7d5f9d2">move_split_slide</a> (<a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;s, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;t1, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;t2, std::function&lt; bool(<a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; N, M &gt; const &amp;, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;, std::size_t, std::optional&lt; <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> &gt;)&gt; check_path)</td></tr>
+<tr class="memdesc:a021d47a138270ee0ae8e3427b7d5f9d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mouvement "split slide".  <br /></td></tr>
+<tr class="separator:a021d47a138270ee0ae8e3427b7d5f9d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab6beab7f1900a5ef2703302d65e32fd6" id="r_ab6beab7f1900a5ef2703302d65e32fd6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab6beab7f1900a5ef2703302d65e32fd6">move_merge_slide</a> (<a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;s1, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;s2, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;t, std::function&lt; bool(<a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; N, M &gt; const &amp;, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;, std::size_t, std::optional&lt; <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> &gt;)&gt; check_path)</td></tr>
 <tr class="memdesc:ab6beab7f1900a5ef2703302d65e32fd6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mouvement de merge.  <br /></td></tr>
 <tr class="separator:ab6beab7f1900a5ef2703302d65e32fd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -271,9 +275,9 @@ Fonctions membres privées statiques</h2></td></tr>
 <tr class="memitem:a2453e112bab945721f92b21f7d964df6" id="r_a2453e112bab945721f92b21f7d964df6"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2453e112bab945721f92b21f7d964df6">offset</a> (std::size_t ligne, std::size_t colonne) noexcept</td></tr>
 <tr class="memdesc:a2453e112bab945721f92b21f7d964df6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie une position 1D d'une coordonnée 2D.  <br /></td></tr>
 <tr class="separator:a2453e112bab945721f92b21f7d964df6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abe3e7d2bea8beebb399193f1a0ad622c" id="r_abe3e7d2bea8beebb399193f1a0ad622c"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abe3e7d2bea8beebb399193f1a0ad622c">initializer_list_to_2_array</a> (std::initializer_list&lt; std::initializer_list&lt; <a class="el" href="../../d5/df0/classPiece.html">Piece</a> &gt; &gt; const &amp;board, std::array&lt; bool, N *M &gt; &amp;first_instance, std::array&lt; <a class="el" href="../../d5/df0/classPiece.html">Piece</a>, N *M &gt; &amp;piece_board) noexcept</td></tr>
-<tr class="memdesc:abe3e7d2bea8beebb399193f1a0ad622c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise un plateau à l'aide des listes d'initialisations.  <br /></td></tr>
-<tr class="separator:abe3e7d2bea8beebb399193f1a0ad622c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf99d8f5c18672d24c84b3ef22d0bd2c" id="r_aaf99d8f5c18672d24c84b3ef22d0bd2c"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaf99d8f5c18672d24c84b3ef22d0bd2c">range_to_2_array</a> (std::ranges::common_range auto const &amp;board, std::array&lt; bool, N *M &gt; &amp;first_instance, std::array&lt; <a class="el" href="../../d5/df0/classPiece.html">Piece</a>, N *M &gt; &amp;piece_board) noexcept</td></tr>
+<tr class="memdesc:aaf99d8f5c18672d24c84b3ef22d0bd2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise un plateau à l'aide d'un container 2D.  <br /></td></tr>
+<tr class="separator:aaf99d8f5c18672d24c84b3ef22d0bd2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a94fe407a5f6e87dee2e62bfc2a79504b" id="r_a94fe407a5f6e87dee2e62bfc2a79504b"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a94fe407a5f6e87dee2e62bfc2a79504b">init_mailbox</a> (std::array&lt; int, N *M &gt; &amp;S_mailbox, std::array&lt; int,(N+4) *(M+2)&gt; &amp;L_mailbox) noexcept</td></tr>
 <tr class="memdesc:a94fe407a5f6e87dee2e62bfc2a79504b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construit les mailbox en fonction des dimenssions du plateau.  <br /></td></tr>
 <tr class="separator:a94fe407a5f6e87dee2e62bfc2a79504b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -331,7 +335,7 @@ class Board&lt; N, M &gt;</div><p>La classe représentant le plateau de jeu. </p
 </dl>
 </div><h2 class="groupheader">Documentation des constructeurs et destructeur</h2>
 <a id="a3fe651d57c4fd92cb42fe8ae6eca8562" name="a3fe651d57c4fd92cb42fe8ae6eca8562"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3fe651d57c4fd92cb42fe8ae6eca8562">&#9670;&#160;</a></span>Board() <span class="overload">[1/4]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a3fe651d57c4fd92cb42fe8ae6eca8562">&#9670;&#160;</a></span>Board() <span class="overload">[1/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -350,7 +354,7 @@ template&lt;std::size_t N = 8, std::size_t M = N&gt; </div>
 </div>
 </div>
 <a id="a58b73103e0d55cb217ea516b72ff9969" name="a58b73103e0d55cb217ea516b72ff9969"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a58b73103e0d55cb217ea516b72ff9969">&#9670;&#160;</a></span>Board() <span class="overload">[2/4]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a58b73103e0d55cb217ea516b72ff9969">&#9670;&#160;</a></span>Board() <span class="overload">[2/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -366,10 +370,29 @@ template&lt;std::size_t N = 8, std::size_t M = N&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Initialise le plateau à partir d'une liste de pièce, les pièces ne sont pas divisées initialement. </p>
+</div>
+</div>
+<a id="afb03bcfcdf37570704d535714e867c97" name="afb03bcfcdf37570704d535714e867c97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb03bcfcdf37570704d535714e867c97">&#9670;&#160;</a></span>Board() <span class="overload">[3/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;std::size_t N = 8, std::size_t M = N&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> <a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; N, M &gt;<a class="el" href="../../de/d23/classBoard.html">::Board</a> </td>
+          <td>(</td>
+          <td class="paramtype">std::ranges::common_range auto const &amp;</td>          <td class="paramname"><span class="paramname"><em>board</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialise le plateau à partir d'un ensemble de pièce, les pièces ne sont pas divisées initialement. </p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">board</td><td>Double initializer_list sur des pointeurs sur <a class="el" href="../../d5/df0/classPiece.html" title="Class conservant le type et la couleur d&#39;une pièce. Elle permet aussi de recuperer ses mouvement poss...">Piece</a> </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">board</td><td>Double initializer_list sur des <a class="el" href="../../d5/df0/classPiece.html" title="Class conservant le type et la couleur d&#39;une pièce. Elle permet aussi de recuperer ses mouvement poss...">Piece</a> </td></tr>
   </table>
   </dd>
 </dl>
@@ -377,7 +400,7 @@ template&lt;std::size_t N = 8, std::size_t M = N&gt; </div>
 </div>
 </div>
 <a id="af6a338387fffeb3aadc8ed3adb9a3649" name="af6a338387fffeb3aadc8ed3adb9a3649"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af6a338387fffeb3aadc8ed3adb9a3649">&#9670;&#160;</a></span>Board() <span class="overload">[3/4]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#af6a338387fffeb3aadc8ed3adb9a3649">&#9670;&#160;</a></span>Board() <span class="overload">[4/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -404,7 +427,7 @@ template&lt;std::size_t N = 8, std::size_t M = N&gt; </div>
 </div>
 </div>
 <a id="abac6288166ce6aef6441fca8d06b6f81" name="abac6288166ce6aef6441fca8d06b6f81"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abac6288166ce6aef6441fca8d06b6f81">&#9670;&#160;</a></span>Board() <span class="overload">[4/4]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#abac6288166ce6aef6441fca8d06b6f81">&#9670;&#160;</a></span>Board() <span class="overload">[5/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -974,52 +997,6 @@ template&lt;std::size_t N = 8, std::size_t M = N&gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>CONSTEXPR </dd></dl>
-
-</div>
-</div>
-<a id="abe3e7d2bea8beebb399193f1a0ad622c" name="abe3e7d2bea8beebb399193f1a0ad622c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abe3e7d2bea8beebb399193f1a0ad622c">&#9670;&#160;</a></span>initializer_list_to_2_array()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;std::size_t N = 8, std::size_t M = N&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static <a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> void <a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; N, M &gt;::initializer_list_to_2_array </td>
-          <td>(</td>
-          <td class="paramtype">std::initializer_list&lt; std::initializer_list&lt; <a class="el" href="../../d5/df0/classPiece.html">Piece</a> &gt; &gt; const &amp;</td>          <td class="paramname"><span class="paramname"><em>board</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::array&lt; bool, N *M &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>first_instance</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::array&lt; <a class="el" href="../../d5/df0/classPiece.html">Piece</a>, N *M &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>piece_board</em></span>&#160;)</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Initialise un plateau à l'aide des listes d'initialisations. </p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">board</td><td>La liste d'initialisation en 2D </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">first_instance</td><td>Le tableau de la première instance du plateau </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">piece_board</td><td>Le plateau contenant les pièces </td></tr>
-  </table>
-  </dd>
-</dl>
 
 </div>
 </div>
@@ -2121,8 +2098,8 @@ template&lt;std::size_t N = 8, std::size_t M = N&gt; </div>
 
 </div>
 </div>
-<a id="ac735f5b430a40dc8f279d2717b4a0fa2" name="ac735f5b430a40dc8f279d2717b4a0fa2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac735f5b430a40dc8f279d2717b4a0fa2">&#9670;&#160;</a></span>move_split_slide()</h2>
+<a id="a021d47a138270ee0ae8e3427b7d5f9d2" name="a021d47a138270ee0ae8e3427b7d5f9d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a021d47a138270ee0ae8e3427b7d5f9d2">&#9670;&#160;</a></span>move_split_slide()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2150,7 +2127,7 @@ template&lt;std::size_t N = 8, std::size_t M = N&gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::function&lt; bool(<a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; N, M &gt; const &amp;, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;, std::size_t, std::optional&lt; <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> &gt;) &gt;</td>          <td class="paramname"><span class="paramname"><em>check_path</em></span>&#160;)</td>
+          <td class="paramtype">std::function&lt; bool(<a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; N, M &gt; const &amp;, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;, <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> const &amp;, std::size_t, std::optional&lt; <a class="el" href="../../d9/dfc/structCoord.html">Coord</a> &gt;)&gt;</td>          <td class="paramname"><span class="paramname"><em>check_path</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -2319,7 +2296,7 @@ template&lt;std::size_t N = 8, std::size_t M = N&gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Renvoie</dt><dd>Un pointeur observateur sur une piece ou nullptr si la case est vide </dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Un pointeur observateur sur une piece ou <a class="el" href="#ae6fa0350c8ef33e791f1f9a4daa5e3d1">Piece()</a> si la case est vide </dd></dl>
 
 </div>
 </div>
@@ -2424,6 +2401,52 @@ template&lt;std::size_t N = 8, std::size_t M = N&gt; </div>
 
 </div>
 </div>
+<a id="aaf99d8f5c18672d24c84b3ef22d0bd2c" name="aaf99d8f5c18672d24c84b3ef22d0bd2c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf99d8f5c18672d24c84b3ef22d0bd2c">&#9670;&#160;</a></span>range_to_2_array()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;std::size_t N = 8, std::size_t M = N&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a> void <a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; N, M &gt;::range_to_2_array </td>
+          <td>(</td>
+          <td class="paramtype">std::ranges::common_range auto const &amp;</td>          <td class="paramname"><span class="paramname"><em>board</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::array&lt; bool, N *M &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>first_instance</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::array&lt; <a class="el" href="../../d5/df0/classPiece.html">Piece</a>, N *M &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>piece_board</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Initialise un plateau à l'aide d'un container 2D. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">board</td><td>Un container 2D </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">first_instance</td><td>Le tableau de la première instance du plateau </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">piece_board</td><td>Le plateau contenant les pièces </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="ac861187330142ee511ed2707ea4c552a" name="ac861187330142ee511ed2707ea4c552a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac861187330142ee511ed2707ea4c552a">&#9670;&#160;</a></span>update_board()</h2>
 
@@ -2451,6 +2474,33 @@ template&lt;std::size_t N = 8, std::size_t M = N&gt; </div>
 
 <p>Fonction qui permet de mattre à jour le plateau, car ce mouvement entraine l'apparition de plusieurs instance de board identique, il faut donc les concaténer en ajoutant les probas, si la proba vaut 0, on supprime l'instance. </p>
 <dl class="section warning"><dt>Avertissement</dt><dd>Complexité en k² x N x M, avec k la taille de m_board c'est à dire le nombre d'instance du plateau, N et M les dimensions du plateau </dd></dl>
+
+</div>
+</div>
+<a id="a68041aa1a83fe7bb96cc61254142ff25" name="a68041aa1a83fe7bb96cc61254142ff25"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a68041aa1a83fe7bb96cc61254142ff25">&#9670;&#160;</a></span>update_board_classic()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;std::size_t N = 8, std::size_t M = N&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; N, M &gt;::update_board_classic </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>

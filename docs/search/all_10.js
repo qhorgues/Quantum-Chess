@@ -1,8 +1,7 @@
 var searchData=
 [
-  ['to_5fstring_0',['to_string',['../d8/dcc/namespacestd.html#a4f444ca087720cc758379d609dbbc72c',1,'std']]],
-  ['type_1',['type',['../df/d5b/structMove.html#a3907a77e98c162320f1ff34a6cb07a62',1,'Move']]],
-  ['typemove_2',['TypeMove',['../d0/d21/Move_8hpp.html#ac365680f0388487d538d24242d1f421a',1,'Move.hpp']]],
-  ['typepiece_3',['TypePiece',['../dc/dae/TypePiece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83',1,'TypePiece.hpp']]],
-  ['typepiece_2ehpp_4',['TypePiece.hpp',['../dc/dae/TypePiece_8hpp.html',1,'']]]
+  ['unitary_2ehpp_0',['Unitary.hpp',['../db/daa/Unitary_8hpp.html',1,'']]],
+  ['update_5fboard_1',['update_board',['../de/d23/classBoard.html#ac861187330142ee511ed2707ea4c552a',1,'Board']]],
+  ['update_5fboard_5fclassic_2',['update_board_classic',['../de/d23/classBoard.html#a68041aa1a83fe7bb96cc61254142ff25',1,'Board']]],
+  ['update_5fcase_3',['update_case',['../de/d23/classBoard.html#a2b7efeb273cc2b2b07fa87b8d9eb3b7f',1,'Board']]]
 ];
