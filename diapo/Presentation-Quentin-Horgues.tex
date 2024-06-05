@@ -6,6 +6,8 @@
 \usepackage[export]{adjustbox}
 \usepackage{lmodern}
 \usepackage[]{minted}
+\usepackage{multicol}
+\usepackage{setspace}
 \setminted{linenos=true, numbersep=5pt, xleftmargin=20pt}
 \makeatletter
 \AtBeginEnvironment{minted}{\dontdofcolorbox}
@@ -32,50 +34,27 @@
 	
 	\begin{frame}
 	\frametitle{Présentation des règles du jeu}
-	$\bullet$ 2 joueurs qui joue à tour de rôle \newline
-	$\bullet$ différents types de pièces \newline
+	$\bullet$ 2 joueurs qui jouent à tour de rôle \newline
+	$\bullet$ Sur un plateau de 64 cases, on notera les colonnes de 0 à 7, de même pour les lignes \newline
+	$\bullet$ Différents types de pièces \newline
 	$\bullet$ Un tour = un mouvement \newline %mal dit
 	$\bullet$ Objectif : capturer le roi adverse \newline     
 	\end{frame}
 	
 	\begin{frame}
-		\frametitle{Le plateau}
-		\includegraphics[scale = 0.5, center]{./assets/plateau.jpg}    
-	\end{frame}
-	
-	\begin{frame}
-	\frametitle{Mouvement classique : fou}
-	\includegraphics[scale = 0.4, center]{./assets/fou.jpg}    
-	\end{frame}
-	
-	\begin{frame}
-	\frametitle{Mouvement classique : tour}
-	\includegraphics[scale = 0.4, center]{./assets/tour.jpg}    
-	\end{frame}
-	
-	\begin{frame}
-	\frametitle{Mouvement classique : dame}
-	\includegraphics[scale = 0.4, center]{./assets/dame.jpg}    
-	\end{frame}
-	
-	\begin{frame}
-	\frametitle{Mouvement classique : cavalier}
-	\includegraphics[scale = 0.4, center]{./assets/cavalier2.jpg}    
-	\end{frame}
-	
-	\begin{frame}
-	\frametitle{Mouvement classique : roi}
-	\includegraphics[scale = 0.4, center]{./assets/king.jpg}    
+	\frametitle{Mouvements classique}
+	\includegraphics[scale = 0.9, center]{./assets/classic-chess.png}    
 	\end{frame}
 	
 	\begin{frame}
 	\frametitle{Mouvement split}
 	\includegraphics[scale = 0.45, center]{./assets/split.png}    
+	{\tiny lichess.org}
 	\end{frame}
 	
 	\begin{frame}
 	\frametitle{Mouvement merge}
-	\includegraphics[scale = 1.45, center]{./assets/merge.png}    
+	\includegraphics[scale = 1.7, center]{./assets/merge.png}    
 	\end{frame}
 	
 	\begin{frame}
@@ -93,25 +72,90 @@
 	$\bullet$ L'IA \newline     
 	\end{frame}
 	
-	\begin{frame}
-		\frametitle{Récupération des mouvements : le backtrack}
-		%$\bullet$ Non-occupation simultanée 
-		\includegraphics[scale = 0.3, center]{./assets/backtrack.png}    
-	\end{frame}
 	
 	\begin{frame}
 		\frametitle{Implémentation de l'IA}
+		$\bullet$ Heuristique \newline
+		$\bullet$ \'{E}valuer les mouvements \newline
 		$\bullet$ Utilisation de l'algorithme Min-Max\newline
 		$\bullet$ Optimisation avec l'algorithme Alpha-Beta \newline
 		$\bullet$ Parallélisation des calculs \newline
-		$\bullet$ Heuristique \newline
-		\[
-			H(A) = \sum_{i=0}^{n} {\sum_{j=0}^{m} {C(j) P(B_{i, j}) val(B_{i, j})}}
-		\]    
 	\end{frame}
 	
 	\begin{frame}
-		\frametitle{Expérience 1: determination des cases importantes}
+		\frametitle{L'Heuristique}
+		\begin{multicols}{2}
+			\begin{flushleft}
+					$\mathcal{J}$ : La couleur du joueur \medskip \newline
+					$\bold{P}(\mathcal{P})$ : La probabilité de la pièce en position $\mathcal{P}$ \medskip \newline
+					$\mathcal{B} \in \mathbb{B}_{n,m}$ : Le plateau de dimension n,m \newline
+					\begin{equation}
+						\notag
+						C(\mathcal{P}) =
+						\begin{cases}
+							\ \; 1 & \mathcal{P} \text{ est blanc}\\
+							-1 & \mathcal{P} \text{ est noir}
+						\end{cases}       
+					\end{equation}
+			\end{flushleft}
+			
+			\begin{flushright}
+				\begin{table}[]
+					\begin{tabular}{cc}
+						\multicolumn{2}{l}{Valeurs des pièces}                    \\ \cline{2-2} 
+						\multicolumn{1}{c|}{}          & \multicolumn{1}{c|}{var} \\ \hline
+						\multicolumn{1}{|c|}{Roi}      & \multicolumn{1}{c|}{5}   \\ \hline
+						\multicolumn{1}{|c|}{Dame}     & \multicolumn{1}{c|}{9}   \\ \hline
+						\multicolumn{1}{|c|}{Tour}     & \multicolumn{1}{c|}{5}   \\ \hline
+						\multicolumn{1}{|c|}{Fou}      & \multicolumn{1}{c|}{3}   \\ \hline
+						\multicolumn{1}{|c|}{Cavalier} & \multicolumn{1}{c|}{3}   \\ \hline
+						\multicolumn{1}{|c|}{Pion}     & \multicolumn{1}{c|}{1}   \\ \hline
+					\end{tabular}
+				\end{table}
+			\end{flushright}
+		\end{multicols}
+		
+		\begin{equation}
+			\notag
+			H(A) = 
+			\begin{cases}
+				15 * C(\mathcal{J})  \text{ si }\mathcal{J}\text{ a gagné}\\
+				
+				{\displaystyle \sum_{i=0}^{n} {\sum_{j=0}^{m} {C(\mathcal{P}) \bold{P}(\mathcal{B}_{i, j}) val(\mathcal{B}_{i, j})}}} \text{ sinon}
+				
+			\end{cases}
+		\end{equation}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{\'{E}valuation des mouvements}
+		$\mathcal{M}$ : Le mouvement effectué  \newline
+		$\bold{P}(\mathcal{M})$ : La probabilité de la première instance possible du mouvement, $\mathcal{B}^1$\newline
+		$1-\bold{P}(\mathcal{M})$ : La probabilité de la seconde instance $\mathcal{B}^2$ \newline
+		$f(\mathcal{B})$ : Renvoie l'évaluation du plateau en parcourant l'arborescence \newline
+		
+		\begin{equation}
+			\notag
+			eval(\mathcal{B}, \mathcal{M}) = 
+			\begin{cases}
+				f(\mathcal{B}^1) \text{ si }\bold{P}(\mathcal{M}) = 1\\
+				f(\mathcal{B}^2) \text{ si }\bold{P}(\mathcal{M}) = 0\\
+				f(\mathcal{B}^1)\bold{P}(\mathcal{M}) + f(\mathcal{B}^2)(1-\bold{P}(\mathcal{M})) \text{ sinon}
+				
+			\end{cases}
+		\end{equation}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Min-Max / \'{E}laguage alpha-beta}
+		\begin{figure} [ht]
+			\includegraphics[scale=0.25, center]{./assets/min-max.jpg}
+			\caption{fr.wikipedia.org}
+		\end{figure}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Expérience 1: Determination des cases importantes}
 		%$\bullet$ Non-occupation simultanée 
 		\includegraphics[scale = 0.7, center]{./assets/figure-board.png}    
 	\end{frame}
@@ -119,25 +163,41 @@
 	\begin{frame}
 		\frametitle{Ajout de l'evaluation des cases}
 		\[
-		eval(c) = \min(\min(i, \frac{N-i-1}{N-2}), \min(j, \frac{M-i-1}{M-2}))
+		eval\_case(\mathcal{B}_{i,j}) = \min \left(  \min\left(i, \frac{n-i-1}{n-2} \right), \min \left( j, \frac{m-j-1}{m-2} \right) \right)
 		\] \newline
 		\[
-		H(A) = \sum_{i=0}^{n} {\sum_{j=0}^{m} {C(j) P(B_{i, j}) val(B_{i, j})eval(B_{i,j})}}
+		H(A) = \sum_{i=0}^{n} {\sum_{j=0}^{m} {C(\mathcal{J}) P(B_{i, j}) val(B_{i, j})eval\_case(B_{i,j})}}
 		\]    
 	\end{frame}
 	
 	\begin{frame}
-		\frametitle{Expérience 2: determination des cases importantes}
+		\frametitle{Resultat de la fonction éval}
+		%$\bullet$ Non-occupation simultanée 
+		\includegraphics[scale = 0.7, center]{./assets/retour-eval.png}    
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Expérience 2: \'{E}volution de l'heuristique au cours d'une partie}
 		%$\bullet$ Non-occupation simultanée 
 		\includegraphics[scale = 0.7, center]{./assets/figure-heuristique.png}    
 	\end{frame}
 	
 	\begin{frame}
-		\frametitle{Conclusion}
-		$\bullet$ Résultat long à obtenir\newline
-		$\bullet$ Pas toujours précis 
+		\label{conclusion}
+		\frametitle{Conclusion : comment doit-on jouer}
+		$\bullet$ Jouer les coups quantique quand on est en position désavantageuse \newline
+		$\bullet$ On peut aussi jouer les coups quantique en position avantageuse car les finales sont pas forcément gagnante sans un grand écart matériel \newline
+		$\bullet$ Les coups classics sont idéaux dans les parties serrée \newline
+		$\bullet$ Pour le moment nous avons pu tester 14 partie sur des plateaux 8x8 avec 8 victoire pour les noirs et 6 pour les blancs en utilisant une profondeur de calcul de 6 \newline
+		$\mathbb{P}(R)\mathbb{P}(C)$
 	\end{frame}
 	
+	
+	\begin{frame}
+		\frametitle{Annexe}
+		%$\bullet$ Non-occupation simultanée 
+		\includegraphics[scale = 0.3, center]{./assets/backtrack.png}    
+	\end{frame}
 	
 	\import{./../}{code-latex-output}		
 

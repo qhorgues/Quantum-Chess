@@ -83,17 +83,23 @@ output.write("{\\tiny") # Pour afficher le code en petit
 for path_file in list_file:
   file_name = ntpath.basename(path_file).replace('_', '-')
   label_name = ntpath.basename(path_file).replace('_', '')
-  output.write(f"\n\\begin{{frame}}[fragile]\n\\label{{{label_name}}}\n\\frametitle{{{file_name}}}\n\\begin{{minted}}[obeytabs=true,tabsize=2,linenos=true]{{cpp}}\n")
+  output.write(f"\n\\begin{{frame}}[fragile]\n\\label{{{label_name}}}\n\\frametitle{{{file_name}}}\n")
+  output.write("\\hyperlink{conclusion}{Retour au début}\\newline\n")
+  output.write("\\begin{minted}[obeytabs=true,tabsize=2,linenos=true, breaklines]{cpp}\n")
 
   file = open(path_file, 'r')
   i = 0
   nb_line = 0
   lines = file.readlines()
+  maxline = LINES_PER_PAGE-4
   lines.pop()
   for line in lines:
     nb_line += 1
-    if i >= LINES_PER_PAGE:
-      output.write(f"\\end{{minted}}\n\\end{{frame}}\n\n\\begin{{frame}}[fragile]\n\\begin{{minted}}[obeytabs=true,tabsize=2,linenos=true,firstnumber={nb_line}]{{cpp}}\n")
+    if i >= maxline:
+      maxline = LINES_PER_PAGE
+      output.write("\\end{minted}\n\\end{frame}\n\n\\begin{frame}[fragile]\n")
+      output.write("\\hyperlink{conclusion}{Retour au début}\\newline\n")
+      output.write(f"\\begin{{minted}}[obeytabs=true,tabsize=2,linenos=true,breaklines,firstnumber={nb_line}]{{cpp}}\n")
       i = 0
     output.write(line)
     i+=1
