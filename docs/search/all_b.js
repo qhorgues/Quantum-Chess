@@ -1,5 +1,6 @@
 var searchData=
 [
+<<<<<<< HEAD
   ['m_0',['m',['../d9/dfc/structCoord.html#a93cffc8a62dd5d3b0c18e19c8e9fa1f6',1,'Coord']]],
   ['m_5fboard_1',['m_board',['../de/d23/classBoard.html#a86ac6aad8d1350d28d5185d5f81dc44e',1,'Board']]],
   ['m_5fcolor_2',['m_color',['../d5/df0/classPiece.html#a5a31d1b235b1615e61627693e8c1d0d2',1,'Piece']]],
@@ -57,4 +58,14 @@ var searchData=
   ['move_5fsplit_54',['move_split',['../de/d23/classBoard.html#a4965fbc774f008f0b0aba1192b93daf3',1,'Board']]],
   ['move_5fsplit_5fjump_55',['move_split_jump',['../de/d23/classBoard.html#a47f420a736210539b59d3dc2023ce964',1,'Board']]],
   ['move_5fsplit_5fslide_56',['move_split_slide',['../de/d23/classBoard.html#a021d47a138270ee0ae8e3427b7d5f9d2',1,'Board']]]
+=======
+  ['pawn_0',['PAWN',['../dc/dae/TypePiece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83a3acd2a53aca11e0f883236ea27a3b627',1,'TypePiece.hpp']]],
+  ['piece_1',['Piece',['../d5/df0/classPiece.html',1,'Piece'],['../de/d23/classBoard.html#ae6fa0350c8ef33e791f1f9a4daa5e3d1',1,'Board::Piece'],['../d5/df0/classPiece.html#a873d4632bbd71c9a074608a268a2bbc0',1,'Piece::Piece() noexcept'],['../d5/df0/classPiece.html#a54712fd34a64f0fa8f4ffc822dba6130',1,'Piece::Piece(TypePiece piece, Color color) noexcept'],['../d5/df0/classPiece.html#a1c618e4a2bf080d3f184717fd2a94fd6',1,'Piece::Piece(Piece const &amp;)=default'],['../d5/df0/classPiece.html#a305638ccbdbea69cf64be0ac258c63a0',1,'Piece::Piece(Piece &amp;&amp;)=default']]],
+  ['piece_2',['piece',['../df/d5b/structMove.html#a88c4bc9f06b951decf09b3b009c4bfd8',1,'Move']]],
+  ['piece_2ehpp_3',['Piece.hpp',['../de/d1d/Piece_8hpp.html',1,'']]],
+  ['piece_5fto_5fchr_4',['Piece_to_chr',['../dc/d2f/ConsoleInterface_8hpp.html#a0e6f2e3958af5aec3c558266cd2896c3',1,'ConsoleInterface.hpp']]],
+  ['print_5fboard_5flight_5',['print_board_light',['../dc/d2f/ConsoleInterface_8hpp.html#a3f8e5f5ce16832927ea73288307d3cee',1,'ConsoleInterface.hpp']]],
+  ['promote_6',['PROMOTE',['../d0/d21/Move_8hpp.html#ac365680f0388487d538d24242d1f421aa99e1333a9cd342f9e07e4876eef54d7a',1,'Move.hpp']]],
+  ['promote_7',['promote',['../df/d5b/structMove.html#a0d2085f7baed425326ab6a926293ee28',1,'Move']]]
+>>>>>>> feature_game_board
 ];

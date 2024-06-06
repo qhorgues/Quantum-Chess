@@ -95,14 +95,20 @@ var menudata={children:[
 {text:"t",url:"globals.html#index_t"},
 {text:"w",url:"globals.html#index_w"}]},
 {text:"Fonctions",url:"globals_func.html",children:[
+<<<<<<< HEAD
 {text:"a",url:"globals_func.html#index_a"},
+=======
+>>>>>>> feature_game_board
 {text:"c",url:"globals_func.html#index_c"},
 {text:"g",url:"globals_func.html#index_g"},
 {text:"m",url:"globals_func.html#index_m"},
 {text:"o",url:"globals_func.html#index_o"},
 {text:"p",url:"globals_func.html#index_p"},
 {text:"q",url:"globals_func.html#index_q"},
+<<<<<<< HEAD
 {text:"r",url:"globals_func.html#index_r"},
+=======
+>>>>>>> feature_game_board
 {text:"s",url:"globals_func.html#index_s"}]},
 {text:"Variables",url:"globals_vars.html"},
 {text:"Définitions de type",url:"globals_type.html"},
