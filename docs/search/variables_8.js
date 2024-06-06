@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['n_0',['n',['../d9/dfc/structCoord.html#aa748c08760a2979468295f4a1dc4df92',1,'Coord']]],
-  ['normal_1',['normal',['../df/d5b/structMove.html#a1064ee051c36f9e7a51d48eaa6a03250',1,'Move']]]
+  ['line_5fcount_0',['line_count',['../d4/d18/namespacecsv-to-graph.html#ac32256f2cd701fe1fba7a24fe43efe1a',1,'csv-to-graph']]],
+  ['linestyle_1',['linestyle',['../d4/d18/namespacecsv-to-graph.html#aa174b2438a1cfea27d2ae7cfda9084da',1,'csv-to-graph']]]
 ];
