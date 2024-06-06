@@ -16,10 +16,10 @@
 int main()
 {
   Board<4> board{
+      {B_KING, B_PAWN, Piece(), Piece()},
+      {Piece(), Piece(), W_PAWN, Piece()},
       {Piece(), Piece(), Piece(), Piece()},
-      {Piece(), B_KING, Piece(), Piece()},
-      {Piece(), Piece(), Piece(), Piece()},
-      {W_QUEEN, Piece(), Piece(), W_KING}};
+      {Piece(), Piece(), Piece(), W_KING}};
 
   Board<> ChessBoard{
       {B_ROOK, B_KNIGHT, B_BISHOP, B_QUEEN, B_KING, B_BISHOP, B_KNIGHT, B_ROOK},
@@ -37,8 +37,18 @@ int main()
    bool res{double_equal(board.get_proba(Coord(3,3)), 1.)};
    std::cout<<res<<std::endl;*/
 
-  ChessBoard.move(Move_split(Coord(7, 1), Coord(5, 0), Coord(5, 2)));
-  std::cout << ChessBoard << std::endl;
+  std::forward_list<Move> list;
+  board.all_move([&list](Move const& m) mutable -> bool {
+    list.push_front(m);
+    return false;
+  }, Color::BLACK);
+
+  for (Move const& m : list)
+  {
+    Board cpy {board};
+    cpy.move(m);
+    std::cout << cpy << std::endl;
+  }
 
   return 0;
 }
