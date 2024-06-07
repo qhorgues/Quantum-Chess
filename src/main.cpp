@@ -45,20 +45,7 @@ int main()
        {W_PAWN, W_PAWN, W_PAWN, W_PAWN},
        {W_KNIGHT, W_QUEEN, W_KING, W_BISHOP}}};
 
-  smallBoard.move(Move_classic(Coord(4, 2) , Coord(2, 2)));
-
-  std::forward_list<Move> list;
-  smallBoard.all_move([&list](Move const& m) mutable -> bool {
-    list.push_front(m);
-    return false;
-  }, Color::BLACK);
-
-  for (Move const& m : list)
-  {
-    Board cpy {smallBoard};
-    cpy.move(m);
-    std::cout << cpy << std::endl;
-  }
+  std::cout << ChessBoard << std::endl;
 
   return 0;
 }
