@@ -121,13 +121,13 @@ void auto_playing(
     }
     csv << computer::__utility::heuristic(board) << ';' << Tmove  << ';' << m.normal.src.n << m.normal.src.m
     << ';' << m.normal.arv.n << m.normal.arv.m << ';' <<  m.split.arv2.n <<  m.split.arv2.m << std::endl;
-    /*
+    
     #if defined(WIN32)
         int ret = system("cls");
     #else
         int ret = system("clear");
     #endif
-        (void)ret;*/
+        (void)ret;
     std::cout << board << std::endl;
     board.change_player();
     nb_moves--;
@@ -183,12 +183,12 @@ int main()
        {Piece(), Piece(), Piece(), Piece()},
        {Piece(), Piece(), W_QUEEN, W_KING}}};
 
-  for (int i = 1; i <= 3; i++)
+  for (int i = 1; i <= 1; i++)
   {
-    Board board{smallBoard};
+    Board board{ChessBoard};
     std::ofstream log_file{"partie" + std::to_string(i) + ".txt"};
     std::ofstream csv{"partie" + std::to_string(i) + ".csv"};
-    auto_playing(board, log_file, csv, 300, 5);
+    auto_playing(board, log_file, csv, 400, 5);
     log_file.close();
   }
 
