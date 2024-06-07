@@ -1,20 +1,18 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="generator" content="Doxygen 1.9.4"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Quantum-Chess:  Fichier source de /home/quentin/Programmes/C++/Quantum-Chess/src/ConsoleInterface/ConsoleInterface.hpp</title>
+<title>Quantum-Chess:  Fichier source de /home/mael/Documents/TIPE/Quantum-Chess/src/ConsoleInterface/ConsoleInterface.hpp</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
-<script type="text/javascript" src="../../clipboard.js"></script>
 <link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
 <script type="text/javascript" src="../../navtreedata.js"></script>
 <script type="text/javascript" src="../../navtree.js"></script>
-<script type="text/javascript" src="../../resize.js"></script>
-<script type="text/javascript" src="../../cookie.js"></script>
 <link href="../../search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../search/searchdata.js"></script>
 <script type="text/javascript" src="../../search/search.js"></script>
@@ -35,15 +33,10 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.11.0 -->
+<!-- Généré par Doxygen 1.9.4 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-var searchBox = new SearchBox("searchBox", "../../search/",'.html');
-/* @license-end */
-</script>
-<script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function() { codefold.init(1); });
+var searchBox = new SearchBox("searchBox", "../../search",'Recherche','.html');
 /* @license-end */
 </script>
 <script type="text/javascript" src="../../menudata.js"></script>
@@ -51,8 +44,8 @@ $(function() { codefold.init(1); });
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('../../',true,false,'search.php','Recherche',true);
-  $(function() { init_search(); });
+  initMenu('../../',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
 });
 /* @license-end */
 </script>
@@ -70,7 +63,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function(){initNavTree('dc/d2f/ConsoleInterface_8hpp_source.html','../../'); initResizable(true); });
+$(document).ready(function(){initNavTree('dc/d2f/ConsoleInterface_8hpp_source.html','../../'); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -83,16 +76,9 @@ $(function(){initNavTree('dc/d2f/ConsoleInterface_8hpp_source.html','../../'); i
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
-<div id="MSearchResults">
-<div class="SRPage">
-<div id="SRIndex">
-<div id="SRResults"></div>
-<div class="SRStatus" id="Loading">Chargement...</div>
-<div class="SRStatus" id="Searching">Recherche...</div>
-<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
-</div>
-</div>
-</div>
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
 </div>
 
 <div class="header">
@@ -119,24 +105,24 @@ $(function(){initNavTree('dc/d2f/ConsoleInterface_8hpp_source.html','../../'); i
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &quot;ConsoleInterface.tpp&quot;</span></div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aBoard_8hpp_html"><div class="ttname"><a href="../../dd/db8/Board_8hpp.html">Board.hpp</a></div></div>
-<div class="ttc" id="aColor_8hpp_html_a78abb31bad0fd1834c54a3ca6f8daab5"><div class="ttname"><a href="../../d6/da3/Color_8hpp.html#a78abb31bad0fd1834c54a3ca6f8daab5">Color</a></div><div class="ttdeci">Color</div><div class="ttdoc">Représente la couleur d'un joueur.</div><div class="ttdef"><b>Definition</b> Color.hpp:8</div></div>
+<div class="ttc" id="aColor_8hpp_html_a78abb31bad0fd1834c54a3ca6f8daab5"><div class="ttname"><a href="../../d6/da3/Color_8hpp.html#a78abb31bad0fd1834c54a3ca6f8daab5">Color</a></div><div class="ttdeci">Color</div><div class="ttdoc">Représente la couleur d'un joueur.</div><div class="ttdef"><b>Definition:</b> Color.hpp:8</div></div>
 <div class="ttc" id="aConsoleInterface_8hpp_html_a0e6f2e3958af5aec3c558266cd2896c3"><div class="ttname"><a href="../../dc/d2f/ConsoleInterface_8hpp.html#a0e6f2e3958af5aec3c558266cd2896c3">Piece_to_chr</a></div><div class="ttdeci">char Piece_to_chr(TypePiece piece, Color color)</div></div>
 <div class="ttc" id="aConsoleInterface_8hpp_html_a25b351bd86ae70e6515207524b2b270c"><div class="ttname"><a href="../../dc/d2f/ConsoleInterface_8hpp.html#a25b351bd86ae70e6515207524b2b270c">getUnicodeChar</a></div><div class="ttdeci">const char * getUnicodeChar(TypePiece piece, Color color)</div></div>
 <div class="ttc" id="aConsoleInterface_8hpp_html_a3f8e5f5ce16832927ea73288307d3cee"><div class="ttname"><a href="../../dc/d2f/ConsoleInterface_8hpp.html#a3f8e5f5ce16832927ea73288307d3cee">print_board_light</a></div><div class="ttdeci">void print_board_light(std::ostream &amp;os, Board&lt; N, M &gt; const &amp;board)</div></div>
 <div class="ttc" id="aConsoleInterface_8hpp_html_a7ea4afd1baf401c7473ab00f1a085f7c"><div class="ttname"><a href="../../dc/d2f/ConsoleInterface_8hpp.html#a7ea4afd1baf401c7473ab00f1a085f7c">chr_to_TypeMove</a></div><div class="ttdeci">TypeMove chr_to_TypeMove(char type_move)</div></div>
 <div class="ttc" id="aConsoleInterface_8hpp_html_adc93af28b6635ac9083e9e48fa27b112"><div class="ttname"><a href="../../dc/d2f/ConsoleInterface_8hpp.html#adc93af28b6635ac9083e9e48fa27b112">chr_to_Piece</a></div><div class="ttdeci">Piece chr_to_Piece(char piece)</div></div>
 <div class="ttc" id="aConsoleInterface_8hpp_html_ae603137f7ce31de7fc0c5b240a703048"><div class="ttname"><a href="../../dc/d2f/ConsoleInterface_8hpp.html#ae603137f7ce31de7fc0c5b240a703048">operator&lt;&lt;</a></div><div class="ttdeci">std::ostream &amp; operator&lt;&lt;(std::ostream &amp;os, Board&lt; N, M &gt; const &amp;board)</div></div>
-<div class="ttc" id="aMove_8hpp_html_ac365680f0388487d538d24242d1f421a"><div class="ttname"><a href="../../d0/d21/Move_8hpp.html#ac365680f0388487d538d24242d1f421a">TypeMove</a></div><div class="ttdeci">TypeMove</div><div class="ttdoc">Enumération représentant tout les types de mouvements.</div><div class="ttdef"><b>Definition</b> Move.hpp:11</div></div>
-<div class="ttc" id="aTypePiece_8hpp_html_a2437c4d8f0bf23b8c6c76305ed35ae83"><div class="ttname"><a href="../../dc/dae/TypePiece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83">TypePiece</a></div><div class="ttdeci">TypePiece</div><div class="ttdoc">Enumère toutes les sortes de pièces.</div><div class="ttdef"><b>Definition</b> TypePiece.hpp:8</div></div>
-<div class="ttc" id="aclassBoard_html"><div class="ttname"><a href="../../de/d23/classBoard.html">Board</a></div><div class="ttdoc">La classe représentant le plateau de jeu.</div><div class="ttdef"><b>Definition</b> Board.hpp:33</div></div>
-<div class="ttc" id="aclassPiece_html"><div class="ttname"><a href="../../d5/df0/classPiece.html">Piece</a></div><div class="ttdoc">Class conservant le type et la couleur d'une pièce. Elle permet aussi de recuperer ses mouvement poss...</div><div class="ttdef"><b>Definition</b> Piece.hpp:21</div></div>
+<div class="ttc" id="aMove_8hpp_html_ac365680f0388487d538d24242d1f421a"><div class="ttname"><a href="../../d0/d21/Move_8hpp.html#ac365680f0388487d538d24242d1f421a">TypeMove</a></div><div class="ttdeci">TypeMove</div><div class="ttdoc">Enumération représentant tout les types de mouvements.</div><div class="ttdef"><b>Definition:</b> Move.hpp:11</div></div>
+<div class="ttc" id="aTypePiece_8hpp_html_a2437c4d8f0bf23b8c6c76305ed35ae83"><div class="ttname"><a href="../../dc/dae/TypePiece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83">TypePiece</a></div><div class="ttdeci">TypePiece</div><div class="ttdoc">Enumère toutes les sortes de pièces.</div><div class="ttdef"><b>Definition:</b> TypePiece.hpp:8</div></div>
+<div class="ttc" id="aclassBoard_html"><div class="ttname"><a href="../../de/d23/classBoard.html">Board</a></div><div class="ttdoc">La classe représentant le plateau de jeu.</div><div class="ttdef"><b>Definition:</b> Board.hpp:33</div></div>
+<div class="ttc" id="aclassPiece_html"><div class="ttname"><a href="../../d5/df0/classPiece.html">Piece</a></div><div class="ttdoc">Class conservant le type et la couleur d'une pièce. Elle permet aussi de recuperer ses mouvement poss...</div><div class="ttdef"><b>Definition:</b> Piece.hpp:21</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_9cf999731361f8a967392b152cd73232.html">ConsoleInterface</a></li><li class="navelem"><a class="el" href="../../dc/d2f/ConsoleInterface_8hpp.html">ConsoleInterface.hpp</a></li>
-    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>

@@ -25,12 +25,13 @@
 var NAVTREE =
 [
   [ "Quantum-Chess", "index.html", [
-    [ "Quantum-Chess", "de/d6b/md__2home_2quentin_2Programmes_2C_09_09_2Quantum-Chess_2README.html", null ],
+    [ "Quantum-Chess", "de/d0b/md__home_mael_Documents_TIPE_Quantum_Chess_README.html", null ],
     [ "Espaces de nommage", "namespaces.html", [
       [ "Liste des espaces de nommage", "namespaces.html", "namespaces_dup" ],
       [ "Membres de l'espace de nommage", "namespacemembers.html", [
         [ "Tout", "namespacemembers.html", null ],
-        [ "Fonctions", "namespacemembers_func.html", null ]
+        [ "Fonctions", "namespacemembers_func.html", null ],
+        [ "Variables", "namespacemembers_vars.html", null ]
       ] ]
     ] ],
     [ "Classes", "annotated.html", [
@@ -62,7 +63,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"de/d23/classBoard.html#af6a338387fffeb3aadc8ed3adb9a3649"
+"de/d23/classBoard.html#ab27ddd048e875eb243d7587d0b6f1424"
 ];
 
 var SYNCONMSG = 'cliquez pour désactiver la synchronisation du panel';

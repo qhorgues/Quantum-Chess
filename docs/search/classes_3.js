@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['observer_5fptr_0',['observer_ptr',['../d6/d4d/classobserver__ptr.html',1,'']]]
+  ['node_0',['Node',['../d8/d49/structNode.html',1,'']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['piece_0',['Piece',['../d5/df0/classPiece.html',1,'']]]
+  ['observer_5fptr_0',['observer_ptr',['../d6/d4d/classobserver__ptr.html',1,'']]]
 ];
