@@ -188,7 +188,7 @@ int main()
     Board board{smallBoard};
     std::ofstream log_file{"partie" + std::to_string(i) + ".txt"};
     std::ofstream csv{"partie" + std::to_string(i) + ".csv"};
-    auto_playing(board, log_file, csv, 300, 8);
+    auto_playing(board, log_file, csv, 300, 5);
     log_file.close();
   }
 
