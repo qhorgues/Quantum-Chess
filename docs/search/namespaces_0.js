@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['rnd_0',['rnd',['../d8/dc8/namespacernd.html',1,'']]]
+  ['clear_2ddoc_0',['clear-doc',['../d8/d9e/namespaceclear-doc.html',1,'']]]
 ];
