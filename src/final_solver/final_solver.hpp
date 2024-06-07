@@ -31,6 +31,9 @@ namespace Final
 
     template<std::size_t N, std::size_t M>
     CONSTEXPR Board<N, M> init_random_board();
+
+    template<std::size_t N, std::size_t M>
+    CONSTEXPR Board<N, M> init_random_board_v2();
 };
 
 /*struct C_hash{

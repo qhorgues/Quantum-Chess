@@ -10,13 +10,13 @@ namespace rnd
 {
   int randint(int a, int b)
   {
-    static std::uniform_int_distribution<> distrib(a, b);
+    std::uniform_int_distribution<> distrib(a, b);
     return distrib(rd);
   }
 
   double randreal(double a, double b)
   {
-    static std::uniform_real_distribution<> distrib(a, b);
+    std::uniform_real_distribution<> distrib(a, b);
     return distrib(rd);
   }
 }

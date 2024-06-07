@@ -542,22 +542,22 @@ CONSTEXPR Board<N, M> Final::init_random_board()
 {
     int queen = rnd::randint(0,N*M-1);
     int bishop = rnd::randint(0,N*M-1);
-    if(bishop == queen)
+    while(bishop == queen)
     {
         bishop = rnd::randint(0,N*M-1);
     }
     int knight = rnd::randint(0, N*M-1);
-      if(knight == queen || knight == bishop)
+      while(knight == queen || knight == bishop)
     {
         knight = rnd::randint(0,N*M-1);
     }
     int b_king = rnd::randint(0, N*M-1);
-      if(b_king ==knight || b_king == queen || b_king == bishop)
+      while(b_king ==knight || b_king == queen || b_king == bishop)
     {
         b_king = rnd::randint(0,N*M-1);
     }
      int w_king = rnd::randint(0, N*M-1);
-      if(w_king==b_king || w_king ==knight || w_king == queen || w_king == bishop)
+      while(w_king==b_king || w_king ==knight || w_king == queen || w_king == bishop)
     {
         w_king = rnd::randint(0,N*M-1);
     }
@@ -569,6 +569,35 @@ CONSTEXPR Board<N, M> Final::init_random_board()
     init[w_king/M][w_king%M] = W_KING;
     Board <N,M> B {init};
     return B;
-    
+}
 
+template<std::size_t N, std::size_t M>
+CONSTEXPR Board<N, M> Final::init_random_board_v2()
+{
+    int b_king = rnd::randint(N*(M-1), N*M-1);
+    int w_king = rnd::randint(0,M-1);
+    int knight = rnd::randint(0, N*M-1);
+      while(knight == b_king || knight == w_king)
+    {
+        knight = rnd::randint(0,N*M-1);
+    }
+    int bishop = rnd::randint(0, N*M-1);
+      while(bishop ==knight || bishop == b_king || bishop == w_king)
+    {
+        bishop = rnd::randint(0,N*M-1);
+    }
+     int queen = rnd::randint(0, N*M-1);
+      while(queen==b_king || queen ==knight || queen == w_king || queen == bishop)
+    {
+        queen = rnd::randint(0,N*M-1);
+    }
+    std::array<std::array<Piece,M>, N> init {};
+    init[queen/M][queen%M] = W_QUEEN;
+    init[bishop/M][bishop%M] = B_BISHOP;
+    init[knight/M][knight%M] = B_KNIGHT;
+    init[b_king/M][b_king%M] = B_KING;
+    init[w_king/M][w_king%M] = W_KING;
+    Board <N,M> B {init};
+    std::cout << B << std::endl;
+    return B;
 }
