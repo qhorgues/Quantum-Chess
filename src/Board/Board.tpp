@@ -313,6 +313,40 @@ CONSTEXPR bool Board<N, M>::winning_position(Color c) const noexcept
 }
 
 template <std::size_t N, std::size_t M>
+CONSTEXPR bool Board<N, M>::no_queen(Color c) const noexcept
+{
+  for (std::size_t i{0}; i < N * M; i++)
+  {
+    if (m_piece_board[i].get_type() == TypePiece::QUEEN &&
+        m_piece_board[i].get_color() == c)
+    {
+      return false;
+    }
+  }
+  return true;
+}
+
+template <std::size_t N, std::size_t M>
+CONSTEXPR bool Board<N, M>::BishopAndKnight(Color c) const noexcept
+{
+  bool bishop{false};
+  bool knight{false};
+  for (std::size_t i{0}; i < N * M; i++)
+  {
+    if (m_piece_board[i].get_type() == TypePiece::BISHOP &&
+        m_piece_board[i].get_color() == c)
+    {
+      bishop = true;
+    }
+    if (m_piece_board[i].get_type() == TypePiece::KNIGHT &&
+        m_piece_board[i].get_color() == c)
+    {
+      knight = true;
+    }
+  }
+  return bishop && knight;
+}
+template <std::size_t N, std::size_t M>
 CONSTEXPR bool
 Board<N, M>::move_is_legal(Move const &move) const
 {

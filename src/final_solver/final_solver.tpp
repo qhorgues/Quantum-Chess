@@ -172,6 +172,27 @@ double evaluer(const Board<N, M> &board, Color c)
         }
     }
 }
+
+template <std::size_t N, std::size_t M>
+double evaluer_v2(const Board<N, M> &board, Color c)
+{
+
+    if (board.winning_position(c))
+    {
+        return 1.;
+    }
+    else
+    {
+        if (board.winning_position(opponent_color(c)) || (board.no_queen(c) && board.BishopAndKnight(opponent_color(c))))
+        {
+            return -1.;
+        }
+        else
+        {
+            return 0.;
+        }
+    }
+}
 template<std::size_t N>
 void print_move(std::ostream &output, Move m)
 {
@@ -206,7 +227,7 @@ CONSTEXPR double alphaBeta(Board<N, M> const &board, std::size_t profondeur, dou
     {
         Move m = Move_classic(Coord(0, 0), Coord(0, 0));
         stack.push(m); // Cette information n'a pas d'intérêt dans la pile mais évite les erreurs de segmentation lorsqu'on dépile
-        return evaluer(board, c);
+        return evaluer_v2(board, c); //Seul endroit on on modifie la fonction d'évaluation
     }
     else
     {
@@ -598,6 +619,6 @@ CONSTEXPR Board<N, M> Final::init_random_board_v2()
     init[b_king/M][b_king%M] = B_KING;
     init[w_king/M][w_king%M] = W_KING;
     Board <N,M> B {init};
-    std::cout << B << std::endl;
+    //std::cout << B << std::endl;
     return B;
 }
