@@ -16,7 +16,7 @@
 #include <mutex>
 #include <Random.hpp>
 
-#define WIN_VALUE 20.
+#define WIN_VALUE 25.
 
 namespace computer
 {
