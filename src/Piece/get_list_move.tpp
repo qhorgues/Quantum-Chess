@@ -208,7 +208,7 @@ Piece::get_list_move_pawn(Board<N, M> const &board,
   int arv{board.m_L_mailbox[posBox + move_pawn[0]]};
   if (arv >= 0)
   {
-    std::size_t n{arv / N}, m{arv % N};
+    std::size_t n{arv / M}, m{arv % M};
     if (board(n, m).get_type() == TypePiece::EMPTY ||
         board.get_proba(Coord(n, m)) < 1. - EPSILON)
     {
@@ -216,7 +216,7 @@ Piece::get_list_move_pawn(Board<N, M> const &board,
       if (((pos.n == 1 && get_color() == Color::BLACK) ||
            (pos.n == N - 2 && get_color() == Color::WHITE)) &&
           (board(n + sign, m).get_type() == TypePiece::EMPTY ||
-           board.get_proba(Coord(n + sign, m)) < 1. - EPSILON))
+           board.get_proba(Coord(n + sign, m)) < (1. - EPSILON)))
       {
         list_move.push_front(Coord(n + sign, m));
       }
@@ -227,7 +227,7 @@ Piece::get_list_move_pawn(Board<N, M> const &board,
     arv = board.m_L_mailbox[posBox + move_pawn[i]];
     if (arv >= 0)
     {
-      std::size_t n{arv / N}, m{arv % N};
+      std::size_t n{arv / M}, m{arv % M};
       if ((board(n, m).get_type() != TypePiece::EMPTY &&
            !same_color(board(n, m))) ||
           (board.m_ep != std::nullopt &&
