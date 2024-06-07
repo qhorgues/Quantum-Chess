@@ -37,15 +37,25 @@ int main()
    bool res{double_equal(board.get_proba(Coord(3,3)), 1.)};
    std::cout<<res<<std::endl;*/
 
+  Board<6, 4> smallBoard{
+      {{B_KNIGHT, B_QUEEN, B_KING, B_BISHOP},
+       {B_PAWN, B_PAWN, B_PAWN, B_PAWN},
+       {Piece(), Piece(), Piece(), Piece()},
+       {Piece(), Piece(), Piece(), Piece()},
+       {W_PAWN, W_PAWN, W_PAWN, W_PAWN},
+       {W_KNIGHT, W_QUEEN, W_KING, W_BISHOP}}};
+
+  smallBoard.move(Move_classic(Coord(4, 2) , Coord(2, 2)));
+
   std::forward_list<Move> list;
-  board.all_move([&list](Move const& m) mutable -> bool {
+  smallBoard.all_move([&list](Move const& m) mutable -> bool {
     list.push_front(m);
     return false;
   }, Color::BLACK);
 
   for (Move const& m : list)
   {
-    Board cpy {board};
+    Board cpy {smallBoard};
     cpy.move(m);
     std::cout << cpy << std::endl;
   }
