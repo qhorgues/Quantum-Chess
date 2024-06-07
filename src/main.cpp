@@ -63,6 +63,7 @@ Board<4> B1{
     //auto[res, res2] {Final::res_pos(B3, 4)};
     //std::cout<<res<<std::endl;
     //Final::print_stack<4>(res2);
+    
     Board<4> board = Final::init_random_board<4,4>();
     int p {0};
     p++;
