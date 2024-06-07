@@ -1,5 +1,13 @@
 var NAVTREEINDEX1 =
 {
+"de/d23/classBoard.html#ae6fa0350c8ef33e791f1f9a4daa5e3d1":[2,0,0,52],
+"de/d23/classBoard.html#aea68746320b423e94ea542d4d0032dba":[2,0,0,29],
+"de/d23/classBoard.html#aeb602c14af620edcd7330d3a0cbf0e5d":[2,0,0,14],
+"de/d23/classBoard.html#aec3b9456ac2fddd20c747b8e463a5202":[2,0,0,7],
+"de/d23/classBoard.html#aec7237f84ab2e9fd71d19d96958936ea":[2,0,0,36],
+"de/d23/classBoard.html#aed8545cdf9ca4e47ffd3306d80c87539":[2,0,0,16],
+"de/d23/classBoard.html#af34231e3e62c2965fb6524c332570b23":[2,0,0,54],
+"de/d23/classBoard.html#af3f1ee5615d1c83e8b4f47f5d3462826":[2,0,0,27],
 "de/d23/classBoard.html#af6a338387fffeb3aadc8ed3adb9a3649":[2,0,0,3],
 "de/d23/classBoard.html#af90c264e8b40a8ed8bccb4630d90db53":[2,0,0,59],
 "de/d23/classBoard.html#afb03bcfcdf37570704d535714e867c97":[2,0,0,2],
@@ -54,6 +62,7 @@ var NAVTREEINDEX1 =
 "index.html":[],
 "namespacemembers.html":[1,1,0],
 "namespacemembers_func.html":[1,1,1],
+"namespacemembers_vars.html":[1,1,2],
 "namespaces.html":[1,0],
 "pages.html":[]
 };
