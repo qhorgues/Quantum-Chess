@@ -210,6 +210,12 @@ void print_board_light(std::ostream &os, Board<N, M> const &board)
 template <std::size_t N, std::size_t M>
 std::ostream &operator<<(std::ostream &os, Board<N, M> const &board)
 {
+  os << "   ";
+  for (std::size_t i{0}; i < M; i++)
+  {
+    os << "   " << static_cast<char>(i + 'A') << "  ";
+  }
+  os << "\n   ";
   for (std::size_t i{0}; i < M; i++)
   {
     os << "|-----";
@@ -217,13 +223,14 @@ std::ostream &operator<<(std::ostream &os, Board<N, M> const &board)
   os << "|\n";
   for (std::size_t i{0}; i < N; i++)
   {
+    os << ' ' << N - i << ' ';
     for (std::size_t j{0}; j < M; j++)
     {
       TypePiece piece{board(i, j).get_type()};
       Color color{board(i, j).get_color()};
       os << "|  " << getUnicodeChar(piece, color) << "  ";
     }
-    os << "|\n";
+    os << "|\n   ";
     for (std::size_t j{0}; j < M; j++)
     {
       if (board(i, j).get_type() != TypePiece::EMPTY)
@@ -249,7 +256,7 @@ std::ostream &operator<<(std::ostream &os, Board<N, M> const &board)
         os << "|     ";
       }
     }
-    os << "|\n";
+    os << "|\n   ";
     for (std::size_t j{0}; j < M; j++)
     {
       os << "|-----";
