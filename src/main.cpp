@@ -135,7 +135,7 @@ int main()
         {
             compteur_skip++;
         }
-        std::cout << i << std::endl;
+       // std::cout << i << std::endl;
     }
     res /= 1000. - static_cast<double>(compteur_skip);
     std::cout << res << std::endl

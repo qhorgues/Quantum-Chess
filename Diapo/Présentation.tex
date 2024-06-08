@@ -50,8 +50,9 @@
 	
 	\begin{frame}
 		\frametitle{Mouvement split}
+		% Aucun des deux joueurs n'a l'information
 		\includegraphics[scale = 0.45, center]{./split.png}    
-		{\tiny lichess.org}
+	%	{\tiny lichess.org}
 
 	\end{frame}
 	
@@ -159,23 +160,24 @@
 \begin{frame}
 	
 	\frametitle{Test sur des exemples générés aléatoirement}
+	$\bullet $ Les pièces sont positionnées aléatoirement \newline
+	$\bullet $ Le joueur blanc joue en premier \newline
+	$\bullet $ Profondeur = 4
 	\begin{center}
-		$\bullet $ Les pièces sont positionnées aléatoirement \newline
-		$\bullet $ Le joueur blanc joue en premier \newline
-		$\bullet $ Profondeur = 4
+		
 		\begin{tabular}{ | l | c | }
 			\hline
-			Nombre de plateaux passés & 723 \\ \hline
-			Moyenne & 0.07 \\ \hline
-			$-1 < val < -0.75$ & 6  \\ \hline
+			Nombre de plateaux passés & 722 \\ \hline
+			Moyenne & 0.08 \\ \hline
+			$-1 < val < -0.75$ & 5  \\ \hline
 			$-0.75 < val < -0.5$ & 0  \\ \hline
-			$-0.5 < val < -0.25$ & 4  \\ \hline
+			$-0.5 < val < -0.25$ & 2  \\ \hline
 			$-0.25 < val < 0$ & 0 \\ \hline
-			$val = 0 $   & 238  \\ \hline
+			$val = 0 $   & 239  \\ \hline
 			$0 < val < 0.25$ & 1  \\ \hline
-			$0.25 < val < 0.5$ & 2  \\ \hline
+			$0.25 < val < 0.5$ & 4  \\ \hline
 			$0.5 < val < 0.75$ & 0  \\ \hline
-			$0.75 < val < 1$ & 26  \\
+			$0.75 < val < 1$ & 27  \\
 			\hline
 		\end{tabular}
 	\end{center}	
@@ -183,23 +185,25 @@
 
 \begin{frame}
 	\frametitle{Test sur des exemples générés aléatoirement}
+	$\bullet $ Les pièces sont positionnées aléatoirement, sauf les rois qui sont placés sur des bords opposés \newline
+	$\bullet $ Le joueur blanc joue en premier \newline
+	$\bullet $ Profondeur = 4
 	\begin{center}
-		$\bullet $ Les pièces sont positionnées aléatoirement, sauf les rois qui sont placés sur des bords opposés \newline
-			$\bullet $ Le joueur blanc joue en premier \newline
-		$\bullet $ Profondeur = 4
+		
 		\begin{tabular}{ | l | c | }
 			\hline
-			Nombre de plateaux passés & 523 \\ \hline
-			Moyenne & 0.005 \\ \hline
-			$-1 < val < -0.75$ & 2  \\ \hline
+			Nombre de plateaux passés & 524 \\ \hline
+			Moyenne & 0.01 \\ \hline
+			$-1 < val < -0.75$ & 1  \\ \hline
 			$-0.75 < val < -0.5$ & 0  \\ \hline
 			$-0.5 < val < -0.25$ & 1  \\ \hline
 			$-0.25 < val < 0$ & 0 \\ \hline
-			$val = 0 $   & 462  \\ \hline
-			$0 < val < 0.25$ & 6  \\ \hline
-			$0.25 < val < 0.5$ & 5  \\ \hline
+			$val = 0 $   & 458  \\ \hline
+			$0 < val < 0.25$ & 4  \\ \hline
+			$0.25 < val < 0.5$ & 9  \\ \hline
 			$0.5 < val < 0.75$ & 0  \\ \hline
-			$0.75 < val < 1$ & 1  \\
+			$0.75 < val < 1$ & 3  \\
+			\hline
 			\hline
 		\end{tabular}
 	\end{center}	
@@ -207,26 +211,35 @@
 
 \begin{frame}
 	\frametitle{Test sur des exemples générés aléatoirement}
+	$\bullet $ Les pièces sont positionnées aléatoirement, sauf les rois qui sont placés sur des bords opposés \newline
+	$\bullet $ Le joueur noir joue en premier \newline
+	$\bullet $ Profondeur = 4
 	\begin{center}
-		$\bullet $ Les pièces sont positionnées aléatoirement, sauf les rois qui sont placés sur des bords opposés \newline
-			$\bullet $ Le joueur noir joue en premier \newline
-		$\bullet $ Profondeur = 4
 		\begin{tabular}{ | l | c | }
 			\hline
-			Nombre de plateaux passés & 523 \\ \hline
-			Moyenne & 0.005 \\ \hline
-			$-1 < val < -0.75$ & 2  \\ \hline
+			Nombre de plateaux passés & 743 \\ \hline
+			Moyenne & 0.00 \\ \hline
+			$-1 < val < -0.75$ & 0  \\ \hline
 			$-0.75 < val < -0.5$ & 0  \\ \hline
-			$-0.5 < val < -0.25$ & 1  \\ \hline
+			$-0.5 < val < -0.25$ & 0  \\ \hline
 			$-0.25 < val < 0$ & 0 \\ \hline
-			$val = 0 $   & 462  \\ \hline
-			$0 < val < 0.25$ & 6  \\ \hline
-			$0.25 < val < 0.5$ & 5  \\ \hline
+			$val = 0 $   & 256  \\ \hline
+			$0 < val < 0.25$ & 0  \\ \hline
+			$0.25 < val < 0.5$ & 0  \\ \hline
 			$0.5 < val < 0.75$ & 0  \\ \hline
 			$0.75 < val < 1$ & 1  \\
 			\hline
 		\end{tabular}
 	\end{center}
+\end{frame}
+
+	\begin{frame}
+	\frametitle{Conclusion}
+	$\bullet$ Les mouvement quantiques favorisent l'attaque \newline
+	$\bullet$ Le joueur qui a le trait est avantagé comme au jeu d'échecs classique \newline
+	$\bullet$ Profondeur faible \newline
+	$\bullet$ L'effet horizon empêche d'avoir des résultats précis \newline
+	
 \end{frame}
 	%\import{./../}{code-latex-output}      
 
