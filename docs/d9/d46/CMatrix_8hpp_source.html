@@ -1,20 +1,18 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="generator" content="Doxygen 1.9.4"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Quantum-Chess:  Fichier source de /home/quentin/Programmes/C++/Quantum-Chess/include/CMatrix.hpp</title>
+<title>Quantum-Chess:  Fichier source de /home/mael/Documents/TIPE/Quantum-Chess/include/CMatrix.hpp</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
-<script type="text/javascript" src="../../clipboard.js"></script>
 <link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
 <script type="text/javascript" src="../../navtreedata.js"></script>
 <script type="text/javascript" src="../../navtree.js"></script>
-<script type="text/javascript" src="../../resize.js"></script>
-<script type="text/javascript" src="../../cookie.js"></script>
 <link href="../../search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../search/searchdata.js"></script>
 <script type="text/javascript" src="../../search/search.js"></script>
@@ -35,15 +33,10 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.11.0 -->
+<!-- Généré par Doxygen 1.9.4 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-var searchBox = new SearchBox("searchBox", "../../search/",'.html');
-/* @license-end */
-</script>
-<script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function() { codefold.init(1); });
+var searchBox = new SearchBox("searchBox", "../../search",'Recherche','.html');
 /* @license-end */
 </script>
 <script type="text/javascript" src="../../menudata.js"></script>
@@ -51,8 +44,8 @@ $(function() { codefold.init(1); });
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('../../',true,false,'search.php','Recherche',true);
-  $(function() { init_search(); });
+  initMenu('../../',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
 });
 /* @license-end */
 </script>
@@ -70,7 +63,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function(){initNavTree('d9/d46/CMatrix_8hpp_source.html','../../'); initResizable(true); });
+$(document).ready(function(){initNavTree('d9/d46/CMatrix_8hpp_source.html','../../'); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -83,16 +76,9 @@ $(function(){initNavTree('d9/d46/CMatrix_8hpp_source.html','../../'); initResiza
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
-<div id="MSearchResults">
-<div class="SRPage">
-<div id="SRIndex">
-<div id="SRResults"></div>
-<div class="SRStatus" id="Loading">Chargement...</div>
-<div class="SRStatus" id="Searching">Recherche...</div>
-<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
-</div>
-</div>
-</div>
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
 </div>
 
 <div class="header">
@@ -129,16 +115,16 @@ $(function(){initNavTree('d9/d46/CMatrix_8hpp_source.html','../../'); initResiza
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="../../d9/d46/CMatrix_8hpp.html#afdd2e4b4b55d319f73ef2f4d0fc535c8">   38</a></span><span class="preprocessor">#define _2POW(n) (1 &lt;&lt; (n))</span></div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aCMatrix_8hpp_html_a3e99a8d4d1b632f5712266247636d394"><div class="ttname"><a href="../../d9/d46/CMatrix_8hpp.html#a3e99a8d4d1b632f5712266247636d394">CMatrix</a></div><div class="ttdeci">Matrix&lt; std::complex&lt; double &gt;, N &gt; CMatrix</div><div class="ttdoc">Objet représentant les matrices carrées complexe de dimension N.</div><div class="ttdef"><b>Definition</b> CMatrix.hpp:15</div></div>
+<div class="ttc" id="aCMatrix_8hpp_html_a3e99a8d4d1b632f5712266247636d394"><div class="ttname"><a href="../../d9/d46/CMatrix_8hpp.html#a3e99a8d4d1b632f5712266247636d394">CMatrix</a></div><div class="ttdeci">Matrix&lt; std::complex&lt; double &gt;, N &gt; CMatrix</div><div class="ttdoc">Objet représentant les matrices carrées complexe de dimension N.</div><div class="ttdef"><b>Definition:</b> CMatrix.hpp:15</div></div>
 <div class="ttc" id="aConstexpr_8hpp_html"><div class="ttname"><a href="../../d0/d5d/Constexpr_8hpp.html">Constexpr.hpp</a></div></div>
-<div class="ttc" id="aConstexpr_8hpp_html_acaa06fbc27c59926a41e7575667e5280"><div class="ttname"><a href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a></div><div class="ttdeci">#define CONSTEXPR</div><div class="ttdoc">Utilisé pour utiliser ou non constexpr.</div><div class="ttdef"><b>Definition</b> Constexpr.hpp:7</div></div>
+<div class="ttc" id="aConstexpr_8hpp_html_acaa06fbc27c59926a41e7575667e5280"><div class="ttname"><a href="../../d0/d5d/Constexpr_8hpp.html#acaa06fbc27c59926a41e7575667e5280">CONSTEXPR</a></div><div class="ttdeci">#define CONSTEXPR</div><div class="ttdoc">Utilisé pour utiliser ou non constexpr.</div><div class="ttdef"><b>Definition:</b> Constexpr.hpp:7</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="../../d9/d46/CMatrix_8hpp.html">CMatrix.hpp</a></li>
-    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>

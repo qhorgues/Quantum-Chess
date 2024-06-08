@@ -9,56 +9,56 @@
 
 /**
  * @brief Représente un qubit
- * 
+ *
  * @tparam N La taille du Qubit
  */
 template <std::size_t N>
 class Qubit final
 {
 public:
-    // Constructeur
-    CONSTEXPR Qubit() = default;
+  // Constructeur
+  CONSTEXPR Qubit() = default;
 
-    /**
-     * @brief Construit un nouveau qubit à l'aide d'un tableau de booléen
-     *
-     * @param data le tableau de n booléen utilisé pour
-     * construire un n-qubit ex : |10>
-     */
-    CONSTEXPR Qubit(std::array<bool, N> const &data);
-    CONSTEXPR Qubit(std::array<std::complex<double>, _2POW(N)> &&init_list);
+  /**
+   * @brief Construit un nouveau qubit à l'aide d'un tableau de booléen
+   *
+   * @param data le tableau de n booléen utilisé pour
+   * construire un n-qubit ex : |10>
+   */
+  CONSTEXPR Qubit(std::array<bool, N> const &data);
+  CONSTEXPR Qubit(std::array<std::complex<double>, _2POW(N)> &&init_list);
 
-    // Copie
-    CONSTEXPR Qubit(Qubit const &) = delete;
-    CONSTEXPR Qubit &operator=(Qubit const &) = delete;
+  // Copie
+  CONSTEXPR Qubit(Qubit const &) = delete;
+  CONSTEXPR Qubit &operator=(Qubit const &) = delete;
 
-    // Mouvement
-    CONSTEXPR Qubit(Qubit &&) = delete;
-    CONSTEXPR Qubit &operator=(Qubit &&) = delete;
+  // Mouvement
+  CONSTEXPR Qubit(Qubit &&) = delete;
+  CONSTEXPR Qubit &operator=(Qubit &&) = delete;
 
-    // Destructeur
-    CONSTEXPR ~Qubit() = default;
+  // Destructeur
+  CONSTEXPR ~Qubit() = default;
 
-    template <std::size_t M>
-    friend CONSTEXPR Qubit<M> operator*(
-        CMatrix<_2POW(M)> const &lhs,
-        Qubit<M> const &rhs);
+  template <std::size_t M>
+  friend CONSTEXPR Qubit<M> operator*(
+      CMatrix<_2POW(M)> const &lhs,
+      Qubit<M> const &rhs);
 
-    template <std::size_t M>
-    friend std::ostream &operator<<(
-        std::ostream &out,
-        Qubit<M> const &qubit);
+  template <std::size_t M>
+  friend std::ostream &operator<<(
+      std::ostream &out,
+      Qubit<M> const &qubit);
 
-    template <std::size_t M>
-    friend CONSTEXPR std::array<
-        std::pair<
-            std::array<bool, M>,
-            std::complex<double>>,
-        2>
-    qubitToArray(Qubit<M> const &qubit);
+  template <std::size_t M>
+  friend CONSTEXPR std::array<
+      std::pair<
+          std::array<bool, M>,
+          std::complex<double>>,
+      2>
+  qubitToArray(Qubit<M> const &qubit);
 
 private:
-    std::array<std::complex<double>, _2POW(N)> m_data;
+  std::array<std::complex<double>, _2POW(N)> m_data;
 };
 
 /**

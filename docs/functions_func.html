@@ -1,20 +1,18 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="generator" content="Doxygen 1.9.4"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Quantum-Chess: Membres de classe - Fonctions</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<script type="text/javascript" src="clipboard.js"></script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
-<script type="text/javascript" src="resize.js"></script>
-<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -35,15 +33,10 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.11.0 -->
+<!-- Généré par Doxygen 1.9.4 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-var searchBox = new SearchBox("searchBox", "search/",'.html');
-/* @license-end */
-</script>
-<script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function() { codefold.init(0); });
+var searchBox = new SearchBox("searchBox", "search",'Recherche','.html');
 /* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
@@ -51,8 +44,8 @@ $(function() { codefold.init(0); });
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','Recherche',true);
-  $(function() { init_search(); });
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
 });
 /* @license-end */
 </script>
@@ -70,7 +63,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function(){initNavTree('functions_func.html',''); initResizable(true); });
+$(document).ready(function(){initNavTree('functions_func.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -83,20 +76,13 @@ $(function(){initNavTree('functions_func.html',''); initResizable(true); });
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
-<div id="MSearchResults">
-<div class="SRPage">
-<div id="SRIndex">
-<div id="SRResults"></div>
-<div class="SRStatus" id="Loading">Chargement...</div>
-<div class="SRStatus" id="Searching">Recherche...</div>
-<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
-</div>
-</div>
-</div>
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
 </div>
 
 <div class="contents">
-<div class="textblock">&#160;</div>
+&#160;
 
 <h3><a id="index_a" name="index_a"></a>- a -</h3><ul>
 <li>abs_substracte()&#160;:&#160;<a class="el" href="d5/df0/classPiece.html#a42f13e43845dad888314b9b39ce4e469">Piece</a></li>
@@ -143,7 +129,6 @@ $(function(){initNavTree('functions_func.html',''); initResizable(true); });
 
 <h3><a id="index_i" name="index_i"></a>- i -</h3><ul>
 <li>init_mailbox()&#160;:&#160;<a class="el" href="de/d23/classBoard.html#a94fe407a5f6e87dee2e62bfc2a79504b">Board&lt; N, M &gt;</a></li>
-<li>initializer_list_to_2_array()&#160;:&#160;<a class="el" href="de/d23/classBoard.html#abe3e7d2bea8beebb399193f1a0ad622c">Board&lt; N, M &gt;</a></li>
 <li>is_black()&#160;:&#160;<a class="el" href="d5/df0/classPiece.html#a9b5c0ed275af57d3324bda002b7bf6ae">Piece</a></li>
 <li>is_white()&#160;:&#160;<a class="el" href="d5/df0/classPiece.html#a8a9b55a3c8198d841e3273ae0ff208b0">Piece</a></li>
 </ul>
@@ -159,8 +144,8 @@ $(function(){initNavTree('functions_func.html',''); initResizable(true); });
 <li>mesure_capture_slide()&#160;:&#160;<a class="el" href="de/d23/classBoard.html#acbaf73c9be83e5353996e294bd70b870">Board&lt; N, M &gt;</a></li>
 <li>mesure_castle()&#160;:&#160;<a class="el" href="de/d23/classBoard.html#a3d5faa099a6cd65943ef5fac766eb757">Board&lt; N, M &gt;</a></li>
 <li>modify()&#160;:&#160;<a class="el" href="de/d23/classBoard.html#a62526dd62f43780104ba8ccf85c49622">Board&lt; N, M &gt;</a></li>
-<li>Move()&#160;:&#160;<a class="el" href="df/d5b/structMove.html#ab2c466f4efa515edf581fa0d3ae901a6">Move</a></li>
 <li>move()&#160;:&#160;<a class="el" href="de/d23/classBoard.html#a368cf7ba6b2ed27dcad86645ad1c1953">Board&lt; N, M &gt;</a></li>
+<li>Move()&#160;:&#160;<a class="el" href="df/d5b/structMove.html#ab2c466f4efa515edf581fa0d3ae901a6">Move</a></li>
 <li>move_1_instance()&#160;:&#160;<a class="el" href="de/d23/classBoard.html#a16458e4400014c5dd7d4cedf1fa82ec7">Board&lt; N, M &gt;</a></li>
 <li>move_classic()&#160;:&#160;<a class="el" href="de/d23/classBoard.html#a155776b92f4336488d06f5b5dbf8e5cb">Board&lt; N, M &gt;</a></li>
 <li>move_classic_jump()&#160;:&#160;<a class="el" href="de/d23/classBoard.html#af3f1ee5615d1c83e8b4f47f5d3462826">Board&lt; N, M &gt;</a></li>
@@ -176,11 +161,12 @@ $(function(){initNavTree('functions_func.html',''); initResizable(true); });
 <li>move_promotion()&#160;:&#160;<a class="el" href="de/d23/classBoard.html#a70da9f8bdaa77d42712fdd123f40dad5">Board&lt; N, M &gt;</a></li>
 <li>move_split()&#160;:&#160;<a class="el" href="de/d23/classBoard.html#a4965fbc774f008f0b0aba1192b93daf3">Board&lt; N, M &gt;</a></li>
 <li>move_split_jump()&#160;:&#160;<a class="el" href="de/d23/classBoard.html#a47f420a736210539b59d3dc2023ce964">Board&lt; N, M &gt;</a></li>
-<li>move_split_slide()&#160;:&#160;<a class="el" href="de/d23/classBoard.html#ac735f5b430a40dc8f279d2717b4a0fa2">Board&lt; N, M &gt;</a></li>
+<li>move_split_slide()&#160;:&#160;<a class="el" href="de/d23/classBoard.html#a021d47a138270ee0ae8e3427b7d5f9d2">Board&lt; N, M &gt;</a></li>
 </ul>
 
 
 <h3><a id="index_n" name="index_n"></a>- n -</h3><ul>
+<li>Node()&#160;:&#160;<a class="el" href="d8/d49/structNode.html#a7a11fb69ffae4ea848890646f0d16488">Node</a></li>
 <li>norm()&#160;:&#160;<a class="el" href="d5/df0/classPiece.html#a8e8dfbfae0a2fcb70bd4bea72a45c6ae">Piece</a></li>
 <li>numberColumns()&#160;:&#160;<a class="el" href="de/d23/classBoard.html#abbd4419f7856bf0de2f0cb58d6f67fb1">Board&lt; N, M &gt;</a></li>
 <li>numberLines()&#160;:&#160;<a class="el" href="de/d23/classBoard.html#a7fa8fd1a867a5c5ed31d7819128389e6">Board&lt; N, M &gt;</a></li>
@@ -188,7 +174,7 @@ $(function(){initNavTree('functions_func.html',''); initResizable(true); });
 
 
 <h3><a id="index_o" name="index_o"></a>- o -</h3><ul>
-<li>observer_ptr()&#160;:&#160;<a class="el" href="d6/d4d/classobserver__ptr.html#a13360a658c5e5f1c9ed8f7a682abf49c">observer_ptr&lt; T &gt;</a></li>
+<li>observer_ptr()&#160;:&#160;<a class="el" href="d6/d4d/classobserver__ptr.html#af10f47454aa80c431096e185b17f7ef6">observer_ptr&lt; T &gt;</a></li>
 <li>offset()&#160;:&#160;<a class="el" href="de/d23/classBoard.html#a2453e112bab945721f92b21f7d964df6">Board&lt; N, M &gt;</a></li>
 <li>operator __pointer()&#160;:&#160;<a class="el" href="d6/d4d/classobserver__ptr.html#ac77a87d05bcdf029556d37b3240d059d">observer_ptr&lt; T &gt;</a></li>
 <li>operator bool()&#160;:&#160;<a class="el" href="d6/d4d/classobserver__ptr.html#a63d6779b2911c2913c0002205cdc7a5d">observer_ptr&lt; T &gt;</a></li>
@@ -212,6 +198,7 @@ $(function(){initNavTree('functions_func.html',''); initResizable(true); });
 
 
 <h3><a id="index_r" name="index_r"></a>- r -</h3><ul>
+<li>range_to_2_array()&#160;:&#160;<a class="el" href="de/d23/classBoard.html#aaf99d8f5c18672d24c84b3ef22d0bd2c">Board&lt; N, M &gt;</a></li>
 <li>release()&#160;:&#160;<a class="el" href="d6/d4d/classobserver__ptr.html#a44fedd0645ae9a9ca0036eaa3bc2af12">observer_ptr&lt; T &gt;</a></li>
 <li>reset()&#160;:&#160;<a class="el" href="d6/d4d/classobserver__ptr.html#aadf07d605b3dfdfe106843c20cf7f14a">observer_ptr&lt; T &gt;</a></li>
 </ul>
@@ -225,6 +212,7 @@ $(function(){initNavTree('functions_func.html',''); initResizable(true); });
 
 <h3><a id="index_u" name="index_u"></a>- u -</h3><ul>
 <li>update_board()&#160;:&#160;<a class="el" href="de/d23/classBoard.html#ac861187330142ee511ed2707ea4c552a">Board&lt; N, M &gt;</a></li>
+<li>update_board_classic()&#160;:&#160;<a class="el" href="de/d23/classBoard.html#a68041aa1a83fe7bb96cc61254142ff25">Board&lt; N, M &gt;</a></li>
 <li>update_case()&#160;:&#160;<a class="el" href="de/d23/classBoard.html#a2b7efeb273cc2b2b07fa87b8d9eb3b7f">Board&lt; N, M &gt;</a></li>
 </ul>
 
@@ -244,7 +232,7 @@ $(function(){initNavTree('functions_func.html',''); initResizable(true); });
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>

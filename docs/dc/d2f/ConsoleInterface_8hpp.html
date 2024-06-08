@@ -1,20 +1,18 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="generator" content="Doxygen 1.9.4"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Quantum-Chess: Référence du fichier /home/quentin/Programmes/C++/Quantum-Chess/src/ConsoleInterface/ConsoleInterface.hpp</title>
+<title>Quantum-Chess: Référence du fichier /home/mael/Documents/TIPE/Quantum-Chess/src/ConsoleInterface/ConsoleInterface.hpp</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
-<script type="text/javascript" src="../../clipboard.js"></script>
 <link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
 <script type="text/javascript" src="../../navtreedata.js"></script>
 <script type="text/javascript" src="../../navtree.js"></script>
-<script type="text/javascript" src="../../resize.js"></script>
-<script type="text/javascript" src="../../cookie.js"></script>
 <link href="../../search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../search/searchdata.js"></script>
 <script type="text/javascript" src="../../search/search.js"></script>
@@ -35,15 +33,10 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.11.0 -->
+<!-- Généré par Doxygen 1.9.4 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-var searchBox = new SearchBox("searchBox", "../../search/",'.html');
-/* @license-end */
-</script>
-<script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function() { codefold.init(1); });
+var searchBox = new SearchBox("searchBox", "../../search",'Recherche','.html');
 /* @license-end */
 </script>
 <script type="text/javascript" src="../../menudata.js"></script>
@@ -51,8 +44,8 @@ $(function() { codefold.init(1); });
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('../../',true,false,'search.php','Recherche',true);
-  $(function() { init_search(); });
+  initMenu('../../',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
 });
 /* @license-end */
 </script>
@@ -70,7 +63,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function(){initNavTree('dc/d2f/ConsoleInterface_8hpp.html','../../'); initResizable(true); });
+$(document).ready(function(){initNavTree('dc/d2f/ConsoleInterface_8hpp.html','../../'); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -83,16 +76,9 @@ $(function(){initNavTree('dc/d2f/ConsoleInterface_8hpp.html','../../'); initResi
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
-<div id="MSearchResults">
-<div class="SRPage">
-<div id="SRIndex">
-<div id="SRResults"></div>
-<div class="SRStatus" id="Loading">Chargement...</div>
-<div class="SRStatus" id="Searching">Recherche...</div>
-<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
-</div>
-</div>
-</div>
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
 </div>
 
 <div class="header">
@@ -109,13 +95,88 @@ $(function(){initNavTree('dc/d2f/ConsoleInterface_8hpp.html','../../'); initResi
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr class="memitem:ae603137f7ce31de7fc0c5b240a703048" id="r_ae603137f7ce31de7fc0c5b240a703048"><td class="memTemplParams" colspan="2">template&lt;std::size_t N, std::size_t M&gt; </td></tr>
-<tr class="memitem:ae603137f7ce31de7fc0c5b240a703048"><td class="memTemplItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ae603137f7ce31de7fc0c5b240a703048">operator&lt;&lt;</a> (std::ostream &amp;os, <a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; N, M &gt; const &amp;board)</td></tr>
+<tr class="memitem:a25b351bd86ae70e6515207524b2b270c"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d2f/ConsoleInterface_8hpp.html#a25b351bd86ae70e6515207524b2b270c">getUnicodeChar</a> (<a class="el" href="../../dc/dae/TypePiece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83">TypePiece</a> piece, <a class="el" href="../../d6/da3/Color_8hpp.html#a78abb31bad0fd1834c54a3ca6f8daab5">Color</a> color)</td></tr>
+<tr class="separator:a25b351bd86ae70e6515207524b2b270c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ea4afd1baf401c7473ab00f1a085f7c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d21/Move_8hpp.html#ac365680f0388487d538d24242d1f421a">TypeMove</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d2f/ConsoleInterface_8hpp.html#a7ea4afd1baf401c7473ab00f1a085f7c">chr_to_TypeMove</a> (char type_move)</td></tr>
+<tr class="separator:a7ea4afd1baf401c7473ab00f1a085f7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e6f2e3958af5aec3c558266cd2896c3"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d2f/ConsoleInterface_8hpp.html#a0e6f2e3958af5aec3c558266cd2896c3">Piece_to_chr</a> (<a class="el" href="../../dc/dae/TypePiece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83">TypePiece</a> piece, <a class="el" href="../../d6/da3/Color_8hpp.html#a78abb31bad0fd1834c54a3ca6f8daab5">Color</a> color)</td></tr>
+<tr class="separator:a0e6f2e3958af5aec3c558266cd2896c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc93af28b6635ac9083e9e48fa27b112"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/df0/classPiece.html">Piece</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d2f/ConsoleInterface_8hpp.html#adc93af28b6635ac9083e9e48fa27b112">chr_to_Piece</a> (char piece)</td></tr>
+<tr class="separator:adc93af28b6635ac9083e9e48fa27b112"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f8e5f5ce16832927ea73288307d3cee"><td class="memTemplParams" colspan="2">template&lt;std::size_t N, std::size_t M&gt; </td></tr>
+<tr class="memitem:a3f8e5f5ce16832927ea73288307d3cee"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dc/d2f/ConsoleInterface_8hpp.html#a3f8e5f5ce16832927ea73288307d3cee">print_board_light</a> (std::ostream &amp;os, <a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; N, M &gt; const &amp;board)</td></tr>
+<tr class="separator:a3f8e5f5ce16832927ea73288307d3cee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae603137f7ce31de7fc0c5b240a703048"><td class="memTemplParams" colspan="2">template&lt;std::size_t N, std::size_t M&gt; </td></tr>
+<tr class="memitem:ae603137f7ce31de7fc0c5b240a703048"><td class="memTemplItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dc/d2f/ConsoleInterface_8hpp.html#ae603137f7ce31de7fc0c5b240a703048">operator&lt;&lt;</a> (std::ostream &amp;os, <a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; N, M &gt; const &amp;board)</td></tr>
 <tr class="separator:ae603137f7ce31de7fc0c5b240a703048"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Documentation des fonctions</h2>
+<a id="adc93af28b6635ac9083e9e48fa27b112" name="adc93af28b6635ac9083e9e48fa27b112"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc93af28b6635ac9083e9e48fa27b112">&#9670;&nbsp;</a></span>chr_to_Piece()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d5/df0/classPiece.html">Piece</a> chr_to_Piece </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>piece</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7ea4afd1baf401c7473ab00f1a085f7c" name="a7ea4afd1baf401c7473ab00f1a085f7c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ea4afd1baf401c7473ab00f1a085f7c">&#9670;&nbsp;</a></span>chr_to_TypeMove()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d0/d21/Move_8hpp.html#ac365680f0388487d538d24242d1f421a">TypeMove</a> chr_to_TypeMove </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>type_move</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a25b351bd86ae70e6515207524b2b270c" name="a25b351bd86ae70e6515207524b2b270c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25b351bd86ae70e6515207524b2b270c">&#9670;&nbsp;</a></span>getUnicodeChar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * getUnicodeChar </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../dc/dae/TypePiece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83">TypePiece</a>&#160;</td>
+          <td class="paramname"><em>piece</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d6/da3/Color_8hpp.html#a78abb31bad0fd1834c54a3ca6f8daab5">Color</a>&#160;</td>
+          <td class="paramname"><em>color</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="ae603137f7ce31de7fc0c5b240a703048" name="ae603137f7ce31de7fc0c5b240a703048"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae603137f7ce31de7fc0c5b240a703048">&#9670;&#160;</a></span>operator&lt;&lt;()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ae603137f7ce31de7fc0c5b240a703048">&#9670;&nbsp;</a></span>operator&lt;&lt;()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -125,12 +186,77 @@ template&lt;std::size_t N, std::size_t M&gt; </div>
         <tr>
           <td class="memname">std::ostream &amp; operator&lt;&lt; </td>
           <td>(</td>
-          <td class="paramtype">std::ostream &amp;</td>          <td class="paramname"><span class="paramname"><em>os</em></span>, </td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>os</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; N, M &gt; const &amp;</td>          <td class="paramname"><span class="paramname"><em>board</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; N, M &gt; const &amp;&#160;</td>
+          <td class="paramname"><em>board</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0e6f2e3958af5aec3c558266cd2896c3" name="a0e6f2e3958af5aec3c558266cd2896c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e6f2e3958af5aec3c558266cd2896c3">&#9670;&nbsp;</a></span>Piece_to_chr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char Piece_to_chr </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../dc/dae/TypePiece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83">TypePiece</a>&#160;</td>
+          <td class="paramname"><em>piece</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d6/da3/Color_8hpp.html#a78abb31bad0fd1834c54a3ca6f8daab5">Color</a>&#160;</td>
+          <td class="paramname"><em>color</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3f8e5f5ce16832927ea73288307d3cee" name="a3f8e5f5ce16832927ea73288307d3cee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f8e5f5ce16832927ea73288307d3cee">&#9670;&nbsp;</a></span>print_board_light()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;std::size_t N, std::size_t M&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void print_board_light </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>os</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../de/d23/classBoard.html">Board</a>&lt; N, M &gt; const &amp;&#160;</td>
+          <td class="paramname"><em>board</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -143,7 +269,7 @@ template&lt;std::size_t N, std::size_t M&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_9cf999731361f8a967392b152cd73232.html">ConsoleInterface</a></li><li class="navelem"><a class="el" href="../../dc/d2f/ConsoleInterface_8hpp.html">ConsoleInterface.hpp</a></li>
-    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>

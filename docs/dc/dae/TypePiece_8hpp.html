@@ -1,20 +1,18 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="generator" content="Doxygen 1.9.4"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Quantum-Chess: Référence du fichier /home/quentin/Programmes/C++/Quantum-Chess/src/Piece/TypePiece.hpp</title>
+<title>Quantum-Chess: Référence du fichier /home/mael/Documents/TIPE/Quantum-Chess/src/Piece/TypePiece.hpp</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
-<script type="text/javascript" src="../../clipboard.js"></script>
 <link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
 <script type="text/javascript" src="../../navtreedata.js"></script>
 <script type="text/javascript" src="../../navtree.js"></script>
-<script type="text/javascript" src="../../resize.js"></script>
-<script type="text/javascript" src="../../cookie.js"></script>
 <link href="../../search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../search/searchdata.js"></script>
 <script type="text/javascript" src="../../search/search.js"></script>
@@ -35,15 +33,10 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.11.0 -->
+<!-- Généré par Doxygen 1.9.4 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-var searchBox = new SearchBox("searchBox", "../../search/",'.html');
-/* @license-end */
-</script>
-<script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function() { codefold.init(1); });
+var searchBox = new SearchBox("searchBox", "../../search",'Recherche','.html');
 /* @license-end */
 </script>
 <script type="text/javascript" src="../../menudata.js"></script>
@@ -51,8 +44,8 @@ $(function() { codefold.init(1); });
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('../../',true,false,'search.php','Recherche',true);
-  $(function() { init_search(); });
+  initMenu('../../',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
 });
 /* @license-end */
 </script>
@@ -70,7 +63,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function(){initNavTree('dc/dae/TypePiece_8hpp.html','../../'); initResizable(true); });
+$(document).ready(function(){initNavTree('dc/dae/TypePiece_8hpp.html','../../'); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -83,16 +76,9 @@ $(function(){initNavTree('dc/dae/TypePiece_8hpp.html','../../'); initResizable(t
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
-<div id="MSearchResults">
-<div class="SRPage">
-<div id="SRIndex">
-<div id="SRResults"></div>
-<div class="SRStatus" id="Loading">Chargement...</div>
-<div class="SRStatus" id="Searching">Recherche...</div>
-<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
-</div>
-</div>
-</div>
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
 </div>
 
 <div class="header">
@@ -106,23 +92,23 @@ $(function(){initNavTree('dc/dae/TypePiece_8hpp.html','../../'); initResizable(t
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Énumérations</h2></td></tr>
-<tr class="memitem:a2437c4d8f0bf23b8c6c76305ed35ae83" id="r_a2437c4d8f0bf23b8c6c76305ed35ae83"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2437c4d8f0bf23b8c6c76305ed35ae83">TypePiece</a> { <br />
-&#160;&#160;<a class="el" href="#a2437c4d8f0bf23b8c6c76305ed35ae83aba2b45bdc11e2a4a6e86aab2ac693cbb">EMPTY</a>
-, <a class="el" href="#a2437c4d8f0bf23b8c6c76305ed35ae83a3acd2a53aca11e0f883236ea27a3b627">PAWN</a>
-, <a class="el" href="#a2437c4d8f0bf23b8c6c76305ed35ae83af7f210da15dbb4283299b2affd9bb238">KNIGHT</a>
-, <a class="el" href="#a2437c4d8f0bf23b8c6c76305ed35ae83a1834d375f684613c725d039a10db1976">BISHOP</a>
+<tr class="memitem:a2437c4d8f0bf23b8c6c76305ed35ae83"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/dae/TypePiece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83">TypePiece</a> { <br />
+&#160;&#160;<a class="el" href="../../dc/dae/TypePiece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83aba2b45bdc11e2a4a6e86aab2ac693cbb">EMPTY</a>
+, <a class="el" href="../../dc/dae/TypePiece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83a3acd2a53aca11e0f883236ea27a3b627">PAWN</a>
+, <a class="el" href="../../dc/dae/TypePiece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83af7f210da15dbb4283299b2affd9bb238">KNIGHT</a>
+, <a class="el" href="../../dc/dae/TypePiece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83a1834d375f684613c725d039a10db1976">BISHOP</a>
 , <br />
-&#160;&#160;<a class="el" href="#a2437c4d8f0bf23b8c6c76305ed35ae83a97c60a3a4e61ee21e3f38a2f950fe293">ROOK</a>
-, <a class="el" href="#a2437c4d8f0bf23b8c6c76305ed35ae83a02d144e18eda99bcb94f3a764756805e">QUEEN</a>
-, <a class="el" href="#a2437c4d8f0bf23b8c6c76305ed35ae83a123b28961dd0f97d91bcb55d7a3b7c1c">KING</a>
+&#160;&#160;<a class="el" href="../../dc/dae/TypePiece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83a97c60a3a4e61ee21e3f38a2f950fe293">ROOK</a>
+, <a class="el" href="../../dc/dae/TypePiece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83a02d144e18eda99bcb94f3a764756805e">QUEEN</a>
+, <a class="el" href="../../dc/dae/TypePiece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83a123b28961dd0f97d91bcb55d7a3b7c1c">KING</a>
 <br />
  }</td></tr>
-<tr class="memdesc:a2437c4d8f0bf23b8c6c76305ed35ae83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enumère toutes les sortes de pièces.  <a href="#a2437c4d8f0bf23b8c6c76305ed35ae83">Plus de détails...</a><br /></td></tr>
+<tr class="memdesc:a2437c4d8f0bf23b8c6c76305ed35ae83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enumère toutes les sortes de pièces.  <a href="../../dc/dae/TypePiece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a2437c4d8f0bf23b8c6c76305ed35ae83"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Documentation du type de l'énumération</h2>
 <a id="a2437c4d8f0bf23b8c6c76305ed35ae83" name="a2437c4d8f0bf23b8c6c76305ed35ae83"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2437c4d8f0bf23b8c6c76305ed35ae83">&#9670;&#160;</a></span>TypePiece</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a2437c4d8f0bf23b8c6c76305ed35ae83">&#9670;&nbsp;</a></span>TypePiece</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -131,7 +117,7 @@ $(function(){initNavTree('dc/dae/TypePiece_8hpp.html','../../'); initResizable(t
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">enum class <a class="el" href="#a2437c4d8f0bf23b8c6c76305ed35ae83">TypePiece</a></td>
+          <td class="memname">enum class <a class="el" href="../../dc/dae/TypePiece_8hpp.html#a2437c4d8f0bf23b8c6c76305ed35ae83">TypePiece</a></td>
         </tr>
       </table>
   </td>
@@ -160,7 +146,7 @@ $(function(){initNavTree('dc/dae/TypePiece_8hpp.html','../../'); initResizable(t
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_c85bbe744eb3f453b27a8f2bfc5fc483.html">Piece</a></li><li class="navelem"><a class="el" href="../../dc/dae/TypePiece_8hpp.html">TypePiece.hpp</a></li>
-    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>

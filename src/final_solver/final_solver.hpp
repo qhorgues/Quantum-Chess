@@ -28,6 +28,12 @@ namespace Final
     CONSTEXPR std::pair<double, std::stack<Node>> res_pos(Board<N, M> &board, std::size_t profondeur);
     template<std::size_t N>
     CONSTEXPR void print_stack(std::stack<Node> &stack);
+
+    template<std::size_t N, std::size_t M>
+    CONSTEXPR Board<N, M> init_random_board();
+
+    template<std::size_t N, std::size_t M>
+    CONSTEXPR Board<N, M> init_random_board_v2();
 };
 
 /*struct C_hash{
