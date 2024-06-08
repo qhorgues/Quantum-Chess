@@ -184,6 +184,7 @@ public:
 CONSTEXPR bool no_queen(Color c) const noexcept;
 
 CONSTEXPR bool BishopAndKnight(Color c) const noexcept;
+CONSTEXPR double proba_BishopAndKnight(Color c) const noexcept;
   /**
    * @brief Recupère la couleur du joueur au tour de jouer
    *

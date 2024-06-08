@@ -68,7 +68,7 @@ int main()
     std::size_t c0{0};
     for (std::size_t i{0}; i < 1000; i++)
     {
-        Board<4> board = Final::init_random_board<4, 4>();
+        Board<4> board = Final::init_random_board_v2<4, 4>();
         if (double_equal(Final::res_pos<4, 4>(board, 1).first, 0.))
         {
             double inter{Final::res_pos<4, 4>(board, 4).first};

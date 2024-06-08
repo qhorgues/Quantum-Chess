@@ -347,6 +347,34 @@ CONSTEXPR bool Board<N, M>::BishopAndKnight(Color c) const noexcept
   return bishop && knight;
 }
 template <std::size_t N, std::size_t M>
+CONSTEXPR double Board<N, M>::proba_BishopAndKnight(Color c) const noexcept
+{
+  double acc{0.};
+  for (auto const &e : m_board)
+  {
+    bool bishop{false};
+    bool knight{false};
+    for (std::size_t i{0}; i < N * M; i++)
+    {
+      if (m_piece_board[i].get_type() == TypePiece::BISHOP &&
+          m_piece_board[i].get_color() == c)
+      {
+        bishop = true;
+      }
+      if (m_piece_board[i].get_type() == TypePiece::KNIGHT &&
+          m_piece_board[i].get_color() == c)
+      {
+        knight = true;
+      }
+    }
+    if (bishop && knight)
+    {
+      acc += pow(abs(e.second), 2.) ;
+    }
+  }
+  return acc;
+}
+template <std::size_t N, std::size_t M>
 CONSTEXPR bool
 Board<N, M>::move_is_legal(Move const &move) const
 {

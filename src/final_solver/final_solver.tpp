@@ -183,39 +183,46 @@ double evaluer_v2(const Board<N, M> &board, Color c)
     }
     else
     {
-        if (board.winning_position(opponent_color(c)) || (board.no_queen(c) && board.BishopAndKnight(opponent_color(c))))
+        if (board.winning_position(opponent_color(c)))
         {
             return -1.;
         }
         else
         {
-            return 0.;
+            if (board.no_queen((c)))
+            {
+                return -board.proba_BishopAndKnight(opponent_color(c));
+            }
+            else
+            {
+                return 0.;
+            }
         }
     }
 }
-template<std::size_t N>
+template <std::size_t N>
 void print_move(std::ostream &output, Move m)
 {
     std::string data1{{static_cast<char>('a' + m.normal.src.m), static_cast<char>('0' + N - m.normal.src.n)}};
     std::string data2{{static_cast<char>('a' + m.normal.arv.m), static_cast<char>('0' + N - m.normal.arv.n)}};
     if (m.type == TypeMove::NORMAL)
     {
-        output << "N " << data1 << data2 ;
+        output << "N " << data1 << data2;
     }
     else if (m.type == TypeMove::PROMOTE)
     {
-        output << "P " << data1 << data2 << " :: " << std::to_string(static_cast<int>(m.promote.piece)) ;
+        output << "P " << data1 << data2 << " :: " << std::to_string(static_cast<int>(m.promote.piece));
     }
     else
     {
         std::string data3{{static_cast<char>('a' + m.split.arv2.m), static_cast<char>('0' + N - m.split.arv2.n)}};
         if (m.type == TypeMove::SPLIT)
         {
-            output << "S " << data1 << '(' << data2 << data3 << ')' ;
+            output << "S " << data1 << '(' << data2 << data3 << ')';
         }
         else
         {
-            output << "M " << '(' << data1 << data2 << ')' << data3 ;
+            output << "M " << '(' << data1 << data2 << ')' << data3;
         }
     }
 }
@@ -226,8 +233,8 @@ CONSTEXPR double alphaBeta(Board<N, M> const &board, std::size_t profondeur, dou
     if (profondeur == 0 || board.winning_position(c) || board.winning_position(opponent_color(c)))
     {
         Move m = Move_classic(Coord(0, 0), Coord(0, 0));
-        stack.push(m); // Cette information n'a pas d'intérêt dans la pile mais évite les erreurs de segmentation lorsqu'on dépile
-        return evaluer_v2(board, c); //Seul endroit on on modifie la fonction d'évaluation
+        stack.push(m);            // Cette information n'a pas d'intérêt dans la pile mais évite les erreurs de segmentation lorsqu'on dépile
+        return evaluer_v2(board, c); // Seul endroit on on modifie la fonction d'évaluation
     }
     else
     {
@@ -528,7 +535,7 @@ CONSTEXPR std::pair<double, std::stack<Node>> Final::res_pos(Board<N, M> &board,
     return std::make_pair(alphaBeta(board, profondeur, -2., 2., true, c, stack), stack);
 }
 template <std::size_t N>
-CONSTEXPR void Final::print_stack( std::stack<Node> & stack)
+CONSTEXPR void Final::print_stack(std::stack<Node> &stack)
 {
     std::vector<std::stack<Node>> tab{};
     tab.push_back(stack);
@@ -547,78 +554,78 @@ CONSTEXPR void Final::print_stack( std::stack<Node> & stack)
             {
                 Node elt = e.top();
                 e.pop();
-                if(!elt.other_way.empty())
+                if (!elt.other_way.empty())
                 {
                     tab.push_back(elt.other_way);
                 }
                 print_move<N>(std::cout, elt.m);
             }
         }
-        std::cout<<std::endl;
+        std::cout << std::endl;
     }
 }
 
-template<std::size_t N, std::size_t M>
+template <std::size_t N, std::size_t M>
 CONSTEXPR Board<N, M> Final::init_random_board()
 {
-    int queen = rnd::randint(0,N*M-1);
-    int bishop = rnd::randint(0,N*M-1);
-    while(bishop == queen)
+    int queen = rnd::randint(0, N * M - 1);
+    int bishop = rnd::randint(0, N * M - 1);
+    while (bishop == queen)
     {
-        bishop = rnd::randint(0,N*M-1);
+        bishop = rnd::randint(0, N * M - 1);
     }
-    int knight = rnd::randint(0, N*M-1);
-      while(knight == queen || knight == bishop)
+    int knight = rnd::randint(0, N * M - 1);
+    while (knight == queen || knight == bishop)
     {
-        knight = rnd::randint(0,N*M-1);
+        knight = rnd::randint(0, N * M - 1);
     }
-    int b_king = rnd::randint(0, N*M-1);
-      while(b_king ==knight || b_king == queen || b_king == bishop)
+    int b_king = rnd::randint(0, N * M - 1);
+    while (b_king == knight || b_king == queen || b_king == bishop)
     {
-        b_king = rnd::randint(0,N*M-1);
+        b_king = rnd::randint(0, N * M - 1);
     }
-     int w_king = rnd::randint(0, N*M-1);
-      while(w_king==b_king || w_king ==knight || w_king == queen || w_king == bishop)
+    int w_king = rnd::randint(0, N * M - 1);
+    while (w_king == b_king || w_king == knight || w_king == queen || w_king == bishop)
     {
-        w_king = rnd::randint(0,N*M-1);
+        w_king = rnd::randint(0, N * M - 1);
     }
-    std::array<std::array<Piece,M>, N> init {};
-    init[queen/M][queen%M] = W_QUEEN;
-    init[bishop/M][bishop%M] = B_BISHOP;
-    init[knight/M][knight%M] = B_KNIGHT;
-    init[b_king/M][b_king%M] = B_KING;
-    init[w_king/M][w_king%M] = W_KING;
-    Board <N,M> B {init};
+    std::array<std::array<Piece, M>, N> init{};
+    init[queen / M][queen % M] = W_QUEEN;
+    init[bishop / M][bishop % M] = B_BISHOP;
+    init[knight / M][knight % M] = B_KNIGHT;
+    init[b_king / M][b_king % M] = B_KING;
+    init[w_king / M][w_king % M] = W_KING;
+    Board<N, M> B{init};
     return B;
 }
 
-template<std::size_t N, std::size_t M>
+template <std::size_t N, std::size_t M>
 CONSTEXPR Board<N, M> Final::init_random_board_v2()
 {
-    int b_king = rnd::randint(N*(M-1), N*M-1);
-    int w_king = rnd::randint(0,M-1);
-    int knight = rnd::randint(0, N*M-1);
-      while(knight == b_king || knight == w_king)
+    int b_king = rnd::randint(N * (M - 1), N * M - 1);
+    int w_king = rnd::randint(0, M - 1);
+    int knight = rnd::randint(0, N * M - 1);
+    while (knight == b_king || knight == w_king)
     {
-        knight = rnd::randint(0,N*M-1);
+        knight = rnd::randint(0, N * M - 1);
     }
-    int bishop = rnd::randint(0, N*M-1);
-      while(bishop ==knight || bishop == b_king || bishop == w_king)
+    int bishop = rnd::randint(0, N * M - 1);
+    while (bishop == knight || bishop == b_king || bishop == w_king)
     {
-        bishop = rnd::randint(0,N*M-1);
+        bishop = rnd::randint(0, N * M - 1);
     }
-     int queen = rnd::randint(0, N*M-1);
-      while(queen==b_king || queen ==knight || queen == w_king || queen == bishop)
+    int queen = rnd::randint(0, N * M - 1);
+    while (queen == b_king || queen == knight || queen == w_king || queen == bishop)
     {
-        queen = rnd::randint(0,N*M-1);
+        queen = rnd::randint(0, N * M - 1);
     }
-    std::array<std::array<Piece,M>, N> init {};
-    init[queen/M][queen%M] = W_QUEEN;
-    init[bishop/M][bishop%M] = B_BISHOP;
-    init[knight/M][knight%M] = B_KNIGHT;
-    init[b_king/M][b_king%M] = B_KING;
-    init[w_king/M][w_king%M] = W_KING;
-    Board <N,M> B {init};
-    //std::cout << B << std::endl;
+    std::array<std::array<Piece, M>, N> init{};
+    init[queen / M][queen % M] = W_QUEEN;
+    init[bishop / M][bishop % M] = B_BISHOP;
+    init[knight / M][knight % M] = B_KNIGHT;
+    init[b_king / M][b_king % M] = B_KING;
+    init[w_king / M][w_king % M] = W_KING;
+    Board<N, M> B{init};
+    // std::cout << B << std::endl;
     return B;
 }
