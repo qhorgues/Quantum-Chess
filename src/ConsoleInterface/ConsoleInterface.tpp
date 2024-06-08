@@ -6,7 +6,6 @@ const char *getUnicodeChar(TypePiece piece, Color color)
   using enum TypePiece;
   if (color == Color::WHITE)
   {
-#if defined(WIN32)
     switch (piece)
     {
     case KING:
@@ -47,48 +46,6 @@ const char *getUnicodeChar(TypePiece piece, Color color)
       return " ";
     }
   }
-#else
-    switch (piece)
-    {
-    case KING:
-      return "♚";
-    case QUEEN:
-      return "♛";
-    case ROOK:
-      return "♜";
-    case BISHOP:
-      return "♝";
-    case KNIGHT:
-      return "♞";
-    case PAWN:
-      return "♟";
-    case EMPTY:
-    default:
-      return " ";
-    }
-  }
-  else
-  {
-    switch (piece)
-    {
-    case KING:
-      return "♔";
-    case QUEEN:
-      return "♕";
-    case ROOK:
-      return "♖";
-    case BISHOP:
-      return "♗";
-    case KNIGHT:
-      return "♘";
-    case PAWN:
-      return "♙";
-    case EMPTY:
-    default:
-      return " ";
-    }
-  }
-#endif
 }
 
 TypeMove chr_to_TypeMove(char type_move)
