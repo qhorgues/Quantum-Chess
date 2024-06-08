@@ -1,3 +1,5 @@
+
+
 \documentclass[11pt]{beamer}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
@@ -29,7 +31,7 @@
 		\includegraphics[scale = 0.15, center]{./intro-presentation.jpg} 
 	\end{frame}
 	
-
+	
 	\begin{frame}
 		\frametitle{Présentation des règles du jeu}
 		$\bullet$ 2 joueurs qui jouent à tour de rôle \newline
@@ -98,23 +100,23 @@
 	
 	\begin{frame}
 		\frametitle{Résolution sur un exemple}
-	%	$\bullet$ Profondeur = 4
+		%	$\bullet$ Profondeur = 4
 		\includegraphics[scale = 1, center]{./pos3_exp1.png}	
 	\end{frame}
 	
 	\begin{frame}
 		\frametitle{Résolution sur un exemple}
-	%	$\bullet$ Profondeur = 4
+		%	$\bullet$ Profondeur = 4
 		\includegraphics[scale = 1, center]{./pos4_exp1.png}	
 	\end{frame}
 	\begin{frame}
 		\frametitle{Résolution sur un exemple}
-	%	$\bullet$ Profondeur = 4
+		%	$\bullet$ Profondeur = 4
 		\includegraphics[scale = 1.5, center]{./pos5_exp1.png}	
 	\end{frame}
 	\begin{frame}
 		\frametitle{Effet horizon}
-	%	$\bullet$ La finale suivante est gagnante pour les noirs
+		%	$\bullet$ La finale suivante est gagnante pour les noirs
 		\includegraphics[scale = 0.5, center]{./hor1.png}	
 		$\bullet$ Changement de la fonction d'évaluation : \newline
 		\begin{equation}
@@ -124,13 +126,36 @@
 				\ \; 1 & \mathcal{B} \text{ est gagnant pour le joueur blanc}\\
 				-1 & \mathcal{B} \text{ est gagnant pour le joueur noir } \\
 				-1 & \text{ si la dame blanche est capturée et que le joueur noir a} \\ 
-					& \text{ encore son cavlier et son fou} \\
+				& \text{ encore son cavlier et son fou} \\
 				0 & \text{ sinon}
 			\end{cases}       
 		\end{equation}
 		$\bullet$ Cette fonction d'évaluation semble favoriser les noirs
-		
 	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Test sur des exemples générés aléatoirement}
+		\begin{center}
+			\begin{tabular}{ l | c | }
+				\hline
+				Nombre de plateaux passés & 723 \\ \hline
+				Moyenne & 0.07 \\ \hline
+				$-1 < val < -0.75$ & 6  \\ \hline
+				$-0.75 < val < -0.5$ & 0  \\ \hline
+				$-0.5 < val < -0.25$ & 4  \\ \hline
+				$-0.25 < val < 0$ & 0 \\ \hline
+				$val = 0 $   & 238  \\ \hline
+				$0 < val < 0.25$ & 1  \\ \hline
+				$0.25 < val < 0.5$ & 2  \\ \hline
+				$0.5 < val < 0.75$ & 0  \\ \hline
+				$0.75 < val < 1$ & 26  \\
+				\hline
+			\end{tabular}
+		\end{center}
+	\end{frame}
+	%\import{./../}{code-latex-output}      
+	
+\end{document}
 	%\import{./../}{code-latex-output}      
 
 \end{document}
