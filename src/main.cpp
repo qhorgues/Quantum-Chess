@@ -57,20 +57,96 @@ int main()
     // Final::print_stack<4>(res2);
     std::size_t compteur_skip{0};
     double res{0};
-    for (std::size_t i{0}; i < 100; i++)
+    std::size_t c1{0};
+    std::size_t c2{0};
+    std::size_t c3{0};
+    std::size_t c4{0};
+    std::size_t c5{0};
+    std::size_t c6{0};
+    std::size_t c7{0};
+    std::size_t c8{0};
+    std::size_t c0{0};
+    for (std::size_t i{0}; i < 1000; i++)
     {
-        Board<4> board = Final::init_random_board_v2<4, 4>();
+        Board<4> board = Final::init_random_board<4, 4>();
         if (double_equal(Final::res_pos<4, 4>(board, 1).first, 0.))
         {
-            res += Final::res_pos<4, 4>(board, 4).first;
+            double inter{Final::res_pos<4, 4>(board, 4).first};
+            res += inter;
+            if (inter < -0.75)
+            {
+                c1++;
+            }
+            else
+            {
+                if (inter < -0.5)
+                {
+                    c2++;
+                }
+                else
+                {
+                    if (inter < -0.25)
+                    {
+                        c3++;
+                    }
+                    else
+                    {
+                        if (inter < 0)
+                        {
+                            c4++;
+                        }
+                        else
+                        {
+                            if (double_equal(inter, 0.))
+                            {
+                                c0++;
+                            }
+                            else
+                            {
+                                if (inter < 0.25)
+                                {
+                                    c5++;
+                                }
+                                else
+                                {
+                                    if (inter < 0.5)
+                                    {
+                                        c6++;
+                                    }
+                                    else
+                                    {
+                                        if (inter < 0.75)
+                                        {
+                                            c7++;
+                                        }
+                                        else
+                                        {
+                                            c8++;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
         else
         {
-            compteur_skip ++;
+            compteur_skip++;
         }
-        std::cout<<i<<std::endl;
+        std::cout << i << std::endl;
     }
-    res /= 100.-static_cast<double>(compteur_skip);
-    std::cout<<res<<std::endl<<compteur_skip<<std::endl;
-    
+    res /= 1000. - static_cast<double>(compteur_skip);
+    std::cout << res << std::endl
+              << compteur_skip << std::endl;
+    std::cout << c1 << std::endl;
+    std::cout << c2 << std::endl;
+    std::cout << c3 << std::endl;
+    std::cout << c4 << std::endl;
+     std::cout << c0 << std::endl;
+    std::cout << c5 << std::endl;
+    std::cout << c6 << std::endl;
+    std::cout << c7 << std::endl;
+    std::cout << c8 << std::endl;
 }
