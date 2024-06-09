@@ -183,12 +183,12 @@ int main()
        {Piece(), Piece(), Piece(), Piece()},
        {Piece(), Piece(), W_QUEEN, W_KING}}};
 
-  for (int i = 1; i <= 1; i++)
+  for (int i = 1; i <= 6; i++)
   {
     Board board{ChessBoard};
     std::ofstream log_file{"partie" + std::to_string(i) + ".txt"};
     std::ofstream csv{"partie" + std::to_string(i) + ".csv"};
-    auto_playing(board, log_file, csv, 400, 5);
+    auto_playing(board, log_file, csv, 400, 6);
     log_file.close();
   }
 
