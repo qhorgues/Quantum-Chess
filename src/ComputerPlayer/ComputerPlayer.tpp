@@ -230,7 +230,7 @@ namespace computer
       }
       catch (std::exception const& e)
       {
-        std::cout << e.what() << std::endl;
+        return 0;
       }
       double h{0};
       for (std::size_t i{0}; i < board.numberLines(); i++)
@@ -273,9 +273,12 @@ namespace computer
       }
       else if (double_equal(proba_move, 0.))
       {
+        return 0;
+        /*
         board_cpy1.move(move, false);
         board_cpy1.change_player();
         return rec_get_best_move(board_cpy1, best_score_alpha_beta, profondeur - 1);
+        */
       }
       else
       {
