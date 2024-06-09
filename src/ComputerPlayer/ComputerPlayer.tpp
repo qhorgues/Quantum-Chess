@@ -92,7 +92,7 @@ namespace computer
             {
               found_B_king = true;
             }
-            if (found_W_king == found_B_king)
+            if (found_W_king && found_B_king)
             {
               return false;
             }
@@ -103,9 +103,13 @@ namespace computer
       {
         winner_color = Color::BLACK;
       }
-      else
+      else if (found_W_king)
       {
         winner_color = Color::WHITE;
+      }
+      else
+      {
+        throw std::runtime_error("empty board");
       }
       return true;
     }
@@ -179,26 +183,26 @@ namespace computer
       {
         if constexpr (M % 2 == 0)
         {
-          return 2*std::min(std::min(static_cast<double>(i), static_cast<double>(N - i - 1)) / (N - 2),
-            std::min(static_cast<double>(j), static_cast<double>(M - j - 1)) / (M - 2));
+          return 2 * std::min(std::min(static_cast<double>(i), static_cast<double>(N - i - 1)) / (N - 2),
+                              std::min(static_cast<double>(j), static_cast<double>(M - j - 1)) / (M - 2));
         }
         else
         {
-          return 2*std::min(std::min(static_cast<double>(i), static_cast<double>(N - i - 1)) / (N - 2),
-          std::min(static_cast<double>(j), static_cast<double>(M - j - 1)) / (M));
+          return 2 * std::min(std::min(static_cast<double>(i), static_cast<double>(N - i - 1)) / (N - 2),
+                              std::min(static_cast<double>(j), static_cast<double>(M - j - 1)) / (M));
         }
       }
       else
       {
         if constexpr (M % 2 == 0)
         {
-          return  2*std::min(std::min(static_cast<double>(i), static_cast<double>(N - i - 1)) / (N - 2),
-          std::min(static_cast<double>(j), static_cast<double>(M - j - 1)) / (M - 2));
+          return 2 * std::min(std::min(static_cast<double>(i), static_cast<double>(N - i - 1)) / (N - 2),
+                              std::min(static_cast<double>(j), static_cast<double>(M - j - 1)) / (M - 2));
         }
         else
         {
-          return  2*std::min(std::min(static_cast<double>(i), static_cast<double>(N - i - 1)) / (N - 2),
-          std::min(static_cast<double>(j), static_cast<double>(M - j - 1)) / (M));
+          return 2 * std::min(std::min(static_cast<double>(i), static_cast<double>(N - i - 1)) / (N - 2),
+                              std::min(static_cast<double>(j), static_cast<double>(M - j - 1)) / (M));
         }
       }
     }
@@ -218,9 +222,15 @@ namespace computer
     CONSTEXPR double heuristic(Board<N, M> const &board) noexcept
     {
       Color win;
-      if (__utility::winner(board, win))
+      try {
+        if (__utility::winner(board, win))
+        {
+          return __utility::sign_color(win) * WIN_VALUE;
+        }
+      }
+      catch (std::exception const& e)
       {
-        return __utility::sign_color(win) * WIN_VALUE;
+        std::cout << e.what() << std::endl;
       }
       double h{0};
       for (std::size_t i{0}; i < board.numberLines(); i++)
@@ -232,7 +242,7 @@ namespace computer
           {
             h += sign_color(p.get_color()) *
                  (__utility::value_piece(p.get_type()) +
-                 evalCase<N, M>(i, j)) *
+                  evalCase<N, M>(i, j)) *
                  board.get_proba(Coord(i, j));
           }
         }
@@ -329,6 +339,12 @@ namespace computer
                   best_score,
                   score);
             });
+        if (best_score == -1 * sign_color(board.get_current_player()) *
+                              std::numeric_limits<double>::max())
+        {
+          return sign_color(board.get_current_player()) *
+                              std::numeric_limits<double>::max();
+        }
         return best_score;
       }
     }
