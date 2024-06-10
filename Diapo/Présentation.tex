@@ -16,7 +16,7 @@
 
 \begin{document}
 	\author{Maël Petit n°32502}
-	\title{JEU D'ECHECS QUANTIQUES}
+	\title{JEU D'ECHECS QUANTIQUE}
 	\subtitle{}
 	%\logo{}
 	%\institute{}
@@ -43,7 +43,7 @@
 	\end{frame}
 	
 	\begin{frame}
-		\frametitle{Mouvements classique}
+		\frametitle{Mouvements classiques}
 		\includegraphics[scale = 0.9, center]{./classic-chess.png}    
 
 	\end{frame}
@@ -75,12 +75,19 @@
 		
 		\frametitle{Objectif : Etude de la finale fou-cavalier contre dame}
 		$\bullet$ Diminution de la taille du plateau \newline
-		$\bullet$ Jeu d'échecs classique : finale gagnate pour les blancs mais difficile à gagner \newline
+		$\bullet$ Jeu d'échecs classique : finale gagnante pour les blancs mais difficile à gagner \newline
 		$\bullet$ Jeu d'échecs quantique : stratégie simple pour avoir une chance de gagner rapidement 
-		\includegraphics[scale = 1, center]{./pos1_exp1.jpg}	
+		\includegraphics[scale = 0.8, center]{./pos1_exp1.jpg}	
 
 	\end{frame}
 	
+	\begin{frame}
+		\frametitle{Implémentation}
+		$\bullet$ Représentations des différentes structures (plateau, pièces, matrice, qubit, ...) à l'aide du papier du chercheur Christopher Cantwell\newline
+		$\bullet$ Récupération des mouvements légaux \newline
+		$\bullet$ Les mesures \newline
+		$\bullet$ Réalisation des mouvements \newline %mal dit  
+	\end{frame}
 	\begin{frame}
 		
 		\frametitle{Algorithme min-max : principe}
@@ -97,7 +104,7 @@
 	\begin{frame}
 		\frametitle{Algorithme min-max}
 		$\bullet$ Besoin d'être adapté lors des mesures\newline 
-		$\bullet$ Fonction d'évaluation des noeuds : \newline
+		$\bullet$ Fonction d'évaluation des feuilles de l'arbre : \newline
 		\begin{equation}
 			\notag
 			eval(\mathcal{B}) =
@@ -109,26 +116,26 @@
 		\end{equation}
 		$\bullet$ Calcul de la valeur d'un mouvement : \newline
 		$proba_1*board_1 + proba_2*board_2$ \newline
-		$\bullet$ Pas d'élagage alpha-béta après une mesure
+	%	$\bullet$ Pas d'élagage alpha-béta après une mesure
 	\end{frame}
 	
 	\begin{frame}
-		\frametitle{Résolution su un exemple}
+		\frametitle{Résolution sur un exemple}
 		$\bullet$ Profondeur = 4
-		\includegraphics[scale = 1, center]{./pos2_exp1.jpg}	
+		\includegraphics[scale = 0.9, center]{./pos2_exp1.jpg}	
 	\end{frame}
 	
 	\begin{frame}
 		\frametitle{Résolution sur un exemple}
 	%	$\bullet$ Profondeur = 4
-		\includegraphics[scale = 1, center]{./pos3_exp1.png}	
+		\includegraphics[scale = 2.5, center]{./pos3_exp1.png}	
 	
 \end{frame}
 	
 	\begin{frame}
 		\frametitle{Résolution sur un exemple}
 	%	$\bullet$ Profondeur = 4
-		\includegraphics[scale = 1, center]{./pos4_exp1.png}	
+		\includegraphics[scale = 2.5, center]{./pos4_exp1.png}	
 	\end{frame}
 
 	\begin{frame}
@@ -149,7 +156,7 @@
 				\ \; 1 & \mathcal{B} \text{ est gagnant pour le joueur blanc}\\
 				-1 & \mathcal{B} \text{ est gagnant pour le joueur noir } \\
 				-P & \text{ si la dame blanche est capturée et que le joueur noir a} \\ 
-					& \text{ encore son cavlier et son fou} \\
+					& \text{ encore son cavalier et son fou} \\
 				0 & \text{ sinon}
 			\end{cases}       
 		\end{equation}
@@ -161,6 +168,7 @@
 	
 	\frametitle{Test sur des exemples générés aléatoirement}
 	$\bullet $ Les pièces sont positionnées aléatoirement \newline
+	$\bullet$ 1000 plateaux générés \newline
 	$\bullet $ Le joueur blanc joue en premier \newline
 	$\bullet $ Profondeur = 4
 	\begin{center}
@@ -169,15 +177,15 @@
 			\hline
 			Nombre de plateaux passés & 722 \\ \hline
 			Moyenne & 0.08 \\ \hline
-			$-1 < val < -0.75$ & 5  \\ \hline
-			$-0.75 < val < -0.5$ & 0  \\ \hline
-			$-0.5 < val < -0.25$ & 2  \\ \hline
-			$-0.25 < val < 0$ & 0 \\ \hline
+			$-1 \leq val < -0.75$ & 5  \\ \hline
+			$-0.75 \leq val < -0.5$ & 0  \\ \hline
+			$-0.5 \leq val < -0.25$ & 2  \\ \hline
+			$-0.25 \leq val < 0$ & 0 \\ \hline
 			$val = 0 $   & 239  \\ \hline
 			$0 < val < 0.25$ & 1  \\ \hline
-			$0.25 < val < 0.5$ & 4  \\ \hline
-			$0.5 < val < 0.75$ & 0  \\ \hline
-			$0.75 < val < 1$ & 27  \\
+			$0.25 \leq val < 0.5$ & 4  \\ \hline
+			$0.5 \leq val < 0.75$ & 0  \\ \hline
+			$0.75 \leq val \leq 1$ & 27  \\
 			\hline
 		\end{tabular}
 	\end{center}	
@@ -186,6 +194,7 @@
 \begin{frame}
 	\frametitle{Test sur des exemples générés aléatoirement}
 	$\bullet $ Les pièces sont positionnées aléatoirement, sauf les rois qui sont placés sur des bords opposés \newline
+	$\bullet$ 1000 plateaux générés \newline
 	$\bullet $ Le joueur blanc joue en premier \newline
 	$\bullet $ Profondeur = 4
 	\begin{center}
@@ -194,15 +203,15 @@
 			\hline
 			Nombre de plateaux passés & 524 \\ \hline
 			Moyenne & 0.01 \\ \hline
-			$-1 < val < -0.75$ & 1  \\ \hline
-			$-0.75 < val < -0.5$ & 0  \\ \hline
-			$-0.5 < val < -0.25$ & 1  \\ \hline
-			$-0.25 < val < 0$ & 0 \\ \hline
+			$-1 \leq val < -0.75$ & 1  \\ \hline
+			$-0.75 \leq val < -0.5$ & 0  \\ \hline
+			$-0.5 \leq val < -0.25$ & 1  \\ \hline
+			$-0.25 \leq val < 0$ & 0 \\ \hline
 			$val = 0 $   & 458  \\ \hline
 			$0 < val < 0.25$ & 4  \\ \hline
-			$0.25 < val < 0.5$ & 9  \\ \hline
-			$0.5 < val < 0.75$ & 0  \\ \hline
-			$0.75 < val < 1$ & 3  \\
+			$0.25 \leq val < 0.5$ & 9  \\ \hline
+			$0.5 \leq val < 0.75$ & 0  \\ \hline
+			$0.75 \leq val \leq 1$ & 3  \\
 			\hline
 			\hline
 		\end{tabular}
@@ -212,6 +221,7 @@
 \begin{frame}
 	\frametitle{Test sur des exemples générés aléatoirement}
 	$\bullet $ Les pièces sont positionnées aléatoirement, sauf les rois qui sont placés sur des bords opposés \newline
+	$\bullet$ 1000 plateaux générés \newline
 	$\bullet $ Le joueur noir joue en premier \newline
 	$\bullet $ Profondeur = 4
 	\begin{center}
@@ -219,15 +229,15 @@
 			\hline
 			Nombre de plateaux passés & 743 \\ \hline
 			Moyenne & 0.00 \\ \hline
-			$-1 < val < -0.75$ & 0  \\ \hline
-			$-0.75 < val < -0.5$ & 0  \\ \hline
-			$-0.5 < val < -0.25$ & 0  \\ \hline
-			$-0.25 < val < 0$ & 0 \\ \hline
+			$-1 \leq val < -0.75$ & 0  \\ \hline
+			$-0.75 \leq val < -0.5$ & 0  \\ \hline
+			$-0.5 \leq val < -0.25$ & 0  \\ \hline
+			$-0.25 \leq val < 0$ & 0 \\ \hline
 			$val = 0 $   & 256  \\ \hline
 			$0 < val < 0.25$ & 0  \\ \hline
-			$0.25 < val < 0.5$ & 0  \\ \hline
-			$0.5 < val < 0.75$ & 0  \\ \hline
-			$0.75 < val < 1$ & 1  \\
+			$0.25 \leq val < 0.5$ & 0  \\ \hline
+			$0.5 \leq val < 0.75$ & 0  \\ \hline
+			$0.75 \leq val \leq 1$ & 1  \\
 			\hline
 		\end{tabular}
 	\end{center}
@@ -235,12 +245,19 @@
 
 	\begin{frame}
 	\frametitle{Conclusion}
-	$\bullet$ Les mouvement quantiques favorisent l'attaque \newline
+	$\bullet$ Les mouvements quantiques favorisent l'attaque \newline
 	$\bullet$ Le joueur qui a le trait est avantagé comme au jeu d'échecs classique \newline
 	$\bullet$ Profondeur faible \newline
 	$\bullet$ L'effet horizon empêche d'avoir des résultats précis \newline
 	
 \end{frame}
-	%\import{./../}{code-latex-output}      
+
+%	\begin{frame}
+%	\frametitle{Annexe}
+%	$\bullet$ Profondeur = 6
+%	\includegraphics[scale = 1, center]{./pos2_exp1.jpg}
+%	$bullet$ Résultat = 0	
+%\end{frame}
+	\import{./../}{code-latex-output}      
 
 \end{document}

@@ -52,10 +52,10 @@ int main()
     Board<1, 6> B2{
         {{W_KING, W_ROOK, Piece(), Piece(), B_KING, Piece()}}};
 
-    // auto[res, res2] {Final::res_pos(B3, 4)};
-    // std::cout<<res<<std::endl;
-    // Final::print_stack<4>(res2);
-    std::size_t compteur_skip{0};
+     auto[res, res2] {Final::res_pos(B3, 6)};
+     std::cout<<res<<std::endl;
+     Final::print_stack<4>(res2);
+   /* std::size_t compteur_skip{0};
     double res{0};
     std::size_t c1{0};
     std::size_t c2{0};
@@ -148,5 +148,5 @@ int main()
     std::cout << c5 << std::endl;
     std::cout << c6 << std::endl;
     std::cout << c7 << std::endl;
-    std::cout << c8 << std::endl;
+    std::cout << c8 << std::endl;*/
 }
