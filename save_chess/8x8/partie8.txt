@@ -1,0 +1,11 @@
+P N d2d4
+p N d7d5
+B S c1(f4:d2)
+k N e8d7
+P N e2e3
+k N d7e6
+N N b1c3
+p N g7g5
+N N c3d5
+k N e6e5
+P N d4e5
