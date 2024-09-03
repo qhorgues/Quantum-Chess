@@ -1,78 +1,92 @@
 import csv
 from matplotlib import pyplot as plt
 import numpy as np
-
-heuristique = []
-move = []
-
-with open('partie1.csv') as csv_file:
-    csv_reader = csv.reader(csv_file, delimiter=';')
-    line_count = 0
-    for row in csv_reader:
-        if line_count == 0:
-            line_count += 1
-        else:
-            heuristique.append(float(row[0]))
-            move.append(row[1])
-            print(f'\t{row[0]} / {row[1]}.')
-            line_count += 1
-
-x = np.arange(1, len(move)+1, 1)
-print(x)
-print(move)
-print(len(move))
-plt.plot(heuristique)
-plt.title("évolution de l'heuristique au cours d'une partie")
-plt.ylabel("Heuristique")
-plt.xlabel("Nombre de coup joué (blanc ou noir)")
-plt.axhline(y = 0, color='black')
-plt.grid(axis='y', linestyle='-')
+from os import listdir
+from os.path import isfile, join
+import os
 
 
-def player(x):
+N = 8
+M = 8
+
+def player(x, list_val):
     if x % 2 == 0:
         return 0
     else:
-        return 3   
+        return np.max(np.abs(list_val))   
+    
+def getLine(x):
+    return int(x[0])
 
-eval = np.array([move[i] == 'Split' for i in range(len(move))])
-ymax1 = [player(i) for i in range(len(move))]
-ymax2 = [-player(i+1) for i in range(len(move))]
+def getColumn(x):
+    return int(x[1])
 
-for i in range(len(move)):
-    if eval[i]:
-        plt.plot([x[i], x[i]],[ymax1[i], ymax2[i]], color='red', alpha=0.5)
+path = "save_chess/8x8/"
+files = [f for f in listdir(path) if isfile(join(path, f))]
 
-plt.show()
+board = np.zeros([N, M])
+
+for file in files:
+    file_name, file_extension = os.path.splitext(file)
+    if  file_extension == '.csv':
+        heuristique = []
+        move = []
+        with open(path+file) as csv_file:
+            csv_reader = csv.reader(csv_file, delimiter=';')
+            line_count = 0
+            for row in csv_reader:
+                if line_count == 0:
+                    line_count += 1
+                else:
+                    heuristique.append(float(row[0]))
+                    move.append(row[1])
+                    line_count += 1
+
+                    if row[1] == 'Normal' or row[1] == 'Promote':
+                        board[getLine(row[3]), getColumn(row[3])] += 1
+                    elif row[1] == 'Split':
+                        board[getLine(row[3]), getColumn(row[3])] += 1
+                        board[getLine(row[4]), getColumn(row[4])] += 1
+                    elif row[1] == 'Merge':
+                        board[getLine(row[4]), getColumn(row[4])] += 1
 
 
-Board = np.array([[0, 0.4, 0.6, 0.7, 0.2, 0.5, 0.3, 0.1],
-                  [0.7, 0.6, 0.9, 1.7, 1.2, 0.9, 0.2, 0.8],
-                  [2.8, 2, 3.5, 3.9, 3.2, 3.6, 1.8, 1.3],
-                  [2.4, 2, 3.9, 4.4, 4.5, 3.0, 1.6, 1.9],
-                  [2.3, 1, 3.1, 4.8, 4.4, 3.9, 1.4, 1],
-                  [2.2, 2, 1, 1.8, 3.1, 1.4, 1.8, 1.4],
-                  [0.7, 1, 0.9, 2.5, 2.3, 0.6, 0.5, 0.2],
-                  [0.9, 0.3, 0.7, 0.9, 0.4, 0.3, 0.2, 0.6]])
+
+        x = np.arange(1, len(move)+1, 1)
+        plt.plot(heuristique, label='Heuristique')
+        plt.title("évolution de l'heuristique au cours d'une partie")
+        plt.ylabel("Heuristique")
+        plt.xlabel("Nombre de coup joué (blanc ou noir)")
+        plt.axhline(y = 0, color='black')
+        plt.grid(axis='y', linestyle='-')
+
+        eval = np.array([move[i] == 'Split' for i in range(len(move))])
+        ymax1 = [player(i, heuristique) for i in range(len(move))]
+        ymax2 = [-player(i+1, heuristique) for i in range(len(move))]
+
+        for i in range(len(move)):
+            if eval[i]:
+                if i % 2 == 0:
+                    color = 'red'
+                else:
+                    color = 'green'
+                
+                plt.plot([x[i], x[i]],[ymax1[i], ymax2[i]], color=color, alpha=0.5, label='Coup split')
+
+        plt.show()
 
 
-plt.imshow(Board, interpolation='none')
+c = plt.imshow(board, interpolation='none')
+plt.colorbar(c)
 plt.title("Case joué le plus souvent en moyenne sur une succession de partie")
 plt.show()
 
+def eval(i, j):
+    return 2*min(min(i, (N-i-1))/(N-2), min(j, (M-j-1))/(M-2))
 
+eval_board = np.fromfunction(np.vectorize(eval), (N, M), dtype=float)
 
-Board = np.array([[0, 0, 0, 0, 0, 0, 0, 0],
-                  [0, 1, 1, 1, 1, 1, 1, 0],
-                  [0, 1, 2, 2, 2, 2, 1, 0],
-                  [0, 1, 2, 3, 3, 2, 1, 0],
-                  [0, 1, 2, 3, 3, 2, 1, 0],
-                  [0, 1, 2, 2, 2, 2, 1, 0],
-                  [0, 1, 1, 1, 1, 1, 1, 0],
-                  [0, 0, 0, 0, 0, 0, 0, 0]])
-                
-
-
-plt.imshow(Board, interpolation='none')
+c = plt.imshow(eval_board, interpolation='none')
+plt.colorbar(c)
 plt.title('Evaluation donné par eval pour toutes les cases')
 plt.show()

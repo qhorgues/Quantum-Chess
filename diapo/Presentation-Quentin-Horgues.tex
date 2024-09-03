@@ -8,12 +8,17 @@
 \usepackage[]{minted}
 \usepackage{multicol}
 \usepackage{setspace}
+\usepackage{amsmath}
 \setminted{linenos=true, numbersep=5pt, xleftmargin=20pt}
 \makeatletter
 \AtBeginEnvironment{minted}{\dontdofcolorbox}
 \def\dontdofcolorbox{\renewcommand\fcolorbox[4][]{##4}}
 \makeatother
 \usetheme{metropolis}
+
+\newcommand*\colvec[3][]{
+	\begin{pmatrix}\ifx\relax#1\relax\else#1\\\fi#2\\#3\end{pmatrix}
+}
 
 \begin{document}
 	\author{n°54856 Quentin Horgues}
@@ -42,7 +47,7 @@
 	\end{frame}
 	
 	\begin{frame}
-	\frametitle{Mouvements classique}
+	\frametitle{Mouvements classiques}
 	\includegraphics[scale = 0.9, center]{./assets/classic-chess.png}    
 	\end{frame}
 	
@@ -117,9 +122,9 @@
 		
 		\begin{equation}
 			\notag
-			H(A) = 
+			H(\mathcal{B}) = 
 			\begin{cases}
-				15 * C(\mathcal{J})  \text{ si }\mathcal{J}\text{ a gagné}\\
+				15 \times C(\mathcal{J})  \text{ si }\mathcal{J}\text{ a gagné}\\
 				
 				{\displaystyle \sum_{i=0}^{n} {\sum_{j=0}^{m} {C(\mathcal{P}) \bold{P}(\mathcal{B}_{i, j}) val(\mathcal{B}_{i, j})}}} \text{ sinon}
 				
@@ -130,7 +135,7 @@
 	\begin{frame}
 		\frametitle{\'{E}valuation des mouvements}
 		$\mathcal{M}$ : Le mouvement effectué  \newline
-		$\bold{P}(\mathcal{M})$ : La probabilité de la première instance possible du mouvement, $\mathcal{B}^1$\newline
+		$\bold{P}(\mathcal{M})$ : La probabilité de la première instance possible du mouvement $\mathcal{B}^1$\newline
 		$1-\bold{P}(\mathcal{M})$ : La probabilité de la seconde instance $\mathcal{B}^2$ \newline
 		$f(\mathcal{B})$ : Renvoie l'évaluation du plateau en parcourant l'arborescence \newline
 		
@@ -148,58 +153,167 @@
 	
 	\begin{frame}
 		\frametitle{Principe du Min-Max}
-		\includegraphics[scale=0.3, center]{./assets/min-max.jpg}
+		\includegraphics[scale=0.3, center]{./assets/min-max.png}
 	\end{frame}
 	
 	\begin{frame}
-		\frametitle{L'élaguage alpha-beta}
-		\includegraphics[scale=0.3, center]{./assets/alpha-beta.jpg}
+		\frametitle{L'élagage alpha-beta}
+		\includegraphics[scale=0.3, center]{./assets/alpha-beta.png}
 	\end{frame}
 	\begin{frame}
-		\frametitle{Expérience 1: Determination des cases importantes}
+		\frametitle{Expérience 1: Détermination des cases importantes}
 		%$\bullet$ Non-occupation simultanée 
 		\includegraphics[scale = 0.7, center]{./assets/figure-board.png}    
 	\end{frame}
 	
 	\begin{frame}
-		\frametitle{Ajout de l'evaluation des cases}
+		\frametitle{Ajout de l'évaluation des cases}
 		\[
-		eval\_case(\mathcal{B}_{i,j}) = \min \left(  \min\left(i, \frac{n-i-1}{n-2} \right), \min \left( j, \frac{m-j-1}{m-2} \right) \right)
+		eval\_case(\mathcal{B}_{i,j}) = \min \left(  \frac{\min\left(i, n-i-1\right)}{n-2}, \frac{\min\left(j, m-j-1\right)}{m-2} \right)
 		\] \newline
 		\[
-		H(A) = \sum_{i=0}^{n} {\sum_{j=0}^{m} {C(\mathcal{J}) P(B_{i, j}) val(B_{i, j})eval\_case(B_{i,j})}}
+		H(\mathcal{B}) = \sum_{i=0}^{n} {\sum_{j=0}^{m} {C(\mathcal{J}) P(B_{i, j}) \left( val(B_{i, j}) + eval\_case(B_{i,j}) \right) }}
 		\]    
 	\end{frame}
 	
 	\begin{frame}
-		\frametitle{Resultat de la fonction éval}
-		%$\bullet$ Non-occupation simultanée 
+		\frametitle{Résultat de la fonction éval}
 		\includegraphics[scale = 0.7, center]{./assets/retour-eval.png}    
 	\end{frame}
 	
 	\begin{frame}
 		\frametitle{Expérience 2: \'{E}volution de l'heuristique au cours d'une partie}
-		%$\bullet$ Non-occupation simultanée 
-		\includegraphics[scale = 0.7, center]{./assets/figure-heuristique.png}    
+		\includegraphics[scale = 0.7, center]{./assets/heuristique-split-to-win.png}    
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Expérience 2: \'{E}volution de l'heuristique au cours d'une partie}
+		\includegraphics[scale = 0.7, center]{./assets/heuristique-split-to-lose.png}    
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Expérience 2: Renverser une partie}
+		\includegraphics[scale = 0.7, center]{./assets/heuristique-split-to-reverse-game.png}    
 	\end{frame}
 	
 	\begin{frame}
 		\label{conclusion}
-		\frametitle{Conclusion : comment doit-on jouer}
-		$\bullet$ Jouer les coups quantique quand on est en position désavantageuse \newline
-		$\bullet$ On peut aussi jouer les coups quantique en position avantageuse car les finales sont pas forcément gagnante sans un grand écart matériel \newline
-		$\bullet$ Les coups classics sont idéaux dans les parties serrée \newline
-		$\bullet$ Pour le moment nous avons pu tester 14 partie sur des plateaux 8x8 avec 8 victoire pour les noirs et 6 pour les blancs en utilisant une profondeur de calcul de 6 \newline
-		$\mathbb{P}(R)\mathbb{P}(C)$
+		\frametitle{Conclusion : Comment doit-on jouer}
+		$\bullet$ Jouer les coups quantiques quand on est en position désavantageuse \newline
+		$\bullet$ On peut aussi jouer les coups quantiques en position avantageuse car les finales sont pas forcément gagnantes sans un grand écart matériel \newline
+		$\bullet$ Les coups classiques sont idéaux dans les parties serrées \newline
+		$\bullet$ Pour le moment, nous avons pu tester 20 parties sur des plateaux 8x8 avec 12 victoires pour les noirs et 8 pour les blancs en utilisant une profondeur de calcul de 6 \newline
 	\end{frame}
-	
 	
 	\begin{frame}
-		\frametitle{Annexe}
-		%$\bullet$ Non-occupation simultanée 
-		\includegraphics[scale = 0.3, center]{./assets/backtrack.png}    
+		\frametitle{Annexe : Mailbox}
+		\includegraphics[scale = 0.35, center]{./assets/mailbox.jpg}    
 	\end{frame}
 	
-	%\import{./../}{code-latex-output}		
+	\begin{frame}
+		\frametitle{Annexe : Les qubits}
+		\begin{multicols}{2}
+			\begin{flushleft}
+				\begin{flushleft}
+					\textbf{{\Large Un qubit}}
+					$\arrowvert\psi\rangle = 
+					\alpha\arrowvert 1 \rangle + \beta\arrowvert 1 \rangle = 
+					\begin{pmatrix}
+						\alpha \\
+						\beta
+					\end{pmatrix}$ \newline
+					$\arrowvert \alpha^2 \arrowvert + \arrowvert \beta^2 \arrowvert = 1$
+					\newline
+				\end{flushleft}
+			\end{flushleft}
+			
+			\begin{flushright}
+				\begin{flushleft}
+					\textbf{{\Large Les états de base}}
+					
+					$\arrowvert 0 \rangle = 
+					\begin{pmatrix}
+						1 \\
+						0
+					\end{pmatrix}$ \newline
+					$\arrowvert 1 \rangle = 
+					\begin{pmatrix}
+						0 \\
+						1
+					\end{pmatrix}$
+				\end{flushleft}
+			\end{flushright}
+		\end{multicols}
+		\textbf{{\Large Les états de base pour les 2-qubits}}
+		\newline
+		\begin{flushleft}
+			\quad $\arrowvert 0.0 \rangle = 
+			\begin{pmatrix}
+				1 \\
+				0 \\
+				0 \\
+				0
+			\end{pmatrix}$
+			\quad $\arrowvert 1.0 \rangle = 
+			\begin{pmatrix}
+				0 \\
+				0 \\
+				1 \\
+				0
+			\end{pmatrix}$
+			\quad $\arrowvert 0.1 \rangle = 
+			\begin{pmatrix}
+				0 \\
+				1 \\
+				0 \\
+				0
+			\end{pmatrix}$
+			\quad $\arrowvert 1.1 \rangle = 
+			\begin{pmatrix}
+				0 \\
+				0 \\
+				0 \\
+				1
+			\end{pmatrix}$
+		\end{flushleft}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Annexe : Les portes quantiques}
+		\begin{multicols}{2}
+			\begin{flushleft}
+				\textbf{{\Large Exemple : La porte CNOT}}
+				
+				$\arrowvert 0.0 \rangle \longrightarrow \arrowvert 0.0 \rangle$ \newline
+				$\arrowvert 0.1 \rangle \longrightarrow \arrowvert 0.1 \rangle$ \newline
+				$\arrowvert 1.0 \rangle \longrightarrow \arrowvert 1.1 \rangle$ \newline
+				$\arrowvert 1.1 \rangle \longrightarrow \arrowvert 1.0 \rangle$ \newline
+				
+			\end{flushleft}
+			
+			\begin{flushright}
+				
+				\begin{flushleft}
+					\textbf{{\Large Matrice de transformation de la porte CNOT }}
+				\end{flushleft}
+				$\left(
+				\begin{tabular}{ll|ll}
+					1 & 0 & 0 & 0 \\
+					0 & 1 & 0 & 0 \\ \hline
+					0 & 0 & 0 & 1 \\
+					0 & 0 & 1 & 0
+				\end{tabular} \right)$\newline
+
+				
+			\end{flushright}
+		\end{multicols}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Annexe : Principe des mesures}
+		\includegraphics[scale = 0.35, center]{./assets/mesure-schema.jpg}    
+	\end{frame}
+	
+	\import{./../}{code-latex-output}		
 
 \end{document}
