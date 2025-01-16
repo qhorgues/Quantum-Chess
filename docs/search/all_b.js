@@ -27,7 +27,7 @@ var searchData=
   ['matrix_5fsqrt_5fiswap_24',['MATRIX_SQRT_ISWAP',['../db/daa/Unitary_8hpp.html#abeb483183b3aa8e47022c808409c8a97',1,'Unitary.hpp']]],
   ['matrix_5fsqrt_5fiswap_5f8_25',['MATRIX_SQRT_ISWAP_8',['../db/daa/Unitary_8hpp.html#a0c1955ba8378b1dad7217bb8e55b38db',1,'Unitary.hpp']]],
   ['merge_26',['MERGE',['../d0/d21/Move_8hpp.html#ac365680f0388487d538d24242d1f421aa97c51054c5ed46d2f88641ac57ff6347',1,'Move.hpp']]],
-  ['merge_27',['merge',['../df/d5b/structMove.html#a8afc5f682e249d0e1bc418da22cf8019',1,'Move']]],
+  ['merge_27',['merge',['../df/d5b/structMove.html#abacf2d60a7778fe2d570d83d836858d7',1,'Move']]],
   ['mesure_28',['mesure',['../de/d23/classBoard.html#a098fd4cacdfb366dab2f6259b1521692',1,'Board']]],
   ['mesure_5fcapture_5fslide_29',['mesure_capture_slide',['../de/d23/classBoard.html#acbaf73c9be83e5353996e294bd70b870',1,'Board']]],
   ['mesure_5fcastle_30',['mesure_castle',['../de/d23/classBoard.html#a3d5faa099a6cd65943ef5fac766eb757',1,'Board']]],
