@@ -2,6 +2,7 @@ var files_dup =
 [
     [ "include", "dir_d44c64559bbebec7f509842c48db8b23.html", "dir_d44c64559bbebec7f509842c48db8b23" ],
     [ "src", "dir_68267d1309a1af8e8297ef4c3efbcdba.html", "dir_68267d1309a1af8e8297ef4c3efbcdba" ],
+    [ "board-point.py", "d9/d8b/board-point_8py.html", "d9/d8b/board-point_8py" ],
     [ "clear-doc.py", "da/dc0/clear-doc_8py.html", "da/dc0/clear-doc_8py" ],
     [ "csv-to-graph.py", "d2/d7e/csv-to-graph_8py.html", "d2/d7e/csv-to-graph_8py" ],
     [ "output_latex.py", "d5/df4/output__latex_8py.html", "d5/df4/output__latex_8py" ]

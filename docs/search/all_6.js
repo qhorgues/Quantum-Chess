@@ -22,5 +22,7 @@ var searchData=
   ['get_5fproba_5fmesure_5fcastle_19',['get_proba_mesure_castle',['../de/d23/classBoard.html#a84791fcc38cf0dae066dc4cfb45d4d9f',1,'Board']]],
   ['get_5fproba_5fmove_20',['get_proba_move',['../de/d23/classBoard.html#ace033903065bef449576f323789d8b4a',1,'Board']]],
   ['get_5ftype_21',['get_type',['../d5/df0/classPiece.html#ae0b897cb041aba5d32a68e7a3165787d',1,'Piece']]],
-  ['getunicodechar_22',['getUnicodeChar',['../dc/d2f/ConsoleInterface_8hpp.html#a25b351bd86ae70e6515207524b2b270c',1,'ConsoleInterface.hpp']]]
+  ['getcolumn_22',['getColumn',['../d4/d18/namespacecsv-to-graph.html#a695b73f6806acd21e1dcc34f639699c5',1,'csv-to-graph']]],
+  ['getline_23',['getLine',['../d4/d18/namespacecsv-to-graph.html#af334cddd599b030e6ab61e4a4adf12e7',1,'csv-to-graph']]],
+  ['getunicodechar_24',['getUnicodeChar',['../dc/d2f/ConsoleInterface_8hpp.html#a25b351bd86ae70e6515207524b2b270c',1,'ConsoleInterface.hpp']]]
 ];

@@ -24,7 +24,6 @@
 */
 var menudata={children:[
 {text:"Page principale",url:"index.html"},
-{text:"Pages associées",url:"pages.html"},
 {text:"Espaces de nommage",url:"namespaces.html",children:[
 {text:"Liste des espaces de nommage",url:"namespaces.html"},
 {text:"Membres de l'espace de nommage",url:"namespacemembers.html",children:[
@@ -47,7 +46,21 @@ var menudata={children:[
 {text:"x",url:"namespacemembers.html#index_x"},
 {text:"y",url:"namespacemembers.html#index_y"}]},
 {text:"Fonctions",url:"namespacemembers_func.html"},
-{text:"Variables",url:"namespacemembers_vars.html"}]}]},
+{text:"Variables",url:"namespacemembers_vars.html",children:[
+{text:"a",url:"namespacemembers_vars.html#index_a"},
+{text:"b",url:"namespacemembers_vars.html#index_b"},
+{text:"c",url:"namespacemembers_vars.html#index_c"},
+{text:"e",url:"namespacemembers_vars.html#index_e"},
+{text:"f",url:"namespacemembers_vars.html#index_f"},
+{text:"h",url:"namespacemembers_vars.html#index_h"},
+{text:"i",url:"namespacemembers_vars.html#index_i"},
+{text:"l",url:"namespacemembers_vars.html#index_l"},
+{text:"m",url:"namespacemembers_vars.html#index_m"},
+{text:"n",url:"namespacemembers_vars.html#index_n"},
+{text:"o",url:"namespacemembers_vars.html#index_o"},
+{text:"p",url:"namespacemembers_vars.html#index_p"},
+{text:"x",url:"namespacemembers_vars.html#index_x"},
+{text:"y",url:"namespacemembers_vars.html#index_y"}]}]}]},
 {text:"Classes",url:"annotated.html",children:[
 {text:"Liste des classes",url:"annotated.html"},
 {text:"Index des classes",url:"classes.html"},

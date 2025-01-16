@@ -1,6 +1,9 @@
 var searchData=
 [
-  ['qubit_0',['Qubit',['../da/deb/classQubit.html#a121b85ff88baa736e838b9d228920a5b',1,'Qubit::Qubit()=default'],['../da/deb/classQubit.html#a72ca8ba5555b0fc1ee571a3cea41bf36',1,'Qubit::Qubit(std::array&lt; bool, N &gt; const &amp;data)'],['../da/deb/classQubit.html#a9ebdacd51f01e64ef171ea8897ece33e',1,'Qubit::Qubit(std::array&lt; std::complex&lt; double &gt;, _2POW(N)&gt; &amp;&amp;init_list)'],['../da/deb/classQubit.html#a57e9e938201723191c8d408361ffb069',1,'Qubit::Qubit(Qubit const &amp;)=delete'],['../da/deb/classQubit.html#a7b8a6bb92e4e783b72c7a81e950fee5d',1,'Qubit::Qubit(Qubit &amp;&amp;)=delete']]],
-  ['qubittoarray_1',['qubitToArray',['../d8/d3c/Qubit_8hpp.html#a520deb0865f61f8f2c5be011671ce4a0',1,'Qubit.hpp']]],
-  ['queen_5fside_5fcastle_2',['queen_side_castle',['../de/d23/classBoard.html#a37bbcd7a49d362b34f8d4cd7c65e818f',1,'Board']]]
+  ['piece_0',['Piece',['../d5/df0/classPiece.html#a873d4632bbd71c9a074608a268a2bbc0',1,'Piece::Piece() noexcept'],['../d5/df0/classPiece.html#a54712fd34a64f0fa8f4ffc822dba6130',1,'Piece::Piece(TypePiece piece, Color color) noexcept'],['../d5/df0/classPiece.html#a1c618e4a2bf080d3f184717fd2a94fd6',1,'Piece::Piece(Piece const &amp;)=default'],['../d5/df0/classPiece.html#a305638ccbdbea69cf64be0ac258c63a0',1,'Piece::Piece(Piece &amp;&amp;)=default']]],
+  ['piece_5fto_5fchar_1',['piece_to_char',['../df/d0a/main_8cpp.html#a1dfb1c4ac0d761e8e370c1a1a81948b5',1,'main.cpp']]],
+  ['piece_5fto_5fchr_2',['Piece_to_chr',['../dc/d2f/ConsoleInterface_8hpp.html#a0e6f2e3958af5aec3c558266cd2896c3',1,'ConsoleInterface.hpp']]],
+  ['player_3',['player',['../d4/d18/namespacecsv-to-graph.html#abad21f9cd5aa80b91c318252c969238a',1,'csv-to-graph']]],
+  ['print_5fboard_5flight_4',['print_board_light',['../dc/d2f/ConsoleInterface_8hpp.html#a3f8e5f5ce16832927ea73288307d3cee',1,'ConsoleInterface.hpp']]],
+  ['print_5fpiece_5',['print_piece',['../df/d0a/main_8cpp.html#a760c0a7979f30991a814785104411de2',1,'main.cpp']]]
 ];

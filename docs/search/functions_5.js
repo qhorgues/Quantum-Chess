@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['king_5fside_5fcastle_0',['king_side_castle',['../de/d23/classBoard.html#a98e9116b596e139482e7d54f21ea9bc3',1,'Board']]]
+  ['init_5fmailbox_0',['init_mailbox',['../de/d23/classBoard.html#a94fe407a5f6e87dee2e62bfc2a79504b',1,'Board']]],
+  ['is_5fblack_1',['is_black',['../d5/df0/classPiece.html#a9b5c0ed275af57d3324bda002b7bf6ae',1,'Piece']]],
+  ['is_5fwhite_2',['is_white',['../d5/df0/classPiece.html#a8a9b55a3c8198d841e3273ae0ff208b0',1,'Piece']]]
 ];

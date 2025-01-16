@@ -6,5 +6,6 @@ var searchData=
   ['b_5fpawn_3',['B_PAWN',['../de/d1d/Piece_8hpp.html#aa0f5488784beba8358bb17946e008e7e',1,'Piece.hpp']]],
   ['b_5fqueen_4',['B_QUEEN',['../de/d1d/Piece_8hpp.html#a0f61d6dce3141f454592840394b44409',1,'Piece.hpp']]],
   ['b_5frook_5',['B_ROOK',['../de/d1d/Piece_8hpp.html#a3f5cb29cb869ea07b4b883b0c8611f32',1,'Piece.hpp']]],
-  ['board_6',['Board',['../d4/d18/namespacecsv-to-graph.html#ae3403e57f665d8d425d72d093f295876',1,'csv-to-graph']]]
+  ['board_6',['Board',['../dc/d5e/namespaceboard-point.html#ae18dd99e340e7ae64638274fcc3e61c7',1,'board-point']]],
+  ['board_7',['board',['../d4/d18/namespacecsv-to-graph.html#af2158c3607a726c914431b8b4c7dc8ef',1,'csv-to-graph']]]
 ];
