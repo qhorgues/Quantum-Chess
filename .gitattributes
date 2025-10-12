@@ -1,3 +1,2 @@
 *.tpp linguist-language=C++
-*.html linguist-language=
-*.js linguist-language=
+docs/ linguist-language=
