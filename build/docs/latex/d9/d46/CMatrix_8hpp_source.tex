@@ -1,0 +1,36 @@
+\doxysection{CMatrix.\+hpp}
+\hypertarget{CMatrix_8hpp_source}{}\label{CMatrix_8hpp_source}\index{/home/quentin/Programmes/C++/Quantum-\/Chess/include/CMatrix.hpp@{/home/quentin/Programmes/C++/Quantum-\/Chess/include/CMatrix.hpp}}
+\mbox{\hyperlink{CMatrix_8hpp}{Aller à la documentation de ce fichier.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ CMATRIX\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ CMATRIX\_HPP}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <Matrix.hpp>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <complex>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{Constexpr_8hpp}{Constexpr.hpp}}>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <cstddef>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{template}\ <std::\textcolor{keywordtype}{size\_t}\ N>}
+\DoxyCodeLine{00015\ \textcolor{keyword}{using\ }\mbox{\hyperlink{CMatrix_8hpp_a3e99a8d4d1b632f5712266247636d394}{CMatrix}}\ =\ Matrix<std::complex<double>,\ N>;}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{namespace}}
+\DoxyCodeLine{00018\ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{template}\ <std::\textcolor{keywordtype}{size\_t}\ N>}
+\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}}\ \mbox{\hyperlink{CMatrix_8hpp_a3e99a8d4d1b632f5712266247636d394}{CMatrix<N>}}\ conj(\mbox{\hyperlink{CMatrix_8hpp_a3e99a8d4d1b632f5712266247636d394}{CMatrix<N>}}\ \textcolor{keyword}{const}\ \&\ matrix)}
+\DoxyCodeLine{00021\ \ \ \ \ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{CMatrix_8hpp_a3e99a8d4d1b632f5712266247636d394}{CMatrix<N>}}\ matrix\_conj\{\};}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(std::size\_t\ i\ =\ 0;\ i<N;\ i++)}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(std::size\_t\ j\ =\ 0;\ j<N;\ j++)}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ matrix\_conj(i,\ j)\ =\ std::conj(matrix(i,\ j));}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ matrix\_conj;}
+\DoxyCodeLine{00031\ \ \ \ \ \}}
+\DoxyCodeLine{00032\ \}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#define\ \_2POW(n)\ (1\ <<\ (n))}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

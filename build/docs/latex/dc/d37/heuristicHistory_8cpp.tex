@@ -1,0 +1,54 @@
+\doxysection{Référence du fichier /home/quentin/\+Programmes/\+C++/\+Quantum-\/\+Chess/src/heuristic\+History.cpp}
+\hypertarget{heuristicHistory_8cpp}{}\label{heuristicHistory_8cpp}\index{/home/quentin/Programmes/C++/Quantum-\/Chess/src/heuristicHistory.cpp@{/home/quentin/Programmes/C++/Quantum-\/Chess/src/heuristicHistory.cpp}}
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$Board.\+hpp$>$}\newline
+{\ttfamily \#include $<$Move.\+hpp$>$}\newline
+{\ttfamily \#include $<$Piece.\+hpp$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$observer\+\_\+ptr.\+hpp$>$}\newline
+{\ttfamily \#include $<$Console\+Interface.\+hpp$>$}\newline
+{\ttfamily \#include $<$Computer\+Player.\+hpp$>$}\newline
+\doxysubsubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$std\+::size\+\_\+t N, std\+::size\+\_\+t M$>$ }\\\mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$ \mbox{\hyperlink{heuristicHistory_8cpp_a0d8974450dfb956b4c60f48a9d02c130}{read\+Board}} (std\+::istream \&is)
+\item 
+{\footnotesize template$<$std\+::size\+\_\+t N$>$ }\\\mbox{\hyperlink{structMove}{Move}} \mbox{\hyperlink{heuristicHistory_8cpp_a87b34ec8fedd73e88fecb747b34c8c2d}{read\+Move}} (std\+::istream \&is, \mbox{\hyperlink{classobserver__ptr}{observer\+\_\+ptr}}$<$ \mbox{\hyperlink{classPiece}{Piece}} $>$ piece=nullptr)
+\item 
+{\footnotesize template$<$std\+::size\+\_\+t N, std\+::size\+\_\+t M$>$ }\\void \mbox{\hyperlink{heuristicHistory_8cpp_a1caef467a3d3702295a6609553fb6edc}{Game\+To\+CSV}} (std\+::istream \&is, std\+::string const \&result\+\_\+name)
+\item 
+int \mbox{\hyperlink{heuristicHistory_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main}} (int argc, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}argv)
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{heuristicHistory_8cpp_doc-func-members}
+\doxysubsection{Documentation des fonctions}
+\Hypertarget{heuristicHistory_8cpp_a1caef467a3d3702295a6609553fb6edc}\index{heuristicHistory.cpp@{heuristicHistory.cpp}!GameToCSV@{GameToCSV}}
+\index{GameToCSV@{GameToCSV}!heuristicHistory.cpp@{heuristicHistory.cpp}}
+\doxysubsubsection{\texorpdfstring{GameToCSV()}{GameToCSV()}}
+{\footnotesize\ttfamily \label{heuristicHistory_8cpp_a1caef467a3d3702295a6609553fb6edc} 
+template$<$std\+::size\+\_\+t N, std\+::size\+\_\+t M$>$ \\
+void Game\+To\+CSV (\begin{DoxyParamCaption}\item[{std\+::istream \&}]{is}{, }\item[{std\+::string const \&}]{result\+\_\+name}{}\end{DoxyParamCaption})}
+
+\Hypertarget{heuristicHistory_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}\index{heuristicHistory.cpp@{heuristicHistory.cpp}!main@{main}}
+\index{main@{main}!heuristicHistory.cpp@{heuristicHistory.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \label{heuristicHistory_8cpp_a3c04138a5bfe5d72780bb7e82a18e627} 
+int main (\begin{DoxyParamCaption}\item[{int}]{argc}{, }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{argv}{}\end{DoxyParamCaption})}
+
+\Hypertarget{heuristicHistory_8cpp_a0d8974450dfb956b4c60f48a9d02c130}\index{heuristicHistory.cpp@{heuristicHistory.cpp}!readBoard@{readBoard}}
+\index{readBoard@{readBoard}!heuristicHistory.cpp@{heuristicHistory.cpp}}
+\doxysubsubsection{\texorpdfstring{readBoard()}{readBoard()}}
+{\footnotesize\ttfamily \label{heuristicHistory_8cpp_a0d8974450dfb956b4c60f48a9d02c130} 
+template$<$std\+::size\+\_\+t N, std\+::size\+\_\+t M$>$ \\
+\mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$ read\+Board (\begin{DoxyParamCaption}\item[{std\+::istream \&}]{is}{}\end{DoxyParamCaption})}
+
+\Hypertarget{heuristicHistory_8cpp_a87b34ec8fedd73e88fecb747b34c8c2d}\index{heuristicHistory.cpp@{heuristicHistory.cpp}!readMove@{readMove}}
+\index{readMove@{readMove}!heuristicHistory.cpp@{heuristicHistory.cpp}}
+\doxysubsubsection{\texorpdfstring{readMove()}{readMove()}}
+{\footnotesize\ttfamily \label{heuristicHistory_8cpp_a87b34ec8fedd73e88fecb747b34c8c2d} 
+template$<$std\+::size\+\_\+t N$>$ \\
+\mbox{\hyperlink{structMove}{Move}} read\+Move (\begin{DoxyParamCaption}\item[{std\+::istream \&}]{is}{, }\item[{\mbox{\hyperlink{classobserver__ptr}{observer\+\_\+ptr}}$<$ \mbox{\hyperlink{classPiece}{Piece}} $>$}]{piece}{ = {\ttfamily nullptr}}\end{DoxyParamCaption})}
+

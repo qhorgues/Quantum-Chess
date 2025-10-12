@@ -1,0 +1,169 @@
+\doxysection{Référence du fichier /home/quentin/\+Programmes/\+C++/\+Quantum-\/\+Chess/src/\+Piece/\+Piece.hpp}
+\hypertarget{Piece_8hpp}{}\label{Piece_8hpp}\index{/home/quentin/Programmes/C++/Quantum-\/Chess/src/Piece/Piece.hpp@{/home/quentin/Programmes/C++/Quantum-\/Chess/src/Piece/Piece.hpp}}
+{\ttfamily \#include $<$Color.\+hpp$>$}\newline
+{\ttfamily \#include $<$Coord.\+hpp$>$}\newline
+{\ttfamily \#include $<$concepts$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$forward\+\_\+list$>$}\newline
+{\ttfamily \#include $<$Constexpr.\+hpp$>$}\newline
+{\ttfamily \#include $<$Move.\+hpp$>$}\newline
+{\ttfamily \#include "{}Type\+Piece.\+hpp"{}}\newline
+{\ttfamily \#include "{}Piece.\+tpp"{}}\newline
+{\ttfamily \#include "{}get\+\_\+list\+\_\+move.\+tpp"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classPiece}{Piece}}
+\begin{DoxyCompactList}\small\item\em Class conservant le type et la couleur d\textquotesingle{}une pièce. Elle permet aussi de recuperer ses mouvement possible. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+constexpr \mbox{\hyperlink{classPiece}{Piece}} \mbox{\hyperlink{Piece_8hpp_ae377970cfe6327abc4bd238362e37e13}{W\+\_\+\+KING}} \{\mbox{\hyperlink{TypePiece_8hpp_a2437c4d8f0bf23b8c6c76305ed35ae83a123b28961dd0f97d91bcb55d7a3b7c1c}{Type\+Piece\+::\+KING}}, \mbox{\hyperlink{Color_8hpp_a78abb31bad0fd1834c54a3ca6f8daab5ab5bf627e448384cf3a4c35121ca6008d}{Color\+::\+WHITE}}\}
+\begin{DoxyCompactList}\small\item\em L\textquotesingle{}objet représentant le roi blanc. \end{DoxyCompactList}\item 
+constexpr \mbox{\hyperlink{classPiece}{Piece}} \mbox{\hyperlink{Piece_8hpp_af3f33807d3f4e8413ff9777415e410a0}{B\+\_\+\+KING}} \{\mbox{\hyperlink{TypePiece_8hpp_a2437c4d8f0bf23b8c6c76305ed35ae83a123b28961dd0f97d91bcb55d7a3b7c1c}{Type\+Piece\+::\+KING}}, \mbox{\hyperlink{Color_8hpp_a78abb31bad0fd1834c54a3ca6f8daab5a08d0012388564e95c3b4a7407cf04965}{Color\+::\+BLACK}}\}
+\begin{DoxyCompactList}\small\item\em L\textquotesingle{}objet représentant le roi noir. \end{DoxyCompactList}\item 
+constexpr \mbox{\hyperlink{classPiece}{Piece}} \mbox{\hyperlink{Piece_8hpp_af1e3c5b9fa8518392767ae0c01c9bb9d}{W\+\_\+\+QUEEN}} \{\mbox{\hyperlink{TypePiece_8hpp_a2437c4d8f0bf23b8c6c76305ed35ae83a02d144e18eda99bcb94f3a764756805e}{Type\+Piece\+::\+QUEEN}}, \mbox{\hyperlink{Color_8hpp_a78abb31bad0fd1834c54a3ca6f8daab5ab5bf627e448384cf3a4c35121ca6008d}{Color\+::\+WHITE}}\}
+\begin{DoxyCompactList}\small\item\em L\textquotesingle{}objet représentant la renne blanche. \end{DoxyCompactList}\item 
+constexpr \mbox{\hyperlink{classPiece}{Piece}} \mbox{\hyperlink{Piece_8hpp_a0f61d6dce3141f454592840394b44409}{B\+\_\+\+QUEEN}} \{\mbox{\hyperlink{TypePiece_8hpp_a2437c4d8f0bf23b8c6c76305ed35ae83a02d144e18eda99bcb94f3a764756805e}{Type\+Piece\+::\+QUEEN}}, \mbox{\hyperlink{Color_8hpp_a78abb31bad0fd1834c54a3ca6f8daab5a08d0012388564e95c3b4a7407cf04965}{Color\+::\+BLACK}}\}
+\begin{DoxyCompactList}\small\item\em L\textquotesingle{}objet représentant la renne noire. \end{DoxyCompactList}\item 
+constexpr \mbox{\hyperlink{classPiece}{Piece}} \mbox{\hyperlink{Piece_8hpp_a1c86a44ecec5133b1afcba7557f50a5d}{W\+\_\+\+BISHOP}} \{\mbox{\hyperlink{TypePiece_8hpp_a2437c4d8f0bf23b8c6c76305ed35ae83a1834d375f684613c725d039a10db1976}{Type\+Piece\+::\+BISHOP}}, \mbox{\hyperlink{Color_8hpp_a78abb31bad0fd1834c54a3ca6f8daab5ab5bf627e448384cf3a4c35121ca6008d}{Color\+::\+WHITE}}\}
+\begin{DoxyCompactList}\small\item\em L\textquotesingle{}objet représentant le fou blanc. \end{DoxyCompactList}\item 
+constexpr \mbox{\hyperlink{classPiece}{Piece}} \mbox{\hyperlink{Piece_8hpp_a4e75fb3f0243ea337b870b43de6e231b}{B\+\_\+\+BISHOP}} \{\mbox{\hyperlink{TypePiece_8hpp_a2437c4d8f0bf23b8c6c76305ed35ae83a1834d375f684613c725d039a10db1976}{Type\+Piece\+::\+BISHOP}}, \mbox{\hyperlink{Color_8hpp_a78abb31bad0fd1834c54a3ca6f8daab5a08d0012388564e95c3b4a7407cf04965}{Color\+::\+BLACK}}\}
+\begin{DoxyCompactList}\small\item\em L\textquotesingle{}objet représentant le fou noir. \end{DoxyCompactList}\item 
+constexpr \mbox{\hyperlink{classPiece}{Piece}} \mbox{\hyperlink{Piece_8hpp_a56c209905c7a520c7c8ba0847066084f}{W\+\_\+\+ROOK}} \{\mbox{\hyperlink{TypePiece_8hpp_a2437c4d8f0bf23b8c6c76305ed35ae83a97c60a3a4e61ee21e3f38a2f950fe293}{Type\+Piece\+::\+ROOK}}, \mbox{\hyperlink{Color_8hpp_a78abb31bad0fd1834c54a3ca6f8daab5ab5bf627e448384cf3a4c35121ca6008d}{Color\+::\+WHITE}}\}
+\begin{DoxyCompactList}\small\item\em L\textquotesingle{}objet représentant la tour blanche. \end{DoxyCompactList}\item 
+constexpr \mbox{\hyperlink{classPiece}{Piece}} \mbox{\hyperlink{Piece_8hpp_a3f5cb29cb869ea07b4b883b0c8611f32}{B\+\_\+\+ROOK}} \{\mbox{\hyperlink{TypePiece_8hpp_a2437c4d8f0bf23b8c6c76305ed35ae83a97c60a3a4e61ee21e3f38a2f950fe293}{Type\+Piece\+::\+ROOK}}, \mbox{\hyperlink{Color_8hpp_a78abb31bad0fd1834c54a3ca6f8daab5a08d0012388564e95c3b4a7407cf04965}{Color\+::\+BLACK}}\}
+\begin{DoxyCompactList}\small\item\em L\textquotesingle{}objet représentant la tour noire. \end{DoxyCompactList}\item 
+constexpr \mbox{\hyperlink{classPiece}{Piece}} \mbox{\hyperlink{Piece_8hpp_aa2357ffb5242a8083eb0821974c217b0}{W\+\_\+\+KNIGHT}} \{\mbox{\hyperlink{TypePiece_8hpp_a2437c4d8f0bf23b8c6c76305ed35ae83af7f210da15dbb4283299b2affd9bb238}{Type\+Piece\+::\+KNIGHT}}, \mbox{\hyperlink{Color_8hpp_a78abb31bad0fd1834c54a3ca6f8daab5ab5bf627e448384cf3a4c35121ca6008d}{Color\+::\+WHITE}}\}
+\begin{DoxyCompactList}\small\item\em L\textquotesingle{}objet représentant le cavalier blanc. \end{DoxyCompactList}\item 
+constexpr \mbox{\hyperlink{classPiece}{Piece}} \mbox{\hyperlink{Piece_8hpp_a2420afc5df87f1b219c245b544d6f54f}{B\+\_\+\+KNIGHT}} \{\mbox{\hyperlink{TypePiece_8hpp_a2437c4d8f0bf23b8c6c76305ed35ae83af7f210da15dbb4283299b2affd9bb238}{Type\+Piece\+::\+KNIGHT}}, \mbox{\hyperlink{Color_8hpp_a78abb31bad0fd1834c54a3ca6f8daab5a08d0012388564e95c3b4a7407cf04965}{Color\+::\+BLACK}}\}
+\begin{DoxyCompactList}\small\item\em L\textquotesingle{}objet représentant le cavalier noir. \end{DoxyCompactList}\item 
+constexpr \mbox{\hyperlink{classPiece}{Piece}} \mbox{\hyperlink{Piece_8hpp_acedced8aae6bcdcb12581ac55c00ce74}{W\+\_\+\+PAWN}} \{\mbox{\hyperlink{TypePiece_8hpp_a2437c4d8f0bf23b8c6c76305ed35ae83a3acd2a53aca11e0f883236ea27a3b627}{Type\+Piece\+::\+PAWN}}, \mbox{\hyperlink{Color_8hpp_a78abb31bad0fd1834c54a3ca6f8daab5ab5bf627e448384cf3a4c35121ca6008d}{Color\+::\+WHITE}}\}
+\begin{DoxyCompactList}\small\item\em L\textquotesingle{}objet représentant le pion blanc. \end{DoxyCompactList}\item 
+constexpr \mbox{\hyperlink{classPiece}{Piece}} \mbox{\hyperlink{Piece_8hpp_aa0f5488784beba8358bb17946e008e7e}{B\+\_\+\+PAWN}} \{\mbox{\hyperlink{TypePiece_8hpp_a2437c4d8f0bf23b8c6c76305ed35ae83a3acd2a53aca11e0f883236ea27a3b627}{Type\+Piece\+::\+PAWN}}, \mbox{\hyperlink{Color_8hpp_a78abb31bad0fd1834c54a3ca6f8daab5a08d0012388564e95c3b4a7407cf04965}{Color\+::\+BLACK}}\}
+\begin{DoxyCompactList}\small\item\em L\textquotesingle{}objet représentant le pion noir. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-var-members}
+\Hypertarget{Piece_8hpp_doc-var-members}
+\doxysubsection{Documentation des variables}
+\Hypertarget{Piece_8hpp_a4e75fb3f0243ea337b870b43de6e231b}\index{Piece.hpp@{Piece.hpp}!B\_BISHOP@{B\_BISHOP}}
+\index{B\_BISHOP@{B\_BISHOP}!Piece.hpp@{Piece.hpp}}
+\doxysubsubsection{\texorpdfstring{B\_BISHOP}{B\_BISHOP}}
+{\footnotesize\ttfamily \label{Piece_8hpp_a4e75fb3f0243ea337b870b43de6e231b} 
+\mbox{\hyperlink{classPiece}{Piece}} B\+\_\+\+BISHOP \{\mbox{\hyperlink{TypePiece_8hpp_a2437c4d8f0bf23b8c6c76305ed35ae83a1834d375f684613c725d039a10db1976}{Type\+Piece\+::\+BISHOP}}, \mbox{\hyperlink{Color_8hpp_a78abb31bad0fd1834c54a3ca6f8daab5a08d0012388564e95c3b4a7407cf04965}{Color\+::\+BLACK}}\}\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+
+
+L\textquotesingle{}objet représentant le fou noir. 
+
+\Hypertarget{Piece_8hpp_af3f33807d3f4e8413ff9777415e410a0}\index{Piece.hpp@{Piece.hpp}!B\_KING@{B\_KING}}
+\index{B\_KING@{B\_KING}!Piece.hpp@{Piece.hpp}}
+\doxysubsubsection{\texorpdfstring{B\_KING}{B\_KING}}
+{\footnotesize\ttfamily \label{Piece_8hpp_af3f33807d3f4e8413ff9777415e410a0} 
+\mbox{\hyperlink{classPiece}{Piece}} B\+\_\+\+KING \{\mbox{\hyperlink{TypePiece_8hpp_a2437c4d8f0bf23b8c6c76305ed35ae83a123b28961dd0f97d91bcb55d7a3b7c1c}{Type\+Piece\+::\+KING}}, \mbox{\hyperlink{Color_8hpp_a78abb31bad0fd1834c54a3ca6f8daab5a08d0012388564e95c3b4a7407cf04965}{Color\+::\+BLACK}}\}\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+
+
+L\textquotesingle{}objet représentant le roi noir. 
+
+\Hypertarget{Piece_8hpp_a2420afc5df87f1b219c245b544d6f54f}\index{Piece.hpp@{Piece.hpp}!B\_KNIGHT@{B\_KNIGHT}}
+\index{B\_KNIGHT@{B\_KNIGHT}!Piece.hpp@{Piece.hpp}}
+\doxysubsubsection{\texorpdfstring{B\_KNIGHT}{B\_KNIGHT}}
+{\footnotesize\ttfamily \label{Piece_8hpp_a2420afc5df87f1b219c245b544d6f54f} 
+\mbox{\hyperlink{classPiece}{Piece}} B\+\_\+\+KNIGHT \{\mbox{\hyperlink{TypePiece_8hpp_a2437c4d8f0bf23b8c6c76305ed35ae83af7f210da15dbb4283299b2affd9bb238}{Type\+Piece\+::\+KNIGHT}}, \mbox{\hyperlink{Color_8hpp_a78abb31bad0fd1834c54a3ca6f8daab5a08d0012388564e95c3b4a7407cf04965}{Color\+::\+BLACK}}\}\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+
+
+L\textquotesingle{}objet représentant le cavalier noir. 
+
+\Hypertarget{Piece_8hpp_aa0f5488784beba8358bb17946e008e7e}\index{Piece.hpp@{Piece.hpp}!B\_PAWN@{B\_PAWN}}
+\index{B\_PAWN@{B\_PAWN}!Piece.hpp@{Piece.hpp}}
+\doxysubsubsection{\texorpdfstring{B\_PAWN}{B\_PAWN}}
+{\footnotesize\ttfamily \label{Piece_8hpp_aa0f5488784beba8358bb17946e008e7e} 
+\mbox{\hyperlink{classPiece}{Piece}} B\+\_\+\+PAWN \{\mbox{\hyperlink{TypePiece_8hpp_a2437c4d8f0bf23b8c6c76305ed35ae83a3acd2a53aca11e0f883236ea27a3b627}{Type\+Piece\+::\+PAWN}}, \mbox{\hyperlink{Color_8hpp_a78abb31bad0fd1834c54a3ca6f8daab5a08d0012388564e95c3b4a7407cf04965}{Color\+::\+BLACK}}\}\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+
+
+L\textquotesingle{}objet représentant le pion noir. 
+
+\Hypertarget{Piece_8hpp_a0f61d6dce3141f454592840394b44409}\index{Piece.hpp@{Piece.hpp}!B\_QUEEN@{B\_QUEEN}}
+\index{B\_QUEEN@{B\_QUEEN}!Piece.hpp@{Piece.hpp}}
+\doxysubsubsection{\texorpdfstring{B\_QUEEN}{B\_QUEEN}}
+{\footnotesize\ttfamily \label{Piece_8hpp_a0f61d6dce3141f454592840394b44409} 
+\mbox{\hyperlink{classPiece}{Piece}} B\+\_\+\+QUEEN \{\mbox{\hyperlink{TypePiece_8hpp_a2437c4d8f0bf23b8c6c76305ed35ae83a02d144e18eda99bcb94f3a764756805e}{Type\+Piece\+::\+QUEEN}}, \mbox{\hyperlink{Color_8hpp_a78abb31bad0fd1834c54a3ca6f8daab5a08d0012388564e95c3b4a7407cf04965}{Color\+::\+BLACK}}\}\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+
+
+L\textquotesingle{}objet représentant la renne noire. 
+
+\Hypertarget{Piece_8hpp_a3f5cb29cb869ea07b4b883b0c8611f32}\index{Piece.hpp@{Piece.hpp}!B\_ROOK@{B\_ROOK}}
+\index{B\_ROOK@{B\_ROOK}!Piece.hpp@{Piece.hpp}}
+\doxysubsubsection{\texorpdfstring{B\_ROOK}{B\_ROOK}}
+{\footnotesize\ttfamily \label{Piece_8hpp_a3f5cb29cb869ea07b4b883b0c8611f32} 
+\mbox{\hyperlink{classPiece}{Piece}} B\+\_\+\+ROOK \{\mbox{\hyperlink{TypePiece_8hpp_a2437c4d8f0bf23b8c6c76305ed35ae83a97c60a3a4e61ee21e3f38a2f950fe293}{Type\+Piece\+::\+ROOK}}, \mbox{\hyperlink{Color_8hpp_a78abb31bad0fd1834c54a3ca6f8daab5a08d0012388564e95c3b4a7407cf04965}{Color\+::\+BLACK}}\}\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+
+
+L\textquotesingle{}objet représentant la tour noire. 
+
+\Hypertarget{Piece_8hpp_a1c86a44ecec5133b1afcba7557f50a5d}\index{Piece.hpp@{Piece.hpp}!W\_BISHOP@{W\_BISHOP}}
+\index{W\_BISHOP@{W\_BISHOP}!Piece.hpp@{Piece.hpp}}
+\doxysubsubsection{\texorpdfstring{W\_BISHOP}{W\_BISHOP}}
+{\footnotesize\ttfamily \label{Piece_8hpp_a1c86a44ecec5133b1afcba7557f50a5d} 
+\mbox{\hyperlink{classPiece}{Piece}} W\+\_\+\+BISHOP \{\mbox{\hyperlink{TypePiece_8hpp_a2437c4d8f0bf23b8c6c76305ed35ae83a1834d375f684613c725d039a10db1976}{Type\+Piece\+::\+BISHOP}}, \mbox{\hyperlink{Color_8hpp_a78abb31bad0fd1834c54a3ca6f8daab5ab5bf627e448384cf3a4c35121ca6008d}{Color\+::\+WHITE}}\}\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+
+
+L\textquotesingle{}objet représentant le fou blanc. 
+
+\Hypertarget{Piece_8hpp_ae377970cfe6327abc4bd238362e37e13}\index{Piece.hpp@{Piece.hpp}!W\_KING@{W\_KING}}
+\index{W\_KING@{W\_KING}!Piece.hpp@{Piece.hpp}}
+\doxysubsubsection{\texorpdfstring{W\_KING}{W\_KING}}
+{\footnotesize\ttfamily \label{Piece_8hpp_ae377970cfe6327abc4bd238362e37e13} 
+\mbox{\hyperlink{classPiece}{Piece}} W\+\_\+\+KING \{\mbox{\hyperlink{TypePiece_8hpp_a2437c4d8f0bf23b8c6c76305ed35ae83a123b28961dd0f97d91bcb55d7a3b7c1c}{Type\+Piece\+::\+KING}}, \mbox{\hyperlink{Color_8hpp_a78abb31bad0fd1834c54a3ca6f8daab5ab5bf627e448384cf3a4c35121ca6008d}{Color\+::\+WHITE}}\}\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+
+
+L\textquotesingle{}objet représentant le roi blanc. 
+
+\Hypertarget{Piece_8hpp_aa2357ffb5242a8083eb0821974c217b0}\index{Piece.hpp@{Piece.hpp}!W\_KNIGHT@{W\_KNIGHT}}
+\index{W\_KNIGHT@{W\_KNIGHT}!Piece.hpp@{Piece.hpp}}
+\doxysubsubsection{\texorpdfstring{W\_KNIGHT}{W\_KNIGHT}}
+{\footnotesize\ttfamily \label{Piece_8hpp_aa2357ffb5242a8083eb0821974c217b0} 
+\mbox{\hyperlink{classPiece}{Piece}} W\+\_\+\+KNIGHT \{\mbox{\hyperlink{TypePiece_8hpp_a2437c4d8f0bf23b8c6c76305ed35ae83af7f210da15dbb4283299b2affd9bb238}{Type\+Piece\+::\+KNIGHT}}, \mbox{\hyperlink{Color_8hpp_a78abb31bad0fd1834c54a3ca6f8daab5ab5bf627e448384cf3a4c35121ca6008d}{Color\+::\+WHITE}}\}\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+
+
+L\textquotesingle{}objet représentant le cavalier blanc. 
+
+\Hypertarget{Piece_8hpp_acedced8aae6bcdcb12581ac55c00ce74}\index{Piece.hpp@{Piece.hpp}!W\_PAWN@{W\_PAWN}}
+\index{W\_PAWN@{W\_PAWN}!Piece.hpp@{Piece.hpp}}
+\doxysubsubsection{\texorpdfstring{W\_PAWN}{W\_PAWN}}
+{\footnotesize\ttfamily \label{Piece_8hpp_acedced8aae6bcdcb12581ac55c00ce74} 
+\mbox{\hyperlink{classPiece}{Piece}} W\+\_\+\+PAWN \{\mbox{\hyperlink{TypePiece_8hpp_a2437c4d8f0bf23b8c6c76305ed35ae83a3acd2a53aca11e0f883236ea27a3b627}{Type\+Piece\+::\+PAWN}}, \mbox{\hyperlink{Color_8hpp_a78abb31bad0fd1834c54a3ca6f8daab5ab5bf627e448384cf3a4c35121ca6008d}{Color\+::\+WHITE}}\}\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+
+
+L\textquotesingle{}objet représentant le pion blanc. 
+
+\Hypertarget{Piece_8hpp_af1e3c5b9fa8518392767ae0c01c9bb9d}\index{Piece.hpp@{Piece.hpp}!W\_QUEEN@{W\_QUEEN}}
+\index{W\_QUEEN@{W\_QUEEN}!Piece.hpp@{Piece.hpp}}
+\doxysubsubsection{\texorpdfstring{W\_QUEEN}{W\_QUEEN}}
+{\footnotesize\ttfamily \label{Piece_8hpp_af1e3c5b9fa8518392767ae0c01c9bb9d} 
+\mbox{\hyperlink{classPiece}{Piece}} W\+\_\+\+QUEEN \{\mbox{\hyperlink{TypePiece_8hpp_a2437c4d8f0bf23b8c6c76305ed35ae83a02d144e18eda99bcb94f3a764756805e}{Type\+Piece\+::\+QUEEN}}, \mbox{\hyperlink{Color_8hpp_a78abb31bad0fd1834c54a3ca6f8daab5ab5bf627e448384cf3a4c35121ca6008d}{Color\+::\+WHITE}}\}\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+
+
+L\textquotesingle{}objet représentant la renne blanche. 
+
+\Hypertarget{Piece_8hpp_a56c209905c7a520c7c8ba0847066084f}\index{Piece.hpp@{Piece.hpp}!W\_ROOK@{W\_ROOK}}
+\index{W\_ROOK@{W\_ROOK}!Piece.hpp@{Piece.hpp}}
+\doxysubsubsection{\texorpdfstring{W\_ROOK}{W\_ROOK}}
+{\footnotesize\ttfamily \label{Piece_8hpp_a56c209905c7a520c7c8ba0847066084f} 
+\mbox{\hyperlink{classPiece}{Piece}} W\+\_\+\+ROOK \{\mbox{\hyperlink{TypePiece_8hpp_a2437c4d8f0bf23b8c6c76305ed35ae83a97c60a3a4e61ee21e3f38a2f950fe293}{Type\+Piece\+::\+ROOK}}, \mbox{\hyperlink{Color_8hpp_a78abb31bad0fd1834c54a3ca6f8daab5ab5bf627e448384cf3a4c35121ca6008d}{Color\+::\+WHITE}}\}\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+
+
+L\textquotesingle{}objet représentant la tour blanche. 
+

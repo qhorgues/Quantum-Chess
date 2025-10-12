@@ -1,0 +1,122 @@
+\doxysection{Référence du fichier /home/quentin/\+Programmes/\+C++/\+Quantum-\/\+Chess/src/check\+\_\+path/check\+\_\+path.hpp}
+\hypertarget{check__path_8hpp}{}\label{check__path_8hpp}\index{/home/quentin/Programmes/C++/Quantum-\/Chess/src/check\_path/check\_path.hpp@{/home/quentin/Programmes/C++/Quantum-\/Chess/src/check\_path/check\_path.hpp}}
+{\ttfamily \#include $<$Coord.\+hpp$>$}\newline
+{\ttfamily \#include $<$Board.\+hpp$>$}\newline
+{\ttfamily \#include $<$Constexpr.\+hpp$>$}\newline
+{\ttfamily \#include "{}check\+\_\+path.\+tpp"{}}\newline
+\doxysubsubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$std\+::size\+\_\+t N, std\+::size\+\_\+t M$>$ }\\\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} bool \mbox{\hyperlink{check__path_8hpp_a800770aa8cf33ed229cc50d00f866739}{check\+\_\+path\+\_\+straight\+\_\+1\+\_\+instance}} (\mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$ const \&board, \mbox{\hyperlink{structCoord}{Coord}} const \&dpt, \mbox{\hyperlink{structCoord}{Coord}} const \&arv, std\+::size\+\_\+t position, std\+::optional$<$ \mbox{\hyperlink{structCoord}{Coord}} $>$ position\+\_\+other\+\_\+piece\+\_\+merge)
+\begin{DoxyCompactList}\small\item\em Vérififie si il y a une pièce entre deux cases sur une instance du plateau pour un mouvement orthogonale. \end{DoxyCompactList}\item 
+{\footnotesize template$<$std\+::size\+\_\+t N, std\+::size\+\_\+t M$>$ }\\\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} bool \mbox{\hyperlink{check__path_8hpp_a60ea766c25b86e456f97ed58f1ef60d8}{check\+\_\+path\+\_\+diagonal\+\_\+1\+\_\+instance}} (\mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$ const \&board, \mbox{\hyperlink{structCoord}{Coord}} const \&dpt, \mbox{\hyperlink{structCoord}{Coord}} const \&arv, std\+::size\+\_\+t position, std\+::optional$<$ \mbox{\hyperlink{structCoord}{Coord}} $>$ position\+\_\+other\+\_\+piece\+\_\+merge)
+\begin{DoxyCompactList}\small\item\em Vérififie si il y a une pièce entre deux cases sur une instance du plateau pour un mouvement diagonale. \end{DoxyCompactList}\item 
+{\footnotesize template$<$std\+::size\+\_\+t N, std\+::size\+\_\+t M$>$ }\\\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} bool \mbox{\hyperlink{check__path_8hpp_a797bbd2e4ff0a1e9027140fa01cfae24}{check\+\_\+path\+\_\+queen\+\_\+1\+\_\+instance}} (\mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$ const \&board, \mbox{\hyperlink{structCoord}{Coord}} const \&dpt, \mbox{\hyperlink{structCoord}{Coord}} const \&arv, std\+::size\+\_\+t position, std\+::optional$<$ \mbox{\hyperlink{structCoord}{Coord}} $>$ position\+\_\+other\+\_\+piece\+\_\+merge)
+\begin{DoxyCompactList}\small\item\em Vérififie si il y a une pièce entre deux cases sur une instance du plateau pour un mouvement orthogonale ou diagonale. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{check__path_8hpp_doc-func-members}
+\doxysubsection{Documentation des fonctions}
+\Hypertarget{check__path_8hpp_a60ea766c25b86e456f97ed58f1ef60d8}\index{check\_path.hpp@{check\_path.hpp}!check\_path\_diagonal\_1\_instance@{check\_path\_diagonal\_1\_instance}}
+\index{check\_path\_diagonal\_1\_instance@{check\_path\_diagonal\_1\_instance}!check\_path.hpp@{check\_path.hpp}}
+\doxysubsubsection{\texorpdfstring{check\_path\_diagonal\_1\_instance()}{check\_path\_diagonal\_1\_instance()}}
+{\footnotesize\ttfamily \label{check__path_8hpp_a60ea766c25b86e456f97ed58f1ef60d8} 
+template$<$std\+::size\+\_\+t N, std\+::size\+\_\+t M$>$ \\
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} bool check\+\_\+path\+\_\+diagonal\+\_\+1\+\_\+instance (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$ const \&}]{board}{, }\item[{\mbox{\hyperlink{structCoord}{Coord}} const \&}]{dpt}{, }\item[{\mbox{\hyperlink{structCoord}{Coord}} const \&}]{arv}{, }\item[{std\+::size\+\_\+t}]{position}{, }\item[{std\+::optional$<$ \mbox{\hyperlink{structCoord}{Coord}} $>$}]{position\+\_\+other\+\_\+piece\+\_\+merge}{}\end{DoxyParamCaption})}
+
+
+
+Vérififie si il y a une pièce entre deux cases sur une instance du plateau pour un mouvement diagonale. 
+
+
+\begin{DoxyTemplParams}{Paramètres du template}
+{\em N} & Le nombre de ligne du plateau \\
+\hline
+{\em M} & Le nombre de colonnes du plateau \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Paramètres}
+\mbox{\texttt{in}}  & {\em board} & Le plateau \\
+\hline
+\mbox{\texttt{in}}  & {\em dpt} & Les coordonnées de la case de départ \\
+\hline
+\mbox{\texttt{in}}  & {\em arv} & Les coordonnées de la case d\textquotesingle{}arrivé \\
+\hline
+\mbox{\texttt{in}}  & {\em position} & L\textquotesingle{}instance du plateau \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+true si le mouvement est possible 
+
+false si le mouvement est bloqué, on si ce n\textquotesingle{}est pas un mouvement diagonale. 
+\end{DoxyReturn}
+\Hypertarget{check__path_8hpp_a797bbd2e4ff0a1e9027140fa01cfae24}\index{check\_path.hpp@{check\_path.hpp}!check\_path\_queen\_1\_instance@{check\_path\_queen\_1\_instance}}
+\index{check\_path\_queen\_1\_instance@{check\_path\_queen\_1\_instance}!check\_path.hpp@{check\_path.hpp}}
+\doxysubsubsection{\texorpdfstring{check\_path\_queen\_1\_instance()}{check\_path\_queen\_1\_instance()}}
+{\footnotesize\ttfamily \label{check__path_8hpp_a797bbd2e4ff0a1e9027140fa01cfae24} 
+template$<$std\+::size\+\_\+t N, std\+::size\+\_\+t M$>$ \\
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} bool check\+\_\+path\+\_\+queen\+\_\+1\+\_\+instance (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$ const \&}]{board}{, }\item[{\mbox{\hyperlink{structCoord}{Coord}} const \&}]{dpt}{, }\item[{\mbox{\hyperlink{structCoord}{Coord}} const \&}]{arv}{, }\item[{std\+::size\+\_\+t}]{position}{, }\item[{std\+::optional$<$ \mbox{\hyperlink{structCoord}{Coord}} $>$}]{position\+\_\+other\+\_\+piece\+\_\+merge}{}\end{DoxyParamCaption})}
+
+
+
+Vérififie si il y a une pièce entre deux cases sur une instance du plateau pour un mouvement orthogonale ou diagonale. 
+
+
+\begin{DoxyTemplParams}{Paramètres du template}
+{\em N} & Le nombre de ligne du plateau \\
+\hline
+{\em M} & Le nombre de colonnes du plateau \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Paramètres}
+\mbox{\texttt{in}}  & {\em board} & Le plateau \\
+\hline
+\mbox{\texttt{in}}  & {\em dpt} & Les coordonnées de la case de départ \\
+\hline
+\mbox{\texttt{in}}  & {\em arv} & Les coordonnées de la case d\textquotesingle{}arrivé \\
+\hline
+\mbox{\texttt{in}}  & {\em position} & L\textquotesingle{}instance du plateau \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+true si le mouvement est possible 
+
+false si le mouvement est bloqué, on si ce n\textquotesingle{}est pas un mouvement orthogonal ou diagonale. 
+\end{DoxyReturn}
+\Hypertarget{check__path_8hpp_a800770aa8cf33ed229cc50d00f866739}\index{check\_path.hpp@{check\_path.hpp}!check\_path\_straight\_1\_instance@{check\_path\_straight\_1\_instance}}
+\index{check\_path\_straight\_1\_instance@{check\_path\_straight\_1\_instance}!check\_path.hpp@{check\_path.hpp}}
+\doxysubsubsection{\texorpdfstring{check\_path\_straight\_1\_instance()}{check\_path\_straight\_1\_instance()}}
+{\footnotesize\ttfamily \label{check__path_8hpp_a800770aa8cf33ed229cc50d00f866739} 
+template$<$std\+::size\+\_\+t N, std\+::size\+\_\+t M$>$ \\
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} bool check\+\_\+path\+\_\+straight\+\_\+1\+\_\+instance (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$ const \&}]{board}{, }\item[{\mbox{\hyperlink{structCoord}{Coord}} const \&}]{dpt}{, }\item[{\mbox{\hyperlink{structCoord}{Coord}} const \&}]{arv}{, }\item[{std\+::size\+\_\+t}]{position}{, }\item[{std\+::optional$<$ \mbox{\hyperlink{structCoord}{Coord}} $>$}]{position\+\_\+other\+\_\+piece\+\_\+merge}{}\end{DoxyParamCaption})}
+
+
+
+Vérififie si il y a une pièce entre deux cases sur une instance du plateau pour un mouvement orthogonale. 
+
+
+\begin{DoxyTemplParams}{Paramètres du template}
+{\em N} & Le nombre de ligne du plateau \\
+\hline
+{\em M} & Le nombre de colonnes du plateau \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Paramètres}
+\mbox{\texttt{in}}  & {\em board} & Le plateau \\
+\hline
+\mbox{\texttt{in}}  & {\em dpt} & Les coordonnées de la case de départ \\
+\hline
+\mbox{\texttt{in}}  & {\em arv} & Les coordonnées de la case d\textquotesingle{}arrivé \\
+\hline
+\mbox{\texttt{in}}  & {\em position} & L\textquotesingle{}instance du plateau \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+true si le mouvement est possible 
+
+false si le mouvement est bloqué, on si ce n\textquotesingle{}est pas un mouvementorthogonal 
+\end{DoxyReturn}

@@ -1,0 +1,15 @@
+# This is a generated file and its contents are an internal implementation detail.
+# The download step will be re-executed if anything in this file changes.
+# No other meaning or use of this file is supported.
+
+method=git
+command=/usr/bin/cmake;-DCMAKE_MESSAGE_LOG_LEVEL=VERBOSE;-P;/home/quentin/Programmes/C++/Quantum-Chess/build/_deps/matrix-subbuild/matrix-populate-prefix/tmp/matrix-populate-gitclone.cmake
+source_dir=/home/quentin/Programmes/C++/Quantum-Chess/build/Matrix
+work_dir=/home/quentin/Programmes/C++/Quantum-Chess/build
+repository=https://github.com/qhorgues/Matrix
+remote=origin
+init_submodules=TRUE
+recurse_submodules=--recursive
+submodules=
+CMP0097=NEW
+      

@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG -Wl,--dependency-file=CMakeFiles/Heuristic_analyzer.dir/link.d CMakeFiles/Heuristic_analyzer.dir/src/Coord/Coord.cpp.o CMakeFiles/Heuristic_analyzer.dir/src/Move/Move.cpp.o CMakeFiles/Heuristic_analyzer.dir/src/Random/Random.cpp.o CMakeFiles/Heuristic_analyzer.dir/src/heuristicHistory.cpp.o -o Heuristic_analyzer  -lm

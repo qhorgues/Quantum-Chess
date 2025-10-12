@@ -7,9 +7,9 @@
 template <std::size_t N, std::size_t M>
 CONSTEXPR bool
 check_path_straight(
-    Board<N, M> const &board,
-    Coord const &dpt,
-    Coord const &arv) noexcept
+		Board<N, M> const &board,
+		Coord const &dpt,
+		Coord const &arv) noexcept
 {
   if (dpt.n == arv.n)
   {
@@ -45,9 +45,9 @@ check_path_straight(
 template <std::size_t N, std::size_t M>
 CONSTEXPR bool
 check_path_diagonal(
-    Board<N, M> const &board,
-    Coord const &dpt,
-    Coord const &arv) noexcept
+		Board<N, M> const &board,
+		Coord const &dpt,
+		Coord const &arv) noexcept
 {
   std::size_t const max_lines{std::max(dpt.n, arv.n)};
   std::size_t const min_lines{std::min(dpt.n, arv.n)};
@@ -73,11 +73,11 @@ check_path_diagonal(
 template <std::size_t N, std::size_t M>
 CONSTEXPR bool
 check_path_straight_1_instance(
-    Board<N, M> const &board,
-    Coord const &dpt,
-    Coord const &arv,
-    std::size_t position,
-    std::optional<Coord> position_other_piece_merge)
+		Board<N, M> const &board,
+		Coord const &dpt,
+		Coord const &arv,
+		std::size_t position,
+		std::optional<Coord> position_other_piece_merge)
 {
   if (dpt.n == arv.n)
   {

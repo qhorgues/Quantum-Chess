@@ -1,0 +1,54 @@
+\doxysection{check\+\_\+path.\+hpp}
+\hypertarget{check__path_8hpp_source}{}\label{check__path_8hpp_source}\index{/home/quentin/Programmes/C++/Quantum-\/Chess/src/check\_path/check\_path.hpp@{/home/quentin/Programmes/C++/Quantum-\/Chess/src/check\_path/check\_path.hpp}}
+\mbox{\hyperlink{check__path_8hpp}{Aller à la documentation de ce fichier.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ CHECK\_PATH\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ CHECK\_PATH\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{Coord_8hpp}{Coord.hpp}}>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{Board_8hpp}{Board.hpp}}>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{Constexpr_8hpp}{Constexpr.hpp}}>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{template}\ <std::\textcolor{keywordtype}{size\_t}\ N,\ std::\textcolor{keywordtype}{size\_t}\ M>}
+\DoxyCodeLine{00009\ \mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}}
+\DoxyCodeLine{00010\ check\_path\_straight(}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classBoard}{Board<N,\ M>}}\ \textcolor{keyword}{const}\ \&board,}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structCoord}{Coord}}\ \textcolor{keyword}{const}\ \&dpt,}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structCoord}{Coord}}\ \textcolor{keyword}{const}\ \&arv)\ \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{template}\ <std::\textcolor{keywordtype}{size\_t}\ N,\ std::\textcolor{keywordtype}{size\_t}\ M>}
+\DoxyCodeLine{00016\ \mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}}
+\DoxyCodeLine{00017\ check\_path\_diagonal(}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classBoard}{Board<N,\ M>}}\ \textcolor{keyword}{const}\ \&board,}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structCoord}{Coord}}\ \textcolor{keyword}{const}\ \&dpt,}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structCoord}{Coord}}\ \textcolor{keyword}{const}\ \&arv)\ \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00036\ \textcolor{keyword}{template}\ <std::\textcolor{keywordtype}{size\_t}\ N,\ std::\textcolor{keywordtype}{size\_t}\ M>}
+\DoxyCodeLine{00037\ \mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}}\ \textcolor{keywordtype}{bool}}
+\DoxyCodeLine{00038\ \mbox{\hyperlink{check__path_8hpp_a800770aa8cf33ed229cc50d00f866739}{check\_path\_straight\_1\_instance}}(}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classBoard}{Board<N,\ M>}}\ \textcolor{keyword}{const}\ \&board,}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structCoord}{Coord}}\ \textcolor{keyword}{const}\ \&dpt,}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structCoord}{Coord}}\ \textcolor{keyword}{const}\ \&arv,}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ std::size\_t\ position,}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ std::optional<Coord>\ position\_other\_piece\_merge);}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00059\ \textcolor{keyword}{template}\ <std::\textcolor{keywordtype}{size\_t}\ N,\ std::\textcolor{keywordtype}{size\_t}\ M>}
+\DoxyCodeLine{00060\ \mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{check__path_8hpp_a60ea766c25b86e456f97ed58f1ef60d8}{check\_path\_diagonal\_1\_instance}}(}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classBoard}{Board<N,\ M>}}\ \textcolor{keyword}{const}\ \&board,}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structCoord}{Coord}}\ \textcolor{keyword}{const}\ \&dpt,}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structCoord}{Coord}}\ \textcolor{keyword}{const}\ \&arv,}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ std::size\_t\ position,}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ std::optional<Coord>\ position\_other\_piece\_merge);}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00081\ \textcolor{keyword}{template}\ <std::\textcolor{keywordtype}{size\_t}\ N,\ std::\textcolor{keywordtype}{size\_t}\ M>}
+\DoxyCodeLine{00082\ \mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{check__path_8hpp_a797bbd2e4ff0a1e9027140fa01cfae24}{check\_path\_queen\_1\_instance}}(}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classBoard}{Board<N,\ M>}}\ \textcolor{keyword}{const}\ \&board,}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structCoord}{Coord}}\ \textcolor{keyword}{const}\ \&dpt,}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structCoord}{Coord}}\ \textcolor{keyword}{const}\ \&arv,}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ std::size\_t\ position,}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ std::optional<Coord>\ position\_other\_piece\_merge);}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \textcolor{preprocessor}{\#include\ "{}check\_path.tpp"{}}}
+\DoxyCodeLine{00090\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

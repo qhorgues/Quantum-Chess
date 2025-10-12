@@ -1,0 +1,33 @@
+\doxysection{Coord.\+hpp}
+\hypertarget{Coord_8hpp_source}{}\label{Coord_8hpp_source}\index{/home/quentin/Programmes/C++/Quantum-\/Chess/src/Coord/Coord.hpp@{/home/quentin/Programmes/C++/Quantum-\/Chess/src/Coord/Coord.hpp}}
+\mbox{\hyperlink{Coord_8hpp}{Aller à la documentation de ce fichier.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ COORD\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ COORD\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <cstddef>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structCoord_a14caa1114c95058bd25e1a7ff2ad8e43}{Coord}}}
+\DoxyCodeLine{00011\ \{}
+\DoxyCodeLine{00012\ \ \ \mbox{\hyperlink{structCoord_a14caa1114c95058bd25e1a7ff2ad8e43}{Coord}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00013\ \ \ \mbox{\hyperlink{structCoord_abafff409eb0f46a5796aa1f6c71aa4a2}{Coord}}(std::size\_t\ i,\ std::size\_t\ j)\ :\ \mbox{\hyperlink{structCoord_aa748c08760a2979468295f4a1dc4df92}{n}}(i),\ \mbox{\hyperlink{structCoord_a93cffc8a62dd5d3b0c18e19c8e9fa1f6}{m}}(j)\{\};}
+\DoxyCodeLine{00014\ \ \ \mbox{\hyperlink{structCoord_a1fc16d40e952dc4d7c3bedb97225354a}{Coord}}(\mbox{\hyperlink{structCoord_a14caa1114c95058bd25e1a7ff2ad8e43}{Coord}}\ \textcolor{keyword}{const}\ \&)\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00015\ \ \ \mbox{\hyperlink{structCoord_a14caa1114c95058bd25e1a7ff2ad8e43}{Coord}}\ \&\mbox{\hyperlink{structCoord_a5ae1d18ec864bbfa9e76b7b96699aa5a}{operator=}}(\mbox{\hyperlink{structCoord_a14caa1114c95058bd25e1a7ff2ad8e43}{Coord}}\ \textcolor{keyword}{const}\ \&)\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00016\ \ \ \mbox{\hyperlink{structCoord_a89131b77a50cf91a64c4d10a2a9e06a1}{Coord}}(\mbox{\hyperlink{structCoord_a14caa1114c95058bd25e1a7ff2ad8e43}{Coord}}\ \&\&)\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00017\ \ \ \mbox{\hyperlink{structCoord_a14caa1114c95058bd25e1a7ff2ad8e43}{Coord}}\ \&\mbox{\hyperlink{structCoord_a3acf63cacc629195e3157792e69be2f1}{operator=}}(\mbox{\hyperlink{structCoord_a14caa1114c95058bd25e1a7ff2ad8e43}{Coord}}\ \&\&)\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00022\ \ \ std::size\_t\ \mbox{\hyperlink{structCoord_aa748c08760a2979468295f4a1dc4df92}{n}};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00027\ \ \ std::size\_t\ \mbox{\hyperlink{structCoord_a93cffc8a62dd5d3b0c18e19c8e9fa1f6}{m}};}
+\DoxyCodeLine{00028\ \};}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structCoord__hash}{Coord\_hash}}}
+\DoxyCodeLine{00031\ \{}
+\DoxyCodeLine{00032\ \ \ std::size\_t\ \mbox{\hyperlink{structCoord__hash_ac2da9a1b0fa0c5f7cbdce776ba181476}{operator()}}(\mbox{\hyperlink{structCoord}{Coord}}\ \textcolor{keyword}{const}\ \&coord)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00033\ \};}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{Coord_8hpp_aa61522c0a553f235e9a82781dfb765cb}{operator==}}(\mbox{\hyperlink{structCoord}{Coord}}\ \textcolor{keyword}{const}\ \&lhs,\ \mbox{\hyperlink{structCoord}{Coord}}\ \textcolor{keyword}{const}\ \&rhs);}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

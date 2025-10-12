@@ -1,0 +1,60 @@
+\doxysection{Référence du fichier /home/quentin/\+Programmes/\+C++/\+Quantum-\/\+Chess/include/\+CMatrix.hpp}
+\hypertarget{CMatrix_8hpp}{}\label{CMatrix_8hpp}\index{/home/quentin/Programmes/C++/Quantum-\/Chess/include/CMatrix.hpp@{/home/quentin/Programmes/C++/Quantum-\/Chess/include/CMatrix.hpp}}
+{\ttfamily \#include $<$Matrix.\+hpp$>$}\newline
+{\ttfamily \#include $<$complex$>$}\newline
+{\ttfamily \#include $<$Constexpr.\+hpp$>$}\newline
+{\ttfamily \#include $<$cstddef$>$}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{CMatrix_8hpp_afdd2e4b4b55d319f73ef2f4d0fc535c8}{\+\_\+2\+POW}}(n)
+\begin{DoxyCompactList}\small\item\em Réalise l\textquotesingle{}opération 2\texorpdfstring{$^\wedge$}{\string^}n. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Définitions de type}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$std\+::size\+\_\+t N$>$ }\\using \mbox{\hyperlink{CMatrix_8hpp_a3e99a8d4d1b632f5712266247636d394}{CMatrix}} = Matrix$<$std\+::complex$<$double$>$, N$>$
+\begin{DoxyCompactList}\small\item\em Objet représentant les matrices carrées complexe de dimension N. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-define-members}
+\Hypertarget{CMatrix_8hpp_doc-define-members}
+\doxysubsection{Documentation des macros}
+\Hypertarget{CMatrix_8hpp_afdd2e4b4b55d319f73ef2f4d0fc535c8}\index{CMatrix.hpp@{CMatrix.hpp}!\_2POW@{\_2POW}}
+\index{\_2POW@{\_2POW}!CMatrix.hpp@{CMatrix.hpp}}
+\doxysubsubsection{\texorpdfstring{\_2POW}{\_2POW}}
+{\footnotesize\ttfamily \label{CMatrix_8hpp_afdd2e4b4b55d319f73ef2f4d0fc535c8} 
+\#define \+\_\+2\+POW(\begin{DoxyParamCaption}\item[{}]{n}{}\end{DoxyParamCaption})}
+
+{\bfseries Valeur \+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{(1\ <<\ (n))}
+
+\end{DoxyCode}
+
+
+Réalise l\textquotesingle{}opération 2\texorpdfstring{$^\wedge$}{\string^}n. 
+
+\begin{DoxyWarning}{Avertissement}
+Est valable uniquement sur les types entiers 
+\end{DoxyWarning}
+
+
+\label{doc-typedef-members}
+\Hypertarget{CMatrix_8hpp_doc-typedef-members}
+\doxysubsection{Documentation des définitions de type}
+\Hypertarget{CMatrix_8hpp_a3e99a8d4d1b632f5712266247636d394}\index{CMatrix.hpp@{CMatrix.hpp}!CMatrix@{CMatrix}}
+\index{CMatrix@{CMatrix}!CMatrix.hpp@{CMatrix.hpp}}
+\doxysubsubsection{\texorpdfstring{CMatrix}{CMatrix}}
+{\footnotesize\ttfamily \label{CMatrix_8hpp_a3e99a8d4d1b632f5712266247636d394} 
+template$<$std\+::size\+\_\+t N$>$ \\
+using \mbox{\hyperlink{CMatrix_8hpp_a3e99a8d4d1b632f5712266247636d394}{CMatrix}} = Matrix$<$std\+::complex$<$double$>$, N$>$}
+
+
+
+Objet représentant les matrices carrées complexe de dimension N. 
+
+
+\begin{DoxyTemplParams}{Paramètres du template}
+{\em N} & La dimension de la matrice \\
+\hline
+\end{DoxyTemplParams}

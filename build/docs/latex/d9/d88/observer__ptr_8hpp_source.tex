@@ -1,0 +1,182 @@
+\doxysection{observer\+\_\+ptr.\+hpp}
+\hypertarget{observer__ptr_8hpp_source}{}\label{observer__ptr_8hpp_source}\index{/home/quentin/Programmes/C++/Quantum-\/Chess/include/observer\_ptr.hpp@{/home/quentin/Programmes/C++/Quantum-\/Chess/include/observer\_ptr.hpp}}
+\mbox{\hyperlink{observer__ptr_8hpp}{Aller à la documentation de ce fichier.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ OBSERVER\_PTR\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ OBSERVER\_PTR\_HPP}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00006\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classobserver__ptr_a13360a658c5e5f1c9ed8f7a682abf49c}{observer\_ptr}}}
+\DoxyCodeLine{00007\ \{}
+\DoxyCodeLine{00008\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{comment}{//\ publish\ our\ template\ parameter\ and\ variations\ thereof}}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classobserver__ptr_a2109a92625fca4ec691c7c9cd8514cb8}{element\_type}}\ =\ T;}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classobserver__ptr_a0dc5491906769e651349f2f644f74694}{\_\_pointer}}\ =\ std::add\_pointer\_t<T>;\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ exposition-\/only}}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classobserver__ptr_a26630ae0b520a3dd7f1db5f06119e883}{\_\_reference}}\ =\ std::add\_lvalue\_reference\_t<T>;\ \textcolor{comment}{//\ exposition-\/only}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{comment}{//\ 3.2.2,\ observer\_ptr\ constructors}}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{comment}{//\ default\ c'tor}}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classobserver__ptr_a13360a658c5e5f1c9ed8f7a682abf49c}{observer\_ptr}}()\ noexcept}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ :\ \mbox{\hyperlink{classobserver__ptr_afc4f6c26d80c5ebbd5637bbc337fc1f6}{\_\_t}}()}
+\DoxyCodeLine{00018\ \ \ \ \ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{comment}{//\ pointer-\/accepting\ c'tors}}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classobserver__ptr_af10f47454aa80c431096e185b17f7ef6}{observer\_ptr}}(std::nullptr\_t)\ noexcept}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ :\ \mbox{\hyperlink{classobserver__ptr_afc4f6c26d80c5ebbd5637bbc337fc1f6}{\_\_t}}()}
+\DoxyCodeLine{00024\ \ \ \ \ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classobserver__ptr_a9ff05e8edbab78f34538c580612c9fc6}{observer\_ptr}}(\mbox{\hyperlink{classobserver__ptr_a0dc5491906769e651349f2f644f74694}{\_\_pointer}}\ \_\_p)\ noexcept}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ :\ \mbox{\hyperlink{classobserver__ptr_afc4f6c26d80c5ebbd5637bbc337fc1f6}{\_\_t}}(\_\_p)}
+\DoxyCodeLine{00029\ \ \ \ \ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{comment}{//\ copying\ c'tors\ (in\ addition\ to\ compiler-\/generated\ copy\ c'tor)}}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ \_Up,}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{typename}\ =\ \textcolor{keyword}{typename}\ std::enable\_if<}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::is\_convertible<}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{typename}\ std::add\_pointer<\_Up>::type,\ \mbox{\hyperlink{classobserver__ptr_a0dc5491906769e651349f2f644f74694}{\_\_pointer}}>::}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ value>::type>}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classobserver__ptr_a9c63ed2202d59ad63c877cbcfbfd0d4b}{observer\_ptr}}(\mbox{\hyperlink{classobserver__ptr_a13360a658c5e5f1c9ed8f7a682abf49c}{observer\_ptr<\_Up>}}\ \_\_p)\ noexcept}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ :\ \mbox{\hyperlink{classobserver__ptr_afc4f6c26d80c5ebbd5637bbc337fc1f6}{\_\_t}}(\_\_p.get())}
+\DoxyCodeLine{00041\ \ \ \ \ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{comment}{//\ 3.2.3,\ observer\_ptr\ observers}}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classobserver__ptr_a0dc5491906769e651349f2f644f74694}{\_\_pointer}}}
+\DoxyCodeLine{00046\ \ \ \ \ \mbox{\hyperlink{classobserver__ptr_ac6337ecd71cc80b97ee2daec809d77f3}{get}}()\ const\ noexcept}
+\DoxyCodeLine{00047\ \ \ \ \ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classobserver__ptr_afc4f6c26d80c5ebbd5637bbc337fc1f6}{\_\_t}};}
+\DoxyCodeLine{00049\ \ \ \ \ \}}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classobserver__ptr_a26630ae0b520a3dd7f1db5f06119e883}{\_\_reference}}}
+\DoxyCodeLine{00052\ \ \ \ \ \mbox{\hyperlink{classobserver__ptr_a97592da38caa76dfaaf12445aad2716b}{operator*}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00053\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\mbox{\hyperlink{classobserver__ptr_ac6337ecd71cc80b97ee2daec809d77f3}{get}}();}
+\DoxyCodeLine{00055\ \ \ \ \ \}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classobserver__ptr_a0dc5491906769e651349f2f644f74694}{\_\_pointer}}}
+\DoxyCodeLine{00058\ \ \ \ \ \mbox{\hyperlink{classobserver__ptr_a1e1c3c3f055e4176ce510303ee0f3a91}{operator-\/>}}()\ const\ noexcept}
+\DoxyCodeLine{00059\ \ \ \ \ \{}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classobserver__ptr_ac6337ecd71cc80b97ee2daec809d77f3}{get}}();}
+\DoxyCodeLine{00061\ \ \ \ \ \}}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{explicit}\ \textcolor{keyword}{operator}\ bool()\ const\ noexcept}
+\DoxyCodeLine{00064\ \ \ \ \ \{}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classobserver__ptr_ac6337ecd71cc80b97ee2daec809d77f3}{get}}()\ !=\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00066\ \ \ \ \ \}}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{comment}{//\ 3.2.4,\ observer\_ptr\ conversions}}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{explicit}\ \textcolor{keyword}{operator}\ \mbox{\hyperlink{classobserver__ptr_a0dc5491906769e651349f2f644f74694}{\_\_pointer}}()\ const\ noexcept}
+\DoxyCodeLine{00070\ \ \ \ \ \{}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classobserver__ptr_ac6337ecd71cc80b97ee2daec809d77f3}{get}}();}
+\DoxyCodeLine{00072\ \ \ \ \ \}}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{comment}{//\ 3.2.5,\ observer\_ptr\ modifiers}}
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classobserver__ptr_a0dc5491906769e651349f2f644f74694}{\_\_pointer}}}
+\DoxyCodeLine{00076\ \ \ \ \ \mbox{\hyperlink{classobserver__ptr_a44fedd0645ae9a9ca0036eaa3bc2af12}{release}}()\ noexcept}
+\DoxyCodeLine{00077\ \ \ \ \ \{}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classobserver__ptr_a0dc5491906769e651349f2f644f74694}{\_\_pointer}}\ \_\_tmp\ =\ \mbox{\hyperlink{classobserver__ptr_ac6337ecd71cc80b97ee2daec809d77f3}{get}}();}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classobserver__ptr_aadf07d605b3dfdfe106843c20cf7f14a}{reset}}();}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_\_tmp;}
+\DoxyCodeLine{00081\ \ \ \ \ \}}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{void}}
+\DoxyCodeLine{00084\ \ \ \ \ \mbox{\hyperlink{classobserver__ptr_aadf07d605b3dfdfe106843c20cf7f14a}{reset}}(\mbox{\hyperlink{classobserver__ptr_a0dc5491906769e651349f2f644f74694}{\_\_pointer}}\ \_\_p\ =\ \textcolor{keyword}{nullptr})\ noexcept}
+\DoxyCodeLine{00085\ \ \ \ \ \{}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classobserver__ptr_afc4f6c26d80c5ebbd5637bbc337fc1f6}{\_\_t}}\ =\ \_\_p;}
+\DoxyCodeLine{00087\ \ \ \ \ \}}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{void}}
+\DoxyCodeLine{00090\ \ \ \ \ \mbox{\hyperlink{classobserver__ptr_a716aac32d184b983fe5a4538afa678f8}{swap}}(\mbox{\hyperlink{classobserver__ptr_a13360a658c5e5f1c9ed8f7a682abf49c}{observer\_ptr}}\ \&\_\_p)\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00091\ \ \ \ \ \{}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ std::swap(\mbox{\hyperlink{classobserver__ptr_afc4f6c26d80c5ebbd5637bbc337fc1f6}{\_\_t}},\ \_\_p.\_\_t);}
+\DoxyCodeLine{00093\ \ \ \ \ \}}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00096\ \ \ \ \ \mbox{\hyperlink{classobserver__ptr_a0dc5491906769e651349f2f644f74694}{\_\_pointer}}\ \mbox{\hyperlink{classobserver__ptr_afc4f6c26d80c5ebbd5637bbc337fc1f6}{\_\_t}};}
+\DoxyCodeLine{00097\ \};\ \textcolor{comment}{//\ observer\_ptr<>}}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00100\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{observer__ptr_8hpp_a0d79ae8874afb660dd7e519a350e0382}{swap}}(\mbox{\hyperlink{classobserver__ptr}{observer\_ptr<T>}}\ \&\_\_p1,\ \mbox{\hyperlink{classobserver__ptr}{observer\_ptr<T>}}\ \&\_\_p2)\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00101\ \{}
+\DoxyCodeLine{00102\ \ \ \ \ \_\_p1.swap(\_\_p2);}
+\DoxyCodeLine{00103\ \}}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00106\ \mbox{\hyperlink{classobserver__ptr}{observer\_ptr<T>}}}
+\DoxyCodeLine{00107\ \mbox{\hyperlink{observer__ptr_8hpp_a14336bfd132c7f835e4980feb0faaaa3}{make\_observer}}(T\ *\_\_p)\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00108\ \{}
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classobserver__ptr}{observer\_ptr<T>}}(\_\_p);}
+\DoxyCodeLine{00110\ \}}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ \_Up>}
+\DoxyCodeLine{00113\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{observer__ptr_8hpp_ab83d6093e054120e36ff1996638d4d84}{operator==}}(\mbox{\hyperlink{classobserver__ptr}{observer\_ptr<T>}}\ \_\_p1,\ \mbox{\hyperlink{classobserver__ptr}{observer\_ptr<\_Up>}}\ \_\_p2)}
+\DoxyCodeLine{00114\ \{}
+\DoxyCodeLine{00115\ \ \ \ \ \textcolor{keywordflow}{return}\ \_\_p1.\mbox{\hyperlink{classobserver__ptr_ac6337ecd71cc80b97ee2daec809d77f3}{get}}()\ ==\ \_\_p2.\mbox{\hyperlink{classobserver__ptr_ac6337ecd71cc80b97ee2daec809d77f3}{get}}();}
+\DoxyCodeLine{00116\ \}}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ \_Up>}
+\DoxyCodeLine{00119\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{observer__ptr_8hpp_a30759f8d19de75f3cb38d2cdd88c9fa1}{operator!=}}(\mbox{\hyperlink{classobserver__ptr}{observer\_ptr<T>}}\ \_\_p1,\ \mbox{\hyperlink{classobserver__ptr}{observer\_ptr<\_Up>}}\ \_\_p2)}
+\DoxyCodeLine{00120\ \{}
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{keywordflow}{return}\ !(\_\_p1\ ==\ \_\_p2);}
+\DoxyCodeLine{00122\ \}}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00125\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{observer__ptr_8hpp_ab83d6093e054120e36ff1996638d4d84}{operator==}}(\mbox{\hyperlink{classobserver__ptr}{observer\_ptr<T>}}\ \_\_p,\ std::nullptr\_t)\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00126\ \{}
+\DoxyCodeLine{00127\ \ \ \ \ \textcolor{keywordflow}{return}\ !\_\_p;}
+\DoxyCodeLine{00128\ \}}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00130\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00131\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{observer__ptr_8hpp_ab83d6093e054120e36ff1996638d4d84}{operator==}}(std::nullptr\_t,\ \mbox{\hyperlink{classobserver__ptr}{observer\_ptr<T>}}\ \_\_p)\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00132\ \{}
+\DoxyCodeLine{00133\ \ \ \ \ \textcolor{keywordflow}{return}\ !\_\_p;}
+\DoxyCodeLine{00134\ \}}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00136\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00137\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{observer__ptr_8hpp_a30759f8d19de75f3cb38d2cdd88c9fa1}{operator!=}}(\mbox{\hyperlink{classobserver__ptr}{observer\_ptr<T>}}\ \_\_p,\ std::nullptr\_t)\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00138\ \{}
+\DoxyCodeLine{00139\ \ \ \ \ \textcolor{keywordflow}{return}\ bool(\_\_p);}
+\DoxyCodeLine{00140\ \}}
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00142\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00143\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{observer__ptr_8hpp_a30759f8d19de75f3cb38d2cdd88c9fa1}{operator!=}}(std::nullptr\_t,\ \mbox{\hyperlink{classobserver__ptr}{observer\_ptr<T>}}\ \_\_p)\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00144\ \{}
+\DoxyCodeLine{00145\ \ \ \ \ \textcolor{keywordflow}{return}\ bool(\_\_p);}
+\DoxyCodeLine{00146\ \}}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00148\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ \_Up>}
+\DoxyCodeLine{00149\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{observer__ptr_8hpp_a9d08f5068ab26f538fac4c4127103ff8}{operator<}}(\mbox{\hyperlink{classobserver__ptr}{observer\_ptr<T>}}\ \_\_p1,\ \mbox{\hyperlink{classobserver__ptr}{observer\_ptr<\_Up>}}\ \_\_p2)}
+\DoxyCodeLine{00150\ \{}
+\DoxyCodeLine{00151\ \ \ \ \ \textcolor{keywordflow}{return}\ std::less<}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \textcolor{keyword}{typename}\ std::common\_type<}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{typename}\ std::add\_pointer<T>::type,}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{typename}\ std::add\_pointer<\_Up>::type>::type>\{\}(\_\_p1.\mbox{\hyperlink{classobserver__ptr_ac6337ecd71cc80b97ee2daec809d77f3}{get}}(),}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_\_p2.\mbox{\hyperlink{classobserver__ptr_ac6337ecd71cc80b97ee2daec809d77f3}{get}}());}
+\DoxyCodeLine{00156\ \}}
+\DoxyCodeLine{00157\ }
+\DoxyCodeLine{00158\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ \_Up>}
+\DoxyCodeLine{00159\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{observer__ptr_8hpp_a95c5e46d37b5f12a67b9953194375784}{operator>}}(\mbox{\hyperlink{classobserver__ptr}{observer\_ptr<T>}}\ \_\_p1,\ \mbox{\hyperlink{classobserver__ptr}{observer\_ptr<\_Up>}}\ \_\_p2)}
+\DoxyCodeLine{00160\ \{}
+\DoxyCodeLine{00161\ \ \ \ \ \textcolor{keywordflow}{return}\ \_\_p2\ <\ \_\_p1;}
+\DoxyCodeLine{00162\ \}}
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00164\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ \_Up>}
+\DoxyCodeLine{00165\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{observer__ptr_8hpp_af5a46a39520d69b82d5e456b8181d546}{operator<=}}(\mbox{\hyperlink{classobserver__ptr}{observer\_ptr<T>}}\ \_\_p1,\ \mbox{\hyperlink{classobserver__ptr}{observer\_ptr<\_Up>}}\ \_\_p2)}
+\DoxyCodeLine{00166\ \{}
+\DoxyCodeLine{00167\ \ \ \ \ \textcolor{keywordflow}{return}\ !(\_\_p2\ <\ \_\_p1);}
+\DoxyCodeLine{00168\ \}}
+\DoxyCodeLine{00169\ }
+\DoxyCodeLine{00170\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ \_Up>}
+\DoxyCodeLine{00171\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{observer__ptr_8hpp_aee693017f5e66f8fe64edc463dc10774}{operator>=}}(\mbox{\hyperlink{classobserver__ptr}{observer\_ptr<T>}}\ \_\_p1,\ \mbox{\hyperlink{classobserver__ptr}{observer\_ptr<\_Up>}}\ \_\_p2)}
+\DoxyCodeLine{00172\ \{}
+\DoxyCodeLine{00173\ \ \ \ \ \textcolor{keywordflow}{return}\ !(\_\_p1\ <\ \_\_p2);}
+\DoxyCodeLine{00174\ \}}
+\DoxyCodeLine{00175\ }
+\DoxyCodeLine{00176\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

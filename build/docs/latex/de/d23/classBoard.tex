@@ -1,0 +1,1482 @@
+\doxysection{Référence du modèle de la classe Board\texorpdfstring{$<$}{<} N, M \texorpdfstring{$>$}{>}}
+\hypertarget{classBoard}{}\label{classBoard}\index{Board$<$ N, M $>$@{Board$<$ N, M $>$}}
+
+
+La classe représentant le plateau de jeu.  
+
+
+
+
+{\ttfamily \#include $<$Board.\+hpp$>$}
+
+\doxysubsubsection*{Fonctions membres publiques}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} \mbox{\hyperlink{classBoard_a3fe651d57c4fd92cb42fe8ae6eca8562}{Board}} ()
+\item 
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} \mbox{\hyperlink{classBoard_a58b73103e0d55cb217ea516b72ff9969}{Board}} (std\+::initializer\+\_\+list$<$ std\+::initializer\+\_\+list$<$ \mbox{\hyperlink{classPiece}{Piece}} $>$ $>$ const \&board)
+\item 
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} \mbox{\hyperlink{classBoard_afb03bcfcdf37570704d535714e867c97}{Board}} (std\+::ranges\+::common\+\_\+range auto const \&board)
+\begin{DoxyCompactList}\small\item\em Initialise le plateau à partir d\textquotesingle{}un ensemble de pièce, les pièces ne sont pas divisées initialement. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} \mbox{\hyperlink{classBoard_af6a338387fffeb3aadc8ed3adb9a3649}{Board}} (\mbox{\hyperlink{classBoard}{Board}} const \&)=default
+\item 
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} \mbox{\hyperlink{classBoard}{Board}} \& \mbox{\hyperlink{classBoard_ac2081cea73b0212e1d3a1f1937fc24cc}{operator=}} (\mbox{\hyperlink{classBoard}{Board}} const \&)=default
+\item 
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} \mbox{\hyperlink{classBoard_abac6288166ce6aef6441fca8d06b6f81}{Board}} (\mbox{\hyperlink{classBoard}{Board}} \&\&)=default
+\item 
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} \mbox{\hyperlink{classBoard}{Board}} \& \mbox{\hyperlink{classBoard_ae02aa59b2cb5f7570a86e769641e84f3}{operator=}} (\mbox{\hyperlink{classBoard}{Board}} \&\&)=default
+\item 
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} \mbox{\hyperlink{classBoard_a21962785efbc9128587809c4c996a142}{\texorpdfstring{$\sim$}{\string~}\+Board}} ()=default
+\item 
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} \mbox{\hyperlink{classPiece}{Piece}} const \& \mbox{\hyperlink{classBoard_a12198d3ba6b3cccc99b4787cbaacccee}{operator()}} (std\+::size\+\_\+t n, std\+::size\+\_\+t m) const noexcept
+\begin{DoxyCompactList}\small\item\em Retourne un pointeur sur la piece à l\textquotesingle{}emplacement cible. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} std\+::forward\+\_\+list$<$ \mbox{\hyperlink{structCoord}{Coord}} $>$ \mbox{\hyperlink{classBoard_a173a95dfc2561c59ef108697eb133c0b}{get\+\_\+list\+\_\+normal\+\_\+move}} (\mbox{\hyperlink{structCoord}{Coord}} const \&pos) const
+\begin{DoxyCompactList}\small\item\em Renvoie la liste dans tous les mouvements classiques légaux d\textquotesingle{}une pièce. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} std\+::forward\+\_\+list$<$ \mbox{\hyperlink{structCoord}{Coord}} $>$ \mbox{\hyperlink{classBoard_a331cc732f6532a34874a2cec3c495a8f}{get\+\_\+list\+\_\+split\+\_\+move}} (\mbox{\hyperlink{structCoord}{Coord}} const \&pos) const
+\begin{DoxyCompactList}\small\item\em Renvoie la liste de toutes les cases qu\textquotesingle{}une pièce peut atteindre lors d\textquotesingle{}un mouvement split, il faut choisir deux éléments de la liste pour créer un mouvement split. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} bool \mbox{\hyperlink{classBoard_a11407f64550ac37b959f98d7e83db64c}{check\+\_\+if\+\_\+use\+\_\+move\+\_\+promote}} (\mbox{\hyperlink{structCoord}{Coord}} const \&pos) const noexcept
+\begin{DoxyCompactList}\small\item\em Teste si les mouvement de la piece sont si la pièce est un pion un mouvement de promotion. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} std\+::forward\+\_\+list$<$ \mbox{\hyperlink{structMove}{Move}} $>$ \mbox{\hyperlink{classBoard_a598c56a5f899766f021b2fad0fd70bd6}{get\+\_\+list\+\_\+promote}} (\mbox{\hyperlink{structCoord}{Coord}} const \&pos) const noexcept
+\begin{DoxyCompactList}\small\item\em Renvoie la liste de toutes les promotions. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Unitary\+Function$>$ }\\\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} void \mbox{\hyperlink{classBoard_a85b95acd66067e579c8a5f17ed6bb1a0}{all\+\_\+move}} (Unitary\+Function func, std\+::optional$<$ \mbox{\hyperlink{Color_8hpp_a78abb31bad0fd1834c54a3ca6f8daab5}{Color}} $>$ color\+\_\+player=std\+::nullopt) const noexcept
+\begin{DoxyCompactList}\small\item\em Applique une fonction à l\textquotesingle{}entiéreté des mouvements possible. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} bool \mbox{\hyperlink{classBoard_a0ae356b314ec974b23a103141f7b4823}{move\+\_\+is\+\_\+legal}} (\mbox{\hyperlink{structMove}{Move}} const \&\mbox{\hyperlink{classBoard_a368cf7ba6b2ed27dcad86645ad1c1953}{move}}) const
+\begin{DoxyCompactList}\small\item\em Test si un mouvement est réalisable. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} void \mbox{\hyperlink{classBoard_a368cf7ba6b2ed27dcad86645ad1c1953}{move}} (\mbox{\hyperlink{structMove}{Move}} const \&movement, std\+::optional$<$ bool $>$ val\+\_\+mes=std\+::nullopt)
+\begin{DoxyCompactList}\small\item\em Réalise un mouvement d\textquotesingle{}une pièce quelque soit le type du mouvement (classic, split, merge) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} bool \mbox{\hyperlink{classBoard_a4361b1ec0a07e20844e44e13613437d8}{winning\+\_\+position}} (\mbox{\hyperlink{Color_8hpp_a78abb31bad0fd1834c54a3ca6f8daab5}{Color}} c) const noexcept
+\begin{DoxyCompactList}\small\item\em Test si un plateau est gagnant pour une couleur. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} \mbox{\hyperlink{Color_8hpp_a78abb31bad0fd1834c54a3ca6f8daab5}{Color}} \mbox{\hyperlink{classBoard_ac92c8b8d8071a54281e194ddf75beba4}{get\+\_\+current\+\_\+player}} () const noexcept
+\begin{DoxyCompactList}\small\item\em Recupère la couleur du joueur au tour de jouer. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} void \mbox{\hyperlink{classBoard_aa9fcccd89ef3b7af6dc54867671fb3f3}{change\+\_\+player}} () noexcept
+\begin{DoxyCompactList}\small\item\em Change le joueur actuel et passe la main à l\textquotesingle{}autre joueur. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} double \mbox{\hyperlink{classBoard_aeb602c14af620edcd7330d3a0cbf0e5d}{get\+\_\+proba}} (\mbox{\hyperlink{structCoord}{Coord}} const \&pos) const noexcept
+\begin{DoxyCompactList}\small\item\em Renvoie la probabilité qu\textquotesingle{}il y ait une pièce à une position. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} void \mbox{\hyperlink{classBoard_a70da9f8bdaa77d42712fdd123f40dad5}{move\+\_\+promotion}} (\mbox{\hyperlink{structMove}{Move}} const \&\mbox{\hyperlink{classBoard_a368cf7ba6b2ed27dcad86645ad1c1953}{move}}, std\+::optional$<$ bool $>$ val\+\_\+mes=std\+::nullopt)
+\begin{DoxyCompactList}\small\item\em Fonction qui permet de faire un mouvement de pion quelconque avec une promotion. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} double \mbox{\hyperlink{classBoard_ace033903065bef449576f323789d8b4a}{get\+\_\+proba\+\_\+move}} (\mbox{\hyperlink{structMove}{Move}} const \&\mbox{\hyperlink{classBoard_a368cf7ba6b2ed27dcad86645ad1c1953}{move}}) const noexcept
+\begin{DoxyCompactList}\small\item\em Renvoie la probabilité que le mouvement soit réalisé \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Fonctions membres publiques statiques}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} std\+::size\+\_\+t \mbox{\hyperlink{classBoard_a7fa8fd1a867a5c5ed31d7819128389e6}{number\+Lines}} () noexcept
+\begin{DoxyCompactList}\small\item\em Retourne le nombre de ligne du plateau. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} std\+::size\+\_\+t \mbox{\hyperlink{classBoard_abbd4419f7856bf0de2f0cb58d6f67fb1}{number\+Columns}} () noexcept
+\begin{DoxyCompactList}\small\item\em Retourne le nombre de colonne. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Fonctions membres privées}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} double \mbox{\hyperlink{classBoard_a1ff54cf54eb30a76ee8dea34343b5f40}{get\+\_\+proba\+\_\+mesure}} (\mbox{\hyperlink{structCoord}{Coord}} const \&p) const noexcept
+\begin{DoxyCompactList}\small\item\em Renvoie la probabilité que la fonction mesure renvoie true, c\textquotesingle{}est-\/à-\/dire la proba que le mouvement soit"{}réussi"{}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} double \mbox{\hyperlink{classBoard_aed8545cdf9ca4e47ffd3306d80c87539}{get\+\_\+proba\+\_\+mesure\+\_\+capture\+\_\+slide}} (\mbox{\hyperlink{structCoord}{Coord}} const \&s, \mbox{\hyperlink{structCoord}{Coord}} const \&t, std\+::function$<$ bool(\mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$ const \&, \mbox{\hyperlink{structCoord}{Coord}} const \&, \mbox{\hyperlink{structCoord}{Coord}} const \&, std\+::size\+\_\+t, std\+::optional$<$ \mbox{\hyperlink{structCoord}{Coord}} $>$)$>$ check\+\_\+path) const noexcept
+\begin{DoxyCompactList}\small\item\em Renvoie la probabilité que la fonction mesure\+\_\+capture\+\_\+slide renvoie true, c\textquotesingle{}est-\/à-\/dire la proba que le mouvement de capture\+\_\+slide soit"{}réussi"{}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} double \mbox{\hyperlink{classBoard_a84791fcc38cf0dae066dc4cfb45d4d9f}{get\+\_\+proba\+\_\+mesure\+\_\+castle}} (\mbox{\hyperlink{structCoord}{Coord}} const \&king, \mbox{\hyperlink{structCoord}{Coord}} const \&rook) const noexcept
+\begin{DoxyCompactList}\small\item\em Renvoie laprobabilité que la fonction mesure\+\_\+castle renvoie true, c\textquotesingle{}est-\/à-\/dire la proba que le mouvement de roque soit"{}réussi"{}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBoard_a2b7efeb273cc2b2b07fa87b8d9eb3b7f}{update\+\_\+case}} (std\+::size\+\_\+t pos) noexcept
+\begin{DoxyCompactList}\small\item\em Vérifie si la case à une possibilité de contenir une pièce, et si elle n\textquotesingle{}en a pas modifie m\+\_\+piece\+\_\+board en nullptr. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBoard_ac861187330142ee511ed2707ea4c552a}{update\+\_\+board}} () noexcept
+\begin{DoxyCompactList}\small\item\em Fonction qui permet de mattre à jour le plateau, car ce mouvement entraine l\textquotesingle{}apparition de plusieurs instance de board identique, il faut donc les concaténer en ajoutant les probas, si la proba vaut 0, on supprime l\textquotesingle{}instance. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBoard_a68041aa1a83fe7bb96cc61254142ff25}{update\+\_\+board\+\_\+classic}} () noexcept
+\item 
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} void \mbox{\hyperlink{classBoard_af3f1ee5615d1c83e8b4f47f5d3462826}{move\+\_\+classic\+\_\+jump}} (\mbox{\hyperlink{structCoord}{Coord}} const \&s, \mbox{\hyperlink{structCoord}{Coord}} const \&t, std\+::optional$<$ bool $>$ val\+\_\+mes=std\+::nullopt)
+\begin{DoxyCompactList}\small\item\em Mouvement classique d\textquotesingle{}une pièce qui "{}saute"{} (cavalier, roi) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} void \mbox{\hyperlink{classBoard_a47f420a736210539b59d3dc2023ce964}{move\+\_\+split\+\_\+jump}} (\mbox{\hyperlink{structCoord}{Coord}} const \&s, \mbox{\hyperlink{structCoord}{Coord}} const \&t1, \mbox{\hyperlink{structCoord}{Coord}} const \&t2)
+\begin{DoxyCompactList}\small\item\em Mouvement "{}split jump"{}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} void \mbox{\hyperlink{classBoard_ab27ddd048e875eb243d7587d0b6f1424}{move\+\_\+merge\+\_\+jump}} (\mbox{\hyperlink{structCoord}{Coord}} const \&s, \mbox{\hyperlink{structCoord}{Coord}} const \&t1, \mbox{\hyperlink{structCoord}{Coord}} const \&t2)
+\begin{DoxyCompactList}\small\item\em Mouvement de merge. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} void \mbox{\hyperlink{classBoard_a584a98568ae1d949ded33456ce472fb3}{move\+\_\+classic\+\_\+slide}} (\mbox{\hyperlink{structCoord}{Coord}} const \&s, \mbox{\hyperlink{structCoord}{Coord}} const \&t, std\+::function$<$ bool(\mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$ const \&, \mbox{\hyperlink{structCoord}{Coord}} const \&, \mbox{\hyperlink{structCoord}{Coord}} const \&, std\+::size\+\_\+t, std\+::optional$<$ \mbox{\hyperlink{structCoord}{Coord}} $>$)$>$ check\+\_\+path, std\+::optional$<$ bool $>$ val\+\_\+mes=std\+::nullopt)
+\begin{DoxyCompactList}\small\item\em Mouvement classique d\textquotesingle{}un pièce qui "{}glisse"{} (fou, dame, tour) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} void \mbox{\hyperlink{classBoard_a021d47a138270ee0ae8e3427b7d5f9d2}{move\+\_\+split\+\_\+slide}} (\mbox{\hyperlink{structCoord}{Coord}} const \&s, \mbox{\hyperlink{structCoord}{Coord}} const \&t1, \mbox{\hyperlink{structCoord}{Coord}} const \&t2, std\+::function$<$ bool(\mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$ const \&, \mbox{\hyperlink{structCoord}{Coord}} const \&, \mbox{\hyperlink{structCoord}{Coord}} const \&, std\+::size\+\_\+t, std\+::optional$<$ \mbox{\hyperlink{structCoord}{Coord}} $>$)$>$ check\+\_\+path)
+\begin{DoxyCompactList}\small\item\em Mouvement "{}split slide"{}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} void \mbox{\hyperlink{classBoard_ab6beab7f1900a5ef2703302d65e32fd6}{move\+\_\+merge\+\_\+slide}} (\mbox{\hyperlink{structCoord}{Coord}} const \&s1, \mbox{\hyperlink{structCoord}{Coord}} const \&s2, \mbox{\hyperlink{structCoord}{Coord}} const \&t, std\+::function$<$ bool(\mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$ const \&, \mbox{\hyperlink{structCoord}{Coord}} const \&, \mbox{\hyperlink{structCoord}{Coord}} const \&, std\+::size\+\_\+t, std\+::optional$<$ \mbox{\hyperlink{structCoord}{Coord}} $>$)$>$ check\+\_\+path)
+\begin{DoxyCompactList}\small\item\em Mouvement de merge. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} bool \mbox{\hyperlink{classBoard_ab3312d313004e58279011b4c1cc12756}{move\+\_\+pawn\+\_\+one\+\_\+step}} (\mbox{\hyperlink{structCoord}{Coord}} const \&s, \mbox{\hyperlink{structCoord}{Coord}} const \&t, std\+::optional$<$ bool $>$ val\+\_\+mes=std\+::nullopt)
+\begin{DoxyCompactList}\small\item\em Le mouvement de piond\textquotesingle{}une case fonctionne comme un mouvementde jump classique, à la différence qu\textquotesingle{}un pion ne peut pas capturer une pièce en avançant. On mesure de la même façon qu\textquotesingle{}un jump classique en considérant toutes les pièces comme des pièces alliées. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} bool \mbox{\hyperlink{classBoard_aec7237f84ab2e9fd71d19d96958936ea}{move\+\_\+pawn\+\_\+two\+\_\+step}} (\mbox{\hyperlink{structCoord}{Coord}} const \&s, \mbox{\hyperlink{structCoord}{Coord}} const \&t, std\+::optional$<$ bool $>$ val\+\_\+mes=std\+::nullopt)
+\begin{DoxyCompactList}\small\item\em Le mouvement de pion de deux cases fonctionne comme un mouvement de slide classique, à la différence qu\textquotesingle{}un pion ne peut pas capturer une pièce en avançant, on mesure de la même façon qu\textquotesingle{}un slide classique en considérant toutes les pièces comme des pièces alliées. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} bool \mbox{\hyperlink{classBoard_aec3b9456ac2fddd20c747b8e463a5202}{capture\+\_\+pawn}} (\mbox{\hyperlink{structCoord}{Coord}} const \&s, \mbox{\hyperlink{structCoord}{Coord}} const \&t, std\+::optional$<$ bool $>$ val\+\_\+mes=std\+::nullopt)
+\begin{DoxyCompactList}\small\item\em Mouvement de capture dun pion. A la différence d\textquotesingle{}un mouvement de "{}capture jump"{}, on mesure la présence de la cible car le pion a besoin de la cible pour se déplacer. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} bool \mbox{\hyperlink{classBoard_aea68746320b423e94ea542d4d0032dba}{move\+\_\+enpassant}} (\mbox{\hyperlink{structCoord}{Coord}} const \&s, \mbox{\hyperlink{structCoord}{Coord}} const \&t, \mbox{\hyperlink{structCoord}{Coord}} const \&ep, std\+::optional$<$ bool $>$ val\+\_\+mes=std\+::nullopt)
+\begin{DoxyCompactList}\small\item\em Permet d\textquotesingle{}effectuer un mouvement de prise en passant. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} bool \mbox{\hyperlink{classBoard_a098fd4cacdfb366dab2f6259b1521692}{mesure}} (\mbox{\hyperlink{structCoord}{Coord}} const \&p, std\+::optional$<$ bool $>$ val\+\_\+mes=std\+::nullopt)
+\begin{DoxyCompactList}\small\item\em Mesure la présence d\textquotesingle{}une pièce. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} bool \mbox{\hyperlink{classBoard_acbaf73c9be83e5353996e294bd70b870}{mesure\+\_\+capture\+\_\+slide}} (\mbox{\hyperlink{structCoord}{Coord}} const \&s, \mbox{\hyperlink{structCoord}{Coord}} const \&t, std\+::function$<$ bool(\mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$ const \&, \mbox{\hyperlink{structCoord}{Coord}} const \&, \mbox{\hyperlink{structCoord}{Coord}} const \&, std\+::size\+\_\+t, std\+::optional$<$ \mbox{\hyperlink{structCoord}{Coord}} $>$)$>$ check\+\_\+path, std\+::optional$<$ bool $>$ val\+\_\+mes=std\+::nullopt)
+\begin{DoxyCompactList}\small\item\em Fonction qui permet de faire une mesure dans le cas d\textquotesingle{}un mouvement "{}capture slide"{}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} void \mbox{\hyperlink{classBoard_a155776b92f4336488d06f5b5dbf8e5cb}{move\+\_\+classic}} (\mbox{\hyperlink{structCoord}{Coord}} const \&s, \mbox{\hyperlink{structCoord}{Coord}} const \&t, std\+::optional$<$ bool $>$ val\+\_\+mes)
+\begin{DoxyCompactList}\small\item\em Mouvement classique d\textquotesingle{}une pièce (pion exclu) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} void \mbox{\hyperlink{classBoard_a4965fbc774f008f0b0aba1192b93daf3}{move\+\_\+split}} (\mbox{\hyperlink{structCoord}{Coord}} const \&s, \mbox{\hyperlink{structCoord}{Coord}} const \&t1, \mbox{\hyperlink{structCoord}{Coord}} const \&t2)
+\begin{DoxyCompactList}\small\item\em Mouvement split d\textquotesingle{}une pièce (pion exclu) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} void \mbox{\hyperlink{classBoard_a737f514e7dade61e66ea9e5f8980cc92}{move\+\_\+merge}} (\mbox{\hyperlink{structCoord}{Coord}} const \&s1, \mbox{\hyperlink{structCoord}{Coord}} const \&s2, \mbox{\hyperlink{structCoord}{Coord}} const \&t)
+\begin{DoxyCompactList}\small\item\em Mouvement de merge de pièce (pion exclu) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} bool \mbox{\hyperlink{classBoard_a8080ea5adeb21b43c207cb0690df0552}{move\+\_\+pawn}} (\mbox{\hyperlink{structCoord}{Coord}} const \&s, \mbox{\hyperlink{structCoord}{Coord}} const \&t, std\+::optional$<$ bool $>$ val\+\_\+mes=std\+::nullopt) noexcept
+\begin{DoxyCompactList}\small\item\em Gère tout les mouvements d\textquotesingle{}un pion. \end{DoxyCompactList}\item 
+{\footnotesize template$<$std\+::size\+\_\+t Q$>$ }\\\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} void \mbox{\hyperlink{classBoard_a62526dd62f43780104ba8ccf85c49622}{modify}} (std\+::array$<$ std\+::pair$<$ std\+::array$<$ bool, Q $>$, std\+::complex$<$ double $>$ $>$, 2 $>$ const \&array\+Qubit, std\+::size\+\_\+t position\+\_\+board, std\+::array$<$ std\+::size\+\_\+t, Q $>$ const \&tab\+\_\+positions)
+\begin{DoxyCompactList}\small\item\em fonction auxiliaire qui permet de modifier un plateau à l\textquotesingle{}aide d\textquotesingle{}un array de la forme du type de retour de la fonction qubit\+To\+Array, le deuxième éléments du tableau à une probalité non nulle lors d\textquotesingle{}un mouvement split \end{DoxyCompactList}\item 
+{\footnotesize template$<$std\+::size\+\_\+t Q$>$ }\\\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} void \mbox{\hyperlink{classBoard_a16458e4400014c5dd7d4cedf1fa82ec7}{move\+\_\+1\+\_\+instance}} (std\+::array$<$ bool, Q $>$ const \&case\+\_\+modif, std\+::size\+\_\+t position, \mbox{\hyperlink{CMatrix_8hpp_a3e99a8d4d1b632f5712266247636d394}{CMatrix}}$<$ \mbox{\hyperlink{CMatrix_8hpp_afdd2e4b4b55d319f73ef2f4d0fc535c8}{\+\_\+2\+POW}}(Q)$>$ const \&matrix, std\+::array$<$ std\+::size\+\_\+t, Q $>$ const \&tab\+\_\+positions) noexcept
+\begin{DoxyCompactList}\small\item\em Fonction qui permet d\textquotesingle{}effectuer un mouvement sur une instance du plateau. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} void \mbox{\hyperlink{classBoard_a98e9116b596e139482e7d54f21ea9bc3}{king\+\_\+side\+\_\+castle}} (\mbox{\hyperlink{structCoord}{Coord}} const \&king, \mbox{\hyperlink{structCoord}{Coord}} const \&rook, std\+::optional$<$ bool $>$ val\+\_\+mes=std\+::nullopt)
+\begin{DoxyCompactList}\small\item\em Mouvement du petit roque. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} bool \mbox{\hyperlink{classBoard_a3d5faa099a6cd65943ef5fac766eb757}{mesure\+\_\+castle}} (\mbox{\hyperlink{structCoord}{Coord}} const \&king, \mbox{\hyperlink{structCoord}{Coord}} const \&rook, std\+::optional$<$ bool $>$ val\+\_\+mes=std\+::nullopt)
+\begin{DoxyCompactList}\small\item\em Fonction qui permet de mesurer la possibilité de faire le roque. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} void \mbox{\hyperlink{classBoard_a37bbcd7a49d362b34f8d4cd7c65e818f}{queen\+\_\+side\+\_\+castle}} (\mbox{\hyperlink{structCoord}{Coord}} const \&king, \mbox{\hyperlink{structCoord}{Coord}} const \&rook, std\+::optional$<$ bool $>$ val\+\_\+mes=std\+::nullopt)
+\begin{DoxyCompactList}\small\item\em Mouvement du grand roque. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Fonctions membres privées statiques}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} std\+::size\+\_\+t \mbox{\hyperlink{classBoard_a2453e112bab945721f92b21f7d964df6}{offset}} (std\+::size\+\_\+t ligne, std\+::size\+\_\+t colonne) noexcept
+\begin{DoxyCompactList}\small\item\em Renvoie une position 1D d\textquotesingle{}une coordonnée 2D. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} void \mbox{\hyperlink{classBoard_aaf99d8f5c18672d24c84b3ef22d0bd2c}{range\+\_\+to\+\_\+2\+\_\+array}} (std\+::ranges\+::common\+\_\+range auto const \&board, std\+::array$<$ bool, N \texorpdfstring{$\ast$}{*}M $>$ \&first\+\_\+instance, std\+::array$<$ \mbox{\hyperlink{classPiece}{Piece}}, N \texorpdfstring{$\ast$}{*}M $>$ \&piece\+\_\+board) noexcept
+\begin{DoxyCompactList}\small\item\em Initialise un plateau à l\textquotesingle{}aide d\textquotesingle{}un container 2D. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} void \mbox{\hyperlink{classBoard_a94fe407a5f6e87dee2e62bfc2a79504b}{init\+\_\+mailbox}} (std\+::array$<$ int, N \texorpdfstring{$\ast$}{*}M $>$ \&S\+\_\+mailbox, std\+::array$<$ int,(N+4) \texorpdfstring{$\ast$}{*}(M+2)$>$ \&L\+\_\+mailbox) noexcept
+\begin{DoxyCompactList}\small\item\em Construit les mailbox en fonction des dimenssions du plateau. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Attributs privés}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ std\+::pair$<$ std\+::array$<$ bool, N \texorpdfstring{$\ast$}{*}M $>$, std\+::complex$<$ double $>$ $>$ $>$ \mbox{\hyperlink{classBoard_a86ac6aad8d1350d28d5185d5f81dc44e}{m\+\_\+board}}
+\begin{DoxyCompactList}\small\item\em Le tableau de toutes les instances possibles du plateau. \end{DoxyCompactList}\item 
+std\+::array$<$ \mbox{\hyperlink{classPiece}{Piece}}, N \texorpdfstring{$\ast$}{*}M $>$ \mbox{\hyperlink{classBoard_a510126d59680090b6965b093a69991fe}{m\+\_\+piece\+\_\+board}}
+\begin{DoxyCompactList}\small\item\em Le plateau indiquant le type des pièces. \end{DoxyCompactList}\item 
+std\+::array$<$ int, N \texorpdfstring{$\ast$}{*}M $>$ \mbox{\hyperlink{classBoard_a6916a3fda6908225f591f9f8d526e53f}{m\+\_\+\+S\+\_\+mailbox}}
+\begin{DoxyCompactList}\small\item\em La petite mailbox. \end{DoxyCompactList}\item 
+std\+::array$<$ int,(N+4) \texorpdfstring{$\ast$}{*}(M+2)$>$ \mbox{\hyperlink{classBoard_ae0f3af83bd86deb7f8fcc5accd9d0308}{m\+\_\+\+L\+\_\+mailbox}}
+\begin{DoxyCompactList}\small\item\em La grande mailbox. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{Color_8hpp_a78abb31bad0fd1834c54a3ca6f8daab5}{Color}} \mbox{\hyperlink{classBoard_af34231e3e62c2965fb6524c332570b23}{m\+\_\+color\+\_\+current\+\_\+player}}
+\begin{DoxyCompactList}\small\item\em \doxylink{Color_8hpp_a78abb31bad0fd1834c54a3ca6f8daab5ab5bf627e448384cf3a4c35121ca6008d}{Color\+::\+WHITE} si c\textquotesingle{}est aux blanc de jouer aux noirs sinon. \end{DoxyCompactList}\item 
+std\+::array$<$ bool, 2 $>$ \mbox{\hyperlink{classBoard_abfcb112ed5ee410c5900cea6c26f8555}{m\+\_\+k\+\_\+castle}}
+\begin{DoxyCompactList}\small\item\em Vrai si les noirs\mbox{[}0\mbox{]} / blancs\mbox{[}1\mbox{]} peuvent faire le petit roque. \end{DoxyCompactList}\item 
+std\+::array$<$ bool, 2 $>$ \mbox{\hyperlink{classBoard_af90c264e8b40a8ed8bccb4630d90db53}{m\+\_\+q\+\_\+castle}}
+\begin{DoxyCompactList}\small\item\em Vrai si les noirs\mbox{[}0\mbox{]} / blancs\mbox{[}1\mbox{]} peuvent faire le grand roque. \end{DoxyCompactList}\item 
+std\+::optional$<$ \mbox{\hyperlink{structCoord}{Coord}} $>$ \mbox{\hyperlink{classBoard_a203d91808d0894e86a5945f6579421f0}{m\+\_\+ep}}
+\begin{DoxyCompactList}\small\item\em Contient la case sur laquelle il est possible de faire une prise en passant qui est vide (la case occupé si le pion avait avancé d\textquotesingle{}une seule case) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Amis}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classBoard_ae6fa0350c8ef33e791f1f9a4daa5e3d1}{Piece}}
+\item 
+{\footnotesize template$<$std\+::size\+\_\+t \+\_\+N, std\+::size\+\_\+t \+\_\+M$>$ }\\\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} bool \mbox{\hyperlink{classBoard_aa238cd78cb04e5007753e39b7c4e5ec8}{check\+\_\+path\+\_\+straight\+\_\+1\+\_\+instance}} (\mbox{\hyperlink{classBoard}{Board}}$<$ \+\_\+N, \+\_\+M $>$ const \&board, \mbox{\hyperlink{structCoord}{Coord}} const \&dpt, \mbox{\hyperlink{structCoord}{Coord}} const \&arv, std\+::size\+\_\+t position, std\+::optional$<$ \mbox{\hyperlink{structCoord}{Coord}} $>$)
+\item 
+{\footnotesize template$<$std\+::size\+\_\+t \+\_\+N, std\+::size\+\_\+t \+\_\+M$>$ }\\\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} bool \mbox{\hyperlink{classBoard_afd58eec39cde0e85928af479a735adb1}{check\+\_\+path\+\_\+diagonal\+\_\+1\+\_\+instance}} (\mbox{\hyperlink{classBoard}{Board}}$<$ \+\_\+N, \+\_\+M $>$ const \&board, \mbox{\hyperlink{structCoord}{Coord}} const \&dpt, \mbox{\hyperlink{structCoord}{Coord}} const \&arv, std\+::size\+\_\+t position, std\+::optional$<$ \mbox{\hyperlink{structCoord}{Coord}} $>$)
+\item 
+{\footnotesize template$<$std\+::size\+\_\+t \+\_\+N, std\+::size\+\_\+t \+\_\+M$>$ }\\\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} bool \mbox{\hyperlink{classBoard_a5d6f7b41d03132b2cd4fa50bdc96f875}{check\+\_\+path\+\_\+queen\+\_\+1\+\_\+instance}} (\mbox{\hyperlink{classBoard}{Board}}$<$ \+\_\+N, \+\_\+M $>$ const \&board, \mbox{\hyperlink{structCoord}{Coord}} const \&dpt, \mbox{\hyperlink{structCoord}{Coord}} const \&arv, std\+::size\+\_\+t position, std\+::optional$<$ \mbox{\hyperlink{structCoord}{Coord}} $>$)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+\subsubsection*{template$<$std\+::size\+\_\+t N = 8, std\+::size\+\_\+t M = N$>$\newline
+class Board$<$ N, M $>$}
+La classe représentant le plateau de jeu. 
+
+
+\begin{DoxyTemplParams}{Paramètres du template}
+{\em N} & Le nombre de ligne du plateau \\
+\hline
+{\em M} & Le nombre de colonne du plateau \\
+\hline
+\end{DoxyTemplParams}
+
+
+\label{doc-constructors}
+\Hypertarget{classBoard_doc-constructors}
+\doxysubsection{Documentation des constructeurs et destructeur}
+\Hypertarget{classBoard_a3fe651d57c4fd92cb42fe8ae6eca8562}\index{Board$<$ N, M $>$@{Board$<$ N, M $>$}!Board@{Board}}
+\index{Board@{Board}!Board$<$ N, M $>$@{Board$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{Board()}{Board()}\hspace{0.1cm}{\footnotesize\ttfamily [1/5]}}
+{\footnotesize\ttfamily \label{classBoard_a3fe651d57c4fd92cb42fe8ae6eca8562} 
+template$<$std\+::size\+\_\+t N = 8, std\+::size\+\_\+t M = N$>$ \\
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} \mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$\mbox{\hyperlink{classBoard}{\+::\+Board}} (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classBoard_a58b73103e0d55cb217ea516b72ff9969}\index{Board$<$ N, M $>$@{Board$<$ N, M $>$}!Board@{Board}}
+\index{Board@{Board}!Board$<$ N, M $>$@{Board$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{Board()}{Board()}\hspace{0.1cm}{\footnotesize\ttfamily [2/5]}}
+{\footnotesize\ttfamily \label{classBoard_a58b73103e0d55cb217ea516b72ff9969} 
+template$<$std\+::size\+\_\+t N = 8, std\+::size\+\_\+t M = N$>$ \\
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} \mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$\mbox{\hyperlink{classBoard}{\+::\+Board}} (\begin{DoxyParamCaption}\item[{std\+::initializer\+\_\+list$<$ std\+::initializer\+\_\+list$<$ \mbox{\hyperlink{classPiece}{Piece}} $>$ $>$ const \&}]{board}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classBoard_afb03bcfcdf37570704d535714e867c97}\index{Board$<$ N, M $>$@{Board$<$ N, M $>$}!Board@{Board}}
+\index{Board@{Board}!Board$<$ N, M $>$@{Board$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{Board()}{Board()}\hspace{0.1cm}{\footnotesize\ttfamily [3/5]}}
+{\footnotesize\ttfamily \label{classBoard_afb03bcfcdf37570704d535714e867c97} 
+template$<$std\+::size\+\_\+t N = 8, std\+::size\+\_\+t M = N$>$ \\
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} \mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$\mbox{\hyperlink{classBoard}{\+::\+Board}} (\begin{DoxyParamCaption}\item[{std\+::ranges\+::common\+\_\+range auto const \&}]{board}{}\end{DoxyParamCaption})}
+
+
+
+Initialise le plateau à partir d\textquotesingle{}un ensemble de pièce, les pièces ne sont pas divisées initialement. 
+
+
+\begin{DoxyParams}[1]{Paramètres}
+\mbox{\texttt{in}}  & {\em board} & Double initializer\+\_\+list sur des \doxylink{classPiece}{Piece} \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classBoard_af6a338387fffeb3aadc8ed3adb9a3649}\index{Board$<$ N, M $>$@{Board$<$ N, M $>$}!Board@{Board}}
+\index{Board@{Board}!Board$<$ N, M $>$@{Board$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{Board()}{Board()}\hspace{0.1cm}{\footnotesize\ttfamily [4/5]}}
+{\footnotesize\ttfamily \label{classBoard_af6a338387fffeb3aadc8ed3adb9a3649} 
+template$<$std\+::size\+\_\+t N = 8, std\+::size\+\_\+t M = N$>$ \\
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} \mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$\mbox{\hyperlink{classBoard}{\+::\+Board}} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$ const \&}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+\Hypertarget{classBoard_abac6288166ce6aef6441fca8d06b6f81}\index{Board$<$ N, M $>$@{Board$<$ N, M $>$}!Board@{Board}}
+\index{Board@{Board}!Board$<$ N, M $>$@{Board$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{Board()}{Board()}\hspace{0.1cm}{\footnotesize\ttfamily [5/5]}}
+{\footnotesize\ttfamily \label{classBoard_abac6288166ce6aef6441fca8d06b6f81} 
+template$<$std\+::size\+\_\+t N = 8, std\+::size\+\_\+t M = N$>$ \\
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} \mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$\mbox{\hyperlink{classBoard}{\+::\+Board}} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$ \&\&}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+\Hypertarget{classBoard_a21962785efbc9128587809c4c996a142}\index{Board$<$ N, M $>$@{Board$<$ N, M $>$}!````~Board@{\texorpdfstring{$\sim$}{\string~}Board}}
+\index{````~Board@{\texorpdfstring{$\sim$}{\string~}Board}!Board$<$ N, M $>$@{Board$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Board()}{\string~Board()}}
+{\footnotesize\ttfamily \label{classBoard_a21962785efbc9128587809c4c996a142} 
+template$<$std\+::size\+\_\+t N = 8, std\+::size\+\_\+t M = N$>$ \\
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} \mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$\+::\texorpdfstring{$\sim$}{\string~}\mbox{\hyperlink{classBoard}{Board}} (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+\label{doc-func-members}
+\Hypertarget{classBoard_doc-func-members}
+\doxysubsection{Documentation des fonctions membres}
+\Hypertarget{classBoard_a85b95acd66067e579c8a5f17ed6bb1a0}\index{Board$<$ N, M $>$@{Board$<$ N, M $>$}!all\_move@{all\_move}}
+\index{all\_move@{all\_move}!Board$<$ N, M $>$@{Board$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{all\_move()}{all\_move()}}
+{\footnotesize\ttfamily \label{classBoard_a85b95acd66067e579c8a5f17ed6bb1a0} 
+template$<$std\+::size\+\_\+t N = 8, std\+::size\+\_\+t M = N$>$ \\
+template$<$class Unitary\+Function$>$ \\
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} void \mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$\+::all\+\_\+move (\begin{DoxyParamCaption}\item[{Unitary\+Function}]{func}{, }\item[{std\+::optional$<$ \mbox{\hyperlink{Color_8hpp_a78abb31bad0fd1834c54a3ca6f8daab5}{Color}} $>$}]{color\+\_\+player}{ = {\ttfamily std\+:\+:nullopt}}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Applique une fonction à l\textquotesingle{}entiéreté des mouvements possible. 
+
+
+\begin{DoxyParams}[1]{Paramètres}
+\mbox{\texttt{in,out}}  & {\em func} & La fonction à appliquer sur tout les mouvements Prototype \+: bool f(\+Move const\&) Si renvoie true alors le parcourt est intérompue \\
+\hline
+\mbox{\texttt{in}}  & {\em color} & La couleur du joueur auquel on récupère les mouvements \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classBoard_aec3b9456ac2fddd20c747b8e463a5202}\index{Board$<$ N, M $>$@{Board$<$ N, M $>$}!capture\_pawn@{capture\_pawn}}
+\index{capture\_pawn@{capture\_pawn}!Board$<$ N, M $>$@{Board$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{capture\_pawn()}{capture\_pawn()}}
+{\footnotesize\ttfamily \label{classBoard_aec3b9456ac2fddd20c747b8e463a5202} 
+template$<$std\+::size\+\_\+t N = 8, std\+::size\+\_\+t M = N$>$ \\
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} bool \mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$\+::capture\+\_\+pawn (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structCoord}{Coord}} const \&}]{s}{, }\item[{\mbox{\hyperlink{structCoord}{Coord}} const \&}]{t}{, }\item[{std\+::optional$<$ bool $>$}]{val\+\_\+mes}{ = {\ttfamily std\+:\+:nullopt}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mouvement de capture dun pion. A la différence d\textquotesingle{}un mouvement de "{}capture jump"{}, on mesure la présence de la cible car le pion a besoin de la cible pour se déplacer. 
+
+\begin{DoxyWarning}{Avertissement}
+Ne procède aucune vérification sur la validité du mouvement
+\end{DoxyWarning}
+
+\begin{DoxyParams}[1]{Paramètres}
+\mbox{\texttt{in}}  & {\em s} & Coordonnées de la source \\
+\hline
+\mbox{\texttt{in}}  & {\em t} & Coordonnées de la cible \\
+\hline
+\mbox{\texttt{in}}  & {\em val\+\_\+mes} & Optionel peut determiner la mesure de la présence d\textquotesingle{}une pièce ou non \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+true si le mouvement à etait effectué 
+
+false sinon 
+\end{DoxyReturn}
+\Hypertarget{classBoard_aa9fcccd89ef3b7af6dc54867671fb3f3}\index{Board$<$ N, M $>$@{Board$<$ N, M $>$}!change\_player@{change\_player}}
+\index{change\_player@{change\_player}!Board$<$ N, M $>$@{Board$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{change\_player()}{change\_player()}}
+{\footnotesize\ttfamily \label{classBoard_aa9fcccd89ef3b7af6dc54867671fb3f3} 
+template$<$std\+::size\+\_\+t N = 8, std\+::size\+\_\+t M = N$>$ \\
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} void \mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$\+::change\+\_\+player (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Change le joueur actuel et passe la main à l\textquotesingle{}autre joueur. 
+
+\Hypertarget{classBoard_a11407f64550ac37b959f98d7e83db64c}\index{Board$<$ N, M $>$@{Board$<$ N, M $>$}!check\_if\_use\_move\_promote@{check\_if\_use\_move\_promote}}
+\index{check\_if\_use\_move\_promote@{check\_if\_use\_move\_promote}!Board$<$ N, M $>$@{Board$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{check\_if\_use\_move\_promote()}{check\_if\_use\_move\_promote()}}
+{\footnotesize\ttfamily \label{classBoard_a11407f64550ac37b959f98d7e83db64c} 
+template$<$std\+::size\+\_\+t N = 8, std\+::size\+\_\+t M = N$>$ \\
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} bool \mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$\+::check\+\_\+if\+\_\+use\+\_\+move\+\_\+promote (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structCoord}{Coord}} const \&}]{pos}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Teste si les mouvement de la piece sont si la pièce est un pion un mouvement de promotion. 
+
+\begin{DoxyNote}{Note}
+peut etre utiliser sans verifier si la pièce est un pion
+\end{DoxyNote}
+
+\begin{DoxyParams}[1]{Paramètres}
+\mbox{\texttt{in}}  & {\em pos} & La position de la pièce \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+true si le mouvement possible est un mouvement de promotion 
+
+false sinon 
+\end{DoxyReturn}
+\Hypertarget{classBoard_ac92c8b8d8071a54281e194ddf75beba4}\index{Board$<$ N, M $>$@{Board$<$ N, M $>$}!get\_current\_player@{get\_current\_player}}
+\index{get\_current\_player@{get\_current\_player}!Board$<$ N, M $>$@{Board$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{get\_current\_player()}{get\_current\_player()}}
+{\footnotesize\ttfamily \label{classBoard_ac92c8b8d8071a54281e194ddf75beba4} 
+template$<$std\+::size\+\_\+t N = 8, std\+::size\+\_\+t M = N$>$ \\
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} \mbox{\hyperlink{Color_8hpp_a78abb31bad0fd1834c54a3ca6f8daab5}{Color}} \mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$\+::get\+\_\+current\+\_\+player (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Recupère la couleur du joueur au tour de jouer. 
+
+\begin{DoxyReturn}{Renvoie}
+\doxylink{Color_8hpp_a78abb31bad0fd1834c54a3ca6f8daab5}{Color} la couleur du joueur 
+\end{DoxyReturn}
+\Hypertarget{classBoard_a173a95dfc2561c59ef108697eb133c0b}\index{Board$<$ N, M $>$@{Board$<$ N, M $>$}!get\_list\_normal\_move@{get\_list\_normal\_move}}
+\index{get\_list\_normal\_move@{get\_list\_normal\_move}!Board$<$ N, M $>$@{Board$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{get\_list\_normal\_move()}{get\_list\_normal\_move()}}
+{\footnotesize\ttfamily \label{classBoard_a173a95dfc2561c59ef108697eb133c0b} 
+template$<$std\+::size\+\_\+t N = 8, std\+::size\+\_\+t M = N$>$ \\
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} std\+::forward\+\_\+list$<$ \mbox{\hyperlink{structCoord}{Coord}} $>$ \mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$\+::get\+\_\+list\+\_\+normal\+\_\+move (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structCoord}{Coord}} const \&}]{pos}{}\end{DoxyParamCaption}) const}
+
+
+
+Renvoie la liste dans tous les mouvements classiques légaux d\textquotesingle{}une pièce. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em pos} & Position de la pièce\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+std\+::forward\+\_\+list$<$\+Coord$>$ La liste de coordonnées des positions d\textquotesingle{}arrivées de chaque mouvement possible 
+\end{DoxyReturn}
+\Hypertarget{classBoard_a598c56a5f899766f021b2fad0fd70bd6}\index{Board$<$ N, M $>$@{Board$<$ N, M $>$}!get\_list\_promote@{get\_list\_promote}}
+\index{get\_list\_promote@{get\_list\_promote}!Board$<$ N, M $>$@{Board$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{get\_list\_promote()}{get\_list\_promote()}}
+{\footnotesize\ttfamily \label{classBoard_a598c56a5f899766f021b2fad0fd70bd6} 
+template$<$std\+::size\+\_\+t N = 8, std\+::size\+\_\+t M = N$>$ \\
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} std\+::forward\+\_\+list$<$ \mbox{\hyperlink{structMove}{Move}} $>$ \mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$\+::get\+\_\+list\+\_\+promote (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structCoord}{Coord}} const \&}]{pos}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Renvoie la liste de toutes les promotions. 
+
+\begin{DoxyWarning}{Avertissement}
+Ne verifie pas la validité du mouvement, de la position ou du type de la pièce
+\end{DoxyWarning}
+
+\begin{DoxyParams}[1]{Paramètres}
+\mbox{\texttt{in}}  & {\em pos} & La position du pion \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+La liste de tout les mouvements de promotion 
+\end{DoxyReturn}
+\Hypertarget{classBoard_a331cc732f6532a34874a2cec3c495a8f}\index{Board$<$ N, M $>$@{Board$<$ N, M $>$}!get\_list\_split\_move@{get\_list\_split\_move}}
+\index{get\_list\_split\_move@{get\_list\_split\_move}!Board$<$ N, M $>$@{Board$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{get\_list\_split\_move()}{get\_list\_split\_move()}}
+{\footnotesize\ttfamily \label{classBoard_a331cc732f6532a34874a2cec3c495a8f} 
+template$<$std\+::size\+\_\+t N = 8, std\+::size\+\_\+t M = N$>$ \\
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} std\+::forward\+\_\+list$<$ \mbox{\hyperlink{structCoord}{Coord}} $>$ \mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$\+::get\+\_\+list\+\_\+split\+\_\+move (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structCoord}{Coord}} const \&}]{pos}{}\end{DoxyParamCaption}) const}
+
+
+
+Renvoie la liste de toutes les cases qu\textquotesingle{}une pièce peut atteindre lors d\textquotesingle{}un mouvement split, il faut choisir deux éléments de la liste pour créer un mouvement split. 
+
+
+\begin{DoxyParams}[1]{Paramètres}
+\mbox{\texttt{in}}  & {\em pos} & Position de la pièce.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+std\+::forward\+\_\+list$<$\+Coord$>$ La liste de coordonnées des positions d\textquotesingle{}arrivées possible sachant que chaque élément représente une seule des deux cases d\textquotesingle{}arrivées d\textquotesingle{}un split move 
+\end{DoxyReturn}
+\Hypertarget{classBoard_aeb602c14af620edcd7330d3a0cbf0e5d}\index{Board$<$ N, M $>$@{Board$<$ N, M $>$}!get\_proba@{get\_proba}}
+\index{get\_proba@{get\_proba}!Board$<$ N, M $>$@{Board$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{get\_proba()}{get\_proba()}}
+{\footnotesize\ttfamily \label{classBoard_aeb602c14af620edcd7330d3a0cbf0e5d} 
+template$<$std\+::size\+\_\+t N = 8, std\+::size\+\_\+t M = N$>$ \\
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} double \mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$\+::get\+\_\+proba (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structCoord}{Coord}} const \&}]{pos}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Renvoie la probabilité qu\textquotesingle{}il y ait une pièce à une position. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em pos} & La position \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classBoard_a1ff54cf54eb30a76ee8dea34343b5f40}\index{Board$<$ N, M $>$@{Board$<$ N, M $>$}!get\_proba\_mesure@{get\_proba\_mesure}}
+\index{get\_proba\_mesure@{get\_proba\_mesure}!Board$<$ N, M $>$@{Board$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{get\_proba\_mesure()}{get\_proba\_mesure()}}
+{\footnotesize\ttfamily \label{classBoard_a1ff54cf54eb30a76ee8dea34343b5f40} 
+template$<$std\+::size\+\_\+t N = 8, std\+::size\+\_\+t M = N$>$ \\
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} double \mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$\+::get\+\_\+proba\+\_\+mesure (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structCoord}{Coord}} const \&}]{p}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+
+
+Renvoie la probabilité que la fonction mesure renvoie true, c\textquotesingle{}est-\/à-\/dire la proba que le mouvement soit"{}réussi"{}. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em p} & Coordonnées de la case \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+La probabilité 
+\end{DoxyReturn}
+\Hypertarget{classBoard_aed8545cdf9ca4e47ffd3306d80c87539}\index{Board$<$ N, M $>$@{Board$<$ N, M $>$}!get\_proba\_mesure\_capture\_slide@{get\_proba\_mesure\_capture\_slide}}
+\index{get\_proba\_mesure\_capture\_slide@{get\_proba\_mesure\_capture\_slide}!Board$<$ N, M $>$@{Board$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{get\_proba\_mesure\_capture\_slide()}{get\_proba\_mesure\_capture\_slide()}}
+{\footnotesize\ttfamily \label{classBoard_aed8545cdf9ca4e47ffd3306d80c87539} 
+template$<$std\+::size\+\_\+t N = 8, std\+::size\+\_\+t M = N$>$ \\
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} double \mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$\+::get\+\_\+proba\+\_\+mesure\+\_\+capture\+\_\+slide (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structCoord}{Coord}} const \&}]{s}{, }\item[{\mbox{\hyperlink{structCoord}{Coord}} const \&}]{t}{, }\item[{std\+::function$<$ bool(\mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$ const \&, \mbox{\hyperlink{structCoord}{Coord}} const \&, \mbox{\hyperlink{structCoord}{Coord}} const \&, std\+::size\+\_\+t, std\+::optional$<$ \mbox{\hyperlink{structCoord}{Coord}} $>$)$>$}]{check\+\_\+path}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+
+
+Renvoie la probabilité que la fonction mesure\+\_\+capture\+\_\+slide renvoie true, c\textquotesingle{}est-\/à-\/dire la proba que le mouvement de capture\+\_\+slide soit"{}réussi"{}. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em s} & Coordonnées de la source \\
+\hline
+{\em t} & Coordonnées de la cible \\
+\hline
+{\em check\+\_\+path} & Fonction qui teste la présence d\textquotesingle{}une pièce entre une source et une cible \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+La probabilité 
+\end{DoxyReturn}
+\Hypertarget{classBoard_a84791fcc38cf0dae066dc4cfb45d4d9f}\index{Board$<$ N, M $>$@{Board$<$ N, M $>$}!get\_proba\_mesure\_castle@{get\_proba\_mesure\_castle}}
+\index{get\_proba\_mesure\_castle@{get\_proba\_mesure\_castle}!Board$<$ N, M $>$@{Board$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{get\_proba\_mesure\_castle()}{get\_proba\_mesure\_castle()}}
+{\footnotesize\ttfamily \label{classBoard_a84791fcc38cf0dae066dc4cfb45d4d9f} 
+template$<$std\+::size\+\_\+t N = 8, std\+::size\+\_\+t M = N$>$ \\
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} double \mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$\+::get\+\_\+proba\+\_\+mesure\+\_\+castle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structCoord}{Coord}} const \&}]{king}{, }\item[{\mbox{\hyperlink{structCoord}{Coord}} const \&}]{rook}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+
+
+Renvoie laprobabilité que la fonction mesure\+\_\+castle renvoie true, c\textquotesingle{}est-\/à-\/dire la proba que le mouvement de roque soit"{}réussi"{}. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em king} & Coordonnées du roi \\
+\hline
+{\em rook} & Coordonnées de la tour \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+La probabilité 
+\end{DoxyReturn}
+\Hypertarget{classBoard_ace033903065bef449576f323789d8b4a}\index{Board$<$ N, M $>$@{Board$<$ N, M $>$}!get\_proba\_move@{get\_proba\_move}}
+\index{get\_proba\_move@{get\_proba\_move}!Board$<$ N, M $>$@{Board$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{get\_proba\_move()}{get\_proba\_move()}}
+{\footnotesize\ttfamily \label{classBoard_ace033903065bef449576f323789d8b4a} 
+template$<$std\+::size\+\_\+t N = 8, std\+::size\+\_\+t M = N$>$ \\
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} double \mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$\+::get\+\_\+proba\+\_\+move (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structMove}{Move}} const \&}]{move}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Renvoie la probabilité que le mouvement soit réalisé 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em move} & Le mouvement à réaliser \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Une probabilité comprise entre 0 et 1 
+\end{DoxyReturn}
+\Hypertarget{classBoard_a94fe407a5f6e87dee2e62bfc2a79504b}\index{Board$<$ N, M $>$@{Board$<$ N, M $>$}!init\_mailbox@{init\_mailbox}}
+\index{init\_mailbox@{init\_mailbox}!Board$<$ N, M $>$@{Board$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{init\_mailbox()}{init\_mailbox()}}
+{\footnotesize\ttfamily \label{classBoard_a94fe407a5f6e87dee2e62bfc2a79504b} 
+template$<$std\+::size\+\_\+t N = 8, std\+::size\+\_\+t M = N$>$ \\
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} void \mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$\+::init\+\_\+mailbox (\begin{DoxyParamCaption}\item[{std\+::array$<$ int, N \texorpdfstring{$\ast$}{*}M $>$ \&}]{S\+\_\+mailbox}{, }\item[{std\+::array$<$ int,(N+4) \texorpdfstring{$\ast$}{*}(M+2)$>$ \&}]{L\+\_\+mailbox}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+
+
+Construit les mailbox en fonction des dimenssions du plateau. 
+
+
+\begin{DoxyParams}[1]{Paramètres}
+\mbox{\texttt{out}}  & {\em S\+\_\+mailbox} & La petite mailbox de la taille du plateau \\
+\hline
+\mbox{\texttt{out}}  & {\em L\+\_\+mailbox} & La grande mailbox comportant 4 ligne de plus et 2 colonne de plus \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+CONSTEXPR 
+\end{DoxyReturn}
+\Hypertarget{classBoard_a98e9116b596e139482e7d54f21ea9bc3}\index{Board$<$ N, M $>$@{Board$<$ N, M $>$}!king\_side\_castle@{king\_side\_castle}}
+\index{king\_side\_castle@{king\_side\_castle}!Board$<$ N, M $>$@{Board$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{king\_side\_castle()}{king\_side\_castle()}}
+{\footnotesize\ttfamily \label{classBoard_a98e9116b596e139482e7d54f21ea9bc3} 
+template$<$std\+::size\+\_\+t N = 8, std\+::size\+\_\+t M = N$>$ \\
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} void \mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$\+::king\+\_\+side\+\_\+castle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structCoord}{Coord}} const \&}]{king}{, }\item[{\mbox{\hyperlink{structCoord}{Coord}} const \&}]{rook}{, }\item[{std\+::optional$<$ bool $>$}]{val\+\_\+mes}{ = {\ttfamily std\+:\+:nullopt}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mouvement du petit roque. 
+
+\begin{DoxyWarning}{Avertissement}
+Auncun test sur la validité du mouvement 
+\end{DoxyWarning}
+
+\begin{DoxyParams}[1]{Paramètres}
+\mbox{\texttt{in}}  & {\em king} & Coordonnées du roi \\
+\hline
+\mbox{\texttt{in}}  & {\em rook} & Coordonnées de la tour \\
+\hline
+\mbox{\texttt{in}}  & {\em val\+\_\+mes} & Optionel peut determiner la mesure de la présence d\textquotesingle{}une pièce ou non \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classBoard_a098fd4cacdfb366dab2f6259b1521692}\index{Board$<$ N, M $>$@{Board$<$ N, M $>$}!mesure@{mesure}}
+\index{mesure@{mesure}!Board$<$ N, M $>$@{Board$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{mesure()}{mesure()}}
+{\footnotesize\ttfamily \label{classBoard_a098fd4cacdfb366dab2f6259b1521692} 
+template$<$std\+::size\+\_\+t N = 8, std\+::size\+\_\+t M = N$>$ \\
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} bool \mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$\+::mesure (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structCoord}{Coord}} const \&}]{p}{, }\item[{std\+::optional$<$ bool $>$}]{val\+\_\+mes}{ = {\ttfamily std\+:\+:nullopt}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mesure la présence d\textquotesingle{}une pièce. 
+
+
+\begin{DoxyTemplParams}{Paramètres du template}
+{\em N} & Le nombre de lignes du plateau \\
+\hline
+{\em M} & Le nombre de colonnes du plateau \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Paramètres}
+\mbox{\texttt{in}}  & {\em position} & La position de la pièce mesurée \\
+\hline
+\mbox{\texttt{in}}  & {\em val\+\_\+mes} & Optionel peut determiner la mesure de la présence d\textquotesingle{}une pièce ou non \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+true Si la pièce est présente sur la case position 
+
+false Sinon 
+\end{DoxyReturn}
+\Hypertarget{classBoard_acbaf73c9be83e5353996e294bd70b870}\index{Board$<$ N, M $>$@{Board$<$ N, M $>$}!mesure\_capture\_slide@{mesure\_capture\_slide}}
+\index{mesure\_capture\_slide@{mesure\_capture\_slide}!Board$<$ N, M $>$@{Board$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{mesure\_capture\_slide()}{mesure\_capture\_slide()}}
+{\footnotesize\ttfamily \label{classBoard_acbaf73c9be83e5353996e294bd70b870} 
+template$<$std\+::size\+\_\+t N = 8, std\+::size\+\_\+t M = N$>$ \\
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} bool \mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$\+::mesure\+\_\+capture\+\_\+slide (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structCoord}{Coord}} const \&}]{s}{, }\item[{\mbox{\hyperlink{structCoord}{Coord}} const \&}]{t}{, }\item[{std\+::function$<$ bool(\mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$ const \&, \mbox{\hyperlink{structCoord}{Coord}} const \&, \mbox{\hyperlink{structCoord}{Coord}} const \&, std\+::size\+\_\+t, std\+::optional$<$ \mbox{\hyperlink{structCoord}{Coord}} $>$)$>$}]{check\+\_\+path}{, }\item[{std\+::optional$<$ bool $>$}]{val\+\_\+mes}{ = {\ttfamily std\+:\+:nullopt}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Fonction qui permet de faire une mesure dans le cas d\textquotesingle{}un mouvement "{}capture slide"{}. 
+
+
+\begin{DoxyTemplParams}{Paramètres du template}
+{\em N} & Le nombre de lignes du plateau \\
+\hline
+{\em M} & Le nombre de colonnes du plateau \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Paramètres}
+\mbox{\texttt{in}}  & {\em s} & Coordonnées de la source du mouvement \\
+\hline
+\mbox{\texttt{in}}  & {\em t} & Coordonnées de la cible du mouvement \\
+\hline
+\mbox{\texttt{in}}  & {\em check\+\_\+path} & Fonction qui permet de vérifier si il y a une pièce entre la source et la cible sur une instance du plateau \\
+\hline
+\mbox{\texttt{in}}  & {\em val\+\_\+mes} & Optionel peut determiner la mesure de la présence d\textquotesingle{}une pièce ou non \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+true Si la mesure indique de faire le mouvement 
+
+false Sinon 
+\end{DoxyReturn}
+\Hypertarget{classBoard_a3d5faa099a6cd65943ef5fac766eb757}\index{Board$<$ N, M $>$@{Board$<$ N, M $>$}!mesure\_castle@{mesure\_castle}}
+\index{mesure\_castle@{mesure\_castle}!Board$<$ N, M $>$@{Board$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{mesure\_castle()}{mesure\_castle()}}
+{\footnotesize\ttfamily \label{classBoard_a3d5faa099a6cd65943ef5fac766eb757} 
+template$<$std\+::size\+\_\+t N = 8, std\+::size\+\_\+t M = N$>$ \\
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} bool \mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$\+::mesure\+\_\+castle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structCoord}{Coord}} const \&}]{king}{, }\item[{\mbox{\hyperlink{structCoord}{Coord}} const \&}]{rook}{, }\item[{std\+::optional$<$ bool $>$}]{val\+\_\+mes}{ = {\ttfamily std\+:\+:nullopt}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Fonction qui permet de mesurer la possibilité de faire le roque. 
+
+
+\begin{DoxyParams}[1]{Paramètres}
+\mbox{\texttt{in}}  & {\em king} & Coordonnées du roi \\
+\hline
+\mbox{\texttt{in}}  & {\em rook} & Coordonnées de la tour \\
+\hline
+\mbox{\texttt{in}}  & {\em val\+\_\+mes} & Optionel peut determiner la mesure de la présence d\textquotesingle{}une pièce ou non \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+true si le roque est possible 
+
+false sinon 
+\end{DoxyReturn}
+\Hypertarget{classBoard_a62526dd62f43780104ba8ccf85c49622}\index{Board$<$ N, M $>$@{Board$<$ N, M $>$}!modify@{modify}}
+\index{modify@{modify}!Board$<$ N, M $>$@{Board$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{modify()}{modify()}}
+{\footnotesize\ttfamily \label{classBoard_a62526dd62f43780104ba8ccf85c49622} 
+template$<$std\+::size\+\_\+t N = 8, std\+::size\+\_\+t M = N$>$ \\
+template$<$std\+::size\+\_\+t Q$>$ \\
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} void \mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$\+::modify (\begin{DoxyParamCaption}\item[{std\+::array$<$ std\+::pair$<$ std\+::array$<$ bool, Q $>$, std\+::complex$<$ double $>$ $>$, 2 $>$ const \&}]{array\+Qubit}{, }\item[{std\+::size\+\_\+t}]{position\+\_\+board}{, }\item[{std\+::array$<$ std\+::size\+\_\+t, Q $>$ const \&}]{tab\+\_\+positions}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+fonction auxiliaire qui permet de modifier un plateau à l\textquotesingle{}aide d\textquotesingle{}un array de la forme du type de retour de la fonction qubit\+To\+Array, le deuxième éléments du tableau à une probalité non nulle lors d\textquotesingle{}un mouvement split 
+
+
+\begin{DoxyTemplParams}{Paramètres du template}
+{\em Q} & La taille du qubit \\
+\hline
+{\em N} & Le nombre de ligne du plateau \\
+\hline
+{\em M} & Le nombre de collone du plateau \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Paramètres}
+\mbox{\texttt{in}}  & {\em array\+Qubit} & Type de retour de la fonction quibit\+To\+Array, représente la facon dont va être modifier m\+\_\+board \\
+\hline
+\mbox{\texttt{in}}  & {\em position\+\_\+board} & L\textquotesingle{}indice du plateau dans le tableau de toutes les instances du plateau \\
+\hline
+\mbox{\texttt{in}}  & {\em tab\+\_\+positions} & Tableau des indices des cases modifiées, on utilise N\texorpdfstring{$\ast$}{*}\+M+1 pour signifier que le qubit en question est un qubit auxiliaire qui ne modifie pas le board \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classBoard_a368cf7ba6b2ed27dcad86645ad1c1953}\index{Board$<$ N, M $>$@{Board$<$ N, M $>$}!move@{move}}
+\index{move@{move}!Board$<$ N, M $>$@{Board$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{move()}{move()}}
+{\footnotesize\ttfamily \label{classBoard_a368cf7ba6b2ed27dcad86645ad1c1953} 
+template$<$std\+::size\+\_\+t N = 8, std\+::size\+\_\+t M = N$>$ \\
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} void \mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$\+::move (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structMove}{Move}} const \&}]{movement}{, }\item[{std\+::optional$<$ bool $>$}]{val\+\_\+mes}{ = {\ttfamily std\+:\+:nullopt}}\end{DoxyParamCaption})}
+
+
+
+Réalise un mouvement d\textquotesingle{}une pièce quelque soit le type du mouvement (classic, split, merge) 
+
+\begin{DoxyWarning}{Avertissement}
+Ne procède aucune vérification sur la validité du mouvement
+\end{DoxyWarning}
+
+\begin{DoxyParams}[1]{Paramètres}
+\mbox{\texttt{in}}  & {\em movement} & Le mouvement à raliser \\
+\hline
+\mbox{\texttt{in}}  & {\em val\+\_\+mes} & Optionel peut determiner la mesure de la présence d\textquotesingle{}une pièce ou non \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classBoard_a16458e4400014c5dd7d4cedf1fa82ec7}\index{Board$<$ N, M $>$@{Board$<$ N, M $>$}!move\_1\_instance@{move\_1\_instance}}
+\index{move\_1\_instance@{move\_1\_instance}!Board$<$ N, M $>$@{Board$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{move\_1\_instance()}{move\_1\_instance()}}
+{\footnotesize\ttfamily \label{classBoard_a16458e4400014c5dd7d4cedf1fa82ec7} 
+template$<$std\+::size\+\_\+t N = 8, std\+::size\+\_\+t M = N$>$ \\
+template$<$std\+::size\+\_\+t Q$>$ \\
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} void \mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$\+::move\+\_\+1\+\_\+instance (\begin{DoxyParamCaption}\item[{std\+::array$<$ bool, Q $>$ const \&}]{case\+\_\+modif}{, }\item[{std\+::size\+\_\+t}]{position}{, }\item[{\mbox{\hyperlink{CMatrix_8hpp_a3e99a8d4d1b632f5712266247636d394}{CMatrix}}$<$ \mbox{\hyperlink{CMatrix_8hpp_afdd2e4b4b55d319f73ef2f4d0fc535c8}{\+\_\+2\+POW}}(Q)$>$ const \&}]{matrix}{, }\item[{std\+::array$<$ std\+::size\+\_\+t, Q $>$ const \&}]{tab\+\_\+positions}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+
+
+Fonction qui permet d\textquotesingle{}effectuer un mouvement sur une instance du plateau. 
+
+
+\begin{DoxyTemplParams}{Paramètres du template}
+{\em N} & Le nombre de ligne du plateau \\
+\hline
+{\em M} & Le nombre de colonnes du plateau \\
+\hline
+{\em Q} & La taille du qubit \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Paramètres}
+\mbox{\texttt{in}}  & {\em case\+\_\+modif} & Permet d\textquotesingle{}initialiser le qubit \\
+\hline
+\mbox{\texttt{in}}  & {\em position} & L\textquotesingle{}instance du plateau modifiée \\
+\hline
+\mbox{\texttt{in}}  & {\em matrix} & La matrice du mouvement que l\textquotesingle{}on veut effectuer \\
+\hline
+\mbox{\texttt{in}}  & {\em tab\+\_\+positions} & La position sur le plateau des variables utilisées dans le qubit, que l\textquotesingle{}on met à N\texorpdfstring{$\ast$}{*}\+M+1 si les variables ne représentent pas des pièces \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classBoard_a155776b92f4336488d06f5b5dbf8e5cb}\index{Board$<$ N, M $>$@{Board$<$ N, M $>$}!move\_classic@{move\_classic}}
+\index{move\_classic@{move\_classic}!Board$<$ N, M $>$@{Board$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{move\_classic()}{move\_classic()}}
+{\footnotesize\ttfamily \label{classBoard_a155776b92f4336488d06f5b5dbf8e5cb} 
+template$<$std\+::size\+\_\+t N = 8, std\+::size\+\_\+t M = N$>$ \\
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} void \mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$\+::move\+\_\+classic (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structCoord}{Coord}} const \&}]{s}{, }\item[{\mbox{\hyperlink{structCoord}{Coord}} const \&}]{t}{, }\item[{std\+::optional$<$ bool $>$}]{val\+\_\+mes}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mouvement classique d\textquotesingle{}une pièce (pion exclu) 
+
+\begin{DoxyWarning}{Avertissement}
+Ne procède aucune vérification sur la validité du mouvement 
+\end{DoxyWarning}
+
+\begin{DoxyTemplParams}{Paramètres du template}
+{\em N} & Le nombre de ligne du plateau \\
+\hline
+{\em M} & Le nombre de colonnes du plateau \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Paramètres}
+\mbox{\texttt{in}}  & {\em s} & Coordonnées de la source du mouvement \\
+\hline
+\mbox{\texttt{in}}  & {\em t} & Coordonnées de la cible du mouvement \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classBoard_af3f1ee5615d1c83e8b4f47f5d3462826}\index{Board$<$ N, M $>$@{Board$<$ N, M $>$}!move\_classic\_jump@{move\_classic\_jump}}
+\index{move\_classic\_jump@{move\_classic\_jump}!Board$<$ N, M $>$@{Board$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{move\_classic\_jump()}{move\_classic\_jump()}}
+{\footnotesize\ttfamily \label{classBoard_af3f1ee5615d1c83e8b4f47f5d3462826} 
+template$<$std\+::size\+\_\+t N = 8, std\+::size\+\_\+t M = N$>$ \\
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} void \mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$\+::move\+\_\+classic\+\_\+jump (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structCoord}{Coord}} const \&}]{s}{, }\item[{\mbox{\hyperlink{structCoord}{Coord}} const \&}]{t}{, }\item[{std\+::optional$<$ bool $>$}]{val\+\_\+mes}{ = {\ttfamily std\+:\+:nullopt}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mouvement classique d\textquotesingle{}une pièce qui "{}saute"{} (cavalier, roi) 
+
+\begin{DoxyWarning}{Avertissement}
+Ne procède aucune vérification sur la validité du mouvement
+\end{DoxyWarning}
+
+\begin{DoxyTemplParams}{Paramètres du template}
+{\em N} & Le nombre de ligne du plateau \\
+\hline
+{\em M} & Le nombre de colonnes du plateau \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Paramètres}
+\mbox{\texttt{in}}  & {\em s} & Coordonnées de la source du mouvement \\
+\hline
+\mbox{\texttt{in}}  & {\em t} & Coordonnées de la cible du mouvement \\
+\hline
+\mbox{\texttt{in}}  & {\em val\+\_\+mes} & Optionel peut determiner la mesure de la présence d\textquotesingle{}une pièce ou non \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classBoard_a584a98568ae1d949ded33456ce472fb3}\index{Board$<$ N, M $>$@{Board$<$ N, M $>$}!move\_classic\_slide@{move\_classic\_slide}}
+\index{move\_classic\_slide@{move\_classic\_slide}!Board$<$ N, M $>$@{Board$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{move\_classic\_slide()}{move\_classic\_slide()}}
+{\footnotesize\ttfamily \label{classBoard_a584a98568ae1d949ded33456ce472fb3} 
+template$<$std\+::size\+\_\+t N = 8, std\+::size\+\_\+t M = N$>$ \\
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} void \mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$\+::move\+\_\+classic\+\_\+slide (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structCoord}{Coord}} const \&}]{s}{, }\item[{\mbox{\hyperlink{structCoord}{Coord}} const \&}]{t}{, }\item[{std\+::function$<$ bool(\mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$ const \&, \mbox{\hyperlink{structCoord}{Coord}} const \&, \mbox{\hyperlink{structCoord}{Coord}} const \&, std\+::size\+\_\+t, std\+::optional$<$ \mbox{\hyperlink{structCoord}{Coord}} $>$)$>$}]{check\+\_\+path}{, }\item[{std\+::optional$<$ bool $>$}]{val\+\_\+mes}{ = {\ttfamily std\+:\+:nullopt}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mouvement classique d\textquotesingle{}un pièce qui "{}glisse"{} (fou, dame, tour) 
+
+\begin{DoxyWarning}{Avertissement}
+Ne procède aucune vérification sur la validité du mouvement
+\end{DoxyWarning}
+
+\begin{DoxyTemplParams}{Paramètres du template}
+{\em N} & Le nombre de lignes \\
+\hline
+{\em M} & Le nombre de colonnes \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Paramètres}
+\mbox{\texttt{in}}  & {\em s} & Coordonnées de la source \\
+\hline
+\mbox{\texttt{in}}  & {\em t} & Coordonnées de la cible \\
+\hline
+\mbox{\texttt{in}}  & {\em check\+\_\+path} & Fonction qui permet de vérifier la présence d\textquotesingle{}une pièce entre la source et la cible sur une instance du plateau \\
+\hline
+\mbox{\texttt{in}}  & {\em val\+\_\+mes} & Optionel peut determiner la mesure de la présence d\textquotesingle{}une pièce ou non \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classBoard_aea68746320b423e94ea542d4d0032dba}\index{Board$<$ N, M $>$@{Board$<$ N, M $>$}!move\_enpassant@{move\_enpassant}}
+\index{move\_enpassant@{move\_enpassant}!Board$<$ N, M $>$@{Board$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{move\_enpassant()}{move\_enpassant()}}
+{\footnotesize\ttfamily \label{classBoard_aea68746320b423e94ea542d4d0032dba} 
+template$<$std\+::size\+\_\+t N = 8, std\+::size\+\_\+t M = N$>$ \\
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} bool \mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$\+::move\+\_\+enpassant (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structCoord}{Coord}} const \&}]{s}{, }\item[{\mbox{\hyperlink{structCoord}{Coord}} const \&}]{t}{, }\item[{\mbox{\hyperlink{structCoord}{Coord}} const \&}]{ep}{, }\item[{std\+::optional$<$ bool $>$}]{val\+\_\+mes}{ = {\ttfamily std\+:\+:nullopt}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Permet d\textquotesingle{}effectuer un mouvement de prise en passant. 
+
+\begin{DoxyWarning}{Avertissement}
+Aucun test sur la validité de la cible et de la cible en passant, ni sur le type de la pièce
+\end{DoxyWarning}
+
+\begin{DoxyTemplParams}{Paramètres du template}
+{\em N} & Le nombre de lignes du plateau \\
+\hline
+{\em M} & Le nombre de colonnnes du plateau \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Paramètres}
+\mbox{\texttt{in}}  & {\em s} & Les coordonnées de la source \\
+\hline
+\mbox{\texttt{in}}  & {\em t} & Les coordonnées de la cible (l\textquotesingle{}endroit où arrive le pion) \\
+\hline
+\mbox{\texttt{in}}  & {\em ep} & Les coordonnées du pion capturer "{}en passant"{} \\
+\hline
+\mbox{\texttt{in}}  & {\em val\+\_\+mes} & Optionel peut determiner la mesure de la présence d\textquotesingle{}une pièce ou non \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+true si le mouvement à etait effectué 
+
+false sinon 
+\end{DoxyReturn}
+\Hypertarget{classBoard_a0ae356b314ec974b23a103141f7b4823}\index{Board$<$ N, M $>$@{Board$<$ N, M $>$}!move\_is\_legal@{move\_is\_legal}}
+\index{move\_is\_legal@{move\_is\_legal}!Board$<$ N, M $>$@{Board$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{move\_is\_legal()}{move\_is\_legal()}}
+{\footnotesize\ttfamily \label{classBoard_a0ae356b314ec974b23a103141f7b4823} 
+template$<$std\+::size\+\_\+t N = 8, std\+::size\+\_\+t M = N$>$ \\
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} bool \mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$\+::move\+\_\+is\+\_\+legal (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structMove}{Move}} const \&}]{move}{}\end{DoxyParamCaption}) const}
+
+
+
+Test si un mouvement est réalisable. 
+
+
+\begin{DoxyParams}[1]{Paramètres}
+\mbox{\texttt{in}}  & {\em move} & Le mouvement à tester \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+true si le mouvement est légal 
+\end{DoxyReturn}
+\Hypertarget{classBoard_a737f514e7dade61e66ea9e5f8980cc92}\index{Board$<$ N, M $>$@{Board$<$ N, M $>$}!move\_merge@{move\_merge}}
+\index{move\_merge@{move\_merge}!Board$<$ N, M $>$@{Board$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{move\_merge()}{move\_merge()}}
+{\footnotesize\ttfamily \label{classBoard_a737f514e7dade61e66ea9e5f8980cc92} 
+template$<$std\+::size\+\_\+t N = 8, std\+::size\+\_\+t M = N$>$ \\
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} void \mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$\+::move\+\_\+merge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structCoord}{Coord}} const \&}]{s1}{, }\item[{\mbox{\hyperlink{structCoord}{Coord}} const \&}]{s2}{, }\item[{\mbox{\hyperlink{structCoord}{Coord}} const \&}]{t}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mouvement de merge de pièce (pion exclu) 
+
+\begin{DoxyWarning}{Avertissement}
+Aucun test sur la validité du mouvement (cible vide, pièce identique sur les sources, ect)
+\end{DoxyWarning}
+
+\begin{DoxyTemplParams}{Paramètres du template}
+{\em N} & Le nombre de lignes du plateau \\
+\hline
+{\em M} & Le nombre de colonnes du plateau \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Paramètres}
+\mbox{\texttt{in}}  & {\em s1} & Coordonnées de la source 1 \\
+\hline
+\mbox{\texttt{in}}  & {\em s2} & Coordonnées de la source 2 \\
+\hline
+\mbox{\texttt{in}}  & {\em t} & Coordonnées de la cible \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classBoard_ab27ddd048e875eb243d7587d0b6f1424}\index{Board$<$ N, M $>$@{Board$<$ N, M $>$}!move\_merge\_jump@{move\_merge\_jump}}
+\index{move\_merge\_jump@{move\_merge\_jump}!Board$<$ N, M $>$@{Board$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{move\_merge\_jump()}{move\_merge\_jump()}}
+{\footnotesize\ttfamily \label{classBoard_ab27ddd048e875eb243d7587d0b6f1424} 
+template$<$std\+::size\+\_\+t N = 8, std\+::size\+\_\+t M = N$>$ \\
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} void \mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$\+::move\+\_\+merge\+\_\+jump (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structCoord}{Coord}} const \&}]{s}{, }\item[{\mbox{\hyperlink{structCoord}{Coord}} const \&}]{t1}{, }\item[{\mbox{\hyperlink{structCoord}{Coord}} const \&}]{t2}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mouvement de merge. 
+
+\begin{DoxyWarning}{Avertissement}
+Aucun test sur la validité du mouvement (cible vide, pièce identique sur les sources, ect)
+\end{DoxyWarning}
+
+\begin{DoxyTemplParams}{Paramètres du template}
+{\em N} & Le nombre de lignes du plateau \\
+\hline
+{\em M} & Le nombre de colonnes du plateau \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Paramètres}
+\mbox{\texttt{in}}  & {\em s1} & Coordonnées de la source 1 \\
+\hline
+\mbox{\texttt{in}}  & {\em s2} & Coordonnées de la source 2 \\
+\hline
+\mbox{\texttt{in}}  & {\em t} & Coordonnées de la cible \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classBoard_ab6beab7f1900a5ef2703302d65e32fd6}\index{Board$<$ N, M $>$@{Board$<$ N, M $>$}!move\_merge\_slide@{move\_merge\_slide}}
+\index{move\_merge\_slide@{move\_merge\_slide}!Board$<$ N, M $>$@{Board$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{move\_merge\_slide()}{move\_merge\_slide()}}
+{\footnotesize\ttfamily \label{classBoard_ab6beab7f1900a5ef2703302d65e32fd6} 
+template$<$std\+::size\+\_\+t N = 8, std\+::size\+\_\+t M = N$>$ \\
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} void \mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$\+::move\+\_\+merge\+\_\+slide (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structCoord}{Coord}} const \&}]{s1}{, }\item[{\mbox{\hyperlink{structCoord}{Coord}} const \&}]{s2}{, }\item[{\mbox{\hyperlink{structCoord}{Coord}} const \&}]{t}{, }\item[{std\+::function$<$ bool(\mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$ const \&, \mbox{\hyperlink{structCoord}{Coord}} const \&, \mbox{\hyperlink{structCoord}{Coord}} const \&, std\+::size\+\_\+t, std\+::optional$<$ \mbox{\hyperlink{structCoord}{Coord}} $>$)$>$}]{check\+\_\+path}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mouvement de merge. 
+
+\begin{DoxyWarning}{Avertissement}
+Aucun test sur la validité du mouvement (cible vide, pièce identique sur les sources, ect) 
+\end{DoxyWarning}
+
+\begin{DoxyTemplParams}{Paramètres du template}
+{\em N} & Le nombre de lignes du plateau \\
+\hline
+{\em M} & Le nombre de colonnes du plateau \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Paramètres}
+\mbox{\texttt{in}}  & {\em s1} & Coordonnées de la source 1 \\
+\hline
+\mbox{\texttt{in}}  & {\em s2} & Coordonnées de la source 2 \\
+\hline
+\mbox{\texttt{in}}  & {\em t} & Coordonnées de la cible \\
+\hline
+\mbox{\texttt{in}}  & {\em check\+\_\+path} & Fonction qui permet de vérifier la présence d\textquotesingle{}une pièce entre la source et la cible sur une instance du plateau \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classBoard_a8080ea5adeb21b43c207cb0690df0552}\index{Board$<$ N, M $>$@{Board$<$ N, M $>$}!move\_pawn@{move\_pawn}}
+\index{move\_pawn@{move\_pawn}!Board$<$ N, M $>$@{Board$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{move\_pawn()}{move\_pawn()}}
+{\footnotesize\ttfamily \label{classBoard_a8080ea5adeb21b43c207cb0690df0552} 
+template$<$std\+::size\+\_\+t N = 8, std\+::size\+\_\+t M = N$>$ \\
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} bool \mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$\+::move\+\_\+pawn (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structCoord}{Coord}} const \&}]{s}{, }\item[{\mbox{\hyperlink{structCoord}{Coord}} const \&}]{t}{, }\item[{std\+::optional$<$ bool $>$}]{val\+\_\+mes}{ = {\ttfamily std\+:\+:nullopt}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+
+
+Gère tout les mouvements d\textquotesingle{}un pion. 
+
+\begin{DoxyWarning}{Avertissement}
+Ne procède aucune vérification sur la validité du mouvement 
+\end{DoxyWarning}
+
+\begin{DoxyTemplParams}{Paramètres du template}
+{\em N} & Le nombre de lignes du plateau \\
+\hline
+{\em M} & Le nombre de colonnes du plateau \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Paramètres}
+\mbox{\texttt{in}}  & {\em s} & Coordonnées de la source \\
+\hline
+\mbox{\texttt{in}}  & {\em t} & Coordonnées de la cible \\
+\hline
+\mbox{\texttt{in}}  & {\em val\+\_\+mes} & Optionel peut determiner la mesure de la présence d\textquotesingle{}une pièce ou non \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+true si le mouvement à etait effectué 
+
+false sinon 
+\end{DoxyReturn}
+\Hypertarget{classBoard_ab3312d313004e58279011b4c1cc12756}\index{Board$<$ N, M $>$@{Board$<$ N, M $>$}!move\_pawn\_one\_step@{move\_pawn\_one\_step}}
+\index{move\_pawn\_one\_step@{move\_pawn\_one\_step}!Board$<$ N, M $>$@{Board$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{move\_pawn\_one\_step()}{move\_pawn\_one\_step()}}
+{\footnotesize\ttfamily \label{classBoard_ab3312d313004e58279011b4c1cc12756} 
+template$<$std\+::size\+\_\+t N = 8, std\+::size\+\_\+t M = N$>$ \\
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} bool \mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$\+::move\+\_\+pawn\+\_\+one\+\_\+step (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structCoord}{Coord}} const \&}]{s}{, }\item[{\mbox{\hyperlink{structCoord}{Coord}} const \&}]{t}{, }\item[{std\+::optional$<$ bool $>$}]{val\+\_\+mes}{ = {\ttfamily std\+:\+:nullopt}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Le mouvement de piond\textquotesingle{}une case fonctionne comme un mouvementde jump classique, à la différence qu\textquotesingle{}un pion ne peut pas capturer une pièce en avançant. On mesure de la même façon qu\textquotesingle{}un jump classique en considérant toutes les pièces comme des pièces alliées. 
+
+\begin{DoxyWarning}{Avertissement}
+Ne procède aucune vérification sur la validité du mouvement
+\end{DoxyWarning}
+
+\begin{DoxyTemplParams}{Paramètres du template}
+{\em N} & Le nombre de lignes du plateau \\
+\hline
+{\em M} & Le nombre de colonnes du plateau \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Paramètres}
+\mbox{\texttt{in}}  & {\em s} & Coordonnées de la source \\
+\hline
+\mbox{\texttt{in}}  & {\em t} & Coordonnées de la cible \\
+\hline
+\mbox{\texttt{in}}  & {\em val\+\_\+mes} & Optionel peut determiner la mesure de la présence d\textquotesingle{}une pièce ou non \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+true si le mouvement à etait effectué 
+
+false sinon 
+\end{DoxyReturn}
+\Hypertarget{classBoard_aec7237f84ab2e9fd71d19d96958936ea}\index{Board$<$ N, M $>$@{Board$<$ N, M $>$}!move\_pawn\_two\_step@{move\_pawn\_two\_step}}
+\index{move\_pawn\_two\_step@{move\_pawn\_two\_step}!Board$<$ N, M $>$@{Board$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{move\_pawn\_two\_step()}{move\_pawn\_two\_step()}}
+{\footnotesize\ttfamily \label{classBoard_aec7237f84ab2e9fd71d19d96958936ea} 
+template$<$std\+::size\+\_\+t N = 8, std\+::size\+\_\+t M = N$>$ \\
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} bool \mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$\+::move\+\_\+pawn\+\_\+two\+\_\+step (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structCoord}{Coord}} const \&}]{s}{, }\item[{\mbox{\hyperlink{structCoord}{Coord}} const \&}]{t}{, }\item[{std\+::optional$<$ bool $>$}]{val\+\_\+mes}{ = {\ttfamily std\+:\+:nullopt}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Le mouvement de pion de deux cases fonctionne comme un mouvement de slide classique, à la différence qu\textquotesingle{}un pion ne peut pas capturer une pièce en avançant, on mesure de la même façon qu\textquotesingle{}un slide classique en considérant toutes les pièces comme des pièces alliées. 
+
+\begin{DoxyWarning}{Avertissement}
+Aucun test sur la possibilité de faire un mouvement de deux cases du pion, pas de mise a jour du board sur la prise en passant
+\end{DoxyWarning}
+
+\begin{DoxyTemplParams}{Paramètres du template}
+{\em N} & Le nombre de lignes du plateau \\
+\hline
+{\em M} & Le nombre de colonnes du plateau \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Paramètres}
+\mbox{\texttt{in}}  & {\em s} & Coordonnées de la source \\
+\hline
+\mbox{\texttt{in}}  & {\em t} & Coordonnées de la cible \\
+\hline
+\mbox{\texttt{in}}  & {\em val\+\_\+mes} & Optionel peut determiner la mesure de la présence d\textquotesingle{}une pièce ou non \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+true si le mouvement à etait effectué 
+
+false sinon 
+\end{DoxyReturn}
+\Hypertarget{classBoard_a70da9f8bdaa77d42712fdd123f40dad5}\index{Board$<$ N, M $>$@{Board$<$ N, M $>$}!move\_promotion@{move\_promotion}}
+\index{move\_promotion@{move\_promotion}!Board$<$ N, M $>$@{Board$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{move\_promotion()}{move\_promotion()}}
+{\footnotesize\ttfamily \label{classBoard_a70da9f8bdaa77d42712fdd123f40dad5} 
+template$<$std\+::size\+\_\+t N = 8, std\+::size\+\_\+t M = N$>$ \\
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} void \mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$\+::move\+\_\+promotion (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structMove}{Move}} const \&}]{move}{, }\item[{std\+::optional$<$ bool $>$}]{val\+\_\+mes}{ = {\ttfamily std\+:\+:nullopt}}\end{DoxyParamCaption})}
+
+
+
+Fonction qui permet de faire un mouvement de pion quelconque avec une promotion. 
+
+
+\begin{DoxyParams}[1]{Paramètres}
+ & {\em s} & Coordonnées de la source \\
+\hline
+ & {\em t} & Coordonnées de la cible \\
+\hline
+ & {\em p} & Le type de la pièce de la promotion \\
+\hline
+\mbox{\texttt{in}}  & {\em val\+\_\+mes} & Optionel peut determiner la mesure de la présence d\textquotesingle{}une pièce ou non \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classBoard_a4965fbc774f008f0b0aba1192b93daf3}\index{Board$<$ N, M $>$@{Board$<$ N, M $>$}!move\_split@{move\_split}}
+\index{move\_split@{move\_split}!Board$<$ N, M $>$@{Board$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{move\_split()}{move\_split()}}
+{\footnotesize\ttfamily \label{classBoard_a4965fbc774f008f0b0aba1192b93daf3} 
+template$<$std\+::size\+\_\+t N = 8, std\+::size\+\_\+t M = N$>$ \\
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} void \mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$\+::move\+\_\+split (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structCoord}{Coord}} const \&}]{s}{, }\item[{\mbox{\hyperlink{structCoord}{Coord}} const \&}]{t1}{, }\item[{\mbox{\hyperlink{structCoord}{Coord}} const \&}]{t2}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mouvement split d\textquotesingle{}une pièce (pion exclu) 
+
+\begin{DoxyWarning}{Avertissement}
+Ne procède aucune vérification sur la validité du mouvement 
+\end{DoxyWarning}
+
+\begin{DoxyTemplParams}{Paramètres du template}
+{\em N} & Le nombre de ligne du plateau \\
+\hline
+{\em M} & Le nombre de colonnes du plateau \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Paramètres}
+\mbox{\texttt{in}}  & {\em s} & Coordonnées de la source du mouvement \\
+\hline
+\mbox{\texttt{in}}  & {\em t1} & Coordonnées de la cible 1 (qui doit être vide) \\
+\hline
+\mbox{\texttt{in}}  & {\em t2} & Coordonnées de la cible 2 (qui doit être vide) \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classBoard_a47f420a736210539b59d3dc2023ce964}\index{Board$<$ N, M $>$@{Board$<$ N, M $>$}!move\_split\_jump@{move\_split\_jump}}
+\index{move\_split\_jump@{move\_split\_jump}!Board$<$ N, M $>$@{Board$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{move\_split\_jump()}{move\_split\_jump()}}
+{\footnotesize\ttfamily \label{classBoard_a47f420a736210539b59d3dc2023ce964} 
+template$<$std\+::size\+\_\+t N = 8, std\+::size\+\_\+t M = N$>$ \\
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} void \mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$\+::move\+\_\+split\+\_\+jump (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structCoord}{Coord}} const \&}]{s}{, }\item[{\mbox{\hyperlink{structCoord}{Coord}} const \&}]{t1}{, }\item[{\mbox{\hyperlink{structCoord}{Coord}} const \&}]{t2}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mouvement "{}split jump"{}. 
+
+\begin{DoxyWarning}{Avertissement}
+Aucun tests sur la validité du mouvement (cible vide, ect)
+\end{DoxyWarning}
+
+\begin{DoxyTemplParams}{Paramètres du template}
+{\em N} & Le nombre de lignes du plateau \\
+\hline
+{\em M} & Le nombre de colonnes du plateau \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Paramètres}
+\mbox{\texttt{in}}  & {\em s} & Coordonnées de la source du mouvement \\
+\hline
+\mbox{\texttt{in}}  & {\em t1} & Coordonnées de la cible 1 (qui doit être vide) \\
+\hline
+\mbox{\texttt{in}}  & {\em t2} & Coordonnées de la cible 2 (qui doit être vide) \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classBoard_a021d47a138270ee0ae8e3427b7d5f9d2}\index{Board$<$ N, M $>$@{Board$<$ N, M $>$}!move\_split\_slide@{move\_split\_slide}}
+\index{move\_split\_slide@{move\_split\_slide}!Board$<$ N, M $>$@{Board$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{move\_split\_slide()}{move\_split\_slide()}}
+{\footnotesize\ttfamily \label{classBoard_a021d47a138270ee0ae8e3427b7d5f9d2} 
+template$<$std\+::size\+\_\+t N = 8, std\+::size\+\_\+t M = N$>$ \\
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} void \mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$\+::move\+\_\+split\+\_\+slide (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structCoord}{Coord}} const \&}]{s}{, }\item[{\mbox{\hyperlink{structCoord}{Coord}} const \&}]{t1}{, }\item[{\mbox{\hyperlink{structCoord}{Coord}} const \&}]{t2}{, }\item[{std\+::function$<$ bool(\mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$ const \&, \mbox{\hyperlink{structCoord}{Coord}} const \&, \mbox{\hyperlink{structCoord}{Coord}} const \&, std\+::size\+\_\+t, std\+::optional$<$ \mbox{\hyperlink{structCoord}{Coord}} $>$)$>$}]{check\+\_\+path}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mouvement "{}split slide"{}. 
+
+\begin{DoxyWarning}{Avertissement}
+Aucun tests sur la validité du mouvement (cible vide, ect) 
+\end{DoxyWarning}
+
+\begin{DoxyTemplParams}{Paramètres du template}
+{\em N} & Le nombre de lignes du plateau \\
+\hline
+{\em M} & Le nombre de colonnes du plateau \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Paramètres}
+\mbox{\texttt{in}}  & {\em s} & Coordonnées de la source du mouvement \\
+\hline
+\mbox{\texttt{in}}  & {\em t1} & Coordonnées de la cible 1 (qui doit être vide) \\
+\hline
+\mbox{\texttt{in}}  & {\em t2} & Coordonnées de la cible 2 (qui doit être vide) \\
+\hline
+\mbox{\texttt{in}}  & {\em check\+\_\+path} & Fonction qui permet de vérifier la présence d\textquotesingle{}une pièce entre la source et la cible sur une instance du plateau \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classBoard_abbd4419f7856bf0de2f0cb58d6f67fb1}\index{Board$<$ N, M $>$@{Board$<$ N, M $>$}!numberColumns@{numberColumns}}
+\index{numberColumns@{numberColumns}!Board$<$ N, M $>$@{Board$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{numberColumns()}{numberColumns()}}
+{\footnotesize\ttfamily \label{classBoard_abbd4419f7856bf0de2f0cb58d6f67fb1} 
+template$<$std\+::size\+\_\+t N = 8, std\+::size\+\_\+t M = N$>$ \\
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} std\+::size\+\_\+t \mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$\+::number\+Columns (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [noexcept]}}
+
+
+
+Retourne le nombre de colonne. 
+
+\begin{DoxyReturn}{Renvoie}
+std\+::size\+\_\+t Le nombre de colonne 
+\end{DoxyReturn}
+\Hypertarget{classBoard_a7fa8fd1a867a5c5ed31d7819128389e6}\index{Board$<$ N, M $>$@{Board$<$ N, M $>$}!numberLines@{numberLines}}
+\index{numberLines@{numberLines}!Board$<$ N, M $>$@{Board$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{numberLines()}{numberLines()}}
+{\footnotesize\ttfamily \label{classBoard_a7fa8fd1a867a5c5ed31d7819128389e6} 
+template$<$std\+::size\+\_\+t N = 8, std\+::size\+\_\+t M = N$>$ \\
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} std\+::size\+\_\+t \mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$\+::number\+Lines (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [noexcept]}}
+
+
+
+Retourne le nombre de ligne du plateau. 
+
+\begin{DoxyReturn}{Renvoie}
+std\+::size\+\_\+t Le nombre de ligne 
+\end{DoxyReturn}
+\Hypertarget{classBoard_a2453e112bab945721f92b21f7d964df6}\index{Board$<$ N, M $>$@{Board$<$ N, M $>$}!offset@{offset}}
+\index{offset@{offset}!Board$<$ N, M $>$@{Board$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{offset()}{offset()}}
+{\footnotesize\ttfamily \label{classBoard_a2453e112bab945721f92b21f7d964df6} 
+template$<$std\+::size\+\_\+t N = 8, std\+::size\+\_\+t M = N$>$ \\
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} std\+::size\+\_\+t \mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$\+::offset (\begin{DoxyParamCaption}\item[{std\+::size\+\_\+t}]{ligne}{, }\item[{std\+::size\+\_\+t}]{colonne}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+
+
+Renvoie une position 1D d\textquotesingle{}une coordonnée 2D. 
+
+
+\begin{DoxyParams}[1]{Paramètres}
+\mbox{\texttt{in}}  & {\em ligne} & L\textquotesingle{}indice de ligne \\
+\hline
+\mbox{\texttt{in}}  & {\em colonne} & L\textquotesingle{}indice de colonne \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+std\+::size\+\_\+t La position en 1D 
+\end{DoxyReturn}
+\Hypertarget{classBoard_a12198d3ba6b3cccc99b4787cbaacccee}\index{Board$<$ N, M $>$@{Board$<$ N, M $>$}!operator()@{operator()}}
+\index{operator()@{operator()}!Board$<$ N, M $>$@{Board$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}}
+{\footnotesize\ttfamily \label{classBoard_a12198d3ba6b3cccc99b4787cbaacccee} 
+template$<$std\+::size\+\_\+t N = 8, std\+::size\+\_\+t M = N$>$ \\
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} \mbox{\hyperlink{classPiece}{Piece}} const  \& \mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$\+::operator() (\begin{DoxyParamCaption}\item[{std\+::size\+\_\+t}]{n}{, }\item[{std\+::size\+\_\+t}]{m}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Retourne un pointeur sur la piece à l\textquotesingle{}emplacement cible. 
+
+
+\begin{DoxyParams}[1]{Paramètres}
+\mbox{\texttt{in}}  & {\em n} & L\textquotesingle{}indice de la ligne \\
+\hline
+\mbox{\texttt{in}}  & {\em m} & L\textquotesingle{}indice de la colonne \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Un pointeur observateur sur une piece ou \doxylink{classBoard_ae6fa0350c8ef33e791f1f9a4daa5e3d1}{Piece()} si la case est vide 
+\end{DoxyReturn}
+\Hypertarget{classBoard_ae02aa59b2cb5f7570a86e769641e84f3}\index{Board$<$ N, M $>$@{Board$<$ N, M $>$}!operator=@{operator=}}
+\index{operator=@{operator=}!Board$<$ N, M $>$@{Board$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classBoard_ae02aa59b2cb5f7570a86e769641e84f3} 
+template$<$std\+::size\+\_\+t N = 8, std\+::size\+\_\+t M = N$>$ \\
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} \mbox{\hyperlink{classBoard}{Board}} \& \mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$ \&\&}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+\Hypertarget{classBoard_ac2081cea73b0212e1d3a1f1937fc24cc}\index{Board$<$ N, M $>$@{Board$<$ N, M $>$}!operator=@{operator=}}
+\index{operator=@{operator=}!Board$<$ N, M $>$@{Board$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classBoard_ac2081cea73b0212e1d3a1f1937fc24cc} 
+template$<$std\+::size\+\_\+t N = 8, std\+::size\+\_\+t M = N$>$ \\
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} \mbox{\hyperlink{classBoard}{Board}} \& \mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$ const \&}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+\Hypertarget{classBoard_a37bbcd7a49d362b34f8d4cd7c65e818f}\index{Board$<$ N, M $>$@{Board$<$ N, M $>$}!queen\_side\_castle@{queen\_side\_castle}}
+\index{queen\_side\_castle@{queen\_side\_castle}!Board$<$ N, M $>$@{Board$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{queen\_side\_castle()}{queen\_side\_castle()}}
+{\footnotesize\ttfamily \label{classBoard_a37bbcd7a49d362b34f8d4cd7c65e818f} 
+template$<$std\+::size\+\_\+t N = 8, std\+::size\+\_\+t M = N$>$ \\
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} void \mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$\+::queen\+\_\+side\+\_\+castle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structCoord}{Coord}} const \&}]{king}{, }\item[{\mbox{\hyperlink{structCoord}{Coord}} const \&}]{rook}{, }\item[{std\+::optional$<$ bool $>$}]{val\+\_\+mes}{ = {\ttfamily std\+:\+:nullopt}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mouvement du grand roque. 
+
+\begin{DoxyWarning}{Avertissement}
+Ne procède aucune vérification sur la validité du mouvement
+\end{DoxyWarning}
+
+\begin{DoxyParams}[1]{Paramètres}
+\mbox{\texttt{in}}  & {\em king} & Coordonnées du roi \\
+\hline
+\mbox{\texttt{in}}  & {\em rook} & Coordonnées de la tour \\
+\hline
+\mbox{\texttt{in}}  & {\em val\+\_\+mes} & Optionel peut determiner la mesure de la présence d\textquotesingle{}une pièce ou non \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classBoard_aaf99d8f5c18672d24c84b3ef22d0bd2c}\index{Board$<$ N, M $>$@{Board$<$ N, M $>$}!range\_to\_2\_array@{range\_to\_2\_array}}
+\index{range\_to\_2\_array@{range\_to\_2\_array}!Board$<$ N, M $>$@{Board$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{range\_to\_2\_array()}{range\_to\_2\_array()}}
+{\footnotesize\ttfamily \label{classBoard_aaf99d8f5c18672d24c84b3ef22d0bd2c} 
+template$<$std\+::size\+\_\+t N = 8, std\+::size\+\_\+t M = N$>$ \\
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} void \mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$\+::range\+\_\+to\+\_\+2\+\_\+array (\begin{DoxyParamCaption}\item[{std\+::ranges\+::common\+\_\+range auto const \&}]{board}{, }\item[{std\+::array$<$ bool, N \texorpdfstring{$\ast$}{*}M $>$ \&}]{first\+\_\+instance}{, }\item[{std\+::array$<$ \mbox{\hyperlink{classPiece}{Piece}}, N \texorpdfstring{$\ast$}{*}M $>$ \&}]{piece\+\_\+board}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+
+
+Initialise un plateau à l\textquotesingle{}aide d\textquotesingle{}un container 2D. 
+
+
+\begin{DoxyParams}[1]{Paramètres}
+\mbox{\texttt{in}}  & {\em board} & Un container 2D \\
+\hline
+\mbox{\texttt{out}}  & {\em first\+\_\+instance} & Le tableau de la première instance du plateau \\
+\hline
+\mbox{\texttt{out}}  & {\em piece\+\_\+board} & Le plateau contenant les pièces \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classBoard_ac861187330142ee511ed2707ea4c552a}\index{Board$<$ N, M $>$@{Board$<$ N, M $>$}!update\_board@{update\_board}}
+\index{update\_board@{update\_board}!Board$<$ N, M $>$@{Board$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{update\_board()}{update\_board()}}
+{\footnotesize\ttfamily \label{classBoard_ac861187330142ee511ed2707ea4c552a} 
+template$<$std\+::size\+\_\+t N = 8, std\+::size\+\_\+t M = N$>$ \\
+void \mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$\+::update\+\_\+board (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+
+
+Fonction qui permet de mattre à jour le plateau, car ce mouvement entraine l\textquotesingle{}apparition de plusieurs instance de board identique, il faut donc les concaténer en ajoutant les probas, si la proba vaut 0, on supprime l\textquotesingle{}instance. 
+
+\begin{DoxyWarning}{Avertissement}
+Complexité en k² x N x M, avec k la taille de m\+\_\+board c\textquotesingle{}est à dire le nombre d\textquotesingle{}instance du plateau, N et M les dimensions du plateau 
+\end{DoxyWarning}
+\Hypertarget{classBoard_a68041aa1a83fe7bb96cc61254142ff25}\index{Board$<$ N, M $>$@{Board$<$ N, M $>$}!update\_board\_classic@{update\_board\_classic}}
+\index{update\_board\_classic@{update\_board\_classic}!Board$<$ N, M $>$@{Board$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{update\_board\_classic()}{update\_board\_classic()}}
+{\footnotesize\ttfamily \label{classBoard_a68041aa1a83fe7bb96cc61254142ff25} 
+template$<$std\+::size\+\_\+t N = 8, std\+::size\+\_\+t M = N$>$ \\
+void \mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$\+::update\+\_\+board\+\_\+classic (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classBoard_a2b7efeb273cc2b2b07fa87b8d9eb3b7f}\index{Board$<$ N, M $>$@{Board$<$ N, M $>$}!update\_case@{update\_case}}
+\index{update\_case@{update\_case}!Board$<$ N, M $>$@{Board$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{update\_case()}{update\_case()}}
+{\footnotesize\ttfamily \label{classBoard_a2b7efeb273cc2b2b07fa87b8d9eb3b7f} 
+template$<$std\+::size\+\_\+t N = 8, std\+::size\+\_\+t M = N$>$ \\
+void \mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$\+::update\+\_\+case (\begin{DoxyParamCaption}\item[{std\+::size\+\_\+t}]{pos}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+
+
+Vérifie si la case à une possibilité de contenir une pièce, et si elle n\textquotesingle{}en a pas modifie m\+\_\+piece\+\_\+board en nullptr. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em pos} & Les coordonnées de a position de la case a vérifier. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classBoard_a4361b1ec0a07e20844e44e13613437d8}\index{Board$<$ N, M $>$@{Board$<$ N, M $>$}!winning\_position@{winning\_position}}
+\index{winning\_position@{winning\_position}!Board$<$ N, M $>$@{Board$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{winning\_position()}{winning\_position()}}
+{\footnotesize\ttfamily \label{classBoard_a4361b1ec0a07e20844e44e13613437d8} 
+template$<$std\+::size\+\_\+t N = 8, std\+::size\+\_\+t M = N$>$ \\
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} bool \mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$\+::winning\+\_\+position (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Color_8hpp_a78abb31bad0fd1834c54a3ca6f8daab5}{Color}}}]{c}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Test si un plateau est gagnant pour une couleur. 
+
+
+\begin{DoxyParams}[1]{Paramètres}
+\mbox{\texttt{in}}  & {\em c} & Couleur \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+true si la position est gagnante pour la couleur c 
+
+false sinon 
+\end{DoxyReturn}
+
+
+\label{doc-related-members}
+\Hypertarget{classBoard_doc-related-members}
+\doxysubsection{Documentation des fonctions amies et associées}
+\Hypertarget{classBoard_afd58eec39cde0e85928af479a735adb1}\index{Board$<$ N, M $>$@{Board$<$ N, M $>$}!check\_path\_diagonal\_1\_instance@{check\_path\_diagonal\_1\_instance}}
+\index{check\_path\_diagonal\_1\_instance@{check\_path\_diagonal\_1\_instance}!Board$<$ N, M $>$@{Board$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{check\_path\_diagonal\_1\_instance}{check\_path\_diagonal\_1\_instance}}
+{\footnotesize\ttfamily \label{classBoard_afd58eec39cde0e85928af479a735adb1} 
+template$<$std\+::size\+\_\+t N = 8, std\+::size\+\_\+t M = N$>$ \\
+template$<$std\+::size\+\_\+t \+\_\+N, std\+::size\+\_\+t \+\_\+M$>$ \\
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} bool check\+\_\+path\+\_\+diagonal\+\_\+1\+\_\+instance (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBoard}{Board}}$<$ \+\_\+N, \+\_\+M $>$ const \&}]{board}{, }\item[{\mbox{\hyperlink{structCoord}{Coord}} const \&}]{dpt}{, }\item[{\mbox{\hyperlink{structCoord}{Coord}} const \&}]{arv}{, }\item[{std\+::size\+\_\+t}]{position}{, }\item[{std\+::optional$<$ \mbox{\hyperlink{structCoord}{Coord}} $>$}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+\Hypertarget{classBoard_a5d6f7b41d03132b2cd4fa50bdc96f875}\index{Board$<$ N, M $>$@{Board$<$ N, M $>$}!check\_path\_queen\_1\_instance@{check\_path\_queen\_1\_instance}}
+\index{check\_path\_queen\_1\_instance@{check\_path\_queen\_1\_instance}!Board$<$ N, M $>$@{Board$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{check\_path\_queen\_1\_instance}{check\_path\_queen\_1\_instance}}
+{\footnotesize\ttfamily \label{classBoard_a5d6f7b41d03132b2cd4fa50bdc96f875} 
+template$<$std\+::size\+\_\+t N = 8, std\+::size\+\_\+t M = N$>$ \\
+template$<$std\+::size\+\_\+t \+\_\+N, std\+::size\+\_\+t \+\_\+M$>$ \\
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} bool check\+\_\+path\+\_\+queen\+\_\+1\+\_\+instance (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBoard}{Board}}$<$ \+\_\+N, \+\_\+M $>$ const \&}]{board}{, }\item[{\mbox{\hyperlink{structCoord}{Coord}} const \&}]{dpt}{, }\item[{\mbox{\hyperlink{structCoord}{Coord}} const \&}]{arv}{, }\item[{std\+::size\+\_\+t}]{position}{, }\item[{std\+::optional$<$ \mbox{\hyperlink{structCoord}{Coord}} $>$}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+\Hypertarget{classBoard_aa238cd78cb04e5007753e39b7c4e5ec8}\index{Board$<$ N, M $>$@{Board$<$ N, M $>$}!check\_path\_straight\_1\_instance@{check\_path\_straight\_1\_instance}}
+\index{check\_path\_straight\_1\_instance@{check\_path\_straight\_1\_instance}!Board$<$ N, M $>$@{Board$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{check\_path\_straight\_1\_instance}{check\_path\_straight\_1\_instance}}
+{\footnotesize\ttfamily \label{classBoard_aa238cd78cb04e5007753e39b7c4e5ec8} 
+template$<$std\+::size\+\_\+t N = 8, std\+::size\+\_\+t M = N$>$ \\
+template$<$std\+::size\+\_\+t \+\_\+N, std\+::size\+\_\+t \+\_\+M$>$ \\
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} bool check\+\_\+path\+\_\+straight\+\_\+1\+\_\+instance (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBoard}{Board}}$<$ \+\_\+N, \+\_\+M $>$ const \&}]{board}{, }\item[{\mbox{\hyperlink{structCoord}{Coord}} const \&}]{dpt}{, }\item[{\mbox{\hyperlink{structCoord}{Coord}} const \&}]{arv}{, }\item[{std\+::size\+\_\+t}]{position}{, }\item[{std\+::optional$<$ \mbox{\hyperlink{structCoord}{Coord}} $>$}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+\Hypertarget{classBoard_ae6fa0350c8ef33e791f1f9a4daa5e3d1}\index{Board$<$ N, M $>$@{Board$<$ N, M $>$}!Piece@{Piece}}
+\index{Piece@{Piece}!Board$<$ N, M $>$@{Board$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{Piece}{Piece}}
+{\footnotesize\ttfamily \label{classBoard_ae6fa0350c8ef33e791f1f9a4daa5e3d1} 
+template$<$std\+::size\+\_\+t N = 8, std\+::size\+\_\+t M = N$>$ \\
+friend class \mbox{\hyperlink{classPiece}{Piece}}\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+\label{doc-variable-members}
+\Hypertarget{classBoard_doc-variable-members}
+\doxysubsection{Documentation des données membres}
+\Hypertarget{classBoard_a86ac6aad8d1350d28d5185d5f81dc44e}\index{Board$<$ N, M $>$@{Board$<$ N, M $>$}!m\_board@{m\_board}}
+\index{m\_board@{m\_board}!Board$<$ N, M $>$@{Board$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{m\_board}{m\_board}}
+{\footnotesize\ttfamily \label{classBoard_a86ac6aad8d1350d28d5185d5f81dc44e} 
+template$<$std\+::size\+\_\+t N = 8, std\+::size\+\_\+t M = N$>$ \\
+std\+::vector$<$std\+::pair$<$std\+::array$<$bool, N \texorpdfstring{$\ast$}{*} M$>$, std\+::complex$<$double$>$ $>$ $>$ \mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$\+::m\+\_\+board\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Le tableau de toutes les instances possibles du plateau. 
+
+\Hypertarget{classBoard_af34231e3e62c2965fb6524c332570b23}\index{Board$<$ N, M $>$@{Board$<$ N, M $>$}!m\_color\_current\_player@{m\_color\_current\_player}}
+\index{m\_color\_current\_player@{m\_color\_current\_player}!Board$<$ N, M $>$@{Board$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{m\_color\_current\_player}{m\_color\_current\_player}}
+{\footnotesize\ttfamily \label{classBoard_af34231e3e62c2965fb6524c332570b23} 
+template$<$std\+::size\+\_\+t N = 8, std\+::size\+\_\+t M = N$>$ \\
+\mbox{\hyperlink{Color_8hpp_a78abb31bad0fd1834c54a3ca6f8daab5}{Color}} \mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$\+::m\+\_\+color\+\_\+current\+\_\+player\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxylink{Color_8hpp_a78abb31bad0fd1834c54a3ca6f8daab5ab5bf627e448384cf3a4c35121ca6008d}{Color\+::\+WHITE} si c\textquotesingle{}est aux blanc de jouer aux noirs sinon. 
+
+\Hypertarget{classBoard_a203d91808d0894e86a5945f6579421f0}\index{Board$<$ N, M $>$@{Board$<$ N, M $>$}!m\_ep@{m\_ep}}
+\index{m\_ep@{m\_ep}!Board$<$ N, M $>$@{Board$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{m\_ep}{m\_ep}}
+{\footnotesize\ttfamily \label{classBoard_a203d91808d0894e86a5945f6579421f0} 
+template$<$std\+::size\+\_\+t N = 8, std\+::size\+\_\+t M = N$>$ \\
+std\+::optional$<$\mbox{\hyperlink{structCoord}{Coord}}$>$ \mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$\+::m\+\_\+ep\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Contient la case sur laquelle il est possible de faire une prise en passant qui est vide (la case occupé si le pion avait avancé d\textquotesingle{}une seule case) 
+
+\Hypertarget{classBoard_abfcb112ed5ee410c5900cea6c26f8555}\index{Board$<$ N, M $>$@{Board$<$ N, M $>$}!m\_k\_castle@{m\_k\_castle}}
+\index{m\_k\_castle@{m\_k\_castle}!Board$<$ N, M $>$@{Board$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{m\_k\_castle}{m\_k\_castle}}
+{\footnotesize\ttfamily \label{classBoard_abfcb112ed5ee410c5900cea6c26f8555} 
+template$<$std\+::size\+\_\+t N = 8, std\+::size\+\_\+t M = N$>$ \\
+std\+::array$<$bool, 2$>$ \mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$\+::m\+\_\+k\+\_\+castle\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Vrai si les noirs\mbox{[}0\mbox{]} / blancs\mbox{[}1\mbox{]} peuvent faire le petit roque. 
+
+\Hypertarget{classBoard_ae0f3af83bd86deb7f8fcc5accd9d0308}\index{Board$<$ N, M $>$@{Board$<$ N, M $>$}!m\_L\_mailbox@{m\_L\_mailbox}}
+\index{m\_L\_mailbox@{m\_L\_mailbox}!Board$<$ N, M $>$@{Board$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{m\_L\_mailbox}{m\_L\_mailbox}}
+{\footnotesize\ttfamily \label{classBoard_ae0f3af83bd86deb7f8fcc5accd9d0308} 
+template$<$std\+::size\+\_\+t N = 8, std\+::size\+\_\+t M = N$>$ \\
+std\+::array$<$int, (N + 4) \texorpdfstring{$\ast$}{*} (M + 2)$>$ \mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$\+::m\+\_\+\+L\+\_\+mailbox\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+La grande mailbox. 
+
+\Hypertarget{classBoard_a510126d59680090b6965b093a69991fe}\index{Board$<$ N, M $>$@{Board$<$ N, M $>$}!m\_piece\_board@{m\_piece\_board}}
+\index{m\_piece\_board@{m\_piece\_board}!Board$<$ N, M $>$@{Board$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{m\_piece\_board}{m\_piece\_board}}
+{\footnotesize\ttfamily \label{classBoard_a510126d59680090b6965b093a69991fe} 
+template$<$std\+::size\+\_\+t N = 8, std\+::size\+\_\+t M = N$>$ \\
+std\+::array$<$\mbox{\hyperlink{classPiece}{Piece}}, N \texorpdfstring{$\ast$}{*} M$>$ \mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$\+::m\+\_\+piece\+\_\+board\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Le plateau indiquant le type des pièces. 
+
+\Hypertarget{classBoard_af90c264e8b40a8ed8bccb4630d90db53}\index{Board$<$ N, M $>$@{Board$<$ N, M $>$}!m\_q\_castle@{m\_q\_castle}}
+\index{m\_q\_castle@{m\_q\_castle}!Board$<$ N, M $>$@{Board$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{m\_q\_castle}{m\_q\_castle}}
+{\footnotesize\ttfamily \label{classBoard_af90c264e8b40a8ed8bccb4630d90db53} 
+template$<$std\+::size\+\_\+t N = 8, std\+::size\+\_\+t M = N$>$ \\
+std\+::array$<$bool, 2$>$ \mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$\+::m\+\_\+q\+\_\+castle\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Vrai si les noirs\mbox{[}0\mbox{]} / blancs\mbox{[}1\mbox{]} peuvent faire le grand roque. 
+
+\Hypertarget{classBoard_a6916a3fda6908225f591f9f8d526e53f}\index{Board$<$ N, M $>$@{Board$<$ N, M $>$}!m\_S\_mailbox@{m\_S\_mailbox}}
+\index{m\_S\_mailbox@{m\_S\_mailbox}!Board$<$ N, M $>$@{Board$<$ N, M $>$}}
+\doxysubsubsection{\texorpdfstring{m\_S\_mailbox}{m\_S\_mailbox}}
+{\footnotesize\ttfamily \label{classBoard_a6916a3fda6908225f591f9f8d526e53f} 
+template$<$std\+::size\+\_\+t N = 8, std\+::size\+\_\+t M = N$>$ \\
+std\+::array$<$int, N \texorpdfstring{$\ast$}{*} M$>$ \mbox{\hyperlink{classBoard}{Board}}$<$ N, M $>$\+::m\+\_\+\+S\+\_\+mailbox\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+La petite mailbox. 
+
+
+
+La documentation de cette classe a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
+\item 
+/home/quentin/\+Programmes/\+C++/\+Quantum-\/\+Chess/src/\+Board/\mbox{\hyperlink{Board_8hpp}{Board.\+hpp}}\end{DoxyCompactItemize}

@@ -192,14 +192,5 @@ int main()
     log_file.close();
   }
 
-  /*for (std::size_t i = 0; i < 8; i++)
-  {
-    for (std::size_t j = 0; j < 8; j++)
-    {
-      std::cout << computer::__utility::evalCase<8, 8>(i, j) << ' ';
-    }
-    std::cout << std::endl;
-  }*/
-
   return 0;
 }

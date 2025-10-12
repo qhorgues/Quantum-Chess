@@ -1,0 +1,185 @@
+\doxysection{Référence du modèle de la classe observer\+\_\+ptr\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}}
+\hypertarget{classobserver__ptr}{}\label{classobserver__ptr}\index{observer\_ptr$<$ T $>$@{observer\_ptr$<$ T $>$}}
+
+
+{\ttfamily \#include $<$observer\+\_\+ptr.\+hpp$>$}
+
+\doxysubsubsection*{Types publics}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{classobserver__ptr_a2109a92625fca4ec691c7c9cd8514cb8}{element\+\_\+type}} = T
+\item 
+using \mbox{\hyperlink{classobserver__ptr_a0dc5491906769e651349f2f644f74694}{\+\_\+\+\_\+pointer}} = std\+::add\+\_\+pointer\+\_\+t$<$T$>$
+\item 
+using \mbox{\hyperlink{classobserver__ptr_a26630ae0b520a3dd7f1db5f06119e883}{\+\_\+\+\_\+reference}} = std\+::add\+\_\+lvalue\+\_\+reference\+\_\+t$<$T$>$
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Fonctions membres publiques}
+\begin{DoxyCompactItemize}
+\item 
+constexpr \mbox{\hyperlink{classobserver__ptr_a13360a658c5e5f1c9ed8f7a682abf49c}{observer\+\_\+ptr}} () noexcept
+\item 
+constexpr \mbox{\hyperlink{classobserver__ptr_af10f47454aa80c431096e185b17f7ef6}{observer\+\_\+ptr}} (std\+::nullptr\+\_\+t) noexcept
+\item 
+constexpr \mbox{\hyperlink{classobserver__ptr_a9ff05e8edbab78f34538c580612c9fc6}{observer\+\_\+ptr}} (\mbox{\hyperlink{classobserver__ptr_a0dc5491906769e651349f2f644f74694}{\+\_\+\+\_\+pointer}} \+\_\+\+\_\+p) noexcept
+\item 
+{\footnotesize template$<$typename \+\_\+\+Up, typename = typename std\+::enable\+\_\+if$<$                  std\+::is\+\_\+convertible$<$                      typename std\+::add\+\_\+pointer$<$\+\_\+\+Up$>$\+::type, \+\_\+\+\_\+pointer$>$\+::                      value$>$\+::type$>$ }\\constexpr \mbox{\hyperlink{classobserver__ptr_a9c63ed2202d59ad63c877cbcfbfd0d4b}{observer\+\_\+ptr}} (\mbox{\hyperlink{classobserver__ptr}{observer\+\_\+ptr}}$<$ \+\_\+\+Up $>$ \+\_\+\+\_\+p) noexcept
+\item 
+constexpr \mbox{\hyperlink{classobserver__ptr_a0dc5491906769e651349f2f644f74694}{\+\_\+\+\_\+pointer}} \mbox{\hyperlink{classobserver__ptr_ac6337ecd71cc80b97ee2daec809d77f3}{get}} () const noexcept
+\item 
+constexpr \mbox{\hyperlink{classobserver__ptr_a26630ae0b520a3dd7f1db5f06119e883}{\+\_\+\+\_\+reference}} \mbox{\hyperlink{classobserver__ptr_a97592da38caa76dfaaf12445aad2716b}{operator\texorpdfstring{$\ast$}{*}}} () const
+\item 
+constexpr \mbox{\hyperlink{classobserver__ptr_a0dc5491906769e651349f2f644f74694}{\+\_\+\+\_\+pointer}} \mbox{\hyperlink{classobserver__ptr_a1e1c3c3f055e4176ce510303ee0f3a91}{operator-\/$>$}} () const noexcept
+\item 
+constexpr \mbox{\hyperlink{classobserver__ptr_a63d6779b2911c2913c0002205cdc7a5d}{operator bool}} () const noexcept
+\item 
+constexpr \mbox{\hyperlink{classobserver__ptr_ac77a87d05bcdf029556d37b3240d059d}{operator \+\_\+\+\_\+pointer}} () const noexcept
+\item 
+constexpr \mbox{\hyperlink{classobserver__ptr_a0dc5491906769e651349f2f644f74694}{\+\_\+\+\_\+pointer}} \mbox{\hyperlink{classobserver__ptr_a44fedd0645ae9a9ca0036eaa3bc2af12}{release}} () noexcept
+\item 
+constexpr void \mbox{\hyperlink{classobserver__ptr_aadf07d605b3dfdfe106843c20cf7f14a}{reset}} (\mbox{\hyperlink{classobserver__ptr_a0dc5491906769e651349f2f644f74694}{\+\_\+\+\_\+pointer}} \+\_\+\+\_\+p=nullptr) noexcept
+\item 
+constexpr void \mbox{\hyperlink{classobserver__ptr_a716aac32d184b983fe5a4538afa678f8}{swap}} (\mbox{\hyperlink{classobserver__ptr}{observer\+\_\+ptr}} \&\+\_\+\+\_\+p) noexcept
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Attributs privés}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classobserver__ptr_a0dc5491906769e651349f2f644f74694}{\+\_\+\+\_\+pointer}} \mbox{\hyperlink{classobserver__ptr_afc4f6c26d80c5ebbd5637bbc337fc1f6}{\+\_\+\+\_\+t}}
+\end{DoxyCompactItemize}
+
+
+\label{doc-typedef-members}
+\Hypertarget{classobserver__ptr_doc-typedef-members}
+\doxysubsection{Documentation des définitions de type membres}
+\Hypertarget{classobserver__ptr_a0dc5491906769e651349f2f644f74694}\index{observer\_ptr$<$ T $>$@{observer\_ptr$<$ T $>$}!\_\_pointer@{\_\_pointer}}
+\index{\_\_pointer@{\_\_pointer}!observer\_ptr$<$ T $>$@{observer\_ptr$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{\_\_pointer}{\_\_pointer}}
+{\footnotesize\ttfamily \label{classobserver__ptr_a0dc5491906769e651349f2f644f74694} 
+template$<$typename T$>$ \\
+using \mbox{\hyperlink{classobserver__ptr}{observer\+\_\+ptr}}$<$ T $>$\+::\+\_\+\+\_\+pointer = std\+::add\+\_\+pointer\+\_\+t$<$T$>$}
+
+\Hypertarget{classobserver__ptr_a26630ae0b520a3dd7f1db5f06119e883}\index{observer\_ptr$<$ T $>$@{observer\_ptr$<$ T $>$}!\_\_reference@{\_\_reference}}
+\index{\_\_reference@{\_\_reference}!observer\_ptr$<$ T $>$@{observer\_ptr$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{\_\_reference}{\_\_reference}}
+{\footnotesize\ttfamily \label{classobserver__ptr_a26630ae0b520a3dd7f1db5f06119e883} 
+template$<$typename T$>$ \\
+using \mbox{\hyperlink{classobserver__ptr}{observer\+\_\+ptr}}$<$ T $>$\+::\+\_\+\+\_\+reference = std\+::add\+\_\+lvalue\+\_\+reference\+\_\+t$<$T$>$}
+
+\Hypertarget{classobserver__ptr_a2109a92625fca4ec691c7c9cd8514cb8}\index{observer\_ptr$<$ T $>$@{observer\_ptr$<$ T $>$}!element\_type@{element\_type}}
+\index{element\_type@{element\_type}!observer\_ptr$<$ T $>$@{observer\_ptr$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{element\_type}{element\_type}}
+{\footnotesize\ttfamily \label{classobserver__ptr_a2109a92625fca4ec691c7c9cd8514cb8} 
+template$<$typename T$>$ \\
+using \mbox{\hyperlink{classobserver__ptr}{observer\+\_\+ptr}}$<$ T $>$\+::element\+\_\+type = T}
+
+
+
+\label{doc-constructors}
+\Hypertarget{classobserver__ptr_doc-constructors}
+\doxysubsection{Documentation des constructeurs et destructeur}
+\Hypertarget{classobserver__ptr_a13360a658c5e5f1c9ed8f7a682abf49c}\index{observer\_ptr$<$ T $>$@{observer\_ptr$<$ T $>$}!observer\_ptr@{observer\_ptr}}
+\index{observer\_ptr@{observer\_ptr}!observer\_ptr$<$ T $>$@{observer\_ptr$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{observer\_ptr()}{observer\_ptr()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{classobserver__ptr_a13360a658c5e5f1c9ed8f7a682abf49c} 
+template$<$typename T$>$ \\
+\mbox{\hyperlink{classobserver__ptr}{observer\+\_\+ptr}}$<$ T $>$\mbox{\hyperlink{classobserver__ptr}{\+::observer\+\_\+ptr}} (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classobserver__ptr_af10f47454aa80c431096e185b17f7ef6}\index{observer\_ptr$<$ T $>$@{observer\_ptr$<$ T $>$}!observer\_ptr@{observer\_ptr}}
+\index{observer\_ptr@{observer\_ptr}!observer\_ptr$<$ T $>$@{observer\_ptr$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{observer\_ptr()}{observer\_ptr()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{classobserver__ptr_af10f47454aa80c431096e185b17f7ef6} 
+template$<$typename T$>$ \\
+\mbox{\hyperlink{classobserver__ptr}{observer\+\_\+ptr}}$<$ T $>$\mbox{\hyperlink{classobserver__ptr}{\+::observer\+\_\+ptr}} (\begin{DoxyParamCaption}\item[{std\+::nullptr\+\_\+t}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classobserver__ptr_a9ff05e8edbab78f34538c580612c9fc6}\index{observer\_ptr$<$ T $>$@{observer\_ptr$<$ T $>$}!observer\_ptr@{observer\_ptr}}
+\index{observer\_ptr@{observer\_ptr}!observer\_ptr$<$ T $>$@{observer\_ptr$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{observer\_ptr()}{observer\_ptr()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{classobserver__ptr_a9ff05e8edbab78f34538c580612c9fc6} 
+template$<$typename T$>$ \\
+\mbox{\hyperlink{classobserver__ptr}{observer\+\_\+ptr}}$<$ T $>$\mbox{\hyperlink{classobserver__ptr}{\+::observer\+\_\+ptr}} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classobserver__ptr_a0dc5491906769e651349f2f644f74694}{\+\_\+\+\_\+pointer}}}]{\+\_\+\+\_\+p}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classobserver__ptr_a9c63ed2202d59ad63c877cbcfbfd0d4b}\index{observer\_ptr$<$ T $>$@{observer\_ptr$<$ T $>$}!observer\_ptr@{observer\_ptr}}
+\index{observer\_ptr@{observer\_ptr}!observer\_ptr$<$ T $>$@{observer\_ptr$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{observer\_ptr()}{observer\_ptr()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{classobserver__ptr_a9c63ed2202d59ad63c877cbcfbfd0d4b} 
+template$<$typename T$>$ \\
+template$<$typename \+\_\+\+Up, typename = typename std\+::enable\+\_\+if$<$                  std\+::is\+\_\+convertible$<$                      typename std\+::add\+\_\+pointer$<$\+\_\+\+Up$>$\+::type, \+\_\+\+\_\+pointer$>$\+::                      value$>$\+::type$>$ \\
+\mbox{\hyperlink{classobserver__ptr}{observer\+\_\+ptr}}$<$ T $>$\mbox{\hyperlink{classobserver__ptr}{\+::observer\+\_\+ptr}} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classobserver__ptr}{observer\+\_\+ptr}}$<$ \+\_\+\+Up $>$}]{\+\_\+\+\_\+p}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+
+
+\label{doc-func-members}
+\Hypertarget{classobserver__ptr_doc-func-members}
+\doxysubsection{Documentation des fonctions membres}
+\Hypertarget{classobserver__ptr_ac6337ecd71cc80b97ee2daec809d77f3}\index{observer\_ptr$<$ T $>$@{observer\_ptr$<$ T $>$}!get@{get}}
+\index{get@{get}!observer\_ptr$<$ T $>$@{observer\_ptr$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily \label{classobserver__ptr_ac6337ecd71cc80b97ee2daec809d77f3} 
+template$<$typename T$>$ \\
+\mbox{\hyperlink{classobserver__ptr_a0dc5491906769e651349f2f644f74694}{\+\_\+\+\_\+pointer}} \mbox{\hyperlink{classobserver__ptr}{observer\+\_\+ptr}}$<$ T $>$\+::get (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classobserver__ptr_ac77a87d05bcdf029556d37b3240d059d}\index{observer\_ptr$<$ T $>$@{observer\_ptr$<$ T $>$}!operator \_\_pointer@{operator \_\_pointer}}
+\index{operator \_\_pointer@{operator \_\_pointer}!observer\_ptr$<$ T $>$@{observer\_ptr$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator \_\_pointer()}{operator \_\_pointer()}}
+{\footnotesize\ttfamily \label{classobserver__ptr_ac77a87d05bcdf029556d37b3240d059d} 
+template$<$typename T$>$ \\
+\mbox{\hyperlink{classobserver__ptr}{observer\+\_\+ptr}}$<$ T $>$\+::operator \mbox{\hyperlink{classobserver__ptr_a0dc5491906769e651349f2f644f74694}{\+\_\+\+\_\+pointer}} (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classobserver__ptr_a63d6779b2911c2913c0002205cdc7a5d}\index{observer\_ptr$<$ T $>$@{observer\_ptr$<$ T $>$}!operator bool@{operator bool}}
+\index{operator bool@{operator bool}!observer\_ptr$<$ T $>$@{observer\_ptr$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator bool()}{operator bool()}}
+{\footnotesize\ttfamily \label{classobserver__ptr_a63d6779b2911c2913c0002205cdc7a5d} 
+template$<$typename T$>$ \\
+\mbox{\hyperlink{classobserver__ptr}{observer\+\_\+ptr}}$<$ T $>$\+::operator bool (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classobserver__ptr_a97592da38caa76dfaaf12445aad2716b}\index{observer\_ptr$<$ T $>$@{observer\_ptr$<$ T $>$}!operator\texorpdfstring{$\ast$}{*}@{operator\texorpdfstring{$\ast$}{*}}}
+\index{operator\texorpdfstring{$\ast$}{*}@{operator\texorpdfstring{$\ast$}{*}}!observer\_ptr$<$ T $>$@{observer\_ptr$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator\texorpdfstring{$\ast$}{*}()}{operator*()}}
+{\footnotesize\ttfamily \label{classobserver__ptr_a97592da38caa76dfaaf12445aad2716b} 
+template$<$typename T$>$ \\
+\mbox{\hyperlink{classobserver__ptr_a26630ae0b520a3dd7f1db5f06119e883}{\+\_\+\+\_\+reference}} \mbox{\hyperlink{classobserver__ptr}{observer\+\_\+ptr}}$<$ T $>$\+::operator\texorpdfstring{$\ast$}{*} (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+\Hypertarget{classobserver__ptr_a1e1c3c3f055e4176ce510303ee0f3a91}\index{observer\_ptr$<$ T $>$@{observer\_ptr$<$ T $>$}!operator-\/$>$@{operator-\/$>$}}
+\index{operator-\/$>$@{operator-\/$>$}!observer\_ptr$<$ T $>$@{observer\_ptr$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator-\/$>$()}{operator->()}}
+{\footnotesize\ttfamily \label{classobserver__ptr_a1e1c3c3f055e4176ce510303ee0f3a91} 
+template$<$typename T$>$ \\
+\mbox{\hyperlink{classobserver__ptr_a0dc5491906769e651349f2f644f74694}{\+\_\+\+\_\+pointer}} \mbox{\hyperlink{classobserver__ptr}{observer\+\_\+ptr}}$<$ T $>$\+::operator-\/$>$ (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classobserver__ptr_a44fedd0645ae9a9ca0036eaa3bc2af12}\index{observer\_ptr$<$ T $>$@{observer\_ptr$<$ T $>$}!release@{release}}
+\index{release@{release}!observer\_ptr$<$ T $>$@{observer\_ptr$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{release()}{release()}}
+{\footnotesize\ttfamily \label{classobserver__ptr_a44fedd0645ae9a9ca0036eaa3bc2af12} 
+template$<$typename T$>$ \\
+\mbox{\hyperlink{classobserver__ptr_a0dc5491906769e651349f2f644f74694}{\+\_\+\+\_\+pointer}} \mbox{\hyperlink{classobserver__ptr}{observer\+\_\+ptr}}$<$ T $>$\+::release (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classobserver__ptr_aadf07d605b3dfdfe106843c20cf7f14a}\index{observer\_ptr$<$ T $>$@{observer\_ptr$<$ T $>$}!reset@{reset}}
+\index{reset@{reset}!observer\_ptr$<$ T $>$@{observer\_ptr$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily \label{classobserver__ptr_aadf07d605b3dfdfe106843c20cf7f14a} 
+template$<$typename T$>$ \\
+void \mbox{\hyperlink{classobserver__ptr}{observer\+\_\+ptr}}$<$ T $>$\+::reset (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classobserver__ptr_a0dc5491906769e651349f2f644f74694}{\+\_\+\+\_\+pointer}}}]{\+\_\+\+\_\+p}{ = {\ttfamily nullptr}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classobserver__ptr_a716aac32d184b983fe5a4538afa678f8}\index{observer\_ptr$<$ T $>$@{observer\_ptr$<$ T $>$}!swap@{swap}}
+\index{swap@{swap}!observer\_ptr$<$ T $>$@{observer\_ptr$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{swap()}{swap()}}
+{\footnotesize\ttfamily \label{classobserver__ptr_a716aac32d184b983fe5a4538afa678f8} 
+template$<$typename T$>$ \\
+void \mbox{\hyperlink{classobserver__ptr}{observer\+\_\+ptr}}$<$ T $>$\+::swap (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classobserver__ptr}{observer\+\_\+ptr}}$<$ T $>$ \&}]{\+\_\+\+\_\+p}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+
+
+\label{doc-variable-members}
+\Hypertarget{classobserver__ptr_doc-variable-members}
+\doxysubsection{Documentation des données membres}
+\Hypertarget{classobserver__ptr_afc4f6c26d80c5ebbd5637bbc337fc1f6}\index{observer\_ptr$<$ T $>$@{observer\_ptr$<$ T $>$}!\_\_t@{\_\_t}}
+\index{\_\_t@{\_\_t}!observer\_ptr$<$ T $>$@{observer\_ptr$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{\_\_t}{\_\_t}}
+{\footnotesize\ttfamily \label{classobserver__ptr_afc4f6c26d80c5ebbd5637bbc337fc1f6} 
+template$<$typename T$>$ \\
+\mbox{\hyperlink{classobserver__ptr_a0dc5491906769e651349f2f644f74694}{\+\_\+\+\_\+pointer}} \mbox{\hyperlink{classobserver__ptr}{observer\+\_\+ptr}}$<$ T $>$\+::\+\_\+\+\_\+t\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+La documentation de cette classe a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
+\item 
+/home/quentin/\+Programmes/\+C++/\+Quantum-\/\+Chess/include/\mbox{\hyperlink{observer__ptr_8hpp}{observer\+\_\+ptr.\+hpp}}\end{DoxyCompactItemize}

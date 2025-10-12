@@ -1,0 +1,229 @@
+\doxysection{Référence du fichier /home/quentin/\+Programmes/\+C++/\+Quantum-\/\+Chess/include/\+Unitary.hpp}
+\hypertarget{Unitary_8hpp}{}\label{Unitary_8hpp}\index{/home/quentin/Programmes/C++/Quantum-\/Chess/include/Unitary.hpp@{/home/quentin/Programmes/C++/Quantum-\/Chess/include/Unitary.hpp}}
+{\ttfamily \#include $<$CMatrix.\+hpp$>$}\newline
+{\ttfamily \#include $<$numbers$>$}\newline
+{\ttfamily \#include $<$complex$>$}\newline
+{\ttfamily \#include $<$Constexpr.\+hpp$>$}\newline
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+constexpr \mbox{\hyperlink{CMatrix_8hpp_a3e99a8d4d1b632f5712266247636d394}{CMatrix}}$<$ 4 $>$ \mbox{\hyperlink{Unitary_8hpp_ab7fb18586d945ad71a8f130837146750}{MATRIX\+\_\+\+ISWAP}}
+\item 
+constexpr \mbox{\hyperlink{CMatrix_8hpp_a3e99a8d4d1b632f5712266247636d394}{CMatrix}}$<$ 4 $>$ \mbox{\hyperlink{Unitary_8hpp_abeb483183b3aa8e47022c808409c8a97}{MATRIX\+\_\+\+SQRT\+\_\+\+ISWAP}}
+\item 
+constexpr \mbox{\hyperlink{CMatrix_8hpp_a3e99a8d4d1b632f5712266247636d394}{CMatrix}}$<$ 4 $>$ \mbox{\hyperlink{Unitary_8hpp_a921f5fb534ece3a1df730454498cc23a}{MATRIX\+\_\+\+JUMP}} \{ \mbox{\hyperlink{Unitary_8hpp_ab7fb18586d945ad71a8f130837146750}{MATRIX\+\_\+\+ISWAP}} \}
+\item 
+constexpr \mbox{\hyperlink{CMatrix_8hpp_a3e99a8d4d1b632f5712266247636d394}{CMatrix}}$<$ 8 $>$ \mbox{\hyperlink{Unitary_8hpp_a8f5f243cb8441aec43d79173665a8d12}{MATRIX\+\_\+\+SLIDE}}
+\item 
+constexpr \mbox{\hyperlink{CMatrix_8hpp_a3e99a8d4d1b632f5712266247636d394}{CMatrix}}$<$ 8 $>$ \mbox{\hyperlink{Unitary_8hpp_acf8962339a8c218a25e2fce17a5ad545}{MATRIX\+\_\+\+ISWAP\+\_\+8}}
+\item 
+constexpr \mbox{\hyperlink{CMatrix_8hpp_a3e99a8d4d1b632f5712266247636d394}{CMatrix}}$<$ 8 $>$ \mbox{\hyperlink{Unitary_8hpp_a0c1955ba8378b1dad7217bb8e55b38db}{MATRIX\+\_\+\+SQRT\+\_\+\+ISWAP\+\_\+8}}
+\item 
+constexpr \mbox{\hyperlink{CMatrix_8hpp_a3e99a8d4d1b632f5712266247636d394}{CMatrix}}$<$ 8 $>$ \mbox{\hyperlink{Unitary_8hpp_af385eac21fa839b90d4ece9891fd2843}{MATRIX\+\_\+\+SPLIT}}
+\item 
+constexpr \mbox{\hyperlink{CMatrix_8hpp_a3e99a8d4d1b632f5712266247636d394}{CMatrix}}$<$ 8 $>$ \mbox{\hyperlink{Unitary_8hpp_a568594e8bd922ae738bb20e276e61b7d}{MATRIX\+\_\+\+MERGE}}
+\item 
+constexpr \mbox{\hyperlink{CMatrix_8hpp_a3e99a8d4d1b632f5712266247636d394}{CMatrix}}$<$ 32 $>$ \mbox{\hyperlink{Unitary_8hpp_a4ad68257b8a76387be441974e0539929}{MATRIX\+\_\+\+SPLIT\+\_\+\+SLIDE}}
+\item 
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} \mbox{\hyperlink{CMatrix_8hpp_a3e99a8d4d1b632f5712266247636d394}{CMatrix}}$<$ 32 $>$ \mbox{\hyperlink{Unitary_8hpp_a6dbe9320580400e59019b03e8973406f}{MATRIX\+\_\+\+MERGE\+\_\+\+SLIDE}}
+\end{DoxyCompactItemize}
+
+
+\label{doc-var-members}
+\Hypertarget{Unitary_8hpp_doc-var-members}
+\doxysubsection{Documentation des variables}
+\Hypertarget{Unitary_8hpp_ab7fb18586d945ad71a8f130837146750}\index{Unitary.hpp@{Unitary.hpp}!MATRIX\_ISWAP@{MATRIX\_ISWAP}}
+\index{MATRIX\_ISWAP@{MATRIX\_ISWAP}!Unitary.hpp@{Unitary.hpp}}
+\doxysubsubsection{\texorpdfstring{MATRIX\_ISWAP}{MATRIX\_ISWAP}}
+{\footnotesize\ttfamily \label{Unitary_8hpp_ab7fb18586d945ad71a8f130837146750} 
+\mbox{\hyperlink{CMatrix_8hpp_a3e99a8d4d1b632f5712266247636d394}{CMatrix}}$<$4$>$ MATRIX\+\_\+\+ISWAP\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+{\bfseries Valeur initiale \+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{1,\ \ 0,\ \ 0,\ 0\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{0,\ \ 0,\ 1i,\ 0\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{0,\ 1i,\ \ 0,\ 0\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{0,\ \ 0,\ \ 0,\ 1\}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\Hypertarget{Unitary_8hpp_acf8962339a8c218a25e2fce17a5ad545}\index{Unitary.hpp@{Unitary.hpp}!MATRIX\_ISWAP\_8@{MATRIX\_ISWAP\_8}}
+\index{MATRIX\_ISWAP\_8@{MATRIX\_ISWAP\_8}!Unitary.hpp@{Unitary.hpp}}
+\doxysubsubsection{\texorpdfstring{MATRIX\_ISWAP\_8}{MATRIX\_ISWAP\_8}}
+{\footnotesize\ttfamily \label{Unitary_8hpp_acf8962339a8c218a25e2fce17a5ad545} 
+\mbox{\hyperlink{CMatrix_8hpp_a3e99a8d4d1b632f5712266247636d394}{CMatrix}}$<$8$>$ MATRIX\+\_\+\+ISWAP\+\_\+8\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+{\bfseries Valeur initiale \+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{1,\ 0,\ 0,\ 0,\ 0,\ 0,\ 0,\ 0\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{0,\ 0,\ 0,\ 0,\ 1i,\ 0,\ 0,\ 0\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{0,\ 0,\ 1,\ 0,\ 0,\ 0,\ 0,\ 0\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{0,\ 0,\ 0,\ 0,\ 0,\ 0,\ 1i,\ 0\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{0,\ 1i,\ 0,\ 0,\ 0,\ 0,\ 0,\ 0\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{0,\ 0,\ 0,\ 0,\ 0,\ 1,\ 0,\ 0\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{0,\ 0,\ 0,\ 1i,\ 0,\ 0,\ 0,\ 0\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{0,\ 0,\ 0,\ 0,\ 0,\ 0,\ 0,\ 1\}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\Hypertarget{Unitary_8hpp_a921f5fb534ece3a1df730454498cc23a}\index{Unitary.hpp@{Unitary.hpp}!MATRIX\_JUMP@{MATRIX\_JUMP}}
+\index{MATRIX\_JUMP@{MATRIX\_JUMP}!Unitary.hpp@{Unitary.hpp}}
+\doxysubsubsection{\texorpdfstring{MATRIX\_JUMP}{MATRIX\_JUMP}}
+{\footnotesize\ttfamily \label{Unitary_8hpp_a921f5fb534ece3a1df730454498cc23a} 
+\mbox{\hyperlink{CMatrix_8hpp_a3e99a8d4d1b632f5712266247636d394}{CMatrix}}$<$4$>$ MATRIX\+\_\+\+JUMP \{ \mbox{\hyperlink{Unitary_8hpp_ab7fb18586d945ad71a8f130837146750}{MATRIX\+\_\+\+ISWAP}} \}\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+\Hypertarget{Unitary_8hpp_a568594e8bd922ae738bb20e276e61b7d}\index{Unitary.hpp@{Unitary.hpp}!MATRIX\_MERGE@{MATRIX\_MERGE}}
+\index{MATRIX\_MERGE@{MATRIX\_MERGE}!Unitary.hpp@{Unitary.hpp}}
+\doxysubsubsection{\texorpdfstring{MATRIX\_MERGE}{MATRIX\_MERGE}}
+{\footnotesize\ttfamily \label{Unitary_8hpp_a568594e8bd922ae738bb20e276e61b7d} 
+\mbox{\hyperlink{CMatrix_8hpp_a3e99a8d4d1b632f5712266247636d394}{CMatrix}}$<$8$>$ MATRIX\+\_\+\+MERGE\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+{\bfseries Valeur initiale \+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{1,\ \ \ 0,\ \ \ \ \ \ \ \ \ 0,\ \ \ \ \ \ \ \ \ 0,\ \ \ \ \ \ \ \ \ 0,\ \ \ \ \ \ \ \ \ 0,\ \ \ 0,\ \ 0\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{0,\ \ \ 0,\ -\/1i/sqrt2,\ \ \ \ \ \ \ \ \ 0,\ -\/1i/sqrt2,\ \ \ \ \ \ \ \ \ 0,\ \ \ 0,\ \ 0\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{0,\ \ \ 0,\ \ \ 1/sqrt2,\ \ \ \ \ \ \ \ \ 0,\ \ -\/1/sqrt2,\ \ \ \ \ \ \ \ \ 0,\ \ \ 0,\ \ 0\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{0,\ \ \ 0,\ \ \ \ \ \ \ \ \ 0,\ \ \ \ \ \ \ \ \ 0,\ \ \ \ \ \ \ \ \ 0,\ \ \ \ \ \ \ \ \ 0,\ -\/1i,\ \ 0\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{0,\ -\/1i,\ \ \ \ \ \ \ \ \ 0,\ \ \ \ \ \ \ \ \ 0,\ \ \ \ \ \ \ \ \ 0,\ \ \ \ \ \ \ \ \ 0,\ \ \ \ 0,\ 0\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{0,\ \ \ 0,\ \ \ \ \ \ \ \ \ 0,\ \ -\/1/sqrt2,\ \ \ \ \ \ \ \ \ 0,\ -\/1i/sqrt2,\ \ \ \ 0,\ 0\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{0,\ \ \ 0,\ \ \ \ \ \ \ \ \ 0,\ -\/1i/sqrt2,\ \ \ \ \ \ \ \ \ 0,\ \ -\/1/sqrt2,\ \ \ \ 0,\ 0\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{0,\ \ \ 0,\ \ \ \ \ \ \ \ \ 0,\ \ \ \ \ \ \ \ \ 0,\ \ \ \ \ \ \ \ \ 0,\ \ \ \ \ \ \ \ \ 0,\ \ \ \ 0,\ 1\}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\Hypertarget{Unitary_8hpp_a6dbe9320580400e59019b03e8973406f}\index{Unitary.hpp@{Unitary.hpp}!MATRIX\_MERGE\_SLIDE@{MATRIX\_MERGE\_SLIDE}}
+\index{MATRIX\_MERGE\_SLIDE@{MATRIX\_MERGE\_SLIDE}!Unitary.hpp@{Unitary.hpp}}
+\doxysubsubsection{\texorpdfstring{MATRIX\_MERGE\_SLIDE}{MATRIX\_MERGE\_SLIDE}}
+{\footnotesize\ttfamily \label{Unitary_8hpp_a6dbe9320580400e59019b03e8973406f} 
+\mbox{\hyperlink{Constexpr_8hpp_acaa06fbc27c59926a41e7575667e5280}{CONSTEXPR}} \mbox{\hyperlink{CMatrix_8hpp_a3e99a8d4d1b632f5712266247636d394}{CMatrix}}$<$32$>$ MATRIX\+\_\+\+MERGE\+\_\+\+SLIDE\hspace{0.3cm}{\ttfamily [inline]}}
+
+{\bfseries Valeur initiale \+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{CMatrix_8hpp_a3e99a8d4d1b632f5712266247636d394}{CMatrix<16>}}\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{Unitary_8hpp_a568594e8bd922ae738bb20e276e61b7d}{MATRIX\_MERGE}},\ \mbox{\hyperlink{CMatrix_8hpp_a3e99a8d4d1b632f5712266247636d394}{CMatrix<8>}}\{\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{CMatrix_8hpp_a3e99a8d4d1b632f5712266247636d394}{CMatrix<8>}}\{\},\ conj(CMatrix<2>::identity().tensoriel\_product(\mbox{\hyperlink{Unitary_8hpp_ab7fb18586d945ad71a8f130837146750}{MATRIX\_ISWAP}}).transposed())}
+\DoxyCodeLine{\ \ \ \ \},\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{CMatrix_8hpp_a3e99a8d4d1b632f5712266247636d394}{CMatrix<16>}}\{\},}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{CMatrix_8hpp_a3e99a8d4d1b632f5712266247636d394}{CMatrix<16>}}\{\},\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{CMatrix_8hpp_a3e99a8d4d1b632f5712266247636d394}{CMatrix<16>}}\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ conj(\mbox{\hyperlink{Unitary_8hpp_acf8962339a8c218a25e2fce17a5ad545}{MATRIX\_ISWAP\_8}}.transposed()),\ \mbox{\hyperlink{CMatrix_8hpp_a3e99a8d4d1b632f5712266247636d394}{CMatrix<8>}}\{\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{CMatrix_8hpp_a3e99a8d4d1b632f5712266247636d394}{CMatrix<8>}}\{\},\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CMatrix<8>::identity()}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\Hypertarget{Unitary_8hpp_a8f5f243cb8441aec43d79173665a8d12}\index{Unitary.hpp@{Unitary.hpp}!MATRIX\_SLIDE@{MATRIX\_SLIDE}}
+\index{MATRIX\_SLIDE@{MATRIX\_SLIDE}!Unitary.hpp@{Unitary.hpp}}
+\doxysubsubsection{\texorpdfstring{MATRIX\_SLIDE}{MATRIX\_SLIDE}}
+{\footnotesize\ttfamily \label{Unitary_8hpp_a8f5f243cb8441aec43d79173665a8d12} 
+\mbox{\hyperlink{CMatrix_8hpp_a3e99a8d4d1b632f5712266247636d394}{CMatrix}}$<$8$>$ MATRIX\+\_\+\+SLIDE\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+{\bfseries Valeur initiale \+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{1,\ 0,\ 0,\ 0,\ 0,\ 0,\ 0,\ 0\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{0,\ 0,\ 1i,\ 0,\ 0,\ 0,\ 0,\ 0\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{0,\ 1i,\ 0,\ 0,\ 0,\ 0,\ 0,\ 0\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{0,\ 0,\ 0,\ 1,\ 0,\ 0,\ 0,\ 0\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{0,\ 0,\ 0,\ 0,\ 1,\ 0,\ 0,\ 0\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{0,\ 0,\ 0,\ 0,\ 0,\ 1,\ 0,\ 0\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{0,\ 0,\ 0,\ 0,\ 0,\ 0,\ 1,\ 0\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{0,\ 0,\ 0,\ 0,\ 0,\ 0,\ 0,\ 1\}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\Hypertarget{Unitary_8hpp_af385eac21fa839b90d4ece9891fd2843}\index{Unitary.hpp@{Unitary.hpp}!MATRIX\_SPLIT@{MATRIX\_SPLIT}}
+\index{MATRIX\_SPLIT@{MATRIX\_SPLIT}!Unitary.hpp@{Unitary.hpp}}
+\doxysubsubsection{\texorpdfstring{MATRIX\_SPLIT}{MATRIX\_SPLIT}}
+{\footnotesize\ttfamily \label{Unitary_8hpp_af385eac21fa839b90d4ece9891fd2843} 
+\mbox{\hyperlink{CMatrix_8hpp_a3e99a8d4d1b632f5712266247636d394}{CMatrix}}$<$8$>$ MATRIX\+\_\+\+SPLIT\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+{\bfseries Valeur initiale \+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{1,\ \ \ \ \ \ \ \ 0,\ \ \ \ \ \ \ \ \ 0,\ \ \ 0,\ \ 0,\ \ \ \ \ \ \ \ \ 0,\ \ \ \ \ \ \ \ \ 0,\ 0\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{0,\ \ \ \ \ \ \ \ 0,\ \ \ \ \ \ \ \ \ 0,\ \ \ 0,\ 1i,\ \ \ \ \ \ \ \ \ 0,\ \ \ \ \ \ \ \ \ 0,\ 0\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{0,\ 1i/sqrt2,\ \ 1./sqrt2,\ \ \ 0,\ \ 0,\ \ \ \ \ \ \ \ \ 0,\ \ \ \ \ \ \ \ \ 0,\ 0\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{0,\ \ \ \ \ \ \ \ 0,\ \ \ \ \ \ \ \ \ 0,\ \ \ 0,\ \ 0,\ -\/1./sqrt2,\ \ 1i/sqrt2,\ 0\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{0,\ 1i/sqrt2,\ -\/1./sqrt2,\ \ \ 0,\ \ 0,\ \ \ \ \ \ \ \ \ 0,\ \ \ \ \ \ \ \ \ 0,\ 0\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{0,\ \ \ \ \ \ \ \ 0,\ \ \ \ \ \ \ \ \ 0,\ \ \ 0,\ \ 0,\ \ 1i/sqrt2,\ -\/1/sqrt2,\ 0\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{0,\ \ \ \ \ \ \ \ 0,\ \ \ \ \ \ \ \ \ 0,\ \ \ 1i,\ \ 0,\ \ \ \ \ \ \ \ \ 0,\ \ \ \ \ \ \ \ \ 0,\ 0\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{0,\ \ \ \ \ \ \ \ 0,\ \ \ \ \ \ \ \ \ 0,\ \ \ 0,\ \ 0,\ \ \ \ \ \ \ \ \ 0,\ \ \ \ \ \ \ \ \ 0,\ 1\}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\Hypertarget{Unitary_8hpp_a4ad68257b8a76387be441974e0539929}\index{Unitary.hpp@{Unitary.hpp}!MATRIX\_SPLIT\_SLIDE@{MATRIX\_SPLIT\_SLIDE}}
+\index{MATRIX\_SPLIT\_SLIDE@{MATRIX\_SPLIT\_SLIDE}!Unitary.hpp@{Unitary.hpp}}
+\doxysubsubsection{\texorpdfstring{MATRIX\_SPLIT\_SLIDE}{MATRIX\_SPLIT\_SLIDE}}
+{\footnotesize\ttfamily \label{Unitary_8hpp_a4ad68257b8a76387be441974e0539929} 
+\mbox{\hyperlink{CMatrix_8hpp_a3e99a8d4d1b632f5712266247636d394}{CMatrix}}$<$32$>$ MATRIX\+\_\+\+SPLIT\+\_\+\+SLIDE\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+{\bfseries Valeur initiale \+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{CMatrix_8hpp_a3e99a8d4d1b632f5712266247636d394}{CMatrix<16>}}\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{Unitary_8hpp_af385eac21fa839b90d4ece9891fd2843}{MATRIX\_SPLIT}},\ \mbox{\hyperlink{CMatrix_8hpp_a3e99a8d4d1b632f5712266247636d394}{CMatrix<8>}}\{\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{CMatrix_8hpp_a3e99a8d4d1b632f5712266247636d394}{CMatrix<8>}}\{\},\ \mbox{\hyperlink{Unitary_8hpp_acf8962339a8c218a25e2fce17a5ad545}{MATRIX\_ISWAP\_8}}}
+\DoxyCodeLine{\ \ \ \ \},\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{CMatrix_8hpp_a3e99a8d4d1b632f5712266247636d394}{CMatrix<16>}}\{\},}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{CMatrix_8hpp_a3e99a8d4d1b632f5712266247636d394}{CMatrix<16>}}\{\},\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{CMatrix_8hpp_a3e99a8d4d1b632f5712266247636d394}{CMatrix<16>}}\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CMatrix<2>::identity()}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .tensoriel\_product(\mbox{\hyperlink{Unitary_8hpp_ab7fb18586d945ad71a8f130837146750}{MATRIX\_ISWAP}}),\ \mbox{\hyperlink{CMatrix_8hpp_a3e99a8d4d1b632f5712266247636d394}{CMatrix<8>}}\{\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{CMatrix_8hpp_a3e99a8d4d1b632f5712266247636d394}{CMatrix<8>}}\{\},\ CMatrix<8>::identity()}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\Hypertarget{Unitary_8hpp_abeb483183b3aa8e47022c808409c8a97}\index{Unitary.hpp@{Unitary.hpp}!MATRIX\_SQRT\_ISWAP@{MATRIX\_SQRT\_ISWAP}}
+\index{MATRIX\_SQRT\_ISWAP@{MATRIX\_SQRT\_ISWAP}!Unitary.hpp@{Unitary.hpp}}
+\doxysubsubsection{\texorpdfstring{MATRIX\_SQRT\_ISWAP}{MATRIX\_SQRT\_ISWAP}}
+{\footnotesize\ttfamily \label{Unitary_8hpp_abeb483183b3aa8e47022c808409c8a97} 
+\mbox{\hyperlink{CMatrix_8hpp_a3e99a8d4d1b632f5712266247636d394}{CMatrix}}$<$4$>$ MATRIX\+\_\+\+SQRT\+\_\+\+ISWAP\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+{\bfseries Valeur initiale \+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{1,\ \ \ \ \ \ \ \ 0,\ \ \ \ \ \ \ \ \ 0,\ 0\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{0,\ 1./sqrt2,\ \ 1i/sqrt2,\ 0\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{0,\ 1i/sqrt2,\ \ 1./sqrt2,\ 0\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{0,\ \ \ \ \ \ \ \ 0,\ \ \ \ \ \ \ \ \ 0,\ 1\}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\Hypertarget{Unitary_8hpp_a0c1955ba8378b1dad7217bb8e55b38db}\index{Unitary.hpp@{Unitary.hpp}!MATRIX\_SQRT\_ISWAP\_8@{MATRIX\_SQRT\_ISWAP\_8}}
+\index{MATRIX\_SQRT\_ISWAP\_8@{MATRIX\_SQRT\_ISWAP\_8}!Unitary.hpp@{Unitary.hpp}}
+\doxysubsubsection{\texorpdfstring{MATRIX\_SQRT\_ISWAP\_8}{MATRIX\_SQRT\_ISWAP\_8}}
+{\footnotesize\ttfamily \label{Unitary_8hpp_a0c1955ba8378b1dad7217bb8e55b38db} 
+\mbox{\hyperlink{CMatrix_8hpp_a3e99a8d4d1b632f5712266247636d394}{CMatrix}}$<$8$>$ MATRIX\+\_\+\+SQRT\+\_\+\+ISWAP\+\_\+8\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+{\bfseries Valeur initiale \+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{1,\ \ \ \ \ \ \ \ 0,\ \ \ \ \ \ \ \ 0,\ 0,\ \ 0,\ \ \ \ \ \ \ \ 0,\ \ \ \ \ \ \ \ 0,\ 0\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{0,\ 1./sqrt2,\ 1i/sqrt2,\ 0,\ 0,\ \ \ \ \ \ \ \ 0,\ \ \ \ \ \ \ \ 0,\ 0\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{0,\ 1i/sqrt2,\ 1./sqrt2,\ 0,\ \ 0,\ \ \ \ \ \ \ \ 0,\ \ \ \ \ \ \ \ 0,\ 0\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{0,\ \ \ \ \ \ \ \ 0,\ \ \ \ \ \ \ \ 0,\ 1,\ \ 0,\ \ \ \ \ \ \ \ 0,\ \ \ \ \ \ \ \ 0,\ 0\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{0,\ \ \ \ \ \ \ \ 0,\ \ \ \ \ \ \ \ 0,\ 0,\ \ 1,\ \ \ \ \ \ \ \ 0,\ \ \ \ \ \ \ \ 0,\ 0\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{0,\ \ \ \ \ \ \ \ 0,\ \ \ \ \ \ \ \ 0,\ 0,\ \ 0,\ 1./sqrt2,\ 1i/sqrt2,\ 0\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{0,\ \ \ \ \ \ \ \ 0,\ \ \ \ \ \ \ \ 0,\ 0,\ \ 0,\ 1i/sqrt2,\ 1./sqrt2,\ 0\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{0,\ \ \ \ \ \ \ \ 0,\ \ \ \ \ \ \ \ 0,\ 0,\ \ 0,\ \ \ \ \ \ \ \ 0,\ \ \ \ \ \ \ \ 0,\ 1\}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}

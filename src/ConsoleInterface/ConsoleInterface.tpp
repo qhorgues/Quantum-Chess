@@ -25,9 +25,7 @@ const char *getUnicodeChar(TypePiece piece, Color color)
     default:
       return " ";
     }
-  }
-  else
-  {
+} else {
     switch (piece)
     {
     case KING:
@@ -46,7 +44,7 @@ const char *getUnicodeChar(TypePiece piece, Color color)
     default:
       return " ";
     }
-  }
+}
 #else
     switch (piece)
     {

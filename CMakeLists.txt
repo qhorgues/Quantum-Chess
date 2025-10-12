@@ -7,6 +7,8 @@ enable_testing()
 include(${CMAKE_SOURCE_DIR}/cmake/option.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/CompilerWarnings.cmake)
 
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 
 set_choice (CMAKE_BUILD_TYPE "Debug;Release;MinSizeRel;RelWithDebInfo" "Debug" "Choose type of build")
 set_option (KING_NO_SPLIT OFF BOOL "empèche le roi de se split")
@@ -31,7 +33,7 @@ set (SRCS
     ${CMAKE_SOURCE_DIR}/src/Random/Random.cpp
     ${CMAKE_SOURCE_DIR}/src/ConsoleInterface/ConsoleInterface.tpp
 )
-    
+
 set (HEADERS
     ${CMAKE_SOURCE_DIR}/include/Unitary.hpp
     ${CMAKE_SOURCE_DIR}/include/CMatrix.hpp
