@@ -1,1 +1,0 @@
-/usr/bin/c++ -O3 -DNDEBUG -Wl,--dependency-file=CMakeFiles/Quantum-Chess.dir/link.d "CMakeFiles/Quantum-Chess.dir/src/Coord/Coord.cpp.o" "CMakeFiles/Quantum-Chess.dir/src/Move/Move.cpp.o" "CMakeFiles/Quantum-Chess.dir/src/Random/Random.cpp.o" "CMakeFiles/Quantum-Chess.dir/src/main.cpp.o" -o Quantum-Chess  -lm

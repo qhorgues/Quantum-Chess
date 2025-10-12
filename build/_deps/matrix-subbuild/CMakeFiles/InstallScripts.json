@@ -1,7 +1,0 @@
-{
-	"InstallScripts" : 
-	[
-		"/home/quentin/Programmes/C++/Quantum-Chess/build/_deps/matrix-subbuild/cmake_install.cmake"
-	],
-	"Parallel" : false
-}
